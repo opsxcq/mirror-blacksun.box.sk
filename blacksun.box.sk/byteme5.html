@@ -1,0 +1,711 @@
+<HTML><HEAD><TITLE>Byteme 5</TITLE>
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type>
+<STYLE type=text/css>A:active {
+	TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ffffff; TEXT-DECORATION: underline
+}
+A:link {
+	TEXT-DECORATION: none
+}
+A:visited {
+	TEXT-DECORATION: none
+}
+.small {
+	FONT-SIZE: 8pt
+}
+.small_uppercase {
+	FONT-FAMILY: Arial, Helvetica, sans-serif; FONT-SIZE: 8pt; FONT-WEIGHT: bold; TEXT-TRANSFORM: uppercase
+}
+.upper {
+	TEXT-TRANSFORM: uppercase
+}
+</STYLE>
+
+<META content="MSHTML 5.00.2614.3500" name=GENERATOR></HEAD>
+<BODY aLink=#ccff00 bgColor=#000000 leftMargin=20 link=#99ccff text=#cccccc 
+topMargin=10 vLink=#ccccff marginheight="0" marginwidth="0">
+<FORM name=jumpy>
+<P><SELECT name=example onchange=gone() size=1> <OPTION selected 
+  value=http://blacksun.box.sk/byteme.html>Main Byteme</OPTION> <OPTION 
+  value=http://blacksun.box.sk/byteme1.html>Byteme 1</OPTION> <OPTION 
+  value=http://blacksun.box.sk/byteme2.html>Byteme 2</OPTION> <OPTION 
+  value=http://blacksun.box.sk/byteme3.html>Byteme 3</OPTION> <OPTION 
+  value=http://blacksun.box.sk/byteme1.html>Byteme 4</OPTION> <OPTION 
+  value=http://blacksun.box.sk>Home</OPTION></SELECT>
+<SCRIPT language=javascript>
+<!--
+
+function gone()
+{
+location=document.jumpy.example.options[document.jumpy.example.selectedIndex].value
+}
+//-->
+</SCRIPT>
+ <INPUT name=test onclick=gone() type=button value="Take me there!"> </P></FORM>
+
+<LI><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/byteme5.html#Sharing your Internet connection">Sharing 
+your Internet connection</A></FONT></FONT> 
+<LI><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/byteme5.html#Routers Bridges Switches and Hubs">Routers Bridges Switches and Hubs
+</A></FONT></FONT>
+<LI><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/byteme5.html#Using Whois">Using Whois
+</A></FONT></FONT>
+
+<BR>
+<P>
+<P><A name="Sharing your Internet connection"></A><B><FONT face="Arial, Helvetica, sans-serif" color="#ffffff" size="-1">
+Sharing your Internet connection</FONT></B> 
+
+<p><FONT face="Arial, Helvetica, sans-serif" color="#ffffff" size="-1">
+/////////////////////////////////////////////////////////////<br>
+by      : Mike Gerschefkse<br>
+e-mail  : <a href="mailto:MikeGerf@hotmail.com">MikeGerf@hotmail.com</a><br>
+date    : 25, August 2000<br>
+revision: 1.01<br>
+comment : none<br>
+////////////////////////////////////////////////////////////</font>
+
+<p>
+<pre>
+ ___________                                   ___________
+|          |----------------------------------| DSL/CABLE |
+|  SERVER  |               _______            |___________|
+|__________|--------------|  HUB  |
+                          |_______| 
+                           |  |  |
+                           |  |  |
+                           |  |  |
+                           |  |  |
+                           |  |  |
+                           |  |  |
+                        ___|__|__|__
+                       |Wn98|'95|Wn98|
+                       |____|___|____|
+</pre> 
+
+<p><FONT face="Arial, Helvetica, sans-serif" color="#ffffff" size="-1">
+Figure 1.1 Wiring Specifications</font>
+
+<p><FONT face="Arial, Helvetica, sans-serif" color="#ffffff" size="-1">
+Supplies Needed:<br>
+=================<br>
+&nbsp;&nbsp;&nbsp;4: NICs (Network Interface Cards) (20$ each)<br>
+&nbsp;&nbsp;&nbsp;4: 4 pair RJ45 Wiring (Long enough to reach to the hub) (25 cents/foot)<br>
+&nbsp;&nbsp;&nbsp;1: Hub (50-100$)<br>
+&nbsp;&nbsp;&nbsp;1: DSL/Cable Modem/IC (???$)</font>
+
+<p><FONT face="Arial, Helvetica, sans-serif" color="#ffffff" size="-1">
+Hardware Setup 1:<br>
+=================<br>
+Open up the computer.  Open the NIC and look for the following ISA/PCI slot
+that looks like it will fit into, then slip the card down, and push firmly. Make sure the card is 
+fully pushed in (May require sum extra umph).  Screw in the NIC to the case at the top of the paddle 
+on the NIC.  Screw the screw back in the case, and wha la!</font>
+
+<p><FONT face="Arial, Helvetica, sans-serif" color="#ffffff" size="-1">
+Software Setup 1:<br>
+=================<br>
+Boot up the machine, when windows attepmpts to boot you should get a PNP  
+dialog box (Plug n' Play).  It will ask you to select the correct driver, if it's
+already there just select it, if not stick in the data disc (driver disc), and  select the 
+appropriate driver from there.</font>
+
+<p><FONT face="Arial, Helvetica, sans-serif" color="#ffffff" size="-1">
+Haredware Setip 2:<br>
+==================<br>
+Plug all the wires in the NICs and the HUB.<br></font>
+
+<p><FONT face="Arial, Helvetica, sans-serif" color="#ffffff" size="-1">
+Server Software Setup 1.1:<br>
+=================<br>
+*The following instructions will most likely only work on a windows 98 machine.<br>
+<br>	
+=== This paragraph talks about ICS, skip if you don't want to use it. ===<br><br>
+First, before the network is setup, we will install internet connection sharing (ICS).  
+Go to Start--&gt;Settings--&gt;Control Pannels--&gt;Add/Remove Software
+--&gt;Windows Setup (Tab) --&gt; Select Internet Explorer from the list and
+double click --&gt; Check the top box that says: &quot;Internet Connection
+Sharing&quot;, click ok, then click ok again.  About this time another dialog box should 
+open up to try and configure ICS, just keep clicking the next button, and you're done when
+you click the finish button (If you're feeling zesty you can make a driver disk).
+Then it's going to want you to restart, so go ahead and do that.  Once you've 
+booted back up again go to the control pannels, and open up your network
+settings. Oh, by the way, you're going to need that win98 disk (or 
+C:\Windows\Options\Cabs).</font>
+
+<p><FONT face="Arial, Helvetica, sans-serif" color="#ffffff" size="-1">
+Network settings, hurahh!  Ok, make sure the first thing that is in there is Client for Microsoft 
+Networks.  If not click Add--&gt;Client, Add--&gt;Microsoft, then bingo, there it is.  Ok, make 
+sure TCP/IP (What ever you NIC is) is in there as well, if not, don't fret. Ok, now if something 
+is already installed in this section, ignore it. Click add, go to protocol, click add again select
+Microsoft again, and add the following if not pressent for your NIC: NetBEUI, TCP/IP, and IPX/SPX.
+For file and print sharing click the big button that says: "File and Print Sharing" and select what 
+ever is approrpriate.</font>
+
+<p><FONT face="Arial, Helvetica, sans-serif" color="#ffffff" size="-1">
+Configuring addresses for the server: Double click TCP/IP (NIC) and go to the IP Address tab.  Select the 
+specify an IP address radio button.  For the IP address either use: 192.168.0.1  or 10.10.10.1
+the reason is those are private public addresses that wont conflict with exiting networks.  For the
+subnet use 255.255.255.0  Select WINS Configuration and make sure disable WINS Resolution is bubbled in.  
+Don't worry about the rest of the tabs.  Click ok, then selct TCP/IP Internet connection sharing and open up it's
+properties and make sure Obtain an IP address automatically is selected in the IP address tab and in the wins 
+congiguration tab that USE DHCP for WINS Resolution IS SELECTED!  Ok, click on the Idenification tab in the 
+network properties and give your a pc a name, and name the workgroup, try to keep the workgroup name the
+same on the server and the individual pcs unless once again you're feeling zesty, (It'll make more sense when 
+the network is up and running as to why).  Then you're all done configuring the server.  All done.</font>
+
+<p><FONT face="Arial, Helvetica, sans-serif" color="#ffffff" size="-1">
+Configuring Individual Machines<br>
+(Non Server) Software 1.2:<br>
+=======================<br>
+<br>
+Once again, make sure the first thing that is in there is Client for Microsoft Networks.  If not add it (Refer to 
+above).  Ok, make sure TCP/IP (NIC) is in there as well.</font>
+
+<p><FONT face="Arial, Helvetica, sans-serif" color="#ffffff" size="-1">
+Ok, now if something is already installed in this section, ignore it. Click add, go to protocol, click add again 
+select microsoft again, and add the following if not pressent for your NIC: NetBEUI, TCP/IP, and IPX/SPX.  While 
+NetBEUI and IPX/SPX are not needed, NetBEUI will help control your network traffic and IPX/SPX will allow for 
+older games that don't support TCP/IP still run over the network.</font>
+
+<p><FONT face="Arial, Helvetica, sans-serif" color="#ffffff" size="-1">
+For file and print sharing click the big button that says: &quot;File and Print Sharing&quot; and select what ever is 
+appropriate. And it all sounds too familiar, but wait, here comes the hard part! Open up the properies for TCP/IP (NIC), 
+and select obtain an IP address automatically, and in wins configuration select Use DHCP for Wins Resolution.
+Then go to the indentification and name the computer and the workgroups. Now you need to setup IE to detect the network 
+so you can surf the internet.  Open up your internet option in control pannels: Under IE 5.x+:  Select never dial a connection
+Click on Lan settings, and automaticall detect settings Under IE 3.x+: Should detect proxy settings automatically.</font>
+
+<p><FONT face="Arial, Helvetica, sans-serif" color="#ffffff" size="-1">
+Restart Restart Restart<br>
+=======================<br>
+Restart Restart Restart Restart Restart Restart Restart Restart Restart Restart Restart Restart all your machines, they 
+need a fresh restart. Once the server has reached the logon screen, log the server on, then log the rest of 
+the machines on, then presto, it works!</font>
+
+<p><FONT face="Arial, Helvetica, sans-serif" color="#ffffff" size="-1">
+File &amp; Print Sharing:<br>
+=====================<br>
+To share a printer, right click that printer and go to sharing, the give the
+printer a name.  To access the printer from any other machines, select add new printer
+from the printers folder (Start-->Settings-->Printers), select network printer, and
+select the computer that the printer is connected to, then the printer should drop down
+beneath the computers icon, select that printer and proceed.</font>
+
+<p><FONT face="Arial, Helvetica, sans-serif" color="#ffffff" size="-1">
+To share folder or hard drives, right click the folder and go to sharing as
+well, share it as a name, and you can password protect this folder if you want to (same with
+the printer), with read only and full access.  Once you've selected a folder to
+share, a hand icon should appear on it, now on any other machine, going to Network
+neighborhood and selecting your pc, should see this folder.  If wanted, you can right click
+on that folder and have it turn that folder into a network hard drive, either only being
+a drive then, or reconnecting at log on.  Works great for sharing mp3s.  Also, this can
+be done with cd-roms, zip drives, and cd-rws.  Note: You may not want to run file and
+print sharing on your server machine for security reasons (Totally optional).</font>
+
+<p>-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=<br><br>
+
+
+
+
+
+<P><A name="Routers Bridges Switches and Hubs"></A><B><FONT face="Arial, Helvetica, sans-serif" color="#ffffff" size="-1">
+Routers Bridges Switches and Hubs.</FONT></B>
+
+<br><font size=-1>==================================</font><font size=-1></font>
+
+<p><font size=-1>--by POOL</font>
+
+<br><font size=-1></font>&nbsp;<font size=-1></font>
+
+<p><font size=-1>Hey, this time I'll explain you some stuff about different
+
+devices used to set up a LAN/WAN. It won't be a very indepth explanation.
+
+But just to give newbies a basic understanding, which is very important.
+
+Well, let me start with a router. A router is a device used to route packets
+
+between different segments. Hmm, don't you know what a segment is? Ok, let
+
+me explain this with a diagram:<pre>
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA            BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+
+A                            A  ++++++++  B                             B
+
+A  +++++          +++++      A  +router+  B       +++++          +++++  B
+
+A  +PC1+==========+PC2+=========+  or  +==========+PC3+==========+PC4+  B
+
+A  +++++          +++++      A  +bridge+  B       +++++          +++++  B
+
+A                            A  ++++++++  B                             B
+
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA            BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+
+</pre></font>
+
+Well, as you can see, a router devides a network into
+
+segments. PC1 and PC2 are in Segment A, while PC3 and PC4 are in Segment
+
+B. So if PC1 sends a packet to PC3, the packet has te bo routed by the
+
+router between Segment A and B. A router operates on the Transport-layer
+
+and Network-layer in the OSI-model (check my previous article about the
+
+OSI-model (<a href="http://neworder.box.sk">http://neworder.box.sk</a> and <a href="http://blacksun.box.sk/tutorials.html">http://blacksun.box.sk</a>). Allright, now let me
+
+tell you something about bridges. A bridge does the same as a router, it
+
+bridges packets between 2 or more segments. But a router is on the third
+
+and fourth layer of the OSI-model, while a bridge is on the second. So,
+
+a router routes the packets based on IP (Internet Protocol), while a bridge
+
+is only able to perform MAC-based bridging (MAC = Media Access Control).</font><font size=-1></font>
+
+<p><font size=-1>Switches and Hubs, what's their function? Well, if you
+
+want to set up a LAN (which is connected to the Internet) you have to connect
+
+your pc's to the gateway (which connects your LAN to the internet). But
+
+there's (usually) only 1 NIC (Network Interface Card) or modem free to
+
+plug in the cable which leads to your ISP.. :-) So, you have 5 pc's to
+
+connect, that's a problem.. Well, that's when a switch or a hub comes in.
+
+Let me make this clear with another diagram:
+
+
+
+<pre>
+
+                +++++   +++++
+
+                +PC2+   +PC1+
+
+                +++++   +++++
+
+                  \___    \
+
+                      \___ \
+
+                          \-++++++++++
+
+              +++++         +  Hub   +            +++++++++
+
+              +PC3+---------+   or   +===Uplink===+Gateway+===>Internet
+
+              +++++         + Switch +            +++++++++
+
+                       ___/-++++++++++
+
+                   ___/    /
+
+                  /       /
+
+                +++++   +++++
+
+                +PC4+   +PC5+
+
+                +++++   +++++
+
+	        
+
+</pre>
+
+I think it's clear by now. But you may be asking yourself
+
+'What's the difference between a Hub and a Switch?'</font>
+
+<br><font size=-1>Ok, you have a 10 mbit hub (5 ports) and 10 mbit Switch
+
+(5 ports). You connect 5 pc's on the hub, and 5 pc's on the switch. You'll
+
+notice that the pc's connected to the switch have a higher connection-speed
+
+than the pc's on the hub. Well, on a 10 mbit switch EACH port provides
+
+10 mbit, but on a 10 mbit hub ALL the ports together provide 10 mbit (so,
+
+10 mbit : 5 ports = 2 mbit each).</font><font size=-1></font>
+
+<p><font size=-1>Ok.. That's all for now.. I hope you learned something.
+
+My DNS-tutorial will be ready before the end of this summer, so check blacksun
+
+and neworder frequently.</font><font size=-1></font>
+
+<p><font size=-1>Greetz to #p00rt @ nederwiet.wox.org/212.187.6.213 and
+
+to the Blacksun-team.</font><font size=-1></font>
+
+<p><font size=-1>(C) by POOL 2001</font><br><br>
+
+
+
+
+
+
+
+
+
+
+
+<hr SIZE=1 WIDTH="70%"><br>
+
+<A name="Using Whois"></A>
+<B><FONT face="Arial, Helvetica, sans-serif" color="#ffffff" size="-1">
+Using Whois</FONT></B><br><br>
+
+By <a href="mailto:SethJ1223ts@aol.com">Prophecy</a>
+
+<p>Introduction
+
+<br>Whois is a tool that is used to gain information. It comes with most
+
+flavors
+
+<br>of Linux. There are also whois databases. These databases hold information
+
+<br>about the queried domain. Anyone can go and get information on a certain
+
+<br>domain. When the domain is queried it will display the System Admin,
+
+<br>Technical Contact, the DNS servers, and sometimes more or less. Here
+
+I will
+
+<br>teach you how to use whois. You will need to gain a shell account,
+
+if you
+
+<br>don't already have one or unless you have a Linux box.
+
+<p>Syntax of Whois
+
+<br>The basic syntax is whois is: whois domain.com. So if you were to whois
+
+<br><a href="http://blacksun.box.sk">http://blacksun.box.sk</a> it would
+
+look like this: whois<a href="http://blacksun.box.sk"> blacksun.box.sk</a>.
+
+This
+
+<br>will only search using the shell's whois, so it's not all that useful.
+
+The
+
+<br>more useful whois looks like this: whois domain.com@whoisdatabase.
+
+So if you
+
+<br>were going to whois blacksun.box.sk using the Network Solutions (more
+
+on this
+
+<br>later) database, it would look like this: whois
+
+<br>blacksun.box.sk@whois.networksolutions.com. Well that's the basic use
+
+of
+
+<br>whois, for better uses go onto the next section.
+
+<p>More Useful Whois
+
+<br>Now you want to use whois to it's full potential right? This is the
+
+right
+
+<br>section. There are other uses of whois that may give even more information
+
+on
+
+<br>the domain. Here's a scenario: say you don't know if the site is .com,
+
+.edu,
+
+<br>.org, or .net. Go to your Linux prompt and type: whois "domain."@whoisdb.
+
+So
+
+<br>if we were going with the sample acme.net (but we really didnt know
+
+if it was
+
+<br>.net or not) it would look like this: whois "acme."@whois.crsnic.net.
+
+Here is
+
+<br>what the output might look like:
+
+<p>[bash]$ whois "acme."@whois.crsnic.net
+
+<br>[whois.crsnic.net]
+
+<p>Domain names in the .com, .net, and .org domains can now be registered
+
+with
+
+<br>many different competing registrars. Go to <a href="http://www.internic.net">http://www.internic.net</a>
+
+for
+
+<br>detailed information.
+
+<p>ACME.COM
+
+<br>ACME.ORG
+
+<br>ACME.NET
+
+<br>ACME-INC.COM
+
+<br>ACMEINC.COM
+
+<br>ACMETECH.COM
+
+<br>&nbsp;
+
+<p>There you go. Now you can get the one you wanted. Now you do another
+
+whois
+
+<br>with the same database (crsnic.net).
+
+<p>[bash]$ whois "acme.net"@whois.crsnic.net
+
+<br>[whois.crsnic.net]
+
+<p>Domain names in the .com, .net, and .org domains can now be registered
+
+with
+
+<br>many different competing registrars. Go to <a href="http://www.internic.net">http://www.internic.net</a>
+
+for
+
+<br>detailed information.
+
+<p>Domain Name: ACME.NET
+
+<br>Registrar: NETWORK SOULTIONS, INC.
+
+<br>Whois Server: whois.networksolutions.com
+
+<br>Referral URL: <a href="www.networksolutions.com">www.networksolutions.com</a>
+
+<br>Name Server: DNS.ACME.NET
+
+<br>Name Server: DNS2.ACME.NET
+
+<br>&nbsp;
+
+<p>The name servers could be a little different. This method will just
+
+basically
+
+<br>give you minor information. Okay, since the registrar is Network Solutions
+
+we
+
+<br>will have to query their database also. The next query will be in this
+
+<br>format: whois domain.com@whois.networksolutions.com, just like the
+
+above in
+
+<br>the section "The Syntax of Whois". Here is what the command will look
+
+like if
+
+<br>we use the same example: whois acme.net@whois.networksolutions.com.
+
+Now let's
+
+<br>type it in the shell.
+
+<p>[bash]$ whois acme.net@whois.networksolutions.com
+
+<br>[whois.networksolutions.com]
+
+<p>Registrant:
+
+<p>Acme Networks (ACME2-DOM)
+
+<br>11 Town Center Ave.
+
+<br>Einstein, AZ 21098
+
+<p>Domain Name: ACME.NET
+
+<p>Administrative Contact, Technical Contact, Zone Contact:
+
+<br>Boyd, Woody [Network Engineer]&nbsp; (WB9201)&nbsp;&nbsp;&nbsp; woody@ACME.NET
+
+<br>201-55-9011&nbsp; (201)555-3338&nbsp; (FAX) 201-555-1212
+
+<p>Record last updated on 28-April-01
+
+<br>Record created on 30-May-95
+
+<br>Database last updated on 14-Apr-01 13:20:47 EDT.
+
+<p>Domain servers in listed order:
+
+<br>DNS.ACME.NET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10.10.10.1
+
+<br>DNS2.ACME.NET&nbsp;&nbsp;&nbsp;&nbsp; 10.10.10.2
+
+<p>See, now you can try and social engineer the guy. Keep the handle (WB9201)
+
+<br>and the IP of the first DNS server. Now say you want to find othr domains
+
+<br>associated with acme.net, the whois command would look like this: whois
+
+"HOST
+
+<br>DNS"@whois.networksolutions.com. The DNS part would be the first Name
+
+Server
+
+<br>from above. So if we were to query acme.net it would look like so:
+
+whois
+
+<br>"HOST 10.10.10.1"@whois.networksolutions.com. When you get the results
+
+locate
+
+<br>the HST record. Then type this at the shell prompt: whois "SERVER
+
+<br>HST"@whois.networsolutions.com. HST would be the HST record you just
+
+found.
+
+<br>It should show the other domains associated with it. There is also
+
+another
+
+<br>way to use whois to find associated domains. This on also will be able
+
+to
+
+<br>tell you if the domain is actually ownd by the associated company or
+
+if it is
+
+<br>owned by another company, such as a ISP. Earlier when we did the first
+
+<br>networksolutions.com query we it said that th company's name was "Acme
+
+<br>Networks". So we will use that now. Here is th syntax of the next query:
+
+<br>whois "company_name."@whois.arin.net. So acme.net's qury would look
+
+like so:
+
+<br>whois "Acme Net."@whois.arin.net. The rason we don't put "Acme Networks",
+
+is
+
+<br>because we need to use the "." wild card to see what other companys
+
+there are
+
+<br>named Acme Networks. Here are the results:
+
+<p>[bash]$ whois "Acme Net."@whois.arin.net
+
+<br>[whois.arin.net]
+
+<br>Acme Networks (ASN-XXXX)&nbsp;&nbsp; XXXX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+99999
+
+<br>Acme Networks (NETBLK)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+10.10.10.0 - 10.20.129.255
+
+<br>&nbsp;
+
+<p>If you want even more specific information, you can take the net block
+
+<br>(NETBLK) and do a query on that particular net block.
+
+<p>[bash]$ whois 10.10.10.0@whois.arin.net
+
+<br>[whois.arin.net]
+
+<br>Major ISP USA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (NETBLK-MI-05BLK)&nbsp;&nbsp;&nbsp;&nbsp;
+
+MI-05BLK&nbsp;&nbsp;&nbsp;&nbsp; 10.10.10.0 -
+
+<br>10.30.255.255
+
+<br>ACME NETWORKS, INC.&nbsp; (NETBLK-MI-10-10-10)&nbsp; CW-10-10-10&nbsp;
+
+10.10.10.0 -
+
+<br>10.20.129.255
+
+<br>&nbsp;
+
+<p>Now back to where we got the handle (WB9201). We will now do a query
+
+on this.
+
+<p>[bash]$ whois "HANDLE WB9201"@whois.networksolutions.com
+
+<br>[whois.networksolutions.com]
+
+<br>Boyd, Woody [Network Engineer] (WB2901)&nbsp; woody@acme.net
+
+<br>BIG ENTERPRISES
+
+<br>11 TOWN CENTER AVE
+
+<br>EINSTEIN, AZ 20198
+
+<br>201-55-1212 (201)555-1212 (FAX) 201-555-1212
+
+<br>&nbsp;
+
+<p>Now you can do a whois query as @Acme.net and it will tell the e-mails
+
+<br>assoicated with Acme.net
+
+<p>[bash]$ whois "@Acme.net"@whois.internic.net
+
+<p>It will then tell e-mails, phone numbers and fax numbers if available.
+
+<p>So i don't get sued or anything for plagarism:
+
+<br>The above examples were taken from <a href="http://www.amazon.com/exec/obidos/ASIN/0072127481/qid=996081488/sr=1-1/ref=sc_b_1/103-9376068-6784667">Hacking
+
+Exposed: Second Edition</a>.
+
+<br>
+
+
+
+<br>
+
+
+
+
+
+  
+
+</BODY></HTML>

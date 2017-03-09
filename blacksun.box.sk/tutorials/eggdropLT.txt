@@ -1,0 +1,600 @@
+[===================================================================================]
+[ The EggDrop IRC Botas / Autorius The Cyber God (e-mail: talrun@actcom.co.il)      ]
+[    Verte:Pleshikas(pleshikas@freemail.lt Versija 1.0 / Mano ICQ#: 78645557        ]
+[===================================================================================]
+--[ Redaktoriaus pastabos ]--
+Prasom siuskite komentarus, klausimus ir pasiulymus i talrun@actcom.co.il
+Si tutoriala parase Black Sun Research Facility narys. Aplankykite musu puslapi blacksun.box.sk.
+--[ Vertejo pastabos ]--
+Shis tekstas yra parashytas be lietuvishku raidziu kadangi nevisos sistemos ji palaiko.
+Jei jums ishkils neaishkumu ar klausimu rashykite man(parashytas virshuje).
+--[ Turinys ]--
+Kas yra EggDrop?
+Ko man reika EggDrop paleidimui?
+Kur man ji gauti?
+Kaip man nustatyti bota darbui?
+Pagrindines komandos
+Vartotojo medziaga
+Kanalu medziaga
+Botu sujungimas
+Kas yra TCL ir ka tai turi bendro su EggDrop?
+Gudrybes 
+Naudota medziaga
+
+--[ Kas yra EggDrop? ]--
+  Pastaba: Si medziaga yra is EggDrop 1.3.28 Readme failo.
+EggDrop yra IRC botas, parasytas su C. Jei jus nezinote kas yra IRC, tai turbut netai ko jus ieskote! EggDrop budamas botu, sedi kanale ir atlieka apsaugine funkcija: kad kanalo neperimtu (takeover) (kaikuriais atvejai tai viskas ka jis GALI), kad atpazint istremtus vartotojus ar vietas ir juos atmestu, kad atpazintu privilegijuotus vartotojus ir leist jiems gauti op, ir t.t.
+Vienas is labiausiai unikaliu EggDrop ypatybiu yra "partyline", prieinama per DCC chat'a, kuri jum leidzia kalbeti su kitais zmonemis be lag'o. Skatykite tai kaip visapusishku DCC chat'u, arba miniatiuriniu IRC. Jus galit susijungti su kitais botais kol tai tikrai pasidarys labai panashu i IRC, is tiesu.
+
+--[ Ko man reikia EggDrop paleidimui? ]--
+Kad EggDrop veiktu jum reikia poros dalyku:
+ *Kokios nors Unix'ines saskaitos (nesvarbu ka turite, vietini priejima ar tai tolima shell'ine saskaita, kol ji leidzia jums paleisti EggDrop ir palaikyti jo veikima po to kai jus atsijungiat)
+ *Neblogu ziniu apie IRC ir Unix'a, iskaitant ir kas yra DCC.
+ *Apie 500kb vietos diske, ar daugiau, priklausomai nuo jusu OS (Linux, vikdykas uziema apie 400k --tai bus daug daugiau RISC sistemoje)
+ *TCL biblioteku (lib failu), kuriuos galima rasti www.linuxberg.com
+Jei jus norite kad jusu butu 24/7 (24 valandos per para, 7 dienos i savaite) jums reikia shell saskaitos su 24/7 interneto rysiu(kiaura para)(nebent tu pats turi toki kompa... tokiu atveju, tu privalai man suteikti neribota priejima prie savo shell'o saskaitos pries tesiant sio dokumento skaityma...juokauju :-) ). Tu gali gauti tokia saskaita arba ja pirkdamas arba laizydamas adminui subine ir priversti duoti tau saskaita veltui (nei 1 ish tu "nemokamu saskaitu tiekeju" neleis tau paleisti EggDrop, nes visi jie ishjungia visus tavo procesus kai tu atsijungi). Yra daug geru shell'u tiekeju ten. Pats asmenishkai as rekomenduoju www.foonet.net
+
+Dabar prie TCL dalies:
+Pries derinant EggDrop, tu turi tureti instaliuota TCL savo sistemoje. Dauguma sistemu jau turi TCL instaliuota -- tu gali patikrinti tai bandydamas "tclsh" komanda. Jei ji veikia, jau turetu buti duotas "%" promt'as, ir tu galesi parasyti "exit" kad isheiti ish programos. Tai reishkia kad tavo sistemoje yra instaliuotas TCL. Jei tclsh neveikia tai turbut reishkia kad tu neturi TCL, ir tau reikia ja parsisiusti ir instaliuoti. Geriausias FTP atsisiusti TCL yra: 
+	ftp://ftp.scriptics.com/pub/tcl
+Geriausia versija tuo met kai ishejo shitas dokumentas buvo 8.0.4 (kaip rekomandavo dw@Undernet). Tokia versija kaip 7.6p2 irgi yra pakankamai gera naudojimui.
+ Pastaba: Siame tutoriale as neaishkinsiu kaip siusti failus ish FTP puslapiu, ir kaip instaliuoti TCL bibliotekos. Yra pakankamai tutorialu ir dokumentu sia tema.
+ Jei tu nusipirkai shell'a ir zinai kad jie leidzia paleidineti IRC botus (si svarbi informacija turetu buti parasyta shell'o tiekejo puslapyje), tu gali buti visishkai isitikines kad jie jau turi instaliuota TCL biblioteka.
+Pries tau pradedant, ar tau tikrai reikia boto. Dauguma IRC serveriu kelis botus-- kaikurie juos visiskai uzdraudzia. Priezastis? Per daug zmoniu paleidzia botus kaip zaislus arba kaip naikinimo priemone. Jei tu nori naudoti EggDrop naikinimo tikslams, pirmyn ir ishtrink shita straipsny tuoj pat. Tai beveik neimanoma daryti ka tu nori su shituo botu.
+Tau reiketu rast nors viena serveri kuris leis tau paleisti bota. Jei tavo IPT (Interneto Paslaugu Tiekejas) turi savo IRC serveri, patikrink ar botai leidziami. Jei tu ruosiesi naudotis serveriu kitur, perskaityk DP (Dienos Praneshima) ir ishsiaishkink ju paziuras i botus. Sekant taisykles uztruks daug laiko kad tavo bota priimtu. Apskritai kalbant, tau reikia boto tik EFnet'e jeigu tavo kanalas palaiko lankytoju skaiciu 24 valandas per diena ir nera boto. Jei tavo kanalas jau turi keleta botu , turbut daugiau ju ir nebereikia.  Daugiau botu nedaro jokios naudos o tik shvaisto ryshi. Undernet'e tau tikriausiai neprireiks daugiau nei 1 boto kanale. Taippat pastebima kad nepriimtina naudoti bota "laikyti kanala atidarytu" kai jis nenaudojamas. Taciau poziuriai tinklas i tinkla ir serveris i serveri yra nevienodi taogi apsizvalgyk priesh pradedamas. Tau reikia skirtingu botu jei tavo kanalas ypatingai didelis. Bot NESUTEIKIA absoliucios apsaugos. Niekas nesuteikia. EggDrop stengsis is paskutiniuju bet garantiju nera.
+
+--[ Kur man ji gauti? ]--
+EggDrop gali buti atsiustas ish ivairiu puslapiu visame pasaulyje. Shtai pora ish ju:
+Oficialus EggDrop puslapis: ftp.eggheads.org
+	Puslapio veidrodziai (mirrors):
+	ftp.de.eggheads.org
+        ftp.fr.eggheads.org
+Taip pat as rekomenduoju ftp.apolloweb.net (Dir: /pub/files/) kadangi shis psl. ypatingai greitas. (Kartais kai siunti EggDrop ISH shell'o naudojant shi puslapi gali pasiekt 100K-170K per sekunde, nes shell'u saskaitos paprastai turi pakankamai greita ryshi).
+Taip pat yra trys pagrindines EggDrop versijos : 1.1.5, 1.3.x, 2.0. Visu pirma, 2.00 SHUDAS. Ji stokoja help/failu, jos suderinimas gali buti sunkus ir ji beveik nesiskiria nuo 1.3.x
+EggDrop 1.1.5 tikina kad jis yra pats stabiliausias, bet dauguma TCL skriptu (ziureti zemiau) yra uzkoduoti 1.3.x versijai, todel as rekomenduoju naudoti 1.3.x. Visa informacija shiame toriale nuo shiol bus skiriama EggDrop1.3.x.
+
+--[ Kaip man nustatyti bota darbui? ]--
+Gerai...
+Visu pirma, pasijunk i savo shell'a ir persiusk EggDrop per FTP. (Tu gali ji isiusti ir per FTP bet siunciant per shell'a paprastai yra daug greiciau)
+
+Dabar yrashyk shitas komandas:
+gunzip eggdrop1.2.27.tar.gz
+tar xf eggdrop1.3.27.tar
+cd eggdrop1.3.27
+./configure 
+Gerai, EggDrop1.3.27 kreipsis i boto faila. Tai priklauso nuo puslapio ir EggDrop versijos kuria tu parsiuntei. Tai gali buti ir eggdrop1.3.23.tgz. Tada jums reiks rasyti:
+gunzip eggdrop1.3.23.tgz
+tar xf eggdrop1.3.23.tar
+cd eggdrop1.3.23
+./configure
+Po to kai jus parasete ./configure jums reikes palaukti. Tai patikrins ar jus galite palesti EggDrop shitoje sistemoje ar ne. Jei viskas baigesi be jokiu klaidu(errors) jus turite parasyti
+make
+Tai sukurs EggDrop bagaza(package). Jei tai padaryta BE klaidu (tai daeina iki sujungiamosios dalies) jus galite pradeti kurti config faila. Config failas eiluciu rinkinys kurios nusprendzia koks bus boto vardas, serveris ir t.t.
+Shtai yra lengvai naudojamo config failo pavizdys. Jus turite nukopijuotis viska nuo '###Start###' iki '###End###' i faila ir nusiusti ji i shell'a su pavadinimu kaip bot.conf ar eggie.conf ar dar kaip jums patinka :-)
+
+#######################
+###      Start      ###
+#######################
+### Edit from here: ###
+#######################
+# Bot'o IDENT'as
+set username "Bot"
+# Bot'o Savininkas(ai)/Master(iai)
+set admin "^TCG^"
+# Bot's IRC network
+set network "EFNet"
+#Teneto portas kuri botas atidarys ienantiems pasijungimams
+listen 2000 all
+# Bot's Owner(s)/Master(s)
+set owner "^TCG^"
+# Bot'o Vardas
+set nick "Bot"
+# Bot's Alternativus vardas
+set altnick "-Bot"
+# Bot'o Tikras vardas
+set realname "Eggdrop Bot"
+# boo static Kanalas. jus galite yrasyti tik 1 kanala cia.
+set confchan "#Bots"
+# bot'o IRC serveris
+set servers {
+  irc.freei.net
+}  
+##################################################################
+##################################################################
+######## !!! Nuo shicia jums nereikia nieko keisti !!! ###########
+##################################################################
+##################################################################
+set timezone "EST"
+set max-logs 5
+set log-time 1
+set keep-all-logs 0
+set console "mkcobxs"
+logfile mkco * "$nick.log"
+set userfile "$nick.user"
+set sort-users 0
+set help-path "help/"
+set temp-path "/tmp/"
+set motd "motd"
+set protect-telnet 0
+set dcc-sanitycheck 0
+set ident-timeout 30
+set require-p 1
+set open-telnets 0
+set connect-timeout 15
+set dcc-flood-thr 3
+set telnet-flood 5:5
+set resolve-timeout 15
+set ignore-time 15
+set debug-output 0
+set hourly-updates 00
+set notify-newusers "HQ"
+set default-flags "fv"
+set whois-fields "url"
+set remote-boots 2
+set share-unlinks 1
+set die-on-sighup 0
+set die-on-sigterm 0
+#unbind dcc n tcl *dcc:tcl
+#unbind dcc n set *dcc:set
+unbind dcc n simul *dcc:simul
+set max-dcc 50
+set enable-simul 1
+set allow-dk-cmds 1
+set mod-path "./"
+loadmodule channels
+set chanfile "$nick.chan"
+set ban-time 10
+channel add $confchan {
+  chanmode "+nt"
+  idle-kick 0
+  flood-chan 4:6
+}
+channel set $confchan -clearbans -enforcebans +dynamicbans +userbans -autoop -bitch -greet +protectops -statuslog -stopnethack -revenge +autovoice -secret -shared -cycle
+set share-greet 0
+set use-info 1
+loadmodule server
+set keep-nick 1
+set strict-host 0
+set quiet-reject 1
+set lowercase-ctcp 0
+set answer-ctcp 3
+set flood-msg 5:5
+set flood-ctcp 3:5
+set never-give-up 1
+set strict-servernames 0
+set default-port 6667
+set server-cycle-wait 60
+set server-timeout 15
+set servlimit 0
+set check-stoned 1
+set use-console-r 0
+set serverror-quit 1
+set max-queue-msg 300
+set trigger-on-ignore 0
+set use-silence 0
+set handle-mode_r 0
+loadmodule ctcp
+loadmodule irc
+set bounce-bans 0
+set allow_desync 1
+set kick-method 1
+set kick-bogus 1
+set learn-users 1
+set wait-split 300
+set wait-info 180
+set modes-per-line 3
+set mode-buf-length 200
+set use-354 0
+#unbind msg - ident *msg:ident
+set no-chanrec-info 0
+loadmodule transfer
+set max-dloads 3
+set dcc-block 0
+set copy-to-tmp 1
+set xfer-timeout 300
+loadmodule share
+set resync-time 900
+#set private-owner 0
+#set private-global 0
+#set private-globals "mnot"
+#set private-user 0
+#loadmodule filesys
+set files-path "/home/mydir/filesys"
+set incoming-path "/home/mydir/filesys/incoming"
+set upload-to-pwd 0
+set filedb-path ""
+set max-file-users 20
+set max-filesize 1024
+loadmodule notes
+set max-notes 50
+set note-life 60
+set allow-fwd 0
+set notify-users 1
+set console-autosave 1
+set force-channel 0
+set info-party 0
+loadmodule seen
+checkmodule blowfish
+#loadmodule assoc
+source scripts/alltools.tcl
+source scripts/action.fix.tcl
+source scripts/userinfo1.0.tcl
+loadhelp userinfo.help
+#######################
+###       End       ###
+#######################
+Gerai!
+Po pirmos failo eilutes redagavimo, galite ji nusiusti i shell'a. Failas PRIVALO buti boto direktorijoje ( ./eggdrop1.3.27/)
+Dabar jus turite ji paleisti. Kadangi tai pirmas kartai kai jus paleidinejat faila jus turite irashyti boto direktorija:
+./eggdrop -m bot.conf  kadangi bot.conf yra jusu konfiguracinis failas.
+Pastaba: Kita karta kai leisite bota (kai jis nuluz pavyzdziui) jums nereikes rasyti '-m'
+Dabar paleskite IRC klienta kad prisijungt prie boto serverio, iekite i jo kanala ir laukite kol jis ateis. Kai jus pamatysite bota pasiuskite jam zinute su 'hello' (/msg BotNick hello. Jus turite pakeisti zodi BotNick boto Slapyvardziu (NickName). Tada jis lieps jums nustatyti pasvorda. Jus turite tai padaryti siusdami jam zinute 'pass password' (/msg BotNick pass manopasvordas). Zody manopasvordas pakeiskite savo pasvordu, koks jis bebutu (pvz.: jei jusu pasvordas yra IRC, jus turite padaryti /msg BotNick pass IRC)
+
+--[ Pagrindines komandos ]--
+Dauguma komandu botui yra siunciamos per DCC chat'a. Visu pirma jus turite pradeti DCC CHAT'a su botu, tada iveskite savo pasvorda ir dabar jus galesite pradeti siusti jam komandas.
+Po to kai jus pradejot DCC su botu galite pradeti siusti jam komandas. Visos komandos per DCC yra pradedamos su '.' (tashkas).
+Pastaba I: Kaikurios komandos reikalauja skirtingo priejimo lygio. Apie tai paaishkinsiu veliau.
+Pastaba II: Jeigu jus gausite "Unknown comman" zinute tai turbut reishkia kad jusu priejimo lygis paprasciausiai per zemas.
+Parametras <>(tokiose skliaustuose) nera pasirinkimas (option), o [] pasirinkimas.
+.help [komanda] - Parodo jums pagalbos langa. Pvz.: .help help
+.bots - Parodys prijungtu botu sarasa. (EggDrop gali buti pajungtas prie kitu botu. Tai aptarsime veliau)
+.status - Psrodys kaika apie boto statusa.
+.whois <kazkas> - Parodys informacija apie <kazkas>. Pvz.: .whois ^TCG^
+.jump <server> - Prijungs bota prie pasirinkto serverio. Pvz.: .jump irc.israel.net
+.+user <kazkas> <adresas> - Prijungs prie boto nauja vartotoja. Pvz.:  .+user ^TCG^ ^TCG^!talrun@*.il
+.-user <kazkas> - Atjungs vartotoja nuo boto. Pvz.: .-user ^TCG^
+.+host <kazkas> <adresas> - Prides <adresas> prie <kazkas>. Pvz.: .+host ^TCG^ *!*@*.israel.net
+.-host <adresas> - Atims <adresas> nuo <kazkas>. Pvz.: .-host ^TCG^ *!*@*.israel.net
+.+chan <#kanalas> - Privers bota prisijungit prie <#kanalas>. Pvz.: .+chan #Lietuva
+.-chan <#kanalas> - Privers bota palikti <#kanalas>. Pvz.: .-chan #Lietuva
+.chanset <#kanalas> <aplinka> [dydis]- Duos <kazkas> duos atitinkama kanalo atributa (bus veliau). Pvz.: .chanset #Lietuva +autoop arba Pvz 2.: .chanset #Lietuva flood-chan 5:60
+.chattr <kazkas><veliava> [kanalas]- Duos <kazkas> globalia veliava(flags) <veliava> ar [kanalas] veliava. Pvz.: .chattr ^TCG^ +o Pvz 2.: .chattr ^tcg^ +f #Lietuva
+.die [priezastis] - Nuzudys bota.
+.save - Privers bota uzsaugoti duomenu baze (Tai daroma ir automatishkai)
+.rehash - Privers bota perkrauti savo konfiguraciny faila
+.reload - Privers bota perkrauti savo kanala
+.restart - Perkraus bota
+.+bot <botas> <adresas:portas> - Prides bota i bot duomenu baze botu tinklo sukurimui (bus veliau). Pvz.: .+bot Eggie the-shell.com:4556
+.-bot <bot>- Atims bota ish duomenu dazes
+.botattr <botas> <veliava> - kaip ir .chattr tik skirtas botams
+.link <botas> - Privers jusu bota susijungti su <botas.
+.chpass [Nick'as] <pass> - Pakeis jusu ar [nick'as] jeigu jus turite priejima keisti kitu vartotoju passwordus.
+.nick <naujasNickas> - Pakeis jusu nick'a partyline. (bus veliau)
+.op <nick'as> <kanalas> - Duos OP <nick'as> <kanalas>. Pvz.: .op ^TCG^ #lietuva
+.voice <nick'as> <kanalas> - Duos +v <nick'as> <kanalas>. pvz.: .voice ^TCG^ #lietuva
+Kolkas tai yra viskas... Daugiau komandu kitame skyriuje (arba EggDrop dokumentacijoje, kuri jus bepasirinktumete skaityti)
+Dar viena shauni EggDrop ypatybe yra jo partyline'as.
+Tai leidzia keliems vartotojams DCC kalbeti su botu ir taip sukurti maza IRC tinkla.
+Ka nors pasakyti, jums tereikia tai parasyti ir paspausti enter.
+Jei tai neprasideda su "." (tashkas) tai bus pasakyta partyline ir visi kiti boto vartotojai tai pamatys.
+
+--[ Vartotojo medziaga ]--
+Kartais jus norite dadeti vartotoju savo botui kad jie turetu priejima prie jo.
+Cia as aprasysiu kaip dadeti vartotoja ir nustatyti jo priejimo lygi.
+Dadeti vartotoja:
+.+user <kazkas> <adresas>
+<kazkas> yra vartotojo, vartotojo vardas. Tai kaip ir vartotojo nick'as tik jis ribotas iki 9 raidziu.
+<adresas> yra vartotojo adresas kuris bus naudojamas kad ji atpazintu botas. Jus visada galite dadeti ar atimti adresa naudodami .+host ir .-host partyline.
+Po to jus turite nustatyti vartotojo globalu priejima. Kad tai padaryti jus turite rasyti .chattr <kazkas><veliavos>
+<kazkas> yra tai ka jus yrasoto .+user o <veliavos> yra vartotojo veliavos. Jos nustato vartotojo priejima. Shtai ju sarashas.
+	o  globalus op (botas buos op betkuriame kanale)
+	m  master (vartotojas yra boto sheimininkas)
+	n  owner (vartotojas yra boto savininkas)
+	t  botnet master (vartotojas yra botnet'o sheimininkas)
+	x  xfer (vartotojas turi priejima prie failu)
+	j  janitor (vartotojas yra priejimo prie failu sheimininkas)
+	p  party-line (vertotojas turi priejima prie party-line'o)
+	c  common (vartotojo yrashas yra paprasto-priejimo puslapis) [ziureti 'help common]
+	u  unshared (negalioja kitiems botams)
+	b  bot (vartotojas yra botas)
+	d  global deop (vartotojas negali gauti op'u)
+	k  global auto-kick (vartotojas ishspiriamas ir uzbaninamas automatishkai)
+	f  global friend (globalus draugas)
+	v  global voice (vartotojas gauna +v automatishkai +autovoice kanaluose)
+	a  lobal autop-op (visada op'ina vartotoja kaip jis prisijungia)
+	h  high-light flag, varotovas texkas yra ishryshkinamas
+	(ir dar 26 vartotojo-apibrezimo veliavos,A-Z)
+kiekvienas kanalas i kuri prisijungia vartotojas , turi savo specifini irasha
+butent tam vartotojui, kartu su kanalo specifinia veliava ir ymanoma info eilute.
+Kanalo specifines veliavos yra:
+	m  master (vartotojas yra kanalo sheimininkas)
+	n  owner (vartotojas yra kanalo savioninkas)
+	o  op (botas duos shitam vartotojui chanop)
+	d  deop (botas neleis shiam vartotojui tapti chanop)
+	f  friend (vartotojas nera baudziamas uz blogus dalykus padarytus kanale)
+	k  kick (vartotojas yra ishspiriamas automatishkai)
+	v  global voice (vartotojas gauna +v automatishkai +autovoice kanaluose)
+	q  global quite (vartotojas niekada negauna +v +autovoice kanaluose)
+	a  global auto-op (visada duoda op kai vartotojas pasijungia)
+	(ir dar 26 vartotojo apibrezimo veliavos, A-Z)
+Shtai pavyzdys kuris parodo kaip dadeti botui global op o taip pat duoti vartotojui +n (savininkas) kanale #lietuva:
+.+user ^TCG^ ^TCG^!*@*.co.il
+.chattr ^TCG^ +o
+.chattr ^TCG^ +n #lietuva
+Po to, jums reikia duoti vartotojui password'a. Jis turi tai padaryti siusdamas zinute botui su 'pass password'as' (be kabuciu).
+/msg bot pass blabla
+Tai viskas... Jus ji dadejot!
+Dabar... Jei jus norite ji atimti jus turite rasyti: .-user <kazkas> ir botas ji ishtrins ish savo duomdazes.
+--[ Kanalu medziaga ]--
+Shis skyrius yra skirtas kanalu medziagai.
+Kad ideti bota i kanala jus turite parasyti DCC botui:
+.+chan #kanalas
+Tai privers ji ieiti i #kanalas
+.-chan #kanalas (ishimti bota ish kanalo)
+Kad padaryti ka nors kanalo savininku: .chattr NickName +n #kanalas
+Jei norite pasiziureti shiokios tokio informacijos apie kanala :
+.chaninfo #kanalas
+Kad nustatyti ivairius kanalo matmenis, kaip maksimalus zinuciu skaicius per sekunde ar maksimalus deop skaicius per sekunde.
+Kad kanors nustatyti rasykite: .chanset #kanalas nustatymas
+Prieinami nustatymai:
+flood-chan (kiekis:sekundes)
+  kiek zinuciu ir per kiek laiko yra skaitoma flood'u
+  ne naudojamas numeris = 0 nes tada floo'as neskaiciuojamas!
+flood-ctcp (skaicius:sekundes)
+  kiek kanalo zinuciu per kiek laiko yra flood'as
+  ne naudojamas numeris = 0 nes tada ctcp flood'as neskaiciuojamas!
+flood-deop (skaicius:sekundes)
+  kiek deop'u per kiek laiko yra mass deop'as
+  ne naudojamas numeris = 0 nes tada de-op floo'as neskaiciuojamas!
+flood-kick (skaicius:sekundes)
+  kiek spyriu per kiek laiko yra mass kick
+  ne naudojamas numeris = 0 nes tada mass kick'as neskaiciuojamas!
+flood-join (skaicius:sekundes)
+  kiek prisijungimu/nick keitimu laikoma flood'u
+  ne naudojamas numeris = 0 nes tada join floo'as neskaiciuojamas!
+Nustatymo formatas paprastai yra kiek kartu:kiek sekundziu.
+Pavyzdziui, jei jus noretumete ishmesti ta kuris per 10 sekundziu deop'ino 3 vartotojus #kanalas jus turite padaryti:
+.chanset #kanalas flood-deop 3:10
+Jus galite nustatineti kanalo parametrus darydami .chanset #kanalas +/-nustatymas
+Prieinami nustatymai:
+clearbans
+  ishvalo vvsus kanalo banus kai botas pasijungia.
+enforcebans
+  kai banas yra nustatytas, ishmesti zmogu kurie atitinka bano aprasymus.
+  (ie, jie buvo kanale priesh ban'a)
+dynamicbans
+  aktyvuoti banus kanale kai butina? (tai palaiko kanalo banu sarasa nu pernelyg didelio
+  ilgumo. Botas vistiek atsimena kiekviena bana, bet jis aktyvuojasi kanale tik tada
+  kai pamato kad kazkas nori ieiti i kanala su atitinkamu banu.)
+userbans
+  Leidzia vartotjams patiems deti banus. (jeigu ishjungta, botui reikes kad visi banai butu
+  daromi per jo konsole)
+autoop 
+  duoti op vartotojui su +o veliava kai tik jis ieina i kanala.
+  (uzuomina: tai blogas sumanymas)
+bitch 
+  leidzia tik vartotojams su +o veliava tapti kanalo op'ais.
+greet
+  pasakyti vartotojo info eilute kai tik jis ieina i kanala.
+protectops
+  duoti op vartotojui su +o veliava kai jis yra deop'intas.
+statuslog
+  uzrasyti kanalo statuso eilute kas 5 sekundes. (kaikas namo kad tai uzknisa)
+stopnethack
+  deop'inti zmones su serveriniais op (netsplit op) jei jie neturejo op pries split'a
+revenge
+  atsiminti zmones kurie deop/kick/ban'ino bota ar kitus op'us, ir juos nubausti.
+  Vartotojai su +f (draugai) veliavomis yra ishimtys nuo kershto.
+autovoice
+  automatishkai duoti vartotojams su  +v (balso teise) veliava +v kai jie ieina i kanala.
+secret
+  atsaugoti kanala nuo buvimo botlist sarashe. (paranoishkiems zmonems)
+shared
+  dalintis vartotojo kanalo info shitam kanalui.
+cycle
+  ciklinti kanala kai jis tampa be op.
+dontkickops
+  ar norite kad botas nespardytu vartotoju su +o?
+  leidziant jiems kick-flood'inti kanala priesh klonu atakas.
+seen
+  atsakyti i seen paklausima. (seen modulis turi buti pakrautas)
+Pvz.: .chanset #kanalas +autoop +autovoice
+--[ Botu sujungimas ]--
+Botai gali buti sujungti drauge, kad leist vartotojams kalbeti su visais sujungtais botais viename dieliame partyline.
+Shtai yra kai reikia juos sujungti:
+Visu pirma jus turite zinoti jus adresusu ir portus.
+Kad gauti adresa, jus turite padaryti /whois bota kol jis yra IRC.
+Kad gaut telnet'o porta, jus turite rasyti botui .dccstat
+(Pastaba: kiekvienas botas turi tureti skirtinga adresa/port'a)
+Shtai yra pavyzdys ka jus turite gaut parashius .dccstat:
+SOCK ADDR     PORT  NICK     HOST              TYPE
+---- -------- ----- -------- ----------------  ----
+3    C7CB1589 2000  (telnet) *                 lstn
+5    00000000 6667  (server) er.irc.israel.net serv (lag: 0)
+7    C0725278 1469  ^TCG^    tadmin.israel.net chat flags: cPtEp/0
+Portas yra port prie nick (telnet). Portas 2000.
+II. PANAUDOTI TERMINAI
+Shtai yra kaikurie terminai panaudoti shiame dokumente.
+Jei pritaikoma, yra ir asociaciju.
+ Botnet
+  Terminas keliu sujungtu botu aprasymui.
+ Link
+  Terminas reishkiantis butent 1 boto prijungima
+  komandos: ".link <botovardas>" ".unlink <botovardas>"
+ Hub 
+  Botas yra kaip botu hubas,jei vienas ar daugiau lapu yra pajungti prie jo.
+ Leaf(lapas) 
+  Lapas tai botas prijungtas prie kito boto.
+ Share
+  Terminas akirtas aprasyti dvieju botu dalijimasi vartotoju irashais.
+ Aggressive Share
+  Terminas skirtas vartotojo failu dalijimasi metoda. Aggressive Share botai 
+  sius vartotojo duomenis kitam botui.
+ Passive Share
+  Terminas skirtas vartotojo failu dalijimasi metoda. Passive Share botas tik gaus
+  vartotojo duomenis ish kito boto.
+ Flags(veliavos) 
+  Veliavos tai atributas pagal kuri botas nustato ka jis turi ar gali padaryti.
+  Veliavos gali buti arba globalios arba tam tikro kanalo (+s #lamest).
+  Botnet'a veikiancios veliavos:
+  s share (vartotojo irashai bus share'inami aggresiviai su botu)
+  p share (vartotojo irashai bus share'inami passyviai su botu)
+  g global share (share visiems kanalams)
+  h hub (botas yra prijungiamas automatishkai)
+  a alternate (botas yra prijungiamas automatishkai jei hub botas negali buti prijungtas)
+  l leaf (botui nera leidziam prijungti kitu botu)
+  r reject (botas nebus prileistas prie tinklo)
+  i isolate (isoliuoti partyline'a botnet'e)
+  0-9 vartotojai (vartotoju atpazinimo veliavos)
+  komanda: ".botattr <botname> [(.+<veliava> [#kanalas]) arba (.-<veliava>[#kanalas])]"
+
+ Adresas
+  Fizinis adresas, turi savyje boto adresa(host) ir porta.
+  i.e. lame.org.3333
+  komanda: ".chaddr <botname> <adresas(hostaddress):botport'as[/vartotojo-portas]>"
+Perjungejas
+  Perjungimo portas yra nustatytas konfig faile.
+Pastebekite kad jus galite nustatyti vieta porta telnet'ui su kitais botais 
+ir viana perjungimo ryshiui.
+Perjungimo ryshys(relay connection)
+Perjungimo ryshys yra naudojamas persijungimui (pershokimui) prie kito boto DCC chat'o.
+Jus galite persijungti prie kito boto net jei tai nera nustatyta conf faile.
+komanda: ".relay <botname>"
+Portas
+ Telneto portas boto yra naudojamas bendrauti su kitais botais ir/ar vartotojais.
+ Pastebekite kad jus galite nustatyti du atskirus portus ryshiui su botais ir vartotojais.
+III. KAM REIKALINGAS BOTNET'AS?
+Pagrinde botnet'as yra reikalingas jei jus norite panaudoti daugiau nei viena bota
+savo kanalo apsaugai.
+Sujungti botai gali dalintis vartotoju irashais (globalios ar kanalo specifikacijos)
+tarp saves arba atlikineti rashysenos (script) kontroliuojamus uzdavinius. Tokie skriptai 
+gali buti gautk-op (op'ina bota kiekviename botnet'e) ar kokia nors flood'o apsauga.
+Tik pasiziurekite /pub/eggdrop/scripts1.3 ftp.eggheads.org puslapyje ir jus rasyte daug botnet skriptu.
+IV. PRIDEDANT IR SUJUNGIANT BOTUS
+Be kaikuriu terminu kelyje mes galime pradeti dvieju buto sujunginejimo procesa. 
+Priesh jums pradedant jus turite zinoti sekanti:
+	-Kokios botu sferos(domain) ir portai
+Sakykime kad yra BotA lame.org besiklausantis 3333 prto ir BotB irc.org 
+besiklausantis porto 4444. Dabar jus turite dadeti kiekviena prie kito vartotojo failo
+(iskaitant adresa(hostmask),adresa(address) ir besiklausoma boto porta). Bot'o A konsoleje 
+jus turite yrasyti ".+bot BotB irc.org:4444" (skaitant kad Botas B yra kanale ir hostmask'as 
+yra paimamaas automatishkai, kitaip jus turite ji ivesti rankiniu budu su ".+host") o Boto B 
+konsoleje yrasyti: ".+bot BotA lame.org:3333".
+Shiuo momentu, pirma karta jus galite sujungti rankiniu budu rasydami ".link BotA" boto B konsoleje
+(ar atvirksciai, zinoma boto A konsoleje ".link BotB"). Botai duos vienas kitam atsitiktinius
+password'us, kurie *nera* saugomi vartotojo faile. Dabar jus sugeneravote savo pirmaji botnet'a.
+Ysitikinkite kad jus galite dadeti ar prijungti kiek tik norit botu i savo botnet'a.
+V  NAUDOJANT BOT'U VELIAVAS (BOTFLAGS)
+Botflags reikalingi priskirti specialias funkcijas ir uzduotis jusu botams.
+ "h"(hub)
+  Jei jus norite kad jusu botas automatishkai pasijungtu po atsijungimo ar pradejimo 
+  (po nuluzimo ar serverio persikrovimo), jus turite nustatyti +h botui kuri norite pajungti
+  prie kito boto. 
+  Pastaba: jus galite priskirti +h tik vienam botui per karta!
+  Komanda:".botattr <botname> +h"
+ "a" (alternate)
+  Jei jusu lapai del kazkokios priezasties negali pasijungti prie jusu hub'o, jie prades 
+  jungtis prie "alternatyvaus hub'o", kuri jus galite nustatyti uzdedami "+a" botui.
+  Pastaba: Jus galite duoti +a tik vienam botui vienu metu!
+  Komanda: : ".botattr <botname> +a"
+ "l" veliava (lapas(feaf))
+  Shi veliava priskirta kitam botui privers jusu bota atsijungti nuo jo jei jis bandys 
+  prisijungti prie betkurio kito boto.
+ "r" veliava (reject)
+  Jei jus priskirsite shita veliava botui, jis nebus toleruojamas jusu botnet'e ir bus 
+  atjungtas, jei jis bandys prisijungti prie jusu ar kurio kito boto.
+  Komanda: ".botattr <botname> +r"
+ "i" veliava (isolate)
+  Dedant shia veliava ant boto sukeliama partyline'o izoliacija tarp jusu Boto(net) ir 
+  kito boto(net).
+  Komanda: ".botattr <botname> +i"
+ "0-9" veliavos (vartotojai)
+  Shitos 10 veliavu nera uzkoduojamos eggdrop'e ir gali buti uzdetos skripto ar shiaip del
+  linksnuno :-)
+  Komanda: ".botattr <botname> +(0-9)"
+ "s" veliava (share aggressively)
+  +s  Jei jus boto A konsoleje nustatete +s botui B, jis stengsis nusiusti savo vartotoju 
+      faila (pasirenkama |s ir g veliavomis) agresyviai botui B.
+      Komanda: ".botattr <botname> +s"
+  |s  Su shia veliava jus galite nurodyti kanlus kuriuos norite kad jusu botai dalintusi.
+      Isidemekite kad jus galite naudoti shita komanda tik +s botams!
+      Komanda: ".botattr <botname> |s #lamest"
+  |+s  Jus galite nustatyti kanla kurio pokycius priims i savo vartotojo faila is +p boto.
+       Komanda: ".botattr <botname |+s #lamest"
+ "p" veliava (share passively)
+  Jei jus nustatysite shia veliava kitam botui, jusu botas priims pokycius i savo 
+  vartotojo faila (kiek jus tik leisite su |+s ar +g)
+	komanda: ".botattr <botname> +p"
+ "g" veliava (global share)
+  Jei jus uzdesite shia veliava ant savo +s ar +p boto, |s ir |+s yra nebevartojami.
+  Kiekvienas ban'as ir kiekvienas vartotojas kiekviename kanale bus priimtas/persiustas.
+	Komanda: ".botattr <botname> +g"  
+ VI   LIEPKITE DVIEM BOTAMS DALINTIS VARTOTOJO IRASHAIS
+Priesh pradedami ruoshti savo botus failu dalinimuisi, isitikinkite kad jus ijungete 
+persiuntimo, dalinimosi ir filesys moduli savo botui (ziurekite conf faile). Jums taippat 
+reikia isitikinti kad kanalas kurio vartotoju yrashai turetu buti dalinami, yra nustatytas
++shared conf faile.
+Jei jus ishpildete viska kas yra ishvardinta aukshciau jus galite pradeti ruoshti savo botus.
+ Visu pirma kuris botas dalinsis agresyviai (botA) o kuris pasyviai (BotB) priimines irashus.
+Jus turetumete tai yrashyti boto konsoleje (Isidemekite kad jus negalite keisti veliavu
+sujungtiems botams, jus turite juos atjungti):
+Botui A:
+.botattr botB +s
+Botui B:
+.botattr BotA +p
+Sekantis dalykas kuri jus turite nuspresti tai ar Botas A dalinsis visu kanalu irashus ar tik
+vieno tam tikro. Jei jus norite kad jis dalintusi irashais globaliai jus turite yrashyti:
+Botui A:
+.botattr BotA +g
+Botui B:
+.botattr BotA +g
+Jei jus nenorite dalintis visu kanalu israshu su Botu B ishskyrus #lamest jus turite nustatyti
+sekanti:
+Botui A:
+.botattr BotA |s #lamest
+Botui B:
+.botattr BotA |+s #lamest
+Jus galite prideti kiek tik norite kanalu tokiu budu.
+Isidemekite kai jus dalinates vartotoju irashais, jus automatishkai dalinaties ban'ais ir 
+ignore'ais (globaliai ar tik tam tikro kanalo) su kitu botu. Botu veliavos *nera* dalinamos.
+Pastaba: Paimta ish eggdrop1.3.28 dokumentacijos.
+--[ Kas yra TCL ir ka tai turi bendro su EggDrop? ]--
+TCl yra programavimo kalba kuri yra skirta eggdrop skriptu rasymui.
+Shi tema yra tokia didele kad galeciau parashyti visa tutoriala shia tema, taigi vietoj to as parashysiu tik pagrindus.
+Kad uzkrauti TCL skripta jus turite dadeti shia eilute i savo conf failo gala:
+source fileovardas.tcl
+Jus galite gauti TCL skriptus ish www.egghelp.org, bseen.tclslave.net ir xcalibre.net.
+Shie skriptai gali dadeti botui daugiau funkciju, kaip spardyti skelbimuose ir kiti.
+--[ Gudrybes ]--
+Medziaga ish Eggdrop1.3.28 dokumentacijos.
+Kaikurios mazos gudrybes apie kurias jus galite zinoti arba nezinoti...
+* Jus galite paziureti vartotojo info dedami '@' kaip pirma raide.
+  Jie nebegales to daugiau pakeisti.
+* '.status all' virtualiai parodys viska ka jus sukonfiguravote savo bote.
+* TCL turi komanda 'info body <proc>' tai parodys proc pakeitimus. 'info args <proc>' 
+  parodys kokius parametrus proc jus pakeitete.
+* Jus galite pervadinti komandas. Kad pervadinti '.status' i '.report', jusm reikia:
+   unbind dcc - status *dcc:status
+   bind dcc m report *dcc:status
+  Pirma eilute ishiema panaidojima nuo komandos '.status', o kita pakeicia ja komanda '.report'
+  kuri parodo statusa. Kitu komandu pavyzdziai:
+   unbind msg - status *msg:status
+   bind msg m report *msg:status
+  ir:
+   unbind fil - share *fil:share
+   bind fil m link *fil:share
+* Jus galite atjungti visus botus ir ishvalyti savo botnet ish atminties naudojant '.unlink *'.
+  Tai ishvalo visus kanalu irashus ir kitka.
+* Jus galite automatishkai padaryti banus lipniais pridedami * kaip pirma raide bano priezastyje.
+* Jus galite dadeti vartotoja su statishku adresu kai naudojate .adduser pridedant prie niko !.
+   ie su adresu ish drummer!ident@some.host.com
+            .adduser drummer
+                  uses *!ident@*.host.com
+            .adduser !drummer
+                  uses *!ident@some.host.com
+--[ Naudota medziaga ]--
+Eggdrop1.3.28 dokumentai
+Asmenines zinios
+[====================================================================================]
+[     The EggDrop IRC botas / Autorius The Cyber God (e-mail: talrun@actcom.co.il)   ]
+[                      Verte: Pleshikas (e-mail: Pleshikas@freemail.lt               ]
+[                            Versija 1.1 / Mano ICQ#: 7864557                        ]
+[====================================================================================]
+
+	
+
+
+
+
+
+

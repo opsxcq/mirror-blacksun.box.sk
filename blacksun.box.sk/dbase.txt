@@ -1,0 +1,195 @@
+                            
+		      :::::::::   ::::::::  :::::::::  :::::::::: 
+                      :+:    :+: :+:    :+: :+:    :+: :+:        
+                      +:+    +:+ +:+        +:+    +:+ +:+        
+                      +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#   
+                      +#+    +#+        +#+ +#+    +#+ +#+        
+                      #+#    #+# #+#    #+# #+#    #+# #+#        
+                      #########   ########  ###    ### ###  
+                         
+              	             http://blacksun.box.sk
+                             ____________________
+      ______________________I      Topic:        I_____________________
+     \                      I    Using Databases I                    /
+      \     E-mail:         I       in PHP       I   Written by:     /
+      >                     I                    I                  < 
+     / spiderman@witty.com  I____________________I   SpiderMan       \
+    /___________________________>           <_________________________\
+   			    
+
+
+
+                         Using Databases in PHP
+                         
+  This isn't quite a full blown tutorial, I like to think of it as a 
+mini-tutorial, it covers some of the most common functions. There won't be a
+backround section, we're going to go straight to work. What I'm going to discuss
+this time (if the title didn't give it away) is connecting to and using a 
+database with php, the database will be MySQL because it's just sooo darn popular.
+
+  The first thing we need to do if we want to connect to a database is this:
+
+    mysql_connect("somehost", "username", "password") or die ("Can't connect!");
+
+  This will try to connect to the database on somehost, login with the username
+and password, and if it can't it will output and error message saying that it 
+can't connect. For your own code be sure to change somehost to your host (most 
+of the times it's localhost, ask your admin), username to your username (duh), 
+and password to your password. Another way to connect to a database is to open a
+persistent connection. To do this you use the mysql_pconnect() function and pass
+it the same arguments as mysql_connect(). Why open a persistent connection? When
+you call mysql_pconnect instead of going out and opening a connection to the database
+it sees if one is already open, if it is the script will use it. Also when the script
+has finished executing the connection to the database will not automatically be 
+closed like it is when using mysql_connect(), this way the connection can be used
+later on. Using a persistent connection is a good idea if your scripts constantly
+need to connect to the database. 
+
+  After we have opened a connection to the database we want to select a database,
+for this we do:
+
+    mysql_select_db("database_name") or die("Can't select database!");
+
+  This will try to select the database named database_name (for your own code
+change it to the name of your database). If it can't select the database it will
+output and error saying that it can't. Once your actually connected to a
+database you will want to query a table in the database to get whatever you want
+done. A query looks like this:
+
+    mysql_query("Some query");
+
+  Common queries are "SELECT" and "INSERT" for full documentation go to the mysql
+web site (http://www.mysql.com). Another common php function is mysql_num_rows(),
+if it isn't obvious this gets the number of rows from a query. Here is an example
+of how it can be used with mysql_query():
+
+    <?php
+      $result= mysql_query("SELECT * FROM some_table");
+      $number_of_rows= @mysql_num_rows($result);
+      
+			if ($number_of_rows == 0)
+      {
+        echo "Sorry there are no rows";
+      }
+      else {
+        echo "Yes! we found some rows!";
+      } 
+    ?>
+		 
+  Now you may be wondering why I put the @ sign before mysql_num_rows(), in php
+the @ sign suppress errors, we do this so that if their are no rows you won't get
+an error. So when would mysql_num_rows() be useful? Well you could use it for an
+authentication script, which would search the database for a username and password,
+and if it didn't find any (i.e. if no rows are returned) it would tell the user that
+the username or password was not correct.
+
+  Another really useful function is mysql_fetch_array(), because it gets the rows
+and puts them in an array that contains the name of the rows. That way instead of
+having to access each row by number you can do it by name! For example, let's say
+that our database looked like this:
+
+   -------------------------------
+   | User  | Pasword             |
+   | John  | afasdfadsfdsf       |
+   | Billy | tla;jrjealjwqsldajf |
+   | Mitch | pqrtupipripewir     |
+	 -------------------------------
+
+  We would use the following code to get the user's names and output them:
+	 
+    <?php
+	    echo "The users in this database are: <br>";  
+      $result= mysql_query("SELECT * FROM some_table");
+      
+			while ($row= mysql_fetch_array($result))
+      {
+        $username= $row["User"]; 
+        echo "$username<br>";
+      } 
+    ?>
+	
+  This will output all the usernames in a database, you can add error checking if
+you like. The while statement is read "while there are rows that satisfy the query
+put the contents of the row from the column User into the variable username and print
+the usernames (each on a new line) to an HTML page."
+
+  Now let's cover a couple of functions that actually work with the database. 
+The first is mysql_create_db(), don't you just love how the functions are named
+you can figure out what they do just by looking at the function name, this one
+obviously creates a database. Here is how to use it:
+
+    <?php 
+	    echo "I am going to try to create a database...<br>";
+      
+			if (mysql_create_db("test_database"))
+      {
+        echo "Hooray, I've created the database!<br>";
+      }
+      else { 
+        echo "Darn couldn't create the database! because: ";
+        echo "mysql_error() <br>";
+      }
+    ?>
+	 
+  You can see I used a new function, mysql_error(), you don't really need to know
+too much about it, all it does is return the error string sent by MySQL. Now since
+we learned how to create a database, how's about we learn to delete one. To do that
+use the mysql_drop_db(), here is how to use it:
+
+    <?php 
+	    echo "I am going to try to delete a database...<br>";
+      $result= mysql_drop_db("test_database");
+      
+			if (!$result)
+      {
+        echo "Darn couldn't I couldn't delete the database!<br>";                   
+      }
+      else { 
+        echo "Hooray, I've deleted the database<br>";   
+      }
+    ?>
+		 
+  You can see that the syntax is very similar to that of mysql_create_db(), just
+pop the name of the database you want to delete into the function. 
+
+  The next two items aren't functions, rather they are queries that you can use
+to manage an existing table. The following query will insert data into a database:
+
+    <?php 
+		  echo "I am going to try to insert data into a table...<br>";
+      $result= mysql_query("INSERT INTO test_database (username, password) VALUES (Rahim, adfjaldadfsdaf)");
+      
+			if (!$result)
+      {
+        echo "Darn couldn't I couldn't delete the database!<br>"; 
+      }
+      else { 
+        echo "Hooray, I've deleted the database<br>";     
+      }
+    ?>
+		
+  This query should be pretty obvious, it inserts the data defined in between the
+parentheses into the rows. Just a little note to remember, the order in which you
+write out the column names is the order your data will be entered (i.e. a row with
+the contents Rahim will be entered under username, not password since we wrote
+username then pasword, if it was reveresd Rahim would be put under password).
+
+  The next query we've already gone over, I'm just going to add to it; after I'm
+done you should be able to use it to help create a simple search engine (upcomming
+tutorial)! For the sake of brevity I'll remove all the extra php stuff and just
+show you the "meat" of the code.
+
+    $result= mysql_query("SELECT name FROM some_table WHERE name=Joe AND lastname=Sixpack OR lastname=Becker ORDER BY lastname LIMIT 20");
+
+  Now I know that looks like a long query, but it's not really all that bad. What
+it's pretty much saying is: "Get me the name from some_table where the name is Joe
+and the lastname is Sixpack or Becker, oh and by the way while your at it, put it
+in alphabetical order by the lastname; oh and one last thing, just get the first
+20 results please." MySQL has lots of other filters that you can add on to the 
+SELECT statement, I highly suggest you download the MySQL documentation and give
+it a perusing.
+
+Conclusion:
+  Well that just about wraps up this "mini-tutorial", you should use this as a
+quick reference for my other (upcomming) tutorials. If you found any errors or
+have any comments please e-mail me (kindly direct questions to the message board).

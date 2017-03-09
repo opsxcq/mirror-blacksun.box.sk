@@ -1,0 +1,283 @@
+<HTML>
+
+<HEAD>
+<META NAME="Author" CONTENT="Tech~LoRd">
+<META NAME="HTML Author" CONTENT="Penguin">
+<TITLE>Cracking Tutorial - Part 1</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#000000" TEXT="#FFFFFF">
+<H2><CENTER>Cracking Tutorial - Part 1</H2><HR></CENTER>
+
+version 1.0, 21/9/1999<BR>
+Copyrights reserved to the <A HREF="mailto:sagid@netvision.net.il">TeCh~LoRd</A> (sagid@netvision.net.il) of <A HREF="http:\\blacksun.box.sk">Black Sun Research Facility</A> (blacksun.box.sk)<BR>
+Converted to HTML by <A HREF="mailto:penguin20000@yahoo.com">Penguin</A>
+
+<BR><BR>
+
+<B><U><H2>Content</H2></B></U>
+<OL>
+<LI><A HREF="#intro">Introducion.</A>
+<LI><A HREF="#dis">Disclaimer.</A>
+<LI><A HREF="#whatis">What is cracking?</A>
+<LI><A HREF="#tools">Tools.</A>
+<LI><A HREF="#main">The main steps of cracking.</A>
+<LI><A HREF="#terms">Basic terms in assembly.</A>
+<LI><A HREF="#final">Final conclusion.</A>
+</OL>
+
+<BR><HR><BR>
+
+<B><U><A NAME="#intro">1. Introducion:</A></B></U><BR>
+
+I have read many cracking tutorials lately.<BR>
+Frankly speaking, I myself learned cracking from tutorials (and some book, but this doesnt really matter).<BR>
+The majority of the cracking tutorials out there have a few disadvantages: either they are too long and contain a
+lot of garbage, or they are too short, and don't contain the basics.
+
+<BR><BR>
+
+I decided to write a tutorial which will not have those two disadvantaged.
+
+<BR><BR>
+
+Anyway, I divided the tutorial into 3 parts:<BR>
+
+Part 1: Introduction, tools and The basics of cracking.<BR>
+Part 2: Practical training, using W32Dasm, and HIEW<BR>
+Part 3: Key-generators.
+
+<BR><BR>
+
+Welcome to the first part.   ;-)
+
+<BR><BR>
+
+<B><U><A NAME="#dis">2. Disclaimer:</A></B></U><BR>
+
+I created this tutorial for informational purposes only!<BR>
+Much of the information in this document can be used to perform illegal activities!<BR>
+Don't attempt to do anything stated in this document!<BR>
+If you do attempt to do anything, you are solely and fully responsible for what you do!<BR>
+If you get caught and get in any kind of trouble, it's your own fault!<BR>
+If you intend to use this information to impress your friends, leave it and grow up!<BR>
+If you don't agree to this, do not read any more!<BR>
+If you crack a program, and either sell the crack or offer it for free, it is a crime!
+
+<BR><BR>
+
+<B><U><A NAME="#whatis">3. What is Cracking?</A></B></U><BR>
+
+For me, cracking is:<BR>
+"Letting a program, which is on your computer behave as you want it
+to behave and not behave as someone else (the programmer) wants"
+
+<BR><BR>
+
+As INTERN said:<BR>
+"Hey, it is your stuff right? your numbers, your bits,<BR>
+you should be able to do anything you wish to do with it :)"
+
+<BR><BR>
+
+Actually, I agree to this.
+
+<BR><BR>
+
+So cracking is modifying your programs, and making them work they way you want them to.<BR>
+If you can get a free demo program, crack it, and use it.<BR>
+BUT!!!!<BR>
+I repeat, if you crack a program, and start selling the cracked version or even offering it for free, it is a crime!
+
+<BR><BR>
+
+After reading those three tutorials (this is the first one in this series),<BR>
+you will feel the power you have in your hands (I mean, in your head).
+
+<BR><BR>
+
+well, let's get started?
+
+<BR><BR>
+
+<B><U><A NAME="#tools">4. Tools</A></B></U><BR>
+
+There are very few tools you need by now...<BR>
+It is very easy to find them over the web, cause they are quite popular:<BR>
+
+The first one is "Win32 Disassembler", which is also know ans W32Dasm.<BR><BR>
+
+The Win32 Disassembler allows you to:<BR>
+1. Disassemble files - translate the program to it's assembly origin, or machine code.<BR>
+   The file types which can be disassambled in Win32 Disassembler:<BR>
+   exe, 386, com, cpl, drv, dll, fon, mpd, ocx, vbx, vbx and sys.<BR>
+2. Load the program proccess and trace the program.<BR>
+3. Browse the disassembled file and go to any code location that you want.<BR>
+4. Find text.<BR>
+5. Execute, insert or remove jumps and calls.<BR>
+6. Import and export functions.<BR>
+7. Show a HEX display of a code area.<BR>
+8. Show the list of the STRINGS, DIALOGS and REFERENCES.<BR>
+9. Save the Disassembly source in text format.
+
+<BR><BR>
+
+Well, u can get it in almost any cracking site, but I'll give you some URLs:<BR><BR>
+
+
+1. <A HREF="http://www.wco.com/~micuan/Zips/wdasm893.zip">http://www.wco.com/~micuan/Zips/wdasm893.zip</A><BR>
+
+2. <A HREF="HTTP://CRACKING.HOME.ML.ORG/">HTTP://CRACKING.HOME.ML.ORG/</A><BR>
+
+3. <A HREF="http://www.fortunecity.com/bally/waterford/18/w32dsm89.zip">http://www.fortunecity.com/bally/waterford/18/w32dsm89.zip</A><BR>
+
+4. <A HREF="http://wowsites.com/meiner/w32dsm89.zip">http://wowsites.com/meiner/w32dsm89.zip</A><BR><BR>
+
+
+I think that's about enough.<BR>
+If any of these links goes down, please alert me (my Email address is <A HREF="mailto:sagid@netvision.net.il">sagid@netvision.net.il</A>).<BR>
+
+The second tool you need is Hiew, which is also known as Hacker's View.<BR>
+The Hacker's View Tool allowes you to:<BR>
+1. Disassemble files.<BR>
+2. Make changes in the disassembled file, such as:<BR>
+   write commands, modify commands and reassemble the file.<BR>
+3. View the file in ASCII, Hex or assembly mode.<BR>
+
+<BR>
+Here are some URL's as well:<BR><BR>
+
+1. <A HREF="ftp://ftp.cs.tu-berlin.de/pub/msdos/mirrors/ftp.elf.stuba.sk/pc/utilprog/hiew584.zip">ftp://ftp.cs.tu-berlin.de/pub/msdos/mirrors/ftp.elf.stuba.sk/pc/utilprog/hiew584.zip</A><BR>
+
+2. <A HREF="ftp://ftp.bke.hu/pub/mirrors/sac/utilprog/hiew584.zip">ftp://ftp.bke.hu/pub/mirrors/sac/utilprog/hiew584.zip</A><BR>
+
+3. <A HREF="ftp://ftp.uakom.sk/pub/mirrors/sac/utilprog/hiew584.zip">ftp://ftp.uakom.sk/pub/mirrors/sac/utilprog/hiew584.zip</A><BR><BR>
+
+You can also download an excellent program for cracking called Soft-ICe.<BR>
+Anyway, we won't need it in this part of the tutorial.<BR>
+Anyway, here are some URLs for Soft-ICe.<BR><BR>
+
+SoftICE for Windows95:<BR>
+
+1. <A HREF="http://swlink.net/~lachcik/insaine/si95w320.zip">http://swlink.net/~lachcik/insaine/si95w320.zip</A><BR>
+
+2. <A HREF="http://www.fortunecity.com/bally/waterford/18/siw95-32.zip">http://www.fortunecity.com/bally/waterford/18/siw95-32.zip</A><BR>
+
+3. <A HREF="http://www.pmk.ac.th/~arnontc/files/siw95-32.zip">http://www.pmk.ac.th/~arnontc/files/siw95-32.zip</A><BR>
+
+4. <A HREF="ftp://toolz.ucl.autograd.ru/Debugger/W95ICE32.ZIP">ftp://toolz.ucl.autograd.ru/Debugger/W95ICE32.ZIP</A><BR><BR>
+
+
+SoftICE for Windown NT:<BR>
+
+1. <A HREF="http://www.pmk.ac.th/~arnontc/files/siwnt-32.zip">http://www.pmk.ac.th/~arnontc/files/siwnt-32.zip</A><BR>
+
+2. <A HREF="ftp://ftp.sol.no/users/r/reopsahl/OrcPaks/orcpak9e.zip">ftp://ftp.sol.no/users/r/reopsahl/OrcPaks/orcpak9e.zip</A><BR>
+
+3. <A HREF="http://www.fortunecity.com/bally/waterford/18/siwnt-32.zip">http://www.fortunecity.com/bally/waterford/18/siwnt-32.zip</A><BR>
+
+4. <A HREF="ftp://toolz.ucl.autograd.ru/Debugger/WNTICE32.ZIP">ftp://toolz.ucl.autograd.ru/Debugger/WNTICE32.ZIP</A><BR><BR>
+
+
+There's also SoftICE for DOS, which I dont recommend.<BR>
+
+1. <A HREF="http://www.pmk.ac.th/~arnontc/files/s-ice280.zip">http://www.pmk.ac.th/~arnontc/files/s-ice280.zip</A><BR>
+
+2. <A HREF="ftp://ftp.ula.ve/pub/msdos/cracking/s-ice280.zip">ftp://ftp.ula.ve/pub/msdos/cracking/s-ice280.zip</A><BR>
+
+3. <A HREF="http://202.102.15.149/~person/paulgao/cracks/SICE280.ZIP">http://202.102.15.149/~person/paulgao/cracks/SICE280.ZIP</A><BR>
+
+4. <A HREF="ftp://ftp.sonic.net/pub/users/fryman/tools/S-ice280.zip">ftp://ftp.sonic.net/pub/users/fryman/tools/S-ice280.zip</A><BR>
+
+5. <A HREF="http://www.chibacity.com/chiba/files/unpro/prx-pcs3.zip">http://www.chibacity.com/chiba/files/unpro/prx-pcs3.zip</A><BR><BR>
+
+
+You can also download the Win 3.1x versions at:<BR>
+
+1. <A HREF="ftp://ftp.ula.ve/pub/msdos/cracking/m_wice13.zip">ftp://ftp.ula.ve/pub/msdos/cracking/m_wice13.zip</A><BR>
+
+2. <A HREF="http://fishheads.simplenet.com/BriansFiles/m_wice13.zip">http://fishheads.simplenet.com/BriansFiles/m_wice13.zip</A><BR>
+
+3. <A HREF="http://www.magiccarpet.com/~odin/files/other/m_wice13.zip">http://www.magiccarpet.com/~odin/files/other/m_wice13.zip</A><BR><BR>
+
+
+
+<B><U><A NAME="#main">5. The Main steps of cracking</A></B></U><BR>
+
+There are 7 steps in the process of cracking:<BR>
+
+1. Run the program you want to crack and learn it's standard behavior.<BR>
+   Try to locate strings and keywords, try to enter the password and see how the program responds.<BR>
+2. Open up the program with the W32Dasm and disassamble it.<BR>
+3. Find typical and common strings in the disassembly that appeared in the program.<BR>
+   In most cases, you have to look for keywords such as: password, name, date, expired,
+   time limit, wrong, entered and so on.<BR>
+4. Find and observe the password generator, find the learn protection routine and the API calls.<BR>
+5. Try to understand the jumping mechanism of the protection.<BR>
+6. Open up the program in HIEW.<BR>
+   Change the jump of the flow control to it's oposite jump command, or nop it out.<BR>
+7. Run and see how the change you have made in the original program affected it.<BR>
+   Feel the power you have, the power of cracking, letting programs behave as you want them to.<BR><BR>
+
+Learn those steps very well, until u dream of them, u will use them in every program you crack.<BR><BR>
+
+<B><U><A NAME="#terms">6. Basic terms in Assembly</A></B></U><BR>
+
+<U>A. Registers:</U><BR>
+Registers are variables which are stored in your processor.<BR>
+The processor uses these variables for basic mathimatical and logical operations.<BR>
+The mostly used registers are: eax, ebx, ecx and edx.<BR>
+Sometimes you will see edi, esi, esp, ebp.<BR><BR>
+
+There are three types of registers: 32Bit registers, 16Bit registers and 8Bit registers.<BR>
+The 32Bit registers start with e, such as eax.<BR>
+There are 16Bit equivalents of these registers.<BR>
+The only Difference between the two types is the veriable size.<BR>
+These registers are: ax, bx, cx, dx, di, si, sp, bp.<BR><BR>
+
+There are also 8 bit registers.<BR>
+Tthe 8Bit registers are: al, ah, bl, bh, cl, ch, dl, dh.<BR>
+l - means the lower 8 bits of the 16Bit register.<BR>
+h - means the higher 8 bits of the 16Bit register.
+Here the l stands for the lower and h for the higher 8 bits of a 16 bit register.<BR><BR>
+
+<U>B. Flags</U><BR>
+Flags are Boolean variables (get 0 or 1 values).<BR>
+Flags are used by the processor for internal logical and mathimatical operations,
+in order to get the result of the operation.<BR>
+The most important flag is the Zero Flag, which can get zero or non-zero (1) values.<BR><BR>
+
+
+<U>C. Code Flow</U><BR>
+When you are analyzing a piece of code, you must understand that the processor
+is actually quite stupid, and all it does is to simply follow the basic instructions,
+line by line.<BR>
+It does anything the code tells it to do, and cannot do anything that is not written
+in the code (unless it has been run over by a herd of cows and abducted by aliens).<BR>
+This is why you have to think like the processor when you're analyzing a piece of code,
+and to act like it (just don't get used to it! Inhale, exhale, inhale, exhale... nevermind, stupid joke) :)<BR>
+You have to do everything the processor does, you have to compare registers and variables, execute jumps and calls,
+calculate Basic mathimatical operations, store and load register values and adresses, and so on...<BR>
+
+The processor has an instruction pointer especially for this, which is also called IP
+(it has nothing to do with IP addresses in the Internet Protocol, trust me).<BR>
+Using the instruction pointer, the processor points to the instruction that is about to be executed.<BR>
+The processor also has and executes instructions which change the code flow.<BR>
+These instructions can be function calls, any other routine calls, jumps, conditional jumps, which depend
+on the zero flag, negative conditional jumps...<BR><BR>
+
+
+<B><U><A NAME="#final">7. Final Conclusion</A></B></U><BR>
+In this part of the tutorial we have learnt the meaning of the word cracking.<BR>
+Making programs behave as you want them to, and not the way the programmer wants them to.<BR>
+We have also learnt about the basic and the popular tools of cracking: W32Dasm, Hiew and SoftICE.<BR>
+And finally we have learnt the 7 main steps of cracking.<BR><BR>
+
+Now, Before you go to the next chapter, you have to learn these 7 steps and download the tools
+mentioned above, because we can't go on to the next chapter unless you have those tools and know the steps.<BR><BR>
+
+Cya in the next chapter.<BR><BR>
+
+TeCh~LoRd
+
+</HTML>

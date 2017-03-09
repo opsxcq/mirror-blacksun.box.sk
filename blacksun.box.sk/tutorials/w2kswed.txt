@@ -1,0 +1,140 @@
+==========================[ Windows 2000 Installation Guide
+===================[ Skriven av Cypher [cypher@cypherdome.com]
+================[ Översatt av Ze7en [ze7en@antisocial.com]
+=========[ Publicerad igenom Black Sun Research Facility group [blacksun.box.sk]
+_____________________________________________________________________
+DISCLAIMER: Den här guiden är baserad på mina personliga kunskaper och ska inte betraktas som ett alternativ för certifierade Microsoft installationsguider. Författaren tar inget som helst ansvar för dina handlingar.
+_____________________________________________________________________
+
+Det här är den första artikeln av en serie av Windows 2000 relaterade tutorialer och guider.
+Kolla BSRFS hemsida för updateringar och nya tutorialer. (http://blacksun.box.sk)
+
+
+
+================>En överblick över Windows 2000 familjen <================
+
+Den här guiden kommer att göra din Windows 2000 installation lätt, snabb, och nästan ansträngningslös.
+Till att börja med måste du bestämma vilken utgåva av Windows 2000 du vill installera.
+Hittils har Microsoft släppt de här utgåvorna:
+        
+          * Windows 2000 Professional
+          * Windows 2000 Server
+          * Windows 2000 Advanced Server
+          * Windows 2000 Datacenter Server
+
+Microsoft Windows 2000 har "Byggd på Windows NT Teknologi" logon för att visa sin tillhörighet till NT Teknologin.
+Den har också en inbyggd språk väljare som gör det lätt att välja mellan olika språk och tangentbords inställningar.
+Windows 2000 är byggt för att:
+
+=== Behålla stabiliteten och prestandan ifrån NT teknologin ===
+Windows 2000 behåller de traditionella värdena av alla NT system: stabilitet, prestanda och informations säkerhet.
+Det presenterar också det nya NTFS 5.0, som tillåter höga informations säkerhets värden genom att ge användaren möjligheten att kryptera filsystemet (EFS), tilldela stängda och säkrade områden att använda VPN, frigöra Kerberos säkerhets systemet, användar tilldelning och mycket mer.
+
+=== Sänka den totala kostnanden för ägandeskap ===
+Windows 2000 har många inbyggda applikationer, så som IntelliMirror och Active Directories.
+De här applikationerna tillåter mer effektiva affärs möjligheter och lösningar.
+
+
+
+
+[==== Olika utgåvor ====]
+--> Win2k Professional inriktar sej på hem användare och mindre företag, eller som Microsoft säger, "desktop operating system for the business internet".
+
+--> Win2k Server är till för mellan stora företag och organisation som kör nätverk. Det inkluderar mer server, nätverk och administations verktyg och har Active Directories, Kerberos, PKI systemet, Windows Terminal services med mera.
+Win2k  Server stödjer upp till 4GB ram och 4 processorer.
+
+--> Win2k Advanced Server utgåvan riktar sej till dom riktigt stora företagen och organisationerna som använder sej av nätverk.
+Det stödjer upp till 8 processorer, utmärkt laddnings administration och förvånande stabilitet.
+Advanced Server utgåvan använder sej av Enterprise Memory Architecture (EMA) tekniken, förbättrad multiprocessering och förbättrad Databas hantering.
+
+Jag kommer att fokusera den här guiden på Professional utåvan för att det är den som de flesta hem användare och små företag använder, medans de två andra mest är för större företag.
+Jag förmodar att du redan har installations skivan så jag kommer inte att förklara hur man får tag på den eller hur mycket den kostar. Jag vill bara påpeka att du kan få den gratis med en MSDN beställning eller så kan den köpas hos din lokala data affär.
+
+=========> "Nu till den roliga delen" eller, Installation av Windows 2000 <=======
+
+[======Ren eller upgradering======]
+Jag har fått den här frågan massor av gånger men svaret är enkelt, det beror på vad DU behöver.
+Låt oss ta För och Nackdelarna med Ren och upgraderings alternativen.
+
+- Den största fördelen med en Ren installation är att du är relativt säker från olika drivrutins komplikationer. Ifall du upgraderar finns det risk för att Win2k använder gammla drivrutiner och det kan leda till system instabilitet.
+
+- Å andra sidan så är det uppenbart att när du upgraderar så fungerar alla dina gammla program under det nya OS:et.
+Så det är upp till dej att bestämma ifall du ska upgradera eller installera om allt.
+För att vara på den säkra sidan gör en ren upgradering, ifall du inte har möjlighet att ominstallera alla dina program så gör en upgradering.
+
+------->Installationen<-------
+(Anmärkning: Välj det lämpligaste sättet att köra setupen. Det första alternativet är till för både ren installation och upgradering)
+
+Att köra Installation 1: Efter det viktiga valet vilket sätt du ska upgradera på sätt i Win2k skivan i Cd-Rom läsaren medans Windows är startat och starta installations programmet. Det Autostartar ifall det är påsatt på ditt system, annars starta "Setup.exe" filen i skivans root katalog.
+På första skärmen väljer du om du ska göra en upgradera eller göra en ren installation.
+
+Att köra installation 2: Ifall du inte har någon föregående verision av Windows installerat kan du boota direkt in i setupen. Först, se till att du kan boota från cd-romen i ditt BIOS (ta det lungt, ändra inget om du inte är helt säker på vad du gör), sen sätter du in skivan och startar om din dator. Om ditt BIOS inte kan starta ifrån skiva, kan du göra start disketter med Start-diskett-göraren, =) som finns med på Installations cd:n (\bootdisk\makeboot.exe)
+Installation (bas konfiguration och fil kopiering)
+Följ installations guiden på skivan för att göra för-installations konfigureringarna.
+
+Efter att några få system diagnostiks program har körts börjar installationen att kopiera filer.
+När fil kopieringen är klar startar installationen om datorn och kör Windows 2000 kärnan för nästa steg i installationen. Det här steget av installationen är i MS-DOS liknande miljö, men det är Windows 2000 kärnan som genomför den.
+
+
+[======= NTFS eller FAT? ======]
+NTFS är mycket snabbare, stabilare och har högre prestanda fil-system än FAT och FAT32. Jag rekommenderar stort att du upgraderar till NTFS. Men ifall du har flera operativ system installerade så kommer de andra operativ systemen inte att se NTFS partitionen.
+Det betyder att du inte kommer att kunna komma åt den partitionen antingen från MS-DOS eller Win 9X.
+
+
+[======== Komponenter att installera =======]
+
+Du bestämmer själv vad för komponenter du har behov av. Jag kommer bara att beskriva huvud komponenterna och deras funktioner.
+
+* IIS Internet Information Services:
+Ifall du har tänkt köra egna Web, mail eller ftp servrar så rekomenderar jag dej att installera IIS. Ett annat användnings område för IIS är att man kan kolla ASP filer lokalt, men det kräver att du installerar IIS Webserver. Hur som helst så kan du installera eller avinstallera det senare igenom kontroll panelen. IIS tillåter dej att göra flera sidor på samma IP address, vilket gör det lät att göra Intranet sidor.
+IIS stödjer dynamiskt innehåll, såsom ASP, CGI och ISAPI, vilket tillåter utvecklare att inkludera ActiveX komponenter i sina web sidor. IIS Secure Socket Layer (SSL) vilket ger säkra data överföringar mellan klienten och servern.
+En annan stor tillägs sak i IIS 5.0 är dess förmåga att bli administrerad över webben om man använder web side administrations tilläget.
+
+
+* Indexerings tjänsten
+Indexerings tjänsten är användbar på stora hårddiskar med hög prestanda. Det indexerar filerna på systemet för snabbare söknings kapacitet. Det tillåter sökning i filer på hårddisken för särskilda ord. Du kan kontrollera indexerings tjänsten igenom en konsollen i MMC:n.
+
+* De andra komponenterna är nästan bara nätverks relaterade och är onödiga såvida du inte är en del av ett LAN (Local Area Network).
+
+[======== Problem lösning ========]
+Liksom de flesta av Microsofts produkter har Windows 2000 en användar vänlig och lätt installation. Men en del fel kan ändå uppstå.
+
+---> STOP fel
+Ifall du får ett engångs STOP fel (Också kännt som BSoD = Blue Screen of Death) bara starta om datorn och installationen fortsätter. Ifall du fortfarande får massa STOP fel kan du ha någon hårdvara som inte är kompatibel med Windows 2000. Isåfall kan du kolla HCL:en - WIndows 2000 Hardware Compatibility List (den finns med på Installations cd:n \support\hcl.txt), eller så kan du ladda ner Microsoft Windows 2000 kompatibelhets kontrollerar programmet (ifrån Microsofts hemsida).
+
+Här är några av de vanligaste STOP felen i Windows 2000 och förklaringar:
+
+- IRQL_NOT_LESS_OR_EQUAL -
+Det betyder att kärnan försökte få tillgång till ett minnes segment som är på en högre nivå av Interupt Request Level (IRL) än tillåtet. Medans processen bara tillät tillgång till en IRL som inte var högre än dess egen.
+
+Rekommendation: Det här felet är troligen orsakat av en felaktig drivrutin eller system tjänst. Försök att använda "Last Good Known Konfiguration" i säkerhets start upp menyn (Tryck F8 när datorn startar)
+
+Notering: Ifall felet upstår medans du installerar Windows, kolla att all din hårdvara är kompatibel med Windows 2000 (Kolla i HCL:en).
+
+- KMODE_EXCEPTION_NOT_HANDLED -
+
+Det här felet uppstår på grund av att kärnan inte kunde behandla ett särskilt direktiv.
+
+Rekommendation: Felet kan visa dej namnet på den felaktiga hårdvaran. Pröva att stänga av den medans du startar i Safe Mode.
+
+Notering: Situationen kan ibland lösas igenom att man använder Recovery Console.
+
+- NTFS_FILE_SYSTEM -
+
+Det här felet uppstår när det är ett problem med ntfs.sys drivrutinen, som ger tillgång till information på NTFS diskar.
+
+Rekommendation: Kolla kompatibliteten på dina IDE/SCSI hårddiskar och kör chkdsk kommandot för att verifiera data konstistensen.
+Det är flera STOP fel i Windows 2000 än vad jag kan skriva om i den här guiden.
+Kolla Microsofts Informations databas på www.microsoft.com
+
+
+============[ Det är allt för tillfället
+======[ Ifall du har några frågor maila mej på cypher@cypherdome.com
+
+Hälsningar, 
+        - Cypher. 
+
+
+P.S Maila mej om ni tycker att jag har översatt konstigt någonstans eller om ni vill att jag ska förklara något lite bättre på Svenska, eller om ni bara vill prata lite rent allmänt 
+Hälsningar Ze7en =oD      ze7en@antisocial.com
+D.S

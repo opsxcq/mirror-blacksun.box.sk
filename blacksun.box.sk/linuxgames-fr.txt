@@ -1,0 +1,112 @@
+-----------------------------
+Le guide du joueur pour Linux
+-----------------------------
+
+ ###########         #                   ###             #########      ##     # 
+ ############       ###                 #####           ###  #####     ###     ##
+ #####    ####     #####               #######         ###    ###     ####    ###
+ #####    #####   #######             #########       ###      #      ####  ####
+  ####   #####    #######            ###########     ###               ### ####
+   #########      #######           ####     ####    ###               #######  
+    ###########    #####           #####     #####    ###     ##      ####### 
+   #############    ###   ##      ######  #########    ###   ####     #########
+  ######     ####    #   ####      ########  #####      ##  ######     ###   ###
+ ######     ####     ##########     ####     ####        #########     ###  #####
+ #####     ####       ##########     ###     ###          #######     ####  ######
+ #############         ##########     ##     ##            #####      ####   ####
+ ###########            ########      ##     ##             ###        ###    ##
+
+   #######       #     #        #     #
+  ##########    ##     ##      ##     ##            
+ ###    ###     ##     ##     ###     ###                                         
+  ###    #     ###     ###   #####    ####           Black Sun Research Facility  
+    ###         ##     ##    ######   ####             http://blacksun.box.sk     
+      ###       ##     ##    #######  ####                 ASCII par : cyRu5       
+   #   ###     ###     ###   ####  #######         
+  ###  ####   ####     ####   ###   #####               
+ ###########   ###########     ##    ###
+  #########      #######        #     #
+
+Auteur: R a v e N
+Date: 26/2/2000
+Traducteur: Vortex Vortex@francimel.com
+Publié sur: http://blacksun.box.sk - Black Sun Research Facility
+
+Description
+-----------
+Un guide pour tous les Linuxiens qui veulent des jeux pour Linux, mais qui ne savent pas où aller et quoi faire.
+
+Introduction
+------------
+Est ce que vous vous ennuyez lorsque vous utilisez Linux? Que diriez vous d'y 
+greffer quelques divertissements ? Oui, je parle bien de jeux d'ordinateurs. Des jeux ?
+Des jeux pour Linux ? Eh oui, pourquoi pas. Et je ne parle pas de clones du démineur,
+je parle de vrais jeux.
+
+Ok, donc je trouve ça où?
+-------------------------
+La meilleur adresse pour trouver les nouvelles du monde des jeux sous Linux
+est http://www.linuxgames.com. Allez aussi faire un tour sur  http://www.lokigames.com -
+il s'agit d'une société chargée de porter sur Linux les jeux de sociétés désireuses de
+conquérir ce nouveau marché.
+Quake, Civilization, Railroad Tycoon, Unreal, Heroes of Might and Magic, et d'autres, ont
+tous une version Linux.
+
+Ouais, mais pour de plus petits jeux ?
+---------------------------------------
+Oh , vous voulez dire des solitaires et des démineurs. Des jeux de bureau , je vois...
+Vous en voulez toujours ? Voici des endroits où vous pouvez aller , et des programmes
+que vous pourriez téléchargés :
+
+http://pysol.tsx.org - PySol: actuellement ,ils ont 160 (!!) jeux de cartes, avec les régles,
+des didacticiels, des astuces, et tout ce dont vous avez envie.
+Récuperez le serveur sonore (NdT : c'est tout ce que j'ai trouvé pour 'sound server'), ils
+ont mis beaucoup d'effort pour le son , cela vaut vraiment le coup !
+
+Vous en voulez encore ? Allez voir la section jeux de LinuxBerg,
+sur http://www.linuxberg.com, il y a des jeux pour Gnome, KDE, et pour 
+les gestionnaires de fenêtres X11. Au fait, LinuxBerg est la section Linux de Tucows.
+
+Encore? D'accord, Space invaders, ça vous rappelle quelque chose ?
+Oui, ce jeu où vous étiez un petit vaisseau spatial placé en bas de l'écran,
+avec des vaisseaux extraterrestres qui vous canardez, et où votre mission
+était de les exploser avant qu'ils ne vous rejoignent ?
+Eh bien, il existe sur Linux une version 3D de ce jeu ( certaines personnes
+ont vraiment trop de temps libre ). Il s'appelle XInvaders3D.
+Malheuresement , je n'ai pas d'adresses à vous donner, mais vous n'avez qu'
+a interroger un moteur de recherche.
+
+Et au sujet des émulateurs?
+---------------------------
+Vous voudriez jouer à des jeux de consoles sur Linux ? Vous savez, tous
+ces jeux de Nintendo. Vous préferez peut être les bornes d'arcades ?
+Tous vos émulateurs préferés ont une version Linux.
+Prenez, par exemple, snes9x, l'émulateur Super Nintendo (16 bit) , il existe
+en version Linux. Prenez également le frontal pour KDE, il s'appelle ksnes9x.
+Cherchez le dans un moteur.
+Pour les bornes d'arcades, essayez XMAME (oui , il s'agit de MAME pour Linux),
+sur http://x.mame.net.
+Vous voulez jouer à la Nintendo 64? Lancer votre émulateur préferé sur Linux,
+en utilisant Wine, l'émulateur Windows (http://www.winehq.com.).
+
+Et si...
+--------
+Vous cherchez un jeu, mais il n'existe pas de version pour Linux ? Pas de probléme!
+Vous pouvez essayer de l'émuler avec Wine ,téléchargeable sur http://www.winehq.com
+ou vous pouvez utiliser VMWARE (une des choses les plus étonnantes que j'ai vu... essayez le.
+Le voir , c'est le croire) sur http://www.vmware.org.
+
+Je n'arrive pas à installer quelque chose
+-----------------------------------------
+Avant tout, regardez si un fichier LisezMoi, ou Install qui vient avec le
+paquetage (souvent appelée README , ou INSTALL). Si ce n'est pas le cas,
+allez voir sur la page Web des concepteurs. Et si , malgré tout cela, vous n'arrivez pas 
+à installer le programme, laissez un message sur le forum sur http://blacksun.box.sk.
+
+Conclusion
+----------
+Lisez ceci:
+http://www.happypuppy.com/features/editorials/linux%2Ded%2D1.html
+
+
+Black Sun Research Facility - http://blacksun.box.sk.

@@ -1,0 +1,108 @@
+ 
+    ----------------------
+   |  What you need to :  |
+   | Spoof/Hijack/Predict |
+   |         by:          |
+   |      Neon-Lenz®      |
+    ----------------------
+
+
+ Well this is my second text-file, i hope you've enjoyed
+ my last text-file. This one is aimed at beginners who are
+ interested into spoofing, hijacking and sequence number 
+ attacks. Most of the beginners who have read those text-files 
+ don't know what kind of programs/tools/scripts they need to
+ do those specified attacks written in those text-files. But 
+ it is very true, i've read most of the TCP/IP-security 
+ documents out there, and none of them tells you what you 
+ need, to execute the specified attacks. (Well at least not 
+ in an easy way, like where to obtain those specified tools).
+ So that's one of the main reasons why i attempted to write
+ this text-file.
+
+ It is actually pretty simple, to execute all of the attacks
+ mentioned in those text-files you'll simply need 4 things :
+ 
+ *NOTE* : All the tools i've mentioned are provided with urls   
+          at the end of this text, i guess that's easier for 
+          you to obtain the tools i've mentioned.
+
+ 1. Some sorta Unix or Unix-based OS (Operating System). 
+    Linux for example would work fine if you plan to do 
+    some serious TCP/IP Internetworking-related stuff. 
+    Because you really can't do some good attacks with 
+    any MS-based products, but hey IT IS possible, but still, 
+    what i'm referring in this text-file are attacks executed 
+    in Linux.
+
+ 2. Packet Generator (like Spak, Libnet, etc.)
+    (Generates and sends packets which you specify, 
+    this includes flags, sequence numbers, window size
+    and everything else you usually see in a packet.) 
+ 
+ 3. Packet Sniffer   (like Sniffit, Ipgrab, etc.)
+    *NOTE* : You'll need a sniffer which allows you to read
+             the header of a specific packet (which includes
+             flags, sequence numbers, window size, source and
+             destination ports etc.)
+ 
+ 4. Usually a trusted host,a target host and attacking host 
+    (that's you, most of the hackers/crackers out there uses 
+    compromised hosts.)
+   
+   *NOTE*: #4 was actually meant for the real newbies :-)
+           
+
+   That's about everything you will need to do those attacks.
+   Now lets go on about WHERE to obtain those tools mentioned above:
+
+   Linux:
+   -----
+   http://www.linux.org would be a great site if you're looking
+   for some good Linux distro's, check it out.    
+
+   Packet Generators:
+   -----------------
+
+   Spak - http://freeport.xenos.net/~xenon/software/spak/index.html
+
+   Libnet - http://www.packetfactory.net/libnet/
+   
+   Packet Sniffers:
+   ---------------
+
+   Sniffit - http://reptile.rug.ac.be/~coder/sniffit/sniffit.html
+
+   Ipgrab  - http://www.xnet.com/~cathmike/MSB/Software/  
+
+
+   Trusted hosts and Targeted hosts:
+   --------------------------------
+   
+   Ummmmmmmmmmm...... >;-)
+
+
+   Other Recommended Text-Files Concerning TCP/IP security:
+   -------------------------------------------------------
+   
+   -How Mitnick hacked Shimomura/Sequence Number Attacks by Rik Farrow
+  
+   -A Simple Active Attack against TCP by Laurent Joncheray
+
+   -IP Spoofing Demystified by daemon9/route/infinity
+
+   -Introduction to the Internet Protocols by Charles L. Hedrick
+    *Not neccesarily about security, but it is one of those must-reads*
+
+ 
+    Spreaded by Neon-Lenz® and The Millennium Hackers Association.
+    Copyrighted and All Rights Reserved®
+    E-Mail:neonlenz@hackermail.net 
+    -2000- http://www.mha1.8m.com
+
+
+Comment added my R a v e N from http://blacksun.box.sk (okay, okay, so I'm
+promoting my website... you got me.  :-)):
+For newbies, I'd recommend 'IP Spoofing Demystified'. You can get it from the
+books/texts page at blacksun.box.sk.
+    Happy spoofing!

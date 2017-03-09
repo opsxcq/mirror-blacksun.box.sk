@@ -1,0 +1,115 @@
+                                           La Base de la Cryptographie
+                                                        par tHe mAnIaC
+                     vous pouvez me contacter à: dancho@mbox.digsys.bg
+                                     maniac@forbidden.net-security.org
+                                                            16.11.1999
+
+                                                  Traduite en français 
+                                                          par Foxhound
+                                                 foxhound@phreaker.net
+                                                            18.12.1999
+
+|=|=|=|=|=|=|=|A=|N=|A=|R=|C=|H=|Y=|=|R=|U=|L=|E=|S|=|=|=|=|=|=|=|=|=|
+Ce manuel est pour l'intention educatif et je ne prends aucun résponsabilité de la manière comment est utilisé l'information contenu dans ce manuel. Je vous montre comment le faire mais je ne vous l'ai pas dit de le faire. C'est votre décision si vous voulez publiez ce texte sur votre site/FTP/forum de discussion et autre média mais ne changez rien sans l'accord de l'auteur.
+<--=--=--=--=--=--=--=--=>
+Un mot de l'auteur:
+
+J'espère que vous aimez ce que j'écris et que vous le trouvez utile.
+Si vous avez un problème ou une suggestion soyez libre de m'envoyer un e-mail mais ne m'envoyez pas de courrier comme: "Je veux piratez le gouvernement des États Unis, aidez moi svp" ou  "dite moi comment cacher un Cheval de Troie dans une image .jpg"
+Soyez sûr que si je peux vous aider, je le ferai.
+<--=--=--=--=--=--=--=--=>
+
+Table de Matières
+
+1.De quoi parle ce texte?
+2.À propos du Codage et comment ça marche
+3.À propos de la Crytographie et de la PGP
+4.La façon de casser le Codage
+-Mauvais phrase de passe
+-Des fichers non effacés
+-Virus et Cheval de Troie
+-Version fausse de PGP
+=--=--=--=--=--=--=--=--=
+
+
+1.De quoi parle ce texte?
+-=-=-=-=-=-=-=-=-=-=-=-=-=
+Dans ce texte je vais vous expliquer tout ce qui concerne le codage, qu'est-ce que c'est, PGP, comment quelqu'un peut lire vos fichers codés, etc. Tous les pirates informatique ou paranoïaque devrais utiliser le codage et empecher les autres de lire leurs fichers. Le codage est quelque chose de très important et je vais vous expliquer comment quelqu'un peut casser et decoder vos fichers.
+
+2.À propos du Codage et comment ça marche
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+La cryptographie est très ancienne. Mème Jules César l'utilisait quand il envoyait des méssages parce qu'il ne faisait pas confiance à ses méssagers. Vous voyez le codage est partout, quand vous regardez un film d'éspion, il y a toujours un ordinateur avec des fichers codés ou un film à propos des pirates informatique, quand les fédéraux ont capturé le pirate, ils voient que tous ses fichers sont codés.
+
+Quand vou avez un simple ficher .txt que vous pouvez lire on l'appèlle un "texte clair".
+Mais si vous utilisez le codage et codez le ficher, il deviendra illisible si vous n'entrez pas le mot de passe. Ce texte, on l'appèlle un "texte cipher".
+Le procéssus de convertir un texte cipher en texte clair s'appèlle le décryptage.
+
+Voici un exemple:
+
+Texte clair==>Codage==>Texte cipher==>Décryptage==>Texte clair
+
+Cet exemple vous montre comment marche le codage et le décryptage d'un ficher.
+
+3.À propos de la Crytographie et de la PGP
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+La cryptographie est la science qui utilise la mathématique pour coder et decrypter des donnés. Cette science vous permet de garder vos donnés en securité même sur des réseaux comme l'Internet.
+Le codage peut être faible ou fort. Le meilleur c'est bien sûr le codage fort. Même si vous utilisez  tous les ordinateurs du monde et qu'ils font un milliard d'operations par seconde, vous devrez des millards d'années pour decrypter le code.
+
+PGP (Pretty Good Privacy) est peut être le meilleur utilité de codage pour coder vos fichers et documents.
+Il marche de cette façon:
+
+Quand vous codez un ficher avec PGP, tout d'abord PGP le compresse. Ceci va diminuer l'espace que ça va occuper sur le disque dur et aussi le temps de transmission par modem. Ensuite, il va créer une clé pour cette scéance. Cette clé marche avec une algorithme confidentiel très sure et très rapide pour coder le ficher. Aprés, cette clé de scéance est codé par la clé publique du receveur.
+PGP vous demande une phrase de passe et non un mot de passe. Ceci est plus sure contre les attaques de dictionnaire quand quelqu'un essaie d'utiliser tous les mots du dictionnaire pour avoir votre mot de passe. Mais quand vous utilisez une phrase de passe vous pouvez entrer les lettres en majuscule ou miniscule et aussi les chiffres et les symboles de ponctuation.
+
+
+4.La façon de casser le Codage
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+PGP a été ecrite pour des personnes qui veulent leurs fichers codés et qui veulent avoir une vie privée.
+Quand vous envoyez un e-mail, il pourra être lu par la personne qui a PGP et seulement par la personne à qui le message est déstiné.
+
+
+Maintenant vous savez beaucopu de choses à propos de la PGP et du codage mais maitenant vous vous demandez si quelqu'un peut lire vos textes et fichers codés. Mais même si vous utilisez toutes les ordinateurs pour décrypter un simple message de PGP, ils auraient besoin de 12 milloins de fois l'age de l'univers pour pouvoir le décrypter.
+Vous voyez, ceci est le meilleure codage qu'on puisse avoir et il est trop fort pour que quelqu'un puisse le casser.
+Les gens qui l'a programmé a fait leur boulot mais maintenant tout dépend de vous.
+
+-Mauvais phrase de passe
+*******************
+
+L'algorithme est incassable mais il y a d'autre façon de décrypter le texte et le lire.
+Une des plus grandes érreurs quand quelqu'un écrit sa phrase de passe et que c'est quelque chose comme: "John" je t'aime et d'autre phrase idiote comme celui ci. D'autre sont les noms des potes ou quelque chose de ce genre. Ceci est mauvais parce que c'est une phrase de passe et non un mot de passe, introduisez des chiffres et ce sera mieux. Ecrite une phrase longue et plus la phrase est longue et plus il sera difficile de la devinner mais utilisez des phrases qui n'ont pas de sense et pensez que quelqu'un est en train d'essayer de le devinner et ma phrase de passe sera quelque chose qui ne figure pas dans le dictionnaire comme:
+
+SalutL3Mond33tJ3vousfaitsavoirqu3j3siusunidiot3tunpirat3666
+
+Ceci est facile à rappeler et c'est comique et il y a très peu de chiffres mais vous pouvez ou ne pas utilisez des lettres en majuscule ou en minuscule. J'espère que vous choisirez un bon phrase de passe et que personne ne le saura.
+
+Une autre érreur est que vous écrivez votre phrase de passe sur un morceau de papier et que si quelqu'un le trouve, il pourra lire vous fichers et texte codés.
+
+-Des fichers non éffacés
+******************
+
+Une autre grande problème de sécurité et comment la plupart des systèmes d'éxploitation éfface des fichers. Alors quand vous codez un ficher, biensur que vous effacez le texte clair et gardez celui qui est codé. Mais le système ne l'éfface pas vraiment. Il ne fait que marquer les bloques du disque dur éffacé et libre. Quelqu'un peut alors lancer un programme de récupération et voir toutes les textes en clair. Même si vous écrivez vos texte avec une programme de traitement de texte, elle peut creer des fichers temporaires. Quand vous le fermez les fichers sont effacés mais comme je vous ai dit, ils sont encore quelque part sur votre ordinateur.
+PGP a une outil qui s'appèlle PGP Secure Wipe qui éfface complêtement les fichers que vous venez d'éffacer en écrivant les bloque ou étaient les fichers. Par cette façon vous aurez seulement les fichers codés sur votre ordinateur.
+
+-Virus et Cheval de Troie
+********************
+
+Une autre problême dangereux de sécurité sont les virus et les cheval de troie. Alors, quand vous êtes infecté par un cheval de troie, l'attaquant peut faire marcher un enregistreur de touche.
+
+*Notez
+Un enregistreur de touche est un programme qui enregistre tout les touches que vous tapez sur votre clavier sur votre disque dur et l'envoie vers l'attaquant.
+***************************************
+Alors quand l'attaquant le lance, il peut voir tou ce que vous avez tapez avec votre clavier et donc votre phrase de passe.
+Il y a aussi des virus écrite pour ce boulot, il enregistre que votre phrase de passe et l'envoie vers l'attaquant.
+
+-Version fausse de PGP
+********************
+
+Une autre problème de sécurité est la source de PGP et que quelqu'un peut faire une fausse copie et la modifier pour qu'elle envoie votre phrase de passe vers l'attaquant. Le programme va marcher normalement mais il peut contenir des fonctions donc vous ignorez l'existance.
+Un façon de se défendre de ces problèmes de sécurité est d'avoir un antivirus. Vous devez aussi vous assurer que votre ordinateur ne contient pas de virus ou cheval de troie quand vous installez PGP et aussi d'avoir PGP de chez Network Associates Inc. et pas chez les autres pages.
+
+Alors maintenant j'éspère que vous comprenez que PGP ne peut être casser si vous faites une bonne utilisation, avoir une bonne phrase de passe, et que votre ordinateur n'est pas infécté par des virus et cheval de troie et que vous utilisez la vraie version de PGP, vous serez en sécurité.
+
+
+
+tHe mAnIaC est un membre de Black Sun Research Facility (BSRF).
+Vous aurez d'autre manuel au http://blacksun.box.sk.

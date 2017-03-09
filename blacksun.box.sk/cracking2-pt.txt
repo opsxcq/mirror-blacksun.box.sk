@@ -1,0 +1,246 @@
+††††††††††††††††††††††††††††††††††††
+Cracking Tutorial - Parte 2 27/10/99
+††††††††††††††††††††††††††††††††††††
+
+Copyrights reservados a <TeCh~LoRd> (sagid@netvision.net.il) da Black Sun Research Facility (blacksun.box.sk)
+Traduzido por Lorde_Morpheus £ø©(Translated by Lorde_Morpheus £ø©)
+†††††††
+Índice:
+†††††††
+0. Introdução.
+1. Aviso.
+2. O menu de passos do cracking.
+3. Programas adicionais que você precisa ter para esta parte do tutorial
+4. Cracking o primeiro programa(swwet little piano.).
+5. Conclusão.
+===========================================================================================
+
+††††††††††††††
+0. Introdução:
+††††††††††††††
+
+Nesta parte, a segunda parte, você aprenderá a usar a maioria das importantes ferramentas 
+crackers comuns: W32Dasm e Hiew.
+Você irá aprender também a crackear alguns simples programas.
+
+O tutorial é dividido em três partes:
+
+Parte 1: introdução, ferramentas, e cracking básico.
+Parte 2: Treino prático, usando W32Dasm, e HIEW
+Parte 3: Key-generators.
+
+Bem-vindo à segunda parte do tutorial. :-)
+
+†††††††††
+1. Aviso:
+†††††††††
+
+Eu criei este tutorial apenas para fins de informação, e somente!
+Muitas informações deste documento podem ser usadas para performances e atividades ilegais!
+Não tente fazer nada do que está neste documento!
+Se você tentar alguma coisa, você será responsável pelo que você fizer!
+Se você se mete em alguma encrenca o problema é somente seu!
+Se você está intencionado a usar as informações aqui para impressionar seus amigos, pare agora mesmo e cresça!
+Se você não quiser aceitar isto, não leia mais nada!
+Se você crackear um programa e depois vender ou oferecer de graça estará cometendo um crime!
+
+
+†††††††††††††††††††††††††††††
+2. The main steps of cracking
+†††††††††††††††††††††††††††††
+
+Você deve ter visto estes passos na parte prévia do tutorial,
+mas é muito importante conhece-los. Relembrando que esses passos são 40%
+do modo de se garantir o sucesso de cracking num programa!!!
+
+Existem 7 passos no processo de cracking:
+
+1. Corra o programa que você quer crackear e aprenda o padrão de comportamento dele.
+   Tente localizar os strings e keywords, tente entrar a password e veja como o programa responde.
+2. Abra o programa com o W32Dasm e disassambler ele.
+3. Encontre típicos e comuns strings no disassembly que pertencem ao programa.
+   Na maioria dos casos, você tem de procurar por keywords como: password, nome, data, expirada,
+   limite de tempo, erros, entered e assim por diante.
+4. Encontre e observe o gerador de password, encontre e aprenda a rotina de proteção e as chamadas API.
+5. Tente entender o mecanismo de jumping da proteção.
+6. Abra o programa em HIEW.
+   Mude o jump do flow control para oposite jump command, ou desabilite isso.
+7. Corra e veja como a mudança que você tinha feito no programa original o afetou.
+   Sinta o poder que você tem, o poder de cracking, deixando programas procederem como você quer que eles ajam.
+
+Aprenda esses passos muitos bem, até você sonhar com eles, você usara cada programa em cada programa que você crackear.
+
+
+††††††††††††††††††††††††††††††††††††††††††††††††††††††††††††††††††††
+3. Programas adicionais que voce precisa para esta parte do tutorial
+††††††††††††††††††††††††††††††††††††††††††††††††††††††††††††††††††††
+
+Agora, nesta parte do tutorial, voce aprenderá a seguir os passos do cracking.
+Agora voce estará quebrando o seu primeiro programa.
+
+Mas antes disso, voce precisa pegar um pequeno programa chamado: "Sweet Little Piano"
+Voce pode baixar ele no:
+-----------------
+www.ronimusic.com
+-----------------
+
+Agora que voce já tem o programa vamos começar!!!
+
+††††††††††††††††††††††††††††††††††††††††††††††††††††
+4. Cracking o primeiro programa (Sweet little Piano)
+††††††††††††††††††††††††††††††††††††††††††††††††††††
+
+Agora vamos seguir cada passo e vamos crackear o programa:
+
+____________________________
+Passo 1: Correndo o programa:
+____________________________
+
+Bem, inicie ele!!! Duh...    :-)
+
+Bem, o que vemos aqui...
+O programa abre dois arquivos de texto.
+Também vemos "Unregistered Shareware" na barra de titulo...
+Agora vamos abrir o menu Ajuda para qualquer opção de registro...
+Humm, o que vemos agora...
+oh, é uma opção de password... 
+Bem, selecione e entre alguma coisa(não espere que esteja certo :-)).
+PAra ver o que acontece, clique em ok...
+Hmm, nada acontece...
+TAlvez tenha aceitado isso? Hmm.. sem chance... a barra de titulo ainda diz: Unregistered...
+Ok feche isto... bah ... mais arquivos de texto... e uma notificação que mostra que a 
+versão unregistred ainda não foi salva... bem... é como esses arquivos texto irritam a gente!
+Vamos fixar isto :-)
+
+________________________________
+Passo 2: Disassemble o programa:
+________________________________
+
+Disassemble o programa. Bom, pequeno e rápido :-) Sempre...
+Agora não temos nenhum strings no pop up menu quando queremos registrar alguma coisa...
+VAmos procurar por strings como registered, unregistered, a string sobre unsaved settings.
+Hmm... evaluation time left(tempo de expiracao terminada)... password.txt.... passworddialog.... 
+sweet little piano - Unregistered <<-- procure como nossa barra de titulo ;-) vá lá...
+Thanks for registering ... legal! Então agradece a voce de qualquer modo :-)
+Vamos pular para este lugar... Dê um duplo clique no pop up da rotina de registro...
+
+________________________________________________________________________________
+Passo 3: Analisando a rotina de proteção.../ Entendendo a mecanismo de jumping...
+________________________________________________________________________________
+
+Vamos analisar a rotina de proteção.
+
+////////////////////// Code snip ///////////////////////////
+ADDRESS   MACHINE CODE		ASSEMBLER INSTRUCTIONS
+
+* Possible Reference to Dialog: PASSWORDDIALOG, CONTROL_ID:0064, ""
+                                  |
+:00401715 6A64                    push 00000064
+:00401717 53                      push ebx
+
+* Reference To: USER32.GetDlgItemTextA, Ord:0000h
+                                  |
+:00401718 E8A5B50000              Call 0040CCC2
+:0040171D E822FFFFFF              call 00401644
+:00401722 85C0                    test eax, eax
+:00401724 741E                    je 00401744
+:00401726 6A30                    push 00000030
+
+* Possible StringData Ref from Data Obj ->"SweetPiano"
+                                  |
+:00401728 6866D24000              push 0040D266
+
+* Possible StringData Ref from Data Obj ->"Thanks for registering!"
+                                  |
+:0040172D 68FED14000              push 0040D1FE
+:00401732 53                      push ebx
+ 
+////////////////////// Code snip ///////////////////////////
+
+PasswordDialog ... a call to GetDlgItemTextA ... another call.... a test...
+and depending on the test a je.... The je jumps over the thank you ... 
+And just ends the dialog box ... without telling you that you entered something wrong...
+So this is right ... we did indeed not see that we typed something wrong ... but apparently we are supposed to see 
+if we type something right :-)
+
+Again execute the je jump, and look where it goes to ... return from the jump....
+Now lets try to rewrite what goes on here...
+(Tradução:
+"PasswordDialog... um call para GetDlgItemTextA... outro call... um test...
+E assim termina a caixa de dialogo... sem dizer a voce que voce entrou alguma coisa errada...
+então está tudo certo... nós não vemos que digitamos algo errado... mas aparentemente nós supomos
+ver se digitamos alguma coisa certa... :-) 
+
+Novamente execute o jump e procure onde ele foi... retorne ao jump...
+Agora deixe tentar sobrescrever o que está aqui..." )
+___________________________________________________________________________
+  call ShowPasswordDialog
+  call GetEnteredText
+  call IsEnteredTextGood
+  test value in eax
+  je   QuietExit
+
+  ShowThanksForRegistering
+
+  QuietExit:
+___________________________________________________________________________
+
+o código fonte deve estar parecendo isto:
+___________________________________________________________________________
+  GetDlgItemText(_ID_Serial);
+  if (EnteredTextGood) ShowThanksForRegistering
+
+// else nothing....
+___________________________________________________________________________
+
+Esta é outra interessante peça de código... teste eax, eax ... esta instrucao assembler testa se o valor de eax é igual a ele mesmo... if it is it is equal ... so a je  instruction jumps ... if it is not equal, it does not jump.... 
+Para crack este programa temos de mudar a je instruction dentro de duas nop instructions... e então estamos feitos...
+
+
+
+Nós tínhamos visto aqui, que o call tinha um valorem eax... alguma coisa que não é igual a zero ou... Em nosso 
+exemplo anterior nós vimos que o chamado Is_Serial_Valid call tem algum valor na memória... Aqui vemos que o chamado 
+Is_Serial_Valid call Tem o regIstro eax em nosso processador para algum valor...
+
+Passo 4: Mudando o programa original...
+então modificaremos ele :-)
+1. Abra Hiew.
+2. Abra o arquivo dentro do Hiew.
+3. encontre o endereço da linha em W32Dasm (está na barra de estatus começando com "@").
+4. Pressione F5 no Hiew.
+5. Entre o endereço que voce encontrou em (4) e pressione ENTER.
+6. Pressione F3 - para ativar a opção write.
+7. Pressione F2 - para mudar a instrução.
+8. Recoloque o camando 'NOP' (sem as aspas), que significa NO OPERATION.
+9. Agora um novo comando pertence a linha de texto.
+10. Recoloque isto pelo NOP também.
+11. Se outra nova instrução não apareceu, Pressione  F9 para update o arquivo.
+12. Pressione F10 para sair.
+13. Corra o programa e veja o resultado.
+
+Se voce não foi bem sucedido, ou tem qualquer questão ou precisa de uma informação adicional,
+E-Mail me em sagid@netvision.net.il e eu responderei todas as suas questões.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+††††††††††††
+5. Conclusão
+††††††††††††
+
+
+Eu dei este 'duro' exemplo de cracking para voce saber que se voce saber crack este programa,
+voce pode crack qualquer outro programa, e muitos outros que são simples ara crack.
+Na próxima parte você aprenderá a detectar key generators e crackear eles.
+
+Antes de voce ir ao próximo capítulo, volte lá p/ cima e veja os 7 passos novamente, e também volte à detecção do mecanismo de proteções e modificação.
+
+Vejo voce então.
+
+
+------------------------------------
+
+Visit our website for more stuff* at:  blacksun.box.sk
+<TeCh~LoRd>
+
+
+* Security tutorials, networking tutorials, programming tutorials, IRC-related tutorials, HTML tutorials, encryption tutorials, cracking tutorials, Phreaking tutorials e mais!!!

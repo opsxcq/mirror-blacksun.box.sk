@@ -1,0 +1,282 @@
+
+The Anonymity Tutorial / written by yours truly, R a v e N (blacksun.anrki.com)    <=============================================================================> version 1.1, 14/9/99  
+
+Nota: Donde veas algo como esto : Blah(1) significa que si no entiendes el significado de la palabra Blah hay una explicación para ti en la esquina del novato, en la sección 1
+Nota 2: Si te resulta dificil leer esto debido al scroll de la pantalla, probablemente no estes usando el ajuste de linea.
+La mayoría de lus editores para UNIX y los avanzados para Windows (y algunos menos avanzados como Wordpad) hacen esto por si solos
+Para hacer el ajuste de linea en Microsoft Wordpad, simplemente ve al menu edicion y cliquea en Ajuste de linea.
+
+Notas del Autor
+==============
+
+Todavia otro mini tutorial hecho por mi.
+Cuando hago un mini tutorial, significa que he prometido un gran tutorial (en este caso, Sendmail, que debería ser de 60K) pero me estoy volviendo un poco perezoso asi que escribo un mini tutorial mientras tanto.
+Si tienes algún comentario o pregunta sobre este archivo (nada de flames o de spam, por favor)contactenme en barakirs@netvision.net.il.
+Visite blacksun.anrki.com para mas tutoriales, libros de hacking/programación/unix de libre distribución para descargar y mucho mas
+
+Disclaimer
+==========
+Nosotros no animamos ningun tipo de actividad ilegal. Si tu crees que romper la ley es una buena manera de impresionar a alguien, para de leer ahora y crece. No hay nada impresionante o espectacular en ser un criminal.
+
+
+Volúmenes  
+== == == ==  
+¿Anonimidad?  
+¿* Quieres decir que yo tengo anonimidad cero en al Web?  
+¿* Y que? ¿Porque quiero mantenerme anonimo de todos modos?  
+* Bien, yo veo su punto. Anonimizame.  
+¿Proxies?  
+¿* Que son los Proxies?  
+¿* Que son los Proxies públicos?  
+¿* Dónde puedo encontrar yo las listas de proxies públicos?  
+¿* Son ellos buenos para algo además de la anonimidad?  
+¿* Bien, cómo los uso?  
+¿Wingates?  
+¿* Que son los Wingates?  
+¿* Cómo puedo usarlos para anonimizarme?  
+* Wingates parecen útiles. Quiero ejecutar uno en mi propia computadora. ¿Cómo lo hago sin convertirlo en una "colmena de anonimidad?"  
+¿* Cómo puedo decirles yo a los clientes de IRC, Instant Messengers como ICQ, etc', como usarlos?  
+¿Remailers anonimos?  
+¿* Que es un remailer anónimo?  
+¿* Cómo puedo usarlos para ser más anónimo?  
+¿* Por qué usaria una persona un servicio del remailing anónimo? ¿Cual es el punto?  
+¿Encryption?  
+¿* Por qué debo yo el encriptar mi Email?  
+¿* Cómo puedo encriptar mi Email?  
+¿El Anonymizer?  
+¿* Que es el anonymizer?  
+¿* Cómo puedo ingresar?  
+Cookies  
+¿* Que son las Cookies?  
+¿* Pueden arriesgar mi anonimidad?  
+¿Dónde puedo aprender más sobre la anonimidad?  
+* URLs útiles.  
+* Otros tutoriales por Black Sun.  
+Apéndice A: Usando Altavista como un "proxy"  
+¿* Como puedo usar el servicio de traduccion web de Altavista para anonimizarme?  
+Bibliografía  
+* http://www.theargon.com  
+* Anonymizer.com  
+* Varios Tutoriales  
+Otros Tutoriales por Black Sun  
+* Hackeando FTP  
+* Overclocking.  
+* Eliminando spam y carteles publicitarios  
+* Sendmail.  
+* Phreaking.  
+* La Guerra de IRC.  
+* El Registro de Windows.  
+* Rastreando a las Personas.  
+* Proxy/Wingate/SOCKS.  
+* Seguridad Offline.  
+  
+¿Anonimidad?  
+== == == == ==  
+Sin importar si usted lo comprende o no, Internet no es tan anónima como usted podría pensar. Aquí están unos ejemplos:  
+  
+1) usted entra en un website. Una vez que usted dio con cualquier archivos en el webserver, los dueños del website pueden averiguar estas piezas de información sobre usted, y mucho más:  
+  
+1. su Dirección IP.  
+2. su hostname.  
+3. su continente.  
+4. su país.  
+5. su ciudad.  
+6. su navegador de Web.  
+7. su sistema operativo.  
+8. su resolución de la pantalla.  
+9. sus colores de la pantalla.  
+10. El URL anterior al que usted haya visitado.  
+11. Su ISP.  
+  
+Y esto es solamente la punta del iceberg. Vaya a nuestro homepage a blacksun.anrki.com y encuentre el botón de estadisticas en la web. Allí usted podrá ver cuánto podemos decir nosotros sobre nuestros visitantes  
+  
+2) otro ejemplo: usted se conecta a una red de IRC y usted está charlando con sus amigos. Ahora mismo una persona necesita encontrar información sobre usted y conoce nada más que su apodo.(nick)  Él no tiene que conocerlo ni siquiera, ni estar en el mismo canal/canales que usted. Aquí hay algunos ejemplos de lo que usted puede encontrar simplemente sabiendo el apodo de una persona (en las condiciones más óptimas):  
+  
+1. su nombre real.  
+2. su dirección de Email.  
+3. su dirección IP.  
+4. su hostname.  
+5. su ISP.  
+6. su continente.  
+7. su país.  
+8. su ciudad.  
+  
+Y mucho mucho más.  
+  
+Lo mismo va por juegos  online que les permiten a jugadores ver las direcciones de IP de los otros jugadores.  
+  
+3) suponga mi nombre es Paul Matthews, y mi dirección de Email es pmatthews@boring.ISP.net. Es sumamente fácil deducir que la primera letra de mi primer nombre es P y que mi apellido es Matthews, pero eso no es todo.  
+Algunos ISPs dan sus listas enteras a los directorios de Web. Por ello, las personas pueden ir a, digamos... whowhere.com, escribir las palabras Paul Matthews o buscar a las personas con Matthews como su último nombre en boring.ISP.net y averiguar que ese pmatthews@boring.ISP.net realmente pertenece a Paul Matthews, descubriendo su nombre real.  
+Pero también es posible usar éstos los directorios de Web para 1,001 usos. Por consiguiente usted debe ir lo más pronto posible a whowhere.com, debe intentar buscarse a si mismo y entonces debe decirle a whowhere.com que anule su inscripción.  
+  
+4) algunos ISPs también ejecutan finger daemons.  
+Un daemon es un programa que espera por las conexiones entrantes en un puerto específico o en varios.  
+El finger daemon es un daemon que espera por las conexiones abiertas en puerto 79. Una vez que usted entra, usted necesita ingresar un username en el sistema el daemon corre y usted conseguirá toneladas de información sobre él.  
+Por ejemplo: un tiempo atras mi ISP estaba ejecutando un finger daemon en sus servidores (hasta que yo les obligue a que lo quitaran porque era una invasión a la privacidad). Ahora, suponga usted no sabe nada de mí además de mi Email que es barakirs@netvision.net.il. La primera cosa que usted debe hacer es ir a netvision.net.il en puerto 79 y esperar que haya alguien allí. Si hay, usted puede encontrar la información siguiente ingresando mi nombre de usuario, barakirs,:  
+  
+1. mi nombre real.  
+2. cuando fue la última vez yo estube conectado.  
+3. si yo estoy en linea ahora mismo, desde que cuando yo esto conectado.  
+4. si yo tengo nuevo correo o no.  
+  
+Y mucho mucho más (algunos finger daemons podrían repartir cualquier información, como mi dirección de la casa y número de teléfono).  
+Además de los usos obvios (encontrando el nombre real de una persona y otra información privada), usted puede usar esta información para los varios propósitos, como:  
+  
+1. la mayoría de los instant messangers , como ICQ, AIM, YAHOO Instant Messanger  y MSN Instant Messanger, permiten agregar personas dentro o fuera de su lista de contactos a una "lista invisible", asi ellos no podrán saber si usted esta online o no y usted parecerá estar siempre offline para ellos. Si ellos tienen su direccion de Email, y su ISP está ejecutando un finger daemon, ellos pueden saber si usted esta realmente offline o simplemente intentando engañarlos.  
+2. su amigo le prometió hacer algo para usted en la red, pero cuando usted se conecta finalmente para preguntarle si esta hecho, el dice que recien vuelve de su trabajo y que recien se conecta. Usando finger, usted puede probar esto y fijarse cuando realmente se conecto.  
+  
+Éstos son unos pocos de muchos ejemplos.  
+Durante este tutorial les explicaré cómo impedirles a las personas averiguar información sobre ustedes (habrá siempre nuevos trucos, pero bloqueando el más básico / los mas comunes rechazarán la mayoría de los atacantes y lo harán más dificil para el más experimentado). Si usted realmente quiere aprender a hacer estas cosas, así como algunos los trucos muy buenos y avanzados, entonces lea el tutorial 'Tracing People '.(rastreando gente)  
+  
+¿Proxies?  
+== == == ==  
+Los proxies se inventaron  primero para acelerar conexiones a Internet. Asi es cómo trabajan:  
+Usted está intentando conectar a un servidor en el otro lado del planeta. Sus demandas  HTTP se envían a su servidor proxy localizado en la oficina principal de su ISP, que esta mucho cerca que tu de ese servidor lejano. El proxy  primero chequea si algun usuario ha accedido este website últimamente. En ese caso, debe tener una copia de él en alguna parte de sus servidores. Entonces el servidor proxy sólo empieza la conexión para verificar si su versión no está desactualizada, lo que sólo le exige fijarse en el tamaño del archivo. Si tiene la última versión, le enviará el archivo, en lugar que traerla desde el servidor lejano, acelerando asi la conexión. Si no, descargara los archivos pedidos en si mismo y entonces se los enviará.  
+Pero los proxies también pueden ser usados para anonimizar su navegacion en la Web, porque ellos manejan que todo sus pedidos HTTP.  
+La mayoría de las veces su ISP tiene un proxy. Llame a soporte tecnico y pregúnteles por eso. Pero los problemas con acceso al proxy brindado por su ISP son:  
+1. algunos ISPs ni siquiera tienen proxy.  
+2. el dueño del website todavía puede que ISP está usando y donde vive, porque este tipo de proxies no son  públicos y ellos sólo pueden ser accedidos por usuarios de ese ISP. Para tales casos, hay una solución - los proxies públicos.  
+Usted puede encontrar una lista de proxies públicos por todas partes. Aquí está dos buenos URLs para empezar:  
+  
+1. http://www.theargon.com  
+2. http://www.cyberarmy.com/lists  
+  
+Para configurar su navegador de web para usar un servidor proxie, encuentre la caja del diálogo apropiada en su caja de diálogo de propiedades (varía de un navegador a otro).  
+  
+Nota: algunos servidores proxy también manejarán sesiones de FTP (algunos solo manejan FTP).  
+  
+¿Wingates?  
+== == == == =  
+Wingate es un programa que se usa para convertir una PC ejecutando Windows 9x o NT en un servidor proxy. Aquí hay varias razones por las que una persona querría ejecutar semejante aplicación y convertir a su computadora en un proxy:  
+  
+1. si es dueño de un ISP y quiere preparar a un proxy para eso.  
+2. si él quiere convertir a su computadora en un proxy público.  
+3. si él quiere dar acceso a Internet a un monton de computadoras que estan conectadas por una Red del Area Local(LAN), pero solo puede proporcionar acceso a Internet para una computadora. En ese caso, convertiría su computadora en un servidor proxy y configuraria a todas las otras computadoras en la red para usarlo como un proxy. De esa manera todo el resto de las computadoras en la red relevará sus pedidos HTTP y FTP a través de una sola computadora, un solo módem y una sola cuenta de Internet.  
+  
+¿El problema con los Wingates es que ellos son altamente... bien... ellos son muy... cómo debo decir esto? Estupido. Simple y llanamente estupido ¿Por qué es asi?  
+TODOS podemos conectar a su pequeño proxy simplemente conectando al puerto 1080 en mi computadora y teclear ' IP-del-objetivo-o-Puerto-del-host' (ninguna comilla) y reemplaza IP-del-objetivo-o-Puerto-del-host con la dirección  IP o el hostname al que quieremos conectar, y reemplazar el puerto con el puerto de destino. La maquina "wingated"  relevara entonces su entrada a través de él, pero parecerá que la máquina wingated se está conectando a la computadora objetivo, y no usted.  
+Efectivamente, los administradores de sistema de la máquina  wingated pueden cambiar ese puerto a uno diferente, pero éste es el valor por defecto, y si usted es lo bastante tonto para usar Wingate probablemente no querrá jugar con los valores por defecto.  
+En primer lugar, si usted necesita usar Wingate por alguna razón, use SyGate en cambio. Hace exactamente lo mismo que Wingate, sólo que no servirá a TODOS como lo hace Wingate.  
+Ahora, estos Wingates puede ser usados para anonimizar prácticamente cualquier cosa. También, cualquier programa que puede prepararse para ejecutar detrás de un cortafuego(firewall) de los SOCKS(la mayoría de los clientes de IRC, la mayoria de los instant messangers y la mayoría de los navegadores Web) hará automaticamente el trabajo sucio de asignación de ruta a su material a través de él si usted le da el IP/hostname y el puerto apropiado de la máquina wingated.  
+Wingates también puede ser usado para entrar en los canales de IRC de los que fue echado (falsificando su IP).  
+  
+ADVIRTENCIA: algunas redes de IRC ejecutan bots que echan a las personas que usan Wingates. Estos bots intentan conectar a personas al azar en puerto 1080. Si tienen éxito, ellos lo echaran. Esto trabaja porque las redes de IRC, así como todos dentro de ellas, piensan que su IP es el IP de la máquina wingated. Si el bot intenta conectar a su IP en puerto 1080, realmente irá a la máquina wingated. Los bot descubrirán entonces que su IP realmente es un wingate y echara (desde que ha estado corriendo por la red de IRC y dado suficientes privilegios para echar a cualquiera).  
+  
+Usted puede encontrar listas de Wingates en http://www.cyberarmy.com/lists. Hay también montones los escáneres de Wingate que pueden examinar subredes enteras y buscar Wingates, pero esto tarda algún tiempo (y hacer a su ISP sospechar), así yo sólo iria por las listas de CyberArmy.  
+  
+¿Remailers anónimos?  
+== == == == == == == == == ==  
+Previamente yo he demostrado todo lo que una persona con conocimientos reducidos puede averiguar sobre usted sólo sabiendo su dirección de Email. ¿Ahora es obvio que para mantener su privacidad, necesita obtener una cuenta de Email gratuita(como Hotmail [hotmail.com], Yahoo mail [mail.yahoo.com], ZDNet Mail [zdnetmail.com], Net @ddress [netaddress.com], Bigfoot [bigfoot.com] etc'). Pero que pasa si usted tuviera un buzon especial de Email en un servidor gratuito que automáticamente remite todo el Email entrante a su buzón real y mantiene toda la información confidencialmente?  
+Éstos se llaman Remailers Anónimos. La mayoría de ellos es libre y viven de contribuciones y/o carteles de publicidad que ponen en su website.  
+Usted puede encontrar muchos muchos Remailers Anónimos en http://www.theargon.com.  
+  
+Este es un buen ejemplo de un Remailer Anónimo:  
+Primero, diríjase a http://anon.isp.ee (a propósito, la extensión .ee simboliza Estonia) y obtiene su cuenta gratuita. Una vez que es un usuario registrado, énvíele un Email a robot@anon.isp.ee sin asunto y el siguiente contenido:  
+user: su nombre de usuario  
+pass: su contraseña  
+realaddr: la dirección de Email de su destinatario.  
+realsubj: el asunto de su correo.  
+Ejemplo: si yo quiero enviar un correo anónimo conteniendo lo siguiente:  
+  
+Asunto: ¡LA ANONIMIDAD MANDA!!  
+Hola.  
+Éste es un mensaje de Email anónimo.  
+¡Quiero verlos rastrearme ahora!  
+  
+a bgates@microsoft.com, y su nombre de usuario es user y su contraseña es pass, énvíele el Email siguiente a robot@anon.isp.ee (recuerda no poner un asunto):  
+  
+usuario: user  
+contraseña: pass  
+realaddr: bgates@microsoft.com  
+realsubj: ¡LA ANONIMIDAD MANDA!!  
+Hola.  
+Éste es un mensaje de Email anónimo.  
+¡Quiero verlos rastrearme ahora!  
+  
+Usted recibirá un Email de notificacion una vez que anon.isp.ee haya entregado su mensaje.  
+Cuando su destinatario conteste su Email, el mensaje sera enviado a su cuenta.  
+  
+También puede usar remailers anónimo basado en la Web como Replay Associates(replay.com/remailer/anon.html), pero no le permitirá recibir contestaciones.  
+  
+¿Encriptacion?  
+== == == == == =  
+Todos pueden leer su Email. Indistintamente si algun pequeño script para hackear su cuenta en Hotmail, un cracker experimentado (o un chico script con mucho tiempo libre) que hackeo su cuenta POP3 o una persona que recibio sus Email por equivocación. Si usted no quiere que otras personas lean su Email, use PGP.  
+Cualquier persona que use PGP puede tener su propia clave de PGP. Una clave consiste en montones de caracteres, que pueden ser mayusculas, minusculas, numeros o simbolos. Después de que usted hace su clave, necesita transferirla a todos a los que usted quiere enviar correo encriptado. Una vez que ellos la tienen, usted puede empezar a enviarles correo encriptado y ellos podran usar su llave para desencriptarlo.  
+Más informacion en www.pgpi.com.  
+  
+Nota: PGP es muy fuerte y sólo puede ser decodificado con supercomputadoras gigantes. Mientras más larga es su clave, más dificil es romper la encriptacion.  
+  
+¿El Anonimizador?  
+== == == == == == == =  
+El Anonymizador es un servicio de Internet que lo ayuda a anonimizarse mejor. El el homepage de Anonymizer es www.anonymizer.com. Aquí hay una instantánea de anonymizer.com:  
+  
++++++  
+  
+Apreciación global de la compañía  
+----------------  
+Anonymizer.com es un pionero de Internet en tecnologías de privacidad, y el nombre más popular y confiable en entregar privacidad en linea. Anonymizer.com, hoy, tiene muchos miles de subscriptores pagando por sus servicios y anonimiza a más de 7.5 millones de páginas por mes. Lancee Cottrell, fundador y Presidente de Anonymizer.com, autor del remailer anonimo mas seguro del mundo, Mixmaster y ha estado activo durante muchos años promoviendo la fluidez de la informacion. Lancee recibió su grado del estudiante en físicas de La Universidad de California, Santa Cruz y un Master en Físicas de La Universidad de California, San Diego.  
+Justin Boyan, mientras era un estuiante de la informática Ph.D. en la Universidad Carnegie Mellon, diseñó y llevó a cabo Anonymizer. La navegacion de Anonymizer está ahora en su 4ta generacion bajo el desarrollo del equipo de ingenieros de Anonymizer.  
+  
+Nuestra Misión  
+-----------  
+Nuestra misión es asegurar que que el derecho de un individuo a la privacidad no se compromete una vez que ellos se conectan. Nosotros empezamos esta compañía como un medio para proteger este derecho incluido en la Declaración Universal de las Naciones Unidas de Derechos Humanos:  
+"Nadie se sujetará a la interferencia arbitraria con su retiro, familia, casa o correspondencia, ni a los ataques en su honour y reputación. Todos tenemos el derecho a la protección de la ley contra tal interferencia o ataques."  
+  
+Mientras que fue escrito hace 50 años, el artículo 19 de este documento es ahora más aplicable con el advenimiento de Internet:  
+"Todos tenemos el derecho a la libertad de opinión y expresión; este derecho incluye libertad para sostener opiniones sin interferencia y buscar, recir e impartir información e ideas a través de cualquier medio de comunicación y sin tener en cuenta las fronteras."  
+  
+Usted puede leer la Declaración Universal de Derechos Humanos en el siguiente URL: http://www.unhchr.ch/udhr/lang/eng.htm.  
+  
++++++  
+  
+Usted puede usar Anonymizer para navegar por la Web con anonimidad gratis yendo a anonymizer.com, o comprar un paquete de Anonymizer que le dará más beneficios. Si usted quiere que algo del dinero que usted paga vaya a parar a Black Sun, subscribase a traves del URL siguiente: http://www.anonymizer.com/3.0/affiliate/door.cgi?CMid=12437.  
+Si usted quiere, tambien puede unirse a su programa de afiliados. Simplemente vaya a http://www.anonymizer.com/3.0/affiliate/afdoor.cgi?CMid=12437 por más información. Si usted se subscribe a través de este URL, usted todavía recibirá todo el dinero en efectivo que usted merece, pero nosotros en Black Sun también recibiremos algunos beneficios.  
+  
+Cookies  
+== == == =  
+¿Ha notado usted cómo todos esos websites en la red se estan volviendo "más inteligentes" de repente? Usted sabe, como las paginas recuerdan su nick, algunos sitios recuerdan su contraseña para que usted no tenga que volverlo a escribirlo cada vez que ingrese, los centros comerciales electrónicos recuerdan lo que usted puso la ultima vez en su carro virtual.  
+Esto es todos debido a las cookies. Las cookies son archivos pequeños que un website puede pedirle a su navegador browser que cree y entonces pueden recuperar información de ellos. Lo sitios Web puede poner su contraseña o cualquier otra información en estos archivos.  
+Si usted no quiere que sus compañeros de trabajo u otras personas husmeen que lugares ha estado visitando, qué artículos ha estado comprando etc', debe anularlos cuando no los necesita.  
+En Unix, sus cookies se guardarían normalmente en alguna parte en su directorio raiz (normalmente /home/your-login, /usr/your-login o /usr/local/your-login si usted es un usuario regular y /root si usted es raíz, pero cualquiera con acceso de escritura a /etc/passwd puede cambiar eso).  
+En Windows y Mac, se guardan cookies en un subdirectorio del directorio de su navegador.  
+  
+Note 1: usted puede decirle a su navegador que le pregunte antes de aceptar una galleta. Simplemente busque en el menu preferencias y lo encontrara (hay tantos navegadores alli fuera que no puedo dar una explicación detallada para cada uno).  
+Note 2: si usted está navegando desde una computadora pública, no guarde ninguna galleta, u otras personas podrán curiosear y mirar sus cookies o incluso entrar en varios websites con sus contraseñas, su numero de tarjeta de crédito etc'.  
+  
+¿Dónde puedo Aprender yo Más Sobre la Anonimidad?  
+== == == == == == == == == == == == == == == == == == == =  
+URLs útil: http://www.theargon.com.  
+             http://www.pgpi.com (para aprender sobre la encriptacion de PGP y cómo aplicarlo a encriptar su Emails)  
+             IP Spoofing Demystified - un largo artículo de la revista de Phrack en IP spoofing (falsificando su IP). Usted puede bajarlo de nuestra sección de libros.  
+             http://www.cyberarmy.com/lists - Para las listas de Wingates, Proxies y cuentas shell gratis.  
+  
+Otros tutoriales por Black Sun: Guerra de IRC por CyberGod (para aprender más en Anonimizacion, entre en el IRC), tutorial de Proxy/WinGate/SOCKS por Jatt y Sendmail por mí, R a v e N.  
+  
+Apéndice A: Altavista usando como un proxie  
+== == == == == == == == == == == == == == == == == == ==  
+Si usted va a altavista.com, y bajo su sección de las herramientas escoge traducción (o va directamente al URL siguiente: http://babelfish.altavista.com/cgi-bin/translate?), usted puede pedirle a Altavista que traduzca páginas web para usted.  
+Pero usted también puede usar esto como un proxie, desde que cuando usted le dice a Altavista que traduzca una página Web, la traduccion CGI de Altavista descarga la página para usted.  
+  
+Gracias a Yoink por esta información.  
+  
+Bibliografía  
+== == == == == ==  
+1) The Argon - http://www.theargon.com  
+2) The Anonymizer - http://www.anonymizer.com  
+3) Hacker.co.il - http://www.hacker.co.il  
+4) Varios Tutoriales.  
+  
+Otros Tutoriales por Black Sun  
+== == == == == == == == == == == == == ==  
+  
+* Hackeando FTP.  
+* Overclocking.  
+* Bloqueando Anuncios y Spam.  
+* Redes RM.  
+* Sendmail.  
+* Phreaking.  
+* La Guerra de IRC.  
+* Los Ataques DoS.  
+* El Registro de Windows.  
+* Rastreando a las Personas.  
+* La Seguridad de Offline.  

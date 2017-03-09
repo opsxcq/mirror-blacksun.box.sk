@@ -1,0 +1,124 @@
+Pubblicato su BSRF - http:/blacksun.box.sk
+Scritto da WATER e diretto da snider
+
+STRUTTURA DELL'INDIRIZZO IP:
+
+nota: i termini indirizzo multicast e MSB sono spiegati alla fine.
+
+Ogni stazione su un PSN (network per la trasmissione a pacchetti) che è basato sul protocollo TCP/IP (il tuo computer ne è una, per esempio. Si, ci stiamo riferendo a un host che è collegato alla rete) deve avere un indirizzo IP, così che può essere identificato, e l'informazione può essere ritrasmessa e avviata a esso in maniera ordinata.
+
+Un indirizzo IP è formato da un indirizzo logico a 32 bit. L'indirizzo è diviso in due campi:
+
+1) L'indirizzo del network:
+Assegnato da InterNIC (Centro per l'informazione del network internet).
+Infatti la maggior parte degli ISP (fornitori di servizi internet) comprano un numero di indirizzi e assegnano loro individualmente.
+
+2) L'indirizzo dell'host:
+Un indirizzo che identifica il singolo nodo attraverso il network. Può essere assegnato dal gestore del network, usando protocolli per ciò come il DHCP, o la workstation stessa.
+(il protocollo per il networking dell'IP è un protocollo logicamente rediretto, il che significa che l'indirizzo 192.43.54.2 sarà sullo stesso collegamento fisico dell'indirizzo 192.43.54.3 (naturalmente questo non è sempre esatto. Dipende dalla maschera subnet del network))
+
+struttura di un indirizzo IP:
+
+
+    ---.---.---.--- 
+
+    ^             ^
+    |             |
+ network    |    host
+
+Ogni " --- " = 8 bits.
+I primi bits ==> indirizzo del network
+Gli ultimi bits ==> indirizzo dell'host.
+
+Con 8 bits puoi ottenere da 0 a 255. (binario=(2^8)-1)
+Esempio:
+11000010.01011010.00011111.01001010 (binario)
+194.90.31.74 (decimale)
+
+
+Classi di indirizzi IP:
+Possiamo classificare un indirizzo IP in 5 gruppi. Puoi distinguerli confrontando i bits di "ordine più alto" (i primi quattro bits sulla sinistra dell'indirizzo):
+
+tipo  | modello | target | MSB |addr. range   |num. bit  | max.stazioni|
+      |         | gruppi |     |              |net./hosts|             |
+------|---------|--------|-----|--------------|----------|-------------|
+  A   |N.h.h.h  | TUTTI  |  0  | 1.0.0.0      |   24/7   | 16,777,214  |
+      |         | ECCETTO|     |    a         |          |             |
+      |         | CORPI  |     | 126.0.0.0    |          |             |
+      |         | ENORMI |     |              |          |             |
+------------------------------------------------------------------------
+      |N.N.h.h  | TUTTI  | 10  | 128.1.0.0    | 16/14    | 65,543      |
+  B   |         | CORPI  |     |    a         |          |             |
+      |         | GRANDI |     | 191.254.0.0  |          |             |
+------------------------------------------------------------------------
+      |N.N.N.h  | MOLTI  | 110 | 192.0.1.0    | 8/22     |  254        |
+  C   |         | DEI    |     |    a         |          |             |
+      |         | PICCOLI|     | 223.225.254  |          |             |
+      |         | CORPI  |     |              |          |             |
+------------------------------------------------------------------------                                                D  | NESSUNO |MULTI-CA|1110 | 224.0.0.0     | NON PER | SCONOSCIUTO |
+      |         |ST IND. |     |    a          | USI     |             |
+      |         |RFC-1112|     |239.255.255.255| ABITUALI|             |
+------------------------------------------------------------------------
+ E    | NON PER |IND.    |1,1,1,1| 240.0.0.0     |NON PER|  NON PER USO|
+      |  USO    |SPERIME |       |   a           |USO    |             |
+      |         |NTALI   |       |254.255.255.255|       |             |
+------------------------------------------------------------------------
+
+N=NETWORK , h=HOST .
+
+Come puoi vedere nella tabella sopra il campo indirizzi 127.x.x.x non è usato.
+Questi indirizzi sono assegnati ad un uso interno dei dispositivi del network, e sono usati soltanto come strumenti applicativi. Per esempio: 127.0.0.1, il più comune di questi, è chiamato indirizzo loopback ogni cosa mandata qui torna direttamente indietro a te, senza aver viaggiato fuori sui cavi.
+Ancora, alcuni IP sono riservati per i VPN - networks privati virtuali. Questi sono networks di aree locali superiori i networks di ampie aree che usano il Protocollo Internet per comunicare, e ad ogni computer all'interno del network è assegnato un indirizzo IP. Così, supponiamo che un certo computer vuole mandare un pacchetto di dati a un altro host sul network con l'IP 'x', ma c'è anche un altro host su internet che ha lo stesso IP - Cosa accade adesso? Questo è perchè non puoi usare questi e altre forme di IP riservati su internet.
+
+EXTRA:
+
+Distinguere gruppi differenti:
+
+Tu devi confrontare il primo bit sulla sinistra nell'indirizzo come segue:
+
+Tipo |   Primo byte   | MSB
+     |   in decimale  |
+----------------------------
+A    | 1-126          | 0
+----------------------------
+B    | 128-191        | 10
+----------------------------
+C    | 192-223        | 110
+----------------------------
+D    | 224-254        | 1110
+----------------------------
+E    | 240-254        | 1111 
+---------------------------- 
+
+NOTE: Si, lo sappiamo, abbiamo lasciato un sacco di cose non spiegate in questo testo. Con il tempo, scriveremo più tutorial per coprire questi e altri argomenti. Così nel frattempo, io suggerisco di andare su blacksun, trovare la pagina dei tutorials e vedere se c'è qualcos'altro che ti interessa.
+E ricorda - anche noi abbiamo un forum, così se hai qualsiasi domanda, sentiti libero di mandarcela lì.
+
+stronzate inspiegabili (newbie note):
+
+1) Multicast: (copiato dall'RFC 1112)
+
+L'IP multicasting è la trasmissione di un datagramma IP a un "gruppo di host", un insieme di zero o più hosts identificati da un singolo indirizzo IP di destinazione. Un datagramma multicast è consegnato a tutti i membri della suo gruppo di host di destinazione con la stessa affidabilità dei "migliori lavori" come datagrammi regolari di unicast IP , i.e., non è garantito che il datagramma arrivi intatto a tutti i membri del gruppo di destinazione o nello stesso ordine relativo ad altri datagrammi.
+
+L'essere membri di un gruppo di host è una cosa dinamica; questo perchè, un host può associarsi e lasciare un gruppo in ogni momento. Non c'è restrizione sulla posizione o sul numero dei membri in un gruppo di host. Un host potrebbe essere un membro di più di un gruppo allo stesso tempo. Un host non ha bisogno di essere membro di un gruppo per mandargli datagrammi.
+
+Un gruppo di host può essere permanente o transitorio. Un gruppo permanente ha un ben conosciuto IP assegnato dall'amministrazione. E' l'indirizzo, non il membro del gruppo, che è permanente; ogni volta un gruppo permanente può avere un qualsiasi numero di membri, anche zero. Quegli indirizzi IP multicast che non sono riservati a gruppi permanenti sono disponibili per assegnazioni dinamiche a gruppi transitori che esistono solo fintanto che hanno membri.
+
+La spedizioni in reti internet di datagrammi IP multicast (pacchetti IP) è gestita dai "multicast routers" che possono essere co-residenti con, o separati da, i gateways internet. Un host trasmette un datagramma IP multicast come un multicast in network locale che raggiunge tutti i membri immediatamente nelle vicinanze del gruppo di host di destinazione. Se il datagramma ha un IP time-to-live più grande di 1, il(i) router(s) multicast attaccati al network locale prende la responsabilità di ridirigerlo attraverso tutti gli altri networks che hanno membri del gruppo di destinazione. Su quegli altri membri dei networks che sono raggiungibili senza l'ip time-to-live, un router multicast attaccato completa le spedizioni trasmettendo i datagrammi (pacchetti ip) come in un multicast locale.
+
+*se non hai capito il testo di sopra non ti preoccupare, è complicato e essenziale, ma rileggilo più e più volte.
+Hacking non è facile!
+
+2) MSB: Most Significent Bit (Bit Più Significativo):
+In un insieme di numeri il primo numero sulla sinistra è il più importante poichè possiede il più alto valore in opposizione al LSB==>Least Significient Bit (Bit Meno Significativo), che è sempre il più piccolo valore.
+
+
+
+==========================================================================       
+Questa guida è stata dal M3xican ( m3xican@napolihak.cjb.net ), 
+se considerate la traduzione scadente o vi volete 
+cimentare nell'impresa potete scaricare la versione originale in americano 
+sempre su <http://napolihak.cjb.net>.
+
+ 
+
+

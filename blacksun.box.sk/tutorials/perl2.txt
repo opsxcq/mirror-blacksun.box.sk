@@ -1,0 +1,373 @@
+******************************************************
+* La Rivista Settimanale sul Perl 2 - By Ankit Fadia *
+******************************************************
+
+Benvenuto al secondo numero del Manuale di Perl. Nel primo numero ho dato un'introduzione 
+generale al Perl e spiegato alcuni argomenti principali del Perl. Anche questo numero non 
+spiega niente di avanzato ma spiega alcune cose di basi del Perl. Si può dire essere una 
+continuazione del primo numero. Una volta che hai familiarizzato con le basi del perl, 
+sarà più facile per voi ragazzi capire delle funzioni avanzate che ti permetteranno di 
+creare dei bei programmi. Così ti suggerisco di leggere questi numeri con molta cura, 
+cosicchè non avrai problemi mentre leggi gli argomenti avanzati.
+
+Loops
+-----
+
+I loops sono molto utili quando devi eseguire lo stesso pezzo di codice o lo stesso 
+comando più volte. Diciamo per esempio che vuoi scrivere il tuo nome sullo schermo 5 
+volte. Dovresti scrivere:
+
+$scalarvar= 'Ankit\n' ; 
+print '$scalarvar' ;
+print '$scalarvar' ;
+print '$scalarvar' ;
+print '$scalarvar' ;
+print '$scalarvar' ;
+
+Il programma precedente scriverà cinque volte sullo schermo Ankit (ogni Ankit in una nuova 
+linea); il programma ha prodotto i risultati sperati ma il codice è abbastanza ingombrante 
+e non è molto efficiente. Il Perl ha molte istruzioni di loop come il loop For Next, il 
+loop While e anche il loop Do While, che che permettono di ripetere un gruppo di 
+istruzioni nel corpo del loop fin quando una condizione è verificata. Potrebbe sembrare 
+difficile, ma continua a leggere e tutto diventerà più chiaro.
+
+Il loop While
+-------------
+
+Vediamo la sintassi di base del loop While:
+
+while (condizione) { corpo }
+
+Questo significa che fin quando la condizione è vera, i comandi tra le parentesi graffe, 
+cioè le istruzioni nel body, sono eseguite. Il programma precedente può essere quindi 
+scritto così:
+
+$count='1';
+while ($count <= 5) {
+print 'Ankit\n' ;
+$count++ ;
+}
+
+Il loop While non solo può essere usato per ripetere un pezzo di codice, ma ci permette 
+anche di verificare l'input dell'utente e eseguire un comando predefinito se la condizione 
+è vera. Diventerà più chiaro dopo che abbiamo considerato delle cose: Diciamo che vuoi 
+creare un Perl Script che chiede all'utente di scrivere l'username e solo se l'utente è 
+root mostra le informazioni di sistema. Così per fare ciò, scrivi il seguente script:
+
+print 'Username:' ;
+$user= <>;
+chomp $user;
+while ( $user eq "root" ) {
+print "System Ingo goes here:";
+}
+
+Output:
+
+Username:ankit
+
+Poichè ho scritto ankit come username la condizione non è verificata e il corpo 
+dell'istruzione while non è stata eseguita. Ora vediamo cosa succede se scriviamo root 
+cone Username.
+
+Output:
+
+Username:root
+System Ingo goes here:System Ingo goes here:System Ingo goe
+es here:System Ingo goes here:System Ingo goes here:System
+Ingo goes here:System Ingo goes here:System Ingo goes here
+e:System Ingo goes here:System Ingo goes here:System Ingo g
+goes here:System Ingo goes here:System Ingo goes here:Syste
+em Ingo goes here:System Ingo goes here:System Ingo goes he
+ere:System Ingo goes here:System Ingo goes here:System Ingo
+o goes here:System Ingo goes here:System Ingo goes here:Sys
+stem Ingo goes here:System Ingo goes here:System Ingo goes
+here:System Ingo goes here:System Ingo goes here:System In
+ngo goes here:System Ingo goes here:System Ingo goes here:S
+System Ingo goes here:System Ingo goes here:System Ingo goe
+es here:System Ingo goes here:System Ingo goes here:System
+Ingo goes here:System Ingo goes here:System Ingo goes here
+e:System Ingo goes here:System Ingo goes here:System Ingo g
+goes here:System Ingo goes here:System Ingo goes here:Syste
+em Ingo goes here:System Ingo goes here:System Ingo goes he
+ere:System Ingo goes here:System Ingo goes here:System Ingo
+ goes here:System Ingo goes here:System Ingo goes here:Sys
+stem Ingo goes here:System Ingo goes here:System Ingo goes ^C
+
+Cosa è successo? Quando il programma Perl ha chiesto l'Username, ho scritto root, così lo 
+scalare $user ha il valore root. L'interprete perl risponde all'istruzione while e la 
+condizione è vera, così il corpo dell'istruzione while è eseguito e i messaggi System Ingo 
+goes here: sono scritti. Dopo che il messaggio è scritto, poichè la condizione è ancora 
+valida, il corpo è eseguito ancora una volta. In questo modo il loop andrà avanti 
+all'infinito.
+
+Nota: Per interrompere un loop infinito premi CTRL + C.
+
+Così mentre scrivi il loop tieni presente che il loop non deve diventare un loop infinito. 
+Per stampare il messaggio solo una volta, il codice Perl dovrà essere cambiato così:
+
+print 'Username:' ;
+$user= <>;
+chomp $user;
+while ( $user eq "root" ) {
+print "System Ingo goes here:";
+$user=' Xyx';
+}
+
+In questo modo il messaggio è stampato una volta, poichè il valore dello scalare $user è 
+stato cambiato e quando la condizione è viene controllata, poichè il valore di $user è Xyz 
+la condizione non è verificata e il corpo non viene eseguito.
+
+Il loop For
+-----------
+
+La sintassi di base del loop For è:
+
+for (iniizo;fine;azione) { corpo }
+
+L'istruzione esegue inizialmente il campo start e poi ripete l'esecuzione di body fin 
+quando il campo stop rimane vero. L'azione è eseguita dopo ogni iterazione.
+
+Ecco un esempio chiarificatore.
+
+In questo esempio vogliamo stampare tutte le lettere dell'alfabeto da a a z.
+
+for($letter= 'a' ; $letter lt 'z' ; $letter++) {
+print $letter;
+}
+
+Spiegazione: Prima l'istruzione for assegna allo scalare $letter il valore 'a' e poi 
+controlla se lo scalare $lettere è minore di 'z' e se questo è vero, esegue il corpo 
+dell'istruzione for, cioè scrive il valore di $letter. Una volta che il valore di $letter 
+è stato scritto sullo schermo, il valor di $lettere è incrementato di 1, cioè l'azione 
+viene eseguita.
+
+La sintassi dell'istruzione FOR è usata anche in altri linguaggi di programmazione come C, 
+C++, Javascript, ecc.
+
+Array
+-----
+
+Conosci già il primo tipo di dati, gli scalari. Benchè siano abbastanza utili, essi hanno 
+anche un lato oscuro, un singolo scalare può memorizzare solo un valore singolo, così per 
+memorizzare 100 valroi dovremmo avere 100 scalari, che renderanno i nostri programmi un 
+po' contorti, difficili da debuggare e difficili da capire e anche difficili da gestire. 
+La risposta a questo problema è l'uso degli Array che sono una collezioni di valori 
+scalari raggruppati. Poichè le variabili scalari cominciano con il simbolo $, le variabili 
+Array cominciano con il simbolo @. Così ogni variabile preceduta dal simbolo @ è un Array 
+e ogni variabile preceduta dal simbolo £ è uno scalare.
+
+Facciamo un esempio di array:
+
+@strings=('ankit', 'ankit2', ankit3');
+
+è un array di stringhe e ha 3 elementi.
+
+@nums=('34', '45', '65');
+
+è un array di numeri e ha 3 elementi.
+
+In Perl, non come il C, gli array possono avere tipi di dati vari, cioè possono contenere 
+sia numeri che stringhe. Per esempio:
+
+@mixed=('23','54','Ankit','52');
+
+è un array misto e ha 4 elementi.
+
+Gli elementi individuali di un array possono essere richiamati usando la seguente 
+sintassi:
+
+$newvar=$array1[x];
+
+Questa istruzione assegna allo scalare $newvar il valore contenuto dall'elemento x 
+dell'array 'array1. Nota che per riferirci agli elementi individuali di un array dobbiamo 
+usare il simbolo $ al posto del simbolo @.
+
+Un'altra cosa da ricordare è il fatto che un array comincia a contare da 0, e cioè il 
+primo elemento dell'array non è 1 ma 0. L'esempio ti chiarirà le cose:
+
+@array1=('I am first', 'I am second' , 'I am third', 'I am fourth');
+$var1=$array1[0];
+$var2=$array1[1];
+$var3=$array1[2];
+$var4=$array1[3];
+print $var1;
+print $var2;
+print $var3;
+print $var4;
+
+OutPut:
+
+I am firstI am secondI am thirdI am fourth
+
+Questo significa che l'elemento 0 è il primo elemento dell'array e l'elemento 1 è il 
+secondo elemento dell'array.
+
+Per esempio,
+
+@mixed=('23','54','Ankit','52');
+
+è un array misto di 4 elementi.
+
+Questo array misto contiene 4 valori, ma il Perl comincia a contarli da 0, e questo 
+significa che $mixed[0] è 23 e che $mixed[1] + 54 e che $mixed[2] è Ankit e così via.
+
+NOTA: In $array[n], la n è chiamata indice.
+
+In Perl gli indici possono essere anche negativi. Per esempio:
+
+$array[-2];
+
+è il penultimo elemento.
+
+$array[-1];
+
+è l'ultimo elemento.
+
+Il loop For Each: Muoversi attraverso un array
+----------------------------------------------
+
+Nella sezione precedente, ho dato un esempio nel quale stampiamo vari elementi di un array 
+scrivendo tante istruzioni print. Come al solito è abbastanza contorto e l'uso del loop 
+For Each rende i tuoi programmi Perl più facili da usare, cioè più efficienti.
+
+La sintassi di base del loop For Eache è la seguente:
+
+foreach scalare (array) { corpo }
+
+Questa istruzione esegue i comandi in body una volta per ogni elemento array. Il corrente 
+elemento array è situato nello scalare.
+
+Facciamo un esempio:
+
+@os = ('Windows', 'Linux' , 'MacOS' , 'BeOS');
+print 'Now Printing known Operating Systems:' ;
+foreach $os(@os) {
+print $os;
+}
+
+Output:
+
+Now Printing known Operating Systems:WindowsLinuxMacOSBeOS
+
+Il loop for each è abbastanza autoesplicante e è molto utile per muoversi nel contenuto 
+degli array e per stamparli.
+
+Funzioni Associate con gli Array
+--------------------------------
+
+Il Perl contiene delle funzioni che ci permettono di manipolare i dati in un array.
+
+push( ) e pop( )
+----------------
+
+push( ARRAY, LISTA) agigunge la LISTA di valori alla fine dell'array.
+
+Per esempio:
+
+@array1=('123','456');
+push( @array1, 789);
+print $array1[-1];
+
+stampa 789 sullo schermo e
+
+@array1=('123','456');
+push( @array1, 789,abc);
+print $array1[-1];
+
+stampa abc sullo schermo.
+
+pop(ARRAY) rimuove l'ultimo elemento dell'ARRAY.
+
+Come per le stringhe abbiamo la funzione chop(), gli array hanno la funzione pop().
+
+unshift( ) e shift( )
+---------------------
+
+unshift( ARRAY, LISTA) aggiunge la LISTA di elementi all'inizio dell'ARRAY.
+
+Si può dire essere l'opposto di push( ).
+
+shift( ARRAY) rimuove il primo elemento di un ARRAY.
+
+Si può dire essere l'opposto di pop( ).
+
+splice( )
+---------
+
+La sintassi di base di questa funzione è:
+
+splice(ARRAY,OFFSET,LUNGHEZZA,LISTA) rimuove LUNGHEZZA elementi di un ARRAY che comincia 
+da OFFSET sostituendoli con LIST.
+
+Per esempio:
+
+@array1=('1','2','3','4');
+print @array1;
+splice(@array1,2,2,a,a);
+print @array1;
+
+Output:
+
+123412aa
+
+Gli argomenti LUNGHEZZA e LISTA sono facoltativi. I seguenti esempi ti chiariranno le 
+cose:
+
+splice(@array1,2);
+
+rimuove tutti gli elementi dopo 2 incluso.
+
+splice(@array1, 2, 2);
+
+rimuove $array1[2] e $array1[3].
+
+Variabili Predefinite
+---------------------
+
+Il Perl è pieno di variabili predefinite. Vediamo la prima di queste.
+
+$_
+
+"Il Programmatore ha detto che il programmatore comincerà a programmare appena il 
+programmatore prende l'Editor Perl"
+
+Leggi questa frase e ora leggi quella seguente:
+
+"Il Programmatore ha detto che egli comincerà a programmare appena prende l'Editor Perl".
+
+Nella seconda frase i pronomi come "egli" hanno preso il posto dei nomi e hanno reso 
+migliore la frase.
+
+Anche il Perl, non come altri linguaggi di programmazione, ha la variabile predefinita $_ 
+che risolve il seguente problema. Facciamo un esempio del loop For Each per capire meglio 
+come funziona la variabile $_.
+
+Normalmente scriveresti una cosa del genere:
+
+foreach $array(@array) { print $array; }
+
+Ora con l'uso della Variabile Predefinita $_ il codice seguente si abbrevierà a :
+
+foreach(@array){print;}
+
+Cosa succede esattamente? Quando il loop non ha nessun scalare prima, usa la variabile 
+predefinita $_ e la funzione print, se non sono dati altri argomenti, stampa il valore 
+contenuto da $_.
+
+Così il risultato sarà:
+
+print($_); e print; sono la stessa cosa e
+chomp($_); e chomp; sono la stessa cosa.
+
+Bene è tutto per questo numero del Giornale sul Perl. La prossima settimana si parlerà di 
+I\O e discuterò dei files e di altri I\O.
+
+Ankit Fadia
+
+ankit@bol.net.in
+
+
+kEwL`
+kewl@roolz.cjb.net
+kewlrox.netfirms.com
+www.tankcommandos.org

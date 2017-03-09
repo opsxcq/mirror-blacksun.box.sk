@@ -1,0 +1,279 @@
+Auteur: R a v e N 
+Auteur's contact informatie 
+------------------------------------- 
+Email: barakirs@netvision.net.il 
+ICQ : 5917057 
+Website: http://blacksun.box.sk 
+
+Vertaald door Hybrid_6 
+Email: Hybrid_6@hotmail.com 
+ICQ: 49744016
+
+Opmerkingen van de auteur
+--------------------------------------
+Dit mag dan op reclame lijken, maar om deze tutorial volledig te begrijpen kan men best eerst mijn 
+voorgaande tutorials lezen (http://blacksun.box.sk). Anders begrijp je sommige
+woorden of delen misschien niet en voor mij is het nuttiger om me met de werkelijke inhoud
+van deze tutorial bezig te houden dan wel het uitleggen van alle termen.
+Voor de script kiddies onder jullie: deze tutorial is niet geschreven om iedereen te leren
+om het leven van hun mede-ICQ'ers zuur te maken, maar wel om jezelf en anderen te kunnen 
+leren beschermen.
+Daarnaast ben ik niet verantwoordelijk voor alles wat je met ICQ doet. Gebruik deze 
+informatie enkel om je te beschermen. Als je indruk op iemand wil maken doe je dat door
+hem te beschermen dan wel hem aan te vallen. Dan maak je pas indruk.
+OK, dat is dat, nu zullen we eens aan het echte werk beginnen.
+
+Wat is er nieuw in deze versie:
+----------------------------------------
+Versie 1.2: appendixen A en B
+Versie 1.3: appendix C
+Versie 1.4: appendix D
+
+Inhoud
+----------
+1. Wat is ICQ?
+ -Wat kun je er mee?
+ -Waar kun je het halen
+ -Voor deze tutorial te lezen
+2. Waarom is ICQ zo onveilig?
+ -Client-side uitvoering
+ -Rommelig geprogrammeer en bèta testen
+ -Andere Instant Messengers
+3. De cracks
+ -Wat zijn cracks?
+ -Wat kunnen ze voor me doen?
+ -Hoe werken die dingen?
+ -IP's tonen zonder cracks
+4. Flooden
+ -Verschillende soorten van flooden
+ -Hoe deze programma's precies werken
+ -Wat de doen als je geflood wordt
+5. Spoofen
+ -Wat is spoofen?
+ -Hoe kan ik ICQ events spoofen?
+ -Hoe werkt dit?
+ -Spoofen om grappen uit te halen
+ -Spoofen om iemands database te doen crashen
+ -Hoe je er tegen te beschermen?
+6. ICQ homepage bugs
+ -Wat is de ICQ homepage?
+ -Hoe kan iemands ICQ crashen door een bug in de ICQ homepage?
+ -Hoe kan ik toegang tot iemands harde schijf m.b.v. de ICQ homepage bugs?
+ -Bij welke versies zal dit werken?
+7. ICQ's bestanden overdracht "faken"
+ -Hoe kan ik iemand een prentje, tekst etc. sturen dat eigenlijk een programma is?
+ -Waarom kan dit?
+8. Onzichtbare gebruikers zichtbaar maken
+ -De "web-aware" functie
+ -Creatieve trucjes
+9. Paswoorden stelen
+ -De database stelen
+ -De vergeten paswoord optie op ICQ's website exploiteren
+10. Laatste opmerkingen
+ -Gebruiken of niet gebruiken?
+ -Waarom heeft AOL Mirabilis voor zoveel geld overgekocht?
+ -ICQ onder Linux draaien
+ -Kettingbrieven
+11. Appendix A: De poort zelf vinden
+ -Hoe doe ik het?
+ -Waarom zou ik dit zelf willen doen?
+12. Appendix B: De voordelen van Unix ICQ-klonen
+ -Iemand zonder zijn toestemming toevoegen aan je lijst
+ -De poort vinden zonder patches of cracks
+ -Ingebouwde "message spoofers"
+13. Appendix C: IP==>UIN zelf omzetten
+ -Waarom zou ik dit willen doen?
+ -Hoe kan ik dit doen?
+14. Appendix D: Meer plezier met contactlijsten
+ -Hoe kan ik iemands contactlijst verwijderen m.b.v. een spoofer?
+ -Hoe kan ik er voor zorgen dat mij dit niet overkomt?
+
+Wat is ICQ
+---------------
+ICQ is de afkorting voor "I Seek You". Het is een programma ontworpen door Mirabilis 
+( een bedrijf waar America Online ( AOL ) in '98 zo'n slordige 400 Amerikaanse Dollar of voor moest 
+ophoesten ). 
+Met ICQ kun je met je vrienden communiceren wanneer ze online zijn. Daarnaast kun je ook bestanden uitwisselen, URL's doorsturen, chatten... 
+Zo'n programma wordt ook wel een "Instant Messenger" genoemd.
+Andere Instant Messengers zijn AIM van AOL ( vraag me niet waarom ze er twee hebben ), Yahoo
+Instant Messenger, MSN Instant Messenger, Gooey ( laat je toe met mensen op dezelfde site waar
+jij  op bent te chatten ). ICQ is de beste en heeft daarom ook de meeste gebruikers ( zie op www.icq.com hoeveel ).
+ICQ is te vinden op www.icq.com of www.mirabilis.com ( eigenlijk dezelfde server ).
+Het programma is voor alle Windows en Macversies verkrijgbaar. Zie voor Linux  bij de laatste opmerkingen.
+Opmerking: Als je een nieuwe ICQ-gebruiker bent zul je eerst fatsoenlijk met ICQ kunnen werken, anders zul je deze tutorial niet begrijpen of kunnen volgen.
+ 
+Waarom is ICQ zo onveilig?
+------------------------------------
+ICQ mag dan wel een prachtig programmatje zijn, het is wel zeer onveilig. Dit komt door:
+A) Te veel dingen worden gedaan op jouw PC zelf (client-side)
+B) De Mirabilisprogrammeurs zijn slordige programmeurs
+Laat me het uitleggen.
+Allereerst de client-side bewerkingen. Zij zorgen er voor dat ICQ veel kwetsbaarder voor aanvallen is omwille van meerdere redenen. We zullen "message spoofen" als voorbeeld nemen. Het is mogelijk om berichten te spoofen ( valse boodschappen die van iemand anders lijken te komen sturen ) omdat ICQ het toelaat om berichten van elk IP-adres te ontvangen. Sommige mensen kiezen hun ICQ-client
+om berichten te versturen terwijl anderen dat door een server laten doen, dus laat ICQ beiden toe.
+Mocht ICQ berichten enkel door de server toelaten, dan zou het veel moeilijker zijn om berichten en andere "events" te spoofen.
+Nog een voorbeeld zijn de ICQ-cracks ( lees het volgende hoofdstuk ). Deze zouden niet mogelijk zijn als berichten enkel door de server verstuurd werden. 
+Laten we de IP-unhider crack als voorbeeld nemen. ICQ heeft iemands IP-adres of IP-nummer nodig om hem/haar een bericht te kunnen sturen. Als berichten sturen enkel door servers zou gebeuren, dan zou je ICQ-client de server moeten contacteren om een bericht of event naar een bepaald UIN te sturen zonder het IP-adres zelfs te kennen. De server kent daarentegen alle IP's, dus kan die het bericht voor jou versturen. Op deze manier zou je het IP-adres van die persoon enkel te weten kunnen komen door toegang tot de server te hebben, wat natuurlijk veel moeilijker is dan een crack downloaden en draaien...
+Daarnaast zijn de Mirabilisprogrammeurs zeer slordig. Hoewel ik niet zeg dat ik werelds beste programmeur ben ( dat is Linus Thorvalds natuurlijk  ;-)   ), is ICQ slecht geprogrammeerd en zijn er veel te weinig bèta tests ( een programma testen voordat het wordt gepubliceerd ) gedaan.
+ICQ is trouwens niet de enige met zoveel bugs. MSN ( Microsoft Network ) Instant Messenger is de allerslechtste op dat gebied ( shock, shock! ). Meer hierover vind je op de byteme-page van Blacksun
+(http://blacksun.box.sk).
+
+De cracks
+-------------
+Een crack is een klein, uitvoerbaar bestand dat iets in een programma wijzigt. Een crack kan bijvoorbeeld een shareware-programma ( software die vrij verspreid mag worden, maar die maar een bepaalde tijd gebruikt mag worden en/of die bepaalde functies die het geregistreerde programma wel heeft niet heeft ) in een programma omzetten met alle geregistreerde functies. Snoppie?
+De ICQ cracks laten je de volgende dingen toe:
+A) Toon iemands IP-adres ook al heeft hij de "don't show my IP" in het beveiligingsmenu aangezet
+B) Voeg iemand zonder zijn toelating in je ICQ-menu
+C) Draai meerdere ICQ-clients tegelijkertijd ( om meerdere UIN te hebben natuurlijk )
+D) Voeg jezelf toe aan je contactlijst ( wat niet nuttig lijkt maar zoals je in de het Spoofing-hoofdstuk
+     zult lezen wel is )
+
+Als je het vorige hoofdstuk hebt gelezen, weet je nu waarom deze cracks werken, maar de vraag is nu hoe ze  werken. Wel, ik ben niet echt een expert in cracken, dus wijs ik je door naar enkele sites ( naast http://blacksun.box.sk waar er ook zijn ) waar je cracking tutorials kunt vinden.
+http://neworder.box.sk ==> ga naar de cracking sectie
+http://thor.prohosting.com/~bornic ==> hier vind je enkele ICQ-cracks met een FAQ erbij ( zeker de  moeite om eens te lezen )
+
+Flooding
+------------
+Flooding wil zeggen dat je iemand met tonnen berichten of andere events overlaadt. Om dit te doen zijn meerdere manieren:
+A) De eerste manier om dit te doen is door op iemands naam te klikken, een boodschap te schrijven, de boodschap te kopiëren en te sturen, dan weer op zijn naam te klikken en de boodschap te plakken en dan  die sturen enz. Ik denk dat je wel doorhebt ( behalve de script-kiddies omdat die een te laag niveau hebben ) dat dit een frustrerende en onhandige manier is.
+B) Je kunt ook een "canned" ( let. ingeblikte ) flooder gebruiker. Men noemt ze zo omdat ze a.h.w. zijn als ingeblikt voedsel: openen en gebruiken. Natuurlijk is zelfbereid voedsel veel beter, behalve als je een slechte kok bent natuurlijk ;-)  ).
+Deze flooders zijn geprogrammeerd door mensen die de ICQ-protocol zelf geleerd hebben door ICQ te "eavesdroppen" of een valse server op op hun computer te zetten en te luisteren wat ICQ doet, of door mensen die een paar tutorials en artikels lazen en zin hadden om een flooder te maken.
+Daarnaast zijn er ook nog de geavanceerdere flooders. Die zoveel berichten als jij wil sturen en dit m.b.v. een vervalst UIN doen. Op deze manier zal de contactlijst van het slachtoffer zich plotseling vullen met mensen die hij helemaal niet kent en die hem allemaal hetzelfde bericht sturen.
+Van www.warforge.com kun je een goede flooder afplukken. De site wordt door en voor script kiddies onderhouden. Een script kiddie is trouwens iemand die denkt dat hij een hacker is omdat hij iemand anders software gebruikt zonder te weten hoe het werkt.
+Ik raadt je trouwens aan om niet zomaar iedereen te beginnen flooden. Je wordt als rotzak beschouwt en populair wordt je er ook niet mee.
+Oh ja, om iemand te flooden moet je de ICQ-poort kennen. De ICQ-poort is een poort waar ICQ zijn berichten mee verstuurd en ontvangt. Die ligt altijd tussen 1024 en 2000. Om die poort te vinden moet je dus gewoon een poortscanner gebruiken tussen 1024 en 2000 met een relatief hoge time-out ( 1 of 2 seconden ). Om iemand te misleiden zou je dus enkele poorten tussen 1024 en 2000 openen. Je kunt dit zelf doen door te programmeren of met de /etc/inetd.conf of andere bestanden vanalles te proberen als je Unix draait. Netcat e.a kunnen natuurlijk bij www.l0pht.org gevonden worden. Of een ingeblikte tool bij www.warforge.com.
+C) ICQ heeft ook een "Email Express"-optie ingebouwd. Laten we zeggen dat je UIN 49744016 is
+( om het duidelijk te maken: dit is eigenlijk het mijne ) Als iemand een bericht naar 
+49744016@icq.com stuurt, dan zal je het als een bericht in Email Express verschijnen. Wat gebeurt er nu als je een mailbomb naar dit adres stuurt? Yep, de persoon wordt geflood.
+Om je tegen deze dingen te beschermen, kun je Email Express in het "preferences-menu" uitzetten.
+Ik raadt je aan om geen mailbomben te sturen. Niet alleen omdat het irritant is, maar ook omdat je Email-adres en je IP zichtbaar zijn bij het slachtoffer. Om dit te faken moet je mijn Sendmail tutorial lezen.
+Als je zelf geflood wordt, dan zijn er programma's die je ICQ-client uitzetten en alle ongelezen berichten opruimen ( dus misschien ook een belangrijk bericht ). Ga voor zo'n programma naar www.warforge.com
+
+Spoofen
+-----------
+Spoofen is hetzelfde als faken. Als je je IP spooft, dan fake je eigenlijk je IP.
+Om dit te doen of een programma te maken dat dit doet moet je het ICQ-protocol kennen. De beste spoofer is Lame Toy. Te vinden bij www.warforge.com natuurlijk.
+Je kunt veel grappen uithalen door te spoofen. Je kunt bijvoorbeeld iemand een bericht afkomstig van hemzelf/haarzelf sturen. Of je zou iemand een brief van zijn/haar geliefde kunnen sturen waarin staat dat het uit is ( maar dat zou je natuurlijk nooit doen ;-)  ).
+Lame Toy kan zowat alle events spoofen: chat requests, URL's, bestanden...
+Maar spoofen kan ook ernstige gevolgen hebben. Als je namelijk iemand een bericht van hemzelf/haarzelf stuurt en hij voegt zichzelf aan zijn lijst toe, dan is hij/zij de volgende keer dat hij ICQ start zijn contactlijst kwijt. Dit wordt DB-corruptie genoemd. DB=database. Je ICQ-DB bevat je contactlijst, je informatie en je instellingen. Het wordt opgeslagen in een subdirectory van ICQ. Ofwel DB ( ouder dan ICQ99a ), NewDB ( in ICQ99a ) of DB99 ( in ICQ99b ).
+Als het slachtoffer zichzelf aan zijn lijst heeft toegevoegd en je wilt direct effect, dan kun je een DoS aanval doen zodat hij wel moet herstarten.
+Je begrijpt wel dat dit grof en illegaal is, dus kun je het beter niet doen. Als je je wil beschermen, dan kun je een crack voor ICQ zoeken om jezelf aan je lijst toe te voegen. Ik raadt je daarnaast aan om elke week je DB te back uppen.
+
+ICQ homepage bugs
+---------------------------
+ICQ homepage is een optie die alle ICQ-versies na ICQ99a build #1700 ingebouwd hebben. Het laat je toe om een kleine webserver te openen op je eigen computer en er een website op te zetten zonder enige speciale kennis. Je zult dan een teller hebben en je zult gewaarschuwd worden als er iemand op je website komt ( behalve als je dit uitzet natuurlijk ). Je kunt ook toegang tot bestanden op je PC geven. Natuurlijk is je website enkel toegankelijk als jij online bent, maar voor mensen aangesloten op een LAN of met verbindingen die 24h online zijn is dit wel een handige functie.
+Nu naar het interessante gedeelte. Hoe veilig is zo'n webserver? De ICQ homepage server bij ICQ99a builds #1700 en #1701 is kwetsbaar voor 2 enorm stomme aanvallen.
+
+A) Wanneer je manueel verbinding maakt ( met telnet, Netcat o.a. ) en een niet-standaard webserver commando geeft, dan crasht de server samen met het slachtoffer zijn ICQ-client.
+Als voorbeeld: het commando "get", gecombineerd met een parameter, download een bestand naar je computer. Als je het bestand http://blacksun.box.sk/poop/shit.jpg ( wat natuurlijk niet bestaat ) wil hebben, dan maak je verbinding met blacksun.box.sk op poort 80 en typ je in "get /poop/shit.jpg" ( zonder de aanhalingstekens ).
+Nu, als je verbinding maakt met een ICQ homepage server en "get" zonder enige parameters typt, dan crasht de server samen met ICQ en krijg je een "connection lost" boodschap.
+Bij nieuwere ICQ-versies krijg je ook een "connection lost" boodschap, maar dan gewoon omdat de webserver de verbinding verbroken heeft, niet omdat hij crashte.
+B) De ICQ webserver directory is standaard c:\program files\icq\homepage\. Alles in deze directory (mappen in Windows ) kan gelezen worden door een webbrowser ( of telnetprogramma als je daar om een of andere bizarre reden mee wil surfen ). Maar wat als men nu omhoog zou klimmen. Van 
+c:\program files\icq\homepage naar c:\ ? Dit kan gedaan worden met de ICQ webserver bij ICQ99a build #1700 en #1701. Bijvoorbeeld: Als je iemands system.ini bestand wil lezen, wat in de directory c:\windows\ staat. Dit doet men door 3 keer omhoog te klimmen van c:\program files\icq\homepage naar c:\ en daarna 1 lager te klimmen naar c:\windows. Dus door de URL "/..../windows/system.ini" ( zonder de aanhalingstekens ) op de server te vragen. Laat me het uitleggen.
+1 punt will zeggen "huidige directory". 2 punten wil zeggen een directory's hoger. 3 betekent 2 directory's hoger en zoals in ons geval 4 betekent 3 directory's hoger. Nadat we 3 directory's hoger gingen en de c:\ bereikten, gingen we naar de \windows\ directory om system.ini te bereiken.
+En omdat dit een universele regel is, werkt dit op elk besturingssysteem ( OS ) (dat ik ken tenminste ).
+Wacht even... We typten de URL in, maar we kregen een 304 ( forbidden ) error. Oh, ik weet waarom.
+De webserver laat ons enkel toe om .html paginas, .jpg bestanden, .gif bestanden en andere bestanden die op websites te vinden zijn. Dit probleem is met een simpel trucje op te lossen. Typ deze URL (zonder aanhalingstekens ) in: "/..../.html/winddows/system.ini" Is dit dom of niet? Je zou nu ook het slachtoffer zijn/haar DB kunnen downloaden om later zijn paswoord te kunnen vinden (zie paswoord stelen hoofdstuk ). Je kunt zelfs een download manager zoals GetRight Download Accelerator of Go!Zilla om het te downloaden, want de webserver ondersteund gedeeld downloaden. Nu zijn hele harde schijf downloaden, heheh...
+Opmerking: /../../../ is hetzelfde als .... ( 3 directory's omhoog ).
+
+ICQ's bestanden overdracht "faken"
+------------------------------------------------
+Wanneer je een bestandenoverdrachtverzoek krijgt van iemand, dan kun je de bestandsnaam in een klein tekstvakje zien. Maar wat gebeurt er als de bestandsnaam te lang is om in dat tekstvakje te passen? Laten we eens experimenteren. Neem een programma'tje laten we zeggen "file.exe" ( inderdaad, zonder aanhalingstekens ), en verander de naam in "file.jpg_______________.exe"
+( zonder aanhalingstekens en i.p.v. _ een spatie ). Stuur dit nu naar iemand op je contactlijst.
+Omdat de bestandsnaam te lang is voor het tekstvakje, zal het .exe deel niet zichtbaar zijn voor het slachtoffer zijn/haar ogen. Het slachtoffer zal het bestandje ontvangen zonder na te denken ( ik bedoel, het is toch maar een onschuldig .jpg'tje OF NIET? HAHAHAHA!!!), uitvoeren en geinfecteerd worden door een virus of wat je ook als programma'tje kiest.
+Je kunt zelfs verder gaan als je dat wil. Maak een programma'tje genoemd "sex-verhaal.txt__________.exe" en het een tekstbestand-icoontje geven. Denk dus goed na voordat je de volgende keer een bestandje van een andere ICQ-gebruiker krijgt... ;-)
+
+Onzichtbare gebruikers zichtbaar maken
+-----------------------------------------------------
+ICQ heeft een optie "invisiblelist" ingebouwd. Niemand op die lijst kan zo weten of je online of offline bent ook al staan ze op je contactlijst.
+Als iemand je op de  "invisible" lijst zet kun je toch zien of hij/zij nu online of offline is door het volgende te doen.
+(a) Vind zijn UIN ( stel dat het mijn UIN is, 49744016 )
+(b) Ga naar www.icq.com/49744016
+(c) Kijk naar een figuurtje dat vertelt of hij online of offline is.
+Wat is dat ding, vraag je? Wel, het is een optie "web-aware" genoemd. Het laat toe om mensen die geen ICQ hebben te zien of je online of offline bent. Het is ook nodig voor ICQ "web pagers" ( HTML code dat, wanneer in een HTML-document geplaatst laat zien of iemand online of offline is, of om hem een berichtje te sturen zonder dat ICQ daar voor nodig is ).
+"Web-aware" kan uitgezet worden in het "preferencesmenu". Als je het uitzet en iemand gaat naar  www.icq.com/jouwUIN dan ziet hij "disabled" in plaats van "online" of "offline".
+Maar zelfs als hij het afzet kun je nog zien of hij online is of niet.
+Je kan een andere ICQ-gebruiker registreren ( duurt 3-4 minuten ), en in tegenstelling tot je gewone wisselen naar deze om de gebruiker aan je contactlijst toe te voegen. Communiceer niet met deze persoon terwijl je deze nieuwe gebruiker bent. Hij/zij zal je waarschijnlijk na een tijd vergeten en zal de moeite niet doen om je op de "invisible"lijst te zetten of zo.
+Zo kun je simpelweg wisselen naar de nieuwe gebruiker wanneer je wil zien of hij/zij online is of niet.
+
+Paswoorden stelen
+-------------------------
+Als je op een of andere manier iemands DB-bestanden in handen kan krijgen, kan je hem/haar paswoord gemakkelijk stelen. De paswoorden zijn opgeslagen in gewone ( unencrypted ) tekst in de .dat bestanden. Ze staan altijd op het einde van de "iUsersSound" lijn.
+Als je de paswoorden niet kunt vinden, kun je altijd progrenic.com's paswoord onthuller en de paswoorden uit de .dat bestanden krijgen.
+Soms schrijven mensen valse e-mail adressen in hun info, zoals fuck-off@hotmail.com,
+nep@fakemail.not.real etc. In het eerste geval fuck-off@hotmail, zou je kunnen kijken of fuck-off@hotmail.com aan iemand toebehoort. Indien niet, dan kun je het registreren. Ga dan naar www.icq.com en zoek naar het "forgot your password?" venster. Vul daar het slachtoffers UIN in, en het paswoord wordt naar de mailbox van fuck-off@hotmail.com gestuurd waar jij kunt inloggen.
+Hier is nog een voorbeeld: het slachtoffer vult fake@pentagon.com in als e-mail adres. Spijtig dat hij niet pentagon.gov schreef, want pentagon.com geeft gratis e-mail adressen weg. Registreerd gewoon fake@pentagon.com en haal zijn paswoord.
+Als je slachtoffer iets als fake@not.real.com schreef, dan kun je altijd proberen om voor 70$ real.com te registreren ( behalve bij freehosting.nl, daar is het gratis ). Dan bezit je real.com en kun je er een POP3 server opzetten en voila, je hebt het paswoord.
+Je kunt ook proberen om iemands ICQ paswoord te gokken, maar dat kost veel tijd.
+Oh, heb je trouwens gemerkt dat de maximumlengte van een ICQ-paswoord 8 karakters lang is? Terug in 1997 kon je Linux kloons voor ICQ ( Mirabilis heeft geen officiële uitgave van ICQ voor Linux, dus moet je onder Linux een ICQ "kloon" draaien, wat een programma is dat het ICQ-protocol gebruikt en alle ICQ-functies, maar dat geen officiële release van Mirabilis is ) gebruiken om iemands "naam" te stelen, zonder een ICQ-paswoord nodig te hebben. Hoe?
+Sommige ICQ-kloons voor Linux dwongen de gebruiker niet om een paswoord dat korter is dan 9 karakters te kiezen. Maar als je als iemand anders probeerde in te loggen en een paswoord langer dan 8 ingaf, dan vond er een buffer overflow plaats en werd het paswoord gedeelte "overgeslagen".
+Samengevat, een buffer overflow gebeurt wanneer een programma een bepaalde buffer grootte aan bepaalde acties toekent en die buffer overschrijd. Buffer overflows kunnen allerlei "vreemde situaties" opleveren, en in dit geval, wordt het paswoord verificatie gedeelde simpelweg overgeslagen.
+Maar ja, deze bug bestaat niet meer. Spijtig ;-) .
+
+Laatste opmerkingen
+----------------------------
+Gebruiken of niet gebruikend?
+----------------------------------------
+Ik ken veel mensen die ICQ of een andere instant messenger omwille van beveiligingsredenen. Je kunt ook geen Email gebruiken als schrik voor mailbombing of kwaadaardige programma's te ontvangen. Je kunt ook weigeren om IRC te gebruiken uit schrik om geDoSt of gehackt te worden. Persoonlijk geloof ik er niet in dat de oplossing opgeven is. Als je een beveiligingsprobleem tegenkomt leer het dan en doe je best het op te lossen.
+Ik hoop dat je je kennis gebruikt die je hebt geleerd terwijl je deze tutorial las en je best doet om je tegen ICQ en zijn beveiligingsgaten te beschermen in plaats van gewoon op te geven.
+
+Waarom heeft AOL Mirabilis voor zoveel geld overgekocht?
+--------------------------------------------------------------------------------
+Diegene van jullie die de introductie hebben gelezen ( niet gelezen? Stout, stout! ), of diegene die er in het nieuws hebben over gehoord weten dat Mirabilis was overgekocht door AOL voor 400 miljoen US dollars in 1998. Maar waarom zou AOL Mirabilis voor zoveel geld overkopen?
+Het antwoord is Email adressen. ICQ heeft honderden miljoenen gebruikers, en honderd duizenden mensen registreren zich elke dag. De meeste van die mensen hebben een Email-adres, en vullen die bij hun info in. Mijn gok is dat AOL deze adressen aan spammers verkoopt ( maar niet te veel tegelijk om het net niet te scandalizeren ). En wees er maar zeker van dat AOL er veel geld voor krijgt ( ik werd eens 90$ aangeboden voor elke 1000 adressen die ik aan hen verkocht ).
+
+ICQ onder Linux draaien
+---------------------------------
+ICQ voor Windows 3.11, ICQ voor Windows 9x, ICQ voor Windows NT, ICQ voor Mac, ICQ voor Java... Wat? Geen ICQ voor Linux?
+Je zult waarschijnlijk verwondert zijn waarom Mirabilis ICQ niet voor Linux releaste. Laat me je een kort verhaaltje vertellen. The Cyber God, een lid van BSRF, schreef zich in voor een mailing list die hij op de Mirabilis homepage vond. Er stond dat leden van de mailinglist een bericht zouden ontvangen wanneer er een ICQ-versie voor Linux uitkwam. He wachtte en wachtte, maar hij ontving niets. Na een tijdje besloot hij om naar de Mirabilis homepage te gaan en te kijken naar de pagina waarop hij zich inschreef. Hij zocht en zocht, zonder geluk. De pagina was zonder spoor verdwenen.
+Conclusie: ???
+Faalde Mirabilis om ICQ naar Linux te porten? ( porten is een versie van een programma voor een ander besturingssysteem te maken ).
+Verloor het project zijn budget? Wie zal het vertellen?
+Maar als je ICQ dan toch op Linux wil draaien kun je:
+A) ICQ voor Java downloaden en ook Java Virtual Machine voor Linux. Start JVM en draai ICQ voor Java erop.
+B) Ga naar www.linuxberg.com, ga naar de software pagina en daar vind je een lijst van ICQ klonen voor Linux.
+
+Kettingbrieven
+--------------------
+Een van de meest irritante dingen van ICQ is niet hun slechte beveiliging, maar hun nooit eindigende stroom van kettingbrieven. "Stuur dit verder of Mirabilis zal geld beginnen vragen voor ICQ!!" "Stuur dit verder en ICQ zal van kleur veranderen!!" "Stuur dit door en de/het jongen/meisje waar je een oog op hebt zal je kussen!!" "Stuur dit naar iedereen door, er zit een virus in de nieuwste release van ICQ!!" "Stuur dit aan iedereen door - voeg  49744016 ( of een andere UIN ) niet aan je contactlijst toe, hij is virussen aan het sturen!!" "Als je dit naar 1-5 mensen doorstuurt zal de/het jongen/meisje waar je een oog op hebt je kussen, stuur dit door naar 6-10 mensen en je zult de loterij winnen etc. etc...!!" "Stuur dit door of je monitor smelt!!" Mensen toch, wees redelijk! Ik stuur deze rommel nooit door, en Mirabilis heeft me nog geen rotte frank/enkele cent gevraagd. Ik werd niet overrompeld door 49 Boeddhistische monniken, mijn computer werd niet geinfecteerd met een virus, niet gehackt etc. etc. ( hoewel mijn monitor wel smolt... grapje! ).
+Stuur deze rommel niet door. Ik beloof je dat er niets slechts zal gebeuren als je deze brieven niet doorstuurt ( ik bedoel, iedereen weet dat de enige kettingbrieven die je ongeluk brengen als je ze niet doorstuurt degene zijn die door de echte post bezorgd worden... ;-)  ).
+Oh, en als je eens goed met iemand wil lachen die je een kettingbrief doorstuurde, stuur hem/haar dan dit:
+
+Dit is een ICQ kettingbrief. Stop alsjeblieft de ketting niet!
+Cindy van Sydney stuurde deze brief aan 49 miljoen mensen door en werd konigin van Zaire!!
+Masha uit Rusland stuurde deze brief aan 23.7 miljoen mensen en werd een astronaut die naar de maan vloog!!
+Gil uit Brazilië stuurde deze brief niet verder en verande in een kikker!!
+Chan uit Japan stuurde deze brief aan 107 duizend mensen en werd de werelds Pokémon en Pacman kampioen!!
+Als je deze brief aan 1-5 mensen doorstuurt: 1-5 mensen zullen pissed op je zijn omdat je hen een stomme kettingbrief stuurde!
+Als je deze brief aan 6-10 mensen doorstuurt: 6-10 mensen zullen pissed op je zijn omdat je hen een stomme kettingbrief stuurde!
+Als je deze brief aan 11-15 mensen doorstuurt: 11-15 mensen zullen pissed op je zijn omdat je hen een stomme kettingbrief stuurde!     
+Als je deze brief aan 16-20 mensen doorstuurt: 16-20 mensen zullen pissed op je zijn omdat je hen een stomme brief stuurde!
+Grappig hé? Ik schreef het zelf...*grinnik*
+
+Appendix A: De poort zelf vinden
+---------------------------------------------
+Ja, je kunt de ICQ-poort zelf vinden. En stukken sneller dan welke stomme "ICQ portscanner 3133t k-rad h4x0r1ng programma" dan ook en flooden, spoofen enz. zoveel je maar wil!! JIPPIEEEE!!!
+Hoe? Simpel. Herriner je je nog dat ik je vertelde over de coole manier om IP's op ICQ te vinden? Wel, de poort vinden is bijna hetzelfde. Weet je, als je het IP vind, dan zul je ook de poort dichtbij vinden. Connecties in netstat worden getoond door hun IP, de locale poort en de poort op afstand. Dus alles wat je moet doen is de poort op afstand van je slachtoffer vinden. Dan zie je: "zijn-IP:de-poort". Dus zoek gewoon naar de ":" en je kent de poort.
+Maar er is zelfs een nog gemakkelijkere manier om dit te doen. Zie Appendix B voor meer details.
+Met dank aan Zero Alpha voor het idee achter dit trucje.
+
+Appendix B: De voordelen van Unix ICQ klonen
+----------------------------------------------------------------
+Hoewel ICQ klonen altijd minder opties hebben dan officiële releasen van ICQ zelf, toch hebben ze soms handige opties, zoals een menu optie dat al je contactlijst info update, een knop die met een andere server uit een grote lijst probeert te verbinden als de verbinding misslukt etc.
+Ook zullen de meeste het slachtoffer IP en ICQ-poort in een veld in de info pagina's tonen en over een functie beschikken zodat je gebruikers aan je contactlijst kunt toevoegen zonder hun toestemming ( maar je kunt hem/haar wel laten weten dat hij/zij op je lijst staat ).
+Er zijn zelfs ICQ klonen die een ingebouwde berichten spoofer hebben!!! Hehe...
+
+Appendix C: IP==> UIN zelf omzetten
+--------------------------------------------------
+Stel je voor dat iemand je probeert te nuken. Je firewall stopte de DoS-aanval. Je wilt met de idioot chatten om hem te vertellen hoe dom hij is, maar ja, je hebt enkel zijn IP-adres. No problemo! Als de idioot ICQ heeft kunt je zijn UIN gemakkelijk vinden.
+Er zijn oneindig veel redenen waarom je een IP naar UIN zou willen omzetten. Ik ben er zeker van dat je er tenminste vijf zou kunnen vinden in anderhalve minuut, dus zullen we er maar aan beginnen, nietwaar? Dit trucje is vrij simpel. Allereerst moet je een berichten spoofer in handen krijgen. Voeder het dan met het slachtoffers IP en stuur een berichtje dat van je UIN komt. Als voorbeeld: als je UIN 49744016 is ( eigenlijk het mijne ;-) ), dan kun je een bericht van dat UIN spoofen ( spoof berichten van mijn UIN en je ben er geweest!! ;-) ). Dus download de spoofer en stuur een gespooft bericht naar je slachtoffers IP. In het bericht moet je iets zetten waar je zeker een antwoord op krijgt. Het zou iets beledigend, iets interessants of iets lokkend kunnen zijn ( een "Wil je Hotmail leren hacken?" naar een script kiddie lukt meestal wel of "Ik heb een verrssing voor je..." is ook goed ).
+Als je slachtoffer dan een bericht terugstuurt. Naar waar gaat dat dan denk je? Inderdaad, naar jou UIN. Want dat heb je ingevuld.
+Nu je dat bericht ontvangen hebt, dan heb je ook zijn/haar UIN.
+
+Appendix D: Meer plezier met contactlijsten
+----------------------------------------------------------
+Zoals ik al gezegd heb, als je er voor zorgt dat iemand zichzelf aan zijn contachtlijst toevoegt, dan verliest hij zijn hele contactlijs als hij niet gepatcht is. Ik heb al meer met berichten spoofers iemand zichzelf laten toevoegen ).
+Hier is nog een manier om dit te doen.
+Allereerst moet de persoon in je contactlijst staan. Verander zijn/haar naam op je contactlijst en stuur hem/haar als een "contact". Het lijkt alsof de "contact" die je hem/haar stuurt een andere persoon is en zal hij/haar die persoon aan zijn/haar lijst toevoegen, niet weten dat de persoon eigenlijk zichzelf is!
+Als je jezelf tegen dergelijke dingen wil beschermen, installeer dan de patch die je toelaat jezelf aan je contactlijst toe te voegen ( we hebben al gezegd waar je de patch kunt vinden ), of laat je gewoon niet aan je contactlijst toevoegen. :-)
+De persoon die hiermee op de proppen kwam is Dr. Virus ( een lid van BSRF. Hij is degene die de flash intro en het menu maakte).
+       

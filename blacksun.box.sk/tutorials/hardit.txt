@@ -1,0 +1,75 @@
+/------------------------------------------------------------\
+|Titolo: Speeding Up Your Linux Partitions                   |
+|Autore: Craig Keough - http://blacksun.box.sk               |
+|Tradotto da: MightyInquisitor - mightyinquisitor@mailme.org |
+\------------------------------------------------------------/
+
+
+Allora, hai installato LINUX e la velocita' non e' tale a quanto ne avevi sentito parlare.
+Ho ragione? L'installazione di default di ogni distribuzione e' progettata per lavorare su
+una vasta gamma di configurazioni di computers e quindi non ha quasi alcuna ottimizzazione
+(come Windows9x d'altra parte).
+Freschi di installazione i box arrivano con un kernel di default e una configurazione di
+default, che si suppone siano il piu' compatibile possibile.
+Dall'ottimizzazione dei settaggi, puoi ottenere dei vantaggi. Ad esempio: la RedHat 6.2
+viene con un 660k kernel, ma puoi facilmente ridurlo a circa 500k, se non meno. Questo
+dovrebbe velocizzare di gran lunga le performance di linux.
+Ma oggi siamo pronti a fare qualcosa completamente differente.
+Incominciamo col migliorare lo stato del tuo disco rigido per una piu' veloce performance,
+quindi se stai usando KDE, esci alla console (a causa della natura di questi miglioramenti
+il tuo computer potrebbe rivelarsi instabile col risultato di danneggiamento o perdita di
+dati, dunque e' meglio che vengano eseguiti senza l'X-Windows).
+Se hai fatto il log-in come utente normale, digita su al prompt dei comandi e quindi inse-
+risci la password.
+Il comando che dobbiamo utilizzare e': "hdparm"
+Puoi ottenere una lista di tutti i comandi per hdparm digitandolo senza aggiungere nessun'
+altra opzione.
+Una piu' completa spiegazione di questi comandi puo' essere ottenuta digitando "man hdparm".
+Il prossimo punto e' di determinare il nome assegnato al tuo disco rigido, hda, hdb, etc.
+Se non lo sai: digita "dmesg" e questo mostrera' tutte le informazioni apparse durante il
+boot del computer in linux.
+Se hai un disco rigido molto probabilmente si chiama: hda
+Se hai due dischi rigidi allora molto probabilmente il secondo si chiama: hdb
+Prendiamo come default in questo articolo l'hda.
+Adesso digita: "hdparm -I /dev/hda" Questo leggera' tutte le possibili informazioni diret-
+tamente dal drive, dicendoci cosa puo' supportare.
+Prima di usare una particolare opzione di miglioramento, assicurati ti aver visto le infor-
+mazioni per essere sicuro che il drive supporta a pieno l'opzione.
+Fai un test di velocita' digitando: "hdparm -t /dev/hda" Ripetilo un paio di volte e fatti
+un idea generale della velocita' e scrivile su un foglio quindi quando hai finito puoi com-
+parare i risultati.
+Io ho ottenuto un risultato pari a: 4.31 MB/s
+Prossimo passo, digita: "hdparm /dev/hda" Questo output ti dice quali sono le configura-
+zioni, ti renderai conto che il supporto I/O legge 16-bit, esso probabilmente non usa il
+DMA e l'unmask irq probabilmente è settato a 0 - off (spento), e avanti con il multicount
+disabilitato.
+La maggior parte dei nuovi dischi rigidi possono usare questi settaggi, quindi possiamo
+accenderli (on).
+Digita ora: "hdparm -c3 -m16 /dev/hda" Questo accendera' il multireads e il 32-bit flag
+w/sync.
+Adesso prova a fare nuovamente il test di velocita', che gran miglioramento!!!
+Puoi fermarti qui perche' le nuove features possono mandare in crash il tuo computer se
+non sono supportate.
+Abbiamo bisogno di accendere il DMA digitando: "hdparm -d1 /dev/hda" Puoi anche accendere
+il multiword DMA2 digitando "hdparm -d1 -X34 /dev/hda".
+Setta l'unmask irq bit ad ON digitando: "hdparm -u1 /dev/hda" Fai: "man hdparm" per capire
+cosa questo comando fa.
+Gli ultimi settaggi sono di settare il PIO mode del tuo drive, quindi guarda le informazioni
+ricavate dal fare questo digitando: "hdparm -I /dev/hda" e guarda quale pio mode e' suppor-
+tato.
+Digita "hdparm -p4 /dev/hda" Al posto di "4" scrivi il piu' alto numero supportato dal tuo
+disco rigido.
+Esegui: "hdparm -t /dev/hda"
+A questo punto io leggevo 19.43 MB/s
+Questo e' un drastico miglioramento.
+Non vogliamo dover digitare questi parametri ad ogni riavvio del computer, quindi dobbiamo
+aggiungerli allo startup script.
+Vai a /etc/rc.d Io li ho semplicemente aggiunti alla fine del file "rc.local", perche' e'
+l'ultimo script che viene eseguito e ogni fscking e' eseguito prima di questo punto.
+Puoi combinare tutti questi settaggi su una linea o puoi metterli ognuno su una linea sepa-
+rata se vuoi che sia piu' comprensibile alla vista di altri.
+Assicurati anche di mettere un commento dicendo cosa a cosa servono questi settaggi quindi
+puoi trovarli piu' facilmente se hai bisogno di cambiarli.
+Esempio: "hdparm -c3 -m16 -d1 -X34 -u1 -p4 -kK /dev/hda".
+NOTA: fai queste cose a tuo rischi e pericolo, io non sono responsabile.
+

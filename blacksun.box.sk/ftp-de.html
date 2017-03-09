@@ -1,0 +1,258 @@
+<html><head><title>The FTP Tutorial</title>
+<script language="JavaScript" defer><!--
+function killRects(){window.focus();}
+document.onmouseup = killRects
+//--></script>
+<style><!--
+a		{text-decoration:none;}
+a:hover	{color:0080ff;text-decoration:underline;}
+li		{text-indent:10px;}
+//--></style>
+</head><body bgcolor="#000000" text="#eaeaea" link="#eaeaea" vlink="#eaeaea" alink="#0080ff"><font face=Verdana size=2>
+
+<font size=5><b>The FTP Tutorial</b></font> <font size=1>version 2.0, 27/6/99</font><br>
+<blockquote><font size=1>written by yours truly, <a href="mailto:barakirs@netvision.net.il">R a v e N</a> (<a href="http://blacksun.box.sk">blacksun.box.sk</a>)<br>translated and written as html-file by <a href="mailto:jb_seven@hotmail.com">jb</a></font></blockquote><br>
+<table cellspacing=0 cellpadding=0 border=0 width=95% height=2><tr>
+<td bgcolor=000000></td><td bgcolor=040404></td><td bgcolor=080808></td><td bgcolor=0c0c0c></td><td bgcolor=0f0f0f></td>
+<td bgcolor=101010></td><td bgcolor=141414></td><td bgcolor=181818></td><td bgcolor=1c1c1c></td><td bgcolor=1f1f1f></td>
+<td bgcolor=202020></td><td bgcolor=242424></td><td bgcolor=282828></td><td bgcolor=2c2c2c></td><td bgcolor=2f2f2f></td>
+<td bgcolor=303030></td><td bgcolor=343434></td><td bgcolor=383838></td><td bgcolor=3c3c3c></td><td bgcolor=3f3f3f></td>
+<td bgcolor=404040></td><td bgcolor=444444></td><td bgcolor=484848></td><td bgcolor=4c4c4c></td><td bgcolor=4f4f4f></td>
+<td bgcolor=505050></td><td bgcolor=545454></td><td bgcolor=585858></td><td bgcolor=5c5c5c></td><td bgcolor=5f5f5f></td>
+<td bgcolor=606060></td><td bgcolor=646464></td><td bgcolor=686868></td><td bgcolor=6c6c6c></td><td bgcolor=6f6f6f></td>
+<td bgcolor=707070></td><td bgcolor=747474></td><td bgcolor=787878></td><td bgcolor=7c7c7c></td><td bgcolor=7f7f7f></td>
+<td bgcolor=808080></td><td bgcolor=848484></td><td bgcolor=888888></td><td bgcolor=8c8c8c></td><td bgcolor=8f8f8f></td>
+<td bgcolor=909090></td><td bgcolor=949494></td><td bgcolor=989898></td><td bgcolor=9c9c9c></td><td bgcolor=9f9f9f></td>
+</tr></table><br>
+Beachtet: immer wenn ihr sowas in der Art seht: blah<sup>1</sup> und ihr das Wort blah nicht versteht, gibt es eine Erkl&auml;rung in der Newbies-Ecke in Teil 1 - nur f&uuml;r euch.<br>
+Beachtet #2: dadurch, dass das hier eine HTML version ist, wurden euch viele kleinigkeiten erleichtert. So k&ouml;nnt ihr z.B. auf eine Internetadresse oder Namen klicken um die Seite aufzurufen bzw. eine e-mail zu schreiben. Geht einfach mit der Maus &uuml;ber so machne W&ouml;rter (nur Internet Explorer 4 oder h&ouml;her) und wenn es ein Link ist, wird er blau aufleuchten (meistens aber auch kursiv geschrieben).<br><br><br>
+
+<font size=3><u>Autor-Anmerkung</u></font><br><font size=1><br></font> Diese Datei ist haupts&auml;chlich f&uuml;r Newbies gedacht, aber Gurus k&ouml;nnen nat&uuml;rlich auch was lernen (lest alles, auch die Eewbies-Ecke. Vielleicht endeckt ihr ja etwas, was ihr beim ersten Lernen noch &uuml;bersehen habt). Die n&auml;chsten Tutorials sind meistens f&uuml;r Gurus, also weiterlesen! Wenn ihr Kommentare oder Fragen zu diesem Tutorial habt (keine Flames<sup>11</sup> oder Spam, bitte) e-mailt an barakirs@netvision.net.il (bitte in englisch). Besucht auch blacksun.box.sk f&uuml;r mehr Tutorials, kostenlose Hacking/Programming/Unix B&uuml;cher zum herunterladen und vieles mehr.<br><br><br>
+
+<font size=3><u>Rechtliches</u></font><br><font size=1><br></font>&nbsp;Wir ermutigen euch nicht zu irgendwelchen illegalen Aktivit&auml;ten. wenn ihr glaubt, das Gesetz zu missachten ist ein guter Weg jemanden zu imponieren, h&ouml;rt auf zu lesen und werdet erwachsen! Ein Krimineller zu sein, ist nicht cool oder eindrucksvoll!<br><br><br>
+
+<font size=3><u>Inhalt</u></font><br><font size=1>&nbsp;<br></font>
+<a href="#whatsftp"><i>Was ist FTP und wof&uuml;r brauche ich das?</i></a>
+<a href="#ftpabb"><i><li> Was bedeutet die Abk&uuml;rzung FTP?</i></a>
+<a href="#dowhat"><i><li> Was kann ich damit eigentlich tun? Was bringen die mir?</i></a><br>
+<a href="#ftpcmds"><i>FTP Befehle</i></a>
+<a href="#rawftp"><i><li> Wie man FTP mit &quot;rohen&quot; (raw) FTP Befehlen benutzt.</i></a>
+<a href="#guiftp"><i><li> Wie man FTP mit einem GUI (Graphical User Interface) / Text-Clienten<sup>5</sup> benutzt.</i></a><br>
+<a href="#ftphack"><i>FTP Hacking</i></a>
+<a href="#getinfo"><i><li> Wie man Information &uuml;ber sein Ziel findet, und wie man Sicherheitsl&ouml;cher mit Hilfe dieser ausnutzt</i></a>
+<a href="#exHoles"><i><li> Beispiele zu Sicherheitsl&ouml;chern, die mit FTP zu tun haben</i></a><br>
+<a href="#dumbbug"><i>Die Dumme-Bug-Ecke</i></a>
+<a href="#elite"><i><li> Ein &quot;elite&quot; Bug.</i></a><br>
+<a href="#newbies"><i>Newbies-Ecke</i></a>
+<a href="#protocol"><i><li> Was ist ein Protokol?</i></a>
+<a href="#port"><i><li> Was ist ein Port?</i></a>
+<a href="#mirror"><i><li> Was ist eine Mirror-Site?</i></a>
+<a href="#path"><i><li> Was ist ein Pfad (kompletter Pfad &amp; relativer Pfad)?</i></a>
+<a href="#client"><i><li> Was ist ein Client Programm und was ist ein Server Programm?</i></a>
+<a href="#info"><i><li> Wie man Informationen &uuml;ber Remote Hosts findet.</i></a>
+<a href="#daemon"><i><li> Was ist ein Daemon?</i></a>
+<a href="#root"><i><li> Was ist Root?</i></a>
+<a href="#coreDump"><i><li> Was ist ein Core Dump?</i></a>
+<a href="#DoS"><i><li> Was ist eine DoS Attacke?</i></a>
+<a href="#flaming"><i><li> Was ist flaming?</i></a>
+<a href="#DUN"><i><li> Was ist DUN?</i></a>
+<a href="#ISP"><i><li> Was ist ein ISP?</i></a>
+<a href="#distro"><i><li> Was ist Distro?</i></a><br>
+<a href="#biblio"><i>Bibliographie</i></a><br>
+<a href="#othertuts"><i>Andere Tutorials</i></a>
+<a href="#ftphacktut"><i><li> FTP Hacking.</i></a>
+<a href="#overclocking"><i><li>&Uuml;bertakten (Overclocking).</i></a>
+<a href="#adspmam"><i><li> Blockierung von Werbung und Spam (Ad and Spam Blocking).</i></a>
+<a href="#sendmail"><i><li> Sendmail.</i></a>
+<a href="#phreak"><i><li> Phreaking.</i></a>
+<a href="#advphreak"><i><li> Fortgeschrittenes Phreaking (Advanced Phreaking).</i></a>
+<a href="#phreak2"><i><li> Phreaking II.</i></a>
+<a href="#ircwar"><i><li> IRC Kriegsf&uuml;hrung (IRC Warfare).</i></a>
+<a href="#winreg"><i><li> Windows Registrierung (Windows Registry).</i></a>
+<a href="#collectnfo"><i><li> Infos-Sammeln (Info Gathering).</i></a>
+<a href="#proxygatesock"><i><li> Proxy/Wingate/SOCKS.</i></a>
+<a href="#offwinsec"><i><li> Offline Windows Sicherheit (Offline Windows Security).</i></a>
+<a href="#icqsec"><i><li> ICQ Sicherheit (ICQ Security).</i></a>
+<a href="#rmnet"><i><li>RM Networks Hacking.</i></a><br><br><br>
+<a name=whatsftp></a><font size=3><u>Was ist FTP und wof&uuml;r brauche ich das?</u></font><br><font size=1><br></font>
+<a name=ftpabb></a>Die Abk&uuml;rzung FTP (siehe Fu&szlig;note 1 unten) steht f&uuml;r File Transfer Protocol<sup>1</sup>.
+<a name=dowhat></a>FTP Server lassen euch mit geringem Aufwand (wenn ihr dazu die n&ouml;tigen Befugnisse habt) Dateien vom Server downloaden (eine Datei von Server emfangen) und uploaden (ein Datei zum Server senden). Eine Remote FTP Seite k&ouml;nnt ihr &auml;hnlich durchsuchen und durchforsten wie ihr auf eurem Computer Dateien sucht und euch durch Verzeichnisse hangelt (nat&uuml;rlich habt ihr nicht Lese- und/oder Schreibzugriff auf jede Datei - manche Dateien k&ouml;nnt ihr nicht einmal sehen).<br><br><br>
+<a name=ftpcmds></a><font size=3><u>FTP Befehle</u></font><br><font size=1><br></font> Im Folgenden findet ihr ein paar FTP Befehle, um mit den FTP Daemons<sup>7</sup> zu kommunizieren. Verbindet euch mit Port<sup>2</sup> 21 und benutzt dann die folgenden Befehle (siehe Fu&szlig;note 2 unten) um mit FTP Server zu kommunizieren:<br><a name=rawftp></a><br>
+<table cellpadding=0 cellspacing=0 style="font-size:12px"><tr bgcolor=#303030><td width=100>
+	cd</td><td>Verzeichnis wchseln (auf dem Server)</td></tr><tr><td valign=top>
+	lcd</td><td>locales Verzeichnis wechseln (wenn ihr eine Datei sendet, wird der Pfad<sup>4</sup> der Datei die ihr angegeben habt, der sein, den ihr mit lcd festgelegt habt)</td></tr><tr bgcolor=#303030><td>
+	dir,ls</td><td>Verzeichnisauflistung</td></tr><tr><td>
+	binary</td><td>Modus zum Bin&auml;ren Transfer von Daten benutzen</td></tr><tr bgcolor=#303030><td>
+	get</td><td>Datei emfangen</td></tr><tr><td>
+	mget</td><td>mehrere Dateien emfangen</td></tr><tr bgcolor=#303030><td>
+	put</td><td>Datei senden</td></tr><tr><td>
+	mput</td><td>mehrere Dateien senden</td></tr><tr bgcolor=#303030><td>
+	pwd</td><td>derzeitiges Verzeichnis (auf dem Server) ausdrucken
+</td></tr></table><br>
+<font size=2><u>Fu&szlig;noten</u></font><br><font size=1>&nbsp;<br></font>1. F&uuml;r tausende von computer-verwandten Acronymen und Abk&uuml;rzungen geht ihr am besten zu <a href="blacksun.box.sk">blacksun.box.sk</a> und downloadet die Datei acros.txt von der Projects-Seite.<br>
+<a name=guiftp></a>2. Wenn ihr nicht bl&ouml;de Befehle eintippen wollt gibt es da auch noch viele FTP Clienten<sup>5</sup>, die die Arbeit f&uuml;r euch erledigen. Gl&uuml;cklicherweise zeigen einige euch trotzdem die Befehle, die sie benutzen, an, so dass ihr auch neue dazulernen k&ouml;nnt. Ihr k&ouml;nnt FTP Clienten<sup>5</sup> f&uuml;r jedes Betriebssystem bei TUCOWS downloaden. Einfach zur n&auml;chsten TUCOWS Mirror-Site<sup>3</sup> oder direkt zu www.tucows.com surfen.<br><br><br>
+<a name=ftphack></a><font size=3><u>FTP Hacking</u></font><br><font size=1><br></font> Da es so viele FTP L&ouml;cher f&uuml;r so viele FTP Server 
+<a name=getInfo></a>Programme und so viele Betriebssysteme gibt, habe ich beschlossen, dass der einfachste Weg euch beizubringen wie das alles funktioniert, der ist, euch selbst Informationen &uuml;ber Sicherheitsl&ouml;cher einzuholen. Ich werde auch einige interessante FTP Sicherheitsl&ouml;cher am Ende dieser Sektion ansprechen. Um FTP L&ouml;cher zu finden, solltet ihr folgende Web-Sites durchsuchen (oder euch bei der BugTraq Mailing-List bei www.securityfocus.com anmelden):<br><blockquote><br>
+<a href="http://cert.org"><i>CERT (Computer Emergency Response Team)</i></a><br>
+<a href="http://www.iss.net/cgi-bin/xforce/xforce_index.pl"><i>X-Force Search (einfach)</i></a><br>
+<a href="packetstorm.genocide2600.com"><i>Packet Storm</i></a><br>
+<a href="http://www.securityfocus.com/level2/bottom.html?go=search"><i>BugTraq Archives</i></a><br>
+<a href="http://www.insecure.org/sploits.html"><i>Fyodor's Exploit World</i></a><br>
+<a href="http://www.genocide2600.com/~spikeman/"><i>Spikeman's Denial Of Service Website (f&uuml;r DoS<sup>10</sup> Attacken gegent FTP Server)</i></a><br>
+<a href="http://www.rootshell.com"><i>RootShell</i></a><br>
+<a href="http://www.slashdot.org"><i>Slashdot</i></a><br>
+<a href="http://www.hideaway.net/data.html"><i>Data</i></a><br></blockquote>
+<font size=1>(Bitte &uuml;ber alle Links, die nicht funktionieren, Bericht auf englisch erstatten an <a href="mailto:barakirs@netvision.net.il"><i>R a v e N</i></a>)</font><br><br>
+Beachtet: Man könnte meinen, dass diese Seiten illegal sind, da sie Erkl&auml;rungen zu Sicherheitsl&ouml;chern enthalten, und Anleitungen sie auszunutzen. Aber vergesst es. Diese Dinger nennt man dann &quot;beratende&quot; Seiten, und lassen euch Sicherheitsl&uuml;cken finden und beseitigen. Ob ihr nun die Informationen benutzt um euch zu sch&uuml;tzen oder andere zu hacken ist eure Sache. Das ist der Unterschied zwischen rechtm&auml;&szlig;ig und illegal.<br><br>
+Wenn ihr erstmal zu einer der Such-Seiten gekommen seid (ich empfehle die BugTraq Archieve), sucht nach den W&ouml;rtern die ihr wollt. Zum Beispiel: ihr findet heraus, dass eurer Ziel dieses OS (=> Betriebssystem) mit diesem FTP Server<sup>5</sup> und diesem Web Server etc. Kombiniert mal alle diese Informationsbr&ouml;ckchen und ich bin sicher, dass ihr die L&ouml;cher finden werdet, die am ehesten passen. Ihr k&ouml;&oumlnnt aber auch L&ouml;cher auf eurem eigenen Computer suchen. Wo wir schon dabei sind, wir werden mehr &uuml;ber Sicherheitsl&ouml;cher in dem kommenden Sendmail-Tutorial (<a href="http://blacksun.box.sk">blacksun.box.sk</a>). Und jetzt kommen ausgew&auml;hlte FTp L&ouml;cher.<br><br>
+<a name=exHoles></a><font size=2><u>Ausgew&auml;hlte FTP L&ouml;cher</u></font><br><font size=1><br>&nbsp;</font>
+Die folgenden FTP L&ouml;cher sind nicht neu oder au&szlig;ergew&ouml;hnlich oder unglaublich fantastisch oder irgendetwas in der Art. Sie sind einfach gut geeignet, um daran zu lernen. Ich suchte ein paar interessante FTP L&ouml;cher heraus und habe eine kleine Erkl&auml;rung &uuml;ber sie geschrieben, damit Newbies auch was lernen.<br>
+Beachtet: Die Seiten, von denen ich das habe sind keine &quot;b&ouml;sen Hacker-Seiten&quot;. Diese Erkl&auml;rungen nennt man beratend und sollen von Leuten genutzt werden, die Bugs in ihrem System beheben m&ouml;chten. Ob ihr sie nun f&uuml;r diesen Grund gebraucht oder f&uuml;r andere ist nicht unsere Sache.<br><br>
+1) Eingie FTP Daemons erlauben einen fr&uuml;hzeitigen PASV Befehl, der sie veranlassen wird abzust&uuml;rzen mit einem nachtr&auml;glichen Core Dump<sup>9</sup>. FTP Core Dumps k&ouml;nnen benutzt werden, um verschl&uuml;sselte Passw&ouml;rter zu bergen, wobei auch das Shadow Password Schema umgangen wird. Man wei&szlig; jedoch nicht genau welche dagegen immun sind, und welche nicht. Die einzigste L&ouml;sung w&auml;re, den neusten FTP Server zu benutzen. Geht auch mal zu <a href="http://www.genocide2600.com/~spikeman/bisonware3.html">http://www.genocide2600.com/~spikeman/bisonware3.html</a> um einen DoS<sup>10</sup> Angriff gegen &quot;BisonWare FTP Server 3.5&quot; zu sehen, der &auml;hnlich zu diesem Loch ist.<br><br>
+2) FTP Bounce Attack (zu lang, siehe <a href="http://www.netspace.org/cgi-bin/wa?A2=ind9507B&amp;L=bugtraq&amp;P=R1425">http://www.netspace.org/cgi-bin/wa?A2=ind9507B&amp;L=bugtraq&amp;P=R1425</a> (von BugTraq))<br><br>
+3) Lokaler Bug im FTP Daemon (zu lang, siehe <a href="http://www.netspace.org/cgi-bin/wa?A2=ind9507B&amp;L=bugtraq&amp;P=R1345">http://www.netspace.org/cgi-bin/wa?A2=ind9507B&amp;L=bugtraq&amp;P=R1345</a> (von BugTraq))<br><br>
+4) (Ausz&uuml;ge von BugTraq) Fakt: Jeder kann euren PC FTP Server von au&szlig;en herunterfahren. Und wenn ihr Windows 3.x benutzt, wird das System sogar abst&uuml;rtzen.<br>
+Programm: WinQVT/NET<br>Version: Alle versionen.. 16 und 32-bit<br>L&ouml;sung: Benutzt es nicht oder upgradet.<br>L&uuml;cke: Sendet ein OOB (Out of Band) zum Port 21<br>L&uuml;cke f&uuml;r Anf&auml;nger: Nehmt irgendein WinNuke, startet es, und wenn ihr eine "139" findet, &auml;ndert sie um in "21".
+Ok, ich wei&szlig;, das ist bl&ouml;d... :P. Aber vielleicht braucht es ja mal jemand ... wer wei&szlig; ...<br>
+Beachtet: Eine gepatchte Version von NT 4.0 ist damit nicht verwundbar mit deren MS FTP Server. Ich hatte noch keine Gelegenheit einen ungepatchten Server zu testen, aber IIRC, ich habe den FTP Port gecheckt, als das OOB Problem das erste mal gemeldet wurde und es ist nicht abgest&uuml;rtzt.<br>
+Ich w&uuml;rde vermuten, dass das einn generelles DOS/Windows Problem ist und nicht spezifisch f&uuml;r das WinQVT Packet gilt.<br><br>
+Ich hoffe das hat euch geholfen L&ouml;cher zu finden. Es wird viel mehr Beispiele im Sendmail Tutorial geben.<br><br><br>
+
+<a name=dumbbug></a><font size=3><u>Die Dumme-Bug-Ecke</u></font><br><font size=1>&nbsp;<br></font>
+Ich fand das auf einer "elite" Web Site, die von einem Haufen "Elite Hackern" gemacht wurde.<br>
+Sie sagten, das man, um ein FTP Server zu hacken, sich dort verbinden und folgende Befehle eintippen soll:
+<a name=elite></a><blockquote><br><font face=Courier>quote user ftp<br>quote cwd ~root<br>quote pass ftp</font></blockquote>
+Was der sogenannte Hacker da versucht, ist eine Usernamen eingeben um in das System zu kommen, den User zum Root<sup>8</sup> &auml;ndern und ein Passwort f&uuml;r den Usernamen eingeben.<br>
+Das funtioniert aber nur bei <i><b>wirklich</b></i> schlecht konfigurierten FTP Servern (Der Autor meint, das funktioniere nicht bei allen FTP Servern. Naja, da habe ich Nachrichten f&uuml;r euch: das funktioniert &uuml;berhaupt nicht, Punkt. Jedenfalls nicht, wenn wir hier &uuml;ber einen f&uuml;nf Jahre alten Jungen sprechen, der gerade einen Computer bekommen, ein paar Kn&ouml;pfe gedr&uuml;ckt und aus Versehen einen FTP Server aufgestellt hat.)<br><br><br>
+
+<font size=3><u>Appendix A: the SYST command</u></font><br><font size=1>&nbsp;<br></font>
+Gibt man den SYST Befehl ein w&auml;hrend man zu einem FTP Server verbunden ist, bekommt man oft wertvolle informationen &uuml;ber das System, wie zum Beispiel das OS, welche Versionen und Information &uuml;ber den FTP Server.<br>
+Verschafft euch irgendwie ein Verbindung zu einem FTP Server (durch benutzen eines Usernamens und eines Passwortes, welche ihr kennt oder durch einen anonymen Login - login: das anonyme Passwort ist eure-email-adreses@euer.isp. Ihr k&ouml;nntet auch die e-mail Adresse eines Anderen nehmen, der Sever pr&uuml;ft sie eigentlich nicht oder &auml;hnliches) und gebt den SYST Befehl ein.<br><br><br>
+
+<a name=newbies></a><font size=3><u>Newbies-Ecke</u></font><br><font size=1>&nbsp;<br></font>
+<table cellpadding=0 cellspacing=0 border=0 style="font-size:12px">
+<tr><td valign=top>1.<a name=protocol></a></td><td valign=top width=100>Protokol</td><td>
+Eine Sammlung von Regeln und Regulierungen, &auml;nhlich einer Sprache. Wenn zwei Computer das gleiche Protokole kennen, benutzen sie es, um miteinander zu kommunizieren.
+</td></tr><tr><td valign=top>2.<a name=port></a></td><td valign=top width=100>Port</td><td>
+(F&uuml;r eine mehr technische Erkl&auml;rung &uuml;ber was Port sind, scrollt zum etwas runter zum Ende der Erkl&auml;rung von Ports) Ports sind wie L&ouml;cher, die bestimmten Dingen erm&ouml;glichen (in dem Fall sind es dann Daten) aus ihnen heraus- bzw. hereinzugelangen.
+Es gubt physische Ports und Software-Ports an euren Computern. Physische Ports sind die Slots an der R&uuml;ckwand eures Computers, euers Monitor etc'. Software-Ports werden benutzt, um zu anderen Computern eine Verbindung herzustellen.
+Beispiel: Ich habe mir gerade einen neuen Computer gekauft und will ihn zu einem WebServer machen (Ich m&ouml;chte, dass Leute ausge&auml;hlte Web-Seiten, Bilder, CGI- und Java Scripts oder Applets, Programme u.s.w. die auf meinem Computer sind, aufrufen k&ouml;nnen). Damit das m&ouml;glich wird, muss ich eine WebServer Software installieren.
+Die WebServer Software &ouml;ffntet einen Port an meinem Computer und gibt ihm den Namen "80". Dann wartet die Software auf eingehende Verbindungen an diesem Port.
+Wenn jetzt jemand seinen Internet Browser aufruft (Netscape, Lynx, Microsoft Explorer etc') und zu meiner Web-Seite surft, verbindet sein Browser sich mit meinem Computer an Port 80 und sendet dann HTTP Befehle, die mein WebServer dann versteht und die gew&uuml;nschten Inhalte zur&uuml;cksendet.
+Mein WebServer verarbeitet die eingehenden Daten ziehmlich schnell und sendet sie zur&uuml;ck zu dem Port, den der Browser auf dem Computer des Surfers ge&ouml;ffnet hat. Der Browser wird an dem Port auf geforderte Daten waretn (die HTML Seite, das Bild, das Programm etc'), die durch den Port kommen.
+Dann gibt es auch verschiedene Ports f&uuml;r verschiedene Daten (da kommen wir noch zu), damit die Daten nicht durcheinander kommen. Stellt euch vor, euer Browser bekommt Daten, die euer FTP Client bekommen sollte.
+Ich hoffe ihr habt so in etwa verstanden was ein Port ist.<br>
+Jetzt gibt es da auch drei Arten von Ports: gut-bekannte Ports, registrierte Ports und dynamische/private Ports.<br>
+Die bekannten Ports sind die von 0 bis 1023. Dies sind die Standart-Ports f&uuml;r verschiedene Dienste (ein WebServer ist ein Dienst, weil er auf eingehende Verbindungen von entfernten Computern wartet und dann etwas zur&uuml;ck sendet). Beispiel: der Standart-Port f&uuml;r WebServer ist 80. Wenn nicht, wie w&uuml;rde dann euer Browser wissen, zu welchem Port er verbinden soll<br>
+Registrierte Ports sind die von 1024 bis 49151. Diese Ports sind reserviert f&uuml;r verschiedene Programme. Beispiel: ICQ (<a href="http://www.icq.com">www.icq.com</a>) reserviert einen Port und wartet auf eingehende Nachrichten.<br>
+Die dynamischen und/oder privaten Ports sind die von 49152 bis 65535. Sie k&ouml;nnen von jedem f&uuml;r irgendetwas benutzt werden.<br><br>
+"Technische Erkl&auml;rung" - Um gleichzeitige Verbindungen zu dem TCP Modul zu gew&auml;hrleisten, stellt TCP eine User Interface (UI) bereit, das sich Port nennt.
+Ports werden von Kernel benutzt um Netzwerk Aktivit&auml;ten zu identifizieren. Diese sind strickte Transport Schicht Dinge (IP's k&uuml;mmert das weniger).
+Zusammen mit einer IP Adresse stellt ein TCP Portport einen Endpunkt f&uuml;r Netzwerkkommunikationen dar.
+<i>Alle</i> Internetverbindungen k&ouml;nnen in jedem Augenblick mit vier Nummern beschrieben werden: die Quellen-IP-Adresse mit dem Quellen-Port und ide Ziel-IP-Adresse mit dem Ziel-Port.
+Server sind an die 'gut-bekannten' Ports gebunden, so dass sie auf verschiedenen Systemen einen Standart-Port sein k&ouml;nnen .
+Zum Beispiel ist der Telnet Deamon an TCP Port 23, der FTP Daemon an TCP Port 21, der rlogin Daemon an TCP Port 513 u.s.w.<br><br>
+Wichtiges &uuml;ber gut-bekannte Ports: Dienste (Daemons, die auf eingehende Verbindungen warten und Leuten irgendwie etwas nutzen) an diesen Ports k&ouml;nnen nur vom Root ausgef&uuml;hrt werden. So k&ouml;nnen untergeordnete User nicht irgendetwas an den wichtigen Port herumfummeln.
+</td></tr><tr><td valign=top>3.<a name=mirror></a></td><td valign=top width=100>Mirror-Site</td><td>
+Eine Web-Site, die eine exakte Kopie der Originalen Web-Site ist und nur auf einem anderen Server ist.
+Mirror-Sites k&ouml;nnen benutzt werden, um Downloads/Uploads zu beschleunigen. Beispiel: Anstatt vom/auf den TUCOWS Haupt-WebServer herunterzuladen/hochzuladen, der irgendwo weit weg von meinem Haus steht, kann ich das gleiche von einem deutschen Mirror machen (Mirror-Site, die in Deutschland ist, wo ich wohne), wobei dann Downloads/Uploads schneller sind (meistens).
+</td></tr><tr><td valign=top>4.<a name=path></a></td><td valign=top width=100>Pfad</td><td>
+UNIX Beispiel: wenn eine Datei /etc/passwd ist, ist der Pfad der Datei /etc.<br>
+DOS/Windows Beispiel: wenn eine Datei c:\windows\win.exe ist, ist der Pfad der Datei c:\windows.<br>
+Es gibt zwei Arten von Pfaden: ein kompletter Pfad und ein relativer Pfad.<br>
+- Kompletter Pfad in DOS/Windows: wenn eine Datei in c:\program files\quickview plus\ ist, ist das ein kompletter Pfad.<br>
+- Kompletter Pfad in UNIX: wenn eine Datei in /usr/local/sbin ist, ist das ein kompletter Pfad.<br>
+- Relativer Pfad in DOS/Windows: wenn das derzeitige Verzeichnis (das Verzeichniss, wo ihr gerade seit) c:\windows ist, und die Zieldatei in c:\windows\temp ist, ist der relative Pfad zu dieser Datei "temp".<br>
+- Relativer Pfad in UNIX: wenn das derzeitige Verzeichnis /usr/nobody ist, und die Zieldatei in /usr/nobody/public_html/cgi-bin ist, ist der relative Pfad zu dieser Datei "public_html/cgi-bin".<br>
+</td></tr><tr><td valign=top>5.<a name=client></a></td><td valign=top width=100>Client / Server Programme</td><td>
+Ein Client Programm ist ein Programm das Resources (Dinge) von einem anderen Programm/Computer benutzt.<br>
+Ein Server Programm ist ein Programm das Resources an Client Programm liefert.
+Beispiel: Client=Netscape Navigator. Server=Apache version 1.6.6 (ein WebServer, also ein Programm das Leuten mit Internet Browsern erm&ouml;glicht bestimmte Web-Sites, Bilder, Dateien u.s.w. herunterzuladen).
+</td></tr><tr><td valign=top>6.<a name=info></a></td><td valign=top width=100>Information &uuml;ber Remote Hosts</td><td>
+Der beste Weg um Informationen herauszufinden ist der, sich die Banner der Deamons<sup>7</sup> anzuschauen. Daemon Banner sind kleine St&uuml;ckchen an Information, die einige Daemons zur&uuml;ckliefern, wenn man verbunden ist, damit der verbindende Computer (der mit dem Deamon verbunden ist) wei&szlig;, wie er besser mit ihm kommuniziert.
+Versucht zu Port 80 (WebServer) zu verbinden und sendet Befehle wie GET und schaut dann den Banner an. Ihr k&ouml;nnt auch Sendmail an Port 25 vesuchen (siehe n&auml;chstes Tutorial), Telnet an Port 23, FTP an Port 21 oder womit auch immer.
+</td></tr><tr><td valign=top>7.<a name=daemon></a></td><td valign=top width=100>Daemon</td><td>
+Ein Programm das auf eingehende Verbindungen von entferneten Computern an einem bestimmten Port<sup>2</sup> wartet und dann mit diesen kommuniziert.
+</td></tr><tr><td valign=top>8.<a name=root></a></td><td valign=top width=100>Root</td><td>
+Auch Superuser genannt, weil seine Erlaubnisse endlos sind. Seine UID (User ID Nummer, eine Identifikationsnummer die ein User auf einem UNIX System hat) und GID (Group ID. Ihr k&ouml;nnt Gruppen erstellen und diesen dann verschiedene Erlaubnisse erteilen. Beispiel: jeder der Berechnungsabteilung kann alle Dateien in diesem Verzeichnis lesen und ausf&uuml;hren, u.s.w.) sind immer 0 (au&szlig;er bei sehr umge&auml;nderten Boxes).
+Wenn ihr erstmal root seit, k&ouml;nnt ihr practisch alles an dem System herumexperimentieren.
+</td></tr><tr><td valign=top>9.<a name=coreDump></a></td><td valign=top width=100>Core Dump</td><td>
+Wenn ein Programm abst&uuml;rtzt "sch&uuml;ttet" es den ganzen "Kern" (alle Informationen die verarbeitet wurden, die nicht auf Festplatte gespeichert sind. Also der ganze Kram eines Programms, das sich im RAM befindet) in eine tempor&auml;re Datei.
+</td></tr><tr><td valign=top>10.<a name=DoS></a></td><td valign=top width=100>DoS</td><td>
+Denial of Service ("Dienstverweigerung"). Ein Nuker in Dummy-Sprache. Eine Art Attacke, die den Zielcomputer veranlasst einige/s&auml;mtliche Dienste zu Usern auf diesem Computer (auf entfernte User) zu verweigern.
+Beispiel: WinNuke (auch OOB genannt), der einfachste DoS der Welt.
+(Von Spikeman's DoS Seite) Dieses Denial of Service Programm beeinflusst Windows Clienten, indem eine "Out of Band" Ausnahmenachricht zu Port 139 gesendet wird, der nicht wei&szlig;, wie er damit umzugehen hat. Das ist der Standart Port, an dem die Windows Betriebssyseme auf Verbindungen warten. Benutzer von Win 3.11, Win 95 und Win NT sind mit dieser Attacke verwundbar. Dieser Programm ist eigentlich ein "&Auml;rger-Programm", das viel im Internet herumgekommen ist. Es ist ein Umstand in Chat R&auml;umen und IRC.  Wenn man eure IP# nimmt und OOB Daten zu Port 139 sendet, k&ouml;nnen euch b&ouml;swillige Benutzer vom Internet disconnecten (oft mit niedrigen Systemressourcen und Bluescreens)
+Einige von euch sind sicher schon einmal Opfer gewesen. Wenn euch das in Win 95 passiert, werdet ihr eine Window Fatal Error Message sehen, die &auml;hnlich wie die folgende aussieht:<br>
+Fatal exception 0E at 0028: in VxD MSTCP(01) + 000041AE.<br>
+This was called from 0028: in VxD NDIS(01) + 00000D7C.<br>
+Neustarten des System sollte alles wieder in Ordnung bringen<br><br>
+<font size=2><u>Patches ("fixes") f&uuml;r WinNuke (OOB)</u></font><br><font size=1>&nbsp;<br></font>
+Weitere Informationen &uuml;ber WinNuke:<br>
+<a href="http://support.microsoft.com/support/kb/articles/Q168/7/47.asp"><li>http://support.microsoft.com/support/kb/articles/Q168/7/47.asp</a>
+<br><br>Windows 95 Patches:
+<a href="http://support.microsoft.com/download/support/mslfiles/Vipup11.exe"><li>http://support.microsoft.com/download/support/mslfiles/Vipup11.exe</a>
+<a href="http://support.microsoft.com/download/support/mslfiles/Vipup20.exe"><li>http://support.microsoft.com/download/support/mslfiles/Vipup20.exe (for Winsock 2.0<sup>*</sup>)</a>
+<a href="http://www.theargon.com/defense/nuke/index.html"><li>http://www.theargon.com/defense/nuke/index.html</a>
+<br><font size=1>Bitte lest die Readme's &uuml;ber die Win95 Patches bevor ihr sie installiert.</font><br>
+<br>Welche Version von Winsock habt ihr auf eurem Windows95 PC?
+<a href="http://premium.microsoft.com/support/kb/articles/Q177/7/19.asp"><li>http://premium.microsoft.com/support/kb/articles/Q177/7/19.asp</a>
+<a href="http://www.theargon.com/defense/nuke/index.html"><li>http://www.theargon.com/defense/nuke/index.html</a>
+<br><br>Windows NT 4.0 Patch:
+<a href="http://support.microsoft.com/support/kb/articles/Q143/4/78.asp"><li>http://support.microsoft.com/support/kb/articles/Q143/4/78.asp</a>
+<a href="http://www.theargon.com/defense/nuke/index.html"><li>http://www.theargon.com/defense/nuke/index.html</a>
+<br><font size=1>Bitte lest die Readme's &uuml;ber die WinNT Patches bevor ihr sie installiert.</font><br>
+<br><br>Mehr Informationen &uuml;ber DoS Attacken k&ouml;nnen bei Spikeman's DoS Seite gefunden werden: <a href="http://www.genocide2600.com/~spikeman/main.html">http://www.genocide2600.com/~spikeman/main.html</a>
+<sup>*</sup>Ich wei&szlig; nicht, ob das bei neuen Versionen von Winsock funktioniert. Ihr downgraded also besser zu Winsock 1.1 (diese Version kommt mit Windows 95) indem ihr in die Systemsteuerung geht, Netzwerk und das TCP/IP und den Dial Up Adapter<sup>12</sup> entfernt und sie dann wieder hinzuf&uuml;gt (auf Hinzuf&uuml;gen klicken, Protokol ausw&auml;hlen und im Firma-Frame auf Microsoft klicken und schon seht ihr TCP/IP. F&uuml;r DUN<sup>12</sup> tut ihr das gleiche, au&szlig;er das ihr anstatt von Protokol einfach Adapter ausw&auml;hlt).
+Wenn ihr damit fertig seit upgraded ihr wieder auf Winsock 2.0, installiert den Patch (Vipup20.exe) und upgraded dann auf neuere Versions von Winsock.
+</td></tr><tr><td valign=top>11.<a name=flaming></a></td><td valign=top width=100>Flames</td><td>
+Jemanden flamen (ihm &auml;rgerliche Mails &uuml;ber das, was er getan hat, Meinungen u.s.w. schicken, mit denen ihr nicht einverstanden seit).
+</td></tr><tr><td valign=top>12.<a name=DUN></a></td><td valign=top width=100>DUN</td><td>
+Dial Up Adapter. Das Windows Programm das den ISP<sup>13</sup> anw&auml;hlt.
+</td></tr><tr><td valign=top>13.<a name=ISP></a></td><td valign=top width=100>ISP</td><td>
+Internet Service Provider. Eine Firma, die Internetdienste anbietet, wie z.B. Internetverbindung, Web-Hosting (d.h. Platz f&uuml;r seine homepage), e-mail Dienste u.s.w.
+</td></tr><tr><td valign=top>14.<a name=distro></a></td><td valign=top width=100>Distro</td><td>
+Distribution. Da UNIX kein registriertes Patent ist, Trademark, oder copyrighted oder &auml;hnliches, gibt es viele Distributions (zu Deutsch: Ver&ouml;ffentlichungen; Software Pakete) davon. Jedes Distro hat seine eigene Vor- und Nachteile (Beispiel: Redhat ist am besten f&uuml;r Anf&auml;nger).
+</td></tr></table><br><br><br>
+<font size=3><u>N&auml;chste Tutorials</u></font><br><font size=1>&nbsp;<br></font>
+Die n&auml;chsten Tutorials werden &uuml;ber Sandmail sein, den Deamon mit den meisten Bug auf der ganzen Welt.  Unter anderem Fragen &uuml;ber was ist Sendmail, Sendmail Befehle, wie man sich durch Sendmail hackt, wie man absolut unzur&uuml;ckverfolgbare e-mails schickt, die Newbies-Ecke (was ist ein Deamon, wie man e-mails zur&uuml;ckverfolgt u.s.w.) und vieles mehr.
+Wenn dieses Tutorial 7 Punkte von 10 bekommt, dann bekommt das Sendmail Turorial 12. Erstens wird es seeehr laaang sein, und es wird viele kleine Tipps und ausf&uuml;hrliche Erkl&auml;rungen &uuml;ber Sicherheitsl&ouml;cher geben und Tipps und Tricks und einen ganzen A.... voll collem Kram der mir bis jetzt noch nicht eingefallen ist.
+Nebenbei: ich habe dieses Tutorial in Eile gemacht, weil ich nicjht viel Zeit hatte <sup>*</sup>, aber die Sommerferien sind ja bald, so dass ich viel Zeit haben werde f&uuml;r das Sendmail Tutorial.
+Das dritte Tutorial wird von UNIX Shell Programmierung handeln. Ich werde jetzt aber keine Detail verwenden, und ich bin sowieso noch nicht dar&uuml;ber im Klaren. Vielleicht &auml;ndere ich es ja um in ein "Alles was du &uuml;ber IRC Kriege wissen willst, dich aber nie getraut hast zu fragen"-Tutorial.  Wer wei&szlig;.
+Ich werde auch bald einen elektronische Wahl veranstalten, wo ihr w&auml;hlen k&ouml;nnt, ob euch die Tutorials gefallen, oder ob ihr noch mehr andere sehen (also lesen) wollt (abboniert die MailingList und ihr werdet automatisch dar&uuml;ber informiert.  Um zu Abbonieren, surft zu <a href="http://blacksun.box.sk"><i>blacksun.box.sk</i></a> und geht dort zur MailingList Seite).
+F&uuml;r mehr Informationen, surft zu <a href="http://blacksun.box.sk"><i>blacksun.box.sk</i></a>. Vergesst nicht uns eine mail zu schicken!<br><br>
+<sup>*</sup> Habe vor kurzem 6.0 installiert. Ja, ja, ich wei&szlig;, es ist nicht gerade das beste Linux Distro<sup>14</sup> da drau&szlig;en (ich versuch hier nicht all die Redhat User zu beleidigen), aber ich wollte mal sehen wie es aussieht und so.
+ich muss euch sagen, die installation ist sowas von einfach im Gegensatz zu anderen Distros, das ist super f&uuml;r Anf&auml;nger.<br><br>
+Beachtet: bevor das Sendmail Tutorial herauskommt, mache ich noch einige Mini-Tutorials, wie z.B. "Buffer Overflows", "Overclocking", "RM Networks" u.s.w.<br><br><br>
+
+<a name=biblio></a><font size=3><u>Bibliography</u></font><font size=1>&nbsp;<br></font>
+<a href="http://www.securityfocus.com/level2/bottom.html?go=search"><li><i>BugTraq Archives</i></a>
+<a href="http://www.rootshell.com"><li><i>RootShell</i></a> 
+<a href="http://www.insecure.org/sploits.html"><li><i>Fyodor's Exploit World</i></a>
+<a href="http://packetstorm.harvard.edu"><li><i>Packet Storm</i></a>
+<a href="http://www.iss.net/cgi-bin/xforce/xforce_index.pl"><li><i>X-Force Search (einfach)</i></a>
+<a href="http://www.slashdot.org"><li><i>Slashdot</i></a>
+<a href="http://www.genocide2600.com/~spikeman/"><li><i>Spikeman's Denial Of Service Website</i></a>
+<a href="http://www.pcmagazine.com"><li><i>PC Magazine</i></a><br><br><br>
+
+<a name=othertuts></a><font size=3><u>Andere Tutorials</u></font><font size=1>&nbsp;<br></font>
+<a name="#ftphacktut"></a><li>FTP Hacking.
+<a name="#overclocking"></a><li>Overclocking.
+<a name="#adspmam"></a><li>Ad and Spam Blocking.
+<a name="#sendmail"></a><li>Sendmail.
+<a name="#phreak"></a><li>Phreaking.
+<a name="#advphreak"></a><li>Advanced Phreaking.
+<a name="#phreak2"></a><li>Phreaking II.
+<a name="#ircwar"></a><li>IRC Warfare.
+<a name="#winreg"></a><li>Windows Registry.
+<a name="#collectnfo"></a><li>Info Gathering.
+<a name="#proxygatesock"></a><li>Proxy/Wingate/SOCKS.
+<a name="#offwinsec"></a><li>Offline Windows Security.
+<a name="#icqsec"></a><li>ICQ Security.
+<a name="#rmnet"></a><li>RM Networks Hacking.<br>
+<font size=1>Ihr k&ouml;nnt sie alle bei <a href="http://blacksun.box.sk">blacksun.box.sk</a> bekommen, oder die Mailing-List abbonieren unter <a href="http://blacksunresearch.listbot.com">blacksunresearch.listbot.com</a>.</font>
+
+<br><br><br><br>
+<font size=1 color=c0c0c0>F&uuml;r Rechtschreibfehler und Vertippser muss ich mich wohl entschuldigen!</font>
+</font>
+</body>
+</html>

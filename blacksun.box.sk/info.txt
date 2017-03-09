@@ -1,0 +1,463 @@
+The Info-Gathering Tutorial / by R a v e N (blacksun.box.sk)
+<=============================================================> version 1.8, 5/2/2000
+
+What's new?
+------------
+Version 1.7 - added this what's new section and two new appendixes (E and F).
+
+Note: if you're having a hard time reading this page because you have to scroll to the right whenever a long line comes, it's probably because you're not using "word wrapping".
+Most UNIX text editors and advanced Windows editors (and some less advanced ones like Wordpad) do this by themselves.
+To do word wrapping on Microsoft Notepad, simply go to Edit and then click on "Word wrapping".
+
+Author's Notes
+==============
+Please do not read this tutorial before you read our previous ones, since this one doesn't have a "Newbies Corner" and newcomers might have some difficulties understanding large parts of this tutorial.
+If you have any comments or questions regarding this tutorial (no flames or spam, please) Email me at barakirs@netvision.net.il.
+Visit blacksun.box.sk for more tutorials, free hacking/programming/unix books to download and much more.
+
+Disclaimer
+==========
+We do not encourage any kinds of illegal activities. If you believe that breaking the law is a good way to impress someone, please stop reading now and grow up. There is nothing impressive or cool in being a criminal.
+
+Contents
+========
+Introduction
+* Info Gathering?
+* How legal is it?
+* Some notes about privacy
+
+Finger
+* What is finger?
+* How can I use it to find information about a specific user?
+* My ISP is running a finger daemon but I want privacy! What should I do?
+* What if I'm using Windows? Can I use finger?
+
+Email
+* What can I find out about a person using his Email address?
+* What information can I find out of these headers of yours?
+* I wanna learn more about Email. Where can I find more information?
+
+Unix Network Diagnosis Tools
+* nslookup
+* tracert
+* whois
+* dig
+* Suppose I have Windows, how can I run these things on my box?
+
+Public Directories
+* What kind of information can I find there?
+* Where can I find these things?
+* Help! My name is there! How do I remove it?
+
+Password Files
+* Password files are "world readable"?
+* You mean I can get people's passwords out of it?
+* No? So what good are they without the passwords?
+
+IRC
+* What can I find out about another user on IRC?
+* How do I do it?
+* Where can I learn more about IRC?
+
+ICQ
+* What can I find out about another user on ICQ?
+* How do I do it?
+* What about other instant messanging software?
+
+Playing With Services
+* How do I find out what services my target is running?
+* How can I get information about my target out of these services?
+
+Webstats
+* What are webstats services?
+* What kind of information can they reveal?
+* How can I use them against my target?
+
+Playing With Satellites
+* WHAT?!
+* How can I use these things to scare others like hell?
+
+Appendix A: nslookup tips
+
+Appendix B: the +x mode
+
+Appendix C: using shares to get computer name
+
+Appendix D: www.anywho.com
+
+Appendix E: more URLs
+
+Appendix F: expn
+ 
+Appendix G: Usenet 
+
+Other tutorials by BSRF
+* FTP Security.
+* Sendmail Security.
+* Overclocking.
+* Ad and Spam Blocking.
+* Anonymity.
+* Info-Gathering.
+* Phreaking.
+* Advanced Phreaking.
+* More Phreaking.
+* IRC Warfare.
+* Proxies, Wingates and SOCKS Firewalls.
+* RM Networks.
+* The Windows Registry
+
+Introduction
+------------
+This tutorial will teach you how to acquire more information regarding a specific person in completely legal ways.
+Why is this legal?
+Because we are going to use information that is publicly available. It is publicly available because you have software on your computer that often needs to access such information for surfing, sending Email etc'. You can use this information to find private information about a specific person.
+Also, some of the information is not necessary for your computer, but it is still publicly available. Don't worry, I will explain later.
+During this tutorial I will show you how it is possible to find somebody's:
+
+1) Real first name.
+2) Real last name.
+3) Country.
+4) Operating system.
+5) Internet browser.
+6) Screen resolution.
+7) Username (at his/her ISP).
+8) ISP.
+9) IP address.
+10) Hostname.
+11) Phone number.
+12) Home address.
+13) Various services running on your target's machine (plus what's their version).
+
+Note: To learn more about privacy and how to increase your privacy, refer to our anonymity tutorial at blacksun.box.sk.
+Note 2: Please read our previous tutorials first. Otherwise, you might not understand some of the terminology.
+
+Finger
+------
+Finger is a service that runs on port 79 and allows you to find information about users on the server that runs it.
+Here, let me explain. A while ago my ISP, Netvision, had a finger daemon running on their port 79. It was publicly available, meaning that everyone was able to connect to port 79 on netvision.net.il (Netvision's server). All you had to do is to connect to that port, type in a username and hit enter. Or, you could simply type 'finger username@netvision.net.il' (without the quotes) on a Unix system and get the exact same results.
+Anyway, this finger daemon was giving away private and often sensitive information, such as who this account belongs to (first and last name of the owner), whether this user is online or not (very useful. If someone puts you on invisible in ICQ, you could simply finger him and therefore tell whether he is online or not), when did he go online (or when was the last time he went online) and for how long, whether the user has new mail (and how many mail messages are waiting for him) and the user's home directory on Netvision's server.
+Some finger daemons will go even further and tell you the user's phone number and home address. Ouchie...
+Anyway, I called Netvision, yelled at them for a while and they decided to remove that little finger daemon of theirs.
+So anyway, in case you're interested, here is how finger daemons work.
+Every user on a Unix system has a home directory. This directory stores his private configurations files and suchlikes. When finger is given a username, it looks at the password file (see the 'Password Files' chapter), finds the user's home directory and looks for two files in this directory - '.project' and '.plan' (without the quotes). The .project file contains private information about this user, There are programs out there that will generate such a file for every user on the system and let you decide what information you want to include in it. Anyway, the second file, .plan, contains information written by the user.
+Back on Netvision's finger server, I was able to telnet into netvision.net.il on port 23, access a menu shell, choose option number 3 and change my .plan file, but I wasn't able to delete or fake the information in my .project file. Most admins won't let the users on their system tamper with the .project file so it won't include any fake information or won't get "accidentally deleted".
+Well, these are the basics of finger. For more information, I suggest trying to set up a finger daemon on a Unix box and playing around with it. If you don't want people to start snoofing around after you and the rest of the users on your machine, I suggest putting the finger daemon on a very high and unstandard port (such as 63982), so it won't be detected on a portscan (unless it's a very, very, very long portscan).
+
+Note: on Windows, finger can be done by either:
+(a) Telneting to port 79 on the server that hosts the user of your choice and typing in the username.
+(b) Getting a Unix shell account and using the finger command.
+(c) Downloading SamSpade from samspade.org.
+
+Email
+-----
+Yes, Email. Emails aren't that simple, you know. There are tons of information just waiting to be discovered.
+You know these things you see on the top of Email messages? Sender, recipient, date, etc' etc' etc'. This is called a header. But this is not the entire header! This is just a partial header, or what most Email clients call "a normal header". Almost every Email client will let you view the full header, which contains a lot of valuable information about the sender. For more information, read the Sendmail tutorial. It will teach you what Sendmail is, how it works, how Email works and how to gather valuable information from a full header.
+
+Unix Network Diagnosis Tools
+----------------------------
+nslookup - as you should know by now, hostnames and domains (domain is the shortest hostname possible - something.org/net/com/etc') and actually aliases to IP addresses, so people won't have to remember the IP address of the server that hosts their favorite website. Instead, you would simply need to remember the hostname.
+Anyway, these hostnames are stored on DNSs, or NSs. DNS is a short for Domain Name Server, and NS is a short for Name Server. These are actually two different words for the exact same thing.
+Anyway, the Unix command nslookup looks up the IP addresses of hostnames or the hostnames of IP addresses. Now, if you have someone's IP address, this means you can find his hostname, right? So what good is a hostname anyway?
+When I am connected to the Internet, my hostname is usually something like this: RAS54-79.hfa.netvision.net.il. It tells us that I am connected through extension number RAS54-79 (this information is no use to us, so you may disregard it), my ISP is Netvision and I live in Israel (the .il extension stands for Israel. For more country extensions, head to blacksun.box.sk and checkout the acros.txt file on the projects page) in the city Haifa (hfa is a short for Haifa).
+nslookup can do much much more than this. For more information, type 'man nslookup' (no quotes) to get to nslookup's man (manual) page. Also check out Appendix A: nslookup tips.
+
+tracert - tracert stands for traceroute. This Unix command will show you what route your packets will have to go through until they will reach the given IP address / hostname.
+How this works: every packet has a value in it that is called TTL. TTL stands for Time To Live. This value is decreased every time a packet goes through a router. When the TTL hits zero, the packet is discarded and an ICMP error is sent back to the sender of the packet, telling him what happened and that he should resend the packet with a higher TTL (the recommended TTL these days is 64). This is done in order to prevent packets from getting lost and looping across the Internet.
+Now, what tracert does is quite simple - first, it sends a packet to the given IP or hostname with TTL=1. The packet takes one step and then dies. The first router informs us what happened. Since the error packet, like every other packet, contains the IP of the sender (the first router, in this case), we know who he is. Next, a packet with TTL=2 is sent. The second router returns it and tells us what happened, so we know who the second router is.
+Every time the TTL is increased by one, until the packet finally reaches it's destination. Meanwhile, tracert builds a list of routers that passed this packet along.
+Tracert is quite useful, since it can tell you a lot about a given IP or a given hostname. For example, if you entered an IP that does not have a hostname, you could traceroute it instead and see who's the ISP of that IP (the last routers in the list should belong to this IP's ISP). You could also use it to find out who's the ISP of large websites in the same way.
+For more information, type 'man tracert' (without the quotes) on a Unix system.
+
+whois - whois works like this: first, you put in a domain name. Then, whois checks InterNIC's (the nice guys that register domains in exchange for 70$ in cash, cheque or credit) database.
+You see, whenever you register a domain you have to enter a lot of information. Whois can extract this information out of InterNIC's database.
+So why is this useful? If you know what is the ISP of your target, you can find out a lot of information about it, such as where it is located, etc'. Normally, users of that ISP would live somewhere nearby, or at least in the same state. Besides, sometimes ISPs will have a country extension, say... .net, but will actually be in, say... Israel. So on normal conditions the extension would be .net.il, but there are exceptions. Whois can find out where this ISP (or any other given server with a domain name) is really located at.
+
+dig - dig finds tons and tons of information about a given IP address or a given hostname. Since this program is very complex, we will not discuss it at the moment. Please refer to dig's man page for further information.
+
+What if I'm running Windows, you ask?
+Well, my friend, your answer is at www.samspade.org. On SamSpade's website you can send commands to their server using javascript text boxes, or you could download a program called SamSpade and do it yourself. They also have a good texts library, so take a look at it.
+
+Public Directories
+------------------
+Yes, it's true. Most ISPs sell private information about their users to "web directories" such as whowhere.com.
+Simply head off to whowhere.com and play around with it. If you find more "web directories", tell me about them (my Email address is barakirs@netvision.net.il).
+In case you find your name there, you will see an option to remove it. It is recommended that you will do so.
+
+Password Files
+--------------
+On Unix systems, there are usually two kinds of password files.
+The first one is located at /etc/passwd. It is world-readable (everyone can read this file) and it is called the "shadowed" password file. It contains everything besides the passwords. The passwords (encrypted) are in /etc/shadow and only root has read and write access to it (or other users, if root decides to let them read it).
+Why do everyone need access to the password file, you ask? I'll explain.
+The password file has seven fields. Each field is seperated by a :, so it looks like this:
+field1:field2:field3:field4:field5:field6:field7
+Now, field1 contains the username. Field2 contains the encrypted password. Field3 contains some free text about the user. Field4 contains the user's UID (User ID. If the user's UID is zero he has root priviledges. Two users with the same UID have identical priviledges). Field5 contains the user's GID (Group ID. Same as UID, only you can give priviledges to a large group of users in a single command. GID zero is root). Field6 contains the user's home directory (where his personal configurations files are stored). Field7 contains the user's shell (a program that is executed once the user logs in. Usually a command interpreter, which is a program that accepts commands from you and executes them).
+Now, everyone needs read access to the shadowed file for certain reasons. For example: each file has an owner. The owner of the file can change access patterns (priviledges) to himself or to other users for that file using the command chmod xxx (the first x is for your priviledges, the second is for priviledges for your group and the third is for the rest of the outside world. 1 is read, 2 is write, 4 is execute. If you want read, write and execute for yourself, read only for your group and nothing for the rest of the world, type chmod 710 filename. read+write+execute=1+2+4=7, read=1, nothing=0. Got it?). He can also use the owner of the file using the command chown filename new-owner.
+Anyway, the owner's UID is embedded into the file. If you actually want to know the owner's name, you will need to look at the password file and find out who owns this UID. Get it?
+So anyway, the shadowed password file needs to be read by everyone for various purposes. So why is this interesting? Because of the free text field (field3).
+Some admins insert the user's real name, telephone number, home address and other information about him in this field, so it might be very very useful if you want to find information about this user.
+
+IRC
+---
+Normally (unless you're spoofing your IP address or your hostname or something like this), everyone on IRC who knows your nickname are able to find your IP. This means they can find your hostname as well. This means they can find out in which country (maybe even which city) you live, what is your ISP, information about your ISP etc' etc'.
+Use the command /whois nickname to find this person's IP or hostname. If you're IRCing through a raw session (see IRC Warfare tutorial), type whois nickname instead.
+Also, the command /finger may be quite useful in some cases, but it is possible to fake the returned information as well, so don't count on it.
+
+ICQ
+---
+On ICQ, it is quite simple to find a person's IP if he's hiding it. There are two ways: the easy way and the cool way.
+
+The easy way: go to come.to/isoaq, download a crack for your ICQ version and you will see everyone's IP address in their info (this is for Windows. If you're using a Unix ICQ clone, you'll probably won't need a crack, 'cause it'll reveal IPs anyway. If not, go for try "the cool way").
+
+The cool way: open a terminal window or another terminal (in Unix) or a DOS window (in Windows. The easiest way is to simply click start==>run and then type 'command' (without the quotes). To change the size of the window, hit alt+enter) and type netstat -a. This will display all connections and all listening ports.
+Then, send a message (or another event, such as a url) to your target. Do netstat -a again (after the event is sent). You will see a new connection which will probably be in "established" mode. In the same line, you will be able to see your target's IP address.
+So what's so cool about this way? Well, it could impress your friends, in case you wanna show them a hack but you don't want to use a simple crack (you wanna do this "the elite way").
+
+"The cool way" also seems to work on other instant messangers. There should also be cracks for them.
+
+Playing With Services
+---------------------
+If your target is running some services, such as Telnet, FTP, Sendmail, IRC etc' on it's computer, you could simply telnet into them and you will get a daemon banner.
+What's a daemon banner, you ask?
+Well, companies that produce daemons want to tell the world how great and widespread they are, so they put a little ad about themselves when you connect to them. This is called a daemon banner. Here are some examples for daemon banners:
+
+Welcome to 11.22.33.44, running RedHat 6.0 (Hedwig)
+login:
+password:
+
+
+220 alpha.someone.com ESMTP Sendmail 8.9.3/8.8.6; Thu, 8 Jul 1999 21:46:04 +0000 (GMT).
+
+
+Well, you get the point. Anyway, these daemon banners will tell you what kinds of services your target is running, what OS and a little more... if you havn't noticed, the second daemon banner, which happens to be a Sendmail daemon, tells you what's the time on your target's machine. Why is this so interesting? 'Cause it reveals the target's longitude! This should only be used to verify that the target is really on the country you thought it is on, but don't count on it. The timezone may be set wrong, the time may be set wrong etc'.
+Anyway, if you want to find out the time on your target's machine, there's another way to do it. There is a service called daytime that waits for incoming connections on port 13. The problem is that it doesn't exist on every computer in the world, and again, the time may be set wrong, so don't count on it.
+
+Webstats
+--------
+Webstats services are services that allow you to learn more about the people that come to your website. They can tell you where they come from, their IP/hostname, lots of info about their computer (OS, screen resolution and color palette, Internet browser etc') and much more.
+Search the net for free webstats services, put up a page somewhere, insert the webstats tracker into it (full instructions on doing this should be available on the webstats's website) and then ask someone to enter this page. The webstats tracker will immediately collect all this information about his computer and store it for later retrieval.
+
+GENERATOR Tags
+--------------
+If you know your way around HTML, you probably know what HTML tags are. Anyway, some people don't just write HTML by themselves, they use an HTML editor to do the dirty work for them.
+Most HTML editors will leave a meta tag somewhere on top of the page with information about the HTML editor that was used, and sometimes the OS of the user.
+If you know of a page that your target has written, try viewing it's source and looking for GENERATOR tags.
+Note: sometimes you won't even need to have the OS included in the GENERATOR. For example: if the user is using FrontPage, he's probably using some version of Windows.
+
+Playing With Satellites
+-----------------------
+Well, this one is kinda stupid, but whatever...
+There are websites that allow you to capture satellite photos of places in the world. If you find someone really stupid, you could find his country and his city and then grab a satellite picture of his city and tell him that you hacked a satellite a long while ago and you're using it to home into his computer's signals or something. Some people will actually believe this crap.
+You can grab satellite photos at http://terraserver.microsoft.com/default.asp. Simply click on the appropriate area in the world map.
+If you don't know where the country and city of your target is located, consult map.com's search or weather.com's weather maps. Also, cnn.com's weather maps may be useful as well. Once you find a map of the target's location, return to the TerraServer (the satellite page) and grab a photo of this area.
+
+Appendix A: nslookup tips
+-------------------------
+Here is a text file about nslookup I dug up somewhere. Happy reading.
+
+
+[nslookup]
+
+Nslookup is a great little tool for making DNS queries that comes with NT,
+Linux, etc.  The easiest way to use nslookup is in non- interactive mode.
+This means that you submit a request at the command line, and you get a
+response back with no other input. For example, from the command prompt, type:
+
+$nslookup foobar.edu
+
+Server:  localhost
+Address: 127.0.0.1
+
+Name:    foobar.edu
+Address: 289.13.266.37
+
+The Server and Address response you see above will vary depending upon your
+operating system, and how it's set up.  But you can see that this is a quick
+and easy way to look up the IP address of  a host given the name...we have
+performed a query for the "A"  resource record.  We can do a "reverse
+lookup" by entering the  IP address at the command prompt, rather than the
+host name:
+
+$nslookup 289.13.266.37
+
+Server:  localhost
+Address: 127.0.0.1
+
+Name:     www.foobar.edu
+Address:  289.13.266.37
+
+Wait a minute!  What's this "www.foobar.edu" stuff?  Well,  what we've found
+is an alias for the host "foobar.edu".  A  single host can have multiple
+host names that all point to  the same IP address. 
+
+The other way to play with nslookup is to enter interactive mode  by typing
+"nslookup" (with no arguments) at the command prompt, and then hitting
+<Enter>.  You will get a prompt back that looks 
+like:
+
+>
+
+>From here you can enter commands.  For example, type:
+
+>foobar.edu
+
+Wow!  We get the same information back as we did for the non- interactive
+mode query.  To look up specific resource records  for the foobar.edu
+domain, all we need to do is tell nslookup which RR type we want:
+
+>set type=<RR>
+
+where <RR> refers to the resource record type, as we saw listed above (A,
+PTR, MX, CNAME, etc).  This way you can look up just those records you are
+interested in.  Note:  If you enter "ANY" in place of "<RR>", you will be
+doing a lookup in the domain for all resource records...mail exchangers
+(email servers), name servers, etc.
+
+Now, let's try one more little trick.  This involves listing hosts  within
+the domain we are interested in...it doesn't mean _all_ of  the hosts,
+though.  We already know the names and IP addresses of the nameservers that
+point to foobar.edu, so start nslookup in  interactive mode.  Then change
+the nameserver used to resolve  queries to the nameserver that points to the
+foobar.edu domain:
+
+$nslookup
+
+Once you're in interactive mode, change the default nameserver that is used
+to resolve your queries to a nameserver that points to the foobar.edu
+domain...this information was retrieved using the whois query above:
+
+>server 287.128.192.4
+
+Now we want to list the hosts in the domain that have records available, so
+type: 
+
+>ls foobar.edu
+
+You will see something similar to:
+
+[ns01.nameserver.org]
+foobar.edu.           server = ns.nameserver.org       
+    
+foobar.edu.           server = ns2.nameserver.org     
+foobar.edu.           server = ns3.nameserver.org
+foobar.edu.           289.13.266.37
+ftp                   289.13.266.37
+smtp                  289.13.266.37
+www                   289.13.266.37
+
+In the real world (vice the "example" world) you will likely get a lot more
+hosts back than this...in fact, you may get  upwards to 500 or more hosts!
+However, what this tells us is that the host "foobar.edu" has the same IP
+address as the hosts listed as "ftp", "smtp", and "www".  This means that
+these are services aliased to the host...performing a lookup on
+"ftp.foobar.edu" or trying to connect to "ftp.foobar.edu" will
+point or connect you to the host "foobar.edu".
+
+If you do list the hosts in the domain, you may want to use  redirection to
+save this information in a file, so that you can read over it:
+
+>ls foobar.edu > foobar.txt
+
+
+Appendix B: the +x mode
+-----------------------
+In IRC, it is possible to put yourself into mode x by typing '/mode yournick +x' (do not include the quotes and replace yournick with your own nick. For example: /mode raven +x).
+This tells the IRC server to hide your IP, so when others try to /whois you or /dns you, they won't be able to get your IP (they will get a partial IP instead).
+This will only work on some servers, but when you're on IRC, it is recommended to use this option.
+Also, there is a way to bypass this. By simply creating a DCC connection with someone else (either a DCC chat or a DCC file transfer), you could then type 'netstat' (without the quotes) on either Unix or Windows/DOS and see what connections your computer is currently handling. One of them will be the DCC connection to that other guy.
+Why is that? Because DCC stands for Direct Client Communication, which means that DCC actions are not done through the server, but directly (think - why would the owners of the IRC server want people to transfer files through their servers and initiate private chats through their servers? It'll just chew up some bandwidth). The netstat command shows all current connections (local or remote), and one of them will be your DCC connection with that other guy. You will then be able to see his/her IP or hostname.
+
+Appendix C: using shares to get a computer name
+-----------------------------------------------
+Here is an interesting Email I received. It is quite self-explanatory.
+
+Subject: The Info-Gathering Tutorial
+    Date: Thu, 18 Nov 1999 20:06:29 +0000
+    From: Juan Baldovi Ortells <baldovi@nexo.es>
+      To: barakirs@netvision.net.il
+
+
+
+
+-----BEGIN PGP SIGNED MESSAGE-----
+
+Hi, I've just read your tutorial about info gathering and I think you can and
+another cool way or getting some info (mostly about windozers).
+This is effective againts people on irc because you have to know the ip of the
+victim. The method consists in using smb querys so you can get the computer
+name and group name of the computers victim, a lot of people put their names as
+the computer name. You can really scare people this way.
+>From windows:
+nbtstat -A ip_addr
+>From linux:
+I've found three programs beside the one that comes with samba
+tellme
+nmbname
+These only get the computer name and don't work always
+The other one, and the best one is ADM-smb from "the ADM crew" it works all
+times and gets you additional info.
+
+Well, thats my suggestion, thanks for the tut.
+--
++---[ Juan Baldovi ]----------------------------[ baldovi@nexo.es ]---+ 
+|    "Theory means you have ideas; ideology means ideas have you"     |
+|                                             -unknown anarchist-     |
++------------------------[ PGP Key avaliable ]------------------------+
+
+-----BEGIN PGP SIGNATURE-----
+Version: PGPfreeware 5.0i for non-commercial use
+MessageID: Q010MNYn8RZijeGPq+TawVFwEZbK6+lM
+
+iQA/AwUBODRch+AwCAt0++N3EQI46wCgwNX88M2cVlG1ogyR33XoH/PMEewAnR1s
+SaugG6m+sfFBJjEy4zdbhCOd
+=QhxE
+-----END PGP SIGNATURE-----
+
+
+Appendix D: www.anywho.com
+--------------------------
+If your target lives within the U.S., you can try to look it up at www.anywho.com.
+You'll be amazed to see how much cool information you can find there.
+Thanks to Dogman for this tip.   :-)
+
+Appendix E: more URLs
+---------------------
+http://www.worldpages.com - pretty much like whowhere.com and anywho.com.
+http://www.wdia.com/lycos/voter-records.htm - determine someone's status as a registered voter and his political affiltrations (US residents only).
+http://www.tray.com/fecinfo/zip.htm - determine which candidates someone supports and how much he contributed from federal election records (US residents only).
+http://kadima.com - get someone's social security number and date of birth (US residents only).
+
+Appendix F: expn
+----------------
+In some versions of Sendmail (see the Sendmail tutorial), you can log in to a Sendmail server that runs from the target's ISP's network, and type the following command:
+expn email-address@host.com
+It will expand this username into lots of valuable pieces of information by looking at the password file.
+ 
+Appendix G: Usenet 
+------------------ 
+If your target uses Usenet (a network of "news servers", which are pretty much like a message board) often, a good idea would be to go to www.deja.com and run a search for their Email address (all posts that include this address). That way, you can locate posts made by your target or posts by other people that refer to your target. 
+You won't believe the amount of information you can uncover from a person's posts to Usenet. 
+
+
+Other tutorials by BSRF
+-----------------------
+* FTP Security.
+* Sendmail Security.
+* Overclocking.
+* Ad and Spam Blocking.
+* Anonymity.
+* Info-Gathering.
+* Phreaking.
+* Advanced Phreaking.
+* More Phreaking.
+* IRC Warfare.
+* Proxies, Wingates and SOCKS Firewalls.
+* RM Networks.
+* The Windows Registry.
+* ICQ Security.
+* Hardware.
+* Cracking.
+* HTML.
+* Javascript.
+* Easy Linux Installation Guide.
+* Basic Local/Remote Unix Security.
+And much more!

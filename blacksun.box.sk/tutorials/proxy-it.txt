@@ -1,0 +1,116 @@
+Proxy/WinGate/SOCKS Tutorial
+
+Versione originale (in inglese) di:
+Jatt (uslijatt@hotmail.com)
+http://blacksun.box.sk
+[le frasi tra parentesi quadre sono state aggiunte da Screener_it]
+
+Consumo per la traduzione: un cazzo.. Sto aspettando che si liberi NoPay...
+Musica ascoltata: Blink 182 - Enema of The State
+Tradotto il 17 agosto 2ooo
+
+=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\
+=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/
+
+Cos'è un server proxy ?
+
+Un server proxy è un server che qualcuno (a volte l'internet provider, a volte un amico) ha settato in modo che quando tu ti colleghi a un sito il proxy ti fà fare una deviazione e prima di arrivare al sito passi attraverso il proxy e poi dal proxy vai al sito.
+Così se qualcuno vuole visitare il sito che hai visitato tu e usa il tuo stesso proxy non visiterà il sito, ma riceverà il contenuto dal sito dal proxy.
+Spesso qualcuno (in genere l'amministratore) setta il server proxy [ scusate le ripetizioni, però.. ] in modo che ogni tot di tempo le pagine web contenute nel proxy vengano aggiornate.
+Ogni volta che viene visitato un nuovo sito questo viene salvato sul proxy.
+A volte può capitare che sia una persona a determinare quando un sito contenuto sul proxy và aggiornato. Infatti se un utente crede che il sito abbia bisogno di un update e ha bisogno di essere aggiornato il contenuto sul proxy basta che questo utente clicchi su "Refresh" o "Reload" [ nelle versioni italiane "Aggiorna"] sul suo browser e il sito verrà aggiornato sul proxy.
+
+Perchè usare un server proxy ?
+
+Ci sono diversi motivi. Molti internet provider lo usano perchè "taglia" il volume del traffico sui loro network e fanno viaggiare più veloci i loro utenti.
+Gli utenti lo amano perchè li aiuta a rendere più difficilmente rintracciabili le loro tracce sul web. Questo in particolare se gli utenti usano più proxy, anche 3, contemporaneamente. Sarà difficile trovare 3 server che loggano ogni attività.
+Altri utenti lo amano perchè la loro connessione è resa più veloce, specialmente se visitano server di altri continenti.
+NOTA: E' una buona cosa cercare in giro i proxy tramite cui collegarsi. Se usate un proxy della Microsoft ( M$ ) infatti è probabile che ogni vostra attività verrà loggata
+Se è anonimo oppure è un proxy chiamato di "uso pubblico", usalo pure.
+
+Cos'è un Wingate ?
+
+UNA definizione officiale che ho sentito dire da numerose persone è:
+
+"Un Wingate è un server proxy firewall software che permettere di condividere una singola connessione a internet con altri computer del network. [ad esempio i Netcafè, dove più computer sono connessi tramite un singolo abbonamento internet].
+Una connessione internet condivisa da un wingate può essere di vari tipi, inclusi dial up modem, ISDN, xDSL (l'autore voleva forse dire ADSL ?), modem cablati, connessioni satellitari, o tutti i circuiti dedicati T1."
+Un wingate quindi è simile a un server proxy. Connette diversi computer attraverso la porta 23 di un computer, che sarà chiamato wingate. In pratica è semplicemente una connession di telnet.
+I wingate dovrebbero essere usati per avere accesso alla rete interna o per essere collegati tramite di essi a un sito.
+Spesso i wingate sono settati male a causa delle lacune degli amministratori e ci sono un sacco di wingate che permettono a chiunque di collegarsi tramite essi a internet, aprendo una strada a l'ip spoof su ICQ o su IRC per fare abusi di qualunque tipo.
+Questi wingate configurati male sono chiamati "Open Wingate" e in genere restano attivi da un paio di giorni fino a parecchio mesi, fino a quando l'amministratore si accorge dell'uso che viene fatto del wingate o fino a quando qualcuno lo usa per scopi illegali.
+
+L'unico benificio che un amministratore ha dall'abilitare un wingate è quello di poter usare un singolo abbonamento internet per collegare in rete più computer. Ma i problemi che possono sorgere dall'installazione di un wingate sono maggiori dei benifici. Se qualcuno sta per settare su un suo computer un wingate consiglio prima di sapere esattamente ciò che si sta facendo ed essere sicuri di come configurare in modo sicuro il wingate. Un software per rendere il proprio wingate sicuro è SyGate.
+
+Dalla mia esperienza come amministratore di sistema e utente remoto possono dirvi che i log di molti wingate vengono cancellati ogni 48 ore.
+E molte aziende e internet provider non loggano tutto quello che succede sui loro wingate..
+
+Come trovo un wingate ?
+
+Bella domanda. Il miglior modo è ascoltare la voce del popolo [ascoltate insomma i discorsi su irc e troverete qualcosa]. Se questo metodo di ricerca fallisce, il secondo miglior modo è quello di usare uno scanner di wingate.
+Potete scannare numerose sottoreti alla ricerca di wingate. Una nota: i network nei paesi del terzo mondo, nell'estremo oriente, in Africa, ecc.. hanno una cosa in comune: hanno wingate configurati malissimo e ci sono centinaia di "Open Wingate" sulle loro reti.
+Provate a fare scanning di queste reti e vedrete..
+Per controllare che il wingate non abbia password collegatevi ad esso tramite telnet alla porta 23 e quando richiede user name & password non scrivete niente e se entrete nel wingate ne avrete trovato uno.
+Se il wingate invece richiede delle password provate:
+wingate (sia come ID che come password)
+guest (sia come ID che come password).
+e forse ( FORSE ) vi verrà dato l'acceso..
+Il miglior scanner per Windows ( 32 bit ) che ho usato è: wGateScan v2.2
+Lo trovate su molti siti. Io l'ho trovato su http://www.hotmanscave.com/
+Per usare wGateScan v2.2 tutto quello che avete da fare è inserire il range di ip (o l'hostname) da scansire. Lui si telnetterà alla porta 23 e spedirà un messaggio che dice "wingate" o qualcosa di simile. Se l'host accetterà il messaggio allora bingo ! Ne avete trovato !
+
+Wingate con ICQ:
+
+Per configurare ICQ in modo che lavori con un Wingate
+[attenzione, il txt proponeva una procedura diversa, io riporto la procedura per ICQ 99A e (spero) successivi).
+
+Per configurare Icq in modo che lavori con un wingate:
+
+
+Wingates with ICQ:
+Cliccare il tasto ICQ
+Cliccare Preferences
+Selezionare la voce "Connection"
+Selezionare l'opzione "I'm using a permanent internet connection (LAN)"
+Adesso selezionare la voce "I'm behind a firewall or a proxy"
+Cliccare su Firewall Setting
+Scegliere tra "I'm using a SOCKS4 server" e "I'm using a SOCKS5 server" (dipende dal wingate, provatele entrambe e guardate quale delle due funziona) e poi cliccate Next
+	
+	Se avete selezionato SOCKS4: nella casella SOCKS4 Host scrivete l'ip del wingate e come 	porta lasciate pure la 1080 e sotto selezionate "Open an outgoing UDP port 4000 on my 	firewall".
+	Cliccate Next e poi cliccafe "Check my Firewall/Proxy setting"... Se avete configurato 	tutto per bene dovrebbe essere possibile selezionare il tasto Next e.. Avete configurato 	il vostro SOCKS4. Se non provate a cambiare la voce "Open an outgoing UDP port 4000 on my 	firewall" in "Use a mapped port on proxy" e completate la tabella sotto quella voce con 	l'indirizzo di un proxy e la porta su cui lavora (in genere 80)
+
+	Se avete selezionato SOCKS5: scrivete nelle relative caselle l'ip del wingate e come 		porta lasciate pure la 1080. In caso il wingate abbia bisogno di password selezionate 	anche la voce "Use RFC.......for SOCKS" e completate con Username e password.
+	Cliccate Next e poi cliccafe "Check my Firewall/Proxy setting"... Se avete configurato 		tutto per bene dovrebbe essere possibile selezionare il tasto Next e.. Avete configurato 	il vostro SOCKS5
+
+Wingates con IRC:
+
+Per configurare il vostro client IRC [per Win il più usato è mIRC (www.mirc.co.uk), per Linux è xchat] dovete semplicemente selezionare la voce "Firewall" (c'è in tutti client !!) dire se si tratta di un SOCKS4 o un SOCKS5 (come detto prima dipende dal wingate, se non và uno provate l'altro) e inserite l'ip del wingate. Se servono delle password compilate i relativi spazi bianchi e via..
+Dato che ci sono decine di client IRC sarebbe troppo lungo spiegare la procedura di ognuno, quindi ho messo un percorso generale che dovrebbe valere per tutti.
+
+Bottom Line [modo di dire che mi pare significa "Considerazioni Finali"]
+
+Socks/Wingate and Proxy posso aiutarti a rendere la tua identità più difficile da trovare e loggare in internet, spesso lo fanno in maniera completamente legale. Ma non pensate mai "Non risaliranno mai a me" anche se passate per numerosi proxy, wingate o sock.
+Ricordate che chiunque può risalire all'ip originale e al proprio Internet provider.
+
+-----------------------------------------------------
+Questo è il tutorial di Socks Host/Proxy Server and Wingate
+Domande e commenti possono essere spedite [in inglese, logico] a: uslijatt@hotmail.com
+
+Jatt
+
+
+Per altre info sui proxy e per una grande lista di proxy, wingates, telnet, ftp, e socks hosts  prova: http://proxys4all.cgi.net/
+-nota: non tutti sono stati testati e alcuni possono non essere più attivi quando li proverete. Quindi la lista non è aggiornata come molta gente vorrebbe.
+Altri tutorial su Wingate proxy:  http://www.wingate.net/
+ICQ con wingate:  http://www.visions.demon.nl/wingate/
+
+/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\
+\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/
+
+Dove non è arrivata la legge siamo arrivati noi,
+dove non è arrivata la censura siamo arrivati noi,
+dove non sono arrivati i lamer.. Bhè, non abbiamo trovato ankora nessun posto così !!
+:-)
+
+Screener_it & Tank Commandos Crew
+screener_it@freemail.it
+http://go.to/tankcommandos

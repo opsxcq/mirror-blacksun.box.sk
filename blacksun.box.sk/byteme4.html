@@ -1,0 +1,1174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Byteme 4</TITLE>
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type>
+<STYLE type=text/css>A:active {
+	TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ffffff; TEXT-DECORATION: underline
+}
+A:link {
+	TEXT-DECORATION: none
+}
+A:visited {
+	TEXT-DECORATION: none
+}
+.small {
+	FONT-SIZE: 8pt
+}
+.small_uppercase {
+	FONT-FAMILY: Arial, Helvetica, sans-serif; FONT-SIZE: 8pt; FONT-WEIGHT: bold; TEXT-TRANSFORM: uppercase
+}
+.upper {
+	TEXT-TRANSFORM: uppercase
+}
+</STYLE>
+
+<META content="MSHTML 5.00.2614.3500" name=GENERATOR></HEAD>
+<BODY aLink=#ccff00 bgColor=#000000 leftMargin=20 link=#99ccff text=#cccccc 
+topMargin=10 vLink=#ccccff marginheight="0" marginwidth="0">
+<FORM name=jumpy>
+<P><SELECT name=example onchange=gone() size=1> <OPTION selected 
+  value=http://blacksun.box.sk/byteme.html>Main Byteme</OPTION> <OPTION 
+  value=http://blacksun.box.sk/byteme1.html>Byteme 1</OPTION> <OPTION 
+  value=http://blacksun.box.sk/byteme2.html>Byteme 2</OPTION> <OPTION 
+  value=http://blacksun.box.sk/byteme3.html>Byteme 3</OPTION> <OPTION
+  value=http://blacksun.box.sk/byteme5.html>Byteme 5</OPTION> <OPTION 
+  value=http://blacksun.box.sk>Home</OPTION></SELECT>
+<SCRIPT language=javascript>
+<!--
+
+function gone()
+{
+location=document.jumpy.example.options[document.jumpy.example.selectedIndex].value
+}
+//-->
+</SCRIPT>
+ <INPUT name=test onclick=gone() type=button value="Take me there!"> </P></FORM>
+<LI><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/byteme4.html#What, who and why is INetD">What, who 
+and why is INetD?</A></FONT></FONT> 
+<LI><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/byteme4.html#What is a network sniffer">What is a 
+network sniffer?</A></FONT></FONT> 
+<LI><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/byteme4.html#What is sysedit">What is 
+sysedit?</A></FONT></FONT> 
+<LI><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/byteme4.html#The SU command">The SU 
+command</A></FONT></FONT> 
+<LI><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/byteme4.html#What is SUID">What is 
+SUID?</A></FONT></FONT> 
+<LI><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/byteme4.html#Which port is which">Which port is 
+which?</A> (<B><FONT color=#ffffff>very useful</FONT></B>)</FONT></FONT> 
+<LI><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/byteme4.html#What are Linux runlevels">What are 
+Linux runlevels? + an easy little runlevels-related&nbsp; hack</A></FONT></FONT> 
+
+<LI><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/byteme4.html#What are Winmodems, and why do they suck">What 
+are Winmodems, and why do they suck? + Getting online with a WinModem from 
+Unix/Linux</A></FONT></FONT> 
+<LI><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/byteme4.html#How do I recreate files which I have already removed from the recycle bin in Windows">How 
+do I recreate files which I have already removed from the recycle bin in 
+Windows?</A> (<B><FONT color=#ffffff>very useful</FONT></B>)</FONT></FONT> 
+<LI><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/byteme4.html#Why can't I run IRC bots on a free shell, and what are IRC bots anyway">Why 
+can't I run IRC bots on a free shell, and what are IRC bots 
+anyway?</A></FONT></FONT> 
+<LI><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/byteme4.html#how to install new programs on linux">How 
+to Install New Programs on Linux?</A></FONT></FONT> <BR>
+<P>
+<P><A name="What, who and why is INetD"></A><B><FONT 
+face="Arial, Helvetica, sans-serif"><FONT color=#ffffff><FONT size=-1>What, who 
+and why is INetD?</FONT></FONT></FONT></B> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>First of all, I hope you know 
+what a daemon is. If not, read out tutorials <A 
+href="http://blacksun.box.sk/tutorials.html">here</A>.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Now, let's assume that you 
+understand what a daemon is. So anyway, daemons run as TSRs. TSR stands for 
+"Terminate and Stay Resident". A TSR, once executed, will stay on your system's 
+memory and wait for a certain action to take place (in our case: a connection on 
+a certain port), and then do something about it.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Now, common sense says that a 
+machine that is running multiple daemons will need lots of system resources for 
+that. This is where INetD comes to place.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>INetD stands for Internet 
+(I-Net) Daemon (D). It is often called "the mother of all daemons". Why? Because 
+it is a single TSR that is in charge of invoking other daemons.</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Here, let me quote 
+from the book Maximum Security (<A 
+href="http://www.digibel.org/~tompy/hacking/maximum-security/index.htm">read it 
+online</A> or <A 
+href="http://www.amazon.com/exec/obidos/ASIN/0672313413/blacksunresearch">buy it 
+online </A>)</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Common sense tells 
+you that running a dozen or more daemon processes could eat up machine 
+resources. So rather than do that, why not create one</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>daemon that could listen for 
+all the others? That is what inetd does. It listens for connection requests from 
+the void. When it receives such a request, it</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>evaluates it. This evaluation 
+seeks to determine one thing only: What service does the requesting machine 
+want? For example, does it want FTP? If so,</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>inetd starts the FTP server 
+process. The FTP server can then process the request from the void. At that 
+point, a file transfer can begin. This all happens</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>within the space of a second 
+or so.</FONT></FONT> 
+<P>
+<HR noShade width="100%">
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp;&nbsp; 
+<B><FONT color=#ffffff>TIP:</FONT></B> inetd isn't just for UNIX anymore. For 
+example, Hummingbird Communications has developed (as part of its Exceed 5 
+product line) a</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp;&nbsp;&nbsp;&nbsp; 
+version of inetd for use on any platform that runs Microsoft Windows or OS/2. 
+There are also non- commercial versions of inetd, written by</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp;&nbsp;&nbsp;&nbsp; students and other software enthusiasts. One 
+such distribution is available from TFS software and can be found 
+at</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp;&nbsp;&nbsp;&nbsp; 
+http://www.trumpton.demon.co.uk/software/inetd.html.</FONT></FONT> <BR>
+<HR noShade width="100%">
+
+<P><A name="What is a network sniffer"></A><B><FONT 
+face="Arial, Helvetica, sans-serif"><FONT color=#ffffff><FONT size=-1>What is a 
+network sniffer?</FONT></FONT></FONT></B> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>To learn what is a network 
+sniffer, plus tons of information about them and how to catch and remove them, 
+read <A href="http://blacksun.box.sk/sniffer.txt">this excellent tutorial</A> 
+which I dug up somewhere.</FONT></FONT> <BR>&nbsp; 
+<P><A name="What is sysedit"></A><B><FONT 
+face="Arial, Helvetica, sans-serif"><FONT color=#ffffff><FONT size=-1>What is 
+sysedit?</FONT></FONT></FONT></B> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>If you're using any version of 
+Windows at the moment, try hitting start, run and then typing "sysedit" (without 
+the quotes, of course). See this nice application? It let's you edit your basic 
+configuration files. Try playing around with them for a while, but remember to 
+back everything up before you touch it...&nbsp;&nbsp;&nbsp; ;-)</FONT></FONT> 
+<BR>&nbsp; 
+<P><A name="The SU command"></A><B><FONT 
+face="Arial, Helvetica, sans-serif"><FONT color=#ffffff><FONT size=-1>The SU 
+command</FONT></FONT></FONT></B> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>SU is a very useful Unix 
+command. SU stands for Switch User. SU let's you run a sub-shell with the 
+priviledges of another user within your current shell.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Basic usage: suppose you know 
+someone else's password, whether he gave it to you or you hacked his account. 
+Simply type "su user password" (without the quotes), and replace user with this 
+person's username, and replace password with his/her password.</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>For root access: if 
+no account is provided (just su and a single parameter. For example: "su blah"), 
+your system assumes that you want to su to root, and checks if this is root 
+password. If you entered the correct password, you get root access (unless the 
+admin played around with the password file and <A 
+href="http://blacksun.box.sk/byteme.html#Password files == world readable + how do password files look like">gave 
+root false permissions</A>. In such a case, simply <A 
+href="http://blacksun.box.sk/byteme.html#Where to find Unix password files">find 
+the password file</A>, find a user who has UID 0 and GID 0 and su to it 
+(assuming that you have his/her password, of course. If not, try some <A 
+href="http://blacksun.box.sk/byteme.html#Common passwords">common 
+passwords</A>)).</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>When su'ing from root: 
+remember that if you have root priviledges, nothing is supposed to stop you. So 
+why would you need to have someone's password just to switch to his/her user? 
+Simply type "su username" (without the quotes) to login as that 
+user.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>When su'ing to a passwordless user: type "su username -" (without the 
+quotes).</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>To exit the sub-shell: simply type "exit" (without the quotes) to exit 
+the sub-shell and return to your normal shell.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>How the hell can su read the 
+shadow file?: first of all, if you don't know what the shadow file is, read <A 
+href="http://blacksun.box.sk/byteme.html#Password files == world readable + how do password files look like">this</A>. 
+Now, su is an SUID-root program. This is why it can read the shadow file, which 
+only users with root access can read. To learn about SUID files, click <A 
+href="http://blacksun.box.sk/byteme.html#What is SUID">here</A>.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><I>A nifty usage</I> 
+: most systems will block remote root logins, so people won't be able to get 
+root even if they know root's password. But, if you know someone else's 
+password, you could login as this user, get a shell and type "su 
+root's-password" (without the quotes, of course).</FONT></FONT> <BR>&nbsp; 
+<P><A name="What is SUID"></A><B><FONT face="Arial, Helvetica, sans-serif"><FONT 
+color=#ffffff><FONT size=-1>What is SUID?</FONT></FONT></FONT></B> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>SUID stands for Set User ID. 
+Here, let me explain.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Now, as you should know by 
+now, every program or command you execute runs with YOUR priviledges. Right? 
+WRONG!</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>SUID files can be run with the priviledges of the person who SUIDed 
+them. You see, when you SUID a program, it puts your user ID somewhere inside 
+the program so the system will know to run it with the SUIDer's priviledges. Of 
+course, if you have root access, this should not trouble you, because you 
+already have maximum priviledges.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>SUID programs also pose a 
+great security threat, especially SUID-root programs. If someone finds a way to 
+make these programs do something they shouldn't do, he can do it with root 
+priviledges. For example: if you could make an SUID-root program execute a 
+command for you, you could tell it to execute sh to run a Bourne Shell (or BASH 
+for Bourne Again Shell, CSH for C Shell, TCSH for Turbo C Shell, KSH for Korn 
+Shell etc') with root priviledges (or in other words, a root 
+shell).</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Sometimes, on the other hand, you have to use SUID programs (such as <A 
+href="http://blacksun.box.sk/byteme.html#The SU command">SU</A>, for example), 
+so make sure you don't screw up with your security.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Want to learn how to 
+SUID files? Read chmod's man page by typing 'man chmod'.</FONT></FONT> 
+<BR><br>
+
+<P><A name="Which port is which"></A><B><FONT 
+face="Arial, Helvetica, sans-serif"><FONT color=#ffffff><FONT size=-1>Which port 
+is which?</FONT></FONT></FONT></B> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/ports.txt">Here</A> is an excellent and very useful 
+guide on what every port is for, different types of ports etc'. A must read for 
+all those newbies out there.</FONT></FONT> <BR>&nbsp; 
+<P><A name="What are Linux runlevels"></A><B><FONT 
+face="Arial, Helvetica, sans-serif"><FONT color=#ffffff><FONT size=-1>What are 
+Linux runlevels?</FONT></FONT></FONT></B> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>If you've been paying 
+attention to what your Linux box does during startup, you should have noticed 
+that it says: "Entering runlevel x" (where x is a number between 1 and 5) at one 
+point of the bootup stage (after it mounts your root filesystem (your "/" 
+directory) into read-write mode, sets up sound, finds your kernel's module 
+dependencies (never mind that for now) etc'). A runlevel is a bootup/shutdown 
+sequence. It consists of a list of commands to run on startup and a list of 
+commands to run on shutdown (or when switching to different 
+runlevels).</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Now, first of all, let's see how you can switch runlevels. Bah, that's 
+easy. Simply type init x, where x is a number between 0 and 6. Runlevel 0 is for 
+"halt" (turning off your computer, if you have APM -Advanced Power Management, 
+and if you have APMD - APM Daemon, installed. All modern CPUs have APM), 
+runlevel 6 is for reboot and the rest are various runlevels. 5 will bootup 
+everything - it will even automatically run X (by default, of course. You can 
+change this). Runlevel 1 is considered the single-mode runlevel. It does the 
+least possible (kinda like "safe mode" in Windows) and doesn't even require you 
+to enter a password (but only root can switch runlevels, so you have to be 
+either root or have physical access to the computer during startup (we'll get to 
+that later)).</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Editing your runlevels list is different with every different 
+distribution. Usually it would go like this:</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>a) Go to /etc/rc.d/rcx.d/ 
+(where x is the runlevel's number) and play around within this directory. It 
+contains symbolic links (kinda like shortcuts in Windows. For more information 
+about symbolic links (otherwise known as "symlinks"), type man ln) to programs 
+(including their parameters) that will be executed, and symbolic links to 
+programs that will be killed on shutdown. Play around to find out more (but 
+ALWAYS make backups!!).</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>You can also try 
+this:</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>b) (this should work on most Linux boxes) Switch to the runlevel you 
+want to edit. Then type setup. Go to system services, and select/unselect the 
+services u want to run on startup and kill on shutdown).</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Or this:</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>c) The easiest way - 
+on some distributions, such as RedHat, you will be able to type the command 
+control-panel within an xterm (a "virtual terminal" - a console window within 
+X-Windows) and get a nice little window thingi with lots of buttons and 
+suchlikes. Find the button that says "runlevel editor" when you put the mouse 
+above it for a second or two. Then click on this button and play around with the 
+programs. I'm sure you'll figure out how to use it yourself. It's quite 
+self-explanitory, and it contains help files and documentation if you really 
+need help.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Anyway, you can always try running the command:</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>find / -name *rc* 
+-print</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>If none of the three specified methods didn't work, so you could see 
+where your runlevel directories are and apply method a on them.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>And now, for a nice 
+little runlevels-related hack.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Now, if you're reading this 
+document, you're probably a Linux newbie, so you probably use Redhat Linux, 
+Mandrake Linux etc'. If so, you should have a prompt saying "boot:" or "LILO 
+boot:" or "LILO:" when you start your computer, and you could either type 
+Windows or Linux (you can change these names into, say, sucky-OS for Windows and 
+Stable_and_secure_OS for Linux, or anything else you want. Use the linuxconf 
+program to edit LILO's preferences, and use your imagination...&nbsp; :-) ). 
+Now, what happens if you type linux 5? Of course! It boots up Linux in runlevel 
+5!! But wait! What happens if you type linux 1 or linux single? It runs on 
+runlevel 1 - single user mode, which means... automatic root access! No password 
+needed.&nbsp;&nbsp; :-)</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Of course, you can change 
+runlevel 1 by going to /etc/rc.d/rc1.d and then removing the contents of this 
+directory and copying everything from another runlevel (replace the number in 
+rc1.d to any other runlevel number). Please read cp's manual page and make sure 
+you're copying symbolic links as links and not as files.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Of course, anyway, if you have 
+local access to a Unix box (or any other box that I know of, as a matter of 
+fact), you can boot from a floppy (unless, of course, the first boot device is a 
+hard drive and the bios is password-protected, but these can be hacked too. 
+Refer to <A 
+href="http://blacksun.box.sk/byteme.html#Your friend fell into the toilet">this 
+guide</A>).</FONT></FONT> <BR>&nbsp; 
+<P><A name="What are Winmodems, and why do they suck"></A><B><FONT 
+face="Arial, Helvetica, sans-serif"><FONT color=#ffffff><FONT size=-1>What are 
+Winmodems, and why do they suck? + Getting online with a WinModem from 
+Unix/Linux</FONT></FONT></FONT></B> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>First of all, what is a MODEM 
+anyway? The initials modem stand for modulator/demodulator. To make a long story 
+short, a modem translates digital signals which your computer sends it into 
+signals that can be transferred through the phone line (if it's a cable modem or 
+some other kind of modem, it'll translate computer signals into whatever signals 
+that can be transferred through the communications line it is supposed to run 
+on), and then receives back phone signals and translates them into bits and 
+bytes your computer can read and understand.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Note: of course, your modem 
+does more than that. For example: it provides the actual connection with the 
+phone line, and quite a variety of other things which are currently unimportant 
+to us.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>This whole modulating (turning computer signals into phone signals) and 
+demodulating (duh... the opposite of modulating. Turning phone signals into 
+computer signals) process requires some software, and of course, a computer to 
+run it. So your modem actually contains a little computer that does the 
+modulating and demodulating.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Then what is a Winmodem? A 
+Winmodem is a modem that does not do the modulating and demodulating thing. 
+Instead, it leaves it up to your computer to do that. It comes with the software 
+necessary for your computer to perform these convertions.</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>So why do they suck 
+so much? Because:</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>a) This whole convertion 
+process takes up some resources from your computer, such as memory and CPU 
+time.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>b) If your computer slows down for some reason, you might get 
+disconnected all of a sudden.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>c) They don't run on any 
+version of Unix. Why? Simply because there is no Winmodem software for Unix. The 
+vendor didn't bother making them, I assume (silly bunch of lamers...&nbsp; :-) 
+).</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>So 
+why would a person want to buy a Winmodem? Simply because they cost less (I 
+guess you could figure out why at this point).</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Later addition: You 
+can now go online from Linux with a WinModem! Check out <A 
+href="http://www.linuxdoc.org/HOWTO/Winmodems-and-Linux-HOWTO.html">http://www.linuxdoc.org/HOWTO/Winmodems-and-Linux-HOWTO.html</A> 
+for more information! Thanks to <A 
+href="http://www.striker-man.net/">Striker-Man</A> for pointing that 
+out.</FONT></FONT> <BR>&nbsp; 
+<P><A 
+name="How do I recreate files which I have already removed from the recycle bin in Windows"></A><B><FONT 
+face="Arial, Helvetica, sans-serif"><FONT color=#ffffff><FONT size=-1>How do I 
+recreate files which I have already removed from the recycle bin in 
+Windows?</FONT></FONT></FONT></B> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Once upon a time, in times 
+when people either used versions of Windows prior to 95 or didn't use Windows at 
+all (see <A href="http://blacksun.box.sk/hod.txt">the history of DOS paper</A>), 
+there was a utility called undelete. It served as a recovery tool for deleted 
+files that were deleted less than a week ago, and used to save a lot of work and 
+tears. That was all nice and smooth, until Windows 95 came up with it's "recycle 
+bin".</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Wow, looky here! Whenever I delete a file, it goes straight to the 
+recycle bin! Ooh, I'd bet that's new...</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>The recycle bin isn't some 
+magical bin thing, it's just a hidden directory. On every Windows 95 or above 
+hard-drive, you have a directory called recycled. Whenever you send a file to 
+the recycle bin, it is actually moved to this directory. Sophisticated, isn't 
+it?</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>But here's the problem: most people don't like the recycle bin. They 
+either press shift+delete to delete files without transferring them through the 
+recycle bin or empty the recycle bin right after they send a file to it. But 
+then, when you realize that you've made a mistake, you cannot recreate the file. 
+Or is it so? ...</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>You can use DOS's undelete to 
+recreate deleted files that were removed less than a week ago. If the file was 
+on the recycle bin prior to it's "final and unrecoverable deletion" (yeah, 
+right), you will find it in your recycled directory. Can't get any easier than 
+this. Where to find the undelete.exe program? If its not in your Windows\Command 
+directory then you will have to copy it from your Windows CD-ROM. Its in the directory
+called: oldmsdos.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>This trick does not 
+work with FAT32 pratitions. Thanks to Mortar_G for this 
+information.</FONT></FONT> <BR>&nbsp; 
+<P><A 
+name="Why can't I run IRC bots on a free shell, and what are IRC bots anyway"></A><B><FONT 
+face="Arial, Helvetica, sans-serif"><FONT color=#ffffff><FONT size=-1>Why can't 
+I run IRC bots on a free shell, and what are IRC bots 
+anyway?</FONT></FONT></FONT></B> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>IRC bots can be very useful 
+when running an IRC channel. They can greet each coming visitor, keep the 
+channel clean and kick people who swear others, serve as a file server that is 
+operated using commands sent in private messages and sends/receives files in DCC 
+file transfers, and much more. IRC bots can also be used in channel takeovers, 
+as a bot is faster than a human being, and can therefore quickly take advantage 
+of any possible holes or opportunities that may occur (the bot would usually 
+succeed, unless the channel operators have faster bots).</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>But what is an IRC bot anyway? 
+An IRC bot is a program, usually programmed in TCL, that was programmed to 
+understand the IRC protocol (the same language that the IRC server and your IRC 
+clients, such as mIRC and BitchX know and can communicate with) and react to 
+certain situations. Let's take the simplest example of all: a greeting bot. 
+Whenever someone joins the channel, the bot greets him by saying "Hello &lt;nick 
+of new user&gt;". Bots are usually based on Eggdrop. If you want to learn more 
+about how to make Eggdrop bots, consult <A 
+href="http://blacksun.box.sk/tutorials.html">our Eggdrop bots 
+tutorial</A>.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>To run a bot, you will need to host it on a computer that:</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>a) Can run TCL. Unix 
+and all of it's variants can run TCL using a special library, that is often 
+pre-installed on the system already. Other systems can run TCL, but only after a 
+lot of effort in finding the right extenral programs (have you ever noticed how 
+many utilities come with a single average Unix/Linux distribution? Now, have you 
+ever noticed how little come with Windows? MS Paint? Bah).</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>b) Can run, operate 
+and be online 24 hours a day, 7 days a week, so your bot will stay up all the 
+time as well.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Wait, wait, wait! Still don't know what a shell account is? Consult <A 
+href="http://blacksun.box.sk/tutorials.html">our shell accounts 
+tutorial</A>.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Sounds like you're *not* looking for a free shell, like the ones 
+nether.net gives when you telnet in and login as newuser. Free shell accounts 
+will kill all of your processes once you log off, and will usually not let you 
+have access to the TCL library.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>However, if you want a shell 
+that'll let you run any of these bots, you will either need to buy a shell 
+(check out <A 
+href="http://www.bestshells.com/">http://www.bestshells.com/</A>)&nbsp; or hack 
+into a shell owned by someone else. The latter is not recommended, since it is 
+illegal (duh...). However, if you still want to do it, or know how it is done, 
+check out <A href="http://blacksun.box.sk/tutorials.html">the tutorials page</A> 
+for some tips.</FONT></FONT> <BR>&nbsp; 
+<P><A name="how to install new programs on linux"></A><B><FONT 
+face="Arial, Helvetica, sans-serif"><FONT color=#ffffff><FONT size=-1>How to 
+Install New Programs on Linux</FONT></FONT></FONT></B> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp;&nbsp; Here's an article 
+I found at linux.about.com, which could help a lot of Linux newbies out 
+there.</FONT></FONT> <BR>&nbsp; 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Downloading, 
+Compiling, Installing</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Issue #66: 05/17/99 
+(Archive)</FONT></FONT> <BR>&nbsp; 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Most Linux 
+distributions these days use some sort of package system to manage software. 
+For</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>example, Red Hat, S.u.S.E. and Caldera's OpenLinux all use the RPM 
+package manager to install and</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>uninstall software. Debian 
+Linux and Slackware also have their own package</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>management. In an ideal world, 
+any piece of software you wanted to run on your</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Linux box would be available 
+as a package for your distribution.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Unfortunately, this 
+isn't the ideal world, and many users find themselves wanting to</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>download and use 
+software which is distributed as source code, usually in a file</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>ending with the 
+.tar.gz extension.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Looking for 
+instructions? They're in this document. Beware: because of the nature of the 
+task at hand,</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>these steps aren't as specific as they really need to be for most 
+newbies, nor are they easy to follow as</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>they're given. This process is 
+not for the faint of heart!</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>You should already 
+know how to download via Netscape or ftp. Be sure to understand where 
+you've</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>saved your downloaded file and also how to visit that directory; if 
+you're not able to do this yet, spend</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>some time learning about the 
+Unix directory structure from your favorite Unix beginner's reader. 
+If</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>you're having trouble already, you're better off doing some more study 
+before trying to compile your</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>own software; the instructions 
+here are basic, but newbies will still find themselves stretching to 
+follow</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>along.</FONT></FONT> 
+<P><B><FONT face="Arial, Helvetica, sans-serif"><FONT color=#ffffff><FONT 
+size=-1>What is .tar.gz? How about .tgz? And .tar.bz2?</FONT></FONT></FONT></B> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>The .tar.gz format is 
+similar in concept to the .zip format common in the Windows world. The .zip 
+format</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>performs two functions: it allows many different files to be rolled into 
+one single file for convenience, and</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>it compresses this single file 
+for faster downloading (or space savings). In Linux, these two tasks 
+are</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>performed by two separate commands: the tar command and the gzip 
+command.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Files which end in 
+the .tar.gz extension are the result of a two-step process. First, many files 
+are rolled</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>into a single file using the tar (Tape ARchive) program, giving the 
+resulting file a .tar extension. Next, the</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>.tar file is compressed using 
+the gzip program, adding an additional .gz extension to the end of the 
+file.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Sometimes .tar.gz is abbreviated as .tgz to allow such files to exist on 
+MS-DOS systems, which allow</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>only for a single, three 
+character filename extension. In any case, .tar.gz or .tgz files are known 
+as</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>"tarred-gzipped" files.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Files which end in 
+the .tar.bz2 extension are similar to the .tar.gz files in that they are 
+multiple files which</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>have been run through tar into 
+a single file and then compressed. Files ending in .tar.bz2, however, 
+are</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>compressed with the bzip2 compressor rather than the gzip compressor. To 
+see if your Linux system</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>contains a bzip2 
+compressor/decompressor, type "bunzip2 --help" at the command line. If you see 
+a</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>25-line usage message, the utility is present on your 
+system.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>How do I 'unpack' 
+these files?</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Since there were two 
+steps involved in creating these files, there two conceptual steps involved 
+in</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>extracting them. Before we give you the easy way to extract these files, 
+let's follow the conceptual</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>steps first. For our purposes, 
+we'll assume that the file in question resides in your current 
+working</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>directory. The first step is to decompress the file. If the file ends in 
+.tgz, you'll need to rename it to a</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>.tar.gz file so that the gzip 
+utility will recognize it:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; mv 
+file_in_question.tgz file_in_question.tar.gz</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Then, depending on 
+whether the file is a ".tar.gz" (.tgz) or ".tar.bz2" file, you'll need to use 
+one of the</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>following commands:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; gunzip 
+file_in_question.tar.gz</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; bunzip2 
+file_in_question.tar.bz2</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Executing the proper 
+command will decompress the file in question and remove the 
+compressor's</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>extension from the file. The resulting file is named only with the .tar 
+extension:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; 
+file_in_question.tar</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>To extract all of the 
+included files from this single file, make a new directory to hold the extracted 
+files,</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>go to that directory, and then use the tar command with the x (extract), 
+v (verbose), and f (file is</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>specified next) 
+options:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; mkdir 
+downloaded</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp; cd downloaded</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; tar xvf 
+../file_in_question.tar</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Most .tar files will 
+create another directory inside the directory you just created and extract their 
+files</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>there. Some archives won't, however, so you'll need to watch carefully 
+to see whether the extracted</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>files went into a 
+subdirectory. Assuming that all of the above steps worked properly, your 
+downloaded</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>archive file has been completely extracted. If the .tar file created its 
+own directory when it was</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>extracted, you'll need to make 
+it your current working directory before attempting to compile the</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>software:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; cd 
+file_in_question_directory</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>More 'unpacking' 
+Notes</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>The Linux tar utility 
+is actually more advanced that the standard Unix tar utility, and includes a 
+significant</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>shortcut for extracting .tar.gz files. Instead of first using the gunzip 
+utility to extract the file, you can have</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>the Linux tar utility do it 
+for you by also specifying the z (zip/unzip) option:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; tar xzvf 
+file_in_question.tgz</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; tar xzvf 
+another_file_in_question.tar.gz</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>There are also a 
+files out there (mainly from older Unix systems) which end with the .taz, .tar.Z 
+or .tar.z</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>extensions. These files were created with the tar utility and the 
+standard Unix compressor called (oddly</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>enough) "compress". The gzip 
+utility in Linux also understands files compressed with the Unix</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>compress utility, so 
+the following commands will all work fine:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; mv file_1.taz 
+file_1.tar.z; gunzip file_1.tar.z</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; gunzip 
+file_2.tar.Z</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp; tar xzvf file_3.tar.Z</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; tar xzvf 
+file_4.taz</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Note that this speedy 
+method of unpacking (using the 'z' option) will not work with bzip or bzip2 
+files,</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>which end in .tar.bz or .tar.bz2. Such files will still need to be 
+unpacked using the two-step process</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>given earlier.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Getting Ready to 
+Compile</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Now that you're 
+sitting in a directory full of files, it's time to generate software. This is 
+done in two steps:</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>first, the source code must be 
+"configured" for your system. Then, the make command must be run 
+to</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>generate the actual machine code. Most extracted source archives these 
+days allow for some sort of</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>"automatic" configuration. 
+These will be the easiest for Linux newbies to compile and use. There are 
+two</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>common types of automatic configuration: those using a GNU "configure" 
+script and those using</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>something called an Imakefile. 
+The "configure" script is preferable, so start by looking for a file 
+called</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>"configure" in the directory containing the extracted files. If such a 
+file exists, run it now:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; 
+./configure</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>You'll see a long 
+list of messages as the script attempts to analyze the makeup of your 
+system.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Assuming the script exits without errors, you're ready to compile. If, 
+on the other hand, no "configure"</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>script exists in the 
+directory, but instead a file called "Imakefile" is present, you'll need to run 
+the</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>"xmkmf" program to configure the source code:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; 
+xmkmf</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>If this command 
+finishes without errors, you may be ready to compile. Whichever method you 
+use</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>(configure or xmkmf), if the process fails in a flurry of error 
+messages, you're stuck for all intents and</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>purposes. Experts are often 
+able to fix these sorts of problems, but the solutions would be Greek 
+at</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>best to newbies, and methods for solving such problems are outside the 
+scope of this article. You're</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>better off trying to find and 
+install precompiled package.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Compiling</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>The compilation 
+process is generally simple, but time consuming. Type one word in the 
+directory</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>containing the extracted files:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; 
+make</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>A flurry of activity 
+should follow; much of it will seem like technical gibberish. Linux is now 
+"compiling"</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>the source code into binary code (a program) which can be executed. On 
+very fast computers, very</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>small programs may compile in 
+a matter of seconds. At the other extreme, on relatively slow</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>computers, large 
+programs have been known to need days or even weeks of compilation time. 
+The</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>process will proceed without need of your attention.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>There may be a number 
+of warnings during the compilation process. These can usually be 
+safely</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>ignored. If at any point the process abruptly aborts and displays a 
+cryptic error message in any of a</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>number of forms, you're 
+stuck:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; make: *** 
+[init/main.o] Error 1</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>In cases like this, 
+you should look for documentation such as plain text INSTALL or README 
+files</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>included with the source code. These can be cryptic, but may contain 
+additional instructions for</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>compilation. If you find and 
+study such files, follow all instructions, and the compilation still fails, or 
+if you</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>can't find any such INSTALL or README documentation files, you're again 
+better off trying to find and</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>install a precompiled package 
+for your system.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>When the process is 
+complete, you will find yourself at the command line once again. Generally, if 
+no</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>error messages (other than warnings) are obviously present, the 
+compilation was successful, though</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>there can be exceptions to 
+this rule. For our purposes, we'll assume that if you've got this far, 
+your</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>download has compiled without problems.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Installing</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Most current source 
+code allows for automatic installation using the make command a second 
+time,</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>making the "install" item:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; make 
+install</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Note that you will 
+generally need to be root to make the install, since it will try to install 
+program binaries</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>into global binaries 
+directories such as /bin, /usr/bin, or /usr/local/bin. With any luck, after 
+entering this</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>command, you'll see the install process commence, as files are copied to 
+various places throughout</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>your system. If you're 
+interested in keeping a record of which files were installed where (in case, 
+for</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>example, you wanted to "uninstall" this program later), you can keep a 
+record of the install process in</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>some file on your 
+system:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; make install 
+2&gt;&amp;1 | tee /path/to/saved_log</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>The created file 
+simply contains text duplicating exactly what you saw on your screen (see the 
+tee</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>manual page for more information). If the install method above fails 
+with an error message, but the</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>compilation (completed 
+earlier) was successful, you'll need to consult any included documentation 
+in</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>INSTALL or README files to see how to install the binaries and other 
+program files on your system.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>After the install has 
+successfully run its course or you have consulted the necessary 
+documentation</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>and followed included instructions, you may be able to execute the 
+program just by typing its name at a</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>command prompt:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; 
+myprog</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>If this isn't the 
+case, review the install output and try to determine (using common sense and a 
+little bit of</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>intelligent guesswork) if the file is going into either /usr/local/bin 
+or /opt/bin. If it is, you may need to add</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>the directory to your PATH 
+environment variable:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; 
+PATH=$PATH:/usr/local/bin:/opt/bin</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Now, try to execute 
+the program again:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; 
+myprog</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>If this doesn't work 
+either, there may be additional complications. Consult the documentation which 
+was</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>included with the source code. Such documentation usually resides in 
+files called README, INSTALL,</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>or in a directory called doc, 
+and should give you more hints about using the program (and starting 
+it)</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>once it's been installed.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>If adding directories 
+to your PATH variable does work, you may want to make the appropriate 
+changes</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>to the variable permanent by adding lines to your .bashrc and .profile 
+scripts:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; echo 
+"PATH=$PATH:/usr/local/bin:/opt/bin" &gt;&gt;.bash_profile</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; echo 
+"PATH=$PATH:/usr/local/bin:/opt/bin" &gt;&gt;.bashrc</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Seems 
+complicated!</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>If this seems like a 
+lot of work, confusion, and generality to go through to get a program running, 
+it is!</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>There are many pitfalls, and some programs just won't compile and 
+install on a specific system without</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>a great deal of extra work or 
+even extra code. For most users, it makes much more sense to 
+download</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>a precompiled package if such a package is available.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>If such a package 
+isn't available, however, it's sometimes necessary to download the code and 
+compile</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>it yourself. Don't get discouraged if your first few tries are dismal 
+failures: it takes every newbie a while</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>to get the hang of compiling 
+and installing from source code. In the end, however, it will become 
+easier</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>as you become more experienced, and you may be able to return to some of 
+your early failures and</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>finally get them to install 
+and run, too.&nbsp;&nbsp; Here's an article I found at linux.about.com, which 
+could help a lot of Linux newbies out there.</FONT></FONT> <BR>&nbsp; 
+<P><B><FONT face="Arial, Helvetica, sans-serif"><FONT color=#ffffff><FONT 
+size=-1>Downloading, Compiling, Installing</FONT></FONT></FONT></B> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Issue #66: 05/17/99 
+(Archive)</FONT></FONT> <BR>&nbsp; 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Most Linux 
+distributions these days use some sort of package system to manage software. 
+For</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>example, Red Hat, S.u.S.E. and Caldera's OpenLinux all use the RPM 
+package manager to install and</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>uninstall software. Debian 
+Linux and Slackware also have their own package</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>management. In an ideal world, 
+any piece of software you wanted to run on your</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Linux box would be available 
+as a package for your distribution.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Unfortunately, this 
+isn't the ideal world, and many users find themselves wanting to</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>download and use 
+software which is distributed as source code, usually in a file</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>ending with the 
+.tar.gz extension.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Looking for 
+instructions? They're in this document. Beware: because of the nature of the 
+task at hand,</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>these steps aren't as specific as they really need to be for most 
+newbies, nor are they easy to follow as</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>they're given. This process is 
+not for the faint of heart!</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>You should already 
+know how to download via Netscape or ftp. Be sure to understand where 
+you've</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>saved your downloaded file and also how to visit that directory; if 
+you're not able to do this yet, spend</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>some time learning about the 
+Unix directory structure from your favorite Unix beginner's reader. 
+If</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>you're having trouble already, you're better off doing some more study 
+before trying to compile your</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>own software; the instructions 
+here are basic, but newbies will still find themselves stretching to 
+follow</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>along.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>What is .tar.gz? How 
+about .tgz? And .tar.bz2?</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>The .tar.gz format is 
+similar in concept to the .zip format common in the Windows world. The .zip 
+format</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>performs two functions: it allows many different files to be rolled into 
+one single file for convenience, and</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>it compresses this single file 
+for faster downloading (or space savings). In Linux, these two tasks 
+are</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>performed by two separate commands: the tar command and the gzip 
+command.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Files which end in 
+the .tar.gz extension are the result of a two-step process. First, many files 
+are rolled</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>into a single file using the tar (Tape ARchive) program, giving the 
+resulting file a .tar extension. Next, the</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>.tar file is compressed using 
+the gzip program, adding an additional .gz extension to the end of the 
+file.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Sometimes .tar.gz is abbreviated as .tgz to allow such files to exist on 
+MS-DOS systems, which allow</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>only for a single, three 
+character filename extension. In any case, .tar.gz or .tgz files are known 
+as</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>"tarred-gzipped" files.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Files which end in 
+the .tar.bz2 extension are similar to the .tar.gz files in that they are 
+multiple files which</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>have been run through tar into 
+a single file and then compressed. Files ending in .tar.bz2, however, 
+are</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>compressed with the bzip2 compressor rather than the gzip compressor. To 
+see if your Linux system</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>contains a bzip2 
+compressor/decompressor, type "bunzip2 --help" at the command line. If you see 
+a</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>25-line usage message, the utility is present on your 
+system.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>How do I 'unpack' 
+these files?</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Since there were two 
+steps involved in creating these files, there two conceptual steps involved 
+in</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>extracting them. Before we give you the easy way to extract these files, 
+let's follow the conceptual</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>steps first. For our purposes, 
+we'll assume that the file in question resides in your current 
+working</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>directory. The first step is to decompress the file. If the file ends in 
+.tgz, you'll need to rename it to a</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>.tar.gz file so that the gzip 
+utility will recognize it:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; mv 
+file_in_question.tgz file_in_question.tar.gz</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Then, depending on 
+whether the file is a ".tar.gz" (.tgz) or ".tar.bz2" file, you'll need to use 
+one of the</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>following commands:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; gunzip 
+file_in_question.tar.gz</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; bunzip2 
+file_in_question.tar.bz2</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Executing the proper 
+command will decompress the file in question and remove the 
+compressor's</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>extension from the file. The resulting file is named only with the .tar 
+extension:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; 
+file_in_question.tar</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>To extract all of the 
+included files from this single file, make a new directory to hold the extracted 
+files,</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>go to that directory, and then use the tar command with the x (extract), 
+v (verbose), and f (file is</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>specified next) 
+options:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; mkdir 
+downloaded</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp; cd downloaded</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; tar xvf 
+../file_in_question.tar</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Most .tar files will 
+create another directory inside the directory you just created and extract their 
+files</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>there. Some archives won't, however, so you'll need to watch carefully 
+to see whether the extracted</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>files went into a 
+subdirectory. Assuming that all of the above steps worked properly, your 
+downloaded</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>archive file has been completely extracted. If the .tar file created its 
+own directory when it was</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>extracted, you'll need to make 
+it your current working directory before attempting to compile the</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>software:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; cd 
+file_in_question_directory</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>More 'unpacking' 
+Notes</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>The Linux tar utility 
+is actually more advanced that the standard Unix tar utility, and includes a 
+significant</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>shortcut for extracting .tar.gz files. Instead of first using the gunzip 
+utility to extract the file, you can have</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>the Linux tar utility do it 
+for you by also specifying the z (zip/unzip) option:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; tar xzvf 
+file_in_question.tgz</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; tar xzvf 
+another_file_in_question.tar.gz</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>There are also a 
+files out there (mainly from older Unix systems) which end with the .taz, .tar.Z 
+or .tar.z</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>extensions. These files were created with the tar utility and the 
+standard Unix compressor called (oddly</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>enough) "compress". The gzip 
+utility in Linux also understands files compressed with the Unix</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>compress utility, so 
+the following commands will all work fine:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; mv file_1.taz 
+file_1.tar.z; gunzip file_1.tar.z</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; gunzip 
+file_2.tar.Z</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp; tar xzvf file_3.tar.Z</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; tar xzvf 
+file_4.taz</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Note that this speedy 
+method of unpacking (using the 'z' option) will not work with bzip or bzip2 
+files,</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>which end in .tar.bz or .tar.bz2. Such files will still need to be 
+unpacked using the two-step process</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>given earlier.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Getting Ready to 
+Compile</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Now that you're 
+sitting in a directory full of files, it's time to generate software. This is 
+done in two steps:</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>first, the source code must be 
+"configured" for your system. Then, the make command must be run 
+to</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>generate the actual machine code. Most extracted source archives these 
+days allow for some sort of</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>"automatic" configuration. 
+These will be the easiest for Linux newbies to compile and use. There are 
+two</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>common types of automatic configuration: those using a GNU "configure" 
+script and those using</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>something called an Imakefile. 
+The "configure" script is preferable, so start by looking for a file 
+called</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>"configure" in the directory containing the extracted files. If such a 
+file exists, run it now:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; 
+./configure</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>You'll see a long 
+list of messages as the script attempts to analyze the makeup of your 
+system.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Assuming the script exits without errors, you're ready to compile. If, 
+on the other hand, no "configure"</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>script exists in the 
+directory, but instead a file called "Imakefile" is present, you'll need to run 
+the</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>"xmkmf" program to configure the source code:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; 
+xmkmf</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>If this command 
+finishes without errors, you may be ready to compile. Whichever method you 
+use</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>(configure or xmkmf), if the process fails in a flurry of error 
+messages, you're stuck for all intents and</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>purposes. Experts are often 
+able to fix these sorts of problems, but the solutions would be Greek 
+at</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>best to newbies, and methods for solving such problems are outside the 
+scope of this article. You're</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>better off trying to find and 
+install precompiled package.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Compiling</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>The compilation 
+process is generally simple, but time consuming. Type one word in the 
+directory</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>containing the extracted files:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; 
+make</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>A flurry of activity 
+should follow; much of it will seem like technical gibberish. Linux is now 
+"compiling"</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>the source code into binary code (a program) which can be executed. On 
+very fast computers, very</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>small programs may compile in 
+a matter of seconds. At the other extreme, on relatively slow</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>computers, large 
+programs have been known to need days or even weeks of compilation time. 
+The</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>process will proceed without need of your attention.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>There may be a number 
+of warnings during the compilation process. These can usually be 
+safely</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>ignored. If at any point the process abruptly aborts and displays a 
+cryptic error message in any of a</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>number of forms, you're 
+stuck:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; make: *** 
+[init/main.o] Error 1</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>In cases like this, 
+you should look for documentation such as plain text INSTALL or README 
+files</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>included with the source code. These can be cryptic, but may contain 
+additional instructions for</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>compilation. If you find and 
+study such files, follow all instructions, and the compilation still fails, or 
+if you</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>can't find any such INSTALL or README documentation files, you're again 
+better off trying to find and</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>install a precompiled package 
+for your system.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>When the process is 
+complete, you will find yourself at the command line once again. Generally, if 
+no</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>error messages (other than warnings) are obviously present, the 
+compilation was successful, though</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>there can be exceptions to 
+this rule. For our purposes, we'll assume that if you've got this far, 
+your</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>download has compiled without problems.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Installing</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Most current source 
+code allows for automatic installation using the make command a second 
+time,</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>making the "install" item:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; make 
+install</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Note that you will 
+generally need to be root to make the install, since it will try to install 
+program binaries</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>into global binaries 
+directories such as /bin, /usr/bin, or /usr/local/bin. With any luck, after 
+entering this</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>command, you'll see the install process commence, as files are copied to 
+various places throughout</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>your system. If you're 
+interested in keeping a record of which files were installed where (in case, 
+for</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>example, you wanted to "uninstall" this program later), you can keep a 
+record of the install process in</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>some file on your 
+system:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; make install 
+2&gt;&amp;1 | tee /path/to/saved_log</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>The created file 
+simply contains text duplicating exactly what you saw on your screen (see the 
+tee</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>manual page for more information). If the install method above fails 
+with an error message, but the</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>compilation (completed 
+earlier) was successful, you'll need to consult any included documentation 
+in</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>INSTALL or README files to see how to install the binaries and other 
+program files on your system.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>After the install has 
+successfully run its course or you have consulted the necessary 
+documentation</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>and followed included instructions, you may be able to execute the 
+program just by typing its name at a</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>command prompt:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; 
+myprog</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>If this isn't the 
+case, review the install output and try to determine (using common sense and a 
+little bit of</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>intelligent guesswork) if the file is going into either /usr/local/bin 
+or /opt/bin. If it is, you may need to add</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>the directory to your PATH 
+environment variable:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; 
+PATH=$PATH:/usr/local/bin:/opt/bin</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Now, try to execute 
+the program again:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; 
+myprog</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>If this doesn't work 
+either, there may be additional complications. Consult the documentation which 
+was</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>included with the source code. Such documentation usually resides in 
+files called README, INSTALL,</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>or in a directory called doc, 
+and should give you more hints about using the program (and starting 
+it)</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>once it's been installed.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>If adding directories 
+to your PATH variable does work, you may want to make the appropriate 
+changes</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>to the variable permanent by adding lines to your .bashrc and .profile 
+scripts:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; echo 
+"PATH=$PATH:/usr/local/bin:/opt/bin" &gt;&gt;.bash_profile</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp; echo 
+"PATH=$PATH:/usr/local/bin:/opt/bin" &gt;&gt;.bashrc</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Seems 
+complicated!</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>If this seems like a 
+lot of work, confusion, and generality to go through to get a program running, 
+it is!</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>There are many pitfalls, and some programs just won't compile and 
+install on a specific system without</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>a great deal of extra work or 
+even extra code. For most users, it makes much more sense to 
+download</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>a precompiled package if such a package is available.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>If such a package 
+isn't available, however, it's sometimes necessary to download the code and 
+compile</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>it yourself. Don't get discouraged if your first few tries are dismal 
+failures: it takes every newbie a while</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>to get the hang of compiling 
+and installing from source code. In the end, however, it will become 
+easier</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>as you become more experienced, and you may be able to return to some of 
+your early failures and</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>finally get them to install 
+and run, too.</FONT></FONT> <BR><BR><A 
+href="http://blacksun.box.sk/byteme4.html#Top">Top</A> </P></LI></BODY></HTML>

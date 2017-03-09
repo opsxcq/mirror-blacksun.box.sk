@@ -1,0 +1,112 @@
+______________________________________________________________
+
+HTTP Torn Apart, By Ankit Fadia. ankit@bol.net.in
+______________________________________________________________
+Published on BSRF - http://blacksun.box.sk
+Secret subliminal message: visit BSRF, NOW!!
+
+
+Cosa succede esattamente quando digiti un URL (Uniform Resource Locator) nella barra di locazione del browser? Beh, innanzitutto il browser fà una chiamata al servizio DNS e converte il nome del dominio, che hai digitato in un linguaggio più comprensibile all’uomo (come per esempio hotmail.com), in  un linguaggio comprensibile alla macchina e cioè lo converte in indirizzo IP. Una volta che il browser ottiene l’indirizzo IP dell’host , esso si connette alla porta 80 (il demone http per default risponde alla porta 80) di tale host remoto e gli chiede quel particolare documento o pagina che avevi richiesto attraverso i comandi HTTP . HTTP o HyperText Transfer Protocol, è il protocollo usato dal browser per comunicare con l’host: per richiedere quel particolare file a quel particolare URL o per inviare o postare dati nel server. Noi non vediamo mai questo processo perché avviene in background.
+Adesso, in questa sezione, impareremo invece a farlo noi manualmente quello che il browser fà automaticamente. Il richiedere da parte del browser un file ad un particolare URL viene detto: richiesta per informazioni (request for information). Prima di continuare, vediamo quindi com’è una richiesta. Una tipica richiesta HTTP è la seguente:
+
+get url HTTP/1.1
+
+Vediamo per cosa stanno le specifiche parti di una richiesta tipica. La prima parola e cioè “get” è chiamato metodo. Ci sono 3 tipi di metodi.
+
+Il metodo “get”
+
+Il metodo “get” è il più comune e largamente usato; è con il metodo “get” che il browser richiede pagine o documenti. In questo tipo di metodo tu sei il CLIENT (o meglio il tuo browser) che richiede la pagina al SERVER  che è l’host al quale sei connesso.
+
+Il metodo “post”
+
+Il metodo “post” è usato quando devi caricare dei files inviandoli al SERVER. Questo tipo di metodo è usato per esempio quando devi caricare il tuo sito web non usando FTP, ma direttamente caricando i files atraverso una pagina HTML. In questo metodo c’è un inversione di ruoli e cioè tu sei il SERVER e l’host al quale sei connesso diventa il CLIENT.
+
+Il metodo “head”
+
+Il metodo “head” è il metodo meno usato e non molte persone lo conoscono. Benché non sia molto usato, è comunque una parte dei metodi HTTP . L “head” viene usato per esempio quando vuoi essere sicuro che un certo file esiste in un particolare URL senza però dover scaricare l’intero file. Questo metodo infatti scarica solamente gli header (intestazioni) informativi di quel particolare file e non il file intero.
+
+Tutto questo potrebbe sembrarti un po’ strano, ma  ti suggerisco di comprendere prima la differenza di base che esiste tra i vari metodi e solo dopo di proseguire.
+
+Ad ogni modo torniamo indietro alle varie parti di una richiesta HTTP. La prima parte come ormai sai è il metodo, la seconda, invece, è l’URL che stai richiedendo. Diciamo per esempio che voglio richiedere il file contacts.htm, quindi la richiesta HTTP sarà:
+
+get /contacts.htm  HTTP/1.1
+
+Adesso ti potresti chiedere da dove salta fuori il primo “/”. Per capirlo hai bisogno di guardare l’URL che scrivi nella barra di locazione del browser. Per esempio, il file HTML che stai richiedendo è http://www.microsoft.com/windows.htm quindi l’URL  è ciò che rimane dopo aver tolto l’http://  e il dominio, cioè www.microsoft.com. Se ne deduce che l’URL è quindi /windows.htm.
+Adesso, quale dovrebbe essere l’URL  se vuoi richiedere per esempio la homepage di Yahoo? Normalmente digiti http://www.yahoo.com nella barra di locazione per accedere alla homepage di Yahoo. Se adesso togliamo l’http:// e anche il dominio (www.yahoo.com) cosa ci rimane? Niente. Questo significa che l’URL della richiesta HTTP è “/”. Si capisce quindi che la richiesta apparirà così:
+
+get / HTTP/1.1
+
+La terza parte della richiesta HTTP si spiega da sé: l’ HTTP/1.1 specifica la versione del servizio HTTP usata dal browser.  Da notare che se un server sta facendo girare HTTP/1.1 e un browser che invece gira HTTP/1.0 richiede una pagina da questo server, allora il server invierà la pagina come HTTP/1.0 rimuovendo solamente gli accrescimenti dell’HTTP/1.1.
+
+Adesso che sai com’è fatta una normale richiesta HTTP inviata dal tuo browser, vediamo come possiamo farla manualmente. Anche questo richiede il Telnet. Ora sai quanto importante sia il client Telnet nell’arsenale di un hacker. Lancia quindi il tuo Telnet e connettiti alla porta 80 (visto che il demone HTTP gira sulla porta 80) di un qualsiasi host. Se l’host al quale stai tentando di connetterti non ha un sito web allora difficilmente la porta 80 sarà aperta, quindi riceverai un messaggio d’errore. Se invece la connessione avrà successo la barra del titolo del Telnet ti mostrerà l’indirizzo dell’host al quale ti sei connesso e sarà pronto ai tuoi input.
+
+Il demone HTTP non è così noioso come sembra essere fino a qui. Infatti è molto molto interessante. Una volta che Telnet è pronto agli input digita h (o una qualsiasi altra lettera) e batti invio due volte.
+
+***********
+Conoscenze da hacker: dopo ogni comando HTTP uno deve battere due volte invio per inviare tale comando al server o avere una risposta da quest’ultimo. Così è come lavora il protocollo HTTP.
+**********
+
+Siccome “h” o una qualsiasiasi altra lettera che avevi digitato non è un valido comando HTTP, il server ti darà un messaggio d’errore, qualcosa del tipo:
+
+HTTP/1.1 400 Bad Request
+Server: Netscape-Enterprise/3.5.1
+
+Il server ti risponde con la versione HTTP che sta girando (cosa poco importante), ci da un messaggio d’errore e il codice d’errore ad esso associato (ancora una cosa poco importante), ma il server ci dà anche il nome e la versione del sistema operativo (OS) che sta girando. WOW !!! Ciò dà agli hackers che lo vogliono bucare il prezioso pezzo di informazione di cui necessitano.
+
+Comunque vediamo adesso cosa succede quando inviamo una normale ed autentica richiesta per la pagina iniziale (homepage) per esempio di Yahoo. Quindi dopo che Telnetto sulla porta 80 di www.yahoo.com  do il comando:
+
+get / http/1.1
+
+(requesting for the Yahoo Homepage)
+
+HTTP/1.0 200 OK
+Content-Length: 12085
+Content-Type: text/html
+
+(Niente nome del sistema operativo, interessante. Beh, Yahoo essendo una  compagnia Web molto grossa ha configurato il suo server in modo che non mostri il nome e la versione del sistema operativo quando riceve una richiesta HTTP.)
+Il metodo “get” fornisce il sorgente HTML del documento richiesto. E’ come se stessi vedendo il sorgente ciccando View > Source.
+
+Analogamente puoi vedere cosa succede quando usi i metodi “put” e “head”; basta rimpiazzare “get” con il metodo che vuoi usare. Per esempio:
+
+head / http/1.1 and put/ http/1.1
+
+***********
+Conoscenze da hacker: torniamo indietro alla risposta che abbiamo ricevuto dal demone HTTP una volta che Yahoo ha ritenuto valida la nostra richiesta col metodo “get”. La prima linea di risposta era:
+
+HTTP/1.0 200 OK
+
+Cosa significa questo 200? Beh, il “200” è chiamato codice di stato. Ogni volta che invii al server un comando HTTP, esso lo processa e conseguentemente mostra un codice di stato. Un codice di stato è un codice nella forma xxx composto da 3 cifre; esso inizia da 1xx e finisce a 5xx. Non so bene a cosa corrisponda la serie 1xx dato che è raramente usata. La serie 2xx corrisponde al successo completo del comando HTTP dato. La serie 3xx corrisponde agli errori dovuti allo spostamento dei documenti. La serie 4xx corrisponde agli errori causati dal browser e infine la serie 5xx corrisponde agli errori causati dal server.
+
+Il più comune codice di stato nel quale incorri, ma che potresti non aver mai visto, è il 200 OK; infatti ogni volta che col browser riesci a visualizzare in modo corretto una pagina web, significa che al tuo browser è stato inviato questo codice di stato dal demone HTTP.
+
+Gli errori più comuni nei quali potrai incorre e vedere saranno 404 Error---Not Found. Questo messaggio d’errore sta ad indicare che l’URL al quale hai provato ad accedere non è stato trovato, perché potrebbe essere stato spostato o cancellato, oppure i link stessi della pagina sono sbagliati; posso però in questo caso risalire di una directory per rivedere il nuovo URL cambiato.
+
+***********
+
+Ankit Fadia
+ankit@bol.net.in
+
+Per ricevere altri tutorial sull’Hacking, Perl, C++, Virus e Troiani, iscriviti alla mia mailing list.
+Manda una e-mail a programmingforhackers-subscribe@egroups.com per iscriverti.
+
+Visita il mio sito per vedere tutti i tutorial che ho scritto:
+http://www.crosswinds.net/~hackingtruths
+
+(* Translated in italian by §kyÐreamer - Tradotto in italiano da §kyÐreamer *)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

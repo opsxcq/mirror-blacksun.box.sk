@@ -1,0 +1,622 @@
+_______________________________________________________________________
+
+Trucchi e segreti mai detti su windows di Ankit Fadia anki@bol.net.in 
+Traduzione del M3xican m3xican@napolihak.cjb.net _______________________________________________________________________
+
+Benvenuti in un altro manuale sulle verità dell'hacking. Questa volta ho collezionato trucchi e suggerimenti che normalmente nessuno conosce, i segreti che normalmente la microsoft è spaventata di dire alle persone, le informazioni che raramente troverai tutte radunate e sistemate in un singolo file. Per meglio cogliere questo manuale tu dovresti avere una conoscenza base del registro di windows, per quasi tutti i trucchi e consigli che coinvolgono questo manuale.
+
+******************
+
+Nota importante: prima che tu vada avanti a leggere , devi fissarti una cosa in mente. Ogni volta che fai un cambiamento al registro di windows hai bisogno di riavviarlo prima che il cambiamento abbia effetto. Semplicemente premendo F5 per riavviare il registro e attivare le modifiche. Se ciò non dovesse funzionare devi resettare il pc.
+
+******************
+
+- Uscire da windows il modo più veloce e fico
+
+Normalmente arrestare windows richiede un sacco di dannato tempo, devi muovere il tuo mouse sul pulsante start, clickare su di esso, muovere ancora su chiudi sessione, clickare, muoversi sull'opzione necessaria e clickare, poi muovere il cursore sul pulsate OK e clickare ancora una volta (l'avevi indovinato). Questo intero processo può essere accorciato creando un nuovo collegamento sul desktop che riavvierà windows quando clicki sul pulsante. Incomincia col creare un nuovo collegamento (click col tasto destro sul desktop e seleziona nuovo->collegamento). Poi nella linea di comando, digita (senza le virgolette):
+     
+'C:\windows\rundll.exe user.exe,exitwindowsexec'
+
+Questo collegamento quando clickato riavvierà windows immediatamente senza alcun avviso.
+Per creare un collegamento per arrestare windows, digita come segue nella linea comando:
+
+'c:\windows\rundll.exe user.exe,exitwindows'
+
+
+Questo collegamento quando clickato arresterà windows immediatamente senza alcun avviso.
+
+- Eliminare gli arresti: uno scherzo da fare ai lamers
+
+Questo è un semplice scherzo che puoi fare a quel lamer che ha un enorme ego, in questa sezione io ti insegnerò, come disabilitare l'opzione arresta il sistema nel menu per arrestare il sistema. Questo scherzo richiede l'editazione del registro, per questo per favore fai una copia di backup. 
+Lancia regedit.exe e vai a:
+
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer
+
+Nel pannello sulla destra cerca la voce NoClose. Se non è già lì allora crearla clickando col tasto destro sul pannello e selezionando Nuovo->stringa (chiamala NoClose). Adesso che vedi la voce NoClose nel pannello a destra, clicka col tasto destro su di essa e seleziona modifica. Poi digita '1' nel campo valore.
+
+Facendo ciò su un sistema win98 si disabilita l'opzione per l'arresto del sistema, ma su un sistema win95 clickare sul pulsante start->arresta sistema comporta la visualizzazione del seguente messaggio:
+Questa operazione è stata eliminata a causa delle restrizioni in atto su questo computer. Per favore contatti il suo amministratore di sistema.
+
+Puoi riabilitare l'opzione cambiando il valore della voce NoClose a 0 o semplicemente cancellando la voce particolare (NoClose).
+
+Invece di eseguire il processo precedente che è difficile da ricordare, salva semplicemente quanto segue con un estensione .reg e aggiungi il contenuto al registro con un doppio click su di esso.
+
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+
+"NoClose"="1"
+
+- Disabilitare la visualizzazione dei drivers su risorse del computer
+
+Questo è un altro scherzo che puoi giocare a un tuo amico. Per disabilitare la visualizzazione dei drives locali quando si clicka su risorse del computer vai a: 
+
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer
+
+Adesso nel pannello di destra crea un nuovo oggetto DWORD e nominalo 'NoDrives'. Adesso modifica il suo valore e ponilo uguale a '3FFFFFF' (esadecimale) adesso premi F5 per ricaricare. Quando clicki su risorse del computer, non viene mostrato nessun drive. Per riabilitare la visualizzazione cancella semplicemente l'oggetto DWORD. Ecco il file .reg come segue:
+
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+
+"NoDrives"=dword:03ffffff
+
+- Impadronirsi dello screen saver
+
+Per disattivare e attivare lo screen saver ogni volta che vuoi, vai nella seguente chiave del registro 
+
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ScreenSavers
+
+Adesso aggiungi una nuova stringa e chiamala 'Mouse Corners'. Edita questo nuovo valore con -Y-N. Premi F5 per ricaricare il registro. Voila! Adesso puoi attivare il tuo screensaver semplicemente ponendo il cursore del mouse nell'angolo in alto a destra dello schermo se lo sposti nell'angolo in basso a sinistra, lo screensaver si disattiverà. 
+
+- Mostra un avviso ogni volta che windows si avvia.
+
+Per mostrare un avviso che può contenere qualsiasi messaggio che vuoi mostrare giusto prima che un utente si logghi, vai alla chiave:
+
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WinLogon
+
+Adesso crea una nuova stringa nel pannello a destra chiamata 'LegalNoticeCaption' e digita il valore che vuoi vedere nella barra del menu. Adesso crea ancora un'altra nuova stringa e chiamala 'LegalNoticeText'. Modificala e inserisci il messaggio che vuoi mostrare ad ogni avvio di windows. Questo può essere effettivamente usato per mostrare la politica privata della compagnia ogni volta che un utente si logga su una postazione NT. Ecco il file .reg come segue:
+
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Winlogon]
+
+"LegalNoticeCaption"="Caption here."
+
+- Cancellare il consiglio del giorno per salvare 5 Kb.
+
+Windows95 ha quei consigli del giorno che appaiono su un sistema che ha appena installato windows. Questi consigli del giorno sono conservatì nel registro di windows e occupano 5 Kb.  di spazio. Per quelli di voi che sono realmente preoccupati di quanto spazio libro ha il loro hard disk, io ho il trucco perfetto.
+Vai nella seguente chiave del registro:
+
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Tips
+
+Adesso cancella semplicemente questi consigli selezionandoli e premendo il tasto canc.
+
+- Cambiare la locazione di default
+
+Per cambiare il drive o il path di default dove windows cercherà i suoi files di installazione, vai alla seguente chiave:
+
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Setup\SourcePath
+
+Adesso puoi editarla come vuoi.
+
+- Proteggere le icone del tuo desktop e le impostazioni
+
+Puoi proteggere le impostazioni del tuo desktop da tuoi amici modificando il registro. Semplicemente lancia l'editor del registro e vai a:
+
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer
+
+nel pannello di destra crea un nuovo oggetto DWORD chiamato 'NoSaveSettings' e modifica il suo valore a '1'. Riavvia per ottenere il salvataggio.
+
+- Cartelle CLSID spiegate
+
+Tu non odi quelle caparbie stupide icone che si rifiutano di lasciare il desktop? Sono sicuro che vuoi sapere come puoi cancellarle. Potresti dire che è veramente semplice, semplicemente clickando col tasto destro sull'icona interessata e selezionando elimina. Bhe, non esattamente, vedrai che quando effettuerai il click desto su quelle speciali cartelle (vedi l'intera lista sotto) non appariranno nè l'opzione elimina nè quella rinomina. Per cancellare queste cartelle, ci sono 2 metodi, il primo è usare il System Policy Editor(Poledit nell'installazione di windows su CD) e il secondo è usare il registro.
+
+Per cancellare le cartelle di sistema dal desktop semplicemente vai alle seguenti chiavi del registro:
+
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Desktop\Namespace{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
+
+Per cancellare un icona semplicemente cancella il valore CLSID a 16 byte all'interno di "Namespace". I seguenti valori CLSID sono quelli delle icone più frequentemente usate:
+
+My Briefcase:{85BBD920-42AO-1069-A2E4-08002B30309D}
+
+Desktop: {00021400-0000-0000-C000-0000000000046}
+
+Control Panel:{21EC2020-3AEA-1069-A2DD-08002B30309D}
+
+Dial-Up-Networking:{992CFFA0-F557-101A-88EC-00DD01CCC48}
+
+Fonts: {BD84B380-8CA2-1069-AB1D-08000948534}
+
+Inbox :{00020D76-0000-0000-C000-000000000046}
+
+My Computer :{20D04FE0-3AEA-1069-A2D8-08002B30309D}
+
+Network Neighborhood:{208D2C60-3AEA-1069-A2D7-O8002B30309D}
+
+Printers :{2227A280-3AEA-1069-A2DE-O8002B30309D}
+
+Recycle Bin :{645FF040-5081-101B-9F08-00AA002F954E}
+
+The Microsoft Network:{00028B00-0000-0000-C000-000000000046}
+
+History: {FF393560-C2A7-11CF-BFF4-444553540000}
+
+Winzip :{E0D79300-84BE-11CE-9641-444553540000}
+
+Per esempio per cancellare il cestino, prima segnati il suo valore CLSID, che è:  645FF040-5081-101B-9F08-00AA002F954E. Adesso vai nella chiave Namespace nel registro e cancella il valore corrispondente.
+
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\explorer\Desktop\NameSpace\{645FF040-5081-101B-9F08-00AA002F954E}
+
+Similmente per cancellare la cartella cronologia, cancella la seguente chiave:
+
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\explorer\Desktop\NameSpace\{FBF23B42-E3F0-101B-8488-00AA003E56F8}
+
+Qualche volta potresti aver bisogno di giocare uno scherzo a tuo fratello o a un tuo amico, bene questo ti insegna come nascondere tutte le icone dal desktop. Vai alla seguente chiave del registro:
+
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer
+
+Nel pannello di destra crea un nuovo valore DWORD chiamato:  'NoDesktop' e poni il suo valore a '1'. Riavvia e non troverai più icone sul desktop.
+
+Fino ad adesso hai semplicemente imparato come cancellare cartelle speciali di sistema cancellando una chiave del registro, ma un hackeraggio verrebbe meglio se ci fosse un modo di aggiungere le opzioni CANCELLA e RINOMINA nel menu che si ottiene col click destro su queste cartelle speciali. Tu puoi cambiare tale menu di ogni cartella di sistema e aggiungere ognuna delle seguenti opzioni: RINOMINA, CANCELLA, TAGLIA, COPIA, INCOLLA e molte altre.
+
+Questo hackeraggio richiede che tu conosca il valore CLSID della cartella di sistema che tu vuoi personalizzare. In questa sezione, io ho considerato il cestino come la cartella della quale editerò il menu.
+
+Per primo lancia l'editor del registro e apri la seguente chiave: 
+
+HKEY_CLASSES_ROOT\CLSID\{645FF040-5081-101B-9F08-00AA002F954E}\ShellFolder
+
+Nel caso tu voglia editare altre cartelle come, diciamo, la cartella dei FONTS, allora devi aprire la seguente chiave:
+
+HKEY_CLASSES_ROOT\CLSID\{VALORE CLSID}\ShellFolder
+
+Nel pannello a destra ci sarà un valore DWORD chiamato attributes. Adesso considera le seguenti opzioni:
+
+1. Per aggiungere l'opzione rinomina al menu, cambia il valore di attributes in:
+   50 01 00 20
+ 
+2. Per aggiungere l'opzione cancella al menu, cambia il valore di attributes in:
+   60 01 00 20
+ 
+3. Per aggiungere sia rinomina che cancella, cambia il valore di attributes in:
+   70 01 00 20
+
+4. Per aggiungere copia al menu, cambia il valore di attributes in:
+   41 01 00 20
+
+5. Per aggiungere taglia al menu, cambia il valore di attributes in:
+   42 01 00 20
+
+6. Per aggiungere sia taglia che copia al menu, cambia il valore di attributes in:
+   43 01 00 20
+
+7. Per aggiungere incolla al menu, cambia il valore di attributes in:
+   44 01 00 20
+
+8. Per aggiungere copia e incolla al menu, cambia il valore di attributes in:
+   45 01 00 20
+
+9. Per aggiungere taglia e incolla al menu,  cambia il valore di attributes in:
+   46 01 00 20
+
+10. Per aggiungerli tutti,  cambia il valore di attributes in:
+    47 01 00 20
+
+Noi vogliamo aggiungere solo l'opzione rinomina al menu del cestino, così cambiamo il valore di attributes in 50 01 00 20. Premiamo F5 per riavviare e dopo aver riavviato troverai che quando clicki col tasto destro sul cestino spunta anche l'opzione rinomina.
+Per resettare il valore originario delle opzioni i windows cambia di nuovo il valore in: 40 01 00 20
+
+Il file di registro che uno può creare per il processo di sopra dovrebbe apparire in questo modo;
+
+REGEDIT4
+
+[HKEY_CLASSES_ROOT\CLSID\{645FF040-5081-101B-9F08-00AA002F954E}\Shell-Folder]
+
+"Attributes"=hex:50,01,00,20
+
+- Il menu start
+
+Per accedere, diciamo, alle proprietà del modem nella cartella del pannello di controllo, la procedura normale è: clickare su start. clickare su impostazioni->pannello di controllo, aspettare che venga mostrata la finestra del pannello di controllo e poi infine, clickare sull'icona del modem.
+
+Non sarebbe adorabile se potessi abbreviare il processo in: clickare su start->pannello di controllo->modem? Si, tu puoi aggiungere il pannello di controllo e  anche tutte le altre icone speciali di sistema direttamente al primo livello del menu start. Per prima cosa raccogli il valore CLSID della cartella che vuoi aggiungere al menu start. Io voglio aggiungere il pannello di controllo, quindi, il valore CLSID è: 21EC2020-3AEA-1069-A2DD-08002B30309D 
+
+Adesso click destro sul pulsante start e seleziona apri. Adesso crea una nuova cartella e chiamala: 
+Control Panel.{21EC2020-3AEA-1069-A2DD-08002B30309D}
+
+NOTA: non dimenticare il punto dopo la 'l' in panel. Similmente tutte le cartelle di sistema possono essere aggiunte al menu start. 
+
+- Cancellare opzioni di sistema dal menu start
+
+Tu puoi rimuovere le opzioni trova ed esegui dal menu start eseguendo un semplice hackeraggio del registro. Ancora una volta lancia l'editor del registro e scendi fino alla chiave:
+
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer
+
+Click destro sul pannello destro e seleziona nuovo->valore DWORD. Chiamalo 'No Find' (per rimuovere il comando esegui chiamalo 'NoRun'). Doppio click sulla nuova DWORD creata per editare il suo valore e inserire '1' come tale. Questo disabiliterà l'opzione trova nel menu start e anche il tasto di scelta rapida (F3 per trova).
+
+Per ripristinare i comandi esegui e trova modifica il valore della DWORD in '0' o semplicemente cancellala.  
+  
+- stufi delle noiose icone gialle delle cartelle? (compreso le icone dei drive)
+
+NOTA: questo trucco non è stato provato su win98.
+
+Tu puoi semplicemente cambiare le noiose icone delle cartelle con le tue personalizzate semplicemente creando un file di testo e copiando le seguenti righe dentro di esso:
+
+[.ShellClassInfo]
+
+ICONFILE=Drive:\Path\Icon_name.extension
+
+Salva questo file col nome di 'desktop.ini' nella cartella, della quale vuoi cambiaer l'icona. Adesso previeni che questo file sia cancellato cambiando i suoi attribbuti in NASCOSTO e DI SOLA LETTURA usando il comando ATTRIB.
+
+Per cambire l'icona di un drive, crea un file di testo contenente le seguenti linee:
+
+[Autorun]
+
+ICON=Drive:\Path\Icon_name.extension
+
+Salva questo file nella root del drive del quale vuoi cambiare l'icona e chiamalo 'autorun.inf'. Per esempio, se vuoi cambiare l'icona di un floppy, salva l'icona in "a:\icon_name.ico" uno può anche creare un'icona per l'hard disk e creare un file di testo [autorun.inf] e salvarlo in "c:\".  
+   
+- Sicurezza su NT
+
+Per default, NT 4.0 mostra l'ultima persona che si è loggata nel sistema. Questo può essere considerato come una minaccia per la sicurezza, specialmente nel caso di quelle persone che scelgono che la loro password sia anche il loro username. Per disabilitare questo bug che attualmente è una caratteristica, vai nella seguente chiave nell'editor del registro:
+
+HKEY_LOCAL_MACHINE\Software\Microsoft\WindowsNT\CurrentVersion\Winlogon
+
+Clicka e seleziona l'oggetto ReportBookOK e crea una nuova stringa chiamata 'DontDisplayLastUserName'. Modificala e ponila uguale a '1'.
+
+Come amministratore di sistema, puoi assicurare che le password scelte dagli utenti non siano troppo lame o troppo facili da indovinare. NT ha questa amabile applicazione chiamata User Manager che permette all'amministratore di settare l'età minima della password, il che forza l'utente a cambiare la password dopo un certo numero di giorni. Puoi anche settare la lunghezza minima delle password e prevenire che gli utenti usino password che sono già state usate di recente e anche abilitare account bloccati che disattiveranno un account dopo un determinato numero di tentativi di login falliti.
+
+Quando ti logghi su NT, dovresti disabilitare il Password Caching, questo assicura singoli domini di login NT e previene anche schermi secondari di logon.
+
+Semplicemente copia le seguenti linee in un editor di testo ASCII come: notepad e salvali con l'estensione .reg
+
+----------------DISABLE.reg-----------------
+
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Network]
+
+"DisablePwdCaching"=dword:00000001
+
+----------------DISABLE.reg-----------------
+
+Per abilitare il Password Caching usa il seguente .reg file:
+
+--------------Enable.reg-----------------
+
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Network]
+
+"DisablePwdCaching"=dword:00000000
+
+--------------Enable.reg----------------- 
+   
+- Cancellare il menu dei documenti recenti e il RUN MRU
+
+Il menu dei documenti recenti può essere facilmente disabilitato editando il registro. Per fare questo vai alla seguente chiave:
+
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer
+
+Adesso nel pannello di destra, crea una nuova DWORD chiamata: NoRecentDocsMenu e poni il suo valore uguale a '1'. Riavvia explorer per rendere attivi i cambiamenti.
+
+Puoi anche cancellare l'history RUN MRU. Tutte le liste sono contenute nella chiave: 
+
+HKEY_USERS\.Default\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU
+
+Puoi anche cancellare liste individuali o l'intero listato. Per cancellare l'history delle liste di ricerca vai a:
+
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Doc Find Spec MRU
+
+e cancella.
+
+- Customizzare il menu del tasto destro sul menu start
+
+Quando tu fai un click col tasto destro sul menu start, solo tre opzioni vengono mostrate: Apri, Esplora, e trova. Puoi aggiungere i tuoi programmi a questo menu a comparsa (che appare quando clickiamo col tasto destro). Apri il regedit e vai alla seguente chiave: 
+
+
+HKEY_CLASSES_ROOT\Directory\Shell 
+
+fai un click destro e crea una nuova sottochiave (puoi crearla clickando col tasto destro sulla chiave 'shell' selezionando nuovo->chiave). Digita il nome dell'applicazione che vuoi includere al menu start. Io voglio aggiungere notepad e quindi chiamo questa nuova sottochiave 'notepad'. Adesso fai un altro click destro sulla nuova sottochiave e creane un altra chiamata 'Command'. Nella quale inserirai il percorso completo dell'applicazione, in questo caso notepad, nel valore di default presente nel pannello di destra. Così io ho modificato il valore della stringa di default e ho inserito il percorso completo di notepad:
+
+c:\windows\notepad.exe
+
+Adesso premi F5 per ricaricare. Adesso se fai un click destro sul pulsante start troverai una linea aggiunta al menu a comparsa chiamata notepad. Clickando su di essa si lancia notepad.
+
+Noi possiamo non solo aggiungere, ma anche rimuovere opzioni esistenti in questo menu a comparsa.
+
+Per cancellare l'opzione trova vai alla seguente chiave del registro:
+
+HKEY_CLASSES_ROOT\Directory\Shell\Find 
+
+Cancella 'Find'. Non cancellare 'Open' o non sarai capace di aprire alcuna cartella nel menu start come programmi, accessori, ecc..
+
+- Customizzare la freccia dei collegamenti
+
+Tutti i collegamenti hanno una sottile freccia nera attaccata alla loro icona per distinguerli dai files normali. Questa freccia può essere abbastanza noiosa e poichè un hacker dovrebbe sapere come cambiare ogni cosa, andiamo avanti con un altro trucco. Lancia l'editor del registro e vai a:
+
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\explorer\Shell Icons
+
+Adesso, sul pannello di destra c'è una lista di icone (abbiamo trovato che su alcuni sistemi, specialmente win98, che il pannello di destra è vuoto. Non temere, basta aggiungere i valori richiesti). Trova il valore 29 Se non c'è aggiungilo. Il valore di questa stringa dovrebbe essere C:\Windows\system\shell32.dll, 29 (che significa la 30esima icona in shell32.dll - la prima delle quali comincia con 0). Adesso, noi necessitiamo di un icona vuota per fare questo, crea un icona che sia totalmente bianca. Una volta fatto cambia il valore in c:\xxx.ico, 0 dove 'xxx' è il percorso completo del file icona e '0' è l'icona in esso.
+
+Adesso per un pò di divertimento. Se l'icona bianca è un pò noiosa, cambiala ancora, troverai che sotto shell32.dll c'è un molteplicità di icone, una cartella condivisa (la mano) e molto altro. Sperimenta da te!
+
+- Usare Perl per ottenere una lista dei servizi eseguiti nel tuo box NT
+
+Usa il seguente script in Perl per ottenere una lista dei servizi che vengono eseguiti sul tuo sistema NT
+
+--------------script.pl-----------------
+
+#!c:\per\bin\perl.exe
+
+use Win32::Service;
+
+my ($key, %service, %status, $part);
+
+Win32::Service::GetServices(' ',\%services);
+
+foreach $key (sort keys %services) {
+
+print "Print Name\t: $key, $services{$key}\n";
+
+Win32::Service::GetStatus( ' ',$services{$key};
+
+\%status);
+
+foreach $part (keys %status) {
+
+print "\t$part : $status{$part}\n" if($part eq "CurrentState");
+
+}
+
+}
+
+-------------script.pl-------------------       
+   
+* Trucchi e segreti di internet explorer   
+
+- Redimensionamento della toolbar durante la visualizzazione a schermo intero
+
+L'opzione schermo intero incrementa l'area visibile e rende la navigazione molto più godibile ma qualche volta noi abbiamo bisogno della toolbar, ma allo stesso tempo abbiamo bisogno di un area di visualizzazione maggiore. Adesso questo hackeraggio ti insegna come cambiare le dimensioni della toolbar di internet explorer. Questo hackeraggio del registro è un pò più complicato poichè coinvolge dei valori binari, cos' per renderlo semplice, io ho incluso il seguente file del registro che abiliterà l'opzione di redimensionamento della toolbar di internet explorer che era presente nella versione beta di IE.
+
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Toolbar]
+
+"Theater"=hex:0c,00,00,00,4c,00,00,00,74,00,00,00,18,00,00,00,1b,00,00,00,5c,\
+
+00,00,00,01,00,00,00,e0,00,00,00,a0,0f,00,00,05,00,00,00,22,00,00,00,26,00,\
+
+00,00,02,00,00,00,21,00,00,00,a0,0f,00,00,04,00,00,00,01,00,00,00,a0,0f,00,\
+
+00,03,00,00,00,08,00,00,00,00,00,00,00
+
+*******************
+
+VERITA' DELL'HACKING: Internet explorer 5 mostra versioni amichevoli degli errori HTTP come NOT FOUND ecc.. Il loro scopo è quello di rendere le cose più facili per i newbies. Se tu piuttosto preferiresti vedere le pagine di errore effettive del server web che stai usando, vai in strumenti->opzioni internet e seleziona avanzate. Poi scendi tra le opzioni e deseleziona mostra messaggi http di errore brevi.
+
+*******************  
+
+- Rendere internet explorer & la toolbar fantasiosa
+
+La barra di internet explorer sembra abbastanza semplice. La vuoi rendere più fantasiosa? Perchè non aggiungiamo un immagine di sfondo ad essa? Per fare questo hackeraggio lanciamo l'editor del registro e andiamo alla seguente chiave:
+
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\Toolbar\
+
+Adesso nel pannello di destra crea una nuova stringa e chiamala 'BackBitmap' e modifica il suo valore con il percorso dell'immagine con la quale la vuoi vestire con un click destro e selezionando modifica. Quando riavvierai internet explorer e la toolbar avranno un nuovo aspetto.
+
+- Cambiare l'intestazione di internet explorer
+
+Non ti piace l'intestazione di internet explorer? Vuoi cambiarla? Apri l'editor del registro e vai a:
+
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\Main
+
+Nel pannello a destra crea una nuova stringa chiamata 'Window Title' (nota lo spazio tra window e title). Click destro su questa nuova stringa creata e seleziona modifica. Digita nel campo quello che vuoi venga mostrato. Riavvia affinchè i cambiamenti abbiano effetto.
+
+* Adesso muoviamoci su alcuni trucchi per outlook express
+
+- Sfondi colorati
+
+Non ti piacciono i noiosi colori di sfondo di outlook express? Per cambiarli lancia l'editor del registro e scendi giù fino a:
+
+HKEY_CURRENT_USER\Software\Microsoft\Internet Mail And News
+
+Sul pannello di sinistra, clicka su ColorCycle o seleziona edita e modifica nel menu. Adesso cambia il valore in '1'. Chiudi e riavvia. Adesso, lancia outlook express e ogni volta che apri un nuovo messaggio, tenendo premuto CTRL-SHIFT e poi premendo 'z' cambi il colore di sfondo. Ripeti la pressione del tasto per scorrere lungo i colori.
+
+* Caratteristiche nascoste di internet explorer
+
+microsoft internet explorer ha alcune caratteristiche nascoste che possono essere controllate usando il registro di windows. Apri il tuo registro e scorri fino alla seguente chiave:
+
+HKEY_CURRENT_USER\Software\Policies\Microsoft\Internet Explorer\Restrictions
+
+Crea una nuova DWORD chiamato x (vedi la lista completa dei valori che può assumere la x sotto) e modifica il suo valore a '1' per abilitare e a '0' per disabilitare.
+
+NoBrowserClose : ùdisabilita l'opzione di chiudere internet explorer. 
+
+NoBrowserContextMenu : disabilita il menu del click destro. 
+
+NoBrowserOptions : disabilità gli strumenti / menu opzioni di internet. 
+
+NoBrowserSaveAs : disabilita l'abilità di salvare come. 
+
+NoFavorites : disabilita I favoriti. 
+
+NoFileNew : disabilita il comando file/nuovo. 
+
+NoFileOpen : disabilita il comando file/apri. 
+
+NoFindFiles : disabilita il comando trova file. 
+
+NoSelectDownloadDir : disabilita l'opzione di selezionare un directory di download. 
+
+NoTheaterMode : disabilita l'opzione schermo intero. 
+
+* Segreti dell'Hacking
+
+Quasi tutti gli amministratori di sistema fanno certi cambiamenti e rendono il sistema limitato. Gli amministratori di sistema possono nascondere l'opzione ESEGUI, il comando TROVA, l'intero pannello di controllo, i drives in risorse del computer come D: A: ecc.. essi possono anche limitare le attività di un hacker disabilitando o nascondendo, anche le più piccole opzioni e programmi.
+
+La maggior parte di queste restrizioni sono imposte localmente e sono controllate dal registro di windows. Ma alle volte gli amministratori di sistema furbi controllano le attività di un hacker imponendo restrizioni da remoto attraverso il server principale.
+
+Poledit o Policy Editor è un piccolo programma abbastanza usato dagli amministratori di sistema per alterare le impostazioni su di un sistema. Questa utility non è installata per default su windows. Devi installarla manualmente dal kit di installazione di win98 dalla cartella Resource Kit. User.dat file che abbiamo visto di recente.
+
+Il programma Policy Editor impone restrizioni su di un utente di un sistema editando il file user.dat il quale cambiamento implica l'editazione del registro di windows per cambiare le impostazioni. Esso può essere usato per controllare e limitare a ogni cartella o opzioni che hai mai pensato. Esso ha il potere di limitare l'accesso a singole cartelle, file, il panello di controllo, MS DOS, i drives disponibili ecc.. qualche volta questo programma rende la vita davvero difficile per un hacker. Allora come possiamo rimuovere le restrizioni imposte da Policy Editor? Bene leggi avanti per imparare oltre.
+
+Guarda che il Policy Editor non è il solo mezzo per limitare le attività di un utente. Come già sappiamo il Policy Editor edita il file del registro di windows(user.dat) per imporre tali restrizioni. Il che significa che noi possiamo direttamente fare cambiamenti al registro di windows usando un file .reg o direttamente per rimuovere o aggiungere restrizioni.
+
+Lancia regedit e vai alla seguente chiavi del registro:
+
+HKEY_CURRENT_USER/Software/Microsoft/CurrentVersion/Policies
+
+Sotto questa chiave ci sarà sicuramente una chiave chiamata explorer. Adesso sotto questa chiave possiamo creare una nuova DWORD e modificare il suo valore a '1' per imporre la restrizione. Se vuoi rimuovere la restrizione puoi semplicemente rimuovere la DWORD o impostare il valore corrispondente a '0'.
+La seguente è una lista di DWORD che possono essere create sotto la chiave explorer -:
+
+
+NoDeletePrinter: disabilita la cancellazione di stampanti già installate
+
+NoAddPrinter: disabilita l'aggiunta di nuove stampanti
+
+NoRun : disabilita o nasconde il comando esegui
+
+NoSetFolders: Rimuove cartelle dalle impostazioni nel menu star (Pannello di controllo, stampanti, barra delle applicazioni)
+
+NoSetTaskbar: Rimuove la barra delle applicazioni dalle impostazioni nel menu start
+
+NoFind: rimuove il comando cerca
+
+NoDrives: nasconde e non mostra I drives in risorse del computer
+
+NoNetHood: nasconde o rimuove l'icona Network Neighborhood dal desktop
+
+NoDesktop: nasconde tutti gli oggetti, inclusi file, cartelle, e cartelle di sistema dal desktop
+
+NoClose: disabilita l'arresto e impedisce a un utente di arrestare windows
+
+NoSaveSettings: come detto, non salva I cambiamenti quando si esce 
+
+DisableRegistryTools: disabilita l'editor del registro (se disabiliti questa opzione regedit.exe non lavorerà
+
+NoRecentDocsHistory: rimuove la cartella di sistema dei documenti recenti (IE 4 e superiori)
+
+ClearRecentDocsOnExit: pulisce la cartella di sistema dei documenti recenti quando si esce.
+
+Nolnternetlcon: rimuove l'icona di internet (cartella di sistema)dal desktop
+
+Sotto la stessa chiave: HKEY_CURRENT_USER/Software/Microsoft/CurrentVersion/Policies 
+Puoi anche creare sottochiavi oltre le già esistente chiave explorer. Adesso crea una nuova chiave e chiamala 'System'. Sotto questa nuova chiave, noi possiamo creare le seguenti DWORD (1 per abilitare la particolare opzione 0 per disabilitarla):
+
+NODispCPL: nasconde il pannello di controllo
+
+NoDispBackgroundPage: nasconde la pagina di sfondo
+
+NoDispScrsavPage: nasconde la pagina dello screen saver
+
+NoDispAppearancePage: nasconde la pagina aspetto 
+
+NoDispSettingsPage: nasconde la pagina impostazioni
+
+NoSecCPL: disabilita il pannello di controllo password
+
+NoPwdPage: nasconde la pagina per cambiare le password
+
+NoAdminPaqe: nasconde la pagina di amministrazione remota
+
+NoProfilePage: nasconde la pagina dei profili utenti
+
+NoDevMgrPage: nasconde la pagina del manager dei device
+
+NoConfigPage: nasconde la pagina dei profili hardware
+
+NoFileSysPage: nasconde il bottone file system
+
+NoVirtMemPage: nasconde il bottone memoria virtuale
+
+Similmente se creiamo una nuova chiave e chiamata 'Network' sotto di essa noi possiamo aggiungere le seguenti DWORD (1 per abilitare la particolare opzione 0 per disabilitarla):
+
+NoNetSetupSecurityPage: nasconde la pagina di sicurezza della rete
+
+NoNelSetup: nasconde o disabilita le opzioni di rete nel pannello di controllo
+
+NoNetSetupIDPage: nasconde la pagina di identificazione
+
+NoNetSetupSecurityPage: nasconde la pagina di controllo di accesso 
+
+NoFileSharingControl: disabilita il controllo del file sharing
+
+NoPrintSharing: disabilita il controllo del print sharing
+
+Similmente se creiamo una nuova chiave e chiamata 'WinOldApp' sotto di essa noi possiamo aggiungere le seguenti DWORD (1 per abilitare la particolare opzione 0 per disabilitarla):
+
+
+Disabled: disabilita il prompt di MS-DOS 
+
+NoRealMode: disabilita il Single-Mode di MS-DOS.
+    
+Come vedi se hai accesso al registro di windows, allora puoi facilmente creare una nuova DWORD e impostare il suo valore a 1 per abilitare una particolare opzione o a 0 per disabilitarla. Ma qualche volta, l'accesso al registro di windows è bloccato. Allora cosa devi fare? Vai nel directory di windows e cancella sia 'user.dat' che 'system.dat' (questi 2 files costituiscono il registro di windows) e riavvia. Appena ti logghi, viene mostrato un messaggio di pericolo che ti informa di un errore nel registro di windows. Ignora semplicemente questo messaggio di errore e premi CTRL+DEL+ALT per superarlo (non premere OK) troverai che tutte le restrizioni sono state rimosse.
+
+La restrizione trovata più di frequente è la restrizione della cartella specifica, nella quale gli utenti non hanno permesso ad accedere a specifiche cartelle, la più comune è la cartella di windows, o qualche volta anche l'accesso a risorse del computer è bloccato. In effetti, non puoi far sembrare di acceder ai files importanti per te rimuovendo le restrizioni . Cosa fare? Bene, usa il comando ESEGUI. Ma sfortunatamente un amministratore di sistema che è abbastanza intelligente da bloccare l'accesso a una cartella specifica, dovrebbe aver definitivamente bloccato il comando ESEGUI. Siamo ancora bloccati.
+Windows è pensato per essere il sistema operativo più User Friendly sulla terra (almeno la microsoft dice così...) 
+
+Esso da ad un utente l'opzione di fare la stessa cosa in più modi. Come vedi il comando ESEGUI è solo l'opzione più conveniente per eseguire le applicazioni, ma non è il solo modo. In windows puoi creare un collegamento a quasi ogni cosa, da un file a una cartella a un URL. Così se il tuo amministratore di sistema ha bloccato l'accesso alla cartella c:\windows\system e tu hai bisogno di accedervi, cosa fai? Semplicemente crei un collegamento ad essa. Per fare ciò semplicemente fai un click destro su qualsiasi punto vuoto sul desktop e seleziona nuovo->collegamento. Una nuova finestra chiamata crea collegamento comparirà. Digita nel campo il percorso della cartella con accesso ristretto alla quale vuoi accedere, in questo caso c:\windows\system. Clicka su avanti, digita amichevolmente il nome del collegamento e poi clicka su fine. Adesso puoi accedere alla cartella limitata semplicemente con un doppio click sull'icona del collegamento. Bene questo mostra quanto protetto e sicuro è hmmm Windows hmmm.
+
+************************
+
+VERITA' DELL'HACKING: qualche volta quando provi a cancellare un file o una cartella, windows mostra un messaggio di errore dicendo che il file è protetto. Questo significa semplicemente che il file è protetto alla scrittura, o in altre parole l'opzione R è +. Capito? In ogni modo, puoi evitare che windows mostri questo messaggio e cancellare immediatamente questo file cambiando gli attributi in non di sola lettura. Questo può essere fatto con un click destro sull'icona del file, selezionando proprietà e poi deselezionando l'opzione sola lettura.
+
+************************
+ 
+C'è anche un altro modo per accedere a cartelle con accesso ristretto. Il DOS ha un adorabile comando chiamato START. La sua sintassi generale è:
+
+START path_dell'applicazione
+
+Egli fa quello che sembra che faccia, avvia le applicazioni. Così nel tuo accesso al DOS tu puoi digitare il comando START per ottenere l'accesso a una cartella limitata. Adesso principalmente l'accesso al DOS dovrebbe essere bloccato. Così ancora una volta usiamo il trucco del collegamento per avviarlo, c:\commandcom o c:\windows\command.com (command.com è il file che eegue MSDOS).
+
+- Accesso ai drives limitati
+
+Il problema degli amministratori di sistema è che pensano che gli utenti o anche gli hackers sono stupidi. Quasi tutti gli amministratori di sistema usano i trucchi del registro (spiegati di recente) per nascondere tutti i drives in risorse del computer. Così per poter scoprire o mostrare tutti i drives, cancella semplicemente quella chiave particolare. (riferisciti all'inizio della sezione sui secreti non detti).
+
+Alcuni sistemi hanno il floppy disk disabilitato da BIOS. Su quei sistemi se il BIOS è protetto, tu devi crackare la password di BIOS (per quello riferisciti al capitolo sull'hacking di windows). Qualche volta rendere i drives leggibili (rimuovendo R +) e poi creando un collegamento a loro ci aiuta anche a averne accesso.
+
+- Ulteriori cambiamenti sull'aspetto del tuo sistema operativo editando i files .htt
+
+Se tu hai installato l'Update del desktop di windows e hai l'opzione visualizza come pagina web, puoi impostare il modo in cui le cartelle vengono mostrate selezionando visualizza->personalizza cartella. Qui puoi cambiare lo sfondo e altre cose di quella particolare cartella. Bhe, questo è abbastanza lamer, giusto? Noi hackers già conosciamo cose tanto lamer quanto quella. Leggi ancora per alcune cose migliori.
+
+Bene, tu potresti anche cambiare l'impostazione di default che è conservata in un file template HTML nascosto (io credo così...) che non è nient'altro che un documento web con un estensione .htt
+Questo file .htt si trova a: %systemroot%\windows\web\folder.htt
+
+%systemroot% sta per il drive dove è installato windows, che è normalmente C:
+
+Tu puoi editare questi file .htt almeno come editi un normale file .htm o .html semplicemente aprendoli con un editor ASCII come notepad. La seguente è una lista dei files .htt sul tuo sistema che controllano varie cartelle e che possono essere editati per customizzare l'aspetto delle varie cartelle.
+
+
+controlp.htt pannello di controllo 
+
+printers.htt stampanti
+
+mycomp.htt risorse del computer
+
+safemode.htt Safe Mode
+
+Il file folder.htt ha una linea: 
+
+<!-- HERE'S A GOOD PLACE TO ADD A FEW LINKS OF YOUR OWN --> 
+
+che è il posto dove tu puoi aggiungere I tuoi propri links. Questi links dovrebbero poi apparire nella cartella del quale hai editato il file folder.htt. Tutto questo potrebbe suonare realmente facile e semplice, ma se tu vedi questi files .htt essi non contengono codice HTML normale, invece essi contengono un misto di HTML e bots web. Quindi può essere difficile per i newbies comprendere.
+
+Bene questo è tutto per ora, altri trucchi più in là, fino ad allora i saluti.
+
+Ankit Fadia
+
+ankit@bol.net.in
+
+Per un archivio di manuali scritti da Ankit Fadia inscriviti alla mailing list mandando un email a programmingforhackers-subscribe@egroups.com
+
+   
+==================================================================
+Questa guida è stata tradotta dal M3xican (m3xican@napolihak.cjb.net), 
+se considerate la traduzione scadente o vi volete 
+cimentare nell'impresa potete scaricare la versione originale 
+in inglese sempre su http://napolihak.cjb.net. 
+
+
+
+
+
+  

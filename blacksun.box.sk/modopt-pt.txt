@@ -1,0 +1,129 @@
+========================================
+Guia de optimização de modems em windows
+========================================
+
+
+ ###########         #                   ###             #########      ##     # 
+ ############       ###                 #####           ###  #####     ###     ##
+ #####    ####     #####               #######         ###    ###     ####    ###
+ #####    #####   #######             #########       ###      #      ####  ####
+  ####   #####    #######            ###########     ###               ### ####
+   #########      #######           ####     ####    ###               #######  
+    ###########    #####           #####     #####    ###     ##      ####### 
+   #############    ###   ##      ######  #########    ###   ####     #########
+  ######     ####    #   ####      ########  #####      ##  ######     ###   ###
+ ######     ####     ##########     ####     ####        #########     ###  #####
+ #####     ####       ##########     ###     ###          #######     ####  ######
+ #############         ##########     ##     ##            #####      ####   ####
+ ###########            ########      ##     ##             ###        ###    ##
+
+   #######       #     #        #     #
+  ##########    ##     ##      ##     ##            
+ ###    ###     ##     ##     ###     ###                                         
+  ###    #     ###     ###   #####    ####           Black Sun Research Facility  
+    ###         ##     ##    ######   ####             http://blacksun.box.sk     
+      ###       ##     ##    #######  ####                 ASCII By : cyRu5       
+   #   ###     ###     ###   ####  #######         
+  ###  ####   ####     ####   ###   #####               
+ ###########   ###########     ##    ###
+  #########      #######        #     #
+
+Autores: R a v e N and GoMoRRaH.
+Tradução: Marco
+Date of Release: 10/12/1999.
+
+Informação para contato
+-----------------------
+R a v e N:  barakirs@netvision.net.il.
+
+Para comentários sobre este tutorial e sugestões para futuras versões,
+Email R a v e N.
+Para questões, vá para blacksun.box.sk, encontre o message board e ponha suas
+questões lá. NÃO mande Email para nós diretamente com questões!
+
+
+Introdução
+==========
+Bem vindo ao excitante mundo da optimização do modem. O que? Por que você iria
+querer "optimizar" seu modem? Eu irei dizer o porque!
+
+Windows vem configurado para performance optimal em conexões LAN.
+Isto significa que embora seu modem funcione perfeitamente bem, mas não usará
+com sua máxima eficiência, e gastará tempo em ações que poderiam ser optimizadas
+ou mesmo puladas.
+
+Estas opções não são exatamente tão fácil de mudar. Você não pode apenas clicar no "painel
+de controle" e mudá-las. Você terá que se aventurar no registry ou instalar aplicações esternas
+para mudá-los. Mas acredite em mim - vale a pena. Você irá optimizar seu modem e vai aprender
+alguma coisa sobre redes de trabalho (network).
+
+Então, você está pronto para deixar seu modem mais rápido sem gastar dinheiro?
+Bem, eu certamente espero que você esteja.
+
+Nota: algumas das informações neste tutorial foi tirado do arqueivo readme de Internet
+Boost '99.
+
+Coisas que você precisa saber
+=============================
+Dados na internet viaja no que é chamado de 'pacotes'.
+Cada pacote de TCP (Protocolo de Controle de Transferência) tem 40 bytes, na qual contém
+a fonte de endereço, destinação do endereço, informação das rotas etc', e o arquivo de dados,
+no qual contém a atual informação de que está sendo transferido. A menos que ambos do enviador
+e do receptor estão na mesma subnet (subrede) (veja em blacksun.box.sk/subnet.txt), o pacote
+terá que ser destinado através de vários host chamado de "roteiros". Também, dois 
+pacotes com o mesmo enviador e com a mesma destinação não irá necessariamente viajar através
+do mesmo percurso.
+
+MTU
+===
+Sim, isto é o primeiro valor de que precisamos para optimizar. Casa host tem um valor MTU.
+MTU é a unidade maior de transmição. Quando dois computadores começam uma seção TCP, um deles
+pode enviar um pacote ou diversos pacotes para o outro, eles concordam com a unidade maior
+de transmição de valores. Como eles fazem isso? Bem, cada host toma seu próprio valor
+MTU e compara com o outro valor do host. Se ambos valores forem identicos, então os dois
+hosts concordarão com o valor. Se os dois valores forem diferentes, o valor mais baixo
+será usado para esta seção. O MTU é o número máximo de bytes que um pacote consegue conter.
+O normal MTU da maioria dos sistemas é de 1500, na qual é ótimo para LANs (Área Local de redes
+de trabalho) mas é ruim para acesso Dial-Up. Eu vou explicar:
+
+Suponha que você concorde que um MTU é de 1500. Você manda estes 1500 bytes em pacotes de dados
+na internet, mas no caminho, isto viaja através de algumas toras que tem MTU de 576. Estes roteiros terão que dividir seus 1500 pacotes nestes 576 pacotes, cada um com seu próprio líder. Já que 1500 não é divisível por 576, o último pacote conterá o último fragmento do original pacote de 1500. E desde que cada pacote precisa ser reconhecido pelo receptor, isto levará muito mais tempo. Se você não entendeu, leia este tutorial de novo até entender.
+
+Agora, nós queremos colocar nosso MTU para 576, certo? Mas como faremos isso?
+
+Mudando seu MTU
+===============
+Existe duas maneiras de mudar o valor MTU:
+a) Brinque no seu registry. Veja regedit.com para informações de como optimizar a configuração de sua rede de trabalho.
+b) Pegue um programa chamado de Internet Boost. Uma procura em altavista.com com a frase "internet boost" irá achar centenas de sites para download em segundos.
+
+Caminho de Unidade Máxima de Transmição (PMTU)
+==============================================
+Auto Detectação
+---------------
+A auto detectação é usado originalmente. Esta opção libera o sistema automaticamente a determinar o valor da Unidade Máxima de Transmição (MTU) e detecta rotas na qual não retornam apropriadas mensagens ICMP sobre tais condições. Permitindo esta opção, causa TCP a tender a descobrir a Unidade Máxima de Transmição (MTU ou maiores tamanhos de pacotes) do caminho para um host remoto. Pelo descobrimento do caminho MTU e limitando segmentos TCP para este tamanho, TCP é suposto a fazer a eliminação da fragmentação nas rotas alongo o caminho que conecta redes de trabalho com diferentes MTUs. Isto require uma ajuda do correspondente lado algorítimo do servidor, de qualquer modo, e pressupormente todos os servidores da internet apenas usando MSFT software do servidor optimizado com características acessíveis pelo cliente MSFT do navegador. De qualquer jeito, não é recomendado desabilitar esta opção que irá causar um MTU de 576 bytes será usado para todas as conexões que não são máquinas da local subnet. Desabilitando esta opção pode causar degradação do servidor, por que a fragmentação pode não ser conpensada.
+
+Detectação do Buraco Negro
+--------------------------
+A detectação do buraco negro é desativada originalmente. Ativando essa opção, força o sistema a tentar detectar rotas de buraco negro. Rotas de buraco negro são rotas que não enviam de volta mensagens fragmentadas necessárias de ICMP (Protocolo da internet de controle de mensagen) enquanto automaticamente determinam o valor optimal MTU. Isso eleva ao máximo número de retransmições feitas por um dado segmento. Opcionando este parametro quando não é preciso pode causar degradação na performance. Então não é recomendado que você ative esta opção ao menos que você entenda as consequências feitas.
+
+Janela Receptora (RWIN)
+=======================
+Quando uma conexão TCP é estabelecida, o enviador e o requesitador negociam o tamanho máximo do valor de um segmento que será aceito por ambos hosts. Este valor, chamado de Tamanho Máximo do Segmento (MSS) é diferente pelo MTU por que apenas endereça o máximo tamanho da porção do pacote, e não inclui o principal. Se cada segmento de valor não exceda o menor MTU como é rotado para a destinação, então isto não será fragmentado. Portanto, por causa do tamanho do TCP é 40 bytes, o MSS é calculado como MTU menos 40. O valor MSS é útil em determinando o tamano da janela receptora (RWIN), na qual é o número máximo de bytes do valor que pode ser chocado, até a recepção de um reconhecido pacote voltado pelo enviador. Tipicalmente, o valor da RWIN deveria ser múltiplo de 2-10 vezes ao valor MSS. Se você não sabe qual escolher, apenas escolha 4 vezes do valor MSS. Por exemplo, um bom valor RWIN para um sistema com um MTU de 576 (e um MSS de 536) seria de 2144 (534 * 4).
+
+Usualmente, o valor original seria de 8192. Isso aponta o valor RWIN para o normal do Windows. Usando Windows, este valor é 8192, na qual deveria não ser usado (por que não é nem divisível pelo tamanho normal de um máximo segmento, isto pode forçar o pacote a ser reenviado repentivamente quando o buffer está cheio). Você pode improvisar a performance colocando isso para um valor mais baixo como 4 vezes o seu MSS (MSS = MTU - 40), mexendo em seu registry (novamente, veja regedit.com) ou usando Internet Boost '99.
+
+Tempo Para Viver (TTL)
+======================
+A internet é uma enorme rede de trabalho. Pacotes de dados usualmente vão por muitas rotas antes deles chegarem em seu destino final. Mas o que acontece se uma das rotas ferrar tudo, e o pacote vai se perdendo pela red para sempre?
+Nós não queremos que isto aconteça, agora queremos?
+
+Isso é quando o valor TTL vem numa figura. Cada pacote TCP tem um valor TTL, na qual é decrementada por um quando passa pela rota. Quando isso chega a zero, o pacote morre, e uma mensagem de erro é mandada de volta pelo enviador, na qual será enviado o pacote de novo, apenas nessa hora com um maior TTL.
+
+No Windows 95 e NT 4.0 (não sei sobre 98 e outras novas versões), este valor é 32. Isso é ruim, por que a internet foi crescida para ser um grande lugar desde 1995, e hoje, é como aquele pacote de valor deveria ir mais de 32 hosts no caminho. Isto significa que você terá que reinviar seus pacotes diversas vezes. É claro, seu computador pode aprender que se na primeira vez que manda um pacote TCP numa seção, terá que acrecentar seu valor TTL, isto deveria usar o mesmo valor TTL para todo o resto dos seus pacotes, mas mesmo este perdido pacote pode ficar anônimo.
+
+De novo, mudando este valor é o mesmo que mudar todos os previsiosamente mensionados.
+
+Bem, parece que é isto. Você optimizou sua conexão dial-up no Windows e você está pronto bem na hora de ver Teletubbies.   :-)
+
+Interessados em aprender mais sobre redes de trabalho, Unix, segurança e hacking, cracking, phreaking (hackeando telefones), hardware e encriptação? Aponte seu navegador para http://blacksun.box.sk e surfe nele!

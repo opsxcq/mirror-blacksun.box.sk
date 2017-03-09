@@ -1,0 +1,363 @@
+=========================================================== 
+ Sendmail e oltre: Consigli di Ankit Fadia ankit@bol.net.in
+===========================================================
+http://blacksun.box.sk
+http://hackingtruths.box.sk
+
+Benvenuto a un altro manuale delle Verità sull’Hacking. Benchè questo manuale viene dopo un lungo 
+periodo di pausa, è molto bello tornare a scrivere per l’HT. Comunque, nel passato, abbiamo avuto 
+un numero di spiegazioni su come mandare email false, come giocare con il demone Sendmail, gli 
+headers delle email e tutto quello che si può fare con SMTP (Simple Mail Transfer Protocol) e 
+email. Benchè questo manuale mette troppo in luce la materia trattata, è comunque più mirato su 
+consigli avanzati e altre informazioni poco comuni ma molto utili.
+Ora, abbiamo già imparato come si fa, telnettarsi alla porta 25 di un server mail e mandare un 
+email (anche un’email falsa) scrivendo semplicemente alcuni comandi SMTP. Comunque, per il bene-
+ficio dei dilettanti e di rinfrescare la memoria delle persone pratiche ma smemorate, ripercorre-
+remo velocemente tutto il processo. Prometto di renderlo quanto più breve è possibile, allo stes-
+so tempo facile da capire.
+La porta 25 è la Porta Sendmail dove è eseguito il demone SMTP. Questo demone è infatti il demone 
+che gestisce la posta in uscita. Tutti i client email mandano le email connettendosi alla porta 
+25 di un server email ed emettendo i comandi SMTP. Questo processo è automatizzato e viene ese-
+guito in background. Comunque, ognuno può manualmente connettersi (telnet) alla porta 25 di un 
+server mail e manualmente scrivere i comandi SMTP in modo da mandare le email. Ripoterò i comandi 
+di base. Per dettagli riguardanti l’uso individuale dei comandi, scrivi semplicemente la parola 
+‘help’ seguita dal comando al prompt di Sendmail.
+Nota: L’esempio seguente manda una mail da ankit@bol.net.in a namitas@bol.net.in emettendo i co-
+mandi SMTP al server mail: mail.isp.com. Le risposte del server mail hanno un numero che precede 
+esse mentre i comandi scritti dall’utente non hanno numeri. 
+
+*************************************************************************************************
+C:\windows>telnet mail.isp.com
+220 mail.isp.com ESMTP Sendmail 8.9.1 (1.1.20.3/07Jul00-0916AM) Thu, 7 Dec 2000 17:18:50 +0530 
+(IST)
+helo ankit.com
+250-mail.isp.com Hello [203.xx.yyy.91], pleased to meet you
+mail from: ankit@bol.net.in
+250 ankit@bol.net.in... Sender ok
+rcpt to: namitas@bol.net.in
+250 namitas@bol.net.in... Recipient ok
+data
+354 Enter mail, end with "." on a line by itself
+This is the part where the body of the message is typed in. 
+.
+250 RAA0000001693 Message accepted for delivery
+*************************************************************************************************
+
+Gli headers della email sopra riportata come visto dal destinatario sono i seguenti: 
+
+*************************************************************************************************
+Return-Path: <ankit@bol.net.in>
+Received: from ankit.com by mail.isp.com (8.9.1/1.1.20.3/07Jul00-0916AM)
+id RAA0000001693; Thu, 7 Dec 2000 17:19:49 +0530 (IST)
+Date: Thu, 7 Dec 2000 17:19:49 +0530 (IST)
+From: Ankit Fadia <ankit@bol.net.in>
+Message-Id: <200012071149.RAA0000001693@mail.isp.com>
+X-UIDL: 920156a3b926c5193036933e6d04efd5
+
+This is the part where the body of the message is typed in.
+*************************************************************************************************
+
+In ogni modo, ora che abbiamo richiamato la linea di base del processo di mandare manualmente una 
+email, muoviamoci sul soggetto principale di questo manuale.
+
+Il campo del Soggetto senza soggetto
+------------------------------------
+Ora, poiché ho pubblicato il manuale per mandare emails false (Sending emails using SMTP com-
+mands) ho ricevuto un numero di emails che mi chiedevano cose del genere: ‘Come specificare il 
+soggetto di una email mandata manualmente connettendosi alla porta 25 di un sistema?’. O ‘come 
+specificare destinatari CC e BCC mentre mentre faccio queste cose?’ Bene, in questa sezione di-
+scutiamo su questo.
+Innanzitutto, impariamo come specificare il soggetto di un email lavorando manualmente con i co-
+mandi SMTP. Bene, il processo per specificare il soggetto rimane abbastanza simile al normale 
+processo di mandare emails manualmente. Attualmente tutti i comandi rimangono gli stessi prima 
+che diamo il comando ‘data’. Dopo che abbiamo dato il comando ‘data’, il server mail remoto ri-
+sponderà con il seguente messaggio:
+
+*************************************************************************************************
+354 Enter mail, end with "." on a line by itself
+*************************************************************************************************
+
+Questa risposta del server significa che possiamo cominciare a scrivere il corpo del nostro mes-
+saggio. Comunque, specifica anche indirettamente che questo è il momento di scrivere il soggetto 
+di una email. Possiamo specificare il soggetto di una email come segue:
+
+*************************************************************************************************
+Subject: Hi
+*************************************************************************************************
+
+Dove ‘subject:’ è la parola chiave, che dice al server mail che sei pronto di scrivere nel tuo 
+soggetto ‘Hi’, è il soggetto a tua scelta. Puoi continuare con il corpo dell’email premendo il 
+tasto ‘Invio’ e scrivendo i caratteri. La fine con il ‘.’ e tutto rimane lo stesso.
+Andiamo attraverso l’intero processo, passo dopo passo. Ricorda che ho inserito commenti dove ne-
+cessario nelle parentesi. Sia le parentesi che i caratteri nelle parentesi non sono parte degli 
+attuali comandi.
+Per questo esempio, abbiamo bisogno di ricordare le seguenti informazioni:
+
+*************************************************************************************************
+Server Mail: mail.isp.com
+Indirizzo Email del Destinatario: namitas@bol.net.in
+Indirizzo Email del Mittente: ankit@bol.net.in
+Soggetto: Hi!!!
+Testo: This is a test message
+
+C:\windows>telnet mail.isp.com
+220 mail.isp.com ESMTP Sendmail 8.9.1 (1.1.20.3/07Jul00-0916AM) Thu, 7 Dec 2000 17:18:50 +0530 
+(IST)
+helo ankit.com
+250-mail.isp.com Hello [203.xx.yyy.91], pleased to meet you
+mail from: ankit@bol.net.in
+250 ankit@bol.net.in... Sender ok
+rcpt to: namitas@bol.net.in
+250 namitas@bol.net.in... Recipient ok
+data
+354 Enter mail, end with "." on a line by itself
+subject: Hi!!!
+This is a test message
+.
+250 RAA0000001693 Message accepted for delivery
+*************************************************************************************************
+
+Ora se esamini gli headers di questa email, vedrai che oltre agli headers che abbiamo analizzato 
+prima, c’è una linea separata per il Soggetto.
+
+*************************************************************************************************
+Return-Path: <ankit@bol.net.in>
+Received: from ankit.com by mail.isp.com (8.9.1/1.1.20.3/07Jul00-0916AM)
+id RAA0000001693; Thu, 7 Dec 2000 17:19:49 +0530 (IST)
+Date: Thu, 7 Dec 2000 17:19:49 +0530 (IST)
+From: Ankit Fadia <ankit@bol.net.in>
+Message-Id: <200012071149.RAA0000001693@mail.isp.com>
+Subject: Hi!!!!
+X-UIDL: 920156a3b926c5193036933e6d04efd5
+
+This is a test message
+*************************************************************************************************
+
+CC e BCC
+--------
+Quali sono i comandi SMTP che equivalgono ai campi BCC e CC del tuo client email? Bene, questa 
+domanda ha solo una semplice risposta: nessuno. Le seguenti righe ci diranno perché.
+Per capire la risposta alla domanda precedente, capiamo prima come esattamente fa un client un 
+email a gestire un CC o un BCC. Come fa quando usiamo le funzioni CC e BCC?
+Ora, quando premi il comando Send, il tuo client email si connette alla porta 25 del server mail 
+che hai specificato nella configurazione. Poi emetterà i comandi SMTP al server mail remoto e gli 
+manderà le informazioni richieste. E con questo processo la tua email è stata mandata. L’ordine 
+con il quale i vari comandi SMTP sono dati è come descritto precedentemente.
+Normalmente, quando hai solo un singolo destinatario, il tuo client email emetterà solo un singo-
+lo ‘RCPT TO:’ al server mail. Comunque, quando c’è più di un solo destinatario, il client email 
+emetterà più di un ‘RCPT TO:’, o in altre parole, quando il campo CC del tuo client email non è 
+vuoto, verranno emessi molti comandi RCPT.
+Come vedi il Simple Mail Transfer Protocolo (SMTP) non prevede nessun comando speciale per il CC. 
+Il concetto di CC si affida a molti comandi RCPT al server mail. Lo stesso è il caso quando hai 
+molti destinatari nel campo ‘To:’ del client email. Questo significa che non importa se aggiungi 
+un indirizzo email del destinatario al campo CC o a ‘To:’. Il comando SMTP emesso e gli headers 
+creati saranno gli stessi.
+Facciamo un esempio pratico per rendere tutto più chiaro. La lista di destinatari per questo 
+esempio è la seguente:
+
+
+To: ankit@bol.net.in; ankitfadia@hotmail.com 
+CC: ankit_Fadia@hotmail.com ; namitas@bol.net.in
+
+Questi sono i comandi che verranno emessi per mandare una email vuota con il soggetto ‘test’ dal 
+seguente indirizzo email: test@bol.net.in alla lista di destinatari sovrariportata.
+
+*************************************************************************************************
+C:\windows>telnet mail.isp.com
+220 mail.isp.com ESMTP Sendmail 8.9.1 (1.1.20.3/07Jul00-0916AM) Thu, 7 Dec 2000 17:18:50 +0530 
+(IST)
+helo ankit.com
+250-mail.isp.com Hello [203.xx.yyy.91], pleased to meet you
+mail from: test@bol.net.in 
+250 test@bol.net.in... Sender ok
+rcpt to: ankit@bol.net.in
+250 ankit@bol.net.in... Recipient ok
+rcpt to: ankitfadia@hotmail.com
+250 ankitfadia@hotmail.com... Recipient ok
+rcpt to: ankit_fadia@hotmail.com
+250 ankit_Fadia@hotmail.com... Recipient ok
+rcpt to: namitas@bol.net.in
+250 namitas@bol.net.in... Recipient ok
+data
+354 Enter mail, end with "." on a line by itself
+subject: Test
+.
+250 RAA0000001693 Message accepted for delivery
+*************************************************************************************************
+
+Chiaro? Ora, vediamo come funziona il BCC.
+Ora, nel caso precedente (nel caso di CC), il client email ha usato molti RCPT nella stessa ses-
+sione SMTP per mandare lo stesso email a molti destinatari. Comunque, in quel caso tutti possono 
+vedere la lista dei destinatari. Questo accade perché tutte le email hanno gli stessi headers. 
+Questo è dovuto al fatto che gli indirizzi email di tutti i destinatari sono stati dati al server 
+mail durante la stessa sessione SMTP. Tutto questo potrebbe sembrare abbastanza vago e strano. Se 
+è così, leggi i seguenti paragrafi per capire meglio.
+Ora, quando usi CC per una singola email a molti destinatari (diciamo 3), verrà usata la seguente 
+procedura:
+
+Il client email fa partire la sessione al server mail remoto.
+Presenta se stesso e il mittente.
+Usa molti comandi RCPT per mandare la stessa email a molti destinatari.
+Il client email si disconnette.
+
+Poiché gli indirizzi email dei destinatari sono inseriti nella stessa sessione, si verranno a 
+formare gli stessi headers. Così tutti i destinatari sono capaci di vedere gli indirizzi email ai 
+quali è stata mandata questa email.
+Ora, in una situazione, quando usiamo BCC per la stessa email verso molti destinatari (diciamo 
+2), verrà usata la seguente procedura:
+
+Il client email fa partire la sessione al server mail remoto.
+Presenta se stesso e il mittente.
+Usa un solo comando RCPT per mandare la stessa email al primo email nella lista BCC.
+Il client email si disconnette.
+Il client email fa partire un’altra sessione al server mail remoto.
+Presenta di nuovo se stesso e il mittente.
+Usa un solo comando RCPT per mandare la stessa email al secondo email nella lista BCC.
+Il client email si disconnette di nuovo.
+
+In questo caso, a ogni destinatario è stata mandata una email attraverso un’unica sessione al 
+server remoto, così ogni destinatario ha ricevuto un header diverso e non sono visualizzati gli 
+altri indirizzi email.
+La descrizione precedente dell’uso di CC e di BCC è basata su come funziona Outlook Express. Co-
+munque, attualmente Sendmail mette a disposizione un modo per usare i destinatari tramite CC. Do-
+po aver dato il comando DATA, si può dare la lista CC con il seguente comando:
+
+CC:Lista di destinatari
+
+Comunque, dare il comando BCC al posto di CC non produce lo stesso risultato. 
+
+Mandare Attachment con Sendmail
+-------------------------------
+Oggi, gli attachment [aggiunte, files da aggiungere all’email] MIME sono usati per trasferire i 
+files inclusi in una email. Gli attachment MIME usano una codificazione Base64 per cirare i dati 
+binari. Precedentemente veniva usato un altro metodo, che era chiamato Uuencode encoding stan-
+dard. Puoi anche mandare attachment attraverso Sendmail usando uno dei seguenti metodi.
+La codificazione UU-encoding o Unix-to-Unix è una codificazione standard, che converte tutti i 
+tipi di files in ASCII per trasmetterli. I files, che sono mandati attraverso la Rete, sono ci-
+frati alla fine del mittente e decifrati alla fine del destinatario. Questo assicura che i files 
+(attachment) possono essere trasferiti su diversi tipi di reti, routers di sistema, ecc senza 
+perdite. Comunque, questo metodo potrebbe corrompere i files e non è quello che viene usato di 
+solito. Secondo un’università, il meccanismo di base dell’UU-encoding è il seguente:
+Lo schema di base è dividere in gruppi di 3 caratteri otto-bit (24 bit) in 4 caratteri sei-bit e 
+poi aggiungere 32 (uno spazio) a ogni carattere sei-bit, che lo trascrive nel carattere trasmit-
+tente. In altre parole, i caratteri a 6 bit cifrati sono trascritti nella serie: `!"#$%&'()*+,-
+./012356789:;<=>?@ABC...XYZ[\]^_ per trasmissioni su linee di comunicazione.
+Ogni cifrazione incremetna la dimensione del file del circa 42%. Così, il meccanismo dell’UU-
+encoding può essere il seguente:
+
+Il file è uuencoded (cifrato) alla finde del mittente ---------------> Il file è uuencoded alla 
+fine del destinatario.
+
+Tutti gli attachment possono essere mandati attraverso la rete in forma uuencode.
+
+Vedi se inserisci il codice Uuencoded di ogni file dopo che hai emesso il comando DATA al prompt 
+di Sendmail, il destinatario potrà ricevere l’attachment e visualizzarlo. La maggior parte dei 
+client email permettono l’Uuencoding. (Anche se il client email usato dal destinatario non per-
+mette l’Uuencoding, ci sono molti strumenti che potrebbero farlo.) Tutti i files che contendono 
+immagini, file audio, file video, file di testo ecc possono essere cifrati dall’Uuencoding stan-
+dard per ottenere il codice uuencoded.
+Il metodo per mandare attachment cifrati è il seguente:
+
+Convertire il file da mandare come attachment nella forma uuencoded.
+Dare la forma uuencoded al server mail dopo il comando DATA.
+
+Ora parliamo del primo passaggio:
+Se stai usando una piattaforma Windows, tutto quello che devi avere per usare l’Uuencoding è Win-
+Zip. Se non hai WinZip, puoi scaricarlo da http://www.winzip.com
+WinZip può essere facilmente usato per ottenere l’Uuencode di tutti i file. Semplicemente creando 
+un nuovo archivio contentente il file che vuoi cifrare e selezionare Action > Uuencode. Puoi an-
+che premere Shift U.
+WinZip salverà la forma cifrata del file .zip nella forma: filename.uue
+
+Un tipico file .uue (in questo caso di un file di immagine) potrebbe essere il seguente:
+
+*************************************************************************************************
+_=_ 
+_=_ Part 001 of 001 of file new.zip
+_=_ 
+begin 666 new.zip
+M4$L#!!0``@`(`#5S_RCDJL7+;P```'4````'````;F5W+F=I9G/W=+.P3)1G
+MX&%8R``"_T$`Q%#\R<+(P,#(H`/B@.0=F-QZ\INZ%.\\$DX(:]"N_76TM7"V
+M:6]\T+)755;)-P(C;UB]*)FR+OSYCGV';_HI7<P)::DQ$Y_Y[%*(UX1`H4U;
+M3Z55KVB;<EV#@<$:`%!+`0(4`!0``@`(`#5S_RCDJL7+;P```'4````'````
+K````````(`"V@0````!N97<N9VEF4$L%!@`````!``$`-0```)0`````````
+`
+end
+*************************************************************************************************
+
+Le prime righe sono solo commenti aggiunti da WinZip e non fanno parte del codice uuencoded. Co-
+sì, elimina la parte superiore alla linea:
+
+begin 666 new.zip
+
+Questo ti dà il codice Uuencode del file che vuoi trasmettere come attachment usando Sendmail.
+
+####################
+VERITà SULL’HACKING: Se sei su una piattaforma Unix, creare l’Uuencode di un file diventa estre-
+mamente semplice. Basta andare alla shell Unix per cifrare il file che vuoi mandare. Per fare un 
+esempio, diciamo che il file che vuoi mandare è chiamato ‘myfile.doc’. Al prompt della shell 
+Unix, scrivi:
+
+uuencode myfile.doc myfile.doc > tempfile.uu
+
+Questo dice al comando uuencode di cifrare il file myfile.doc e memorizzare il nome myfile.doc 
+nel file cifrato risultante. I risultati sono poi reindirizzati (dal segno >) in un altro file 
+che metterai nel tuo messaggio email più tardi.
+Le versioni DOS di questa utility sono reperibili in vari siti.
+####################
+
+Ora, una volta che hai cifrato il file e ottenuto la forma Uuencoded, tutto quello che devi fare 
+è copiarlo e incollarlo dopo il comando DATA che è stato appena emesso al prompt di Sendmail. 
+Questo manderà il file come attachment.
+
+Questo era il metodo per mandare un attachment usando l’Uuencoding standard. Descriverò come man-
+dare come mandare attachment usando il nuovo MIME standard nella prossima versione di questo ma-
+nuale.
+
+Altri suggerimenti su SendMail
+------------------------------
+Normalmente quando ti connetti alla porta Sendmail di un sistema, hai a disposizione solo i co-
+mandi standard di SMTP. Benchè sono molti di più di quelli che hai bisogno, comunque, per quelli 
+che vorresti usare con varie opzioni, ci sono altri comandi, che normalmente non ti sono disponi-
+bili. [questo passo non è molto chiaro, in pratica ci dice che ci sono altri comandi ‘carini’ che 
+purtroppo non possono essere usati da noi].
+Quello di cui sto parlando sono i comandi ESMTP o i comandi Extended Mail Transfer Protocol. Un 
+server mail con ESMTP abilitato decide se questi comandi ESMTP sono disponibili al client sulla 
+base di come il client si presenta a esso. Ora, normalmente ti presenti dando il comando:
+
+HELO dominio
+
+Ora, quando ti presenti il comando HELO, la maggior parte dei server mail mettono a disposizione 
+solo i comandi SMTP. Ora, per poter utilizzare i comandi ESMTP, devi presentarti al server con il 
+comando EHLO. Per esempio:
+
+ehlo ankit.com
+
+Ora, se il server mail a cui sei connesso ha ESMTP abilitato, ti risponderà dando una lista di 
+comandi ESMTP. Qualcosa del genere:
+
+*************************************************************************************************
+220 mail.isp.com ESMTP Sendmail 8.9.1 (1.1.20.3/07Jul00-0916AM) Thu, 7 Dec2000 17:18:50 +0530 
+(IST)
+ehlo ankit.com
+250-mail.isp.com Hello [203.xx.yy.91], pleased to meet you
+250-EXPN
+250-VERB
+250-8BITMIME
+250-SIZE
+250-DSN
+250-ONEX
+250-ETRN
+250-XUSR
+250 HELP
+*************************************************************************************************
+
+####################
+VERITà SULL’HACKING: Un modo di verificare se il tuo ISP ha i comandi ESMTP abilitati, è vedere 
+la risposta del demone che appare quando ti connetti alla porta 25 del suo server mail. La parola 
+‘ESMTP’ ti dice che tali comandi sono disponibili. Per esempio:
+
+220 mail.isp.com ESMTP Sendmail 8.9.1 (1.1.20.3/07Jul00-0916AM) Thu, 7 Dec2000 17:18:50 +0530 
+(IST)
+####################
+

@@ -1,0 +1,2228 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0070)http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html -->
+<HTML><HEAD><TITLE>TRUSTED NETWORK INTERPRETATION ENVIRONMENTS GUIDELINE</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="MSHTML 6.00.2600.0" name=GENERATOR></HEAD>
+<BODY>
+<H1>TRUSTED NETWORK INTERPRETATION ENVIRONMENTS GUIDELINE</H1>
+<HR>
+
+<H2>Table of Contents</H2>
+<UL><A 
+  href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR 2 16"><B>FOREWORD</B></A> 
+  <BR><A 
+  href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR 2 17"><B>ACKNOWLEDGMENTS</B></A> 
+  <BR><A 
+  href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR1   2 18"><B>1 
+  Introduction</B></A> 
+  <UL><A 
+    href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR1.1   3 18">1.1 
+    Background</A> <BR><A 
+    href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR1.2   3 19">1.2 
+    Trusted Network Technology Publications</A> <BR><A 
+    href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR1.3   3 19">1.3 
+    Purpose</A> <BR><A 
+    href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR1.4   3 19">1.4 
+    Scope</A> <BR><A 
+    href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR1.5   3 20">1.5 
+    Structure of the Document</A> </UL><A 
+  href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR2   2 20"><B>2 
+  Terminology</B></A> 
+  <UL><A 
+    href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR2.1   3 20">2.1 
+    Automated Information System</A> <BR><A 
+    href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR2.2   3 21">2.2 
+    Network Trusted Computing Base</A> <BR><A 
+    href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR2.3   3 21">2.3 
+    System and Component</A> 
+    <UL><A 
+      href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR2.3.1   4 21">2.3.1 
+      TNI Introduction (definition not used in TNIEG)</A> <BR><A 
+      href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR2.3.2   4 21">2.3.2 
+      TNI - Appendix A (definition not used in TNIEG)</A> <BR><A 
+      href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR2.3.3   4 22">2.3.3 
+      Discussion</A> <BR><A 
+      href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR2.3.4   4 23">2.3.4 
+      Definitions</A> </UL><A 
+    href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR2.4   3 23">2.4 
+    Evaluation</A> <BR><A 
+    href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR2.5   3 24">2.5 
+    Certification</A> <BR><A 
+    href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR2.6   3 24">2.6 
+    Accreditation</A> <BR><A 
+    href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR2.7   3 25">2.7 
+    Two Types of Networks</A> 
+    <UL><A 
+      href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR2.7.1   4 25">2.7.1 
+      Unified Networks</A> <BR><A 
+      href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR2.7.2   4 25">2.7.2 
+      Interconnected Accredited AIS</A> </UL><A 
+    href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR2.8   3 27">2.8 
+    Network Security Architecture and Design</A> <BR><A 
+    href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR2.9   3 27">2.9 
+    Protocol Layer Approach</A> <BR><A 
+    href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR2.10   3 28">2.10 
+    Part II Security Services</A> </UL><A 
+  href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR3   2 29"><B>3 
+  Network Security Architecture and Design (NSAD)</B></A> 
+  <UL><A 
+    href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR3.1   3 29">3.1 
+    Composing an NSAD</A> <BR><A 
+    href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR3.2   3 30">3.2 
+    Memorandum of Agreement</A> </UL><A 
+  href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR4   2 32"><B>4 
+  TNI Part I Security Requirements</B></A> 
+  <UL><A 
+    href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR4.1   3 32">4.1 
+    Risk Management</A> <BR><A 
+    href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR4.2   3 33">4.2 
+    Determination of Network Risk</A> </UL><A 
+  href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR5   2 38"><B>5 
+  TNI Part II Security Requirements</B></A> 
+  <UL><A 
+    href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR5.1   3 38">5.1 
+    Relationship of TNI Part II Services to Part I and Appendix A</A> <BR><A 
+    href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR5.2   3 39">5.2 
+    Specification and Evaluation of Security Services</A> <BR><A 
+    href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR5.3   3 39">5.3 
+    Evaluation Ratings</A> <BR><A 
+    href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR5.4   3 39">5.4 
+    Selecting Security Services</A> 
+    <UL><A 
+      href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR5.4.1   4 41">5.4.1 
+      Strength of Mechanism</A> <BR><A 
+      href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR5.4.2   4 44">5.4.2 
+      Assurance</A> <BR><A 
+      href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR5.4.3   4 45">5.4.3 
+      Functionality</A> </UL></UL><A 
+  href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR6   2 50"><B>6 
+  Interconnecting AIS</B></A> 
+  <UL><A 
+    href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR6.1   3 50">6.1 
+    Agreement Between Accreditors</A> 
+    <UL><A 
+      href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR6.1.1   4 51">6.1.1 
+      Accreditation Range</A> <BR><A 
+      href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR6.1.2   4 53">6.1.2 
+      Device Range</A> </UL><A 
+    href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR6.2   3 57">6.2 
+    Interconnection Rule</A> 
+    <UL><A 
+      href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR6.2.1   4 58">6.2.1 
+      A Complex Example</A> </UL><A 
+    href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR6.3   3 58">6.3 
+    Risk Factors</A> 
+    <UL><A 
+      href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR6.3.1   4 59">6.3.1 
+      Propagation of Local Risk</A> <BR><A 
+      href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR6.3.2   4 59">6.3.2 
+      The Cascading Problem</A> 
+      <UL><A 
+        href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR6.3.2.1   5 61">6.3.2.1 
+        Tests for Cascading. </A><BR><A 
+        href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR6.3.2.2   5 61">6.3.2.2 
+        Solutions.</A> </UL></UL></UL><A 
+  href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR 2 62"><B>APPENDIX 
+  A: Tests for the Cascading Problem</B></A> <BR><A 
+  href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR 2 64"><B>APPENDIX 
+  B: Background References</B></A> <BR><A 
+  href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR 2 66"><B>APPENDIX 
+  C: Encryption</B></A> <BR><A 
+  href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR 2 70"><B>LIST 
+  OF REFERENCES</B></A> <BR><A 
+  href="http://packetstorm.decepticons.org/docs/rainbow-books/NCSC-TG-011.html#HDR 2 72"><B>ACRONYMS</B></A> 
+</UL>
+<HR>
+<!-- This file was created with the fm2html filter.The filter is copyright Norwegian Telecom Research andwas programmed by Jon Stephenson von Tetzchner.  -->NCSCTG-11
+<P>Library No. 5-235,465
+<P>Version 1
+<P>
+<H2><A name="HDR 2 16">FOREWORD</A></H2>The National Computer Security Center is 
+issuing the Trusted Network Interpretation Environments Guideline as part of our 
+Technical Guidelines Program, through which the "Rainbow Series" is produced. 
+The Technical Guidelines Program ensures that the features of the Trusted 
+Computer Systems Evaluation Criteria (DOD 5200.28-STD) are discussed in detail 
+and that guidance is provided for meeting each requirement. The National 
+Computer Security Center, through its Trusted Product Evaluation Program, 
+analyses the security features of commercially produced and supported computer 
+systems. Together, these programs ensure that organisations are capable of 
+protecting their important data with trusted computer systems.
+<P>The Trusted Network Interpretation Environments Guideline is a companion to 
+the Trusted Network Interpretation of the. Trusted Computer System Evaluation 
+Criteria (NCSC-TG~O5), published 31 July 1987. The Trusted Network 
+Interpretation Environments Guideline provides insight into the issues relevant 
+when integrating, operating, and maintaining trusted computer networks. This 
+document identifies the minimum security protection required in different 
+network environments such that network certifiers, integrators, and accreditors 
+can determine what protection mechanisms and assurances are minimally required 
+in specific network environments.
+<P>This document parallels Computer Security Requirements - Guidance for 
+Applying the Department of Defense Trusted Computer System Evaluation Criteria 
+in Specific Environments (CDC-STD~O3-85) and its technical rationale (CSC 
+STD~0485). It also provides a descriptive presentation of the security issues 
+that exist in networked computer systems as the networked computer system 
+environment is inherently more complex and requires additional protection 
+considerations over stand-alone computer systems.
+<P>As the Director, National Computer Security Center, I invite you suggestions 
+for revising this document. We plan to review this document as the need arises.
+<P>PATRICK R. GALLAGHER JR. 1 August 1990
+<P>Director
+<P>National Computer Security Center
+<P>
+<H2><A name="HDR 2 17">ACKNOWLEDGMENTS</A></H2>The National Computer Security 
+Center extends special recognition and acknowledgment for their contributions to 
+this document to Dr. Marshall D. Abrams, Renee Child, Annabelle Lee, Dr. 
+Jonathan K. Millen, Samuel I. Schaen, and Dr. Martin W. Schwartz, of The MITRE 
+Corporation, as authors; Richard Wilmer, also of The MITRE Corporation, as 
+technical editor; and to Alfred Arsenault, David Chizmadia, id Rick Siebenaler 
+of the National Computer Security Center, who managed the effort ad participated 
+in the development.
+<P>Special thanks are extended to the many members of the computer security 
+community who enthusiastically gave their time and expertise in reviewing the 
+material and providing valuable comments and suggested changes. Special thanks 
+are extended to James P. Anderson of James P. Anderson Co., Donald L. Brinkley 
+of Gemini Computers, Inc., Dr. Eric Roskos of The Institute for Defense 
+Analysis, Dr. Tien Tao of Gemini Computers, Inc., and Dr. John M. Vasak of The 
+MITRE Corporation for their extensive suggestions and recommendations.
+<P>For sale by the Superintendent of Documents, U.S. Government
+<P>Printing Office Washington DC 20402
+<P>
+<H2><A name="HDR1   2 18">1 Introduction</A></H2>This Trusted Network 
+Interpretation (TNI) Environments Guideline (TNIEG) addresses many issues in 
+determining the security protection required in different network environments. 
+It complements the TNI, just as the Trusted Computer System Evaluation Criteria 
+(TCSEC) Environments Guideline [1] complements the TCSEC. The TNI interprets the 
+TCSEC for networks; it contains all of the criteria in the TCSEC, adding 
+interpretation and rationale to applying trust technology to network systems. In 
+the same way that the TCSEC Environments Guideline provides guidance on applying 
+the TCSEC, this TNIEG provides guidance on the use of the TNI. The TCSEC and its 
+Environments Guideline constitute the foundation on which the TNI and TNIEG add 
+network applicability.
+<P>
+<H3><A name="HDR1.1   3 18">1.1 Background</A></H3>The National Computer 
+Security Center (NCSC) is responsible for establishing and maintaining technical 
+standards and criteria for the evaluation of trusted computer systems. As part 
+of this responsibility, the NCSC is developing guidance on how new security 
+technology should be used. Two objectives of this guidance are:
+<P>
+<UL>
+  <LI>Establishing a metric for categorizing systems according to the security 
+  protection they provide, and<BR>
+  <LI>Identifying the minimum security protection required in different 
+  environments.<BR></LI></UL>The TCSEC [2] helps to satisfy the first objective by 
+categorizing computer systems into hierarchical classes based on evaluation of 
+their security features and assurances. The TCSEC Environments Guideline [1] 
+helps to satisfy the second objective by identifying the minimum classes 
+appropriate for systems in different risk environments. These two documents, 
+however, apply to stand-alone computer systems.
+<P>The TNI [3] satisfies the first objective by interpreting the TCSEC for 
+networks. The TNI also provides guidance for selecting and specifying other 
+security services (e.g., communications integrity, denial of service, 
+transmission security). The TNIEG is the first step toward addressing the second 
+objective.
+<P>
+<H3><A name="HDR1.2   3 19">1.2 Trusted Network Technology 
+Publications</A></H3>The NCSC has decided to provide guidance concerning 
+security in networks and distributed Automated Information Systems (AISs)1 in a 
+series of publications. The subject area is collectively identified as Trusted 
+Network Technology (TNT). The TNI is the first TNT publication. This TNIEG is 
+the second TNT publication. It contains the best guidance that is available at 
+this time; as technology advances and more experience is gained in implementing 
+trusted networks, more specific guidance will be provided. This TNIEG provides 
+elaboration and clarification on the TNI. Guidance concerning Interconnected AIS 
+which initially appeared in the TNI, Appendix C, has been revised and 
+incorporated into this document (see Section 6 and Appendix A). This document 
+does not address all of the security issues that are excluded from the TNI. 
+Other topics, such as composing a trusted system from evaluated components, will 
+be discussed in future TNT publications.
+<P>
+<H3><A name="HDR1.3   3 19">1.3 Purpose</A></H3>The overall purpose of this 
+TNIEG is to assist program managers, integrators, certifiers, and Accreditors 
+with identifying the minimum security protection needed for different trusted 
+computer network environments. For brevity, this audience is referred to as 
+security managers. Not all questions can be answered at this time. The NCSC 
+invites suggestions for topics to be addressed in future TNT publications.
+<P>This guideline is not a tutorial on security and networking; it is assumed 
+that the reader will have some background in both areas. Suggested background 
+references are identified in Appendix B. This guideline is designed to be self 
+contained; a fair amount of background information that can be found in the TNI 
+is also included here. The interested reader may consult the TNI and other 
+documents referenced in this guideline for further detail.
+<P>
+<H3><A name="HDR1.4   3 19">1.4 Scope</A></H3>This document describes an 
+environmental assessment process that helps determine the minimum level of trust 
+recommended for a specific network operational environment. The primary focus of 
+this document (and also of the TNI) is on the AIS
+<P>
+<DL compact>
+  <DT>1 Definitions of terms particularly important to this document are given 
+  in Section 2. 
+  <DT>hardware, firmware, and software aspects of security; therefore, neither 
+  this guideline nor the TNI address all the security requirements that may be 
+  imposed on a network. Depending on the particular environment, communications 
+  security (COMSEC), emanations security (TEMPEST), physical security, personnel 
+  security, administrative security, and other information security (INFOSEC) 
+  measures or safeguards are also required. This document applies to networks 
+  that are entrusted with the processing of information, regardless of whether 
+  that information is classified, sensitive, or otherwise relevant to national 
+  security. </DT></DL>
+<H3><A name="HDR1.5   3 20">1.5 Structure of the Document</A></H3>Section 2 of 
+this document defines terms and Section 3 discusses Network Security 
+Architecture and Design. Section 4 guides security managers in applying Part I 
+of the TNI; Section 5 does the same for Part II. Section 6 addresses security 
+issues that arise when AIS are interconnected. Appendix A discusses the Cascade 
+Condition in greater detail; Appendix B provides tutorial and background 
+references on network security; and Appendix C discusses encryption and 
+encryption mechanisms.
+<P>
+<H2><A name="HDR2   2 20">2 Terminology</A></H2>Many of the terms used in the 
+TNI are drawn from diverse specialization areas. Their special meaning in 
+context may differ from common English usage. In this section we explain how 
+such terms are used in the TNI and how these definitions have been refined in 
+this document. Terms are printed in boldface when they are defined.
+<P>
+<H3><A name="HDR2.1   3 20">2.1 Automated Information System</A></H3>An AIS is 
+defined in DODD 5200.28 as "an assembly of computer hardware, software, and/or 
+firmware configured to collect, create, communicate, compute, disseminate, 
+process, store, and/or control data or information" [4]. This is both a broad 
+definition and a new one, since DODD 5200.28 was published after the TNI. The 
+TNI states that "automatic data processing (ADP) systems, referred to in this 
+[TNI] document as Automated Information System (AIS)...", and equates AIS and 
+ADP. We will use the DODD 5200.28 definition since it is broader and more 
+authoritative. We also note that DODD 5200.28 tends to pluralize AIS as AISs 
+while the TNI considers AIS to be a collective noun. We have followed the latter 
+convention.
+<P>
+<H3><A name="HDR2.2   3 21">2.2 Network Trusted Computing Base</A></H3>The 
+Network Trusted Computing Base (NTCB) is the totality of protection mechanisms 
+within a network system2-including hardware, firmware, and software- the 
+combination of which is responsible for enforcing a security policy. The NTCB is 
+the network generalization of the trusted computing base (TCB). An NTCB 
+Partition is the totality of mechanisms within a single network subsystem3 for 
+enforcing the network policy, as allocated to that subsystem; it is the part of 
+the NTCB within a single network subsystem.
+<P>2~e distinction between a system and a subsystem is a matter of the viewpoint 
+of the observer. One observer's system may be another observer's subsystem. For 
+example, the vendor of a local area network may regard his product as a system, 
+while the customer's network architect may consider it to be a subsystem along 
+with hosts, workstations, etc. 
+<P>~e THI uses component in the definition of NTCB Partition. We use subsystem 
+to be consistent in this document.
+<P>
+<H3><A name="HDR2.3   3 21">2.3 System and Component</A></H3>The terms system 
+add component need to be related to each other. Unfortunately, the TNI is not 
+completely consistent in its use of these terms. We will first cite the relevant 
+sections from the TNI; then we will reconcile them as used in this guideline. As 
+discussed below, we define the relationship as follows: A component is a 
+physical unit contained within a system.
+<P>
+<H4><A name="HDR2.3.1   4 21">2.3.1 TNI Introduction (definition not used in 
+TNIEG)</A></H4>The TNI Introduction states (emphasis added):
+<P>
+<DL>
+  <DD>A network system is the entire collection of hardware, firmware, and 
+  software necessary to provide a desired functionality. A component is any part 
+  of a system that, taken by itself, provides all or a portion of the total 
+  functionality required of a system. A component is recursively defined to be 
+  an individual unit, not useful to further subdivide, or a collection of 
+  components up to and including the entire system.<BR></DD></DL>
+<H4><A name="HDR2.3.2   4 21">2.3.2 TNI - Appendix A (definition not used in 
+TNIEG)</A></H4>Appendix A of the TNI presents the view:
+<P>
+<DL>
+  <DD>a trusted network represents a composition of trusted components....<BR>
+  <DD>The approach to evaluation of a network suggested by this view is to 
+  partition the system into components, rate each component to determine its 
+  security-relevant characteristics, and then evaluate the composition of the 
+  components to arrive at an overall rating class for the network. This 
+  approach... allows for the evaluation of components which in and of themselves 
+  do not support all the policies required by the TCSEC, ... contribute[s] to 
+  the overall evaluation of any network which uses them and allows for the reuse 
+  of the evaluated component in different networks without the need for a 
+  re-evaluation of the component.<BR></DD></DL>Appendix A goes on to state that:
+<P>
+<DL>
+  <DD>The set of policy-related features to be supported by the component need 
+  not be the complete set required for a stand-alone system: features not 
+  supplied by one component for the system are supplied by another.<BR></DD></DL>
+<H4><A name="HDR2.3.3   4 22">2.3.3 Discussion</A></H4>We see a difference 
+between the Introduction and Appendix A of the TNI. We will use the definition 
+of component as an individual unit that does not provide a complete set of 
+end-user services. As a consequence, a subsystem can operate on its own and a 
+component will require an external connection to perform a useful function.
+<P>Appendix C of the TNI uses component, as follows, where we would use 
+subsystem:
+<P>
+<DL>
+  <DD>Any AIS that is connected to other AIS must enforce an "Interconnection 
+  Rule" that limits the sensitivity levels of information that it may send or 
+  receive. Using the component connection view, each component responsible for 
+  maintaining the separation of multiple levels of information must decide 
+  locally whether or not information ca be sent or received.<BR></DD></DL>A 
+component may support all the policy and accountability requirements: M, D, I, 
+ad A4; however, as defined above, this is not applicable to determining whether 
+an individual unit is a component. A component which supports some part of the 
+security policy contains an NTCB partition. In the extreme, a component may not 
+have any security-relevant function; in this case it doesn't support any TCSEC 
+policy and doesn't contain an NTCB partition.
+<P>
+<H4><A name="HDR2.3.4   4 23">2.3.4 Definitions</A></H4>To summarize the 
+previous discussions, following are definitions for component ad 
+system/subsystem.
+<P>
+<UL>
+  <LI>Component: An individual physical unit that does not provide a complete 
+  set of end-user services.<BR>
+  <LI>System/subsystem: A collection of hardware, firmware, and software 
+  necessary configured to collect, create, communicate, compute, disseminate 
+  process, store, and/or control data ad information [4].<BR></LI></UL>
+<H3><A name="HDR2.4   3 23">2.4 Evaluation</A></H3>NCSC-evaluation refers 
+specifically to the process in which the NCSC determines whether a 
+commercial-off-the-shelf (COTS) product satisfies the TCSE~C. Application of the 
+TCSEC to a particular product may be assisted by an interpretation guideline 
+such as the TNI [5]. In such a case, the guideline clarifies the meaning of the 
+TCSEC's language with regard to a particular type of product, but in no case 
+circumvents or grants exception to the requirements of the TCSEC. The purpose of 
+an NCSC- evaluation is as follows:
+<P>
+<DL>
+  <DD>The primary goal of the NCSC is to encourage the widespread availability 
+  of trusted computer systems. This goal is realized, in large measure, through 
+  the NCSC's Commercial Product Evaluation Program. This program is focused on 
+  the technical evaluation of the protection capabilities of off-the- shelf, 
+  commercially produced and supported systems that meet the computer security 
+  needs of government departments and agencies. This product evaluation 
+  culminates in the publication of an Evaluated Products List (EPL) report... 
+  [6].<BR></DD></DL>An NCSC evaluation places a product in one of four divisions: 
+D, C, B, or A. Division D is for systems that have been evaluated but fail to 
+meet the requirements for a higher NCSC evaluation rating. Division C has two 
+classes: C1 and C2, which require discretionary (need-to-know) protection. 
+Division B has three classes: B1, B2, and B3, which require support for 
+sensitivity labels and increasing robustness of system architecture. Division A 
+has only class Al, which requires additional assurance through formal 
+verification methods.
+<P>
+<DL compact>
+  <DT>4 Mandatory access control, discretionary access control, identification 
+  and authentication, and audit, respectively. </DT></DL>
+<H3><A name="HDR2.5   3 24">2.5 Certification</A></H3>Certification is defined 
+as "the technical evaluation of a system's security features, made as part of 
+and in support of the approval/accreditation process, that establishes the 
+extent to which a particular system's design and implementation meet a set of 
+specified security requirements" [7]. In this definition, the word evaluation is 
+used in the generic sense and should not be confused with NCSC evaluation. The 
+primary distinction is that certification is an evaluation with respect to 
+specified requirements, and NCSC evaluation is an evaluation against the TCSEC 
+(and the TNI).
+<P>Certification is conducted in support of the accreditation decision. For most 
+systems, the hardware, system software, applications software, communications 
+equipment, and the operational facility must be configured and tested during 
+certification. Certification should be performed by technical personnel 
+independent of the development organization, according to an acceptable 
+methodology. Certification should identify the level of security protection with 
+regard to a procedure, program, or system. Certification results in the issuance 
+of the Certification Statement, which states whether system security 
+requirements are met, describes all known remaining vulnerabilities, and advises 
+the Accreditor relative to the accreditation decision. If requirements are no 
+met, the Certification Statement lists problem areas and identifies suggested 
+solutions (if known). A certification documentation package, called the 
+Certification Report of Findings, submitted to the Accreditor includes the 
+Certification Statement, certification analysis, results of Security Test and 
+Evaluation, id results of Operational Test and Evaluation.
+<P>
+<H3><A name="HDR2.6   3 24">2.6 Accreditation</A></H3>Accreditation is "the 
+managerial authorization and approval granted to an ADP system or network to 
+process sensitive data in an operational environment, made on the basis of a 
+certification by designated technical personnel..." [3]. Accreditation is a 
+management decision to operate a system or network employing specific 
+safeguards, against a defined threat, at an acceptable level of risk, under a 
+stated operational concept, with stated interconnections, in a specific 
+operational environment, with a specific security mode of operation. Other terms 
+have been used to identify the formal managerial approval for operation; in this 
+document we use the term Accreditation. FIPS PUB 102 defines Accrediting 
+Officials as "the agency officials who have authority to accept an application's 
+security safeguards and issue an accreditation statement that records that 
+decision. The Accrediting Officials must also possess authority to allocate 
+resources to achieve acceptable security and to remedy security deficiencies" 
+[7]. The ultimate responsibility for system security rests with the Accreditor. 
+DODD 5200.28 employs the term Designated Approving Authority (DAA) to refer to 
+the same officials or officers [4].
+<P>All AIS must be accredited before they may process or use sensitive or 
+classified information, unless a written waiver is granted by the Accreditor. 
+Accreditation is based on a technical investigation and a formal review of the 
+certification Report of Findings. Before authorizing an AIS to operate, the 
+Accreditor must ensure that satisfactory security measures have been installed 
+and that any residual risk is within acceptable limits. Often, the Accreditor 
+must weigh the technical shortcomings of an AIS against operational necessity. 
+Lacking other ways to accomplish an operational mission, the Accreditor may 
+determine that it is preferable to accept a residual security risk than to 
+preclude the mission. To ensure that the accreditation goals and objectives are 
+adequately met, the Accreditor must be involved throughout the system life 
+cycle.
+<P>
+<H3><A name="HDR2.7   3 25">2.7 Two Types of Networks</A></H3>A network may be 
+defined as either an interconnection of accredited AIS or as a Unified Network. 
+When it is not necessary to differentiate in this guideline, the term network is 
+used.
+<P>
+<H4><A name="HDR2.7.1   4 25">2.7.1 Unified Networks</A></H4>The TNI defines a 
+Network Single Trusted System while DODD 5200.28 Enclosure (5) defines a Unified 
+Network; this TNIEG conforms to the latter usage. The section of Enclosure (5) 
+that addresses <B>Unified Networks is brief and instructive 5:</B>
+<P>
+<DL>
+  <DD>Some networks may be accredited as a whole without prior accreditation of 
+  their component AIS. It is necessary to treat a network as unified when some 
+  of its AIS subsystems are so specialized or dependent on other subsystems of 
+  the network for security support that individual accreditation of such 
+  subsystems is not possible or meaningful with respect to secure network 
+  operation. In order to be accredited, a Unified Network shall possess a 
+  coherent network architecture and design, and it should be developed with an 
+  attention to security requirements, mechanisms, and assurances commensurate 
+  with the range of sensitivity of information for which it is to be 
+  accredited.<BR>
+  <DD>The recommended approach for accrediting a Unified Network is to apply 
+  Enclosure 4 to the entire network to derive an evaluation class. Requirements 
+  to meet that evaluation class then are obtained from an applicable 
+  interpretation of DOD5200.28-STD [the TCSEC], such as NCSC- TG~05 [the 
+  TNI].<BR></DD></DL>
+<H4><A name="HDR2.7.2   4 25">2.7.2 Interconnected Accredited AIS</A></H4>
+<DL>
+  <DD>Enclosure (5) of DODD 5200.28 also discusses <B>Interconnected Accredited 
+  AIS:</B><BR>
+  <DD>If a network consists of previously accredited AIS, a Memorandum of 
+  Agreement6 [MOA] is required between the DAA of each DOD Component AIS and the 
+  DAA responsible for the network ... The network DAA must ensure that interface 
+  restrictions and limitations are observed for connections between DOD 
+  Component AIS. ... In particular, connections between accredited AIS must be 
+  consistent with the mode of operation of each AIS, the specific sensitivity 
+  level or range of sensitivity levels for which each AIS is accredited, any 
+  additional interface constraints associated with the particular interface 
+  device used for the connection, and any other restrictions required by the 
+  MOA.<BR></DD></DL>---------------------------
+<P>5 As mentioned in the introduction and the definitions, this TNIEG differs 
+from DODD 5200.28 and the TNI in the usage of AIS and the definition of 
+component. This quotation has been slightly edited to conform to the usage in 
+this guideline. she content of a Memorandum of Agreement is discussed in Section 
+3.2
+<P>
+<H3><A name="HDR2.8   3 27">2.8 Network Security Architecture and 
+Design</A></H3><B>Network Security Architecture and Design (NSAD) applies to all 
+networks. The NSAD identifies how the NTCB is partitioned and how the trusted 
+system requirements are met. Security engineering, including the development of 
+the NSAD, is a specialty area within systems engineering. The security engineer 
+is responsible for ensuring that the system being built meets the security 
+requirements of the organization. The security engineer ensures that the AIS 
+security conforms to applicable regulations and policy, and implements the 
+system security requirements [8].</B>
+<P>The security policy includes the set of laws, rules, and practices that 
+govern how an organization manages, protects, and distributes sensitive 
+information (including classified information). The overall security policy is 
+addressed in a family of related documents consisting of a system security 
+policy, a security policy model, and security requirements. The system security 
+policy is developed first, followed by the other two. A system security policy 
+interprets and applies regulations to systems. The security policy model defines 
+subjects and objects and the accesses between the two. The security requirements 
+document identifies valuable user requirements for a secure system.
+<P>The security architecture is that part of the system architecture that 
+describes the required security services and features. The security architecture 
+shows how the required level of assurance for the system is to be met. A mapping 
+of security requirements to functional elements is documented in the security 
+architecture; therefore, the security architecture is used to document security 
+design decisions.
+<P>
+<H3><A name="HDR2.9   3 27">2.9 Protocol Layer Approach</A></H3>This guideline 
+discusses networks in terms of the Open System Interconnection (0SI) reference 
+model [9] because that model provides a well-understood terminology and is used 
+in the TNI. This guideline, however, is independent of the actual protocol 
+reference model used.
+<P>An NTCB implementation need not include all protocol layers. The precise 
+security services and their granularity will depend on the highest protocol 
+layer at which an NTCB partition is implemented.7 For example, in a Unified 
+Network where layer 3 (the network layer) is the highest layer that implements 
+the NTCB, the network will be able to enforce mandatory access control (MAC) and 
+discretionary access control (DAC) decisions on the granularity of network 
+addresses8. The network system being evaluated knows only about the range of 
+classifications that the host (or other network) is permitted to handle and the 
+hosts (or other networks) that are permitted to communicate with each other. 
+Finer distinctions must be made by the hosts (or other networks) involved. When 
+a trusted network provides all seven layers, the network is aware of and 
+enforces MAC and DAC at the granularity of individual users.
+<P>A network device might not provide a complete set of end-user services 
+through layer 7. Products that do not provide all system services through layer 
+7 may be NCSC-evaluated as components and subsequently used with other 
+components to compose a network.
+<P>
+<H3><A name="HDR2.10   3 28">2.10 Part II Security Services</A></H3>The terms 
+functionality, strength of mechanism, and assurance are used to rate TNI Part II 
+services. Their meanings in that context are described below.
+<P>
+<DL>
+  <DD><B>Functionality refers to the objective and approach of a security 
+  service; it includes features, mechanism, and performance. Alternative 
+  approaches to achieving the desired functionality may be more suitable in 
+  different applications environments.</B><BR>
+  <DD><B>Strength of mechanism refers to how well a specific approach may be 
+  expected to achieve its objectives. In some cases the selection of parameters, 
+  such as number of bits used in a checksum or the number of permutations used 
+  in an encryption algorithm, can significantly affect strength of mechanism. 
+  With regard to inadvertent threats, strength refers to the ability to operate 
+  correctly during natural disasters, emergencies, operator errors, and 
+  accidents. Inadvertent threats are particularly critical to prevention of 
+  denial of service. As an example, for communications line outages, strength of 
+  mechanism may refer to the number of alternate routes that maybe used to 
+  bypass the outage. The misdelivery of messages is an example of an inadvertent 
+  threat that may disclose information to unauthorized individuals. Encryption 
+  can be used to prevent the unintended recipient from seeing the 
+  information.</B><BR>
+  <DD><B>Assurance refers to a basis for believing that the functionality will 
+  be achieved; it includes tamper resistance, verifiability, and resistance 
+  against circumvention or bypass. Assurance is generally based on analysis 
+  involving theory, testing, software engineering, validation and verification, 
+  and related approaches. The analysis may be formal or 
+informal.</B><BR></DD></DL>______________________
+<P>7 Since the publication of the TNI, the policy environment has changed. 
+"User", as defined in DODD 5200.28, ad peer.entity, as defined in the 051 
+reference model, are comparable. Therefore, the TNIEG applies to all layers of 
+the 051 architecture.
+<P>8 A network address refers to either a host or another network.
+<P>
+<H2><A name="HDR3   2 29">3 Network Security Architecture and Design 
+(NSAD)</A></H2>Every network should have a Network Security Architecture and 
+Design (NSAD). This section helps the security manager in establishing the NSAD 
+for the network.
+<P>The NSAD, produced as part of the risk management process, documents the 
+security services. As mentioned in Section 1, the primary focus of this TNIEG is 
+on the AIS aspects of security. Depending on the particular environment, 
+communications security (COMSEC), emanations security (TEMPEST), physical 
+security, personnel security, administrative security, and other information 
+security (INFOSEC) measures or safeguards are also incorporated in the NSAD. An 
+NSAD results from a series of trade-offs among cost, effectiveness, technical 
+risk, mission requirements, and risk management.
+<P>While the architecture part of the NSAD may be somewhat abstract, the design 
+part should be quite concrete. The design maps the selected security services to 
+system functional elements9. Next, these functional elements are assigned to 
+components and subsystems.
+<P>
+<H3><A name="HDR3.1   3 29">3.1 Composing an NSAD</A></H3>The security manager 
+is responsible for ensuring that an NSAD is defined that applies to all the 
+components or subsystems that constitute the network. The NSAD for a network 
+must address the applicable security-relevant policies and may incorporate the 
+NSADs of its constituent components or subsystems. In some cases, such as when a 
+component provides part of the functionality of the network (e.g., a local area 
+network (LAN) providing 051 layer three communication services), the NSAD of the 
+component may be incorporated with little or no change into the NSAD for the 
+network. The component NSAD will probably require some modification to address 
+the applicable policy and environment constraints.
+<P>___________________
+<P>9 Sections 4 and 5 of this document should guide the security manager in 
+selecting those security services and safeguards that are appropriate for the 
+given operational environment.
+<P>A typical network configuration will include multiple vendor's products. When 
+the network is created, the security manager must reconcile the diverse NSADs of 
+the constituents into a coherent NSAD for the configured network and identify 
+any restrictions or new security services and assurance that must be added. The 
+NSAD must implement national, service, and command policies for the environment 
+in which the network will operate. The same process applies when previously 
+accredited AIS are to be interconnected to support the exchange of information.
+<P>In contrast to the networks described above, when a network is created from 
+scratch, the NSAD may be established before any devices are selected and may be 
+included as part of the criteria for selecting the network devices.
+<P>Note that the network may include components that are not security-relevant 
+and, therefore, do not have a component NSAD. The design decisions that result 
+in the inclusion of non-security-relevant components are documented in the NSAD.
+<P>AIS may be combined into a network under conditions of a hierarchical 
+relationship of their security managers. In this case the NSAD of the 
+subordinate system must conform to the governing NSAD. For example, when a host 
+computer connects to a common user network, the host computer must conform to 
+the NSAD established by the security manager of the common user network, who has 
+a responsibility to the security managers of all other connected AIS to maintain 
+the network's trustworthiness. As discussed below, this conformance is recorded 
+in a Memorandum of Agreement (MOA).
+<P>AIS whose security managers are not hierarchically related may also be 
+combined to form a network. In this case, the security managers come to 
+agreement on the NSAD for the network; this agreement is also recorded in an 
+MOA.
+<P>
+<H3><A name="HDR3.2   3 30">3.2 Memorandum of Agreement</A></H3>If a network 
+consists of previously accredited AIS, a MOA is required between the Accreditors 
+for each subsystem. This MOA is part of the documentation of the NSAD. The MOA 
+discusses the accreditation requirements for each subsystem that is to be 
+interconnected to form the network [4], i.e., defines all the terms and 
+conditions of the security arrangements that will govern the operation of the 
+network [10]. The objective of the MOA is to document the interconnection 
+requirements and identify any requirements that may be necessary to provide 
+overall security safeguards for the entire network. This network includes all 
+the interconnected subsystems, the communications devices, the users, and the 
+data stored in the subsystem [10]. A Memorandum of Record (MOR) is used when the 
+subsystems have the same Accreditor. A comprehensive M0A10 could constitute the 
+entire NSAD for a network; alternatively, the MOA could contain high level 
+agreements, with the details spelled out in supporting documents. Following is a 
+list of suggestions for the contents of the MOA and supporting documents. The 
+items towards the top of the list are more likely to occur in the MOA; those 
+towards the end of the list are more likely to occur in supporting documents.
+<P>
+<UL>
+  <UL>
+    <LI>A general description of the information that will be transmitted to the 
+    network by each subsystem<BR>
+    <LI>A summary discussion of the trusted behavior that is expected from each 
+    subsystem<BR>
+    <LI>The details of the overall security plan for the network and the 
+    assignment of responsibility for producing and accepting the plan<BR>
+    <LI>A description of the overall network security policy<BR>
+    <LI>A description of additional security training and assignment of training 
+    responsibility<BR>
+    <LI>Specification of the security parameters that are to be transmitted 
+    between communicating subsystems<BR>
+    <LI>A discussion of security details that are relevant to the exchange of 
+    information among the subsystems.<BR>
+    <LI>A description of the user community, including the lowest clearance of 
+    any user who will have access to the network<BR>
+    <LI>Any special considerations for dial-up connections to any subsystem in 
+    the network, including potential security threats and the safeguards that 
+    will be used.<BR>
+    <LI>A description of the security protections provided by the data 
+    communications, both local to a subsystem and between communicating 
+    subsystem<BR>
+    <LI>A description of the information that each subsystem will log in the 
+    audit trail, and how the audit trail tasks will be divided among the 
+    subsystems<BR>
+    <LI>A description of the information security services to be offered to the 
+    network by each subsystem, including:<BR>
+    <DL>
+      <DD>- The types of processing provided by each subsystem, e.g., file 
+      query, individual user, general processing<BR>
+      <DD>- The modes of operation of all the subsystems, e.g., dedicated, 
+      system high, multilevel<BR>
+      <DD>- The sensitivity levels processed on all 
+  subsystems<BR></DD></DL></LI></UL></UL>________________
+<P>10 In this guideline, NOA is used to identify the agreement between 
+Accreditors and includes the NOR.
+<P>
+<H2><A name="HDR4   2 32">4 TNI Part I Security Requirements</A></H2>This 
+section assists the security manager in determining the recommended minimum 
+security requirements based on TNI Part I and Appendix A, which interprets the 
+TCSEC for networks.
+<P>The procedure for determining the minimum security requirements for a network 
+parallels the procedure for a stand-alone system, whereby the highest 
+classification of data and the lowest clearance among system users are used in 
+computing a risk index. The risk index is used to determine which NCSC 
+evaluation rating is required of the system to provide adequate security. To 
+emphasize, these are the minimum requirements. The TCSEC Environments Guideline 
+does not address environmental factors such as the number of users and the 
+percentage of users at different classification levels. These factors may become 
+more significant in a network environment. Communications security risk in a 
+network is addressed by the National Security Agency (NSA) and other cognizant 
+organizations and results in a set of recommendations for the appropriate 
+equipment or security procedures. Other factors, such as the number of 
+connections, the physical distance between devices, the number of subsystems, 
+the presence of encryption, and the possible presence of intervening systems 
+between the resources being used and the ultimate user may result in more or 
+less stringent requirements.
+<P>
+<H3><A name="HDR4.1   3 32">4.1 Risk Management</A></H3>Risk management is a 
+methodology used to identify, measure, and control events which adversely affect 
+security; it involves cost-benefit analyses to ensure appropriate 
+cost-effectiveness of security safeguards. A risk management program is mandated 
+by Enclosure (3) of DODD 5200.28.
+<P>The literature on risk management is quite extensive. It is not the;Purpose 
+of this document to survey the field. The interested reader is referred to FIPS 
+PUB 65 [11]. The literature is constantly growing; a recent high-level 
+introduction to general concepts and terminology can be found in Bell [12] and 
+in the Proceedings of the First Invitational Workshop on Computer Security Risk 
+Management [13].
+<P>DODD 5200.28 Enclosure (4) mandates the use of a methodology, extracted from 
+the TCSEC Environments Guideline, to determine the recommended evaluation 
+class(or requirements of an evaluation class) based on a specific environment. 
+Enclosure (5) of the Directive also recommends this method to determine minimum 
+computer-based requirements in a network. This guideline also uses that method. 
+Use of a different method requires prior approval of the Assistant Secretary of 
+Defense (ASD) Command, Control, Communications, and Intelligence (C<EM 
+sup>31).</EM>
+<P>
+<P>DODD 5200.28 Enclosure (4) contains six major steps in the risk assessment 
+procedure. These steps are listed below. DODD 5200.28 Enclosure (4) applies in 
+all steps.
+<P><B>Step 1. Determine system security mode of operation.</B>
+<P><B>Step 2. Determine minimum user clearance or authorization rating.</B>
+<P><B>Step 3. Determine maximum data sensitivity rating.</B>
+<P><B>Step 4. Determine risk index.</B>
+<P><B>Step 5. Determine minimum security evaluation class for computer-based 
+controls.</B>
+<P><B>Step 6. Determine adjustments to computer security evaluation class 
+required.</B>
+<P>An elaboration of step six given in Migues [14], involving a detailed 
+analysis of both environmental and architectural risk factors, is based on 
+Landwehr and Lubbes[15]. It presents a method which incorporates analysis of the 
+applications environment. This analysis includes such factors as whether the 
+system allows programming, or whether it is restricted to a limited set of 
+applications. This more detailed information supports a finer determination of 
+the level of trust required.
+<P>
+<H3><A name="HDR4.2   3 33">4.2 Determination of Network Risk</A></H3>To apply 
+the TCSEC Environments Guideline guidance, the security manager
+<P>must determine the following:
+<P>
+<UL>
+  <UL>
+    <LI>minimum clearance or authorization of the network users (see Table 1 <EM 
+    sup>11),</EM><BR></LI></UL></UL>___________________
+<P>11 Tables 1 and 2 are adapted from DODD 5200.28 (enclosure 4).
+<P><PRE><B>Table 1:  <B> Rating Scale for Minimum User Clearance (Rmin)</B></B>
+------------------------------------
+<B>Minimum User Clearance</B>    <B>     Rmin</B>    
+Uncleared OR Not                           0            
+Authorized (U)                         
+Not Cleared but                        
+Authorized Access to                       1            
+Sensitive Classified                   
+Information                            
+Confidential (C)                           2            
+Secret(S)                                  3            
+Top Secret (TS) and/or                 
+current Background                         4            
+Investigation (BI)                     
+TS and/or current                      
+Special Background                         5            
+Investigation (SBI)                    
+                                       
+One Category (IC)                          6            
+Multiple Categories                        7  
+(MC)                                   
+------------------------------------
+</PRE>The number derived from Table 1 is used for Rmin; the one derived from 
+Table 2 is used for Rmax. A risk index for the network is calculated using the 
+following formula:
+<P>Risk Index = Rmax - Rmin
+<P>
+<P><PRE><B>Table 2:  Rating Scale for Maximum Data Sensitivity(Rmax)</B>
+----------------------------------------------------------------
+<B> Maximum </B>     <B>    Rating</B>  <B>       Maximum Data </B>         <B>     Rating</B>   
+<B>Sensitivity </B>  <B>    (Rmax)</B>  <B>  with categories<EM sup>1,2</EM></B> <B>(Rmax)</B>   
+<B>Ratings </B>                                                           
+<B>without </B>                                                           
+<B>categories</B>                                                         
+Unclassi-                      0                       N/A <EM sup>3</EM>                                    
+fied (U)                                                           
+Not                                                                
+Classified                     1                       N with one or more             2 
+but                                                        Categories                               
+Sensitive                                                          
+N<EM sup>4</EM>                                                                 
+Confiden-                      2                     C with one or more Cate-         3          
+tial C                                                        ories                                    
+                                                     S with one or more                       
+Secret(S)                      3                     Categories only one              4           
+                                                     Category containing S                    
+                                                     S with two or more               5           
+                                                     Categories containing S                  
+                                                                   
+                                                     TS with one or more                      
+Top Secret                     5<EM sup> 5</EM>      Categories only one              6           
+(TS)                                                 Category containing S or                 
+                                                              TS                      7           
+                                                     TS with two or more                      
+                                                     Categories containing S                  
+                                                             or TS                                    
+----------------------------------------------------------------
+</PRE>1 Where the number of categories is large or where a highly sensitive 
+category is involved, a higher rating might be warranted.
+<P>2 The only categories of concern are those for which some users are not 
+authorized access. When counting the number of categories, count all categories 
+regardless of the sensitivity level associated with the data. If a category is 
+associated with more than one sensitivity level, it is only counted at the 
+highest level. Systems in which all data are in the same category are treated as 
+without categories.
+<P>3 Unclassified data by definition may not contain categories.
+<P>4 Examples of N data include financial, proprietary, privacy, and mission 
+sensitive data. In some situations (e.g., those involving extremely large 
+financial sums or critical mission-sensitive data), a higher rating may be 
+warranted. This table prescribes minimum ratings.
+<P>5 The rating increment between the Secret and Top Secret data sensitivity 
+levels is greater than the increment between other adjacent levels. This 
+difference derives from the fact that the loss of Top Secret data causes 
+EXCEPTIONALLY GRAVE damage to U.S. national security, whereas the loss of Secret 
+data causes SERIOUS damage.
+<P>
+<P><PRE><B>Table 3:  Security Risk Index</B>
+------------------------------------------------------------------------
+<B>  Risk             </B>  <B>            Security Mode </B>   <B>Minimum Security Class<EM sup>4</EM></B>   
+<B>Index</B>                                                                       
+0                                 Dedicated <EM sup>5</EM>           No Minimum Class <EM sup>1 2</EM>      
+0                                 System High                               C2<EM sup>2</EM>                       
+1                                 Multilevel Partitioned                    B1<EM sup>3</EM>                      
+2                                 Multilevel Partitioned                    B2                        
+3                                 Multilevel                                B3                        
+4                                 Multilevel                                A1                        
+5                                 Multilevel                                *                         
+6                                 Multilevel                                *                         
+7                                 Multilevel                                *                         
+                                                                            
+------------------------------------------------------------------------
+</PRE>1 Although there is no prescribed minimum class, the integrity and denial 
+of service requirements of many systems warrant at least class C2 protection.
+<P>2 Automated markings on output must not be relied on to be accurate unless at 
+least class B1 is used.
+<P>3 Where an AIS handles classified or compartmented data and some users do not 
+have at least a Confidential clearance, or when there are more than two types of 
+compartmented information being handled, at least a class B2 is required.
+<P>4 The asterisk (*) indicates that computer protection for environments with 
+that risk index is considered to be beyond the state of current computer 
+security technology.
+<P>5 Most embedded systems and desk top computers operate in the dedicated mode.
+<P>Table 3 <EM sup>12 is used, along with the Risk Index calculated above, to 
+determine a minimum NCSC-evaluation rating for the system. Note that some terms 
+that appear in the TCSEC Environments Guideline are no longer defined in DODD 
+5200.28. (Limited Access Mode, and Compartmented Mode fall under the heading of 
+Partitioned Mode. Controlled Mode comes under the heading Multilevel. The 
+prevt.ou:°sly used terms referred to the equivalent of the BI and B2 evaluation 
+classes. In DODD 5200.28, Partitioned Mode is used in place of Compartmented 
+Mode.)</EM>
+<P>
+<P>____________________
+<P>12 Table 3 is adapted from the TCSEC Environments Guideline
+<P>
+<H2><A name="HDR5   2 38">5 TNI Part II Security Requirements</A></H2>This 
+section contains a discussion of TNI Part II which describes qualitative 
+evaluations of security services in terms of functionality, strength of 
+mechanism, and assurance. Part II of the TNI describes additional security 
+concerns and services that arise in conjunction with networks, but that do not 
+normally arise in stand-alone computers.
+<P>Part II of the TNI focuses on those threats that occur between end systems 
+(hosts) on the network. These security services include protection against 
+compromise, denial of service, and unauthorized modification. In discussing 
+these services, the TNI borrows heavily from the International Standards 
+Organization (150) 051 Basic Reference Model [9] and Security Architecture [16]. 
+The services discussed are closely related to those found in the latter 
+reference. The TNI goes beyond the 051 Security Architecture in several 
+respects. First, the 051 document does not address the relative strengths of 
+different mechanisms nor the assurances that they operate as intended. Second, 
+the protection against denial of service threats is not specifically addressed 
+by 051 but is an important consideration in the TNI.
+<P>
+<H3><A name="HDR5.1   3 38">5.1 Relationship of TNI Part II Services to Part I 
+and Appendix A</A></H3>The Part II services are not as well understood as the 
+features in TN1 Part I. The fact that Part 11 services have not been supported 
+by equally well developed theories and detailed evaluation criteria should not 
+be interpreted to imply that their security problems do not have to be evaluated 
+as rigorously as TNI Part I and Appendix A services. Some Part II services may 
+not be part of the NTCB. For example, to make the NTCB as small as possible, 
+some of the protocol software may be outside the NTCB. Therefore, the 
+protocol-based protection against denial of service is likely to be outside the 
+NTCB. Nonetheless, it must rely on some of the fundamental NTCB assurances since 
+the protocols invoke portions of the subsystem's operating system.
+<P>It is important to recognize that many Part II security services depend on 
+(embedded) AIS. These AIS should be evaluated using Part I and Appendix A of the 
+TNI. Encryption systems, for example, are highly dependent upon AIS; they are 
+addressed in Appendix B of the TNI and Appendix C of this guideline. Appendix C 
+presents some considerations concerned with applying Tables 1, 2, and 3 to 
+encryption systems.
+<P>For security services that do not depend strongly on A!S, a qualitative 
+evaluation approach is used. For functionality, a question and answer format is 
+presented in Section 5.4.3. For strength of mechanism and assurance, the concept 
+of a risk index is used in Sections 5.4.1 and 5.4.2.
+<P>
+<H3><A name="HDR5.2   3 39">5.2 Specification and Evaluation of Security 
+Services</A></H3>Specifying and evaluating Part II security services is quite 
+different from a TN! Part! evaluation even though both parts are concerned with 
+the same three aspects of security services or capabilities: functionality, 
+strength of mechanism, and assurance. For clarity these terms are defined as 
+follows:
+<P>
+<DL>
+  <DL>
+    <DD><B>Functionality refers to the objective and approach of a security 
+    service.</B><BR>
+    <DD><B>Strength of mechanism refers to how well a specific approach may be 
+    expected to achieve its objectives.</B><BR>
+    <DD><B>Assurance refers to a basis for believing that the functionality will 
+    be achieved.</B><BR></DD></DL></DL>
+<H3><A name="HDR5.3   3 39">5.3 Evaluation Ratings</A></H3>Part II evaluations 
+are qualitative, as compared with the hierarchically ordered ratings (e.g., C1, 
+C2, ...) from the TCSEC. The results of a Part II evaluation for offered 
+services are generally summarized using the terms none, minimum, fair, and good. 
+For some services, functionality is summarized using none or present because 
+gradations are not meaningful. The term none is used to mean the security 
+service fails to distinguish the strength of mechanism. The term not offered is 
+used when a security service is not offered. For example, if a certain network 
+did not include non- repudiation as one of its security services, that network 
+would be rated not offered with respect to non-repudiation. Table 4 represents 
+the evaluation structure of Part II as a matrix. It identifies a set of security 
+services. It also shows the possible evaluation ranges for each service in terms 
+of its functionality, strength of mechanism, and assurance.
+<P>
+<H3><A name="HDR5.4   3 39">5.4 Selecting Security Services</A></H3>Part II 
+enumerates representative security services that an organization may choose to 
+employ in a specific situation. Not all security services will be equally 
+important for a specific environment, nor will their relative importance be the 
+same
+<P>
+<P><PRE><B>Table 4:  Evaluation Structure for Network Security Services</B>
+-------------------------------------------------------------
+<B> Network Security </B>         <B>Criterion</B>        <B>Evaluation</B>          
+<B>Service</B>                                                         
+Communications                      Functionality           None present        
+Integrity                           Strength                None - good         
+Authentication                      Assurance               None - good         
+Communications Field                Functionality           None - good         
+Integrity                           Strength                None - good         
+                                    Assurance               None - good         
+Non-repudiation                     Functionality           None present        
+                                    Strength                None - good         
+                                    Assurance               None - good         
+Denial of Service                   Functionality           None - good         
+Continuity of Operations            Strength                None - good         
+                                    Assurance               None - good         
+Protocol Based                      Functionality           None - good         
+Protection                          Strength                None - good         
+                                    Assurance               None - good         
+Network Management                  Functionality           None present        
+                                    Strength                None - good         
+                                    Assurance               None - good         
+Compromise Protection               Functionality           None present        
+Data Confidentiality                Strength                Sensitivity level   
+                                    Assurance               None - good         
+Traffic Flow Confidenti             Functionality           None present        
+ality                               Strength                Sensitivity level   
+                                    Assurance               None - good         
+Selective Routing                   Functionality           None present   
+                                    Strength                None - good        
+                                    Assurance               None - good        
+                                                                
+-------------------------------------------------------------
+</PRE>
+<DL compact>
+  <DT>among different environments. Selecting security services is a management 
+  decision, with assistance provided by this guideline. </DT></DL>Ordinarily, the 
+security manager would first determine whether a particular service is required 
+and what functionality is needed (if there are distinctions) through a series of 
+questions provided in Section 5.4.3. A separate set of questions is provided for 
+each service shown in Table 4.
+<P>Once the functionality has been determined, the strength of mechanism and 
+appropriate level of assurance must be determined. The process is similar to the 
+determination of Part I risk in Section 4 of this guideline. Since the strength 
+of mechanism and assurance determination do not differ for the various services, 
+these topics are addressed first.
+<P>
+<H4><A name="HDR5.4.1   4 41">5.4.1 Strength of Mechanism</A></H4>Determination 
+of strength of mechanism for each service has two components. The inadvertent 
+threat and the malicious threat should be analyzed separately. In many cases, 
+the malicious threat will dominate the inadvertent threat; malicious users can 
+often duplicate the circumstances of an inadvertent threat. The required 
+strength of mechanism is determined using a risk index similar to that used in 
+Part I.
+<P>For inadvertent threats, traditional risk management techniques are used. 
+While some countermeasures may be the same for inadvertent and malicious 
+threats, others may be effective only against the former. The security manager 
+must determine the likelihood of a particular threat, the dollar cost of a 
+countermeasure, and the residual risk if the countermeasure is put into effect. 
+The manager concerned with these inadvertent threats is referred to the 
+references on risk assessment previously cited.
+<P>For malicious threats, we consider the most sensitive information contained 
+on the system and the lowest clearance of user who can gain physical access to 
+some device in the system, including access to wireless transmissions. Some 
+devices in the system may be physically protected in buildings that require a 
+clearance for admittance. Other devices in the system, such as long-haul 
+transmission lines, may have no physical protection.
+<P>Protection of the information in the network system is a combination of 
+physical, administrative, procedural, and technical protections. The TNIl is 
+concerned only with the AIS hardware, firmware, software, and configuration 
+management protections. Various service or agency regulations describe methods 
+for implementing the other protections.
+<P>The various devices in the system must be considered separately; for each 
+device, the risk index will be based on the most sensitive information on the 
+network system and the minimum clearance to gain physical access to the device. 
+Note that this is different from the Part I risk index calculation (where the 
+lowest cleared user is of concern). For some devices in the system (e.g., the 
+communications media), the clearance of individuals with physical access may be 
+lower than that for authorized users. For convenience, all the necessary tables 
+are included here. Table 5, Minimum Clearance for Physical Access, is identical 
+to Table 1. For each device in the system, the lowest clearance of individuals 
+with physical access to that device is used. Table 6 for Maximum Data 
+Sensitivity is identical to Table 2.
+<P>
+<P><PRE><B>Table 5:  Minimum Clearance for Physical Access</B>
+--------------------------------
+<B> Minimum Use Clearance</B>    <B>   Rmin</B>  
+Uncleared OR Not                       0        
+Authorized (U)                     
+Not Cleared but                    
+Authorized Access to                   1        
+SensitiveUnclassified              
+Information (N)                    
+Confidential (C)                       2        
+Secret (S)                             3        
+Top Secret (TS) and/or                 4        
+current Background                 
+Investigation (BI)                 
+TS and/or current                      5        
+Special Background                 
+Investigation (SBI)                
+One Category (IC)                      6        
+Multiple `Categories                   7        
+(MC)                               
+--------------------------------
+</PRE>
+<P><PRE><B>Table 6:  Maximum Data Sensitivity</B>
+---------------------------------------------------------------
+<B>Maximum </B>                                   <B>Maximum Data           </B>             
+<B>SensitivityRatings </B>    <B>Rating </B>      <B>Sensitivity with </B>          <B>       Rating </B>  
+<B>without categories</B>     <B>(Rmax)</B>       <B>Categories<EM sup>1, 2</EM></B>   <B>    (Rmax)</B>   
+Unclassified(U)                    0                   N/A <EM sup>3</EM>                               
+Not Classified but                 1                   N with one or more                       2        
+Sensitive (N)<EM sup>4</EM>                            Categories                          
+Confidential (C)                   2                   C with one or more Cate-                 3        
+                                                       ories                               
+Secret(S)                          3                   S with two or more                       4         
+                                                       Categories only one                 
+                                                       Category containing S                    5        
+                                                       S with two or more                  
+                                                       Categories containing S             
+Top Secret (TS)                    5<EM sup>5</EM>     TS with one or more                      6        
+                                                       Categories only one Cate-           
+                                                       gory containing S or TS                  7        
+                                                       TS with two or more                 
+                                                       Categories                          
+---------------------------------------------------------------
+</PRE>1 Where the number of categories is large or where a highly sensitive 
+category is involved, a higher rating might be warranted.
+<P>2 The only categories of concern are those for which some users are not 
+authorized access. When counting the number of categories, count all categories 
+regardless of the sensitivity level associated with the data. If a category is 
+associated with more than one sensitivity level, it is only counted at the 
+highest level. Systems in which all data are in the same category are treated as 
+without categories.
+<P>3 Unclassified data by definition may not contain categories.
+<P>4 Examples of N data include financial, proprietary, privacy, and 
+mission-sensitive data. In some situations (e.g., those involving extremely 
+large financial sums or critical mission-sensitive data), a higher rating may be 
+warranted. This table prescribes minimum ratings.
+<P>5 The rating increment between the Secret and Top Secret data sensitivity 
+levels is greater than the increment between other adjacent levels. This 
+difference derives from the fact that the loss of Top Secret data causes 
+EXCEPTIONALLY GRAVE damage to U.S. national security, whereas the loss of Secret 
+data causes SERIOUS damage.
+<P>Table 7 now gives the strength of mechanism requirement based on the risk 
+index calculated as
+<P>Risk Index = Rmax - Rmin
+<P>
+<P><PRE><B>Table 7:  Minimum Strength of Mechanism Requirement</B>
+------------------------
+<B>Risk Index</B>  <B>Strength of </B>  
+                   <B>Mechanism</B>     
+O                       None          
+1                     Minimum       
+2                       Fair          
+&gt;2                   Good          
+                          
+------------------------
+</PRE>
+<H4><A name="HDR5.4.2   4 44">5.4.2 Assurance</A></H4>Assurance is a very 
+important concept in the TCSEC and TN!. This section discusses the need for 
+assurance and the ways in which it may be achieved.
+<P>One salient property of trusted systems is the reliance on a TCB. Similarly, 
+trusted network systems rely on an NTCB. In addition to its other 
+responsibilities, the NTCB prevents unauthorized modification to objects within 
+the network system. In particular, the NTCB maintains the integrity of the 
+programs which provide security services, thus ensuring that their assurance is 
+continued. The NTCB provides an execution environment that is extremely valuable 
+in enhancing the assurance of security services. Discretionary and mandatory 
+access controls can be employed to segregate unrelated services. Thus, service 
+implementation that is complex and error-prone or obtained from an unevaluated 
+supplier can be prevented from degrading the assurance of other services 
+implemented in the same device. Furthermore, an NTCB ensures that the basic 
+protection of the security and integrity information entrusted to the network is 
+not diluted by various supporting security services.
+<P>The relationship of the risk index to the required assurance is expressed in 
+Table 8.
+<P><PRE><B>Table 8:  Minimum Assurance Requirements</B>
+----------------------
+<B>Risk Index</B>  <B>Part II </B>    
+                   <B>Assurance </B>  
+                   <B>Rating</B>      
+                        
+0                      None        
+1                    Minimum     
+2                      Fair        
+&gt;2                  Good        
+                        
+----------------------
+</PRE>Assurance of the design and implementation of Part II mechanisms is also 
+related to the assurance requirements in Part I because service integrity 
+depends on protection by the NTCB or TCBs. Table 9 expresses this dependency. 
+The second column identifies the minimum Part I evaluation which supports the 
+Part II assurance requirement. Note that Table 9 is applicable only to those 
+Part II services not strongly dependent on A!S; the AIS implementing those 
+services can be directly evaluated under Part I and Appendix A of the TNI.
+<P>Note that the Evaluation Class calculation in Part I will not necessarily be 
+the same as the Minimum Part I Evaluation in Table 9. This is because the Rmin 
+for Part II may be different from that of Part I! since the Part II! protections 
+are oriented towards outsiders (those with physical access) rather than towards 
+users. Depending on the particular environment, either the Part I! requirement 
+or the Part II requirement may dominate. The latter would be the case if a 
+system were operated in the system high mode-where all users were cleared to see 
+the most sensitive information-but the network was exposed to lower clearance 
+individuals.
+<P>
+<H4><A name="HDR5.4.3   4 45">5.4.3 Functionality</A></H4>This section asks 
+questions about each of the security services contained in Part II of the TNI. 
+These questions are designed to help the security manager identify the 
+functionality required for each security service. The questions should be 
+answered in sequence, unless the answer to one question contains an instruction 
+to skip ahead.
+<P><B>Authentication</B>
+<P>
+<OL>
+  <OL>
+    <LI>Is there a requirement to determine what individual, process or device 
+    is at the other end of a network communication? If yes, document this 
+    requirement.<BR></LI></OL></OL>
+<P><PRE><B>Table 9:  Part II Assurance Rating</B>
+-----------------------------------
+<B>Part II</B>     <B>    Minimum </B>    
+Assurance          <B>Part I </B>     
+Rating             <B>Evaluation</B>  
+Minimum                  C1
+Fair                     C2
+Good                     B2
+-----------------------------------
+</PRE>If no, skip to Communications Field Integrity.
+<P>
+<OL>
+  <OL>
+    <LI>Do you have a requirement to identify and authenticate the specific 
+    hardware device at the distant end-point involved in the network 
+    communication? If yes, then you have a functionality requirement for 
+    authentication. This functionality may be implemented at one or more 
+    protocol layer. For example, a specific control character, ENQ (enquiry or 
+    who-are-you) may be used to return immediately a stored terminal 
+    identifier.<BR>
+    <LI>Do you have a requirement to identify and authenticate the location of 
+    the hardware at the distant end-point or in any intermediate system involved 
+    in the network communication? If yes, then you have a functionality 
+    requirement for authentication at protocol layer 2, the Link Layer or layer 
+    3, the Network Layer.<BR>
+    <LI>Do you have a requirement to identify and authenticate the specific 
+    operating system or control program at the distant end-point or in any 
+    intermediate system involved in the network communication? If yes, then you 
+    have a functionality requirement for authentication at protocol layer 4, the 
+    Transport Layer.<BR>
+    <LI>Do you have a requirement to identify and authenticate the subject 
+    (process/domain pair) at the distant end-point involved in the network 
+    communication? If yes, then you have a functionality requirement for 
+    authentication at protocol layer 4 or above.<BR>
+    <LI>Do you have a requirement to identify ad authenticate the application or 
+    user at the distant end-point involved in the network communication? If yes, 
+    then you have a functionality requirement for authentication above protocol 
+    layer 7, the Applications Layer. The Applications Layer provides an 
+    interface to the application. Authentication information may pass over this 
+    interface. Authentication of a user is addressed in Part I of the 
+    TN!.Application process authentication is outside the scope of the 05! 
+    Security Architecture, but does fall within the scope of TN! Part II 
+    Security Services Have you chosen to use some mechanism other than 
+    encryption to provide authentication? If so, your strength of mechanism is 
+    shown in Table 7. If your authentication mechanism is encryption based, see 
+    the appropriate encryption authority (e.g., NSA). Even if encryption is 
+    used, some supporting processes may need to satisfy the strength of 
+    mechanism shown in Table 7 (depending on the architecture). For example, a 
+    database that relates encryption keys to specific users may need to be 
+    trusted.<BR></LI></OL></OL><B>Communications Field Integrity</B>
+<P>
+<OL>
+  <OL>
+    <OL>
+      <LI>Do you have a requirement to protect communication against 
+      unauthorized modification?<BR></LI></OL>
+    <DL>
+      <DD>If no, skip to Non-Repudiation.<BR></DD></DL>
+    <OL>
+      <LI>Are your protection requirements the same for all parts of the 
+      information communicated?<BR></LI></OL>
+    <DL>
+      <DD>If no, then you should identify the separate parts and answer the rest 
+      of the questions in this section separately for each part. Each part is 
+      known as a field.<BR>
+      <DD>There are two major fields: protocol-information, wherein the network 
+      is informed of the destination of the information and any special services 
+      required; and user-data. Not every protocol data unit (PDU) contains user- 
+      data, but protocol-information is necessary. Each of these fields may be 
+      divided into additional fields; depending on your application, protection 
+      requirements for fields may differ.<BR></DD></DL>
+    <OL>
+      <LI>Do you have a requirement for detecting unauthorized modification to 
+      part or all of a PDU?<BR></LI></OL>
+    <DL>
+      <DD>If yes, you have a requirement for at least minimum 
+      functionality.<BR></DD></DL>
+    <OL>
+      <LI>Do you have a requirement for detecting any of the following forms of 
+      message stream modification: insertion, deletion, or replay?<BR></LI></OL>
+    <DL>
+      <DD>If yes, you have a requirement for at least fair functionality. In 
+      addition, your functionality must be incorporated in a connection oriented 
+      protocol.<BR></DD></DL>
+    <OL>
+      <LI>Do you require that, if message stream modification is detected, 
+      recovery correction) should be attempted?<BR></LI></OL>
+    <DL>
+      <DD>If yes, you have a requirement for good functionality. In addition, 
+      you must implement integrity in a reliable transport (layer 4) 
+      mechanism.<BR></DD></DL></OL></OL><B>Non-repudiation</B>
+<P>
+<OL>
+  <OL>
+    <OL>
+      <LI>Do you have a requirement to be able to prove (to a third party) that 
+      a specific message transfer actually occurred?<BR></LI></OL>
+    <DL>
+      <DD>If no, skip to Denial of Service.<BR></DD></DL>
+    <OL>
+      <LI>Do you have a requirement for proving that a specific message was 
+      sent?<BR></LI></OL>
+    <DL>
+      <DD>Specific message means that the identity of the subject sending the 
+      message, the host computer and/or mail agent/server, time and date, and 
+      contents are all uniquely and unalterably identified.<BR>
+      <DD>If yes, then you have a functionality requirement for non-repudiation 
+      with proof of origin.<BR></DD></DL>
+    <OL>
+      <LI>Do you have a requirement for proving that a specific message was 
+      received?<BR></LI></OL>
+    <DL>
+      <DD>Specific message means that the identity of the subject to which the 
+      message was delivered, the host computer and/or mail agent/server, time 
+      and date, and contents are all uniquely and unalterably identified.<BR>
+      <DD>If yes, then you have a functionality requirement for non-repudiation 
+      with proof of delivery.<BR></DD></DL></OL></OL><B>Denial of Service</B>
+<P>
+<OL>
+  <OL>
+    <OL>
+      <LI>Do you have a requirement to assure the availability of communications 
+      service or to determine when a Denial of Service (DOS) condition exists? A 
+      DOS condition is defined to exist whenever throughput falls below a 
+      pre-established threshold, or when access to a remote entity is 
+      unavailable, or when resources are not available to users on an equitable 
+      basis. For a DOS condition to occur, the user must have priority to access 
+      the system or resources.<BR></LI></OL>
+    <DL>
+      <DD>If no, skip to Data Confidentiality.<BR></DD></DL>
+    <OL>
+      <LI>Do you have a requirement to detect conditions that would degrade 
+      service below a pre-selected minimum and to report such degradation to the 
+      network operators?<BR></LI></OL>
+    <DL>
+      <DD>If yes, you have a requirement for at least minimum denial of service 
+      functionality.<BR></DD></DL>
+    <OL>
+      <LI>Could failure of the system to operate for several minutes lead to 
+      personal injury or large financial loss?<BR></LI></OL>
+    <DL>
+      <DD>If yes, you have a requirement for at least fair denial of service 
+      functionality.<BR></DD></DL>
+    <OL>
+      <LI>Do you have a requirement for service resiliency that would 
+      continue-perhaps in a degraded or prioritized mode-in the event of 
+      equipment failure and/or unauthorized actions?<BR></LI></OL>
+    <DL>
+      <DD>If yes, you have a requirement for at least fair denial of service 
+      functionality.<BR></DD></DL>
+    <OL>
+      <LI>Could failure of your system to operate for several minutes lead to 
+      loss of life?<BR></LI></OL>
+    <DL>
+      <DD>If yes, you have a requirement for good denial of service 
+      functionality.<BR></DD></DL>
+    <OL>
+      <LI>Do you have a requirement for automatic adaptation upon detection of a 
+      denial- of-service condition?<BR></LI></OL>
+    <DL>
+      <DD>If yes, you have a requirement for good denial of service 
+      functionality.<BR></DD></DL></OL></OL><B>Protocol Based DOS Protection</B>
+<P>
+<OL>
+  <OL>
+    <OL>
+      <LI>Do you want advanced knowledge of unavailability of 
+    service?<BR></LI></OL>
+    <DL>
+      <DD>If no, skip to Network Management.<BR>
+      <DD>If yes, do you want to implement alternatives?<BR>
+      <DD>If yes, you should employ this alternative basis and skip to Network 
+      Management.<BR></DD></DL>
+    <OL>
+      <LI>In general, ordinary protocol mechanisms don't provide protection 
+      against malicious attacks or bizarre errors. Do you have a requirement to 
+      detect a DOS condition which cannot be met by the protocols used as part 
+      of normal communications?<BR></LI></OL>
+    <DL>
+      <DD>If no, you do not have a functional requirement for protocol-based DOS 
+      protection and should skip to Network Management.<BR></DD></DL>
+    <OL>
+      <LI>The TNI suggests the following protocol-based mechanisms:<BR>
+      <DL>
+        <DD>a) Measure the transmission rate between peer entities under 
+        conditions of input queuing, and compare the measured transmission rate 
+        with a rate previously identified as the minimum acceptable;<BR>
+        <DD>b) Employ a request-response polling mechanism, such as 
+        "are-you-there" and "here-I-am" messages, to verify that an open path 
+        exists between peer entities.<BR></DD></DL></LI></OL>
+    <DL>
+      <DD>If you have identified any additional mechanisms, include them in your 
+      list of required mechanisms.<BR></DD></DL></OL></OL><B>Network Management</B>
+<P>
+<OL>
+  <OL>
+    <OL>
+      <LI>Do you have a requirement for (at least) detecting a denial of service 
+      condition that affects more than a single instance of communication or 
+      attempted communication?<BR></LI></OL>
+    <DL>
+      <DD>If no, skip to Data Confidentiality.<BR>
+      <DD>If yes, you have a functional requirement for network management 
+      denial of service protection.<BR></DD></DL></OL></OL><B>Data Confidentiality</B>
+<P>
+<OL>
+  <OL>
+    <OL>
+      <LI>Do you have a requirement to protect any part of transmitted data from 
+      disclosure to unauthorized persons?<BR></LI></OL>
+    <DL>
+      <DD>If no, skip to Traffic Flow Confidentiality.<BR></DD></DL>
+    <OL>
+      <LI>Is your requirement for confidentiality limited to selected field of 
+      user-data within a PDU?<BR></LI></OL>
+    <DL>
+      <DD>If no, then you require confidentiality for the entire data portion of 
+      each PDU.<BR>
+      <DD>Continue with Traffic Flow Confidentiality.<BR></DD></DL>
+    <OL>
+      <LI>Is there a reason to encrypt only selected fields (e.g., cost savings, 
+      legal requirements)?<BR></LI></OL>
+    <DL>
+      <DD>If yes, you require selected field confidentiality. <BR>
+      <DD>If no, you require full confidentiality on the data portion of each 
+      PDU<BR></DD></DL></OL></OL><B>Traffic Flow Confidentiality</B>
+<P>
+<OL>
+  <OL>
+    <OL>
+      <LI>Do you have a requirement to prevent analysis of message length, 
+      frequency, ad protocol components (such as addresses) to prevent 
+      information disclosure through inference (traffic analysis)?<BR></LI></OL>
+    <DL>
+      <DD>If no, skip to Selective Routing.<BR>
+      <DD>If yes, you have a functional requirement for traffic flow 
+      confidentiality. <BR></DD></DL></OL></OL><B>Selective Routing</B>
+<P>
+<OL>
+  <OL>
+    <OL>
+      <LI>Do you have a requirement to choose or avoid specific networks, links, 
+      relays, or other devices for any reason at any time?<BR></LI></OL>
+    <DL>
+      <DD>If yes, you have a functional requirement for selective 
+      routing.<BR></DD></DL></OL></OL>
+<H2><A name="HDR6   2 50">6 Interconnecting AIS</A></H2>The definition of 
+Interconnected Accredited AIS recognizes that parts of a network may be 
+independently created, managed, and accredited. AIS in different security 
+domains 13 generally operate under different security policies, consequently, it 
+is difficult to combine them into a Unified Network. For example, AIS operated 
+by the U.S. DOD and NATO cannot be combined into a Unified Network, since they 
+enforce different policies and do not have a common authority.
+<P>Interconnecting systems that support different security domains (e.g., 
+classified, sensitive unclassified) adds additional complexity. Exchange of 
+information among these different security domains requires identification of 
+the markings and protection given to information when transmitted to another 
+domain. For example, several evolving approaches to the protection of sensitive 
+unclassified information [17] consider "that sensitive information is not part 
+of the same hierarchy as classified information".
+<P>There are technical criteria for judging the trustworthiness of 
+Interconnected Accredited AIS: an Interconnection Rule, which ensures that 
+information conveyed between subsystems is labeled properly, and risk factors 
+such as propagation of local risk and the cascading problem. These criteria are 
+examined in some detail below.
+<P>
+<H3><A name="HDR6.1   3 50">6.1 Agreement Between 
+Accreditors</A></H3>Interconnection of AIS between security domains requires a 
+documented agreement identifying the interconnection requirements and all 
+safeguards. This agreement will have many similarities to the MOA discussed in 
+Section 3.2. It will probably have to reconcile different security policies and 
+philosophies of protection, identifying the conditions under which specified 
+classes of information can be exchanged among domains. In addition to the 
+information included in the MOA, this agreement between managers of different 
+security domains should address the mappings of policy and countermeasures 
+between the domains. In many ways this agreement takes on the character of an 
+NSAD for the agreed upon information exchange between domains.
+<P>___________
+<P>
+<DL compact>
+  <DT>13 A security domain is a collection of AIS under the control of a single 
+  administrator that enforces or operates under a specified policy. There can be 
+  sub-domains, (e.g., Army and Air Force are sub-domains under the Department of 
+  Defense.) </DT></DL>
+<H4><A name="HDR6.1.1   4 51">6.1.1 Accreditation Range</A></H4>An accreditation 
+designates a system's mode of operation and range of data sensitivity' levels. 
+The accreditation range reflects the Accreditor's judgment on the subsystem's 
+ability to exchange information within an acceptable level of risk, with respect 
+to its network connections, and in accord with the designated sensitivity 
+levels.
+<P>The range must be a single level in the case of a system high or dedicated 
+device14. If the accreditation range comprises more than a single level, the 
+system is trusted to reliably segregate data by level within its accreditation 
+range, and label it accurately for transmission over multilevel interfaces. The 
+accreditation range will be specified in the MOA. The accreditation range is 
+used in determining whether communication between systems is permitted.
+<P>Figure 1
+<P>Information Levels and Accreditation Ranges
+<P>N/A TS
+<P>S-C S
+<P>N/A C
+<P>C2 Evaluation Class B3
+<P>S Accreditation Range TS-C
+<P>SH Operating Mode MLS
+<P>As shown in Figure 1, an AIS may contain information at levels that are below 
+its accreditation range. For example, a C2 host which contsuns Secret (S) and 
+Confidential (C) information, is not trusted to segregate this confidential and 
+Secret information. Therefore, it is accredited to operate in system high (SH) 
+mode at Secret (the highest sensitivity level of information on the system), and 
+its accreditation range is the single level Secret. All exported information 
+must be labeled with the system high sensitivity label until there is a manual 
+review to assign the information a lower
+<P>
+<DL compact>
+  <DT>14 Often in the discussion it is not appropriate to distinguish between a 
+  component and a subsystem; in that case we use the term device. 
+  <DT>classification level. In contrast, a B3 multilevel secure (MLS) host, 
+  which contains Top Secret (TS), Secret, and Confidential information could be 
+  assigned an accreditation range equal to the entire set of levels processed. 
+  In this case, the label of the exported data is equal to the actual level of 
+  the exported data, unless unclassified data is to be exported. </DT></DL>Figure 
+2 illustrates the accreditation ranges of two interconnected subsystems. 
+Although Subsystem Y is able to separate its three levels of information, it may 
+exchange information with Subsystem X only at the S and C levels.
+<P>Figure 2
+<P>Accreditation Ranges of Two Interconnected Sub systems
+<P>Subsystem X Subsystem Y
+<P>N/A TS
+<P>S S
+<P>C C
+<P>Class B1 Class B3
+<P>In a network, an accreditation range bounds the sensitivity levels of 
+information that may be sent (exported) to or received (imported) from each 
+interconnected subsystem15. For example, if a network consists of only dedicated 
+and system high subsystems, each subsystem will be assigned single-valued 
+accreditation ranges (i.e., an accreditation range consisting of one sensitivity 
+level).
+<P>When the same communications channel processes information at different 
+levels, the data must be labeled through some protocol agreed upon by the 
+communicating systems.
+<P>______________
+<P>
+<DL compact>
+  <DT>15 Note that information exported or imported to a subsystem having a 
+  single level accreditation range is implicitly labeled at that level. It is 
+  also possible for a subsystem with a multilevel accreditation range to employ 
+  network interface devices with single-level ports, in which case the data 
+  transferred over such ports is also implicitly labeled. </DT></DL>
+<DL>
+  <DD>DODD 5200.28 Enclosure (5) also addresses A!5 that have not been 
+  accredited:<BR>
+  <DD>Untrusted, unaccredited AIS ... may be components of a network.... Only 
+  unclassified information, which does not include sensitive unclassified 
+  information, may be sent to ad from untrusted, unaccredited 
+AIS.<BR></DD></DL>This trust requirement is satisfied by restricting the 
+accreditation rage of the untrusted, unaccredited AIS to Unclassified (U).
+<P>
+<H4><A name="HDR6.1.2   4 53">6.1.2 Device Range</A></H4>A network subsystem is 
+typically connected to another subsystem through some kind of 1/0 network 
+interface or device (see Figures 3~) ad the same device may provide connection 
+to multiple subsystems.
+<P>Although a 1/0 device is part of a subsystem, it may be designated to process 
+a more restricted set of sensitivity levels than the accreditation rage of the 
+subsystem as a whole. This leads to the concept of a device range. Each 1/0 
+device in a subsystem that is used to communicate with other subsystems in the 
+network must have a device rage. The device rage may be single level, or it may 
+be a set of levels (in which case the device is referred to as multilevel), and 
+it must be included within the subsystem accreditation range. The TCSEC states 
+that "systems that have been evaluated at classes B2 ad above must support 
+minimum ad maximum security labels for all multilevel 1/0 devices". The purpose 
+of device labels is to document the constraints placed on the security levels of 
+information authorized for the devices.
+<P>Each physically attached multilevel system (if any) has a minimum ad maximum 
+sensitivity level associated with it. A B1 or higher system interconnected to a 
+second system must ensure that both imported and exported information is 
+contained within appropriate sensitivity levels. Information Transfer 
+Restrictions
+<P>The following points summarize the discussion on the restrictions imposed on 
+information transfer between interconnected devices.
+<P>Information exported or imported using a single-level device is labeled 
+implicitly by the security level of the device. As shown in Figure 3, any 
+information transferred between the single-level (S) devices on Subsystems X and 
+Y is implicitly labeled S.
+<P>Figure 3
+<P>Implicit Labeling
+<P>Subsystem X Subsystem Y
+<P>Information exported from one multilevel device and imported at another 
+multilevel device must be labeled through an agreed-upon protocol, unless it is 
+labeled implicitly by using a communications link that always carries a single 
+level. For instance, in Figure 4, Secret and Confidential information may be 
+transferred between the multilevel devices.
+<P>Figure 4
+<P>Protocol Labeling
+<P>Subsystem X Subsystem Y
+<P>Figure5
+<P>Compatibility Labeling
+<P>Subsystem X Subsystem Y
+<P>Information exported at a given security level can be sent only to a 
+importing device whose device rage contains that level or a higher level. In 
+Figure 5,Subsystem X is allowed to export only Secret information to Subsystem 
+Y's multilevel device. Subsystem Y is allowed to export Secret ad Confidential 
+information to Subsystem X, because the device rage Subsystem X is TS-S. If the 
+importing device rage dominates the exported level, the information is 
+implicitly or explicitly relabeled upon receipt at a higher level within the 
+importing device range.
+<P>Figure 6
+<P>Relabeling
+<P>Subsystem X Subsystem Y
+<P>In Figure 6, Subsystem Y relabels information imported from Subsystem X. The 
+information transfer restrictions also permit one-way communication (i.e., no 
+acknowledgments) from one device to another whose rages have no level in common, 
+as long as each level in the sending device rage is dominated by some level in 
+the receiving device rage. It is never permitted to send information at a given 
+level to a device whose rage does not contain a dominating level.
+<P>In most interconnected subsystems, the bidirectional flow of information is 
+permitted. In this environment, the sensitivity level of any transmitted message 
+must be within the accreditation range of both the sending and receiving 
+systems. In some networks, an additional restriction on information flow may be 
+unidirectional communications. This restriction may enhance security. The 
+following discussions refer to Figure 7.
+<P>Figure 7
+<P>Bidirectional and Unidirectional Information Flow 
+<P>Subsystem X Subsystem Y
+<P>TS (C or U) C
+<P>SH (TS) Subsystem Z (C) MLS (C-U)
+<P>TS
+<P>S
+<P>C
+<P>MLS (TS-C)
+<P>The system high mode is usually assigned to A!S that are unevaluated or are 
+NCSC evaluated in class C. These AIS do not employ explicit labels because they 
+cannot be trusted to differentiate between sensitivity levels. All information 
+within these AIS is implicitly labeled. When exported on a single level channel, 
+by default the information is labeled implicitly by the level of the channel. 
+Human-readable output must be labeled at the system high level; it may be 
+manually downgraded by an authorized reviewer.
+<P>Explicit labels are required on a multilevel channel. In order to export 
+explicit labels, Subsystem X would normally be expected to be NCSC-evaluated at 
+BI or above or employ an 1/0 device, such as those shown in Figure 6, NCSC 
+evaluated at BI or above. Also, Subsystem X or the 1/0 device should be used as 
+specified in Section 4 of this guideline. Lacking such NCSC evaluation, the MOA 
+between the Accreditors would have to specifically address these labels.
+<P>Subsystem X can import a message from Subsystem Y, but cannot acknowledge 
+receipt of that message, because an exported acknowledgment (labeled TS) cannot 
+be imported by Subsystem Y, which can only receive C or U information. 
+Transmitting an acknowledgment from Subsystem X to Subsystem Y would constitute 
+a write-down (i.e., writing information at a lower sensitivity level-generally a 
+security violation.)
+<P>Subsystems Y and Z can exchange information at C since this level is in the 
+accreditation range of each subsystem. When only unidirectional communication 
+(no acknowledgment) is utilized between two subsystems, write up is permitted if 
+each sensitivity level in the source subsystem is dominated by a sensitivity 
+level in the destination subsystem. The receiving subsystem must change the 
+sensitivity level of the message when the message is received. For instance, U 
+information sent from Subsystem Y will be labeled C by Subsystem Z.
+<P>
+<H3><A name="HDR6.2   3 57">6.2 Interconnection Rule</A></H3>The Interconnection 
+Rule states that each device in the network must be separately accredited to 
+operate in an approved security mode of operation and with a specific 
+accreditation range. The device is accredited to participate in the network at 
+those levels and only those levels. This means that information exported at a 
+given sensitivity level can be sent only to an importing device whose 
+accreditation range contains that level or a higher level. Information is 
+relabeled, implicitly or explicitly, upon reception at a higher level within the 
+importing device accreditation range only if the original level is not in that 
+range.
+<P>According to the Interconnection Rule, a multilevel network may contain 
+devices with different operating modes: dedicated, system high, partitioned, and 
+multilevel. Also the devices may differ in the sensitivity levels and categories 
+which they process, and the formal access approvals of their users (some users 
+may not have access to all information).
+<P>Figure 7 illustrates the flexibility of the Interconnection Rule. For 
+example, the Interconnection Rule will allow, with certain restrictions, a 
+multilevel subsystem to communicate with a single-level subsystem and with 
+another multilevel subsystem (and the two MLS subsystems may have different 
+accreditation ranges). It also allows for one-way communication to a 
+higher-level system. It is intended to be a non-restricting rule and yet ensure 
+that each system receives only information that it can properly mark and handle. 
+Interconnection in the context of the Interconnection Rule means only direct 
+connections, that is, without any intermediate accredited subsystem.
+<P>The Interconnection Rule alone does not guarantee that classified information 
+will not be exposed to greater risks in a network than in a stand-alone 
+environment. One problem in networks that is dealt with at some length below is 
+the cascading problem.
+<P>Figure 8
+<P>A Complex Interconnection
+<P>TS: P,A TS: Q,C
+<P>Subsystem X Subsystem Y
+<P>
+<H4><A name="HDR6.2.1   4 58">6.2.1 A Complex Example</A></H4>The 
+Interconnection Rule and device range allow for some rather challenging 
+situations. Consider, for example, the connection depicted in Figure 8. The 
+system on the left processes TS information of two types: categories A and P 
+(where P is the union of categories C and D, P = C U D). The system on the right 
+processes the categories C and Q (where Q is the union of categories A and B, Q 
+= A U B). The two devices have no sensitivity levels in common. Yet this is a 
+legitimate connection as long as only TS ,A and TS ,C information is 
+transferred. Any information sent must be relabeled upon receipt. Information in 
+category A is relabeled Q when received on the right, ad information in category 
+C is relabeled P when received on the left
+<P>
+<H3><A name="HDR6.3   3 58">6.3 Risk Factors</A></H3>There are two global 
+considerations that affect the interconnection of systems. The first is called 
+propagation of local risk and the second is the cascading problem. Before 
+discussing these considerations, the concepts of subsystem connection view and 
+global network view need to be introduced.
+<P>As discussed in the previous section, any subsystem that is connected to 
+other subsystems must enforce the Interconnection Rule. Using the subsystem 
+connection view, each subsystem responsible for maintaining the separation of 
+multiple levels of information must decide locally whether or not information 
+can be sent or received. This view, then, does not require a subsystem to know 
+the accreditation ranges of all the subsystems on the network; only of those 
+with which it can communicate without an intermediary.
+<P>The Interconnection Rule applies to communication between any two (or more) 
+accredited systems. However, even when the Interconnection Rule is followed, 
+there may be other potential security problems that will require the 
+implementation of additional constraints on the network. In order to address 
+these problems, it is necessary to adopt a global view of the network. This view 
+requires a knowledge of the accreditation ranges of all the subsystems in the 
+network. That is, it is no longer determinable locally whether or not a 
+constraint is being satisfied. These accreditation ranges are taken into account 
+when determining whether or not a subsystem should be allowed to connect to the 
+network. In this way, the potential damage that can occur when information is 
+compromised or modified can be limited to an acceptable level.
+<P>Two global concerns are discussed below. One concern is the propagation of 
+local risk; the other is the cascading problem.
+<P>
+<H4><A name="HDR6.3.1   4 59">6.3.1 Propagation of Local Risk</A></H4>The term 
+Propagation of Local Risk comes from the notion of jeopardizing the security of 
+a system as a result of weaknesses in other systems to which it may be 
+connected. Table 3 in Section 4 recommends minimum classes of trusted systems 
+for specific environments. Unfortunately, in many cases, operational needs have 
+led to the accreditation of systems for multilevel operation that would not meet 
+the requirements of the recommended class. While this increased risk may be 
+accepted by the Accreditor of a particular system, connection of such a system 
+to a network exposes users of all other subsystems in the network to the 
+additional risk. Consequently, when an unevaluated system, or one that does not 
+meet the class recommended for its accreditation, is proposed for connection to 
+a network, constraints should be considered, such as one-way connections, manual 
+review of transmissions, cryptographic isolation, or other measures to limit the 
+risk it introduces.
+<P>In the special case of a common user network such as DDN, it may be necessary 
+to provide communications capabilities among systems that do not conform to the 
+security requirements established by the network Accreditor (i.e., a system 
+meeting no security requirements may be connected to a network.) One common way 
+to provide network service to these non-conforming systems while still 
+protecting the other, conforming, systems would be to segregate the 
+non-conforming systems into closed communities that could not directly 
+communicate with conforming systems. This approach is discussed in detail in the 
+Defense Data Network Security Architecture [18].
+<P>
+<H4><A name="HDR6.3.2   4 59">6.3.2 The Cascading Problem</A></H4>One of the 
+problems that the Interconnection Rule does not address is the cascading 
+problem, discussed in Appendix C of the INI. The cascading problem exists when 
+an attacker can take advantage of network connections to reduce the nominal 
+system resistance against leaking information across a range of sensitivity 
+levels. Most multilevel systems, evaluated or not, are vulnerable to some risk 
+that information can be leaked from a higher to a lower level supported on the 
+system. The accreditation range of a subsystem represents a judgment that the 
+risk is acceptable for that range of classifications. The size of the range is 
+one indication of the attractiveness of the system as a target, so larger ranges 
+call for more care in system design and management. In particular, Section 4 of 
+this guideline discusses computation of a risk index calculation based on the 
+accreditation range, and recommends a minimum evaluation class for a given risk 
+index.
+<P>The cascading problem results from the observation that subsystems may be 
+connected in such a way that the network covers a larger sensitivity level range 
+than the individual systems are accredited to handle. Depending on the actual 
+topology of the interconnection and the characteristics of the installations, 
+the amount of effort required for an attacker to take advantage of residual 
+vulnerabilities may be less than what is required for the network sensitivity 
+range.
+<P>To see how this is possible, consider two systems, each of which is 
+accredited to handle two adjacent classifications of information, as shown in 
+Figure 9. Subsystem A processes Secret and Top Secret information, and all users 
+are cleared to at least the Secret level. Subsystem B processes Confidential and 
+Secret information, and all users are cleared to at least the Confidential 
+level.
+<P>The network as a whole has three levels of information. However, the leakage 
+resistance of the network is only that offered by two systems qualified for only 
+two levels. To make Top Secret information available to Confidential users, an 
+attacker might attempt to:
+<P>
+<OL>
+  <OL>
+    <LI>Install a Trojan horse in Subsystem A to leak some Top Secret 
+    information to Secret<BR>
+    <LI>Send that information across the network link to Subsystem B<BR>
+    <LI>Install a Trojan horse in Subsystem B to leak the original Top Secret 
+    information, now labeled Secret, to Confidential.<BR></LI></OL></OL>The path 
+from Top Secret in Subsystem A to Confidential in Subsystem B is referred to as 
+a cascading path, with three steps. Step 1 is from TS to S in Subsystem A, Step 
+2 is the network link, and Step 3 is from S to C in Subsystem B. Steps (1) and 
+(3), the downgrading steps, offer resistance commensurate with strictly smaller 
+ranges. Step (2), the network link, offers no additional resistance, given that 
+the two Trojan horses have been written and installed.
+<P>Figure 9
+<P>Cascading Problem
+<P>Subsystem A
+<P>TS Subsystem B
+<P>S S
+<P>C
+<P>The question is, whether subverting two systems qualified for two levels of 
+information is as hard as defeating one system qualified for three levels of 
+information. In some cases it might be. Lee [19] gives an argument that if two 
+systems have probabilistically independent flaw sources, "...the resistance to 
+threat of a cascade of two B2 systems is approximately the same as, or even 
+better than, that of a B3 system."
+<P>
+<P>But Lee also remarks that demonstrating effective independence of flaw 
+sources m a practical case is not easy, and that two systems may have the same 
+or equivalent flaws, particularly if their TCBs are the same, or are separate 
+implementations of a single flawed design. Exploitation of the flaws on two or 
+more systems does present additional resistance to the attacker, but it should 
+be kept in mind that physical access to all interconnected systems is not 
+necessary to send untrusted software to them, as our experience with viruses 
+shows unmistakably.
+<P>
+<H5><A name="HDR6.3.2.1   5 61">6.3.2.1 Tests for Cascading. </A></H5>For a 
+relatively large and complex interconnection of systems, it might not be obvious 
+whether a cascading problem exists. Appendix C of the TNI includes three 
+approaches, with different degrees of complexity and precision, for recognizing 
+a potential cascading problem. These range from a simple test that is rather 
+pessimistic, called the nesting condition, to a complex procedure. Appendix A of 
+this TNIEG reviews the nesting condition, and presents additional information 
+concerning tests for the cascading problem.
+<P>Whichever test for cascading is employed, its result is to focus attention on 
+certain subsystems and their network connections that might potentially be 
+subject to a cascading threat. The next step is to determine whether the systems 
+involved are actually vulnerable to the multiple coordinated attack that is 
+necessary for cascading, ad, if so, to consider countermeasures.
+<P>
+<H5><A name="HDR6.3.2.2   5 61">6.3.2.2 Solutions.</A></H5>There are several 
+ways to tackle a cascading problem. Since cascading depends on cooperative 
+action by malicious software on the participating subsystems, one approach is to 
+institute configuration controls to prevent installation of unscrutinized 
+software, or perhaps isolating it from network usage.
+<P>Another solution is to use a more trusted subsystem at appropriate nodes in 
+the network, so that an attacker will be forced to overcome a protection 
+mechanism commensurate with the seriousness of the potential compromise. In 
+Figure 9, for example, if either subsystem A or subsystem B is NCSC-evaluated at 
+class B3, which is sufficient according to Table 3 in Section 4 of this 
+guideline for a range of Top Secret to Confidential, then the attacker is 
+presented with an acceptable level of difficulty.
+<P>A cascading threat can also be interdicted by eliminating certain network 
+connections, to break paths by which an attacker could compromise information 
+with insufficient resistance. This solution is practical only when the links to 
+be eliminated are not needed for operational reasons. Sometimes end-to-end 
+encryption can be used to address a cascading threat while preserving necessary 
+connectivity, by reducing the level of information available to intermediate 
+systems on a communication path.
+<P>
+<H2><A name="HDR 2 62">APPENDIX A: Tests for the Cascading Problem</A></H2>The 
+cascading problem was discussed in Section 6. This appendix reviews the 
+approaches presented in Appendix C of the TN! for testing whether a cascading 
+problem exists in an interconnection of accredited subsystems. Three criteria 
+are given there: the nesting condition, the cascade condition, and a heuristic 
+procedure. The nesting condition is a simple but pessimistic test that can, in 
+some cases, dismiss the possibility of a cascading problem. When it fails, there 
+is not necessarily a cascading problem; other, more accurate, tests should then 
+be applied to confirm and locate it. This appendix first summarizes the nesting 
+condition, and then discusses other approaches briefly. A forthcoming report 
+will provide further guidance on computational approaches for the cascading 
+problem.
+<P>A.l Nesting Condition
+<P>The nesting condition is evaluated solely on the basis of the accreditation 
+ranges of the subsystems. In the form given both here and in the TNI, it is 
+applicable only when all sensitivity levels are totally ordered - that is, if 
+they can be placed in order such that each one is higher than the one before it. 
+This is true, in particular, if they are pure classifications, with no 
+categories or compartments.
+<P>The nesting condition is satisfied, by definition, if the accreditation 
+ranges of each pair of subsystems are either disjoint or nested. A pair of 
+accreditation ranges is disjoint if they have no levels in common. They are 
+nested if one range is included (as a subset) in the other. All possible pairs 
+(not just those of adjacent subsystems) must be considered, but some pairs may 
+be nested while others are disjoint.
+<P>If the nesting condition is satisfied, there is no cascading problem. Because 
+the nesting condition does not take into account which network subsystems are 
+actually connected to one another, it can sometimes give a pessimistic result, 
+i.e., there are cases when the nesting condition fails, but there is actually no 
+cascading problem.
+<P>Figure A-I
+<P>Accreditation Ranges of Two Interconnected Sub systems
+<P>Subsystem Y
+<P>Subsystem X TS
+<P>S S
+<P>C C
+<P>Class B1 Class B3
+<P>Example 1: Consider the situation illustrated in Figure A-I. The 
+accreditation range of Subsystem X is nested within that of Subsystem Y (i.e., 
+C-S is completely contained within C-TS). Therefore, the nesting condition is 
+satisfied, and there is no cascading problem.
+<P>Figure A-2
+<P>Cascading Problem
+<P>Subsystem A
+<P>TS Subsystem B
+<P>S S
+<P>C
+<P>Example 2: Consider the situation illustrated in Figure A-2. The 
+accreditation ranges of Subsystem A and Subsystem B are not disjoint; neither is 
+one completely contained within the other. Therefore, the nesting condition 
+fails, ad a cascading problem is possible. Note, however, that the nesting 
+condition would still fail even if the two subsystems were not connected to one 
+another, yet in that case there would be, no cascading problem.
+<P>The situation is more complex when sensitivity levels are drawn from a 
+partially ordered set, so that the accreditation ranges of some subsystems have 
+sensitivity levels that are incomparable. Two sensitivity levels are 
+incomparable when neither is greater than or equal to the other. Sensitivity 
+levels with category sets are, in general, incomparable. An extended form of the 
+nesting condition has been devised that applies to partially ordered sensitivity 
+level sets. [20]
+<P>A.2 Other Approaches
+<P>Appendix C of the TNI contains two other criteria for the cascading problem: 
+the cascade condition, which is a mathematical characterization of the problem, 
+and a heuristic procedure. These criteria have been superseded by improved 
+methods since the publication of the TNI. The new approach is described in a 
+separate report, in order to give adequate scope to the presentation of 
+background and context necessary to apply it appropriately.
+<P>The need for a new approach arose from a recognition of the limitations of 
+the existing criteria. The cascade condition is accurate but it is not, in 
+itself, a computational procedure. It is limited by its assumption that all of 
+the interconnected subsystems have been given evaluation classes. The heuristic 
+procedure is believed to provide a conservative approximate test for cascading, 
+but only when applied to interconnections in which all communication paths are 
+two-way, i.e., capable of both sending and receiving. A simpler procedure is now 
+available.
+<P>
+<H2><A name="HDR 2 64">APPENDIX B: Background References</A></H2>Neither the TNI 
+nor this TNIEG contain tutorial information on security and networking; it is 
+assumed that the reader will have some background in both areas. There is 
+considerable literature available. Following are some references that provide 
+background and related information concerning security in networks:
+<P>
+<DL>
+  <DT>[1] 
+  <DD>M. D. Abrams and H. J. Podell, Computer and Network Security, a Tutori al, 
+  IEEE Computer Society Press 1987. 
+  <DT>[2] 
+  <DD>D. W. Davies and W. L. Price, Security for Computer Networks, John Wiley 
+  &amp; Sons 1984. 
+  <DT>[3] 
+  <DD>D. E. Denning, Cryptography and Data Security, Addison-Wesley 1983. 
+  <DT>[4] 
+  <DD>M. Gasser, Building a Secure Computer System, Van Nostrand Reinhold 
+  Company 1988. 
+  <DT>[5] 
+  <DD>International Standards Organization, Information Processing Systems - 
+  Open System Interconnection - Basic Reference Model, 15 October 1984. 
+  International Standard 7498. Part 2: Security Architecture, February 
+  1989.1507498-2-1988(E). 
+  <DT>[6] 
+  <DD>Charles P. Pfleeger, Security in Computing, Prentice-Hall 1989. 
+  <DT>[7] 
+  <DD>Andrew S. Tanenbaurn, Computer Networks, Second Edition, Prentice-Hall 
+  1988. </DD></DL>
+<H2><A name="HDR 2 66">APPENDIX C: Encryption</A></H2>May networks today use or 
+plan to use encryption as a fundamental mechanism for providing security 
+services. The encryption devices provide a security perimeter at the protocol 
+layer at which they provide service (typically the Network or Transport Layer). 
+This section presents some information on how an encryption system can be part 
+of the NSAD. It discusses MAC and DAC, use of encryption to reduce the number of 
+AIS, and the risk index of the encryption system.
+<P>C.1 Use of Encryption
+<P>As indicated in the TN!, an encryption mechanism is evaluated differently 
+than other mechanisms. Evaluating encryption mechanisms has a long history 
+predating the TNI. Evaluation of an encryption mechanism is part of COMSEC. 
+Generally, encryption mechanisms receive a rating of the highest level of 
+classified information which may be protected using that mechanism. Therefore, 
+the only rating applicable to an encryption mechanism is the classification 
+level of the information that is to be protected. This classification level also 
+establishes the requirement. 
+<P>In general, organizations using the TNI and this document select their 
+encryption mechanisms from a list provided by an organization which is 
+responsible for evaluating such mechanisms. In many cases, that organization is 
+the NSA.
+<P>A more complicated situation exists when encryption is employed above the 
+Link Protocol Layer, layer 2. At layers 3 and 4 the protocols are concerned with 
+the end systems or intermediate devices (e.g., hosts, network switches) that the 
+links connect. Higher layers are concerned with other peer entities. 
+Traditionally, encryption applied above layer 2 has been termed end-to-end 
+encryption, or E3.
+<P>An E3 system may be provided as (part of) an NTCB. When the E3 system is 
+integral to the NTCB, the use of the E3 system requires evaluation under the 
+TCSEC with interpretations in the TNI. The evaluation must consider (1) the 
+accreditation rage of the user interface, (2) the risk index for the bypass in 
+the E3 device, and (3) the risk index between the highest sensitivity data ad 
+the lowest clearance of user on the network.
+<P>Depending on the design, devices of an E3system may satisfy all requirements 
+for a system evaluated under Part! of the TN!. MAC may be provided either 
+explicitly or implicitly. Explicit MAC is provided if the packets sent by the 
+encryption device include a security label. Implicit MAC is provided if the 
+security level must be inferred from the encryption key used to protect the 
+data. All data protected by that key must be classified at a single security 
+level.
+<P>DAC is often provided in an E3 system as well. Typically, keys for exchanging 
+data are provided to the E3 devices only after DAC has been applied. The 
+encryption devices can provide identification ad authentication. While 
+identification is generally done explicitly (by transmitting an identifier), 
+authentication can be done implicitly (i.e., by the use of a unique key). The 
+encryption devices may perform certain types of auditing as well. Typically, a 
+device collects information and forwards it to another device for storage. 
+Information collected may include: connections established, connections refused, 
+packets with inappropriate labels, and misrouted packets. The granularity 
+provided by these E3 mechanisms is determined by the protocol layer at which the 
+service is offered.
+<P>Figure C-1
+<P>Typical Interconnected AIS
+<P>Host LAN Gateway WAN Gateway LAN Host 
+<P>AIS 1 AIS 2 AIS 3 AIS 4 AIS 5 AIS 6 AIS 7
+<P>In a typical network there will be a number of A!S. For example, two hosts 
+are often attached to separate local networks connected by a wide area network 
+(WAN). As shown in Figure C-1, the path between the hosts (without E3) may 
+involve 7 separate interconnected AIS.
+<P>E<EM sup>3 can help reduce the number of A!S. By placing E3 devices between 
+each host and the LAN to which it is connected ad incorporating suitable key 
+distribution components, the LANs and WAN collapse into a single network system 
+and the path now traverses only three AIS, as shown in Figure C-2. A!S 2 
+provides security services to the hosts, therefore, it may be part of the 
+NTCB.</EM>
+<P>Figure C-2
+<P>Using End-to-End Encryption to Reduce Number of AIS
+<P>Host E<EM sup>3 LAN Gateway WAN Gateway LAN E3 Host </EM>
+<P>AIS 1 AIS 2 AIS 3 
+<P>There may be a hierarchy of trusted system views. For example, E3 may be 
+provided at protocol layers 3,4, and 7. Depending on the architecture, the 
+layers of E3 could constitute a single NTCB or each could be a separate NTCB. In 
+the latter case, the devices supporting different layers would be part of 
+different AIS and the interconnection rules would be applied between higher and 
+lower protocol layers.
+<P>In general, an A!S at a higher protocol layer encompasses more devices than 
+one at a lower protocol layer. The granularity of services offered is also finer 
+at the higher protocol layer.
+<P>In a situation where the higher protocol layer encryption system also has a 
+higher evaluation class, the lower protocol layers might be considered less 
+trusted just as current E3 designs treat the subnetwork as untrusted. Continuing 
+the analogy, just as certain physical security requirements are imposed on the 
+untrusted subnetwork, the higher protocol layer encryption might rely on 
+characteristics of the lower protocol layers.
+<P>However, one may be faced with a dilemma that the higher protocol layer E<EM 
+sup>3 system has a lower security evaluation than the lower-protocol-layer 
+trusted system. For example, a WAN with E3 at layer 3 might be evaluated Al. The 
+system might also provide E3 at layer 4, but an NTCB that includes layer 4 
+might. only be rated B2. In this case, treating the subsystems constituting the 
+separate layers as separate AIS and using the Interconnection Rule to accredit 
+the network as a whole could prove advantageous, as illustrated in Figure 
+C-3.</EM>
+<P>Figure C-3
+<P>Separate Layers Treated as Separate AIS
+<P>B2 B2
+<P>(N-C) (N-C)
+<P>A1
+<P>0SI Layer 3 Network
+<P>(N-TS)
+<P>B2 B2
+<P>(S-TS) (S-TS)
+<P>C.2 Encryption Mechanisms
+<P>In a trusted AIS, the recommended evaluation class is determined using a risk 
+index based on the highest data classification and the lowest user clearance. In 
+considering an E3 subsystem in a network, three separate indexes must be 
+considered [21]:
+<P>
+<OL>
+  <LI><B>The subscriber's range of sensitivity levels. The clear text side of 
+  the encryption subsystem must be sufficiently trusted to maintain separation 
+  among the clear text data streams sent and received by the subscriber attached 
+  to the encryption subsystem. A risk index is based on the highest and lowest 
+  sensitivity levels sent or received by the subscriber through this encryption 
+  subsystem.</B><BR>
+  <LI><B>The bypass. In an E3 system, protocol control information must be sent 
+  around the encryption unit through a bypass. The software and hardware to 
+  implement the bypass must be trusted not to send user data through the bypass. 
+  A risk index can be computed based on the difference between the sensitivity 
+  level of the clear text information and the sensitivity level of the untrusted 
+  subsystems of the network.</B><BR>
+  <LI><B>The range of sensitivity levels across the network. This risk index is 
+  concerned with the difference between the highest level of information any 
+  host attached to the network and the lowest clearance of a user that could 
+  potentially get access to that information. Depending on the characteristics 
+  of the network, this risk index could be larger than either 1. or 2. above. 
+  The worst case scenario occurs when some users have lower clearances than the 
+  level at which the network backbone is physically protected. For example, 
+  there are currently plans to allow some uncleared users on the DISNET segment 
+  of the DDN [22] which will be physically protected at the Secret level. In 
+  that case, the risk index for the bypass works the opposite of the normal 
+  case: the ciphertext side will be the higher of the two 
+ratings.</B><BR></LI></OL>The subsystem which performs access control and key 
+distribution must also be concerned with this risk range since improper key 
+distribution could lead to compromise across the entire network. An erroneous 
+distribution could potentially permit the lowest cleared user to access the 
+highest classification of information.
+<P>
+<H2><A name="HDR 2 70">LIST OF REFERENCES</A></H2>
+<DL>
+  <DT>[1] 
+  <DD>Department of Defense Computer Security Center, Computer Security 
+  Requirements - Guidance for Applying the Department of Defense 
+  Trusted,Computer System Evaluation Criteria in Specific Environments, 25 June 
+  1985. CSC-STD~03-85 
+  <DT>[2] 
+  <DD>Department of Defense, Department of Defense Trusted Computer System 
+  Evaluation Criteria, 15 August 1983. Department of Defense 5200.28-STD 
+  <DT>[3] 
+  <DD>National Computer Security Center, Trusted Network Interpretation of the 
+  Trusted Computer System Evaluation Criteria, Version 1, July 1987. NCSC-TG-005 
+
+  <DT>[4] 
+  <DD>Department of Defense, Security Requirements for Automative Data 
+  Processing (ADP) Systems, March 1988. Department of Defense Directive 5200.28 
+  <DT>[5] 
+  <DD>National Computer Security Center, Trusted Product Evaluation, A Guide for 
+  Vendors, draft 1 March 1988 (or most recent edition). NCSCTG~02, Version 1 
+  <DT>[6] 
+  <DD>National Security Agency, Information Security Products and Services 
+  Catalogue , (quarterly updates). 
+  <DT>[7] 
+  <DD>National Institute of Standards and Technology, United States Department 
+  of Commerce, Guideline for Computer Security Certification and Accreditation, 
+  27 September 1983. FIPS PUB 102 
+  <DT>[8] 
+  <DD>V. A. Ashby, Thomas Gregg, and Annabelle Lee, "Security Approach for Rapid 
+  Prototyping in Multilevel Secure Systems," Fifth Annual Computer Security 
+  Applications Conference, December 1989. 
+  <DT>[9] 
+  <DD>International Standards Organization, Information processing systems - 
+  Open Systems Interconnection - Basic Reference Model, 15 October 1984. 
+  International Standard 7498 
+  <DT>[10] 
+  <DD>Defense Intelligence Agency, Security Manual for the Uniform Protection of 
+  Intelligence Processed in Automated Information Systems and Networks (U), 
+  Supplement to Director of Central Intelligence Directive (DCID) 1/16 (U), 
+  SECRET, 19 July 1988. 
+  <DT>[11] 
+  <DD>National Institute of Standards and Technology, United States Department 
+  of Commerce, Guideline for Automatic Data Processing Risk Analysis, August 
+  1979. FIPS PUB 65 
+  <DT>[12] 
+  <DD>T. E. Bell, "Managing Murphy's Law: Engineering a Minimum-Risk System," 
+  IEEE Spectrum, pp. 2i27, June 1989. 
+  <DT>[13] 
+  <DD>National Computer Security Center, Proceedings of the 1988 Computer 
+  Security Risk Management Model Builders Workshop, Fort Meade, MD, May 1988. 
+  <DT>[14] 
+  <DD>Sammy Migues, "A Guide to Effective Risk Management," Third Aerospace 
+  Computer Security Conference Proceedings, December 1987. 
+  <DT>[15] 
+  <DD>Carl E. Laudwehr and H.O. Lubbes, An Approach to Determining Computer 
+  Security Requirements for Navy Systems, 13 May 1987. 
+  <DT>[16] 
+  <DD>International Standards Organization, Information Processing Systems - 
+  Open Systems Interconnection - Basic Reference Model - Part 2: Security 
+  Architecture, October 1988. International Standard 7498-2-1988(E) 
+  <DT>[17] 
+  <DD>Ingrid M. Olson, Eugene F. Troy, Milan S. Kuchta, and Brian W. McKenney, 
+  Disclosure Protection of Sensitive Information," 13th National Computer 
+  Security Conference Proceedings, 1A October 1990. 
+  <DT>[18] 
+  <DD>Robert W. Shirey, "Defense Data Network Security Architecture," Computer 
+  Communication Review, April 1990. 
+  <DT>[19] 
+  <DD>T. M. P. Lee, "Statistical Models of Trust: TCB's vs. People," IEEE 
+  Symposium on Security and Privacy, 1989. 
+  <DT>[20] 
+  <DD>Jonathan K. Millen and Martin W. Schwartz, "The Cascading Problem for 
+  Interconnected Networks," Fourth Aerospace Computer Security Conference 
+  Proceedings, December 1988. 
+  <DT>[21] 
+  <DD>R. W. Shirey and S.!. Schaen, "ARCHWAY Program Preliminary Planning," 
+  MTR~7W00093~2, The M!TRE Corporation, December 1987. Not currently in the 
+  public domain. 
+  <DT>[22] 
+  <DD>G. R. Mundy and R. W. Shirey, "Defense Data Network Security 
+  Architecture," MILCOM `87 Proceedings, 21 October 1987. </DD></DL>
+<H2><A name="HDR 2 72">ACRONYMS</A></H2>
+<DL compact>
+  <DT>AIS Automated Information System 
+  <DT>ASD Assistant Secretary of Defense 
+  <DT>AUTODIN Automated Digital Network 
+  <DT>BI Background Investigation 
+  <DT>C Confidential 
+  <DT>C&amp;A Certification and Accreditation 
+  <DT>COMPUSEC Computer Security 
+  <DT>COMSEC Communications Security 
+  <DT>COTS Commercial-off The-Shelf 
+  <DT>CPU Central Processing Unit 
+  <DT>CBS Central Security Service 
+  <DT>CI Command, Control, Communications, and Intelligence 
+  <DT>CSSII Computer Security Subsystem Interpretation 
+  <DT>DAA Designated Approving Authority 
+  <DT>DAC Discretionary Access Control 
+  <DT>DCA Defense Communications Agency 
+  <DT>DDN Defense Data Network 
+  <DT>DIA Defense Intelligence Agency 
+  <DT>DISNET Defense Integrated Secure Network 
+  <DT>DOD Department of Defense 
+  <DT>DODD Department of Defense Directive 
+  <DT>DOS Denial of Service 
+  <DT>E<EM sup>3 End-to-end Encryption</EM> 
+  <DT>ENQ Enquiry 
+  <DT>EPL Evaluated Products List 
+  <DT>FIPS PUB Federal Information Processing Standards Publication 
+  <DT>GOSIP Government 0SI Profile 
+  <DT>I&amp;A Identification and Authentication 
+  <DT>INFOSEC Information Security 
+  <DT>IPC Inter-Process Communication 
+  <DT>1S0 International Standards Organization 
+  <DT>1SS0 Information System Security Officer 
+  <DT>JCS Joint Chiefs of Staff 
+  <DT>LAN Local Area Network 
+  <DT>MAC Mandatory Access Control 
+  <DT>MLS Multilevel Secure 
+  <DT>MOA Memorandum of Agreement 
+  <DT>MOR Memorandum of Record 
+  <DT>N Not Classified but Sensitive 
+  <DT>NACSI National Communications Security Instruction 
+  <DT>NCSC National Computer Security Center 
+  <DT>NDI Non-Development Item 
+  <DT>NIU Network Interface Unit 
+  <DT>NSA National Security Agency 
+  <DT>NSAD Network Security Architecture and Design 
+  <DT>NSAP Network Service Access Point 
+  <DT>NTCB Network Trusted Computing Base 
+  <DT>0SI Open System Interconnection 
+  <DT>OT&amp;E Operational Test and Evaluation 
+  <DT>PDS Protected Distribution System 
+  <DT>PDU Protocol Data Unit (a.k.a. packet, datagram) 
+  <DT>POSIX Portable Operating System Interface for Computer 
+  <DT>Environments 
+  <DT>RFP Request for Proposal 
+  <DT>RI Risk Index 
+  <DT>S SECRET 
+  <DT>SBI Special Background Investigation 
+  <DT>SCI Special Compartmented Information 
+  <DT>SDNS Secure Data Network System 
+  <DT>SH System High 
+  <DT>SlOPESI Single Integrated Operational Plan-Extremely Sensitive 
+  <DT>Information 
+  <DT>ST&amp;E Security Test and Evaluation 
+  <DT>STS Single Trusted System 
+  <DT>TCB Trusted Computing Base 
+  <DT>TCP/IP Transmission Control Protocol/Internet Protocol 
+  <DT>TCSEC Trusted Computer System Evaluation Criteria 
+  <DT>TEMPEST (Not an acronym) 
+  <DT>TNI Trusted Network Interpretation 
+  <DT>TNIEG TNI Environments Guideline 
+  <DT>TS TOP SECRET 
+  <DT>TSAP Transport Service Access Point 
+  <DT>WAN Wide Area Network </DT></DL><A name=ENDFILE></A></BODY></HTML>

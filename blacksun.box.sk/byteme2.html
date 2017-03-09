@@ -1,0 +1,502 @@
+<HTML><HEAD><TITLE>Byteme 2</TITLE>
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type>
+<STYLE type=text/css>A:active {
+	TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ffffff; TEXT-DECORATION: underline
+}
+A:link {
+	TEXT-DECORATION: none
+}
+A:visited {
+	TEXT-DECORATION: none
+}
+.small {
+	FONT-SIZE: 8pt
+}
+.small_uppercase {
+	FONT-FAMILY: Arial, Helvetica, sans-serif; FONT-SIZE: 8pt; FONT-WEIGHT: bold; TEXT-TRANSFORM: uppercase
+}
+.upper {
+	TEXT-TRANSFORM: uppercase
+}
+</STYLE>
+
+<META content="MSHTML 5.00.2614.3500" name=GENERATOR></HEAD>
+<BODY aLink=#ccff00 bgColor=#000000 leftMargin=20 link=#99ccff text=#cccccc 
+topMargin=10 vLink=#ccccff marginheight="0" marginwidth="0">
+<FORM name=jumpy>
+<P><SELECT name=example onchange=gone() size=1> <OPTION selected 
+  value=http://blacksun.box.sk/byteme.html>Main Byteme</OPTION> <OPTION 
+  value=http://blacksun.box.sk/byteme1.html>Byteme 1</OPTION> <OPTION 
+  value=http://blacksun.box.sk/byteme3.html>Byteme 3</OPTION> <OPTION
+  value=http://blacksun.box.sk/byteme4.html>Byteme 4</OPTION> <OPTION 
+  value=http://blacksun.box.sk/byteme5.html>Byteme 5</OPTION> <OPTION 
+  value=http://blacksun.box.sk>Home</OPTION></SELECT>
+<SCRIPT language=javascript>
+<!--
+
+function gone()
+{
+location=document.jumpy.example.options[document.jumpy.example.selectedIndex].value
+}
+//-->
+</SCRIPT>
+ <INPUT name=test onclick=gone() type=button value="Take me there!"> 
+</P></FORM><A href="http://blacksun.box.sk/byteme2.html#Top"></A>
+<LI><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/byteme2.html#unix to dos">How do you clear the 
+screen in Unix or DOS?</A></FONT></FONT> 
+<LI><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/byteme2.html#uuencode">What the hell is 
+UUEncode?</A></FONT></FONT> 
+<LI><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/byteme2.html#subnet">What is a subnet?</A>(a 
+logical subnet and a subnet mask)</FONT></FONT> 
+<LI><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/byteme2.html#mask">What is a subnet 
+mask?</A></FONT></FONT> 
+<LI><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/byteme2.html#domain name">How domain names really 
+work?</A></FONT></FONT> 
+<LI><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/byteme2.html#subdomain work">How do subdomains 
+really work?</A></FONT></FONT> 
+<LI><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/byteme2.html#unix pass">Where to find Unix password 
+files</A></FONT></FONT> 
+<LI><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/byteme2.html#rfc">What is an RFC?</A></FONT></FONT> 
+
+<LI><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/byteme2.html#lilo">My little "LILOish" 
+adventure</A></FONT></FONT> <BR>
+<P><A name="unix to dos"></A><B><FONT face="Arial, Helvetica, sans-serif"><FONT 
+color=#ffffff><FONT size=-1>How to clear the screen in Unix or 
+DOS</FONT></FONT></FONT></B> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Simple.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>On Unix, type clear to clear 
+the screen (when in text mode, of course).</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>On DOS, type cls to clear the 
+screen.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Note: if you're running a terminal window from X-Windows (Unix's GUI), 
+you may be able to scroll up and see what was on the screen before it got 
+cleared.</FONT></FONT> <BR><br>
+<P><A name=uuencode></A><B><FONT face="Arial, Helvetica, sans-serif"><FONT 
+color=#ffffff><FONT size=-1>What the hell is UUEncode</FONT></FONT></FONT></B> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Have you ever 
+noticed that when you send a message and/or a file through Email it gets a 
+little bigger?</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>This is because of a little thing called UUEncode.</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>You see, there are 
+compatibility problems between DOS/Windows, Unix, Macs and what not, so when you 
+send a file to another computer it might get screwed up in the middle or 
+something.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Even if you and the recepient have 100% identical computers, the file 
+might still get screwed up because the mail servers and the routers that will 
+pass it along the way might not know how to properly handle it.</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Now, in order to 
+solve this UUEncode was invented. Whenever you send a message, it gets UUEncoded 
+and then sent to your mail server. That way the message won't get screwed on the 
+way. When it reaches it's recipient, it gets UUDecoded on the recepient's 
+computer. Different computers will UUDecode files differently, but UUEncode them 
+on the exact same way.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Unfortunately, UUEncoding 
+files makes them a little bigger... oh, well...</FONT></FONT> <BR>&nbsp; 
+<P><A name=subnet></A><B><FONT face="Arial, Helvetica, sans-serif"><FONT 
+color=#ffffff><FONT size=-1>What is a subnet</FONT></FONT></FONT></B> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>There's a logical subnet and a 
+subnet mask. Before you learn what subnet masks are, you need to learn what 
+logical subnets are (which most newbies would call just call a 
+subnet).</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>What is a logical 
+subnet</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Well, kiddies, there are different kinds of logical subnets. Currently, 
+there's a C-class subnet, a B-class subnet and an A-class subnet.</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Here's an example 
+for a C-class subnet: 62.0.147.x (x can be anywhere from 0 to 255). The person 
+who owns the subnet 62.0.147.x actually owns all IP addresses that match the 
+following wildcard: 62.0.147.0-255.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>A B-class subnet could be 
+75.14.x.x, and an A-class subnet is 202.x.x.x (these are all just examples. 
+Different logical subnets have different numbers. Ignore the numbers, just note 
+the x's).</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Now, your ISP should buy a couple of subnets, according to the number of 
+users it wishes to support at the same time, before it can give people Internet 
+connections. The ISP's subnets are also called IP ranges, or the ISP's IP 
+range.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>This form of subnets is called IPv4.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Now, this is not completely 
+true... there are also D-class and E-class subnets. D-class subnets are used for 
+multicastgroups, and E-class is... well... experimental... not sure about it, 
+though, so please correct me if I'm wrong.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>More info about 
+logical subnets <A href="http://ipindex.dragonstar.net/">here</A> (thanks to 
+Cypress Hill for this URL).</FONT></FONT> 
+<P><A name=mask></A><B><FONT face="Arial, Helvetica, sans-serif"><FONT 
+color=#ffffff><FONT size=-1>What is a subnet mask</FONT></FONT></FONT></B> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>I've decided to 
+include <A href="http://blacksun.box.sk/subnet.txt">this tutorial</A> (actually, 
+it's an IRC log, but nevermind) which was written by a nice guy called 
+Teolicy.</FONT></FONT> <BR>&nbsp; 
+<P><A name="domain name"></A><B><FONT face="Arial, Helvetica, sans-serif"><FONT 
+color=#ffffff><FONT size=-1>How do domain names really 
+work</FONT></FONT></FONT></B> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Have you ever wondered how 
+domain names really work?</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Well, you cannot actually 
+connect to, say, hackernews.com. It's impossible. You can only connect to IP 
+addresses.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>But why would a person want to remember long IP addresses just to get 
+into a website, an FTP, a mail server, a shell account etc'? This is the part 
+where DNSs come into place.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>DNS stands for Domain Name 
+Server. These servers hold large databases of domain names and their IP address. 
+Oh... so a domain name is actually just an alias for an IP address? Now you're 
+getting it.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Now, this is how it works (roughly). Your ISP has a DNS. Your OS is 
+configured to use this DNS and has it's IP. Now, suppose you wish to go to 
+hackernews.com. Your computer goes to the DNS server and starts a 
+conversation.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Your computer: Hello. Umm... I know you're pretty busy, 
+but...</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>DNS: Yes?</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Your computer: may I have 
+hackernews.com's IP address?</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>DNS: Umm... okay... wait, let 
+me see...</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Now two things can happen.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>1) DNS: Okay, found it. Here 
+you go...</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Your computer: Umm, yummy... thanks man.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>2) DNS: Oops, looks like I 
+don't have it... well, I'm not exactly the only DNS server in the world, you 
+know. There are more important DNS servers (higher-level DNS servers). Let's ask 
+them.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>DNS: Hello, DNS2 (the higher-level DNS server). Do you happen to know 
+hackernews.com's IP address?</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>DNS2: Yes, I do. Here you 
+go.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>DNS: Thanks. Now where is that guy...</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Your computer: You mean 
+me?</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>DNS: Yes, you. Here you go, I found that IP address you were looking 
+for.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Your computer: Thanks.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Anyway, if the 
+higher-level DNS server won't have the IP address, it will ask a higher DNS 
+server etc'. Once your DNS server receives the IP address it will add it to his 
+own database so he won't have to bother other DNSs again and slow down the 
+net.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Oh, by the way, you 
+can have your own little database on your own computer so you won't have to 
+bother DNS servers (and not have to wait for them to give you the IP as well). 
+On Unix, this can be done by entering IPs and then their hostnames at 
+/etc/hosts. On Windows, this can be done using the c:\windows\hosts file (read 
+c:\windows\hosts.sam for instructions).</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>This is how hosts files should 
+look like:</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>the-hostname the-ip</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Or:</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>the-hostname the-ip #a 
+comment</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Everything that is written after the # on thsi line will be disregarded 
+by your computer, and can be used to insert comments into the file. Also, if you 
+want to remove certain lines without losing them, you could put a # in the 
+beginning of the line so your computer will disregard them but you won't have to 
+delete them.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp;This isn't 
+exactly how things work. What I just described here was a very general 
+description of how DNS works. Here, let me explain:</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Suppose you want to get 
+blacksun.box.sk's IP. What do you do? Well, first, your DNS server has to get to 
+a ROOT-ns computer. ROOT-ns computers are responsible for that last bit in 
+domain names (in this case, sk. In www.whitehouse.gov, the ROOT-ns bit is gov, 
+in www.hackernews.com, the ROOT-ns bit is com, etc'). It has a list of ROOT-ns 
+computers and their IP addresses (not their domain names, because if it had to 
+resolve their domain names, it would have needed to access ROOT-ns computers 
+first, and then... well, you get the point). Then, your DNS server asks the sk 
+ROOT-ns server (btw ns stands for name server) what's box.sk's IP. Then, it goes 
+to box.sk and asks what is blacksun.box.sk's IP.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>So as you can see, each time 
+your DNS server goes one level down until it gets the IP it needs.</FONT></FONT> 
+<BR>&nbsp; 
+<P><A name="subdomain work"></A><B><FONT 
+face="Arial, Helvetica, sans-serif"><FONT color=#ffffff><FONT size=-1>How do 
+sub-domains work?</FONT></FONT></FONT></B> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Make sure you read <A 
+href="http://blacksun.box.sk/byteme.html#How%20do%20domain%20names%20really%20work">this</A> 
+before reading this mini-tutorial.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Ok, moving on. Now, I assume 
+you know how domain name work (unless you havn't read the previous 
+mini-tutorial).</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>First, a subdomain can look 
+either like any of the following:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>1) 
+blah.narf.com</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>2) bloop.blah.narf.com</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>3) 
+frrrrrrr.grrrrrrrr.nose.fran.org</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>4) etc' etc' 
+etc'...</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Anyway, I hope you 
+get the picture.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>So once you try to resolve a 
+subdomain (get it's IP), your computer first gets the IP of the domain that 
+hosts this subdomain (suppose the subdomain is bleah.host.com, then the domain 
+that hosts it is host.com), and then goes to dns.host.com and asks for this 
+subdomain's IP.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>This is also why you can 
+register as many subdomains you'd like to for free once you have a domain (you 
+have access to the DNS server, so why would it cost you any money to register 
+subdomains?).</FONT></FONT> <BR>&nbsp; 
+<P><A name="unix pass"></A><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Where to find Unix password files</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Note: token is the 
+character that is being inserted inside the unshadowed password file (usually 
+/etc/passwd) instead of the passwords if they are shadowed. To read more about 
+password shadowing, click here.</FONT></FONT> <BR>&nbsp; 
+<TABLE border=1 borderColor=#666666 cellPadding=3 cellSpacing=0>
+  <CAPTION>
+  <TBODY><BR></TBODY></CAPTION>
+  <TBODY>
+  <TR bgColor=#666666>
+    <TD align=middle width=146>
+      <CENTER><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>UNIX 
+      System Type&nbsp;</FONT></FONT></CENTER></TD>
+    <TD align=middle width=271>
+      <CENTER><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>Path&nbsp;</FONT></FONT></CENTER></TD>
+    <TD align=middle width=105>
+      <CENTER><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>Token&nbsp;</FONT></FONT></CENTER></TD></TR>
+  <TR>
+    <TD width=146><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>AIX 
+      3</FONT></FONT></TD>
+    <TD width=271><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>/etc/security/passwd&nbsp;</FONT></FONT> <BR><FONT 
+      face="Arial, Helvetica, sans-serif"><FONT size=-1>or&nbsp;</FONT></FONT> 
+      <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>/tcb/auth/files/&lt;first letter of 
+      username&gt;/&lt;username&gt;&nbsp;</FONT></FONT></TD>
+    <TD width=105><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>!&nbsp;</FONT></FONT> <BR><FONT 
+      face="Arial, Helvetica, sans-serif"><FONT size=-1>or&nbsp;</FONT></FONT> 
+      <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+    size=-1>#</FONT></FONT></TD></TR>
+  <TR>
+    <TD width=146><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>A/UX 
+      3.Os</FONT></FONT></TD>
+    <TD width=271><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>/tcb/files/auth/*</FONT></FONT></TD>
+    <TD width=105><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>*</FONT></FONT></TD></TR>
+  <TR>
+    <TD width=146><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>BSD4.3-Reno</FONT></FONT></TD>
+    <TD width=271><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>/etc/master.passwd</FONT></FONT></TD>
+    <TD width=105><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>*</FONT></FONT></TD></TR>
+  <TR>
+    <TD width=146><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>ConvexOS 10</FONT></FONT></TD>
+    <TD width=271><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>/etc/shadpw</FONT></FONT></TD>
+    <TD width=105><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>*</FONT></FONT></TD></TR>
+  <TR>
+    <TD width=146><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>Convex0S 11</FONT></FONT></TD>
+    <TD width=271><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>/etc/shadow</FONT></FONT></TD>
+    <TD width=105><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>*</FONT></FONT></TD></TR>
+  <TR>
+    <TD width=146><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>DG/UX</FONT></FONT></TD>
+    <TD width=271><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>/etc/tcb/aa/user</FONT></FONT></TD>
+    <TD width=105><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>*</FONT></FONT></TD></TR>
+  <TR>
+    <TD width=146><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>EP/IX</FONT></FONT></TD>
+    <TD width=271><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>/etc/shadow</FONT></FONT></TD>
+    <TD width=105><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>x</FONT></FONT></TD></TR>
+  <TR>
+    <TD width=146><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>HP-UX</FONT></FONT></TD>
+    <TD width=271><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>/.secure/etc/passwd</FONT></FONT></TD>
+    <TD width=105><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>*</FONT></FONT></TD></TR>
+  <TR>
+    <TD width=146><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>IRIX 
+      5</FONT></FONT></TD>
+    <TD width=271><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>/etc/shadow</FONT></FONT></TD>
+    <TD width=105><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>x</FONT></FONT></TD></TR>
+  <TR>
+    <TD width=146><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>Linux 1.1</FONT></FONT></TD>
+    <TD width=271><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>/etc/shadow</FONT></FONT></TD>
+    <TD width=105><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>*</FONT></FONT></TD></TR>
+  <TR>
+    <TD width=146><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>OSF/1</FONT></FONT></TD>
+    <TD width=271><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>/etc/passwd[.dir|.pag]</FONT></FONT></TD>
+    <TD width=105><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>*</FONT></FONT></TD></TR>
+  <TR>
+    <TD width=146><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>SCO 
+      UNIX #.2.x</FONT></FONT></TD>
+    <TD width=271><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>/tcb/auth/files/&lt;first letter of 
+      username&gt;/&lt;username&gt;</FONT></FONT></TD>
+    <TD width=105><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>*</FONT></FONT></TD></TR>
+  <TR>
+    <TD width=146><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>SunOS 4.1+c2</FONT></FONT></TD>
+    <TD width=271><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>/etc/security/passwd.adjunct</FONT></FONT></TD>
+    <TD width=105><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>##</FONT></FONT></TD></TR>
+  <TR>
+    <TD width=146><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>SunOS 5.0</FONT></FONT></TD>
+    <TD width=271><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>/etc/shadow</FONT></FONT></TD>
+    <TD width=105></TD></TR>
+  <TR>
+    <TD width=146><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>System V 4.0</FONT></FONT></TD>
+    <TD width=271><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>/etc/shadow</FONT></FONT></TD>
+    <TD width=105><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>x</FONT></FONT></TD></TR>
+  <TR>
+    <TD width=146><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>System V 4.2</FONT></FONT></TD>
+    <TD width=271><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>/etc/security/* database</FONT></FONT></TD>
+    <TD width=105></TD></TR>
+  <TR>
+    <TD width=146><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>Ultrix 4</FONT></FONT></TD>
+    <TD width=271><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>/etc/auth[.dir|.pag]</FONT></FONT></TD>
+    <TD width=105><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>*</FONT></FONT></TD></TR>
+  <TR>
+    <TD width=146><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>UNICOS</FONT></FONT></TD>
+    <TD width=271><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>/etc/udb</FONT></FONT></TD>
+    <TD width=105><FONT face="Arial, Helvetica, sans-serif"><FONT 
+      size=-1>*</FONT></FONT></TD></TR></TBODY></TABLE><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Taken from <A 
+href="http://members.xoom.com/Underwar/Site/index.html">UnderWarrior's 
+website</A>.</FONT></FONT> <BR>&nbsp; 
+<P><A name=rfc></A><B><FONT face="Arial, Helvetica, sans-serif"><FONT 
+color=#ffffff><FONT size=-1>What is an RFC</FONT></FONT></FONT></B> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Some answers we 
+got:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Parasitic 
+wrote:</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Well there is two different RFC's that I know of. One RFC is short for 
+"Request for Comments" which is just a Informational Internet document that gets 
+reviewed and changed until (I think) everyone agrees about it's 
+contents.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>The other RFC is short for "Remote Function Call" which is a API 
+(application program interface) which is somewhat 
+self-explanatory.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Lenny 
+wrote:</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>RFC = Request to Comment</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>They are text documents used 
+for publishing standards, primarily for internet technologies. Following them is 
+not required, but is an advantage to make sure your software/hardware is 
+compatible with others.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Aneurysm 
+wrote:</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>An RFC is a Request For Comments. It is a file that details the 
+specifications of certain protocols. There are RFCs on everything from the SMTP 
+to the IRC protocal, in fact, there's one for pretty much everything. It is put 
+together by someone, and it details commands, structures, syntax and everything 
+for that protocal.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Athesdan 
+wrote:</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>An RFC is a Request for Comments, it details information about a bug in 
+a daemon, protocol etc...</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Yoink 
+wrote:</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>RFC's are: Request For Comments, it is the documentation maintained by 
+NIC (Network Information Center [no not NICs which are Network Interface Cards]) 
+relating to Internet Protocols, adressing, routing, configuartion, and other 
+related internet topics.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>My 
+answer:</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>RFC stands for Request For Comments. These start as drafts for network 
+standards and they are being discussed over and modified by the IETF (Internet 
+Engineering Task Force) until everyone agrees on it. You could learn a lot from 
+RFCs, so if you read a tutorial or an article or whatever and see a reference to 
+a certain RFC, go read it.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>You can search for RFCs at <A 
+href="http://howto.linuxberg.com/">http://howto.linuxberg.com/</A>.</FONT></FONT> 
+<BR>&nbsp; 
+<P><A name=lilo></A><B><FONT face="Arial, Helvetica, sans-serif"><FONT 
+color=#ffffff><FONT size=-1>My little "LILOish" 
+adventure</FONT></FONT></FONT></B> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Let me tell you a little 
+story...</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>I keep both Linux and Windows on my computer because I'm not the only 
+one who uses it, and the other users know nothing about Unix. Oh, by the way, I 
+was using RedHat 6.0 at that time.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>I used LILO to switch between 
+OSs. Here, let me explain.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>When you install Windows it 
+puts some crap on your hard drive's primary boot sectors so it'll load up 
+Windows upon startup. Of course Linux needs a different kind of "boot crap", so 
+if you want to use both Linux and Windows you have two options:</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>1) Install only one 
+boot, so either Windows or Linux will boot up, but make a boot disk for the 
+other OS (the one that doesn't boot from your HD) and insert it when you want to 
+use that OS.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>2) Install LILO (comes with RedHat 6.0 and other Linux distributions). 
+LILO stands for Linux Loader. If you install LILO or a similar application, it 
+puts itself on your boot sectors, and then you are asked which OS you want to 
+boot up upon startup.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Since option 1 isn't possible 
+on RedHat because RH's boot disk gets you to the installation screen instead of 
+into the actual OS, I had to use option 2.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Anyway, a couple of days after 
+I installed RH Windows started making weird errors and some important programs 
+didn't work. Why? Because it's Windows (note: the problems I experienced in 
+Windows didn't have anything to do with installing RH. It's because of some 
+stupid program I installed). I looked at some readme files and I found out that 
+I have to reinstall Windows. Oh, well... but once I finished reinstalling, I 
+discovered that LILO was gone! Windows' installation program has overwritten it 
+and put Windows' boot stuff instead!</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>This means I can't switch to 
+Linux, because I can't use a boot disk to get in! The only option I had was to 
+reinstall Linux... but of course, I didn't wanna do that... read 
+on...</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>If you're using RH, use Slackware's boot disk. Simply ask a friend or 
+find someone on IRC who has Slackware and ask for Slackware's .img files. Then 
+under Windows go to the RedHat CD, go to the directory called 'dosutils' 
+(without the quotes, of course) and find a program called rawrite. The program 
+will ask you to insert a disk into your floppy drive and then give it the 
+location of the .img files (remember to use the Slackware "images" you got, not 
+the RH ones).</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Anyway, this is what I did. Once I got back into Linux, I typed lilo and 
+it let me reinstall LILO without reinstalling Windows.</FONT></FONT> <BR><BR><A 
+href="http://blacksun.box.sk/byteme2.html#Top">Top</A> </P></LI></BODY></HTML>

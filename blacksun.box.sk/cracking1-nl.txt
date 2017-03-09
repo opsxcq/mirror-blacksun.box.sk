@@ -1,0 +1,361 @@
+
+Cracking Tutorial - Deel 1
+ versie 1.0, 21/9/1999
+
+Alle rechten gereserveerd door <TeCh~LoRd> (sagid@netvision.net.il) van Black Sun
+Research Facility (blacksun.box.sk)
+
+//  Vrij vertaald door Phr0zeN aka tPo (Phr0zeN_one@yahoo.com)
+//  Voor: DuHo, Blacksun.box.sk en mezelf 
+//  Alles door mij toegevoegd volgt na zo'n // teken.
+
+
+inhoudstafel:
+
+0. Inleiding.
+1. Disclaimer.
+2. Wat is kraken?
+3. Tools.
+4. Belangrijkste stappen bij het kraken.
+5. Assembly: beginselen.
+6. Conclusie.
+===========================================================================================
+
+
+0. Inleiding:
+
+
+Ik heb de laatste tijd nogal wat cracking-tutorials gelezen.
+En eerlijk gezegd heb ikzelf de kunst van het kraken geleerd door het lezen van
+tutorials 
+(en enkele boeken maar dit doet er eigenlijk niet toe).
+Het grootste deel van de cracking tutorials op het net hebben enkele nadelen: ofwel
+zijn ze te uitgebreid en bevatten ze een heleboel zever, ofwel zijn zijn ze te kort
+en bevatten ze de basiskennis niet.
+
+Ik heb besloten een tutorial te schrijven die deze twee nadelen niet heeft.
+
+Ik heb deze tutorial in 3 stukken ingedeeld:
+
+Deel 1: Inleiding, tools en beginkennis ivm kraken. 
+Deel 2: Praktische oefeningen, waarbij we W32Dasm & Hiew gebruiken.
+Deel 3: Key-generators.
+
+
+Welkom in het eerste deel      ;-)
+
+
+1. Disclaimer:
+
+
+Ik heb deze tutorial enkel voor informatieve doeleinden geschreven!
+Veel van de informatie in dit document kan misbruikt worden om illegale dingen mee
+uit te halen! 
+Probeer in geen geval iets uit dat in dit document beschreven wordt!
+Indien je dit wel doet, ben jij alleen volledig verantwoordelijk voor je daden!
+Indien je je hiermee in de nesten werkt op gelijk welke manier, dan is dat je eigen
+fout!
+Indien je met deze informatie je vrienden onder de indruk wil brengen, wordt
+volwassen!
+Indien je hier niet mee akkoord bent, stop dan nu met lezen!
+Indien je een programma kraakt, en een crack verkoopt en weggeeft, bega je een
+misdaad!
+
+
+2. Wat is Kraken?
+
+
+Voor mij betekent kraken:
+"Een programma dat je geïnstalleerd hebt doen reageren op die manier die jij wilt en
+en niet zoals iemand anders (de programmeur) dat wil"
+
+Zoals een INSIDER zei:
+"Hela, het is toch je eigen stuff? Jouw nummers, jouw bits
+je doet er dus mee wat je wilt :-)."
+
+Eigenlijk ben ik het hiermee eens.
+
+Dus kraken is het veranderen van je programma's en ze doen werken op die manier die
+jij wilt.
+Als je een gratis demootje krijgt, kraak het en gebruik het voor niets. 
+MAAR!!!!
+Ik herhaal, wanneer je een programma kraakt en de gekraakte versie begint te
+verkopen of zelfs gratis weg te geven, dan bega je een misdaad!
+_____________________________________________________________________________
+
+Na het lezen van deze 3 tutorials (en dit is de eerste in de reeks),
+zul je de macht die je onder de knie (en in je verstand) hebt ervaren.
+//heh..deze zin kl0pt niet, maar ik vond het een leuke constructie
+
+ziezo, laten we eraan beginnen!?
+
+
+3. Tools
+
+
+Nu heb je maar enkele tools nodig... 
+Het is zzeer gemakkelijk ze te vinden op het web, omwille van hun populariteit:
+
+"Win32 Disassembler" aka W32Dasm is de eerste die je zult gebruiken
+
+Met Win32 Disassembler kun je:
+1. Bestanden Disassemblen- d.w.z. de bestanden omzetten in assembler broncode, of
+machine code.
+   De soorten files die gedissasembeld kunnen worden met Win32 Disassembler zijn:
+   exe, 386, com, cpl, drv, dll, fon, mpd, ocx, vbx, vbx and sys.
+2. Het programma in het geheugen laden en zo door de code stappen.
+3. De gedisassembelde -wat een woord- file doorzoeken en naar een gekozen plaats in
+de code gaan.
+4. Tekst zoeken.
+5. Jumps en calls uitvoeren, invoegen of verwijderen.
+6. geïmporteerde & geëxporteerde functies bekijken.
+7. Een HEX voorstelling van een bepaald stuk code opvragen.
+8. De lijst met STRINGS, DIALOGS REFERENCES bekijken.
+9. De assembler source code opslaan als een .txt bestand.
+
+Je kunt het van praktisch elke cracking site downloaden, maar ik plaats hier toch
+enkele URLs:
+
+1. http://www.wco.com/~micuan/Zips/wdasm893.zip
+   --------------------------------------------
+2. HTTP://CRACKING.HOME.ML.ORG/
+   ----------------------------
+3. http://www.fortunecity.com/bally/waterford/18/w32dsm89.zip
+   ----------------------------------------------------------
+4. http://wowsites.com/meiner/w32dsm89.zip
+   ---------------------------------------
+
+Ik denk dat dat volstaat.
+Als een link down gaat, verwittig me dan a.u.b. (mijn Email address is
+sagid@netvision.net.il).
+/*in het Engels hé!*/
+
+Een tweede tool die je zult gebruiken is Hiew, ook bekend onder de naam Hacker's
+view.
+Hacker's view is in staat om:
+
+1. Files te disassemblen.
+2. Veranderingen in de assembler source aan te brengen zoals:
+   Instructies bijschrijven, instructies aanpassen en de file te re-assemblen.
+3. Het bestand bekijken in ASCII, Hex of assembly mode.
+
+Hiew is hier te vinden:
+
+1. 
+ftp://ftp.cs.tu-berlin.de/pub/msdos/mirrors/ftp.elf.stuba.sk/pc/utilprog/hiew584.zip
+   ------------------------------------------------------------------------------------
+2. ftp://ftp.bke.hu/pub/mirrors/sac/utilprog/hiew584.zip
+   -----------------------------------------------------
+3. ftp://ftp.uakom.sk/pub/mirrors/sac/utilprog/hiew584.zip
+   -------------------------------------------------------
+
+Nu je toch aan het downloaden bent, zoek je beter in 1 keer ook Soft-Ice,
+een ander uitstekend hulpprogramma.
+Eigenlijk zullen we het niet nodig hebben in dit stuk van de tutorial,
+maar hoe dan ook, hier volgen enkele URLs voor Sice (afkorting voor Soft-Ice)
+
+
+SoftICE voor Windows95/98:
+
+1. http://swlink.net/~lachcik/insaine/si95w320.zip
+   -----------------------------------------------
+2. http://www.fortunecity.com/bally/waterford/18/siw95-32.zip
+   ----------------------------------------------------------
+3. http://www.pmk.ac.th/~arnontc/files/siw95-32.zip
+   ------------------------------------------------
+4. ftp://toolz.ucl.autograd.ru/Debugger/W95ICE32.ZIP
+   -------------------------------------------------
+
+SoftICE voor Windown NT:
+
+1. http://www.pmk.ac.th/~arnontc/files/siwnt-32.zip
+   ------------------------------------------------
+2. ftp://ftp.sol.no/users/r/reopsahl/OrcPaks/orcpak9e.zip
+   ------------------------------------------------------
+3. http://www.fortunecity.com/bally/waterford/18/siwnt-32.zip
+   ----------------------------------------------------------
+4. ftp://toolz.ucl.autograd.ru/Debugger/WNTICE32.ZIP
+   -------------------------------------------------
+
+Er bestaat ook een DOS-versie SoftICE, die ik niet aanraad:
+
+1. http://www.pmk.ac.th/~arnontc/files/s-ice280.zip
+   ------------------------------------------------
+2. ftp://ftp.ula.ve/pub/msdos/cracking/s-ice280.zip
+   ------------------------------------------------
+3. http://202.102.15.149/~person/paulgao/cracks/SICE280.ZIP
+   --------------------------------------------------------
+4. ftp://ftp.sonic.net/pub/users/fryman/tools/S-ice280.zip
+   -------------------------------------------------------
+5. http://www.chibacity.com/chiba/files/unpro/prx-pcs3.zip
+   -------------------------------------------------------
+
+Soft-Ice voor Win 3.1x:
+
+1. ftp://ftp.ula.ve/pub/msdos/cracking/m_wice13.zip
+   ------------------------------------------------
+2. http://fishheads.simplenet.com/BriansFiles/m_wice13.zip
+   -------------------------------------------------------
+3. http://www.magiccarpet.com/~odin/files/other/m_wice13.zip
+   ---------------------------------------------------------
+
+
+4. Belangrijkste stappen bij het kraken
+
+
+Er zijn 7 stappen bij het kraken van een applicatie:
+
+1. Start het te kraken programma en bestudeer het gedrag ervan.
+   Zoek strings en sleutelwoorden, probeer een willekeurig passwoord/serial# en kijk
+hoe het
+   prog reageert.       
+2. Open het programma met W32Dasm en disassambel het.
+3. Zoek voor veelvoorkomende strings in de disassembly van het programma. 
+   In de meeste gevallen zoek je voor sleutelwoorden zoals: password, name, date,
+expired,
+   time limit, wrong, entered,... .
+4. Zoek en observeer hoe het paswoord gegenereerd wordt, probeer de
+beschermingsroutine en 
+   de gebruikte API functies te lokaliseren.
+5. Probeer de manier waarop de beveiligingroutine van de éne naar de andere
+instructie springt
+   te begrijpen.
+6. Open het programma in HIEW.
+   Zoek de beslissende jump en verander hem zodat de programma de "incorrecte
+paswoord"-error niet
+   meer uitvoert, maar bij de "goeie registratie"-routine terechtkomt.
+7. Start het programma en aanschouw de veranderingen die je aangebracht hebt en hoe
+ze het
+   programma verandert hebben. Voel de macht die je nu hebt. De macht door
+crackingkennis.
+   De macht om programma's naar je hand te zenden.
+
+   Leer deze stappen vanbuiten, tot ze in je dromen voorkomen, je zult ze nodig
+hebben bij ieder 
+   programma dat je kraakt.
+
+
+5. Assembly: beginselen
+
+
+-------------
+A. Registers:
+-------------
+
+Registers zijn variabelen (veranderlijken) die heel dicht bij je processor
+opgeslagen worden.
+De processor(cpu) maakt gebruikt ze voor wiskundige en logische berekeningen.
+De registers die het meest voorkomen bij het kraken: eax, ebx, ecx and edx.
+Soms zul je edi, esi, esp, ebp tegenkomen.
+
+Er zijn drie soorten registers: 32Bit registers, 16Bit registers and 8Bit registers.
+The 32Bit registers beginnen met een e, zoals eax.
+De eerste 16 bits van deze registers kunnen als een appart 16Bit register
+geadresseerd worden.
+Het enige verschil is de grote.
+Deze registers zijn: ax, bx, cx, dx, di, si, sp, bp.
+
+Er zijn ook 8Bit registers.
+Die bestaan uit de eerste 8 bits van de bestaande registers.
+Deze 8Bit registers zijn: al, ah, bl, bh, cl, ch, dl, dh.
+l - staat voor de laagste 8 bits van een register.
+h - staat voor de hoogste 8 bits van een register.
+Hier staat de l voor de meest benedenstaande, de h voor de meest bovenstaande 8 bits
+van een 16 bit register.
+
+//
+//   illustraatietje:
+// 
+// 
+//   [ 32     ...      16 15 14 13 12 11 10 9  8  7  6  5  4  3  2  1  ]
+Bit-nummer
+//                      
+//                      \---------------------/ \---------------------/      
+//                                  ah                        al
+//                     \----------------------------------------------/
+//                                          ax
+//   \----------------------------------------------------------------/
+//                                 eax  
+
+--------
+B. Flags
+--------
+Flags zijn Boolean-datatypen, d.w.z. dat ze enkel 0 of 1 kunnen zijn. 
+De processor gebruikt flags voor interne logische en wiskundige operaties
+om het resultaat van de berekening te krijgen.
+De belangrijkste flag bij het kraken is de zero-flag.
+
+----------------------
+C. Loop het programma
+----------------------
+
+Wanneer je een stuk code analyseerd, moet je begrijpen dat de cpu eigenlijk redelijk
+dom is,
+en het enigste wat hij doet is eenvoudigweg de instructies één voor één uit te
+voeren.
+De processor doet alles wat de code hem opdraagt, en kan dus niets doen dat niet in
+de
+code staat (tenzij hij platgewalsd werd door een bende dolle koeien of ontvoerd is
+door aliens).
+Daarom moet je dus denken zoals de processor wanneer je een stuk code analyseerd en
+ook handelen
+zoals een processor dat zou doen doen. 
+(Let wel op! Blijven inademen, uitademen, inademen, uitademen... hehe, niet
+opletten, stom mopje) :)
+Je moet dus alles wat de processor doet doen: registers en variabelen vergelijken,
+jumps & calls uitvoeren, 
+wiskundige oefeninkjes maken, registers en adressen opslaan en in het geheugen
+laden, etc.
+
+De processor heeft hiervoor een speciaal register, IP (instruction pointer) genaamd.
+(Geloof me, dit heeft niets met IP zoals in IP-addres en Internet Protocol te
+maken).
+De instruction pointer wijst het adres van de eerstvolgende uit te voeren instructie
+aan.
+De processor heeft ook instructies die de IP veranderen om zo sprongetjes in de code
+te maken.
+Deze instructies kunnen calls, interrupts, jumps, voorwaardelijke jumps,... zijn
+
+//  Deze assembler-kennis vind ik eigenlijk te weinig om te beginnen met kraken
+//  daarom zal ik proberen een aanvulling op deze tekst te maken die hierop dieper
+ingaat
+//  mail me voor meer info (adres: zie top van dit document)
+
+
+6. Conclusie
+
+
+In dit deel van de tutorial hebben we kennis gemaakt met het begrip "kraken":
+Programma's doen gedragen zoals wij willen, en niet zoals de programmeur het zou
+willen.
+We hebben eveneens de basiskennis en de populaire tools (W32Dasm, Hiew and SoftICE)
+leren kennen. 
+En uiteindelijk hebben we de 7 basisstappen in een cracking-proces gezien.
+
+Nou, Voordat je dolenthousiast het volgende hoofdstuk gaat lezen, moet je eerst deze
+7 stappen leren
+en de tools die we in het begin gezien hebben downloaden, anders kunnen we niet aan
+het volgende hoofdstuk
+beginnen.
+
+Tot in het volgende hoofdstuk.
+
+<TeCh~LoRd>
+
+
+Andere tutorials geschreven door BSRF (blacksun.box.sk)
+-------------------------------------
+* FTP Security.
+* Sendmail Security.
+* Overclocking.
+* Ad and Spam Blocking.
+* Anonymity.
+* Info-Gathering.
+* Phreaking.
+* Advanced Phreaking.
+* More Phreaking.
+* IRC Warfare.
+* Proxies, Wingates and SOCKS Firewalls.
+* RM Networks.
+* The Windows Registry
+* Hardware

@@ -1,0 +1,102 @@
+<<< Proxy/Wingate/Socks Tutorial >>> Version 1.1
+
+Original by Jatt
+translated /uebersetzt by I.RAM.S 
+
+An die Leser:
+
+Dieser Text stammt von "Jatt", er wurde von I.RAM.S ins Deutsche uebersetzt. Der Uebersetzer uebernimmt keinerlei Haftung, fuer jegliche Art von Problemen die aufgrund von Uebersetzungsfehlern und einem damit verbundenen Mißverständnis des Textes, auftreten koennen (Etwa Hardwarefehler usw). Ansonsten gelten die ueblichen Regeln der http://blacksun.anrki.com  Tutorials 
+
+Mit freundlichen Grueßen I.RAM.S 
+
+
+Was ist ein Proxy Server?
+
+Ein Proxy Server ist ein Server, den jemand ( etwa ein ISP)installiert hat, damit du, wenn du eine Website besuchst, anstatt direkt zum Server zu gehen, wo die Seite abgelegt ist, erst ueber den Proxy und dann zur gewuenschten Seite kommst. Wenn eine andere Person über den Proxy surft, dann wird die von ihr angewählte Website gespeichert und andere User die auf die selbe Seite wollen bekommen die Daten direkt vom Proxy. Den Zeitintervall, in dem der Proxy seine Inhalte aktualisiert und wie lange eine Site gespeichert bleibt bestimmt der Betreiber.
+
+Wenn ein User merk, das eine Website ein Update benoetigt, braucht er lediglich "Aktualisieren" zu klicken und die Seite ist für alle Benutzer aktualisiert.
+
+Warum einen Proxyserver verwenden ?
+
+Es gibt unterschiedliche Gruende: Einige ISP's verwenden sie, da sie den Datenverkehr  teilen und die Surfgeschwindigkeit für ihre User erhoehen. User mögen ihn, weil sie es schwieriger machen, ihre Aktivitäten im Netz zu verfolgen, besonders wenn man über mehrere Proxyserver in Reihe geschaltet (3 oder mehr) surft. Es ist sinvoll, sich über den Betreiber des Proxys zu informieren, bevor man ihn verwendet. Microsoft etwa wird wahrscheinlich jede deiner Bewegungen mitprotokollieren, wohingegen ein Anonymer,  oder ein sogenannter "Public" Proxy natürlich besser geeignet ist. Diese Informationen bekommt man normalerweise auf der Proxyserver Admin* Homepage.
+
+Was ist ein "Wingate" ?
+
+EINE offizielle Definition, die ich von einigen Personen gehört habe:
+
+"Wingate ist ein Proxyserver Firewall Softwarepacket, das ihnen erlaubt eine einzige Internetverbindung mit einem ganzen Computernetzwerk gemeinsam zu verwende. Die geteilte Verbindung kann fast jeder Art sein, inklusive: Dial Up Modem , ISDN, xDSL, Kabelmodem, Satelliten Verbindung, oder auch T1 Circuits."
+
+Wingate ist einem Proxyserver ähnlich, es verbindet verschiedene Computer durch port 23 eines Servers, der Wingate gennant wird. Es ist lediglich eine Telnetverbindung und Wingate ermöglicht jedem, im angeschlossenem Netzwerk den Internetzugang. Wegen Falsch konfigurierter Wingate Server und unfähigen Administratoren gibt es oft Wingates, die für jederman den Internetzugang ermöglichen. Ein solcher Server wird OpenWinGate gennant. Die meisten werden normalerweise einige Tage später entdeckt, da sich User über "mysteriöse" Teilnehmer und dergleichen beschweren.
+
+Die Nachteile überwiegen deutlich die Vorteile. Wenn jemand einen eigenen WinGate verwenden will, dann rate ich ihm alles sicher zu konfigurieren, damit nur User das Internet verwenden können, die dazu befugt sind. Eine Alternative zu Wingate bietet SyGate.
+
+Wie finde ich Wingates ?
+
+Gute Frage ! Der beste Weg ist Mundpropaganda, der zweite ist die Verwendung eines Wingate Scanners. Man kann ganze Unternetze nach Wingates durchsuchen. Ein Tip: IP'S in Ländern der dritten Welt, Afrika usw und die @home Netzwerke haben alle eins gemeinsam: Sie alle haben dumm konfigurierte Wingates in ihren Netzen. Versuch sie zu scannen, am besten mit Unix: telnet zu port 23, dann Username und Passwort freilassen, wenn es funktioniert, dann hast du einen Gefunden. Sonst verwende Username/Passwort = Wingate
+Der beste Windowsscanner den ich verwendet habe ist: wGateScan v 2.2 Es gibt ihn unter http://www.hotmanscave.com Um ihn zu verwenden, einfach eine IP oder einen Hostname eingeben und das Programm startet eine Telnetverbindung zu Port 23 und sendet ein paar Kommandos, Wenn der Host akzeptiert: BINGO !!! Alle gefundenen Wingates lassen sich bequem in einer Datei speichern.
+
+Wingates mit ICQ:
+
+Konfiguriere ICQ um mit WinGate zu arbeiten: 
+Gehe zum WinGate Setup Bildschirm und klick auf das Proxies Tab 
+Drück ADD 
+Selektiere den Proxytyp: 'Mapped Link' 
+Klick Create 
+Unter Settings Group check 'Enable Connections To Proxy On Port.' Gib die Nummer 3333 ein 
+Setze den Socket Typ auf: 'UDP' 
+Sei sicher das 'Destroy Inactive Sessions after XXX seconds' nicht angewählt ist
+Sei sicher das 'Enable Default Remote Host' angewählt ist und auf: icq.mirabilis.com Port: 4000 gesetzt 
+Für jede remote machine:
+drueke Add.
+In 'Connect Client IP' gib die IP der remote machine ein 
+In 'To Host' gib icq.mirabilis.com ein 
+In 'Port' gib 4000 ein 
+drueck OK
+Jetzt klick DONE. 
+Du bist jetzt im WinGate setup Bildschirm. 
+Sei sicher, das SOCKS4 Proxy Enabled on Port 1080 gesetzt ist 
+klick SAVE 
+Probiere es nun mit deiner remote machine 
+Remote Machine konfiguration 
+Wenn du immer noch nicht den ICQ Registration Wizard überstanden hast: 
+Im Registration Wizard unter Connection Type registriere dich als LAN User. 
+Wähle 'I am behind a firewall or proxy.' 
+Klick Next fuer den nächsten dialog. 
+Wähle entweder Socks4 oder socks 5 server, kommt auf die proxy server Kompatibilität an 
+NICHT die firewall sessions time outen lassen. 
+Klick Next fuer den nächsten dialog
+Gib die Server IP Adresse ein, verwende socks port 1080. 
+Klick Next um zu schauen ob es klappt.
+Versuche das hier, wenn es nicht geht:
+Klick Retry und versuche es nochmal
+Ändere die Firewall Settings
+Für andere/zusätzliche Remote Machines verfahre wie beschrieben
+
+Wingates mit IRC:
+
+Um den Client zu konfigurieren, muß man ihm einfach sagen, dass man hinter einer SOCKS4 or SOCKS5 (Kommt auf die Versionan, Versuche beides) und die IP des Servers eingeben. Eventuelle Passwort/Username Abfragen freilassen. Es gibt genug IRC Server !!!.
+
+ 
+Was ist ein Socks Host?
+
+Socks host ist ziemlich das selbe was wingate erwartet. Es verbindet ueber port 1080. In deinen settings fuer proxy server in deinem Internet Browser (explorer or Netscape) sollte eine Einstellung fuer socks host sein.  Du kannst ein socks host auswählen. Wenn du jemals mIRC fuer IRC verwendet hast, dann wirst du das Firewall Setting bemerken. Dort lass den Username und das Passwort frei. Lass port 1080 und gib eine wingate Adresse in the Hostname ein, dann klick Use Socks firewall, und versuche auch protocol: Socks4 or Socks5 (welches halt geht).  Reconnect und merke, das deine IP und Identifikation in IRC erscheint, wie wenn du ueber die selbe IP des socks host connecten* wuerdest. Das funktioniert jedoch nicht immer. Merke: Man muß durch  port 1080 connecten koennen oder es geht nicht. Neue IRC daemons koennen wie auch immer de wingate/socks host connections finden. Im Netz ist das nicht nuetzlich. Also IP verstecken !!!
+
+Socks/Wingates und Proxies koennen deine Identität etwas tarnen, das ist in 90% der Fälle auch legal, aber Versuche nicht zu denken: "Mich erwischt nie jemand" Man kann immer die Original IP zurueckverfolgen, es ist nur etwas Zusammenarbeit einiger Proxy Admins und ISP's notwendig.
+
+-----------------------------------------------------
+Das wars ueber Socks Host/Proxy Server und Wingate Tutorial. Fragen und Kommentare bitte an uslijatt@hotmail.com (English please)
+
+Jatt 
+
+Mehr Info ueber Proxy servers, wingates, telnet, ftp, socks hosts http://proxys4all.cgi.net/
+Eventuell auch schon wieder offline.
+Noch ein Wingate proxy tutorial:  http://www.wingate.net/
+ueber ICQ with wingate:  http://www.visions.demon.nl/wingate/
+Mehr Tutorials unter http://blacksun.anrki.com 
+
+updated by I.RAM.S 25.9.99
+
+*
+Isp = Internet Service Provider = Internet Dienstanbieter
+Admin = Administrator 
+connecten = verbinden

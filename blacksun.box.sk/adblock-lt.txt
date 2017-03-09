@@ -1,0 +1,147 @@
+Reklamos ir spamo blokavimas / autorius R a v e N (blacksun.box.sk) / iðvertë inv3rt3d0 (http://hyperdyne.8m.com)
+
+<=========================================================================================> version 1.8, 9/9/99 [versta y2k 01 20]
+
+Pastaba: kai matai kaþkà panaðaus á tai: xxx(1) - tai reiðkia, kad þodþio xxx paaiðkinimà gali atrasti ðio teksto pabaigoje.
+Pastaba2: jei sunku skaityti dël to, kad eilutës baigiasi uþ monitoriaus orbitø - bûk geras, ásijunk word wrap. jei naudoji notepad - tai daroma ðitaip: [EDIT] -> [Word Wrapping].
+
+Autoriaus þodis
+==============
+Vël siûlau trumpà pamokëlæ.
+Kai sakau trumpà - tai reiðkia, kad kaþkada þadëjau paraðyti ilgà straipsná (pvz. apie 60kb dydþio), bet dël ávairiø prieþasèiø (daþniausiai tinginystës) atidedu tai vëlesniam laikui, tuo tarpu paraðydamas trumpà pamokëlæ.
+Kilus klausimams ar pastebëjus klaidà paraðykite e-mail  barakirs@netvision.net.il.(be spamo ir pieðinukø).
+(Kilus klausimams, susijusiems su lietuviðku ðios pamokëlës vertimu - raðykite e-mail: inv3rt3d0@centras.lt .spamo taip pat nereikia, pieðinukai ir kiti ádomûs pasiûlymai laukiami).
+Aplankykite blacksun.box.sk, ten rasite dar daugiau pamokanèiø istorijø, nemokamø saugumo / hackinimo / unix knygø ir dar daug visokios informacijos.
+
+Dëmesio!
+==========
+Mes neskatiname jokios nelegalios veiklos, jei manote, kad ástatymø lauþymas yra c00l bûdas kaþkam padaryti áspûdá - praðome neskaityti daugiau ðio straipsnio. Palaukite, kol suaugsite. Nëra nieko þavaus daryti áspûdá kitiems, tampant nusikaltëliu.
+
+Turinys
+=======
+Kas yra reklamos kilinimas?
+* Kodël kas nors norëtø kilinti komercines reklamas internete?
+* Kà galima prarasti?  
+Kimbam á darbà:
+* Kokiø priemoniø reikia, kad nukilinèiau reklamas?
+* Reklaminiu baneriø kilinimas.
+* Nemokamø interneto paslaugø tiekëjo reklaminiø baneriø kilinimas.
+* Popup reklamø kilinimas.
+* Spamo kilinimas.
+Neþiniukø kampelis:
+* Kas tas /etc/hosts ar c:\windows\hosts failais?
+* Kas yra DNS Lookup / Reverse DNS Lookup?
+* Kas tai Popups?
+* Kas tai yra ryðio kanalo plotis (Bandwidth)?
+Kiti pamokantys straipsniai:
+* Straipsnis apie FTP.
+* Procesoriø Turbinimas.
+* RM tinklai.
+*Straipsnis apie Sendmail
+* DoS atakos.
+* Karo laukas - IRC.
+* Telefonø lauþimas (savo tikslams)
+Priedas  A: junkbusters.com
+Priedas  B: daugiau apie reklamos blokavimà.
+Bibliografija
+
+Kas yra reklamos kilinimas?
+-------------------
+Jei teko kaþkiek naudoti internetà, tai jau þinote apie tuos nervinanèius reklaminius Popups (3), komercinius banerius, nepraðytus reklaminius laiðkus (spam) ir t.t. Egzistuoja paprasti ir sudëtingi bûdai, kaip jø iðvengti, priklausomai nuo reklamuotojo iðradingumo.
+Taigi - su Popups viskas aiðku - jie NERVINA, bet kam gi man reikëtø vengti paprastø reklaminiø baneriø, kurie pasirodo tinklalapiuose. Bet juk juos reikia parsisiøsti - ir jø dydis yra nuo 3 iki 20 kilobaitø. Esmë ta - jie ryja ryðio kanalà.
+Tarkim, kad reklaminis baneris uþima 7kb, o jûsø kompiuteris yra vietinio tinklo (LAN - keltas kompiuteriø, sujungtø tam tikrais bûdais ir esantys beveik ðalia vienas kito (tame paèiame pastate, kambary ir t.t.), kurie gali keisti tarpusavyje duomenimis ir pan.). Taigi, tas LAN'as turi vienà iðëjimà á internetà, kurio uþtenka 10 þmoniø(pvz. 100 kb per sekundæ - tuomet kiekvienas vartotojas gauna apie 10 kb/s). Ásivaizduokime tokià situacijà - 5 þmonës narðo po internetà ir visi siunèiasi reklaminá banerá, kuris uþima 7kb. Visas tinklas tuo metu netenka 35kb per sekundæ. Pafantazuokim toliau: o jeigu reklaminiai baneriai uþimtø 10kb ir daugiau, arba tinkle bûtø daugiau kompiuteriø? Arba kad ir daugiau vartotojø siøstøsi reklamas? Dabar suprantat, kam reikia reklamos blokavimo?
+Aiðku, reklaminiai baneriai gali bûti ir naudingi, pvz. gali suþinoti apie naujus pigius kompiuterius ar ðiaip kitos ádomios informacijos. Popups, savo ruoþtu  yra labai nervinantys ir, kiek teko pastebëti, neteikia jokios naudingo informacijos (kill'em all - vert. past.). Þinojimas kaip nukilinti reklamas gali praversti ir sistemø administratoriams, kurie turi nedaug ryði resursø (bandwidth(4)).
+
+Kimbam á darbà
+-----------
+
+Reklaminiø baneriø kilinimas
+******************
+Pirmiausia reikia susidaryti serveriø tinklà, kurie talpina reklamas. Tarkime, kad  www.foobar.com yra reklamø rojus. Toliau jûs pridedate ðià eilutæ á hosts(1) failà:
+127.0.0.1 www.foobar.com
+Dabar kai kokia nors programa, naudojanti internetà, bandys pasiekti kaþkà ið www.foobar.com - ieðkos pagal IP 127.0.0.1. Pavyzdþiui  http://www.foobar.com/stupid-banner-ad.gif = http://127.0.0.1/stupid-banner-ad.gif.
+Net jei ir egzistuotø toks pieðinukas stupid-banner-ad.gif jûsø kompiuteryje - jis nerytø ryðio kanalo, kadangi  127.0.0.1 reiðkia save (savo kompiuterá). Pavyzdþiui, pabandykite ásilauþti á 127.0.0.1 ir pastebësite, kad visi failai yra átartinai paþástami (gal jie ásilauþë á jûsø kompiuterá ir nusisiurbë viskà pas save, ar kà?)
+
+Ðá bûda galima apgauti - jei html kode bus nurodytas reklamos davëjo IP adresas, vietoj hostname - narðyklë tuos pat patikrins ðià nuorodà. (Pavyzdþiui: jei www.ads-r-us.com IP yra 123.7.14.139,  tai ádedant 123.7.14.139/stupid-banner-ad.gif vietoj www.ads-r-us.com/stupid-banner-ad.gif iðvengs mûsø hosts failo pataisymo). Jei  þinote kitø bûdø - praðau paraðykite e-mail: barakirs@netvision.net.il.
+
+Nemokamø interneto paslaugø tiekëjo reklaminiø baneriø kilinimas.
+*********************************
+Egzistuoja keletas nemokamø IPT, kurie leidþia narðyti nemokamai (neskaitant sàskaitos uþ telefonà) su sàlyga, kad naudosite kvailà programà, rodanèià reklaminius banerius kur nors kampe. Ðios reklamos ne tik nervinanèios, bet taip pat ryjà ryðio kanalo plotá (bandwidth(4)).Jei norite atsikratyti ðio dalyko - jums reikia rasti crack. Èia að jums nepapasakosiu, kaip nukrekinti visus nemokamus pasaulio IPT, bet padësiu uþblokuoti kai kurias reklamas.
+Pirmiausia jums reikia gero firewall (iðbandykite http://www.theargon.com). Tuomet paleiskite já ir laukite pasirodant naujam baneriui ið jûsø IPT. Pasirodþius banerius jûsø firewall perspës apie ateinantá ryðá (incoming connection). Jums reikia nurodyti kompiuteriui jà ignoruoti ar sukurti taisyklæ savo firewall programai, kad ði ignoruotø automatiðkai (kilus neaiðkumams - panagrinëkite firewall helpà).
+
+Popup Reklamø kilinimas
+**************
+Ðiam tikslui egzistuoja specialios programos, kurios ieðko specialaus teksto Popup lange (pvz. blokuoja visus nervinanèius Geocities popups, kuriuose yra tekstas "Welcome to a Geocities Member Page" jø pavadinime) arba kilina popup pagal jø lango dydá (taip pat galimi ir abu variantai). Nors ilgai ieðkojau - tobulos programos ðiam reikalui dar neradau. Taèiau Surf In Peace yra visai neblog tam reikalui. Eikite á www.download.com, www.cnet.com ar www.zdnet.com, kur rasite daugiau informacijos ir programø.
+
+Spamo kilinimas
+************
+Taigi spamas - nepraðyti reklaminiai laiðkai. Vëlgi - kilinti spamui, jus reikia specialiø programø, vadinamø spamo filtrais (Spam Filters). Aplankykite www.tucows.com ir ieðkokite kategorijos Anti-Spam, kur rasite daigybæ programø kilinti Spamà.
+Paprastai kà daro spamo filtrai - tai sprendþia ar ateinantis laiðkas yra spamas pagal subject eilutæ ar pagal þinutës turiná. Kaip aptinkamas spamas - jis tuoj pat iðtrinamas.
+Jei tai nesuveikia - susisiekite su savo IPT ir papraðykite blokuoti laiðkus pagal spameriø e-mail adresus.
+
+Pastaba: kai kurie IPT pradëjo diegti galingus ir super tobulus spamo filtrus savo paðto serveriuose, kurie turëtø blokuoti 90% - 95% ateinanèio spamo. * Nemokamø interneto paslaugø tiekëjo reklaminiø baneriø kilinimas. Tarp tokiø IPT yra Earthlink, Netscape ir Usa.net.
+
+ÁDOMU: atliktas tyrimas "Kas Jus Spamina?" ("Who Spams You"). Jos rezultatai:
+Pirma vieta: "get rich quick" ("greitai praturtëk:).
+Antra vieta: suaugusiems skirti tinklalapiai.
+Treèia vieta: tinklalapiø reklama.
+Ketvirta vieta: visi kiti spamai.
+Penkta vieta: programinës árango reklamos.
+
+Neþiniukø Kampelis
+--------------
+1.Kas yra /etc/hosts ar  c:\windows\hosts failas? - dauguma OS (OS=Operacinë Sistema),  su kuriomis teko susidurti turi hosts failà. UNIX daþniausia laiko já /etc/hosts, Windows -  c:\windows\hosts ir  Windows NT saugo já c:\WinNT\system32\drivers\etc\hosts (aèiû Teolicy uþ  WinNT vietà). Hosts failas naudojamas, kad bûtø maþiau reikëtø naudotis  DNS Lookup(2). Kam gaiðti laikà darant DNS Lookup kai jûs jau þinote IP, bet jums vistiek patogiau raðyti hostname, negu rinkti IP adresà.
+Hosts failas turëtø atrodyti panaðiai á:
+# Èia yra komentaras
+# Á bet kà, kas prasideda # kompiuteris nekreips dëmesio.
+# Komentarai nebûtini, bet jie padeda skaitymui
+IP-adresas hostname
+
+Pavyzdþiui daugumoje Hosts failø jûs pamatysite ðià eilutæ:
+127.0.0.1 localhost
+Kas reiðkia, kad bet kas, nukreiptas á 127.0.0.1 yra nukreiptas á save, t.y. - savo kompiuterá.
+Taip pat ðis uþraðymas reiðkia, kad narðyklëje ávestas localhost reiðkia IP adresà 127.0.0.1.
+
+Pastaba: kai kurios operacinës sistemos ið pradþiø padaro DNS Lookup ir jei tai nepasiseka - tuomet pasiþiûri á hosts failà. Visà tai galima sukonfigûruoti (pvz. naudojant MacOS tereikia config.sys faile ádëti ðià eilutæ: set use_hosts_first=1).
+
+2. Kas tai yra DNS Lookup / Reverse DNS Lookup? - komanda nslookup hostname (tinka tik unix, windows versijai þiûrëkite http://www.samspade.org (WinNT turi ðià komandà (vert.past.))) parodo jums IP adresà nurodyto hostname.
+Kaip tai veikia?
+Kiekvienas kompiuteris, kuris yra ájungtas á internet tinklà turi priskirtà savo IP, nesvarbu ar jis priima ryðius ar ne. Jei norite prisijungti prie konkretaus kompiuterio - jums reikia þinoti jo IP adresà, patinka jums tai ar ne. Bet kà daryti tiems, kas serga skleroze arba tingi susirasti IP? Èia ir pasitarnauja hostnames. Hostnames yra paprasti þmogiðki IP adresø pavadinimai. Tarkim, jûs norite panarðyti po www.yahoo.com ir jums visai nesinori iðmokti atmintinai jø IP adresà ar dar knistis kaþkur ir ieðkoti - tai junkitës á www.yahoo.com, kas yra kitaip vadinamas (alias) yahoo IP adresas.
+Dabar galima paminëti ir DNS, kas yra sutrumpinimas ið Domain Name Server. DNS serveryje laikomi aliasai ir IP adresai.
+DNS Lookup reiðkia surasti duoto hostname IP. Reverse DNS Lookup daro atvirkðèiai(IP==>hostname).
+Daugiau informacijos galite rasti surinkæ man nslookup Unix'e arba aplankykite Sam Spade bibliotekà (http://www.samspade.org).
+Nslookup yra nuostabus zondavimo árankis ir yra vienas geriausiø bûdø suþinoti kaþkà apie tam tikrà kompiuterá tinkle, taip kad iðmokite juo naudotis.
+3. Popup - narðyklës langas, kuris iððoka (pops up). Jei neþinote, kas tai yra - aplankykite bet kurá Geocities tinklalapá ir pamatysite.
+4. Ryðio kanalo plotis  (Bandwidth) - maksimalus greitis, kurá gali pasiekti konkretus ryðio kanalas. Ryti kanalo plotá reiðkia atiduoti netekti maksimalaus greièio, ko pasekmë yra narðymo greièio maþëjimas.
+
+Kiti pamokantys straipsniai:
+---------------
+* Straipsnis apie FTP.
+* Procesoriø Turbinimas.
+* RM tinklai.
+*Straipsnis apie Sendmail
+* DoS atakos.
+* Karo laukas - IRC.
+* Telefonø lauþimas (savo tikslams)
+Visus juos galite rasti blacksun.box.sk.
+
+Priedas A: junkbusters.com
+---------------------------
+Èia e-mail ið James Slater:
+
+Sveiki, að kà tik perskaièiau jûsø pamokëlæ ir noriu pasiûlyti 'The Internet Junkbuster' (http://www.junkbusters.com). Tai yra proxy serveris, kurá galima diegti  Win9x/Un*x sistemose ir kuris gali bûti sukonfiguruotas blokuoti reklamà, remiantis tam tikromis taisyklëmis.
+
+Taigi - aplankykite www.junkbusters.com ir iðbandykite.
+
+Priedas B: daugiau apie reklamos blokavimà.
+------------------------
+Vienas bièiulis, kuris norëtø likti neþinomas, patarë naudoti sekanèià komandà:
+route add -host [spam serveris] reject
+(pakeiskite 'spam serveris' á IP ar hostname serverio, kuriame yra laikomi baneriai. Pavyzdþiui, jeigu baneriai ateina ið banners-r-us.com, pakeiskite  'spam serveris' banners-r-us.com)
+Ði komanda liepia Linux kerneliui atmesti viskà, kas ateina ið nurodyto IP.
+Praktiðkai ði komanda daro tà patá, kà ir terlionë su /etc/hosts, bet taip daryti smagiau...   ;-)
+
+Bibliografija
+------------
+Sam Spade biblioteka (http://www.samspade.org)
+Ávairi dokumentacija apie firewalls.

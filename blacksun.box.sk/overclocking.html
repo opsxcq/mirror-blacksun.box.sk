@@ -1,0 +1,324 @@
+<HTML>
+
+<HEAD>
+<META NAME="Author" CONTENT="RaveN">
+<META NAME="HTML" CONTENT="Penguin">
+<TITLE>Overclocking Mini-Tutorial</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#000000" TEXT="#FFFFFF">
+<H2><CENTER>The Overclocking Mini-Tutorial / written by yours truly, R a v e N (<A HREF="http:\\blacksun.box.sk">blacksun.box.sk</A>)</H2><HR></CENTER>
+
+version 1.6, 3/7/99<BR>
+Converted to HTML by Penguin<BR><BR>
+
+Note: whenever you see something like this: blah(1) it means that if you don't understand the meaning of the word blah there's an explanation about it just for you, located on the newbies corner on section 1.
+
+<BR><BR>
+
+<B><U>Author's Notes</U></B><BR>
+
+If you have any comments or questions regarding this file (no flames(9) or spam, please) Email me at <A HREF="mailto:barakirs@netvision.net.il">barakirs@netvision.net.il</A>.<BR>
+Visit <A HREF="http:\\blacksun.box.sk/tutorials.html">blacksun.box.sk</A> for more tutorials, free hacking/programming/unix books to download and much more.
+
+<BR><BR>
+
+<B><U>Disclaimer</U></B><BR>
+
+We do not encourage any kinds of illegal activities. If you believe that breaking the law is a good way to impress someone, please stop reading now and grow up. There is nothing impressive or cool in being a criminal.
+
+<BR><BR>
+
+<B><U><H2>Content</H2></B></U>
+<UL>
+<B><U><A HREF="#whatis">What is Overclocking?</A></B></U>
+<LI>What is the Meaning of the Word Overclocking?</A><BR>
+<LI>How Can I Benefit From Overclocking My Hardware?<BR>
+<LI>How Can I Overclock My CPU(1)/Video Card/Other?<BR>
+<LI>How Dangerous is This Whole Thing?<BR>
+<LI>Can Overclocking Fry Up My Computer?<BR>
+<LI>Safety Warnings?<BR>
+<LI>Possible Side Effects and How to Avoid them?<BR>
+<LI>Advanced Tips and Tricks?<BR>
+<LI>Advanced Tips and Tricks for Making Your Overclocking More Efficient?<BR>
+<LI>More Information on Speeding Up Your Computer?<BR>
+<LI>Where to Find More Information on Speeding Up Your Computer?<BR><BR>
+
+<B><U><A HREF="#3daccelerators">Notes About 3D Accelerators</A></B></U>
+
+<LI>How do I Overclock My 3D Accelerator?<BR><BR>
+
+<B><U><A HREF="#newbies">Newbies corner</A></B></U>
+<LI>What is a CPU?<BR>
+<LI>What is a BUS?<BR>
+<LI>What is a MHZ?<BR>
+<LI>What are Jumpers?<BR>
+<LI>What is the CMOS Chip?<BR>
+<LI>What is the Cache Chip?<BR>
+<LI>What is the RAM Chip?<BR>
+<LI>What is a URL?<BR>
+<LI>What is flaming?<BR><BR>
+
+
+<B><U><A HREF="#other">Other Tutorials</A></B></U><BR>
+<U><A HREF="#networking">Networking and it's security-related issues</A></U><BR>
+<LI><A HREF="ftp.html">FTP Tutorial</A><BR>
+<LI><A HREF="rm.html">RM Networks Tutorial</A><BR>
+<LI><A HREF="adblock.html">Ad Blocking Tutorial</A><BR>
+<LI><A HREF="sendmail.html">Sendmail Tutorial</A><BR>
+<LI><A HREF="anonymity.html">Anonymity Tutorial</A><BR>
+<LI><A HREF="proxy.html">Proxy/WinGate/SOCKS Tutorial</A><BR>
+<LI><A HREF="infogathering.html">Info Gathering Tutorial</A><BR>
+<LI><A HREF="icq.html">ICQ Security</A><BR>
+<LI><A HREF="exploitshotmail.html">Exploits Explained: JavaCript hole in Hotmail</A><BR>
+<LI>Mailing Lists Security (coming soon)<BR>
+<LI>The POP Protocol (coming soon)<BR>
+<LI>DoS Attacks Tutorial (coming soon)<BR><BR>
+
+<U><A HREF="#irc">IRC-related issues</A></U><BR>
+<LI><A HREF="ircwarfare.html">IRC Warfare Tutorial</A><BR>
+<LI><A HREF="eggdropbots.html">Eggdrop Bots Tutorial</A><BR><BR>
+
+<U><A HREF="#local">Local Stuff</A></U><BR>
+<LI><A HREF="registry.html">Windows Registry Tutorial</A><BR>
+<LI><A HREF="standalone.html">Standalone Security</A> (this tutorials wasn't written by a BSRF member. Read about what exactly happened <A HREF="byteme.html#Where the hell is the Local NT Security tutorial">here</A>).<BR>
+<LI><A HREF="comphardware.html">Interesting Things You Didn't Know About Your Computer's Hardware</A><BR><BR>
+
+<U><A HREF="#phreaking">Phreaking</A></U><BR>
+<LI><A HREF="phreaking.html">Phreaking Tutorial</A><BR>
+<LI><A HREF="advancedphreaking.html">Advanced Phreaking Tutorial</A><BR>
+<LI><A HREF="ultimatephreaking.html">The Ultimate Phreaking Tutorial II</A><BR><BR>
+
+<U><A HREF="#cracking">Cracking</A></U><BR>
+<LI><A HREF="cracking1.html">Cracking, Part I</A><BR>
+<LI>Cracking, Part II (coming soon)<BR>
+<LI>Cracking, Part III (coming soon)<BR><BR>
+
+<U><A HREF="#programming">Programming</A></U><BR>
+<LI><A HREF="html/index.html">HTML Tutorial</A><BR><BR>
+
+<U><A HREF="#encryption">Encryption</A></U><BR>
+<LI>PGP Tutorial (coming soon)<BR><BR>
+
+<U><A HREF="#upcoming">Upcoming Tutorials</A></U><BR>
+<LI>DoS Attacks Tutorial<BR>
+<LI>PGP Tutorial<BR>
+<LI>The POP Protocol<BR>
+<LI>Cracking, Part II + III<BR>
+<LI>Mailing Lists Security<BR><BR>
+
+<B><U><A HREF="#bibliography">Bibliography</A></B></U><BR>
+<LI>Plus what is disk cache on browsers and on several operating systems
+</UL>
+
+<BR>
+
+<B><U><A NAME="#whatis">What is Overclocking?</U></A></B><BR>
+
+Overclocking is a cool way of making your CPU, video card (monitor card), 3D accelerator and some other kinds of hardware run faster and give better performance for free! (Intel's worst nightmare! MWHAHAHAHAHA!!!)<BR>
+During this tutorial I will teach you how to overclock your CPU, but you can use this information to overclock other kinds of hardware on your PC.<BR>
+Now, your CPU speed is based on two factors - your BUS(2) speed and your clock speed (mine is 1 second per second... just kidding. I don't mean a standard clock, like one you can tell time out of. Read on and you'll understand).<BR>
+Example: The BUS speed on older computers (let's take a Pentium I 166MHZ(3) as an example) is about 66MHZ. 166, the CPU speed, divided by 66, the BUS speed, gives you about 2.5, meaning your clock speed is about 2.5.<BR>
+Simple, huh? BUS speed X clock speed = CPU speed.
+
+<BR><BR>
+
+<B><U>Now, what exactly is overclocking and how do I do it?</B></U>
+
+<BR><BR>
+
+<B><U>Materials</B></U>
+<OL>
+<LI>The little booklet you were supposed to received together with your CPU.<BR>
+<LI>A screwdriver (better be a Philips screwdriver).<BR>
+<LI>A metal plier with a rubber/plastic handle or a bunch of fingers (better be your fingers... oh, and when I said a bunch of fingers, I've meant at least 5, all of them attached to a living hand (better be yours). Undeads are also welcome).<BR>
+<LI>A calculator / a brain.<BR>
+</OL>
+
+A) Open your computer using your trusty screwdriver.<BR>
+B) Look at the little booklet you have and find the part about the jumpers(4) board and read.<BR>
+C) Use the plier or the fingers to change the jumpers array so you will receive the clock speed you are interested in. Oh yeah, and try not to step on your CMOS chip(5) or on your Cache chip(6).
+
+<BR><BR>
+
+Note: newer CPUs are "Clock Locked", meaning you cannot change their clock speed, but you can still change their BUS speed... ;)<BR>
+Changing the BUS speed is similar to changing the clock speed (read the part on your booklet about the jumpers).
+
+<BR><BR>
+
+<B><U>How Dangerous is This Whole Thing?</U></B><BR>
+Well, you CAN fry your modem, but it all depends on you.<BR>
+If you screw up and step on things, spill coffee over your computer or overclock your CPU too much (see Advanced Tips), don't come back crying to me.
+
+<BR><BR>
+
+<B><U>Possible Side Effects:</U></B>
+
+<OL>
+<LI>Your computer won't start: this probably means you have overclocked your computer too much. Lower your CPU speed a bit and then try again.
+<LI>Your OS won't start (or crash very frequently) or your computer will reboot itself randomly etc': open your computer, find the jumper that changes the CPU Voltage (the CPU Voltage is usually something that fits into this pattern: 2.x, when x can be any number) and increase the voltage a bit on every time.<BR>
+Remember to increase your CPU Voltage as little as you can. The maximum is "VOLT 2.30".
+If your computer still gives you problems then do a little less overclocking and it should be fine.<BR>
+<LI>Overclocking your CPU might increase it's temperature and decrease it's life span. Don't worry about that, experts claim that during the year 2,000 we will replace our CPU once every 6 months and this will become more frequent during the years so you've got nothing to worry about.
+</OL>
+
+<BR>
+
+<B><U>How to Avoid these Side Effects:</U></B>
+<OL>
+<LI>Attach another fan or a "Heat Sink" to your CPU. It shouldn't cost much (a couple of bucks, maybe) and the outcomes would amaze you (For example: using a device that cools your CPU to -20 Celsius degrees you can turn a Celeron 300A into a 633MHZ CPU)<BR>
+<LI>Place your computer where you won't block it's air ways.<BR>
+<LI>There are programs like CPUIdle (URL(7) to download: <A HREF="http://www.geocities.com/SiliconValley/Monitor/6990/cpuidle.zip">http://www.geocities.com/SiliconValley/Monitor/6990/cpuidle.zip</A>) that can shut down your CPU while it's not in use. These actions can decrease the temperature of your CPU, and it can even increase your CPU's life span.
+Note: CPUIdle only works on Windows, since it is "Built-In" on other OSs (see CPUIdle's documentations).
+</OL>
+
+<BR>
+
+<B><U>Statistically Speaking, How Safe is this?</U></B><BR>
+Very safe. Out of tens of thousands of overclockers in the world, only a very few got some of their hardware fried up (and who says it's because of the overclocking anyway?), and those guys didn't listen to the safety warnings (they overclocked their CPU too much, increased the CPU Voltage too much etc').
+
+<BR><BR>
+
+<B><U>Is it Worth the Trouble?</U></B><BR>
+DUH!!! Of course it is! Do the math yourself.
+
+<BR><BR>
+
+<B><U>More Info on Speeding Up Your Computer</U></B><BR>
+Try the "Modem Speedup" section at <A HREF="http:\\blacksun.box.sk/speedup.html">blacksun.box.sk</A>
+
+<BR><BR>
+
+<B><U><A NAME="#3daccelerators">How do I Overclock My 3D Accelerator?</A></U></B><BR>
+Overclocking 3D accelerators is pretty much like overclocking CPUs, only you have to take one factor into consideration... your CPU speed.<BR>
+You see, the speed your 3D accelerator works depends on your CPU. The 3D accelerator cannot work faster than the CPU, since some vital 3D calculations are done by it, hence the accelerator cannot continue without these calculations.<BR>
+If your CPU's speed is lower than 400MHZ, I advise you not to overclock your 3D accelerator. Go overclock your CPU and then overclock your 3D card!! HAHAHA!!
+
+<BR><BR>
+
+<B><U><A NAME="#newbies">Newbies Corner</A></U></B>
+<OL>
+<LI>CPU - Central Processing Unit. A little chip that does all of your calculations (besides graphical calculations, which are mostly done by video cards or 3D accelerators, but they all work according to a "blueprint" given to them by the CPU).<BR>
+
+<LI>BUS - BUSsed aren't yellow and they don't have a sing saying "school BUS" beside them.<BR>
+BUSses are little electronic connections which send out electric pulses from different pieces of hardware on your computer to other pieces of hardware.<BR>
+Without the BUSses your CPU, sound/monitor/modem cards, RAM chip etc' won't be able to communicate with each other.<BR>
+
+<LI>MHZ - Mega Hertz. To make a long story short, this is the speed of your CPU.<BR>
+
+<LI>Jumpers - they're inside your computer, they look like tiny little plastic squares and they usually have 2 or more little metal pieces which send electricity from one side to the other (unless they're broken).<BR>
+They are usually sitting there next to each other. Oh yeah, and they taste bad, so don't try eating any of those.<BR>
+
+<LI>CMOS Chip - Complementary Metal Oxide Semiconductor. The little chip that stores some of your computer's most basic configuration.<BR>
+
+<LI>Cache Chip - when your CPU feels like accessing a memory segment, it can either read it from the RAM chip(8) or from the cache chip.<BR>
+The cache chip is much faster than the RAM chip, which usually has the speed of 66MHZ (at the time this tutorial was written).<BR>
+
+<B><U>The cache chip works this way:</B></U><BR>
+<B>A)</B> Your CPU wants to access some kind of data which is not stored on your Hard Drive, on a CD, on a diskette etc' (read section 8 of the Newbies Corner first). Common sense says it should head to the RAM chip, right?<BR>
+<B>B)</B> No, sir! First the CPU looks up that data on the cache chip. The cache chip is much faster than the RAM chip and it is located closer to the CPU, and it contains the most recent pieces of data the CPU retrieved from the RAM chip.<BR>
+<B>C)</B> If the data was found on the cache chip, hurray! The CPU may now proceed with it's actions. Final outcome: the CPU saved a lot of time.<BR>
+<B>D)</B> If the data was not found on the cache chip, the CPU will head off to the RAM chip. Final outcome: the CPU wasted very very little time.<BR>
+
+<B>Note:</B> while your RAM can contain 32MB (MegaBytes), 64MB, 128MB (currently not present on any home PC) or 256MB (see 128MB), but the cache size will vary from 256K to 516K, when 1024K = 1MB (again, this info is relevant to the time this tutorial was written).<BR>
+<B>Note 2:</B> if you played around a little with your Internet browser and found out that your browser has it's own cache memory, let me explain.<BR>
+Your browser has what is called "Disk Cache" - it caches Internet files (HTML files, pictures etc') on your hard drive so next time you will access those files it will only have to check if there is a newer version of them, and if not it will load them from the cache. If there is a newer version of these files they will be redownloaded and the disk cache will be updated.
+It is possible to disable the disk cache or limit it to a specific space (Example: don't cache anymore than 30MB. Example2: don't cache at all).<BR>
+<B>Note 3:</B> several Operating Systems have disk cache too, which is similar to your browser's disk cache (but has nothing to do with the net. Well, most of the time...).<BR>
+
+<LI>URL - Universal Resource Locator - an Internet address.<BR>
+
+<LI>RAM Chip - a chip that stores data which is not saved on your hard drive, CDs, diskettes etc' (temporary data used by programs and/or games).<BR>
+
+<LI>Flames - the action of flaming someone (send him angry mail about things he has done, opinions he has etc' which you do not agree with).
+</OL>
+
+<HR>
+
+<B><U><A NAME="#tutorials">Other Tutorials</A></U></B><BR>
+<B><U><A NAME="#networking">Networking and it's security-related issues</A></B></U>
+<UL>
+<LI><A HREF="ftp.html">FTP Tutorial</A> - Covers FTP hacking, FTP commands, what the hell is FTP and tons of tips and tricks (not all FTP-related) in the newbies corner.<BR>
+
+<LI><A HREF="rm.html">RM Networks Tutorial</A> - yes, RM Networks. You know, those local networks, not Internet networks... RM Networks are so stupid that they rely on the fact that the user is even dumber. Stumbled across one in your school/University/college/working place? Want maximum priviledges on it? Then try this tutorial.<BR>
+
+<LI><A HREF="adblock.html">Ad Blocking Tutorial</A> - Are you tired of seeing stupid commercials and popups popping on your screen and chewing up your bandwidth? Then read this!<BR>
+
+<LI><A HREF="sendmail.html">Sendmail Tutorial</A> - Find out why Sendmail is called 'the buggiest daemon on earth', and find out what a daemon is anyway. Tons of ways to crack into big computers as well as PCs unleashed, including, of course, information on how to block these holes.<BR>
+
+<LI><A HREF="anonymity.html">Anonymity Tutorial</A> - tired of people getting your IP over ICQ or IRC? Tired of website owners knowing EVERYTHING about you? Tired of people tracing you by your Email address? Read this one and learn how to anonymize yourself!<BR>
+
+<LI><A HREF="proxy.html">Proxy/WinGate/SOCKS Tutorial</A> - don't know what a Proxy is? Don't know what  a WinGate is? Don't know what a SOCKS firewall is? Wanna learn how to increase your anonymity using them? Then read this one.<BR>
+
+<LI><A HREF="infogathering.html">Info Gathering Tutorial</A> - want to find private information about people and scare them like hell? Then read this tutorial, you'll just love it!<BR>
+
+<LI><A HREF="icq.html">ICQ Security</A> - learn about ICQ's security flaws, how to exploit them and how to protect yourself from malicious users who use these flaws against you. Stealing passwords, reading someone's entire hard drive, flooding, spoofing, DoSsing and what not.<BR>
+
+<LI><A HREF="exploitshotmail.html">Exploits Explained: JavaCript hole in Hotmail</A> - this excellent tutorial by Little V is the first tutorial in our Exploits Explained series. Each tutorial in this series will explain about a certain hole. This one explains about the JavaCript hole in Hotmail, which allows you to read messages from someone's inbox, send messages from his Hotmail account, get his password etc'.<BR>
+
+<LI>Mailing Lists Security (coming soon) - how to improve your mailing list's security, how to hack other mailing lists and what is a mailing list anyway (plus different kinds of mailing lists, where to get them etc').<BR>
+
+<LI>The POP Protocol (coming soon) - wanna learn more on how Email works? Wanna delete spam and mailbombs on the server, without even having to download them and fill your entire inbox? Then read this one once it gets out.<BR>
+
+<LI>DoS Attacks Tutorial (coming soon) - learn how DoS attacks work and how to protect yourself against them (and of course, what the hell are DoS attacks anyway)
+</UL>
+
+<B><U><A NAME="irc">IRC-related issues</A></B></U>
+<UL>
+<LI><A HREF="ircwarfare.html">IRC Warfare Tutorial</A> - ever wanted to know how those lamers keep taking over your channel and/or kicking you off IRC? Learn to protect yourself here!<BR>
+
+<LI><A HREF="eggdropbots.html">Eggdrop Bots Tutorial</A> - learn how to set up your own Eggdrop bots on IRC, and how to send them commands, make them execute automated processes or commands on certain conditions or time etc'.<BR>
+</UL>
+
+<B><U><A NAME"=local">Local Stuff</A></B></U>
+<UL>
+<LI><A HREF="registry.html">Windows Registry Tutorial</A> - learn more about the Windows registry. How does it work, what does it do and what happened to the old .ini files?<BR>
+
+<LI><A HREF="standalone.html">Standalone Security</A> (this tutorials wasn't written by a BSRF member. Read about what exactly happened <A HREF="byteme.html#Where the hell is the Local NT Security tutorial">here</A>).<BR>
+
+<LI><A HREF="comphardware.html">Interesting Things You Didn't Know About Your Computer's Hardware</A> - read Njan's amazing tutorial about all those things you always wanted to know about PC hardware but never had the guts to ask.<BR>
+</UL>
+
+<B><U><A NAME="phreaking">Phreaking</A></B></U>
+<UL>
+<LI><A HREF="phreaking.html">Phreaking Tutorial</A> - this should get all those newbie phreakers out there started. An excellent tutorial by Squiler, the only phreaker aboard BSRF.<BR>
+
+<LI><A HREF="advancedphreaking.html">Advanced Phreaking Tutorial</A> - already finished Squiler's phreaking tutorial? Want more? Then this one is for you! More phreaking information and techniques, with some more advanced stuff than the previous one.<BR>
+
+<LI><A HREF="ultimatephreaking.html">The Ultimate Phreaking Tutorial II</A> - liked Squiler's first phreaking tutorial? Want more? Then read this one!
+</UL>
+
+<B><U><A NAME="cracking">Cracking</A></B></U><BR>
+<UL>
+<LI><A HREF="cracking1.html">Cracking, Part I</A> - learn how to crack programs by yourself, and what the hell cracking means anyway.<BR>
+<LI>Cracking, Part II (coming soon)<BR>
+<LI>Cracking, Part III (coming soon)
+</UL>
+
+<B><U><A NAME="programming">Programming</A></B></U><BR>
+<UL>
+<LI><A HREF="html/index.html">HTML Tutorial</A> - learn how to build your own HTML pages. Fonts, colors, links, pictures, backgrounds, frames, image maps and what not.
+</UL>
+
+<B><U><A NAME="encryption">Encryption</A></B></U><BR>
+<UL>
+<LI>PGP Tutorial (coming soon) - learn how PGP works behind the scenes and how to use it (and what the hell is PGP, what it stands for etc'). 
+</UL>
+
+<B><U><A NAME="upcoming">Upcoming Tutorials</A></B></U>
+<UL>
+<LI>DoS Attacks Tutorial - learn how DoS attacks work and how to protect yourself against them.<BR>
+<LI>PGP Tutorial - learn how PGP works behind the scenes and how to use it.<BR>
+<LI>The POP Protocol - wanna learn more on how Email works? Wanna delete spam and mailbombs on the server, without even having to download them and fill your entire inbox? Then read this one once it gets out.<BR>
+<LI>Cracking, Part II + III - the continuation of Techlord's first cracking tutorial.<BR>
+<LI>Mailing Lists Security - how to improve your mailing list's security, how to hack other mailing lists and what is a mailing list anyway (plus different kinds of mailing lists, where to get them etc').
+</UL>
+
+<HR>
+
+<B><U><A NAME="#bibliography">Bibliography</A></B></U><BR>
+<A HREF="http://www.hacker.co.il">http://www.hacker.co.il</A> (in Hebrew)<BR>
+PC Magazine - <A HREF="http://www.pcmagazine.com">http://www.pcmagazine.com</A>
+
+</BODY>
+</HTML>

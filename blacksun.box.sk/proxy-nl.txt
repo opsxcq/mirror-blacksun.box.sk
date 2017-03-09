@@ -1,0 +1,96 @@
+Proxy/WinGate/SOCKS Tutorial
+
+Door Jatt
+
+Meer tutorials op http://blacksun.box.sk
+
+
+Wat is een Proxy server?
+
+Een Proxy server is een server die iemand (misschien een ISP, misschien een vriend) heeft geplaatst, als je dan naar een website verbinding maakt ga je niet direct naar de server van die site maar eerst naar de proxy server en daarna naar de website. Dus als iemand anders naar de website gaat en ook met hetzelfde netwerk dan pakt diegene de website van de proxy server. Iemand (meestal een System Admin, ISP enz.) die deze server onder toezicht heeft kan de tijd instellen van wanneer ser server de websites vernieuwt. Elke keer wanneer een website is bezocht is het opgeslagen op de Proxy Server. Opnieuw, het is aan degene die de server onder zijn hoede heeft hoe lang de website op de server blijft staan. Als een gebruiker ziet dat een site niet is geupdated en vernieuwd moet worden (zoals een site die elke dag upgedated wordt), dan moet hij/zij de 'Vernieuw' knop indrukken en dan zal de website worden geupdated op de Proxy Server.
+
+Waarom zal je een Proxy Server gebruiken?
+
+Er zijn verschillende redenen. Sommige ISP's (Internet Service Providers) houden er van omdat proxy servers het internetverkeer een beetje in toom houden op hun netwerk, en verhoogt dus de snelheid waarmee hun gebruikers surfen (wanneer de proxy server dichterbij is dan de server van de site, krijgen ze minder 'trip time', minder vertraging, of in andere woorden, sneller surfen). Gebruikers vinden het fijn omdat het hun kan helpen om sneller gebruik te kunnen maken van hun mogelijkheden op het web. Dit is vooral handig sinds je gebruik kan maken van meerdere proxies en dus door 3 of meerdere proxies kan; hoe dan ook, het zal moeilijk zijn om 3 servers te vinden die jou allemaal toelaten. Trouwens, de snelheid van de verbinding zal opmerkelijk langzamer worden, zeker wanneer de servers op verschillende continenten staan. Een andere reden is dat als je verbinding maakt met een grotere server je snelheid zal vergroten. Note: Het is goed als je weet wie de proxy server draait waarmee je verbonden bent. Als het Microsoft is hoef je je geen zorgen te maken, die zullen je misschien loggen bij elke stap. Als het anoniem of als het iemand is die zegt dat iedereen er gebruik van kan maken, ga er dan voor. Om deze informatie te vinden moet je normaal kijken naar de admin's website van de proxy server.
+
+Wat is een WinGate?
+
+Een officiële definitie die ik gehoord heb van een aantal mensen:
+
+"WinGate is een proxy server firewall software package die je toelaat om een enkele (of meerdere) internetverbinding(en) met een groot computer netwerk te delen. De internetverbinding die je hebt van een WinGate kan elk type zijn, inclusief een gewone dialup modem, ISDN, kabelmodem, sateliet verbinding, of zelfs T1 circuits.
+
+WinGate is te vergelijken met een proxy server. Het verbindt verschillende computers door poort 23 met een server, die een wingate wordt genoemd. Eigenlijk is het gewoon een telnetverbinding. De wingate laat iedereen op het netwerk verbinding maken met internet of verbinding maken om naar andere sites te gaan. Jammer van die slecht geconfigureerde wingates en de onbekwaamheid van administrateurs, er zijn veel wingates die iedereen toelaten op verbinding met internet te maken via hun. Dus een weg open voor alles van een IP spoof op ICQ of IRC tot misbruik op grote schaal. Deze wingates worden 'open wingates' genoemd en zijn overal te vinden van een paar dagen tot een paar maanden totdat de administrateur ziet of opgemerkt krijgt dat er 'rare' dingen worden gedaan door zijn gebruikers die ze eigenlijk niet mogen doen. Meestal is er in dit geval sprake van iemand die verbinding maakt met internet.
+
+Het enige voordeel voor de administrateurs is de mogelijkheid om meerdere gebruikers te krijgen op dezelfde verbinding. De problemen zijn duidelijk groter dan de voordelen. Als iemand een wingate gaat opzetten, dan adviseer ik wel dat je moet weten waar je mee bezig bent en dat je er voor zorgt dat je alles goed configureerd zodat het alleen wordt gebruikt waar hij nodig voor is. Een ander veiligere Wingate-achtige software is SyGate.
+
+Uit ervaring met het werken met wingates en een Netwerk Administrator en een 'remote user' kan ik je vertellen dat de logs van de meeste wingates elke 48 uur vernieuwd worden. De meeste bedrijven en ISP's (vooral de groten) hebben niet de mogelijkheid of de wil om alles te loggen wat er gebeurt op hun wingate servers.
+
+Hoe vind ik een WinGate server?
+
+Goede vraag. De beste manier is van horen zeggen. Als dat mogelijk is, de tweede manier is om een wingate scanner te gebruiken. Je kan hele subnets scannen om een wingate te vinden. Note: IP's in derde wereld landen, het Midden-Oosten, Afrika, en op het @home netwerk hebben allemaal een ding gemeen: Ze hebben allemaal wingates die slecht geconfigureerd zijn en er zijn meestal ook open wingates op hun servers. Probeer eerst hun te scannen. Met Unix is de beste manier: trial en error. telnet naar de wingate door poort 23, laat dan de gebruikersnaam en paswoord leeg als: wingate. De beste windows (32 bits) scanner die ik heb gebruikt is: wGateScan v2.2
+Het is verkrijgbaar op meerder websites. Ik heb hem gevonden op deze site, het heeft nog meer handige dingen: http://www.hotmanscave.com/
+Om het te gebruiken hoef je alleen een prij IP adressen te plaatsen of een hostnaam. Hij zal telnetten naar iedere host in de rij door poort 23 en zal een bericht zeggen zoals "wingate" of zoiets. Als de host een bericht zoals deze krijgt is het bingo ! Je hebt er een gevonden en het houdt een lijst van alle werkende open wingates, welke je kan opslaan in een bestand of verwijderen als het nodig is.
+
+WinGates met ICQ:
+
+ICQ configureren om met wingates te werken:
+Ga naar het WinGate Setup scherm en klik op de proxies tab
+druk op ADD
+Selecteer de type proxy: 'Mapped link'
+Druk op Create
+Onder de Setting Group moet je 'Enable Connections To Proxy On Port' aanvinken. Zet het nummer 3333 in het venster.
+Zet het Socket type op: 'UDP'
+Zorg ervoor dat 'Destroy Inactive Sessions after XXX seconds' niet is aangevinkt.
+Zorg ervoor dat 'Enable Default Remote Host' is aangevinkt en staat op: icq.mirabilis.com Port: 4000
+Voor elke remote machine:
+Druk op ADD.
+In 'Connect Client IP' zet het IP van de remote machine
+In 'To Host' zet icq.mirabilis.com
+In 'Port' zet 4000
+Druk op OK
+Druk nu op DONE
+Je zal je nu op de hoofdscherm van de setup bevinden.
+Zorg ervoor dat er een SOCKS4 Proxy aanstaat op poort 1080
+druk op SAVE
+Kijk nu maar eens op je remote machine
+Remote Machine Configuration
+Als je nog steeds niet langs de ICQ Registration Wizard bent gekomen:
+Op de Registration Wizard onder Connection Type moet je je als een LAN user aanmelden.
+Kies 'I am behind a firewall or proxy'.
+Druk op NEXT om verder te gaan.
+Kies ook Socks4 of socks 5 server, afhankelijk van de toegankelijkheid van de proxy server
+Zet NIET firewall sessions time out aan
+Druk op NEXT om verder te gaan.
+Zet het IP adres van de server neer met poort 1080.
+Druk op NEXT voor de volgende als je het is gelukt om te registreren.
+Als het niet lukt om te registreren, zal je een bericht krijgen die dat zegt.
+Probeer een of meer van de volgende mogelijkheden:
+Druk op Retry of probeer het nog eens met dezelfde keuzes.
+Druk op Cancel om af te sluiten. Configureer nog eens je firewall settings en probeer het opnieuw door ICQ.exe te starten.
+Algemene Remote Machines:
+Voor algemene Remote Computers op je netwerk moet je precies dezelfde procedure doen als er gespecificeerd wordt in Remote Machine. Gebruik PRECIES dezelfde nummers en setup. Je hoeft alleen maar te kijken naar het IP adres van de Host van een van de remote machines in zijn HOSTS bestand.
+
+Wingates met IRC:
+
+Om je IRC client te configureren dat hij een wingate gebruikt moet je hem simpelweg vertellen dat je achter een SOCKS4 of SOCKS5 zit (nogmaals, afhankelijk van de WinGate. Probeer ze allebei en kijk welke er werkt) en zet het IP van de WinGate neer. Als er gevraagd wordt naar een gebruikersnaam en wachtwoord moet je deze leeg laten. Omdat er zoveel IRC clients zijn ga ik niet verder uitleggen hoe het moet en laat ik het je uitzoeken bij je eigen client.
+
+Wat is een Socks Host?
+
+Een Socks Host is eigenlijk hetzelfde als een wingate, het verschil is dat de verbinding door poort 1080 gaat. In je instellingen van de proxy server in je internet browser (explorer of Netscape) zal je een instelling vinden van een Socks host. Je kan een socks host gebruiken. Als je ooit mIRC voor IRC hebt gebruikt zal je een optie vinden voor je firewall. In deze optie moet je de gebruikersnaam en paswoord leeg laten en dan de poort 1080 gebruiken en dan het wingate adres invoeren in de hostnaam, dan moet je klikken op Use Socks Firewall, en dan moet je ook het protocol Socks4 of Socks5 (degene die voor jou werkt) proberen. Verbindt opnieuw en je zal opmerken dat je IP adres en je identificatie zal verschijnen als je verbonden bent met dezelfde IP adres als de socks host. Niet alle wingates zullen werken als een socks host. Denk er aan dat het moet verbinden met poort 1080 anders zal het niet werken met IRC. Nieuwere IRC daemons kunnen wingate/socks verbindingen constateren. Met het web is het niet handig. Het zal wel of niet je IP adres verbergen, afhankelijk van de website waarmee je verbinding maakt. Om anoniem te zijn op het web moet je met meerder proxy servers gaan werken.
+
+Laatste Woord:
+
+Socks/WinGates en Proxies kunnen je identiteit verbergen of kunnen het moeilijker maken om je te traceren of te loggen op internet, en het kan legaal zijn voor 90% van de gevallen, maar probeer niet te veel met de gedachte van "Ik wordt toch niet gepakt" omdat je door meerdere proxies, wingates of socks hosts gaat. Denk er aan dat iedereen getraceerd kan worden naar hun originele IP adres en hun ISP. Alles wat nodig is, is even samenwerking met de administrateurs van de proxy servers, ISP's en een paar gasten die in de internetbeveiliging zitten.
+
+
+-------------------------------------------------
+Dat is het voor de Socks Host/Proxy Server en Wingate Tutorial. Vragen of opmerkingen kunnen ge-emaild worden naar uslijatt@hotmail.com
+
+Jatt
+
+Voor meer informatie over Proxies en een grote lijst van Proxy Servers, wingates, telnet, ftp, en socks hosts, probeer: http://proxys4all.cgi.net/
+-note: ze zijn niet allemaal getest en sommige kunnen plat liggen. Ook worden de lijsten niet zo vaak vernieuwd als de meeste mensen zouden willen.
+Een andere Wingate proxy tutorial:  http://www.wingate.net/
+ICQ met wingate:  http://www.visions.demon.nl/wingate/
+
+

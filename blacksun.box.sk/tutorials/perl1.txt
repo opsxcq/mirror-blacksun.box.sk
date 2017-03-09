@@ -1,0 +1,407 @@
+******************************************************
+* La Rivista Settimanale sul Perl 1 - By Ankit Fadia *
+******************************************************
+
+ ###########         #                   ###             #########      ##     # 
+ ############       ###                 #####           ###  #####     ###     ## 
+ #####    ####     #####               #######         ###    ###     ####    ### 
+ #####    #####   #######             #########       ###      #      ####  #### 
+  ####   #####    #######            ###########     ###               ### #### 
+   #########      #######           ####     ####    ###               ####### 
+    ###########    #####           #####     #####    ###     ##      ####### 
+   #############    ###   ##      ######  #########    ###   ####     ######### 
+  ######     ####    #   ####      ########  #####      ##  ######     ###   ### 
+ ######     ####     ##########     ####     ####        #########     ###  ##### 
+ #####     ####       ##########     ###     ###          #######     ####  ###### 
+ #############         ##########     ##     ##            #####      ####   #### 
+ ###########            ########      ##     ##             ###        ###    ## 
+
+   #######       #     #        #     # 
+  ##########    ##     ##      ##     ## 
+ ###    ###     ##     ##     ###     ### 
+  ###    #     ###     ###   #####    ####           Black Sun Research Facility 
+    ###         ##     ##    ######   ####             http://blacksun.box.sk 
+      ###       ##     ##    #######  ####                 ASCII By : cyRu5 
+   #   ###     ###     ###   ####  ####### 
+  ###  ####   ####     ####   ###   ##### 
+ ###########   ###########     ##    ### 
+  #########      #######        #     # 
+
+Non puoi diventare un buon hacker se non hai delle conoscenze sulla programmazione. Non 
+solo per l'Hacking, il Perl è molto utile per lo sviluppo della sicurezza e anche 
+programmi normali. Nella Rivista Settimanale sul Perl 1 comincerò dalle basi del Perl e 
+poi mi spostero a cose più belle e avanzate. Scrivo questo documento premettendo che io 
+penso che tu non abbia nessuna esperienza di programmazione, quindi delle conoscenze di C, 
+Basic o JavaScript ti aiuteranno molto.
+
+Perl : Le Basi
+==============
+Il Perl è nato nell'1987 e fu sviluppato da Larry Wall fondendo delle utility di Unix con 
+un tool di amministrazione di sistema che aveva sviluppato. Lo sviluppo del Perl è stato 
+fatto in modo tale da includere tutti i più utili e importanti aspetti degli altri 
+linguaggi di programmazione ed eliminare gli aspetti non utili. Iora il Perl è un 
+linguaggio interpretato, ciò significa che il codice Perl non viene compilato come altri 
+linguaggi. Quando esegui un programma Perl, è prima compilato in bytecode, e poi è 
+convertito in istruzioni macchina.
+
+Prima di tutto, prima che cominci a scrivere i tuoi programmi Perl, hai bisogno di 
+ActivePerl, l'interprete di Perl. Puoi scaricare ActivePerl per Win32 da:
+
+http://www.activestate.com/ 
+
+Segui i collegamenti per l'ultima versione e scaricala. E' circa 5mb. Dopo aver installato 
+ActivePerl assicurati che il file perl.exe è nella directory giusta. Benchè ActivePerl 
+Build 509 setta le directory automaticamente durante l'installazione, assicurati che tutte 
+le directory che contengono riferimenti al file siano esatte scrivendo il comando "set" al 
+prompt (senza le virgolette), ora cerca il campo "PATH" e assiocurati che contiene la 
+linea "c:\perl\bin". Normalmente dovrebbe contenere questa linea, altrimenti apri il file 
+c:\autoexec.bat nel Blocco Note e aggiungi questa linea:
+
+PATH=%PATH%;.;c:\perl\bin 
+
+Ora salva il file e riavvia il computer oppure esegui autoexec.bat.
+
+Nota: gli utenti NT devono solo aggiornare il loro sistema andando su
+
+Pannello di Controllo > Sistema
+
+Ora cominciamo con l'obbligatorio programma Hello World. Ora per scrivere programmi in 
+Perl non hai bisogno di speciali editor, Blocco Note andrà più che bene. Così lancia 
+Blocco Note e scrivi
+
+print "Hello World\n"; #Questo scrive Hello World sullo schermo
+
+Ora salva il file come first.pl. Puoi chiamarlo in qualunque modo ma ricorda che il file 
+deve avere un'estensione .pl. Ora vai al prompt di DOS e nella cartella dove hai salvato 
+il file scrivi
+
+c:\myfiles> first.pl
+
+Nota: modifica il nome del file se l'hai salvato in un altro modo.
+
+Se il seguente programma non funziona poichè hai ricevuto un errore, controlla il percorso 
+delle directory o prova a scrivere perl filename.pl la posto di filename.pl.
+
+Ora analizziamo il programma, la parola print chiama la funzione print che prende il testo 
+tra virgolette e lo mostra sulla schermata. Il "\n" simbolieggia una nuova linea o Invio.
+
+Scalari
+-------
+
+Ora rendiamo il programma un po' più complicato introducendo uno scalare.
+
+$scalarvar= 'Hello World\n' ; #La variabile $scalarvar è Hello World\n
+print "$scalarvar" ; #Stampa il valore della variabile $scalarvar
+
+Gli scalari sono dichiarati dal simbolo $ seguito dal nome della variabile. La prima linea 
+riempie la variabile chiamata scalarvar con il testo desiderato tra virgolette. Noi 
+sappiamo che scalarvar è uno scalaer perchè è preceduto dal simbolo $.
+
+Ora devi meravigliarti per il fatto che ho usato degli apici nella prima linea e i doppi 
+apici nella seconda. L'ho fatto perchè il Perl gestisce le variabili con i doppi apici e 
+questo significa che il nome della variabile è sostituitoal contenuto della variabile. 
+Questo diventerà più chiaro con i seguenti esempi:
+
+$scalarvar= 'Hello\n' ; # La variabile $scalarvar vale Hello\n
+print '$scalarvar' ; # Poichè usiamo apici singoli non c'è lo scambio di variabile e la 
+			funzione print stamperà $scalarvar.
+
+L'output sarà:
+
+$scalarvar
+
+Il seguente è un esempio di Scambio di Variabile:
+
+$scalarvar= 'Hello' ; 
+print "$scalarvar" ; # In questo caso nella funzione print avviene lo Scambio di Variabile
+
+L'output sarà: 
+
+Hello 
+
+Per ora la differenza tra apici singoli e doppi dovrebbe essere abbastanza chiara.
+
+Interagire con l'utente inserendo dei parametri
+-----------------------------------------------
+
+Il Diamond Operator cioè < > è l'equivalente in Perl della funzione scanf del C e della 
+funzione cin del C++. Fondamentalmente prende dei parametri dall'utente per rendere un 
+programma interattivo. Diventerà tutto più chiaro dopo il seguente esempio:
+
+print 'Scrivi il tuo nome' ; 
+$username= <> ; #L'utente dovrà inserire un testo da inserire nello scalare
+print 'ciao $username' ; 
+
+L'output sarà: 
+
+Scrivi il tuo nome: Ankit 
+Ciao Ankit 
+
+Questo programma stamperà il testo Scrivi il tuo Nome: sullo schermo e aspetterà 
+l'immissione dell'utente.
+
+Il testo inserito dall'utente sarà piazzato nello scalare $username. Il programma stamperà 
+Ciao seguito dal testo inserito dall'utente.
+
+chomp( ) e chop( ) 
+------------------
+
+A volte hai bisogno di manipolare le stringhe e per fare ciò ci sono molte funzioni 
+disponibili. Per fare ciò hai bisogno chop( ) e di chomp( ). Considera la seguente 
+situazione...Devi scrivere un programma per stampare il nome e l'età di un utente che deve 
+essere inserito dall'utente stesso. Ora considera il seguente codice:
+
+print "Scrivi il tuo nome:" ; 
+$name=<> ; 
+print "Scrivi la tua età:" ; 
+$age=<> ; 
+print "$name"; 
+print "$age"; 
+
+L'output sarà: 
+
+Scrivi il tuo nome:Ankit 
+Scrivi la tua età:14 
+Ankit
+14 
+
+Cosa è successo quù? Perchè il Perl ha scritto Ankit e 14 in linee differenti? Non c'è 
+nessun carattere "\n" in questo programma! Quello che è accaduto sta nel fatto che quando 
+l'utente deve inserire i dati, il Perl registra tutti i caratteri che l'utente inserisce 
+fino a quando non si dà un ending operator (l'ending operator è Carriage Return oppure 
+Invio). Quando l'ending operator è dato dall'utente, il Perl smette di prendere input e 
+assegna i dati memorizzati alla variabile specificata includendo Carriage Return.
+
+Questo significa che nel programma seguente il valore dello scalare $name è Ankit seguito 
+da un carriage return, e questo è equivalente a "Ankit\n".
+
+Così quando stampiamo lo scalare $name il valore di $name è stampato seguito da "\n".
+
+Per evitare questo problema usiamo chop( ) e chomp( ).
+
+La differenza basilare tra queste due funzioni diventerà più chiara con il seguente 
+esempio: 
+
+$var1="Ankit"; 
+chop($var1); 
+print $var1; 
+
+L'output sarà: 
+
+Anki 
+
+Nel seguente esempio: 
+
+$var1="Ankit"; 
+chomp($var1); 
+print $var1; 
+
+L'output sarà: 
+
+Ankit 
+
+La differenza tra chop( ) e chomp( ) è che chop( ) toglierà l'ultimo carattere della 
+stringa qualunque esso sia. chomp( ) invece eliminerà l'ultimo carattere solo se è "\n".
+
+Questo significa che 
+
+$var1="Ankit\n"; 
+chomp($var1); 
+print $var1; 
+
+e 
+
+$var1="Ankit\n"; 
+chomp($var1); 
+print $var1; 
+
+avranno lo stesso effetto poichè l'ultimo carattere è "\n". Così il nostro poblema di 
+stampare sia il nome e l'età dell'utente nella stella linea può essere risolto così:
+
+print "Scrivi il tuo nome:" ; 
+$name=<> ; 
+chomp($name); 
+print "Scrivi la tua età:" ; 
+$age=<> ; 
+chomp($age); 
+print "$name"; 
+print "$age"; 
+
+L'output ora sarà: 
+
+Scrivi il tuo nome:Ankit 
+Scrivi la tua età:14 
+Ankit14 
+
+Operatori
+---------
+
+Anche il perl ha alcuni operatori di base che troviamo anche in altri linguaggi ma ha 
+anche operatori addizionali.
+
+Operatori Aritmetici Binari
+---------------------------
+
+op1+op2 Addizione
+op1-op2 Sottrazione
+op1*op2 Moltipliazione
+op1/op2 Divisione
+op1 % op2 Modulo
+L'operatore esponenziale (**)
+
+Esempio: 
+
+$var= 5; 
+$var1= $var ** 3; 
+print $var1 ; 
+
+L'output sarà: 
+
+125 
+
+Operatori Aritmetici Unari
+--------------------------
+
++n e -n sono usati per cambiare il segno del valore. Per esempio:
+
+$var=4; 
+$var1= -4; 
+print var1; 
+
+L'output sarà: 
+
+-4 
+
+++n e --n sono usati per incrementare o decrementare il valore della variabile prima dell' 
+uso e n++ e n-- sono usati per incremetnare o decrementare il valore della variabile dopo 
+l'uso. Considera i seguenti esempi:
+
+$var=4; 
+print ++$var; 
+
+Stamperà: 
+
+5 
+
+$var=4 ; 
+print $var++; 
+
+Questo stamperà 4 sullo schermo e il valore di $var diventerà 5 dopo la scrittura di 4 
+sullo schermo.
+
+$letter="a"; 
+$letter++ 
+
+Ora $letter è b 
+
+$letters="xz"; 
+
+$letters++; 
+
+Ora $letters è ya
+
+Altri Operatori Generici
+------------------------
+
+L'Operatore di Concatenazione ( . )
+
+$var="Hack" ; 
+$var = $var . 's'; 
+
+Ora $var è Hacks e non Hack.
+
+L'operatore " x"
+
+$var = "ab" x 4; 
+print $var; 
+
+Stamperà abababab 
+
+Istruzioni Condizionali
+-----------------------
+
+Prima di tutto, impara la differenza tra = e ==.
+
+L'operatore = assegna alla variabile a sinistra il valore che sta a destra; l'operatore == 
+verifica se il valore di sinistra sia uguale a quello di destra ed è usato nell'istruzione 
+IF THEN ELSE.
+
+Ora il Perl include l'operatore logico followinf:
+
+X > Y Questo è vero se x è maggiore di y
+X < Y Questo è vero se y è maggiore di x
+X <= Y Questo è vero se x è minore o uguale di y
+X >= Y Questo è vero se x è maggiore o uguale di y
+
+Questi operatori valgono per i numeri; per le stringhe si usano questi operatori:
+
+eq E' l'equivalente alfanumerico di == e confronta due stringhe.
+x lt y E' vero se la stringa x viene prima della stringa y in ordine alfabetico.
+x gt y E' vero se la stringa x viene dopo la stringa y in ordine alfabetico.
+x le y E' vero se la stringa x viene prima o è uguale alla stringa y.
+x ge y E' vero se la stringa x viene dopo o è uguale alla stringa y.
+
+Ora che conosci gli operatori Logici andiamo a vedere l'istruzione IF THEN. La sintassi di 
+base di un'istruzione If then è:
+
+if ( condizione ) { corpo } esegue "corpo" se la condizione è vera.
+
+Se hai capito gli operatori logici e la sintassi di base, creare una funzione confizionale 
+If Then è abbastanza semplice. In ogni modo, farò un paio di esempi:
+
+print "Scrivi il tuo nome:"; 
+$name=< > ; 
+chomp $name ; 
+if ( $name eq 'Ankit') { 
+print "Ciao Ankit"; 
+} 
+
+Questo stampa Ciao Ankit se il nomde dell'utente è Ankit. Ora rendiamo le cose un po' più 
+interessanti inserendo la clausula else nell'istruzione IF THEN e trasformiamo 
+l'istruzione in IF THEN ELSE. Ecco un esempio:
+
+print "Scrivi il tuo nome:"; 
+$name=< > ; 
+chomp $name ; 
+if ( $name eq 'Ankit') { 
+print "Ciao Ankit"; 
+} 
+else { 
+print "Non sei autorizzato ad usare questo PC";
+} 
+
+Se l'input dell'utente è diverso da Ankit, il Perl esegue l'istruzione else e se l'input 
+dell'utente è Ankit eseguirà l'istruzione di then, cioè il comando dopo il primo {.
+
+Operatori d'Assegnamento
+------------------------
+
+$var .= 's' è equivalente a $var = $var . 's' 
+$var x= 7 è equivalente a  $var = $var x 7 
+$var += 7 è equivalente a $var = $var + 7 
+$var -= 7 è equivalente a $var = $var - 7 
+$var *= 7 è equivalente a $var = $var * 7 
+$var /= 7 è equivalente a $var = $var / 7 
+
+L'operatore ?:
+--------------
+
+E' simile all'istruzione If Then Else ma è più breve.
+Per esempio:
+
+$var=( $num == "5") ? "Ankit" : "End" ; 
+
+Alla variabile $var è assegnato il valore Ankit se $num==5 altrimenti a $var viene 
+assegnato il valore End.
+
+Bene, è tutto per la prima parte. Spero sia stata di tuo gradimento. Se trovi errori 
+contattami.
+
+Ankit Fadia
+ankit@bol.net.in 
+
+
+kEwL`
+kewl@roolz.cjb.net
+kewlrox.netfirms.com
+www.tankcommandos.org

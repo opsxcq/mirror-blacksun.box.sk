@@ -1,0 +1,151 @@
+****************************************************************************
+*
+*   USING POP3 BY HAND (Norwegian Version)
+*
+****************************************************************************
+ Author: Raven <barakirs@netvision.net.il>
+ WWW: http://blacksun.box.sk
+ Date: 2/1/2000
+ 
+ This text was originally written by Raven from Black Sun Research Facility,
+ but has been translated into Norwegian by Lars O. Overskeid. Please direct
+ any technical questions to the people at BSRF through their forum.
+ For any questions concerning the Norwegian translation of this document, see
+ contact information at the bottom of this text.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Hva er POP3?
+------------
+POP står for "Post Office Protocol" som direkte oversatt betyr "Postkontor
+Protokoll". POP3 er protokollen som blir brukt til å sjekke all e-post
+som ikke ligger på en web-basert e-post tjener. Med "web-basert" mener jeg
+en tjener eller konto som ikke kan aksesseres fra andre steder enn en 
+bestemt web-side. På et slikt web-sted vil du som regel bli vist reklame
+mens du leser eposten din, som er metoden bedriften som driver tjenesten
+finansierer den på. Med få unntak er slike web-baserte e-post tjenester
+gratis, men den kan ofte være begrenset til noen utvalgte brukere.
+
+Derfor, en e-post tjeneste som ikke er web-basert, er altså en e-post 
+tjeneste som må aksesseres fra en e-post klient, eller gjennom en vanlig 
+Telnet klient.
+
+E-post tjenester som ikke er web-basert bruker to protokoller - SMTP (Simple
+Mail Transfer Protocol) for å sende e-post, og POP (Post Office Protocol) til
+å motta e-post. Dersom du har lyst til å vite mer om SMTP har Blacksun Research
+Facility (BSRF) skrevet en tekst om SMTP, lik denne om POP. Hvis du lurer på
+forskjellen mellom POP og POP3, har det den enkle forklaringen at POP3 er en
+ny versjon av den originale POP.
+
+Hvorfor lære mer om POP3 protokollen
+------------------------------------
+Her er noen eksempler på hvorfor det er greit å vite litt om POP3:
+
+a. Har du noen gang blitt bombet med e-post? Hvis ikke, kan forestille deg den
+situasjonen man kommer i når man mottar tusenvis av meldinger som man senere
+må sitte å slette? Vel, nå kan det bli en slutt på dette! Etter å ha lest denne
+teksten vil du kunne nok til at du kan koble deg direkte til tjeneren og slette
+e-post meldinger, uten å først måtte motta dem med din e-post klient.
+
+b. Du vil få muligheten til å lese e-posten din når du er på andre maskiner, 
+eller til og med i utlandet. Ja, det finnes allerede mange web-steder som tilbyr
+deg en fint og ryddig online e-post leser, men jeg vil råde deg til å styre unna
+slike steder (hvis du da ikke _vil_ at uvedkommende skal lese e-posten din:).
+Bruk av slike tjeneste innebærer nemlig en stor risiko for at andre kan få tak i
+de meldingene du skriver. Et eksempel på dette er den nye funksjonen på browsere
+som har kommet i det siste, som tar vare på informasjonen du legger inn for 
+senere å kunne tilby deg å fylle ut skjemaer automatisk. En hvilken som helst
+person som bruker maskinen etter deg vil da uten store problemer få tilgang til
+meldingen du nettop har skrevet, brukernavnet, og passordet ditt! Derfor er det
+ingen god idé å bruke en online e-post leser.
+
+c. POP3 protokollen er ikke så vanskelig å skjønne, så hvorfor ikke lære seg den?
+
+En demonstrasjon av POP3
+------------------------
+Det første du trenger for å følge med på denne demonstrasjonen er en helt vanlig
+telnet klient. Windows 9x har en klient (c:\windows\telnet.exe) som er grei å
+bruke, og UNIX systemer har telnet innebygd (skriv 'telnet' etterfulgt av navnet
+eller IP-adressen på maskinen du skal koble til). Du kan også gjøre det samme
+i Windows ved å bruke 'Kjør' under startmenyen eller MS-Dos ledetekst. For å
+spesifisere hvilken port man skal koble til maskinen på (standard er 23), skriver
+du inn nummeret på porten etter adressen til maskinen. Det blir da slik:
+
+  >telnet vertsmaskin port
+
+Det andre du må ha, er adressen til POP3 serveren din e-post konto ligger på.
+Hvis du ikke har den fra før, finner du den på web-sidene til de du har konto hos.
+Som regel vil adressen være mail.verts-firma.net. Min er for eksempel
+mail.netvision.net.il.
+
+Ok, nå burde vi være klare for litt praksis. Koble til din POP3 tjener ved hjelp
+av telnet klienten din. Porten du skal koble til på er 110 som er standard POP3.
+Etter at du er tilkoblet, vil tjeneren svare med noe lignende dette:
+
+  +OK POP3 [194.90.1.6] v7.60 server ready
+
+Ser ut som det går bra hittil. Tjeneren har svart, og er nå klar for å motta
+identifikasjon fra brukeren (deg). Vi skriver:
+
+  user barakirs ('barakirs' byttes ut med ditt brukernavn.)
+
+Tjeneren vil da svare med noe lignende dette:
+
+  +OK User name accepted, password please
+
+Det neste den trenger er et passord. Vi skriver:
+
+  pass 123456abc ('123456abc' byttes ut med ditt passord.)
+
+Tjeneren svarer:
+
+  +OK Mailbox open, x messages (x er hvor mange meldinger du har)
+
+Eller hvis passordet var feil:
+
+  -ERR Bad login
+
+Nå som vi har logget inn på kontoen vår vil vi se på meldingene våre. For å få
+fram en liste over alle meldingene på kontoen, skriver vi 'list'. For hver melding
+vil du få fram en linje med et meldingsnummer som identifiserer meldingen, og et
+nummer som viser hvor stor meldingen er.
+For å lese en melding skriver du 'retr #', hvor '#' er meldingsnummeret på den
+meldingen du vil lese. Du får da fram meldingshodet (Se SMTP/Sendmail teksten fra
+BSRF for mer informasjon om meldingshoder) for meldingen, og selve innholdet i 
+meldingen. Etter at du har lest meldingen vil du kanskje slette meldingen. Det
+gjør du med kommandoen 'dele #'. Når du er ferdig, skriv 'quit' for å logge av.
+
+En siste ting
+--------------
+Når du er logget inn på din POP3 konto blir den låst slik at ingen andre kan
+logge seg inn samtidig. Tjeneren lager en låsefil når du logger inn, som den
+sletter igjen når du logger av. På den måten kan bare en bruker lese e-posten
+samtidig.
+
+Det var det !
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Translated by Lars O. Overskeid, also known as m0nark. 
+ You can reach me at m0nark@online.no, or ICQ# 22221965.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ SHOUTZ; BSRF Crew, EternalKnights, 1stVamp, COKE, Migbasher, Yorkie, §tõrm,
+ VetesGirl, Moondancer, Gressklipper, Divine-Crisis, An0nym0us, Chiraz and
+ the rest of the guys @ HNC, Ken Williams, Johnny, and j00r m4m4 :)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Thanks to all the people who's been there for me through all these years, 
+ especially my friends from Monark Productions, Online Devils and W-O-M.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ And thanks to BSRF for allowing me to translate their quality tutorials!
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+              T ° H ° A ° T ° S ° I ° T ° F ° O ° L ° K ° S 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+     ³     ÄÄÄÄ   ÄÄÄÄ ÄÄÄÄÄÄÄÄÄ ÄÄÄ   ÄÄÄ ÄÄÄÄÄÄÄÄ ÄÄÄÄÄÄÄÄ ÄÄÄ ÄÄ  ³
+     ³     ÄÄÄÄÄ ÄÄÄÄÄ ÄÄÄ   ÄÄÄ ÄÄÄÄÄ ÄÄÄ ÄÄÄ  ÄÄÄ ÄÄÄ  ÄÄÄ ÄÄÄÄ	   ³
+     ³     ÄÄÄ ÄÄÄ ÄÄÄ ÄÄÄ   ÄÄÄ ÄÄÄ ÄÄÄÄÄ ÄÄÄÄÄÄÄÄ ÄÄÄÄÄÄÄ  ÄÄÄÄ	   ³
+     ³     ÄÄÄ     ÄÄÄ ÄÄÄÄÄÄÄÄÄ ÄÄÄ   ÄÄÄ ÄÄÄ  ÄÄÄ ÄÄÄ  ÄÄÄ ÄÄÄ ÄÄ  ³
+     +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+

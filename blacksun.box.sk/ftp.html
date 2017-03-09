@@ -1,0 +1,320 @@
+<HTML><HEAD>
+	<TITLE>FTP Tutorial</TITLE><STYLE type=text/css>A:active {
+	TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #999999; TEXT-DECORATION: underline
+}
+A:link {
+	TEXT-DECORATION: none
+}
+A:visited {
+	TEXT-DECORATION: none
+}
+</STYLE>
+
+</HEAD>
+<BODY aLink=#ccff99 bgColor=#000000 leftMargin=20 link=#99ccff text=#cccccc 
+topMargin=10 vLink=#ccccff marginwidth="0" marginheight="0">
+
+
+<br>The FTP Tutorial / written by yours truly, R a v e n (<A HREF="http://blacksun.box.sk">blacksun.box.sk</A>)<P>
+
+version 2.0, 27/6/99<P>
+
+Note: whenever you see something like this: blah(1) it means that if you don't understand the meaning of the word blah there's an explanation for it just for you, located on the newbies corner on section 1.
+Note 2: if you're having a hard time reading this page because you have to scroll to the right whenever a long line comes, it's probably because you're not using "word wrapping".
+Most UNIX text editors and advanced Windows editors (and some less advanced ones like Wordpad) do this by themselves.
+To do word wrapping on Microsoft Notepad, simply go to Edit and then click on "Word wrapping".<P>
+
+<B>Author's notes</B><P>
+
+This file is basically intended for newbies, but gurus can benefit from it too (read everything, even the newbies corner. You might come across something you've missed when you first started studying).
+The next tutorials will be mostly for gurus, so bear with us.
+If you have any comments or questions regarding this tutorial (no flames(10) or spam, please) Email me at barakirs@netvision.net.il.
+Visit <A HREF="http://blacksun.box.sk">blacksun.box.sk</A> for more tutorials, free hacking/programming/unix books to download and much more.<P>
+
+<B>Disclaimer</B><P>
+
+We do not encourage any kinds of illegal activities. If you believe that breaking the law is a good way to impress someone, please stop reading now and grow up. There is nothing impressive or cool in being a criminal.<P>
+
+<B>Contents</B><P>
+
+<B>What Is FTP and What Is It Good For?</B><P>
+* What does the acronym FTP stands for?<BR>
+* What can I do with FTPs anyway? What are they good for anyway?<P>
+<B>------FTP Commands------</B><P>
+* How to use FTP with raw FTP commands<BR>
+* How to use FTP with a GUI (Graphical User Interface) / text client(5)<P>
+<B>------FTP Hacking------</B><P>
+* Finding out information about your target and finding security holes using that info<BR>
+* Example FTP-related security holes<BR>
+The Stupid Bug Corner<BR>
+* An "elite" bug<BR>
+Newbies Corner<BR>
+* What is a protocol<BR>
+* What is a port<BR>
+* What is a mirror site<BR>
+* What is a path (complete path + relative path)<BR>
+* What is a client program and what is a server program<BR>
+* How to find information about remote hosts<BR>
+* What is a daemon<BR>
+* What is root<BR>
+* What is a core dump<BR>
+* What is a DoS attack<BR>
+* What is DUN<BR>
+* What is an ISP<BR>
+* What is flaming<BR>
+Other Tutorials<BR>
+* FTP Hacking.<BR>
+* Overclocking.<BR>
+* Ad and Spam Blocking.<BR>
+* Sendmail.<BR>
+* Phreaking.<BR>
+* Advanced Phreaking.<BR>
+* Phreaking II.<BR>
+* IRC Warfare.<BR>
+* Windows Registry.<BR>
+* Info Gathering.<BR>
+* Proxy/Wingate/SOCKS.<BR>
+* Offline Windows Security.<BR>
+* ICQ Security.<P>
+
+<B>Bibliography</B><P>
+
+<B>What Is FTP and What Is It Good For?</B><P>
+
+The word FTP (see footnote 1 below) stands for File Transfer Protocol(1).<BR>
+FTP servers will let you to both download (retrieve a file from the server) and upload (send a file to the server) files from the server with great ease (if you<BR>
+have permission to do so).
+You browse through a remote FTP site the same way you browse through your own computer's files and directories (of course,<BR>
+you don't have read and/or write access to every file on the system, and some files you can't even see).<P>
+
+<B>FTP Commands</B><P>
+
+The following are several basic FTP commands. To communicate with FTP daemons(7), connect to port(2) 21 and then use the following commands (see footnote 2 below) to communicate with the FTP server:<BR>
+cd      change directory (on the server)<BR>
+lcd     change local directory (when sending a file, the path(4) of the specified file will be the path you specify on lcd)<BR>
+dir,ls  directory listing<BR>
+binary  change mode to binary transfer<BR>
+get     retrieve a file<BR>
+mget    retrieve many files<BR>
+put     send a file<BR>
+mput    send many files<BR>
+pwd     print working directory on the server<P>
+
+<B>Footnotes</B><P>
+
+<OL>
+	<LI>For thousands of computer-related acronyms and abbreviations head to <A HREF="http://blacksun.box.sk">blacksun.box.sk</A> and download the file called acros.txt from the projects page.
+	<LI>If you don't feel like typing stupid commands, there are lots of FTP clients(5) who will do all the work for you, but fortunately some will still show you all the commands they use so you'll be able to learn new commands.
+</OL>
+You can download FTP clients for every Operating System from TUCOWS. Simply go to the nearest TUCOWS mirror site(3) or go directly to <A HREF="www.tucows.com">www.tucows.com</A>.<P>
+
+<B>FTP Hacking</B><P>
+
+Since there are so many FTP holes for so many FTP server programs and so many Operating Systems, I decided that the best way it simply to explain to you how to find information about security holes by yourself.<BR>
+I will also introduce several interesting FTP security holes near the end of this section.<BR>
+To find FTP exploits, try searching the following websites (or join the BugTraq mailing list at <A HREF="www.securityfocus.com">www.securityfocus.com</A>):<BR>
+CERT (Computer Emergency Response Team) - <A HREF="http://cert.org">http://cert.org</A><BR>
+X-Force Search (simplest) - <A HREF="http://www.iss.net/cgi-bin/xforce/xforce_index.pl">http://www.iss.net/cgi-bin/xforce_index.pl</A><BR>
+Packet Storm - <A HREF="packetstorm.genocide2600.com">packetstorm.genocide2600.com</A><BR>
+BugTraq Archives - <A HREF="http://www.securityfocus.com/level2/bottom.html?go=search">http://www.securityfocus.com/level2/bottom.html?go=search</A><BR>
+Fyodor's Exploit World - <A HREF="http://www.insecure.org/sploits.html">http://www.insecure.org/sploits.html</A><BR>
+Spikeman's Denial Of Service Website (for DoS(9) attacks against FTP servers) - <A HREF="http://www.genocide2600.com/~spikeman/">http://www.genocide2600.com/~spikeman/</A><BR>
+RootShell - <A HREF="http://www.rootshell.com">http://www.rootshell.com</A><BR>
+Slashdot - <A HREF="http://www.slashdot.org">http://www.slashdot.org</A><BR>
+Data - <A HREF="http://www.hideaway.net/data.html">http://www.hideaway.net/data.html</A><BR>
+(Please report all dead links to <A HREF="mailto:barakirs@netvision.net.il">barakirs@netvision.net.il</A>)<P>
+
+Note: one might think that the above sites are considered illegal, since they feature explanations about security holes and how to exploit them.<BR>
+Well, screw one. These things are called "advisories" and they allow you to find holes on your own PC and fix them. Whether you use this information to secure yourself or hack others is your own choice. It's the difference between legitimate and illegal.<P>
+
+After you get to one of the following search sites (I recommend the BugTraq Archives) search for the keywords you want.
+For example: you find out(5) that your target is using this OS with this FTP server and this Webserver program etc'. Try combining all of those pieces of information and I'm sure you'll find the holes that fit you the most.
+You can also try searching holes on your own computer.
+Speaking about holes, we will explain about many security holes on the upcoming Sendmail tutorial (see <A HREF="http://blacksun.box.sk">blacksun.box.sk</A>).
+Now, for several selected FTP holes.<P>
+
+<B>Selected FTP Holes</B><P>
+
+The following FTP holes aren't new or extraordinary or incredibly fantastic or anything of that sort of matter. They're just good for learning.
+I picked some interesting FTP holes and written a small explanation about them just to get the newbies started.
+Note: the sites I got these from aren't "evil hacking sites". These explanations are called advisories and they are meant to be used by people who want to fix bugs on their systems. Whether you use them for that purpose or others is none of our business.
+<OL>
+	<LI>Some FTP daemons allows a premature PASV command, which can cause some FTP daemons to crash with a core dump(9). FTP core dumps can be used to salvage encrypted passwords, bypassing any shadow password scheme.
+	It is not known exactly which servers are immune to this and which are not, and the only workaround right now is to get a newer FTP server program.
+	Also see http://www.genocide2600.com/~spikeman/bisonware3.html for a DoS(9) attack against BisonWare FTP Server 3.5 similar to this hole.
+
+	<LI>FTP Bounce Attack (too long, see http://www.netspace.org/cgi-bin/wa?A2=ind9507B&L=bugtraq&P=R1425 (From BugTraq))
+
+	<LI>Local bug in FTP Daemon (too long, see http://www.netspace.org/cgi-bin/wa?A2=ind9507B&L=bugtraq&P=R1345 (From BugTraq))
+
+	<LI>(Quotes in partfrom BugTraq) Impact: Anybody from outside can shutdown your pc ftp server. And if u are under win3.1 the system will crash.
+</OL>
+Program: WinQVT/NET<BR>
+Version: All versions.. 16 and 32 bits<BR>
+Solution.. dont use it or upgrade<BR>
+Exploit: Just Send a OOB (Out of Band) to port 21,<BR>
+Exploit for dummies: Take any winnuke, start it, and when u find a "139" change it to "21" instead.<BR>
+OK, I know this is stupid....... :P. But maybe somebody will need it.. who knows...<BR>
+Note: A patched version of NT 4.0 isn't vulnerable to this running MS's FTP server.  I haven't had a chance to test an unpatched server, but IIRC, I did check the FTP port when the OOB problem was first reported and it didn't cause a crash.<BR>
+I would suspect that this could be a DOS/Win problem in general, and might not be specific to the WinQVT package.<BR>
+
+I hope this helped you learn how to find holes. There will be much more examples in the Sendmail tutorial.<P>
+
+<B>The Stupid Bug Corner</B><P>
+
+I found this on an "elite" website made by a bunch of "elite" "hackers".<BR>
+They said that in order to "hack an FTP" you need to connect to it and send the following commands:<BR>
+quote user ftp<BR>
+quote cwd ~root<BR>
+quote pass ftp<BR>
+Basically, what the so-called hacker is trying to do here is to enter a username to get into the system, change the user to root(7) and then enter a password for the username.<BR>
+This only works on VERY badly-configured FTP servers (the author mentioned that "this doesn't work on every FTP server". Well, I've got news for you - this doesn't work. Period. Unless you're talking about some 5 years old boy who just got a computer and clicked on some buttons and accidently set up an FTP server).<P>
+
+<B>Appendix A: the SYST command</B><P>
+
+Entering the SYST command while connected to an FTP server often reveals valuable information on a system, such as the OS, which version and information about the FTP server.<BR>
+Get access to an FTP server somehow (by using a username and a password you know or by using anonymous login - login: anonymous password:your-email-address@your.isp. You could also enter someone else's Email address, the server doesn't actually verifies the address you send or anything) and then type the SYST command.<P>
+
+<B>Newbies Corner</B><P>
+<OL>
+	<LI>Protocol - a set of rules and regulations, similar to a language. When two computers know the same protocol, they can use it to communicate with each other.
+
+	<LI>Port - (for the more technical explanation of what ports are, see the end of this explanation) ports are like holes that enable things (data, in this case) to come in or out of them.
+	There are physical ports and software ports on your computer. Physical ports are those slots on the back of your computer, your monitor etc'. Now, software ports are used when connecting to other computers.
+	For example: I just bought a new computer and I want to turn it into a webserver (I want to enable people to access selecetd web pages, pictures, cgi and java scripts or applets, programs etc' that are located on my computer). In order for that to happen, I need to install a webserver software.
+	The webserver software opens a port on my computer and names it port 80. Then it listens to incoming connections on that port.
+	When someone starts his Internet browser (Netscape, Lynx, Microsoft Explorer etc') and surfs to my website, his browser connects to my computer on port 80 and then sends HTTP commands that my webserver program can understand into it.
+	My webserver program quickly picks up the incoming data and then sends it back into a port that the surfer's browser opened on the surfer's computer. The browser will listen on that port and wait for the data (the HTML page, the picture, the program etc') to come in through it.
+	There are different ports for different services (we'll get to that) so data won't mix up. Imagine your browser getting data your FTP client was supposed to get.
+	I hope you got the main idea of what a port is.
+	Now, there are three kinds of ports: well-known ports, registered ports and dynamic/private ports.
+	The well known ports are those from 0 through 1023. These are default ports for several services (a webserver is a service because it listens for connections from remote computers and then sends something back). For example: the default port for webservers is 80. Else, how would your browser know which port he has to access?
+	Now, the registered ports are those from 1024 through 49151. These ports are reserved for several programs. For example: ICQ (<A HREF="www.icq.com">www.icq.com</A>) reserves a port and listens to incoming messages on it.
+	The dynamic and/or private ports are those from 49152 through 65535, and can be used by anyone for any given purpose.<P>
+
+	"Techy Explanation" - To grant simultaneous access to the TCP module, TCP provides a user interface called a port.
+	Ports are used by the kernel to identify network processes. These are strictly transport layer entities (that is to say that IP could care less about them).
+	Together with an IP address, a TCP port provides provides an endpoint for network communications.
+	In fact, at any given moment *all* Internet connections can be described by 4 numbers: the source IP address and source port and the destination IP address and destination port.
+	Servers are bound to 'well-known' ports so that they may be located on a standard port on different systems.
+	For example, the telnet daemon sits on TCP port 23, the FTP daemon sits on TCP port 21, the rlogin daemon sits on TCP port 513 etc'.<P>
+
+	Important note about well-known ports: services (daemons waiting for incoming connections that serve people in some way) on these ports can be only ran by root, so inferior users won't start messing up with important ports.<P>
+
+	<LI>Mirror site - a website which is an exact copy of the original website which is hosted by a different server.
+	Mirror sites can be used to speed up downloads/uploads. For example: instead of downloading/uploading from/to the main tucows webserver, located somewhere distantly from my home, I can simply do it from one of their Israeli mirrors (mirror site located in Israel, my country) and that way the downloads/uploads would go faster.<P>
+
+	<LI>Path - UNIX example: if a file is located at /etc/passwd, the file's path would be /etc.
+      DOS/Windows example: if a file is located at c:\windows\win.exe, the file's path would be c:\windows.	
+	There are two kinds of paths: a complete path and a relative path.
+      Complete path on DOS/Windows: if the file is located on c:\program files\quickview plus\ then this is the file's complete path.
+      Complete path on UNIX: if the file is located at /usr/local/sbin then this is the file's complete path.
+      Relative path on DOS/Windows: if the current directory (the directory you are on at the moment) is c:\windows and the target file is located at c:\windows\temp then the relative path to this file is temp.
+      Relative path on UNIX: if the current directory is /usr/nobody and the file is located at /usr/nobody/public_html/cgi-bin then the file's relative path is public_html/cgi-bin.<P>
+
+	<LI>Client / Server programs - A client program is a program that uses a resource offered by another program/computer.
+	A server program is a program that supplies resources to client programs.
+	Example: Client=Netscape Navigator. Server=Apache version 1.6.6 (a webserver, meaning a program that lets people who use Internet browsers to download specific web pages, pictures, files etc' from the computer it is installed on).<P>
+
+	<LI>How to find out information about remote hosts - the best way to find out information is too look at daemon(6) banners. Daemon banners are small pieces of information some daemons return when connected to in order for the remote machine (the one connecting to the daemon) to know how to interact with them better.
+	Try connecting to port 80 (webserver) and sending some commands like get and then looking at the banner. You may also try Sendmail (see next tutorial) on port 25, Telnet on port 23, FTP on port 21 or whatever you can come up with.<P>
+
+	<LI>Daemon - a program that listens for incoming connections from remote machines on a specified port(2) and interacts with them.<P>
+
+	<LI>Root - also referred as superuser, because his permissions are endless. His UID (User ID number, an identification number and user on a UNIX system has) and GID (Group ID. You can create groups and give them several permissions. For example: everyone from the accounting department can read and execute all the files on this directory, etc') are always 0 (except on very altered boxes).
+	Once you are root, you can do practically anything on a system.
+	Core Dump - when a program crashes it dumps all the core (all the info it handles that isn't saved on disk, meaning all of the program's stuff that are on the RAM chip) into a temporary file.<P>
+
+	<LI>DoS - Denial of Service. A nuke in dummies language. Some kind of an attack that causes the target computer to deny some/all kinds of services to the users of that computer (including remote users).
+	For example: Winnuke (also known as OOB), the simplest DoS in the world.
+	(Taken from Spikeman's DoS site) This denial of service program affects Windows clients by sending an "Out of Band" exception message to port 139, which does not know how to handle it. This is a standard listening port on Windows operating systems. Users of Win 3.11, Win95, and
+	Win NT are vulnerable to this attack. This program is basically a nuisance program, but it is being widely circulated over the internet now. It has become a bother in chatrooms and on IRC. By using your IP# and sending OOB data to port 139, malicious users can disconnect you from
+	the net, often leaving you with low resources and the blue tinted screen. Some of you may have been victims already. If this happens to you on Win 95, you will see a Windows fatal error message similar to the following:
+	Fatal exception 0E at 0028: in VxD MSTCP(01) + 000041AE.
+	This was called from 0028: in VxD NDIS(01) + 00000D7C.
+	Rebooting the comp should return it to normal state.<P>
+
+	<B>Patches ("fixes") For WinNuke (OOB)</B><P> 
+
+	Additional Information on WinNuke<BR>
+	<A HREF="http://support.microsoft.com/support/kb/articles/Q168/7/47.asp">http://support.microsoft.com/support/kb/articles/Q168/7/47.asp</A><P>
+	<B>Windows 95 Patches</B><P>
+	<A HREF="http://support.microsoft.com/download/support/mslfiles/Vipup11.exe">http://support.microsoft.com/download/support/mslfiles/Vipup11.exe</A><BR>
+	<A HREF="http://support.microsoft.com/download/support/mslfiles/Vipup20.exe">http://support.microsoft.com/download/support/mslfiles/Vipup20.exe</A> (for Winsock 2.0*)<BR>
+	<A HREF="http://www.theargon.com/defense/nuke/index.html">http://www.theargon.com/defense/nuke/index.html</A><BR>
+	Please read notes referring to 95 patches before installing.<BR> 
+	Which version of Winsock do you have on your Windows 95 PC?<BR>
+	<A HREF="http://premium.microsoft.com/support/kb/articles/Q177/7/19.asp">http://premium.microsoft.com/support/kb/articles/Q177/7/19.asp</A><BR>
+	<A HREF="http://www.theargon.com/defense/nuke/index.html">http://www.theargon.com/defense/nuke/index.html</A><BR>
+	Windows NT 4.0 Patch<BR>
+	<A HREF="http://support.microsoft.com/support/kb/articles/Q143/4/78.asp">http://support.microsoft.com/support/kb/articles/Q143/4/78.asp</A><BR>
+	<A HREF="http://www.theargon.com/defense/nuke/index.html">http://www.theargon.com/defense/nuke/index.html</A><BR>
+	Please read notes referring to Windows NT patches before installing.<P> 
+
+	More info on DoS attacks can be found at Spikeman's DoS site: <A HREF="http://www.genocide2600.com/~spikeman/main.html">http://www.genocide2600.com/~spikeman/main.html</A><P>
+
+	* I do not know it it will work on newer versions of Winsock, so you'd better downgrade to Winsock 1.1 (the version that comes with Windows 95) by going to Control Panel, Network and removing TCP/IP and Dial Up Adapter(11) and then readding them (click add, choose protocol and in the company frame choose Microsoft and you'll find TCP/IP. For DUN do the same but choose adapter instead of protocol).<BR>
+	After you finish downgrading reupgrade to Winsock 2.0, apply the patch (Vipup20.exe) and then upgrade to newer versions of Winsock.<P>
+
+	<LI>Flames - the action of flaming someone (send him angry mail about things he has done, opinions he has etc' which you do not agree with).<P>
+
+	<LI>DUN - Dial Up Adapter. Basically it's the Windows program that dials to your ISP(12).<P>
+
+	<LI>ISP - Internet Service Provider. A company that provides Internet services, such as Internet connectivity, web hosting, Email services etc'.<P>
+
+	<LI>Distro - Distribution. Since UNIX is not a registered patent, trademark, copyrighted or whatever there are many distributions (software packages) of it. Every distro has it's own advantages and disadvantages (example: Redhat is the best for beginners).<P>
+</OL>
+
+<B>Next Tutorials</B><P>
+
+The next tutorial will be about Sendmail, the buggiest daemon on earth - what is Sendmail, Sendmail commands, how to hack through Sendmail, how to send completely untracable mail, a newbies corner (what is a daemon, how to trace mail etc') and much much more.
+If this tutorial scores 7 points out of 10, then the Sendmail tutorial with score 12. First of all, it's gonna be veery looong and it'll have lots of side tips and thorough explanations about security holes and tips and tricks and tons of cool stuff I havn't thought of yet.
+Besides, I did this tutorial in a rush 'cause I didn't have much time to work on it*, but summer vacation is coming up so I'll have plenty of time to work on the Sendmail tutorial.
+The 3rd tutorial will be probably about UNIX Shell Programming. I don't wanna give away any details right now, and besides - I'm not so sure about this title. Maybe I'll change it to an "All you wanted to know about IRC wars and never had the guts to ask" tutorial. Who knows.
+I'll set up a electronic poll soon so you'll be able to vote on that subject or suggest other titles (subscribe to the mailing list and you'll be notified when it's ready. To subscribe, go to <A HREF="http://blacksun.box.sk/mlist">blacksun.box.sk</A> and go to the Mailing List page).
+For more information, head down to <A HREF="http://blacksun.box.sk">blacksun.box.sk</A>. Don't forget to drop us a line!<P>
+
+* Just installed Redhat 6.0. Yeah, yeah, I know, it's not exactly the best Linux distro(10) out there (I'm trying not to offend all of you Redhat users out there), but I wanted to see how it looks and everything.
+I gotta tell you, the installation is EEE-ZZZ comparing to other distros, and it's great for beginners.<P>
+
+Note: before I'll release the Sendmail tutorial I will send out some mini-tutorials, such as "Buffer Overflows", "Overclocking", "RM Networks" etc'.<P>
+
+<B>Other Tutorials</B><P>
+
+Overclocking.<BR>
+RM Networks Hacking.<BR>
+Ad and Spam Blocking.<BR>
+Sendmail (creating fake mails and hacking servers that run Sendmail).<BR>
+Get them all at <A HREF="http://blacksun.box.sk/mlist.htm">blacksun.box.sk</A>, or join the mailing list at <A HREF="blacksunresearch.listbot.com">blacksunresearch.listbot.com</A>.<P>
+
+<B>Bibliography</B><P>
+
+BugTraq Archives - <A HREF="http://www.securityfocus.com/level2/bottom.html?go=search">http://www.securityfocus.com/level2/bottom.html?go=search</A><BR>
+RootShell - <A HREF="http://www.rootshell.com">http://www.rootshell.com</A><BR>
+Fyodor's Exploit World - <A HREF="http://www.insecure.org/sploits.html">http://www.insecure.org/sploits.html</A><BR>
+Packet Storm - <A HREF="http://packetstorm.harvard.edu">http://packetstorm.harvard.edu</A><BR>
+X-Force Search (simplest) - <A HREF="http://www.iss.net/cgi-bin/xforce/xforce_index.pl">http://www.iss.net/cgi-bin/xforce/xforce_index.pl</A><BR>
+Slashdot - <A HREF="http://www.slashdot.org">http://www.slashdot.org</A><BR>
+Spikeman's Denial Of Service Website - <A HREF="http://www.genocide2600.com/~spikeman/">http://www.genocide2600.com/~spikeman/</A><BR>
+PC Magazine - <A HREF="http://www.pcmagazine.com">http://www.pcmagazine.com</A><P>
+
+<B>Other Tutorials</B><P>
+
+* FTP Hacking.<BR>
+* Overclocking.<BR>
+* Ad and Spam Blocking.<BR>
+* Sendmail.<BR>
+* Phreaking.<BR>
+* Advanced Phreaking.<BR>
+* Phreaking II.<BR>
+* IRC Warfare.<BR>
+* Windows Registry.<BR>
+* Info Gathering.<BR>
+* Proxy/Wingate/SOCKS.<BR>
+* Offline Windows Security.<BR>
+* ICQ Security.<BR>
+</BODY>
+</HTML>

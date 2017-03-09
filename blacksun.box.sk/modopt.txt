@@ -1,0 +1,200 @@
+==================================
+ Windows Modem Optimization Guide
+==================================
+
+ ###########         #                   ###             #########      ##     # 
+ ############       ###                 #####           ###  #####     ###     ##
+ #####    ####     #####               #######         ###    ###     ####    ###
+ #####    #####   #######             #########       ###      #      ####  ####
+  ####   #####    #######            ###########     ###               ### ####
+   #########      #######           ####     ####    ###               #######  
+    ###########    #####           #####     #####    ###     ##      ####### 
+   #############    ###   ##      ######  #########    ###   ####     #########
+  ######     ####    #   ####      ########  #####      ##  ######     ###   ###
+ ######     ####     ##########     ####     ####        #########     ###  #####
+ #####     ####       ##########     ###     ###          #######     ####  ######
+ #############         ##########     ##     ##            #####      ####   ####
+ ###########            ########      ##     ##             ###        ###    ##
+
+   #######       #     #        #     #
+  ##########    ##     ##      ##     ##            
+ ###    ###     ##     ##     ###     ###                                         
+  ###    #     ###     ###   #####    ####           Black Sun Research Facility  
+    ###         ##     ##    ######   ####             http://blacksun.box.sk     
+      ###       ##     ##    #######  ####                 ASCII By : cyRu5       
+   #   ###     ###     ###   ####  #######         
+  ###  ####   ####     ####   ###   #####               
+ ###########   ###########     ##    ###
+  #########      #######        #     #
+
+Authors: R a v e N and GoMoRRaH.
+Date of Release: 10/12/1999.
+
+Contact info
+------------
+R a v e N:  barakirs@netvision.net.il.
+
+For comments about this tutorial and suggestions for future versions of it,
+Email R a v e N.
+For questions, go to blacksun.box.sk, find the message board and post your
+questions there. DO NOT Email us directly with questions!
+
+
+Introduction
+============
+Welcome to the exciting world of modem optimization. What? Why would you want
+to "optimize" your modem? I'll tell you why!
+
+Windows comes configured for optimal performance on LAN connections.
+This means that although your modem will work perfectly fine, it will not run
+with maximum efficiency, and will waste time on actions which can be optimized
+or even skipped upon.
+
+These settings aren't exactly so easy to change. You can't just click on
+'control panel' and change them. You'll have to venture into the registry or
+install external applications to change these. But believe me - it's worth it.
+You'll get to optimize your modem and learn something new about networking.
+
+So, are you ready to make your modem faster without reaching for your pocket?
+Well, I certainly hope you are.
+
+Note: some of the information in this tutorial was taken from the Internet
+Boost '99 readme file.
+
+Stuff You Need to Know
+======================
+Data on the internet travels in what is called 'packets'. Each TCP (Transfer
+Control Protocol) packet has a 40 bytes header, whcih contains the source
+address, destination address, routing information etc', and the data file,
+which contains the actual information that is being transferred. Unless both
+the sender and the receiver are on the same subnet (see
+blacksun.box.sk/subnet.txt), the packet will have to be routed through
+several hosts called 'routers'. Also, two packets with the same sender and the
+same destination won't necessarily travel through the same route.
+
+MTU
+===
+Yup, that's the first value we need to optimize. Each host has an MTU value.
+MTU stands for Maximum Transmission Unit. When two computers begin a TCP
+session so one of them could send a packet or several packets to the other,
+they agree on a Maximum Transfer Unit value. How they do that? Well, each host
+takes it's MTU value and compares it with the other host's value. If both
+values are identical, then the two hosts will agree on this value. If the two
+values are different, the lower value will be used for this session. The MTU
+is the maximum number of bytes a packet can contain (including the header, of
+course). The default MTU on most systems is 1500, which is great for LANs
+(Local Area Networks) but is bad for Dial-Up access. I'll explain:
+
+Suppose you agree on an MTU of 1500. You send this 1,500 bytes data packet on
+the Internet, but on the way, it travels through some routers that have an MTU
+of 576. These routers will have to divide your 1,500 packet into three 576
+packets, each one with it's own header. Since 1,500 is not evenly divisible
+with 576, the last packet will contain the last fragment of the original 1,500
+packet. And since each packet must be acknowledged by the receiver, this would
+take more time. If you don't understand, read this whole tutorial over again
+until you do.
+
+Now, we want to set our MTU to 576, right? But how do we do that?
+
+Tuning your MTU
++++++++++++++++
+There are two ways to change the MTU value:
+a) Play around with your registry. See regedit.com for information on how to
+optimize your networking configurations.
+b) Get a program called Internet Boost. A search on altavista.com with the
+keywords 'internet boost' found hundreds of download sites within seconds.
+
+Path Maximum Transmission Unit (PMTU)
+=====================================
+Auto Detection
+--------------
+Auto Detection is Enabled by Default. This option enables the system to
+automatically determine the Maximum Transmission Unit (MTU) value and detect
+routers which do not return appropriate ICMP messages under some conditions.
+Enabling this setting causes TCP to attempt to discover the Maximum
+Transmission Unit (MTU or largest packet size) over the path to a remote
+host. By discovering the Path MTU and limiting TCP segments to this size, TCP
+is supposed to be able to eliminate fragmentation at routers along the path
+that connect networks with different MTUs. This requires implementation of the
+corresponding server side algorithm, however, and presupposes all of the
+servers on the entire Internet only running MSFT server software with
+server-side optimization features accessible from MSFT web-browser client
+software. However, it is not recommended to disable this setting as it would
+then cause an MTU of 576 bytes to be used for all connections that are not to
+machines on the local subnet. Disabling this setting can cause severe
+performance degradation because fragmentation may not be compensated for.
+
+Black Hole Detection
+--------------------
+Black Hole Detection is Disabled by default. Enabling this option forces the
+system to try to detect black hole routers. Black hole routers are routers
+that do not send back ICMP (Internet Control Message Protocol)
+fragmentation-needed messages while automatically determining the optimal MTU
+value. This increases the maximum number of retransmissions performed for a
+given segment. Setting this parameter when it is not needed can cause
+performance degradation. So it is not recommended that you enable this option
+unless you understand the implications of doing so.
+
+Receive Window (RWIN)
+=====================
+When a TCP connection is being established, the sender and requester
+negotiate the maximum data segment size that will be accepted by both hosts.
+This value, called the Maximum Segment Size (MSS) is different from the MTU
+because it only addresses the maximum size of the data portion of the packet,
+and does not include the header. If each data segment, along with the header,
+does not exceed the smallest MTU as it is being routed to it's destination,
+then it will not be fragmented. Therefore, because the size of a TCP header is
+40 bytes, the MSS is calculated as MTU minus 40. In turn, the MSS value is
+useful in determining the size of the receive window (RWIN), which is the
+maximum number of bytes of data that can be buffered, pending the receipt of
+an acknowledgment packet back from the sender. Typically, the RWIN value
+should be a multiple of 2-10 times the MSS value. If you don't know which one
+to choose, just go for 4 times the MSS value. For example, a good RWIN value
+for a system with an MTU of 576 (and an MSS of 536) would be 2144 (536 * 4).
+The Receive Window (RWIN) value is the maximum number of bytes of data that
+can be buffered, pending the receipt of an acknowledgment packet back from the
+sender. Typically, the RWIN value should be a multiple of 2-10 times the
+maximum segment size (MTU-40).
+
+Usually, the default value would be 8192. This sets the RWIN value to the
+Windows default. Under Windows, this value is 8192, which should not be used
+(because it is not evenly divisible by the default maximum segment size, it
+can force the packet to be resent repeatedly when the buffer is full). You can
+improve performance by setting this to a lower value such as 4 times your MSS
+(MSS = MTU - 40), by either playing with your registry (again, see
+regedit.com) or using Internet Boost '99.
+
+Time To Live (TTL)
+==================
+The Internet is a vast network. Data packets usually go through a lot of
+routers before they reach their final destination. But what happens if one of
+the routers screws up, and the packet goes wandering around the net forever?
+We don't want THAT to happen, now do we?
+
+This is where the TTL value comes into the picture. Each TCP packet has a TTL
+value in it's header, which is decremented by one whenever it passes through a
+router. When it reaches zero, the packet dies, and an error message is sent
+back to the sender, which will send the packet again, only this time with a
+higher TTL.
+
+On Windows 95 and NT 4.0 (don't know about 98 or any newer versions), this
+value is set to 32. This is bad, because the Internet has grown to be a huge
+place since 1995, and today, it is likely that a data packet would go through
+more than 32 hosts on the way. This means that you will have to resend your
+packets many times. Of course, your computer can learn that if in the first
+time it sent a packet on a TCP session it had to increase it's TTL value, it
+should use the same TTL value for all the rest of the packets, but still -
+this packet loss could get quite annoying.
+
+Again, changing this value is the same as changing all the
+previously-mentioned ones.
+
+
+
+
+Well, looks like that's it. You optimized your dial-up connection under Windows
+and you're finished just in time to watch the Teletubbies.   :-)
+
+Interested in learning more about networking, Unix, security and hacking,
+cracking, phreaking (phone hacking), hardware and encryption? Point your
+browser to http://blacksun.box.sk and surf on!

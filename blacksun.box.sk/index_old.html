@@ -1,0 +1,606 @@
+<HTML><HEAD><TITLE>Black Sun Research Facility</TITLE>
+<script language="JavaScript1.2">
+if (document.all||document.getElementById){
+var thetitle=document.title
+document.title=''
+}
+var data="0123456789";
+var done=1;
+function statusIn(text){
+        decrypt(text,2,1);
+}
+function statusOut(){
+self.status='';
+done=1;
+}
+function decrypt(text, max, delay){
+        if (done){
+                done = 0;
+                decrypt_helper(text, max, delay,  0, max);
+                }
+}
+function decrypt_helper(text, runs_left, delay, charvar, max){
+        if (!done){
+        runs_left = runs_left - 1;
+        var status = text.substring(0,charvar);
+        for(var current_char = charvar; current_char < text.length; current_char++){
+                status += data.charAt(Math.round(Math.random()*data.length));
+                }
+        document.title = status;
+        var rerun = "decrypt_helper('" + text + "'," + runs_left + "," + delay + "," + charvar + "," + max + ");"
+        var new_char = charvar + 1;
+        var next_char = "decrypt_helper('" + text + "'," + max + "," + delay + "," + new_char + "," + max + ");"
+        if(runs_left > 0){
+                setTimeout(rerun, delay);
+                }
+        else{
+                if (charvar < text.length){
+                        setTimeout(next_char, Math.round(delay*(charvar+3)/(charvar+1)));
+                        }
+                else
+                        {
+                        done = 1;
+                        }
+                }
+        }
+}
+if (document.all||document.getElementById)
+statusIn(thetitle)
+</script>
+<STYLE type=text/css>A:active {
+        TEXT-DECORATION: none
+}
+A:hover {
+        COLOR: #ffffff; TEXT-DECORATION: none
+}
+A:link {
+        TEXT-DECORATION: none
+}
+A:visited {
+        TEXT-DECORATION: none
+}
+.small {
+        COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 8pt; FONT-WEIGHT: bold
+}
+.small_uppercase {
+        COLOR: #999999; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 8pt
+}
+TD {
+        COLOR: #aeaeae; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 8pt
+}
+.7_ver_b_white {
+        COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 7pt; FONT-WEIGHT: bold
+}
+BODY {
+        FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 7pt; SCROLLBAR-FACE-COLOR: #ffa534; SCROLLBAR-HIGHLIGHT-COLOR: #ffd756; SCROLLBAR-SHADOW-COLOR: #ff8312; SCROLLBAR-3DLIGHT-COLOR: #000000; SCROLLBAR-ARROW-COLOR: #ffffff; SCROLLBAR-TRACK-COLOR: #333333; SCROLLBAR-DARKSHADOW-COLOR: #000000
+}
+.white {
+        COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; FONT-SIZE: 7pt; FONT-WEIGHT: bold
+}
+</STYLE>
+<BODY aLink=#ffcc00 bgColor=#000000 leftMargin=0 link=#ff9900 text=#999999 topMargin=0 vLink=#ff9900 marginwidth="0" marginheight="0">
+<CENTER>
+<TABLE border=0 cellPadding=0 cellSpacing=0 height="100%" width="100%">
+  <TBODY>
+  <TR align=middle vAlign=center>
+    <TD>
+      <CENTER>
+      <TABLE bgColor=#666666 border=0 cellPadding=0 cellSpacing=1
+        width="100%"><TBODY>
+        <TR bgColor=#000000>
+          <TD>
+            <CENTER><A href="http://www.boxnetwork.net/"><B><SPAN
+            class=small><FONT color=#ffffff
+            face="Verdana, Arial, Helvetica, sans-serif">Boxnetwork</FONT></SPAN></B></A>
+            <FONT color=#ffffff
+            face="Verdana, Arial, Helvetica, sans-serif"><SPAN class=small><B>:
+            </B></SPAN></FONT><FONT
+            face="Verdana, Arial, Helvetica, sans-serif"><SPAN
+            class=small_uppercase><A
+            href="http://neworder.box.sk/">NewOrder</A>� <A
+            href="http://astalavista.box.sk/">Astalavista</A> � <A
+            href="http://void.box.sk/">Void</A> � <A
+            href="http://code.box.sk/">Code</A> � <A
+            href="http://eye.box.sk/">Eye</A> � <A
+            href="http://mobile.box.sk/">Mobile</A> � <A
+            href="http://travel.box.sk/">Travel</A> � <A
+            href="http://science.box.sk/">Science</A> � <A
+            href="http://irc.box.sk/">IRC</A> � <A
+            href="http://linux.box.sk/">Linux</A> <FONT size=1><B>::</B> <A
+            href="http://disc.box.sk/">Discussion box</A> <B>::</B> <A
+            href="http://astalavista.box.sk/top.php3">Top sites
+            </A></FONT></SPAN></FONT></CENTER></TD></TR></TBODY></TABLE></CENTER></TD></TR>
+  <TR align=middle vAlign=center>
+    <TD>
+      <TABLE bgColor=#000000 border=0 cellPadding=0 cellSpacing=0 width=782>
+        <TBODY>
+        <TR>
+          <TD>
+            <TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+              <TBODY>
+              <TR>
+                <TD vAlign=bottom><IMG align=absBottom height=104
+                  src="logo7.gif" width=453> </TD>
+                <TD vAlign=bottom>
+                  <DIV align=right class=small_uppercase><FONT size=1>
+                  </FONT></DIV></TD></TR></TBODY></TABLE>
+            <TABLE border=0 cellPadding=0 cellSpacing=0 width=782>
+              <TBODY>
+              <TR bgColor=#ffcc00 vAlign=top>
+                <TD height=1></TD></TR>
+              <TR bgColor=#ff9900 vAlign=top>
+                <TD>
+                  <CENTER>
+                  <TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+                    <TBODY>
+                    <TR>
+                      <TD onmouseout="this.style.backgroundColor='#ff9900';"
+                      onmouseover="this.style.backgroundColor='#FEAC01';">
+                        <DIV align=center><A class=white
+                        href="http://blacksun.box.sk/tutorials.html">Tutorials</A></DIV></TD>
+                      <TD onmouseout="this.style.backgroundColor='#ff9900';"
+                      onmouseover="this.style.backgroundColor='#FEAC01';">
+                        <DIV align=center><FONT color=#000000><A class=white
+                        href="http://blacksun.box.sk/byteme.html">Byte
+                        Me</A></FONT></DIV></TD>
+                      <TD onmouseout="this.style.backgroundColor='#ff9900';"
+                      onmouseover="this.style.backgroundColor='#FEAC01';">
+                        <DIV align=center><FONT color=#000000><A class=white
+                        href="http://blacksun.box.sk/acro.html">C.A.I.R.A</A></FONT></DIV></TD>
+                      <TD onmouseout="this.style.backgroundColor='#ff9900';"
+                      onmouseover="this.style.backgroundColor='#FEAC01';">
+                        <DIV align=center><FONT color=#000000><A class=white
+                        href="http://dvd.box.sk/wb/index.php3?did=blacksun&amp;closed=0">Message
+                        Board</A></FONT></DIV></TD>
+                      <TD onmouseout="this.style.backgroundColor='#ff9900';"
+                      onmouseover="this.style.backgroundColor='#FEAC01';">
+                        <DIV align=center><FONT color=#000000><A class=white
+                        href="http://blacksun.box.sk/mlist.htm">Mailing
+                        List</A></FONT></DIV></TD>
+                      <TD onmouseout="this.style.backgroundColor='#ff9900';"
+                      onmouseover="this.style.backgroundColor='#FEAC01';">
+                        <DIV align=center><FONT color=#000000><A class=white
+                        href="http://blacksun.box.sk/team.html">The
+                        Team</A></FONT></DIV></TD>
+            <TD onmouseout="this.style.backgroundColor='#ff9900';"
+                      onmouseover="this.style.backgroundColor='#FEAC01';">
+                        <DIV align=center><FONT color=#000000><A class=white
+                        href="http://blacksun.box.sk/wallpapers/wall.html">Wallpapers</A></FONT></DIV></TD>
+                                 <TD onmouseout="this.style.backgroundColor='#ff9900';"
+                      onmouseover="this.style.backgroundColor='#FEAC01';">
+                        <DIV align=center><FONT color=#000000><A class=white
+                        href="http://blacksun.box.sk/chat/">Online
+                        Chat</A></FONT></DIV></TD>
+                      <TD onmouseout="this.style.backgroundColor='#ff9900';"
+                      onmouseover="this.style.backgroundColor='#FEAC01';">
+                        <DIV align=center><FONT color=#000000><A class=white
+                        href="http://blacksun.box.sk/links.html">Links</A></FONT></DIV></TD>
+                        
+                        
+                      <TD onmouseout="this.style.backgroundColor='#ff9900';"
+                      onmouseover="this.style.backgroundColor='#FEAC01';">
+                        <DIV align=center><FONT color=#000000><A class=white
+                        href="http://blacksun.box.sk/translations.htm">Translations</A></FONT></DIV></TD>
+                      <TD onmouseout="this.style.backgroundColor='#ff9900';"
+                      onmouseover="this.style.backgroundColor='#FEAC01';">
+                        <DIV align=center><FONT color=#000000><A class=white
+                        href="http://blacksun.box.sk/books.html">Books</A>
+                        </FONT></DIV></TD><TD onmouseout="this.style.backgroundColor='#ff9900';"
+                      onmouseover="this.style.backgroundColor='#FEAC01';">
+                        <DIV align=center><FONT color=#000000><A class=white
+                        href="http://blacksun.box.sk/shelllist.html">Shells</A></FONT></DIV></TD></TR></TBODY></TABLE></CENTER></TD></TR>
+              <TR bgColor=#ff6600 vAlign=top>
+                <TD height=1></TD></TR>
+              <TR bgColor=#000000 vAlign=top>
+                <TD height=1></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+      <TABLE bgColor=#6c6c6c border=0 cellPadding=0 cellSpacing=1 width=782>
+        <TBODY>
+        <TR>
+          <TD bgColor=#000000 vAlign=top>
+            <TABLE border=0 cellPadding=10 cellSpacing=0 width="100%">
+              <TBODY>
+              <TR bgColor=#575757 vAlign=top>
+                <TD>
+                  <TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+                    <TBODY>
+                    <TR>
+                      <TD>
+                        <DIV align=left></DIV><IMG height=15
+                        src="history.gif"
+                  width=77></TD></TR></TBODY></TABLE>
+                  <TABLE bgColor=#000000 border=0 cellPadding=5 cellSpacing=1
+                  width="100%">
+                    <TBODY>
+                    <TR bgColor=#333333>
+                      <TD>Black Sun Research Facility was founded in 1998 by
+                        <A href="mailto:raven@mail.box.sk">Raven</A>, <A
+                        href="mailto:njan@anonymity.co.uk">Njan</A> and Fang
+                        following the success of their <A
+                        href="http://blacksun.box.sk/acro.html">C.A.I.R.A.</A>
+                        project, to educate people in the field of the Internet,
+                        and more generally computer security. After the
+                        retirement of Raven in 2000, BSRF was later handed over
+                        in January of 2001 to <A
+                        href="mailto:rammal81@hotmail.com">Mikkkeee</A> who with
+                        the aid of <A
+                        href="mailto:digitalfallout@boxnetwork.net">Digitalfallout</A>, <A
+                        href="mailto:cyberwolf@urgent-urgent-urgent.com">Cyberwolf</A>
+                        and a whole new <A
+                        href="http://blacksun.box.sk/team.html">team</A> kept
+                        the site alive. During the years, Black Sun Research
+                        Facility has helped thousands of people and has become a very
+                        popular security site.  The tutorials Blacksun publishes have become so popular that some popular computer  <a href="http://blacksun.box.sk/pictures/Ghostrider.jpg">magazines</a> have mentioned them. Feel free to enlighten yourself with our work!</TD></TR></TBODY></TABLE><FONT
+                  class=small
+                  face="Verdana, Arial, Helvetica, sans-serif"><BR></FONT>
+                  <TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+                    <TBODY>
+                    <TR>
+                      <TD>
+                        <DIV align=left></DIV><IMG height=15
+                        src="features.gif"
+                  width=77></TD></TR></TBODY></TABLE><FONT class=small
+                  face="Verdana, Arial, Helvetica, sans-serif"></FONT>
+                  <TABLE bgColor=#000000 border=0 cellPadding=0 cellSpacing=1
+                  width="100%">
+                    <TBODY>
+                    <TR>
+                      <TD>
+                        <TABLE border=0 cellPadding=5 cellSpacing=0
+width="100%">
+                          <TBODY>
+                          <TR bgColor=#333333>
+                            <TD>The main feature of Black Sun Research
+                              Facility is tutorials. We have a huge number of
+                              tutorials and translations on various topics. They
+                              cover everything from phreaking to coding.
+                              Although the main area of BSRF tutorials is
+                              network security, we also have a <A
+                              href="http://dvd.box.sk/wb/?did=blacksun">Message
+                              Board</A>, where you can post your questions
+                              (every legal question is answered), or you can subscribe
+                              to our <A
+                              href="http://blacksun.box.sk/mlist.htm">Mailing
+                              List</A>, and then you'll receive BSRF news and
+                              updates.
+                  </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+
+
+
+
+
+<FONT
+                  class=small
+                  face="Verdana, Arial, Helvetica, sans-serif"><BR></FONT>
+                  
+   <TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+                    <TBODY>
+
+					<TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+                    <TBODY>
+                    <TR>
+                      <TD>
+                        <DIV align=left></DIV><IMG height=15
+                        src="news.gif" width=77></TD></TR></TBODY></TABLE>	
+<TABLE bgColor=#000000 border=0 cellPadding=5 cellSpacing=1 width="100%">
+                    <TBODY>
+                          <TD>
+                          <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0
+style="BORDER-BOTTOM: gray 1px solid; BORDER-LEFT: gray 1px solid; BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid" WIDTH="13%" BGCOLOR="#333333" >
+<TR>
+<TD><font color="#FFFFFF">Jan. 25, 2002</TD>
+</TR>
+</TABLE><br>
+
+<font color="#FF0000">Sad Day For BSRF</font>
+<BR>
+<BR>
+Today i received an email concerning a BSRF member who many of you know as SpiderMan. SpiderMan has been a friend to many of us and a staunch BSRF luvr. As you will read below bsrf is sad but will have to say goodbye to a close member of 2 years. Here is the email i received, we hope you enjoy the offline world bro!<br>
+<---ripped email from Mikkkeee's inbox----------><br>
+>From: "SpiderMan " <br>
+>To: rammal81@hotmail.com, cyberwolf@urgent-urgent-urgent.com, matt@guysjs.org, digitalfallout@boxnetwork.net, aztek@box.sk, linux@bgdefenders.zzn.com  <br>
+>Subject: Flash: SpiderMan to leave BSRF <br>
+>Date: Fri, 25 Jan 2002 <br>
+Hi guys, your old pal SpiderMan here. You've probably figured out from the title
+of this message what this e-mail is all about, but I'll say it one more time to
+clairfy. I'm leaving bsrf. I first joined back when Raven decided he didn't want
+to take care of the site anymore (you all probably remember the whole story).
+When Raven left the site became stagnant and most people said it was dead
+forever. Of course we all thought to ourselves "fuck that, the site may be stale
+right now, but it'll be back." For a while we thought that to ourselves and nothing
+happened. Then, each one of us began to realize that it's not going to come back
+unless we do something to bring it back. We all wanted to bring it back because
+we knew Raven or no Raven, the scene needed a bsrf. Now with over 500,000 hits not including the message board 
+just this month, I can safely say that it is back and very much alive. I joined
+after being invited by Mike because there was a lot of energy at the time and I
+really thought I could make a difference. I think I've done what I came to do
+and with that being done I think it's best that I leave for somewhere/something
+else. A lot of the initial energy is gone, as well as my belief that I can make
+a significant impact. The site is well established and moving at a steady pace,
+and so I leave.<br>
+<---End of ripped email----------><br>
+
+In other news BSRF did a link exchange with a site which introduced to you the bsrf wargame a while back, remember yeah you people remember, that BSD box none of you managed to 0wn. Enough of that <a href="http://www.unixhideout.com">http://www.unixhideout.com</a> is a new site that should be added to everyones bookmarks. They are composed of a few sites, which have merged to build real kick ass projects, like mod_antihak, secure tunnel, w00nix linux distro, glShip as well as, plenty of other hot stuff, especially a growing library and a great irc channel. Enough talk go see it to believe it, Enjoy!!! 
+
+<BR><BR><a href="mailto:rammal81@hotmail.com">Mikkkeee</A></TD></TBODY></TABLE><br clear=all>   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<FONT
+                  class=small
+                  face="Verdana, Arial, Helvetica, sans-serif"><BR></FONT>
+                  
+   <TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+                    <TBODY>
+
+					<TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+                    <TBODY>
+                    <TR>
+                      <TD>
+                        <DIV align=left></DIV><IMG height=15
+                        src="news.gif" width=77></TD></TR></TBODY></TABLE>	
+<TABLE bgColor=#000000 border=0 cellPadding=5 cellSpacing=1 width="100%">
+                    <TBODY>
+                          <TD>
+                          <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0
+style="BORDER-BOTTOM: gray 1px solid; BORDER-LEFT: gray 1px solid; BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid" WIDTH="13%" BGCOLOR="#333333" >
+<TR>
+<TD><font color="#FFFFFF">Jan. 20, 2002</TD>
+</TR>
+</TABLE><br>
+
+   
+
+Took a while but we are finally back with some new releases. We start off with a hot tutorial by <A 
+href="mailto:jacorex@hotmail.com">PHaRaoH</A> on <A href="http://blacksun.box.sk/tutorials/format.php3?file=winsecurity2.html">Windows 9x/Me Security and System Restrictions</a>. This tutorial will explain as the title states learning more about securing Windows, as well as cracking the security restrictions, which is a topic people keep bugging us about. We also have for you a new translation of <a href="http://blacksun.box.sk/tutorials/theanonymitytutorial.doc">The Anonymity Tutorial</a> by <a href="mailto:webmaster@saikosoft.ca.tc">Masj Crasj</a>. He did a good job translating it to Dutch so go visit his <a href="http://www.saikosoft.ca.tc/">site</a> and see other hot stuff he has released.  In other news we have some hot wallpapers for you, damn seriously these kick ass, so go save them as your background. Enjoy!!! 
+<BR><BR><a href="mailto:rammal81@hotmail.com">Mikkkeee</A></TD></TBODY></TABLE><br clear=all>   
+
+
+
+
+
+
+
+
+
+
+
+
+<FONT
+                  class=small
+                  face="Verdana, Arial, Helvetica, sans-serif"><BR></FONT>
+                  
+   <TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+                    <TBODY>
+
+					<TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+                    <TBODY>
+                    <TR>
+                      <TD>
+                        <DIV align=left></DIV><IMG height=15
+                        src="news.gif" width=77></TD></TR></TBODY></TABLE>	
+<TABLE bgColor=#000000 border=0 cellPadding=5 cellSpacing=1 width="100%">
+                    <TBODY>
+                          <TD>
+                          <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0
+style="BORDER-BOTTOM: gray 1px solid; BORDER-LEFT: gray 1px solid; BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid" WIDTH="13%" BGCOLOR="#333333" >
+<TR>
+<TD><font color="#FFFFFF">Jan. 11, 2002</TD>
+</TR>
+</TABLE><br>
+
+   
+
+Well this update is going to be a quickie. We got for you guys a kickass <a href="http://blacksun.box.sk/wallpapers/blackcartoon.jpg">wallpaper</a> by <a href="mailto:mab@devil.com">Mab Ishte</a>. I just don't know its something about it that makes it cool i guess the DC Comics look, yah thats it. Also tomorrow is the lecture it is going to be Da $hit, meaning if you can't make it too bad, your obviously going to miss out on a lot of stuff, bah the logs will be posted asap. laterz!!
+<BR><BR><a href="mailto:rammal81@hotmail.com">Mikkkeee</A></TD></TBODY></TABLE><br clear=all>   
+
+
+
+
+
+
+
+
+<FONT
+                  class=small
+                  face="Verdana, Arial, Helvetica, sans-serif"><BR></FONT>
+                  
+   <TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+                    <TBODY>
+
+					<TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+                    <TBODY>
+                    <TR>
+                      <TD>
+                        <DIV align=left></DIV><IMG height=15
+                        src="news.gif" width=77></TD></TR></TBODY></TABLE>	
+<TABLE bgColor=#000000 border=0 cellPadding=5 cellSpacing=1 width="100%">
+                    <TBODY>
+                          <TD>
+                          <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0
+style="BORDER-BOTTOM: gray 1px solid; BORDER-LEFT: gray 1px solid; BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid" WIDTH="13%" BGCOLOR="#333333" >
+<TR>
+<TD><font color="#FFFFFF">Jan. 10, 2002</TD>
+</TR>
+</TABLE><br>
+
+   <br>If you guys read the Public Meeting, you would have noticed that we were planning some fun stuff this year. If you have no idea what I am talking about smack yourself cause its lecture time. Yes, <a href="mailto:mbooster@freeshell.org ">Mind Booster</A> from <a href="http://www.mindbooster.cjb.net">www.mindbooster.cjb.net</a> is going to lecture on<b> The Evolution Prespective of Computer Networks </b> this Saturday on the 12th  of  January at 22 o'clock (10 PM) GMT (5pm EST) in our <a href="http://blacksun.box.sk/chat/">irc channel</a>.  Many of our visitors request information  on Hacking, which is directly linked to network security. In order to gain more knowledge on this topic one has to learn  the philosophy behind  Networking and Computer Networks.  This lecture will be the first and the most basic lecture in a series of upcoming lectures that will  explain from the concept of network to security/hacking issues.  In order to have a good understanding of this lecture, you should have a quick look over the <A
+
+                  href="http://blacksun.box.sk/tutorials/format.php3?file=informatic.html">Informatic Evolution Lecture</a>, done for blacksun and Mind Booster Networks on December 2001,  Enjoy!!! <BR><BR><a href="mailto:rammal81@hotmail.com">Mikkkeee</A></TD></TBODY></TABLE><br clear=all>   
+
+
+
+
+
+
+
+
+
+<FONT
+                  class=small
+                  face="Verdana, Arial, Helvetica, sans-serif"><BR></FONT>
+                  
+   <TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+                    <TBODY>
+
+					<TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+                    <TBODY>
+                    <TR>
+                      <TD>
+                        <DIV align=left></DIV><IMG height=15
+                        src="news.gif" width=77></TD></TR></TBODY></TABLE>	
+<TABLE bgColor=#000000 border=0 cellPadding=5 cellSpacing=1 width="100%">
+                    <TBODY>
+                          <TD>
+                          <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0
+style="BORDER-BOTTOM: gray 1px solid; BORDER-LEFT: gray 1px solid; BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid" WIDTH="13%" BGCOLOR="#333333" >
+<TR>
+<TD><font color="#FFFFFF">Jan. 8, 2002</TD>
+</TR>
+</TABLE><br>
+
+   <br>We have a small present for you wonderful visitors (sarcastic), we have added a new section to the books page, yup the Hacking Literature section. I began this section because people keep emailing me about these topics, so there you go now we have a page for them. The selection is a bit advanced. Hope you enjoy it, also if anyone wants to contribute to the selection please send me the links remember we don't host anythign so only links will do. Enjoy!!! <BR><BR><a href="mailto:rammal81@hotmail.com">Mikkkeee</A></TD></TBODY></TABLE><br clear=all>   
+
+
+
+
+
+
+
+
+
+
+
+
+
+<FONT
+                  class=small
+                  face="Verdana, Arial, Helvetica, sans-serif"><BR></FONT>
+                  
+   <TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+                    <TBODY>
+
+					<TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+                    <TBODY>
+                    <TR>
+                      <TD>
+                        <DIV align=left></DIV><IMG height=15
+                        src="news.gif" width=77></TD></TR></TBODY></TABLE>	
+<TABLE bgColor=#000000 border=0 cellPadding=5 cellSpacing=1 width="100%">
+                    <TBODY>
+                          <TD>
+                          <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0
+style="BORDER-BOTTOM: gray 1px solid; BORDER-LEFT: gray 1px solid; BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid" WIDTH="13%" BGCOLOR="#333333" >
+<TR>
+<TD><font color="#FFFFFF">Jan. 6, 2002</TD>
+</TR>
+</TABLE><br>
+
+   <br>As many of you guys know there was a PUBLIC team meeting. Normally we hold small meetings in another channel every week or so but this time we felt we should gather your input for some of our projects this year.
+There was a great turnout almost 60 people at one time. We did try to get everything done and still have time to answer some questions. The log of the meeting can be found <a href="Meeting-010502.txt">here</a>. In other news we started a link exchange with <a href="http://www.astalavista.com">Astalavista.com</a>.<BR><BR><a href="mailto:aztek@box.sk">AZTEK</A></TD></TBODY></TABLE><br clear=all>                <FONT
+                  class=small
+                  face="Verdana, Arial, Helvetica, sans-serif"><BR></FONT>
+   
+<FONT
+                  class=small
+                  face="Verdana, Arial, Helvetica, sans-serif"><BR></FONT>
+         </TD></TR></TBODY></TABLE>                          
+                                            
+
+       <TABLE border=0 cellPadding=0 cellSpacing=0 width=782>
+              <TBODY>
+              <TR bgColor=#ffcc00 vAlign=top>
+                <TD height=1></TD></TR>
+              <TR bgColor=#ff9900 vAlign=top>
+                <TD>
+                  <CENTER>
+                  <TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+                    <TBODY>
+                    <TR>
+                      <TD onmouseout="this.style.backgroundColor='#ff9900';"
+                      onmouseover="this.style.backgroundColor='#FEAC01';">
+                        <DIV align=center><A class=white
+                        href="http://blacksun.box.sk/tutorials.html">Tutorials</A></DIV></TD>
+                      <TD onmouseout="this.style.backgroundColor='#ff9900';"
+                      onmouseover="this.style.backgroundColor='#FEAC01';">
+                        <DIV align=center><FONT color=#000000><A class=white
+                        href="http://blacksun.box.sk/byteme.html">Byte
+                        Me</A></FONT></DIV></TD>
+                      <TD onmouseout="this.style.backgroundColor='#ff9900';"
+                      onmouseover="this.style.backgroundColor='#FEAC01';">
+                        <DIV align=center><FONT color=#000000><A class=white
+                        href="http://blacksun.box.sk/acro.html">C.A.I.R.A</A></FONT></DIV></TD>
+                      <TD onmouseout="this.style.backgroundColor='#ff9900';"
+                      onmouseover="this.style.backgroundColor='#FEAC01';">
+                        <DIV align=center><FONT color=#000000><A class=white
+                        href="http://dvd.box.sk/wb/index.php3?did=blacksun&amp;closed=0">Message
+                        Board</A></FONT></DIV></TD>
+                      <TD onmouseout="this.style.backgroundColor='#ff9900';"
+                      onmouseover="this.style.backgroundColor='#FEAC01';">
+                        <DIV align=center><FONT color=#000000><A class=white
+                        href="http://blacksun.box.sk/mlist.htm">Mailing
+                        List</A></FONT></DIV></TD>
+                      <TD onmouseout="this.style.backgroundColor='#ff9900';"
+                      onmouseover="this.style.backgroundColor='#FEAC01';">
+                        <DIV align=center><FONT color=#000000><A class=white
+                        href="http://blacksun.box.sk/team.html">The
+                        Team</A></FONT></DIV></TD>
+   <TD onmouseout="this.style.backgroundColor='#ff9900';"
+                      onmouseover="this.style.backgroundColor='#FEAC01';">
+                        <DIV align=center><FONT color=#000000><A class=white
+                        href="http://blacksun.box.sk/wallpapers/wall.html">Wallpapers                        </A></FONT></DIV></TD>
+                                          <TD onmouseout="this.style.backgroundColor='#ff9900';"
+                      onmouseover="this.style.backgroundColor='#FEAC01';">
+                        <DIV align=center><FONT color=#000000><A class=white
+                        href="http://blacksun.box.sk/chat/">Online
+                        Chat</A></FONT></DIV></TD>
+                      <TD onmouseout="this.style.backgroundColor='#ff9900';"
+                      onmouseover="this.style.backgroundColor='#FEAC01';">
+                        <DIV align=center><FONT color=#000000><A class=white
+                        href="http://blacksun.box.sk/links.html">Links</A></FONT></DIV></TD>
+                      <TD onmouseout="this.style.backgroundColor='#ff9900';"
+                      onmouseover="this.style.backgroundColor='#FEAC01';">
+                        <DIV align=center><FONT color=#000000><A class=white
+                        href="http://blacksun.box.sk/translations.htm">Translations</A></FONT></DIV></TD>
+                      <TD onmouseout="this.style.backgroundColor='#ff9900';"
+                      onmouseover="this.style.backgroundColor='#FEAC01';">
+                        <DIV align=center><FONT color=#000000><A class=white
+                        href="http://blacksun.box.sk/books.html">Books</A>
+                        </FONT></DIV></TD><TD onmouseout="this.style.backgroundColor='#ff9900';"
+                      onmouseover="this.style.backgroundColor='#FEAC01';">
+                        <DIV align=center><FONT color=#000000><A class=white
+                        href="http://blacksun.box.sk/shelllist.html">Shells</A></FONT></DIV></TD></TR></TBODY></TABLE></CENTER></TD></TR>
+              <TR bgColor=#ff6600 vAlign=top>
+                <TD height=1></TD></TR>
+              <TR bgColor=#000000 vAlign=top>
+                <TD height=1></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<HR align=center width="100%" noShade SIZE=1>
+<center>&copy 2001 Blacksun Research Facility. All rights reserved.<br></center>
+</body>
+</html>

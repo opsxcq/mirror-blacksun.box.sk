@@ -1,0 +1,243 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Mozilla/4.7 [en] (X11; I; Linux 2.2.5-15 i686) [Netscape]">
+<title>Configuraci&oacute;n de un Servidor de Nombres (Versi&oacute;n Espa&ntilde;ol)</title>
+<link rel="stylesheet" href="tutorials.css">
+</head>
+<body>
+
+<center>
+  <br>
+  <h1> Aumento de Velocidad de Tu Conección a Internet bajo linux y Windows</h1>
+</center>
+
+<center>
+  <h1> (Utilización de Caché de DNS) <br>
+    <br>
+  </h1>
+</center>
+<p>Ultima actualización: 3-12-1999 por GoMoRRaH<br>
+  GoMoRRaH es un miembro de Blacksun Research Facility (BSRF). <br>
+  Sí buscas más tutoriales con temas como hackeo, cracking, phreaking, Unix, Windows 
+  NT, redes, hardware y overclocking, programación, HTML y otros encuentralos 
+  en <a href="http://blacksun.box.sk/">http://blacksun.box.sk</a> <br>
+  Traducido por Ryoga (<a href="mailto:mail@riglesias.cjb.net">mail@riglesias.cjb.net</a>)<br>
+</p>
+<p>www.xxxxx.com es utilizado como ejemplo unicamente (no existe).
+<h2> 1 La buena teoría</h2>
+
+<h3> 1.1 Introducci&oacute;n</h3>
+<p> La internet está enmedio de una increible evolución, pc's más rápidas, conecciones 
+  más confiables, etc.. Pero el mayor avance se encuentra en el aumento de capacidad 
+  de las lineas. Lo que antes eran simples lineas telefónicas ahora son lineas 
+  ISDN ó CableModems. Sin embargo aún hay gente desafortunada (incluyendome a 
+  mí) que tienen una linea telefónica que es taaaan leeeenta. Algunas personas 
+  estan buscando la manera de hacer su experiencia con estas lineas menos tediosa, 
+  existen herramientas de descarga (download managers) y utilidades que bajan 
+  los contenidos por adelantado. Tambien existen muchas maneras de ajustar el 
+  hardware (tu módem). 
+<p>Cómo lo habrás experimentado casi todo el software es para Windows ó jode tu 
+  hardware. El siguiente modo de optimizar tu conección funciona tambien para 
+  linux y es tan facil que un usuario de windows tambien lo puede utilizar. Aquí 
+  también se muestra una explicación exacta del procedimiento para windows.
+<h3> 1.2 A quienes les interesaría leer este documento, requerimentos.</h3>
+<p>A cualquiera a quien le interese aumentar ligeramente la velocidad de su conección 
+  (m&oacute;dem) y quiera hacer esto en 5 minutos (ó menos) le interesa leer este 
+  documento. Antes de hacer pregutas, por favor asegurate de que hayas leído al 
+  menos los tutoriales básicos sobre redes (networking) en blacksun.box.sk Sí 
+  aún tienes preguntas no envíes E-Mails directamente a los miembros de BSRF, 
+  blacksun cuenta con un foro de discusiones (<a href="http://dvd.box.sk/wb/?did=blacksun">http://dvd.box.sk/wb/?did=blacksun</a> 
+  ó busca el link en <a href="http://blacksun.box.sk/">http://blacksun.box.sk/</a>), 
+  util&iacute;zalo.
+<p>La información del procedimiento para windows se encuentra hacia el final del 
+  tutorial.
+<p>Requerimentos
+<ul>
+  <li> Una computadora</li>
+  <li> Una conexi&oacute;n Dial-Up a internet</li>
+  <li> Linux Instalado y Corriendo</li>
+  <li> Named Instalado (1)</li>
+  <li>5 Minutos de Tiempo</li>
+  <li>Cambio Sobrante para Mi (*Sonrisa*)</li>
+</ul>
+<p><i>(1) Named es un paquete de nombre de servidor (nameserver), es el más común 
+  para Linux y<br>
+  </i><i>no debe causar problema alguno el instalarlo. </i> </p>
+<h3> 1.3 ¿Que hace un servidor de nombres (más técnicamente: servidor de nombres 
+  de servidor)?</h3>
+<p>¿Que hace servidor de nombres? Bueno supongamos que estas conectado a internet 
+  y deseas ir a www.xxxxx.com. Abres tu navegador y tecleas http://www.xxxxx.com 
+  presionas enter y esperas a que xxxxx aparezca. ¿No es simple? Ahora analizemos 
+  lo que sucede durante este procedimiento.</p>
+<ol>
+  <li> Tu computadora recibe la orden de conectarse a www.xxxxx.com, pero ¿que 
+    es www.xxxxx.com? Bueno es el alias de otra computadora (que tiene una dirección 
+    ip) y que esta corriendo un daemon de httpd (en el puerto 80)</li>
+  <li>Tu computadora comprueba si ese sitio no esta corriendo en tu computadora 
+    ó en tu red local. De esta manera verifica el archivo /etc/hosts (el cual 
+    contiene la información de tu intranet local ó comprueba un nombre de servidor 
+    local).</li>
+  <li>En sí tu computadora no verifica si www.xxxxx.com se encuentra en tu red 
+    local &oacute; en tu misma computadora, ya que aún no tiene instalado "Named", 
+    sino que verifica directamente si www.xxxxx.com se encuentra en tu intranet 
+    local. (Ya habras escuchado que toda la internet esta basada en tcp/ip :P) 
+    De cualquier modo este es un buen momento para aclarar que: DNS = Domain Name 
+    Server = Servidor de Nombre de Dominio.</li>
+  <li>Después tu computadora verifica el archivo /etc/resolv.conf que debe de 
+    verse de la siguiente manera:<br>
+    <br>
+    <i>nameserver 123.123.123.123</i> (servidordenombres 123.123.123.123)</li>
+  <p>&nbsp;</p>
+  <li> NombreServidor es el servidor de nombres de tu PSI. Sí nada es encontrado 
+    en tu intranet tu computadora buscará en este nombre de servidor (sí tu computadora 
+    no se puede conectar a éste se mostrará un error)</li>
+  <li>Al poder conectarte a este servidor responderá con una dirección ip. Sí 
+    www.xxxxx.com es una dirección desconocida para este servidor el mísmo buscara 
+    a otro servidor de nombres y así consecutivamente hasta que se encuentre la 
+    ip correspondiente a www.xxxxx.com</li>
+  <li> Una vez que esta ip (digamos 123.123.123.111) es obtenida por tu computadora, 
+    esta intentará conectarse a dicha ip (con el mismo procedimiento de ruteo 
+    estandar que puede verse al escribir el comando <i>route</i>).<br>
+    <br>
+    Ahora la comunicación será establecida, los archivos serán transferidos utilizando 
+    el protocolo http. Todo esto se resume a que el servidor de nombres lo único 
+    que hace es darle a www.xxxxx.com su ip correspondiente, buscando ya sea en 
+    su propia base de datos ó en la base de datos de otro servidor. </li>
+</ol>
+<h3> 1.4 ¡¡WOW!! eso sí que esta muy interesante ¿y?</h3>
+Supongamos que estos procedimientos tardan en realizarze alrededor de 2 segundos 
+(tan corto tiempo sólo se logra si tienes una conexión rápida, el servidor de 
+nombres de tu PSI esta desocupado y el servidor de nombres de tu PSI cuenta ya 
+con la ip correspondiente al nombre del sitio), en pocas palabras sólo si vivieramos 
+en un mundo perfecto este proceso tomaría 2 segundos así que tomará un poco ó 
+bastante más. En este tutorial aprenderemos algo llamado "Servidor de caché de 
+nombres de servidor". 
+<h3> 1.5 ¿Que es un servidor de caché de nombres de servidor? (caching only nameserver)</h3>
+<p>Bueno, este es un tipo especial de servidor de nombres. No es el servidor de 
+  nombres de tu intranet, lo único que hace es guardar los nombres de sitios con 
+  su respectiva ip según se vallan utilizando en tu red local (&oacute; tu computadora). 
+  Al tener este servidor instalado cuando escribes por primera vez cierta dirección 
+  en tu explorador (otra vez el ejemplo de www.xxxxx.com) tu computadora buscará 
+  en el servidor de nombres de tu PSI cómo lo hace normalmente, sin embargo las 
+  siguientes veces que vallas a la dirección www.xxxxx.com, la ip estará ya guardada 
+  en tu computadora y te ahorrarás este procedimiento, además al estar esta información 
+  guardada en tu propio disco duro no consumirás absolutamente nada de ancho de 
+  banda por lo cual los sitios aparecerán aún más rápido.</p>
+<p>Aqui termina la sección de teoría, para este momento ya debes de tener el conocimiento 
+  de qué hace un servidor de nombres de solo caché y cómo puede aumentar la velocidad 
+  con la que navegas por internet. 
+<h2> 2 Al Demonio Con La Teoría ¡Vamos A Hacer Algo Que Sirva! </h2>
+
+<h3>
+2.1 named.conf</h3>
+<p>Primero editemos el archivo general de configración de nombres de servidor. 
+  Este archivo se llama /etc/named.conf y debe de verse de la siguiente manera:</p>
+<pre><i>options {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; directory "/var/named";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* Cualquier cosa */
+};
+....</i></pre>
+La primera parte de este archivo es justamente la que necesita cambios, para esto 
+tenemos que saber la ip (no el nombre) del servidor de nombres de nuestro PSI. 
+Entonces suponiendo que la ip es 123.123.123.123 y 123.123.123.124 el archivo 
+quedaría de la siguiente manera:
+<pre><i>options {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; directory "/var/named";
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; forwarders {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 123.123.123.123;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 123.123.123.124;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; };
+};
+....</i></pre>
+Con esto le has especificado a tu computadora que si no encuentra la ip para un 
+cierto sitio en tu disco duro se la pida al servidor de nombres de tu PSI. 
+<h3> 2.2 Cambiando el servidor de nombres.</h3>
+En sí ya tienes casí funcionando tu servidor de nombres, sólo queda un pequeño 
+paso, tienes que hacer que tu computadora comprenda que el servidor de nombres 
+ahora se encuentra en ella misma, así que tienes que editar el archivo /etc/resolv.conf 
+y dejarlo de la siguiente manera (cambia 321.321.321.321 por el servidor que de 
+por sí esta en tu archivo): 
+<pre><i># nameserver 321.321.321.321
+nameserver 127.0.0.1</i></pre>
+La primera linea es el servidor de nombres que antiguamente se encontraba registrado 
+en tu computadora al ponerle el signo # enfrente lo estamos convirtiendo en un 
+comentario (esto es sólo como medida de seguridad para guardar la ip del servidor 
+antiguo, en caso de que vuelvas a utilizar este servidor sólo borra el signo #).<br>
+En la segunda linea agregaste 127.0.0.1 que es tu misma computadora, de este modo 
+especificas que el servidor de nombres es adivina... tu misma computadora. 
+<h3> 2.3 El servidor ya esta corriendo</h3>
+Ahora lo único que tienes que hacer es reiniciar tu servidor de nombres, sólo 
+teclea el comando <br>
+<i> killall -HUP named</i> . Después solo verifica tus archivos de log ( /var/log/messages 
+) y cruza los dedos para que digan algo parecido a lo siguiente: 
+<pre>Nov 20 13:29:34 SaTaN named[692]: starting.&nbsp; named 8.2.1 Fri Sep 24 14:52:24 EDT 1999 ^Iroot@porky.devel.redhat.com:/usr/src/bs/BUILD/bind-8.2.1/src/bin/named
+Nov 20 13:29:34 SaTaN named[692]: hint zone "" (IN) loaded (serial 0)
+Nov 20 13:29:34 SaTaN named[692]: Zone "0.0.127.in-addr.arpa" (file named.local): No default TTL set using SOA minimum instead
+Nov 20 13:29:34 SaTaN named[692]: master zone "0.0.127.in-addr.arpa" (IN) loaded (serial 1997022700)
+Nov 20 13:29:34 SaTaN named[692]: listening on [127.0.0.1].53 (lo)
+Nov 20 13:29:34 SaTaN named[692]: listening on [10.0.0.1].53 (eth0)
+Nov 20 13:29:34 SaTaN named[692]: Forwarding source address is [0.0.0.0].1025
+Nov 20 13:29:34 SaTaN named: named startup succeeded
+Nov 20 13:29:34 SaTaN named[693]: Ready to answer queries.
+Nov 20 13:29:34 SaTaN named[693]: sysquery: sendto([123.123.123.123].53): Network is unreachable</pre>
+Sí ves la última linea cómo la mía <i>Network is unreachable</i> (No se puede 
+conectar a la red) no te preocupes es sólo que aún no te has conectado a internet. 
+Sí el archivo te devuelve algunos errores (error), lo que sucede es que has editado 
+mal el archivo de configuraciones, revisalo otra vez.* <br>
+* Tip: revisa sí todos los ; (punto y comas) estan en su lugar y que a cada { 
+le corresponda una } 
+<h3> 2.4 ¿No me crees?</h3>
+Ok, para todas las personas que no me creen... 
+<pre><i>[root@SaTaN /] nslookup www.quieroencontraresto.com
+Server: localhost
+Address: 127.0.0.1<br>
+Name: www.quieroencontraresto.com
+Address: 123.123.123.321 ... otras ip's ..
+Aliases: Sí existen ...</i></pre>
+Esta fué la primera vez que utilize esta dirección así que de todas maneras se 
+acudió al servidor de nombres de mi PSI, bueno por lo menos sabemos que esto sí 
+funciona ya es un comienzo :p 
+<pre><i>[root@SaTaN /] nslookup www.quieroencontraresto.com
+Server: localhost
+Address: 127.0.0.1
+
+
+NON-AUTHORITIVE ANSWER
+Name: www.quieroencontraresto.com
+Address: 123.123.123.321
+Aliases: ...</i></pre>
+Me devolvió <i>NON-AUTHORITIVE ANSWER</i> que significa que la ip ya se encontraba 
+en mi disco duro por lo tanto no se tuvo que acudir al servidor de nombres de 
+mi PSI, bueno ya funcionó :), ¿ahora me creen?<br>
+&nbsp; 
+<h3> 2.5 Otra manera de hacerlo</h3>
+<p>Sí lo deseas puedes agregar nombres de sitios con sus ip's manualmente. Solo 
+  agrega lineas al archivo /etc/hosts de la siguiente manera: Dirección-Ip nombredelservidor 
+  #comentario Ejemplo: <br>
+  <br>
+  148.140.140.25 www.algun-sitio.com #Sólo otro sitio estúpido </p>
+<p>En caso de que te lo preguntes, no, no es necesario poner el comentario pero 
+  se ve bonito.. :P De cualquier modo, este método es inferior al primero porque 
+  tienes que poner las direcciones a mano. <br>
+  &nbsp; </p>
+<h3> 2.6 Caché local bajo Windows</h3>
+2.6 Caché local bajo Windows. ¿Hola usuarios de Windows! ¿Quieren hacer un caché 
+local de nombres de servidor? bueno lástima sólo podran utilizar el método descrito 
+en el punto 2.5 de este tutorial, sólo tendran que editar el archivo c:\windows\hosts 
+(no c:\windows\hosts.sam, ya que es sólo un archivo de ejemplo) en vez de /etc/hosts. 
+Sí no desean hacer esto manualmente pueden utilizar la utilidad FastNet la cual 
+busca entre el historial y los archivos de páginas favoritas de su explorador 
+y los agrega al archivo hosts de su windows, tambien agrega automáticamente cada 
+vez que se visita un sitio. 
+<h2> 3 Fin</h2>
+
+<h3> 3.1 Salida</h3>
+Bueno sí leyeron todo el archivo deben de ser capaces de hacer su propio servidor 
+de caché de nombres de servidor. Otra cosa que falte decir..., sí quieren saber 
+más acerca del tema manden un E-Mail a GoMoRRaH y... el archivo fué escrito para 
+<a href="http://blacksun.box.sk/">Black sun Research Facility</a> . 
+<p>GoMoRRaH Se LeVaNtArÁ OtRa Vez
+</body>
+</html>

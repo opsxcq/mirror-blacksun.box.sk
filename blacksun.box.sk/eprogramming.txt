@@ -1,0 +1,539 @@
+/*****************************************************
+Disclaimer:
+I take no responsibility for any damages the code in this tutorial
+May cause.  This code has been run on my machine and others, and
+Should not contain errors. For your own personal safety, virus scan
+It first, as you should all files on the net
+*****************************************************/
+
+111111111111111111111111111111111111111111111111111111111
+100000000000000000000000000000000000000000000000000000001
+100000000000000000000000000000000000000000000000000000001
+10000 00000000000000     00000000000000000000000000000001
+100 00 0 00000000000000 0000000000    00000 0     0000001
+100 00 000 0000000 0000 00000000 00000 0000 0 000 0000001
+100    0000 00000 00000 0000000 0000000 000 0 000 0000001
+100 00 000000 00 000000 0000000 0000000 000 0 000 0000001
+100 00 0000000  0000000 0000000 0000000 000  0000 0000001
+100 00 0000000 00 00000 00000000 00000 0000 00000 0000001
+1000000000000 00000 000 000000000 000 00000 00000 0000001
+100000000000 000000000    00000000   000000 00000 0000001
+10000000000 000000000000000000000000000000000000000000001
+100000000000000000000000000000000000000000000000000000001
+111111111111111111111111111111111111111111111111111111111
+
+Computer Encryption, an overview and programming.
+TOPICS:
+-255
+1.0    - Encryption what is it?
+1.1    - Is encryption even worthy?
+1.2    - Yeah yeah, how do I encrypt stuff?
+1.3    - Programming - Fundamentals
+1.3.1  - Binary
+1.3.2  - XOR, AND, ONES COMPLIMENTRY -Logical operators
+1.3.3  - Structured C Programming.
+9.9.9  - Encryption Example
+
+
+-255 Why are you reading this?
+     Learn howto write efficient,structured encryption programs.
+     Some programming knowledge is required, languages C/C++ will be fine.
+     My homepage is: http://www.angelfire.com/sd/kias
+     or visit my small asm tutorial
+     http://www.angelfire.com/sd/kias/smart/
+
+
+1.0 Encryption, What is it?
+
+Encryption, what the hell?
+Yeah that's right, encryption. A Great Way to secure your privacy.
+Especially for all you l33t crack3rs out there.
+I know you want to jump to the programming so I'll just give you the
+Dictionary idea on what encryption is:
+'Encrypt: 1. To put a message into code;
+           2. To put computer data into an encoded form
+           3. To get killed by a herd of killer monkeys.
+           4. yadadada
+'
+Ok obviously it's not 1 or 2, so lets look at some reasons why 3 and 4 are
+Accurate!
+Ok, you just got a new computer and your now a leet user right?
+You download all the tools but theres one that catches your eye..
+It asks you to enter the Filename of the file you want to encrypt so
+you do as it says, and pick your mums business file, work.dat
+it loads for a while and then says, encryption complete, you feel
+as though you could take on an army you feel leet.
+
+Two days later, your mum is unable to complete her job for work and loses
+her job, you innocently deny the events that fucked up her datafile.
+But deep down you feel guilty, you hate encryption and never want to see
+it again.
+
+Wrong! 'MOST' encryption programs are released with a 'de'Cryptor. !!
+You ARE able to turn mums work back into readable format!
+Unfortunately for this guy, he has no decryption and is banned from his
+computer for the rest of his teenage hood. Im not quite sure, but I think
+he got trampled by a herd of killer monkeys?
+
+Anyway, sorry for my insolent humor. I figured no one would read this part
+so if you are, I'm sorry =(
+Ok, encryption turns your mums great work files into useless code that's
+Unreadable, ready to continue on?
+
+1.1 Is encryption even worthy?
+  Answer: No
+  Wrong Answer: It may come in handy if your cracking passwords etc or
+                to protect email and stuff, but hey lets get with the times
+                emails outdated.
+                #35614954 for all you icq fans out there!
+
+1.2 Yeah yeah how do I encrypt stuff?
+
+Its easy, download and run an encryption program. Parse all the correct
+parameters to the encryptor and WALA!
+If your using a good encryptor is should be able to DE-ENCRYPT in one!
+If you would like a FULLY WORKING ENCRYPTION PROGRAM refer to the example
+program at the bottom of this page!
+
+1.3 Programming Fundamentals!
+
+Lets Pretend were writing an encryption program in 'English'
+it would look like this:
+
+  ask for file1 to encrypt
+  ask for file2 to output encrypted data too
+  encrypt file1 and save as file2 leave file1 untouched
+
+  Although this tutorial is C based, I will now show you a
+  visual basic example followed by a C example for all of you
+  without C experience.  Ohh and for all of you with no experience,
+  bye. Nah you can stay, maybe you'll learn something :)
+
+  Visual Basic:
+    private sub commandbutton1_click()
+    dim file1,file2 as integer;     ` I know this is wrong, but
+    file1 = inputbox("File to Encrypt"); `were pretending...
+    file2 = inputbox("File to output to"); `remember????
+    encrypt
+    end sub
+END VISUAL Basic
+
+C:
+   FILE *stream1,stream2;
+
+   if((stream1 = fopen(argv[1], "rb")) == NULL) { /*ERROR*/ }
+   if((stream2 = fopen(argv[2], "wb")) == NULL) { /* ERROR*/}
+    encrypt(file1,file2);
+   END C!
+
+Ok, if I have lost you. Read the next section otherwise skip it -=)
+
+NExt Section:
+  stream1 and 2 are simply  pointers to of type FILE
+  argv[1] is the commandline parameter passed to programs in dos.
+  example:
+
+program file1 file2 key
+  file1 is argv[1]
+  program is argv[0]
+  file2 is argv[2] and key is argv[3]
+  Ok so we know how to accept parameters! or do we? Here's an example
+  help you understand:
+
+  #include <stdio.h>
+
+   int main(int argc, char *argv[])
+   {
+      printf("Parameter 1 is %s, 2 is %s.\n", argv[1], argv[2]);
+      printf("Program name is %s.\n", argv[0];
+      printf("Number of parameters: %d\n", argc);
+    return 0;
+   }
+Ok if it doesn't make sense, compile it with you favorite C compiler.
+Note: If you don't have a compiler, you obviously don't know how to program 
+?
+And this file may be a little extensive, programming wise for your liking.
+If you want keep reading feel free =)
+
+Note: The best way to learn is to teach people, so go and teach all
+your friends how to use argv and argc you'll be the coolest kid in school!
+I promise.
+
+1.3.1 Binary
+Binary, hmmm and it would be?
+Answer: The only language the computer really understands.
+Although you may type some programs up and compile them, wether it be
+pascal,C,asm,delphi,vb,fortran or your dads billygoat your computer does
+not read what you tell it to, I know it sux, but its the truth.
+All your pretty little code is converted into a jumple of 1's and 0's.
+But you may protest, pfft what a load of shit, my programs contain advanced
+algorithms that couldnt possibly be defined with 1's and zero's. Wrong,
+every event which takes place on your computer is just a sequence of 
+commands
+Heres an example that will enlighten you a little, the typical hello world
+program:
+int main()
+{
+  while(1)
+  printf("Hello, World!\n");
+
+  return 0;
+}
+This program is my enhancement to the original, this baby can produce 10000
+Instances of hello world in under 1 minute!
+Actually, it simply loops for ever displaying the inevitable. Lets look at
+what really happens.
+Warning, ASM to follow:
+
+.data
+msg db "Hello, World!$",13,10 ; 13,10 is equivalent to \n
+.code
+    START:
+     mov ax, seg msg
+     mov ds, ax
+     mov dx, offset msg
+     mov ah, 09
+     int 21h
+     jmp START
+  END START
+
+This program does exactly as the C program does, but you are able to see
+how it does what it does. Take attention to the jmp START instruction!
+Remember how a while loop loops until a condition is false? What you don't?
+Maybe that's because I haven't taught you yet. Here's the Catch. All it does
+is jmp to the start again, and executes all the instructions again!
+All this time you thought it involved magic etc. Pfft
+
+But you start to speak, "This 'aint' binary dude", yes indeed its not.
+But as you are about to find out, Your cute little C hello world program
+is converted to ASM so windows can run it!
+Computers are seriously stupid and only do what they are told.
+Ok, your asm code is then converted to 1's and 0's so the processor can read
+it.  Do I see a pattern?
+
+   Notepad.exe
+    hello.c
+     //code
+      compiler
+       asm
+        operating system
+         processor
+
+
+Ok, so now you see my point. Sorry i had to explain it for so long..
+Some people just don't understand. If you still don't believe me, please
+do a suicide mission. j/k
+: "I am hereby responsible for no suicides that take place directly after
+    the reading of this text"
+Now that we have that settled, lets learn some Binary!
+
+BINARY NUMBER SYSTEM:
+Decimal - Binary
+    1         0001
+    2         0010
+    3         0011
+    4         0100
+    5         0101
+    6         0110
+    7         0111
+    8         1000
+    16       10000
+    32      100000
+    64     1000000
+    128   10000000
+    256  100000000
+
+Character - Decimal - Binary
+         a        97        01100001
+         z       123        01111011
+
+I'm sure you can figure the rest out.. :)
+
+Repeat to yourself, I now know binary!
+
+1.3.2 Logical operator, AND, XOR, ONES COMPLIMENTARY
+
+Ok, in this section you need to know binary, so please read the above 
+section
+
+LOGICAL 'AND'
+       1 0
+    1  1 0
+    0  0 0
+
+LOGICAL 'XOR'
+       1 0
+    1  0 1
+    0  1 0
+
+ONES COMPLIMENT '~'
+Example-
+Decimal: 21845         Binary:          01010101 01010101
+~Decimal: 42945450      Binary:          10101010 10101010
+
+As above, we apply ~ to decimal 21845.
+It simply turns 1's to 0's and 0's to ones.
+
+TIP: Xor is good for encryption because applying it with the old value it
+was XORED with turns the bits back into their previous value:
+
+Example-
+
+We have two characters:
+'a' and 'b'
+We want to encrypt 'a' by XORING the bits of 'b' into it.
+Do this:
+
+  int encrypted;
+  char a,b;
+  a = 'a';
+  b = 'b';
+
+   encrypted = a ^ b;
+
+  Which will yield this result:
+  'a' = 97 which is      01100001 in binary
+  'b' = 98 which is      01100010
+  encrypted now equals:  00000011
+
+  But were learning how to decrypt as well right?
+  Sure are, to restore the value 'a' to its original unencrypted state
+  we simple xor the encrypted value with 'b' again:
+
+  int new;
+  new = encrypted ^ b;
+  which gives us this binary number: 01100001 which is, you guesses it, 'a'!
+
+  So now we know the basic component behind the encryption of characters.
+  Continue on to learn how to encrypt a whole file of strings, numbers etc.
+
+  1.3.3 Structured C Programming
+
+  When writing code in any language it is important to write clear, 
+efficient
+  code that is well documented and easy to read, here are some tips:
+
+  1: To make readability of code easier, #define values at the start
+     of the file that can be reused throughout the code, here's an example:
+     #define SIZE 5
+     int array[SIZE] = {3,4,5,6,7};
+  2: Try to use pointers wherever possible, observe:
+  /* Pathetic version, recopies itself, inefficient */
+---------------------------------------------
+  main()
+  {
+    int z;
+     z = 10;
+      func(z); // create copy of z two times.
+  }
+  int func(int value)
+  {
+   return = value * value; // return the square of a number
+  }
+----------------------------------------------
+
+/* Good version, simply refers to memory locations, and does not copy
+    variables, this is named, call by reference whereas the first version
+    was call by value
+*/
+----------------------------------------------
+main()
+{
+  int z = 10;
+  func(&10);     // reference z twice, efficient.
+}
+void func(unsigned *value)
+{
+   *value *= *value;
+}
+----------------------------------------------
+
+3: Allocate Memory Correctly:
+
+  You could allocate 1000 of bytes like this, but you cannot free the
+  used memory.
+
+  int array[1000];
+
+  Try doing this, it really works!
+
+  int *value;
+  value = (int *) malloc(sizeof(int) * 4);
+  free(value);
+
+  Wow, efficient code, finally!
+
+4: Indent your god damn programs!, please!
+
+Instead of this:
+
+int array[] = {3434,4545,34534,656,
+23434,3454,45345,34535,
+234,345345,345345,345,2435,3434,
+                     34,345,566,5};
+   for(i = 0; i <= SIZE -1; i++ ) {
+sum += array[i] ;
+// add some more unreadable stuff...
+well this aint that good of example but its badly structured, observ the
+same code in structured format:
+
+int array[] = { 3434,4545,34534,656,
+                 23434,3454,45345,
+                 34535,234,345345,
+                 345345,345,2435,
+                 3434,34,345,566,5};
+  for (i = 0; i <= SIZE -1; i++) {
+    sum += array[i];
+     //indent
+      // some more
+       //
+      //
+     //
+    //
+     //
+      //
+       //
+        //
+         // keep it up your going good!
+
+You can clearly see what I am on about, and be sure to fix small things like
+this, instead of
+
+while(!a=EOF)func1(val,val2,val3){i++;j++;g--;}
+do this:
+while (!a = EOF)
+   func1(val, val2, val3) {
+     i++; // increment i;
+     j++; // dont add unnecessary comments
+     g--;
+         }
+
+4: Ok nearly there, one last thing, add a signature, date etc.
+
+There's nothing better then seeing a great program, and seeing the authors
+name and contact so you can email them on there great efforts, BE MODEST!
+ACCEPT ALL RECOGNITION FOR YOUR masterpiece. A good signature is as follows:
+/******************************************
+NAME:  John Johnson
+EMAIL: john@cybernet.com
+ICQ:   35614954
+DATE:  10/9/2000
+*******************************************/
+
+Wooooo I know its a big chunk to absorb, but absorb it damnit!
+Continue onto the next section, now that your efficient... :)
+
+9.9.9 Encryption Example
+  As I promised here's a budget example :)
+  Remember the XOR operator ^ ?
+  Xor operator == ^ in C :)
+  Were going to write a small documented, structured program that will
+  encrypt a file with the users key, the file can then be decrypted
+  with the key. Otherwise the resulting file is encrypted again.
+  The Encryption in this program is very weak, but to explain more complex
+  algorithmic is too hard for now, maybe in my next article :)
+
+  First, I will go over some features of this program that need be 
+understood
+  for all you wanna be crypotologists out there!
+
+  Heres the code that loops through a file:
+  while (c = getc(*file) != EOF) { encrypt() putc(*file,c) }
+  // loop through *file until End of File is reached, each time
+  // encrypting each character and incrementing it to the next character in
+  // the file stream.
+
+  Here's the algorithm Im using:
+
+  c = c ^ *file2;
+  counter++;
+
+  That's it?
+  Indeed it is, very small, very powerful..
+  Without further do, I represent a simple encryption program:
+
+  -------------------------------------------
+  /******************************************************
+  Standard XOR Encryption By Axion
+  UIN  :          35614954
+  EMAIL:          axionis@hotmail.com
+  DATE :          MAY 21st 2000
+  USAGE:          xe filein fileout key
+  *******************************************************/
+
+#include <stdio.h>
+
+#define PROG_NAME "xe"
+void usage()
+{
+printf("-------------------------------\n");
+printf("Invalid command line.\n");
+printf("Usage:\n\t%s infile outfile key\n", PROG_NAME);
+printf("-------------------------------\n");
+}
+
+
+int main(int argc, char *argv[])
+{
+      int count,bytes; /* counter when looping through file, and bytes to 
+count filesize */
+      FILE *in,*out;   /* In and out FILE Streams to read/write data */
+
+       if(argc < 4) {  /* Error check the command line */
+        usage();       /* Display Usage Information on error */
+         return 0;     /* Exit Program returning 0 - no error */
+         }
+
+	      if (( in = fopen(argv[1], "rb")) == NULL) /* Error Check File Streams 
+*/
+      		{
+       			printf("Error opening %s.\n", argv[1]);
+      			}
+      				if (( out = fopen(argv[2], "wb")) == NULL)
+      				{
+       					printf("Error opening %s.\n", argv[2]);
+				      }
+
+
+      		   while(( count = getc(in)) != EOF)
+	 	  {
+              count = count ^ *argv[3]; /* Apply XOR  ( KEY ) */
+            bytes++; 			/* Increment counter of filesize */
+          putc(count, out);		/* Write new file */
+         }
+
+         fclose(in);
+       	  fclose(out);
+           printf("Encryption Success:\n");
+            printf("\tEncrypted %s and stored data in %s.\n", 
+argv[1],argv[2]);
+             printf("\tWrote %d bytes to %s.\n", bytes,argv[2]);
+   return 0;
+}
+/*  To compile under djgpp */
+/*  dgjpp xe.c -o xe       */
+-------------------------------------------
+
+
+Well that's it, my tutorial is almost complete..!
+But not without a few more challenges, exercises for the smart people:
+1. Write an encryptor that uses one complimentary instead of Xor.
+2. Write a program that uses two keys on a file.
+3. Write a program that uses no logical operators ?
+HINT, refer to an ASCII character set.
+  Lets assume, *s points to ASCII value 'a'.
+  *s -= 31;
+  turns it from 'a' to 'A'
+  This should be enough to start you off on your quest.  If anyone has any 
+comments
+  or would like to report any bugs write to axionis@hotmail.com
+  or ICQ me on #35614954!
+  Bye from me, hope to see you at the top.
+
+
+
+
+
+
+
+

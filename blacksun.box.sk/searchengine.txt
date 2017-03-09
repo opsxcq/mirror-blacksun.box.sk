@@ -1,0 +1,198 @@
+                      :::::::::   ::::::::  :::::::::  :::::::::: 
+                      :+:    :+: :+:    :+: :+:    :+: :+:        
+                      +:+    +:+ +:+        +:+    +:+ +:+        
+                      +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#   
+                      +#+    +#+        +#+ +#+    +#+ +#+        
+                      #+#    #+# #+#    #+# #+#    #+# #+#        
+                      #########   ########  ###    ### ###  
+                         
+              	             http://blacksun.box.sk
+                             ____________________
+      ______________________I      Topic:        I_____________________
+     \                      I Creating a Search  I                    /
+      \     E-mail:         I   Engine in PHP    I   Written by:     /
+      >                     I                    I                  < 
+     / spiderman@witty.com  I____________________I   SpiderMan       \
+    /___________________________>           <_________________________\
+   			    
+                
+
+
+
+
+
+			 Creating a Search Engine in PHP
+                            
+
+ This is the first in what I hope will be a long list of tutorials that I like to
+call Practical Programming in PHP, PPP for short. So lets get down to business, 
+today I'm going to show you how to create a search engine that you can use for 
+your very own site or some other project that you may be working on. For this 
+tutorial I will be using a MySQL database, the bulk of the code should be 
+compatible with PHP 3 and 4.
+
+Backround:
+ Before we begin I'll show you the table I'll be using in the examples:
+
+    _______________________________________
+   | First_Name | Middle_Name | Last_Name  | 
+   -----------------------------------------       
+   | Dana       | Johnson     | Smith      |
+   -----------------------------------------       
+   | Jill       | Angel       | Petersburg | 
+   -----------------------------------------
+   | Jack       | Coner       | Mitchel    |
+   -----------------------------------------
+
+ If you feel confused about any of the functions have a look at my previous 
+tutorial that deals with common database functions.
+
+Down to Work:
+ Before we actually make the search engine we need to create a basic webpage that
+will have an input field where the user can enter his or her search query. I'm 
+going to keep mine simple, feel free to make an elaborate one with lots of bells
+and whistles. The code for my page is below:
+
+	  <html>
+	  <head>
+	    <title>Simple Search Engine version 1.0</title>
+	  </head>
+	  <body>
+	  <center>
+	    Enter the first, last, or middle name of the person you are looking for:
+	    <form action="search.php" method="post">
+	      <input type="text" name="search_query" maxlength="25" size="15"><br>
+	      <input type="reset" name="reset" value="Reset"> 
+	      <input type="text" name="submit" value="Submit">
+	    </form>
+	  </center> 
+	  </body>
+	  </html> 
+
+ That's a pretty basic page so I'm not going to explain alot of it. Basically the
+user will enter the first, middle, or last name of the person they are looking for
+and hit enter. The contents of the input field will be passed to a php script named
+search.php and that will handle the rest.
+
+ Now that the page is out of the way let's create the actual script. First we want
+to actually connect to the database using mysql_pconnect() and select the table using
+mysql_select_db(), then we want to parse the value passed to the script to see if
+it contains any invalid input, such as numbers and funky characters like #&*^. You
+should always validate input, don't rely on things like JavaScript to do it for 
+you because once the user disables JavaScript all that fancy validation goes down
+the toilet. Now to check the input we are going to use a regular expression, they
+are a bit confusing and will be explained in a later tutorial. For now all you need
+to know is that it will check to see if value passed is a string of characters. 
+All right enough chatter, here is the first part of the script:
+
+    <?php 
+      mysql_pconnect("host", "username", "password") or die("Can't connect!");
+      mysql_select_db("Names") or die("Can't select database!"); 
+          
+	    if (!eregi("[[:alpha:]]", $search_query))
+      {
+        echo "Error: you have entered an invalid query, you can only use characters!<br>";
+				exit;
+      }
+
+ Now that we've done that we will form the search query.
+
+    $query= mysql_query("SELECT * FROM some_table WHERE First_Name= '$search_query' OR Middle_Name= '$search_query' OR Last_Name= '$search_query' ORDER BY Last_Name");
+
+  Look confusing? I'll explain, what is pretty much happening is we are asking MySQL
+to search all the rows in First_Name, Middle_Name, and Last_Name for a match to 
+the query entered by the user, after it has found some results we then ask MySQL
+to alphabetize the results by Last_Name.
+
+  The rest of the coding from now on is a breeze. We will get the results from 
+the query using mysql_fetch_array( ) and check to see if there is a match using 
+mysql_num_rows(). If there is a match, or matches, we will output it along with 
+the number of matches found; if there isn't we will report to the user that we 
+couldn't find anything.
+
+      $result= mysql_num_rows($query);
+      
+			if ($result == 0)
+      {
+        echo "Sorry, I couldn't find any user that matches your query ($search_query)";
+        exit; 
+      }
+      else if ($result == 1)
+      {
+        echo "I've found <b>1</b> match!<br>";
+      }
+      else {
+        echo "I've found <b>$result</b> matches! <br>";
+		  }
+      
+      while ($row= mysql_fetch_array($query))
+      {
+        $first_name= $row["First_Name"];
+        $middle_name = $row["Middle_Name"];
+        $last_name = $row["Last_Name"];
+        
+        echo "The first name of the user is: $first_name.<br>";
+        echo "The middle name of the user is: $middle_name.<br>";
+        echo "The last name of the user is: $last_name. <br>";
+      }
+    ?>
+
+ I added that extra if statement so that when we report how many users we've 
+found it's output will be in proper English. If I we don't the script will echo 
+"I've found 1 matches" which obviously isn't good grammar :P The rest of the 
+script basically loops through the results and prints them to a webpage. That's
+all, we've finished the script! The entire script is included below:
+
+    <html>
+    <head>
+      <title>Simple Search Engine version 1.0 - Results </title>
+    </head>
+    <body> 
+    <?php 
+      mysql_pconnect("host", "username", "password") or die("Can't connect!");
+      mysql_select_db("Names") or die("Can't select database!"); 
+      
+			if (!eregi("[[:alpha:]]", $search_query))
+      {
+        echo "Error: you have entered an invalid query, you can only use characters!<br>";
+				exit;		//No need to execute the rest of the script.
+      }
+
+      $query= mysql_query("SELECT * FROM some_table WHERE First_Name='$search_query' OR Middle_Name= '$search_query' OR Last_Name='$search_query' ORDER BY Last_Name");
+
+      $result= mysql_numrows($query);
+      
+			if ($result == 0)
+      {
+        echo "Sorry, I couldn't find any user that matches your query ($search_query)";
+        exit;		//No results found, why bother executing the rest of the script?
+      }
+      else if ($result == 1)
+      {
+        echo "I've found <b>1</b> match!<br>";
+      }
+      else {
+        echo "I've found <b>$result</b> matches! <br>";
+			}
+
+      while ($row= mysql_fetch_array($query))
+      {
+        $first_name= $row["First_Name"];
+        $middle_name = $row["Middle_Name"];
+        $last_name = $row["Last_Name"];
+          
+        echo "The first name of the user is: $first_name.<br>";
+        echo "The middle name of the user is: $middle_name.<br>";
+        echo "The last name of the user is: $last_name. <br>";
+      }
+    ?> 
+    </body>
+    </html> 
+
+Conclusion:
+ Well that just about wraps up part 1 of the Practical Programming series. The 
+pages I create were extremely simple because the focus was on the script, you 
+should jazz up your pages with images and other cool effects. If you found any 
+errors or have any comments please e-mail me (kindly direct questions to the 
+message board).
+                                                         Last updated: 2-23-2001

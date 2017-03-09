@@ -1,0 +1,101 @@
+Mini-Tutorial de segurança em listas de mensagens / Escrito por R a v e N (blacksun.box.sk)
+<=====================================================================================> 5/10/99,
+versão 1.0
+Tradução: Marco <marcofulvio@mailbr.com.br>
+
+Notas do autor: Estou cansado de ficar repetindo pra mim mesmo*, então leia meus antigos tutoriais.
+(Localizado em http://blacksun.box.sk).
+De qualquer jeito, você pode não entender algo de nomenclatura.
+
+* Até recentemente, eu tive que repetir conceitos e nomenclaturas que eu já tive explicado sobre em outros tutoriais, para as pessoas que estão lendo pela primeira vez meu tutorial não terem dificuldades em entender. Bem, eu estou cheio de fazer isso, eu tenho que gastar meu precioso tempo escrevendo o conteúdo atual, então por favor, leia meus outros tutoriais primeiro. Oh, já no caminho, eu apenas quero que você entenda que eu estou escrevendo este tutorial para ensinar as pessoas a se protegerem a si mesmas e não ensinar como atacar os outros. E também eu não sou responsável por nada que você faça, e eu não recomendo começar a hackear todas as listas de mensagens após isso. Use esta informação para proteger você próprio e proteger sua lista de mensagens apenas (e talvez a lista de mensagens de seu amigo, se ele precisa de ajuda). Se você quer impressionar alguém, a melhor maneira é protegendo-a e não atacando-a. Isto mostrará a sua verdadeira força.   ;-) De qualquer jeito, divirta-se!
+Manda comentários ou questões para nossa message board em blacksun.box.sk
+
+Índice
+<=====>
+* O que é uma lista de mensagens?
+* O que ela faz?
+* Diferentes tipos de lista de mensagens
+* Por que eu iria querer uma lista de mensagens?
+* Onde eu arrumo uma lista de mensagens?
+* Como hackear uma lista de mensagens?
+* Que tipo de lista de mensagens eu posso hackear?
+* Quando que é legal e quando começa a ficar ilegal?
+* De que eu preciso pra começar?
+* Como que eu faço?
+
+
+O que é uma lista de mensagens?
+===============================
+Uma lista de mensagens é uma útil ferramenta na mãos de webmasters (gente que cria homepages). Visitantes que querem receber notícias falando sobre novidades numa homepage pode se inscrever numa caixa especial na homepage ou mandando um Email para um endereço especial na qual irá adicioná-lo automaticamente na lista de mensagens. Então, quando essa homepage é atualizada, o webmaster pode anunciar para todas as pessoas inscritas na lista de mensagens sobre a atualização.
+A lista de mensagens que eu tenho apenas fala sobre anúncios na lista de mensagens. Simplismente deixa o dono da lista a mandar os anúncios para toda a lista.
+
+Existem três tipos de lista de mensagens:
+a) uma lista para anúncios, como a qual eu falei;
+b) uma lista de mensagens sobre discussões, onde todas as pessoas podem mandar uma mensagem em um certo endereço de Email e eles serão distribuidos para toda a lista imediatamente. Isto pode ser usado para discutir um certo tema que é sobre a lista de mensagens. Por exemplo: segurança de computadores, crescimento e/ou estudando cogumelos, o estudo de marte ou política  chinesa (mesmo que não seja recomendado discutir nessas listas asuntos políticos e certos problemas, tanto que por aparecer um furioso extremista que pode usar um simples programa de email bomba e dar um flood para a lista inteira e todos os membros receberão centenas de mensagens de ódio);
+c) uma lista de mensagens moderada, que é exatamente igual a lista de mensagens sobre discussões, mas apenas suas mensagens não serão enviadas para a lista inteira. Enquanto, o dono da lista de mensagens precisa dar autorização para que essas mensagens vão para o olho do público (censura... mas é também útil para evitar spammers e bombas de email).
+
+Mesmo você sendo um webmaster ou mesmo se você apenas tem algumas idéias para dividir com o público, você precisa de uma lista de mensagens. Foi provado que colocando uma lista de mensagens na sua homepage genera mais visitantes. E também, usando uma discussão ou uma lista de mensagens moderada sobre um ou muitos hobbies é bem engraçado.
+
+Existem dois tipos de lista de mensagens por aí: listas de mensagens baseados na web e majordono/minordono lista de mensagem.
+Listas de mensagens baseados na web: estas listas de mensagens são chamadas assim porque são baseados na net. Isto é, se você quer uma dessas listas de mensagens você terá que colocar a home page da compania e comprar algo (ou se inscrever para uma lista de mensagens grátis, na qual tem menores características).
+A melhor lista de mensagen baseado na web grátis por aí são: Listbot (http://listbot.linkexchange.com) e Onelist (http://www.onelist.com).
+Majordono/Minordono - Eu não sei qual é a origem do nome, mas mesmo assim, essas listas de mensagens tem vários complementos, são fáceis de se lidar, extremamente fácil de transferir sua inteira lista de mensagens de um lugar para outro e na maioria, eles são mais seguros do que as listas de mensagens baseados na web.
+Para ter uma, você pode ter seu próprio servidor e configurar para uma lista de mensagen majordomo ou minordomo nele (o software pe grátis), peça para alguém para configurar a lista de mensagens neste servidor ou encontre uma compania na net que provém a tal lista de mensage e hospedem em seu servidor.
+Nota sobre minordomo: Pelo que eu sei, Minordomo é a menor versão de Majordomo. No caso eu posso estar confundindo (e provavelmente eu estou, já que isso é um simples adivinhamento selvagem), por favor mande um Emial para mim com a correta definição de Minordomo para barakirs@netvision.net.il (e talvez a origem do nome).
+
+
+Como eu hackeio uma lista de mensagen?
+======================================
+Durante este tutorial, você irá aprender como hackear TODOS os tipos de lista de mensagens, e até algumas listas de mensagens como Majordomo/Minordomo (nota: isso não funciona na nossa lista de mensagens, então nem tente nos incomodar...   ;-)   ).
+
+Primeiramente, você precisará ler o tutorial de como mandar Email para aprender a como mandar falso Email. Este tutorial pode ser encontrado em blacksun.box.sk. Nós também advertimos para você ler o Info-Gathering tutorial, em blacksun.box.sk.
+Agora, eu preciso fazer você entender o que engenharia social é.
+Existem duas maneiras de conseguir uma senha:
+a) usando abilidades hacker para pegá-las.
+b) usando engenharia social, na qual require alguma abilidade hacker e talvez um pouco de informação sobre gathering (e um pouco de sorte, é claro).
+Deixe-me explicar. Engenharia social é pegando a senha de que você quer (por exemplo: a senha da lista de mensagens) convencendo alguém a lhe dar. Então você provavelmente estará dizendo "Ei, esse lixo não tem nada a ver com hacker!". Bem, para sua informação, quase todas engenharias sociais precisaram de alguma habilidade hacker, ou a menos terá mais chances de ter sucesso em seus atauqes.
+
+Hackeando
+---------
+Primeiramente, eu advirto você de tentar isso na sua própria lista de mensagens. É ilegal conseguir a senha da conta de alguém, mesmo se você não use a senha (apenas tentando conseguir a senha é incriminativo).
+Eu vou descrever o ataque da visão de um atacante, mas isso não significa que eu estou encorajando você de fazer algo ilegal.
+
+Do que você vai precisar:
+a) o Email do dono
+b) a maioria dos detalis do dono possíveis (seu nome ou o login, seu número de telefone (se ele preencheu este campo quando ele se inscreveu), seu endereço de casa, cep etc').
+c) alguma sorte (se a "dona sorte" não lhe ajudar, você poderá sempre tentar de novo. Mais cedo ou tarde você terá sucesso. Acredite em mim nisso).
+d) o endereço de Email da compania de ajuda. Se a única maneira de contatar a compania que se hospedam forem baseados em javascript e você não consegue descobrir qual o endereço de Email deles, tente achá-lo na fonte do HTML ou brincando com os CGIs deles ou sei lá, esqueça (ao menos, é claro, você descobriu uma maneira de enganar a forma CGI ou algo fazendo que pensem que está apenas enviando uma mensagem de qualquer endereço que você quiser).
+
+Agora, simplesmente use o que você aprendeu do tutorial de enviar emails, para mandar um email falso para o sistema de ajuda deles.
+Faça alguma história convicente, como:
+
+Assunto: "recuperem minha senha" o script não funciona
+Ajuda! Eu estou mudando para uma nova conta de Email, e eu quero atualizar meu registro de membro pare ter meu novo endereço de Email nele, mas eu não posso. Eu esqueci minha senha.
+Eu tentei ir para a p[agina "recuperar senha" na sua homepage. Eu coloquei meu endereço de Email (Eu tenho certeza de que foi o correto) e esperei mais de dois dias, mas eu ainda não consegui.
+Em algumas horas eu não poderei checar minha caixa de emails mais. Por favor mande sua resposta para minha nova conta de Email, que é: < seu "novo" Email vem aqui. Eu recomendo usar uma conta anônima tipo hotmail, para que em caso alguém desconfie de você, assim ninguém pode lhe rastrear.
+Por favor me mandem minha senha para minha nova conta de Email, ou simplesmente mude meu endereço de Email no meu registro de membro para a nova conta. Qualquer coisa que vocês fizerem, por favor me notifiquem (por favor me mandem um Email para o NOVO endereço, assim eu não irei esquecer).
+
+Sim, isto é tudo. Oh, e isso é recomendado fazer um valor de resposta na mensagem que contenha sua "nova conta de Email".
+
+
+Mas espere!! Antes de você começar a hackear todos os tipos de listas de mensagens, lembre-se que isso é ILEGAL. Se você quer tentar, comece hackeando sua própria lista de mensagens.
+
+
+Outros tutoriaisl feitos por BSRF
+---------------------------------
+* FTP Security.
+* Sendmail Security.
+* Overclocking.
+* Ad and Spam Blocking.
+* Anonymity.
+* Info-Gathering.
+* Phreaking.
+* Advanced Phreaking.
+* More Phreaking.
+* IRC Warfare.
+* Proxies, Wingates and SOCKS Firewalls.
+* RM Networks.
+* The Windows Registry.
+* Hardware.
+* Cracking.
+

@@ -1,0 +1,75 @@
+  Tutorial sobre o protocolo POP3 - Por Sniper_Wolf_
+        
+           Visite www.aspone.cjb.net para mais tutoriais em português
+                                  12/05/2000
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Índice
++++++++
+
+1. O que é um protocolo?
+2. O que significa POP3?
+3. Pra que eu aprenderia POP3?
+4. Tá, como eu uso ele então?
+
+
+1. O que é um protocolo?
+++++++++++++++++++++++++++++
+   Um protocolo é um conjunto de regras pelas quais dois computadores podem se comunicar. Funciona como a linguagem humana. Nós usamos uma linguagem para nos comunicar (nesse caso, o português), que é regido por regras (gramática).
+O mesmo vale para computadores.
+
+
+2. O que significa POP3?
++++++++++++++++++++++++++++
+   POP3 (sim, é uma atualização do POP), é um dos protocolos usados pelos programas de e-mail. O outro é o SMTP. O POP3 é o protocolo para o recebimento de mensagens, enquanto o SMTP é o protocolo para envio. Ah, POP significa "Post Office Protocol".
+
+3. Pra que eu aprenderia POP3?
++++++++++++++++++++++++++++++++
+
+Segundo RaveN:
+
+  a. Você já sofreu mailbombing? Não é um saco ter que "baixar" todas aquelas mensagens para poder deleta-las? Se você souber o protocolo POP3, você pode deletar suas mensagens diretamente so servidor, sem ter que "baixá-las".
+  b. Você pode ler seus e-mails de qualquer parte do mundo, usando somente o Telnet, sem precisar de nehum outro programa. Mas aí você diz: "- Mas eu posso ir até www.readmail.com, fornecer os dados (user, senha, etc...) e ler os e-mails numa tela toda bonitinha, e tal...". Acontece que alguns browsers gravam as senha digitadas neles, e alguém que usar esse computador pode conseguir sua senha.
+  c. Simplesmente por que o POP3 é um protocolo fácil de se aprender.
+
+
+4. Tá, como eu uso ele então?
++++++++++++++++++++++++++++++++
+  Primeiramente você vai precisar de um programa telnet. O windows já vem com um (c:\windows\telnet.exe) e o UNIX também. Em UNIX, simplesmente digite :   telnet hostname/IP , para se conectar a um host na porta 23, ou então digite  telnet hostname/IP port , para se conectar a um servidor na porta especificada.
+  Segundo, você precisa de um servidor POP3 (se você está lendo isso, suponho que você já tenha). Servidores POP3 são aqueles que permitem que você receba e-mails fora de páginas da Web. Você pode conseguir o endereço do seu servidor olhando as configurações de seu programa de e-mail (Outlook, etc...)
+  Ok, com isso pronto, conecte-se ao servidor na porta 110. Você deve receber uma resposta do tipo:
+
+        +OK POP3 [194.90.1.6] v7.60 server ready
+   
+   Tudo bem até agora. Vamos então nos identificar. Digite user "id", substituindo id pelo seu username (a parte antes da @ no seu e-mail). Digite então:
+
+        user sniper   (ou qualquer username que você tiver)
+
+  Você deve receber uma resposta do tipo:
+
+        +OK User name accepted, password please
+  
+  Digite então sua senha:
+        
+        pass "password" (substituindo "password" pela sua senha)
+
+  O servidor responde com:
+   
+        +OK Mailbox open, x messages (x é o número de mensagens que você tem)
+
+  Ou então:
+        
+        -ERR Bad login  (se você digitar uma senha inválida)
+
+  Agora, para ver os e-mail que você tem, digite "list".  Cada e-mail virá em uma linha, seguido por um número (o numero da mensagem)  e outro número (o tamanho da mensagem).
+  Se você quiser ler a mensagem, digite : retr # (substituindo # pelo número da mensagem). Você verá então o cabeçalho da mensagem e o corpo da mensagem.
+  Após ter lido a mensagem, provavelmente você irá deletá-la; digite então :
+         dele #  (substituindo # pelo número da mensagem)
+
+  Assim que acabar, digite "quit", para fechar a conexão.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+         Isso é tudo pessoal. Visite http://blacksun.box.sk para tutoriais em inglês.
+
+     - EOF -

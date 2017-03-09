@@ -1,0 +1,290 @@
+Shell account - per i principianti
+
+Versione originale (in inglese) di:
+Ghost_Rider (Ghost_Rider9@hotmail.com)
+http://blacksun.box.sk
+[le frasi tra parentesi quadre sono state aggiunte da Screener_it]
+
+Consumo per la traduzione: un paio d'ore di sonno...
+Musica ascoltata: nessuna, altrimenti svegliavo i miei ;-)
+Tradotto tra il 09 e il 10 Marzo 2000
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+================================================================================================
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+MESSAGGIO IMPORTANTE: Cerchiamo altri traduttori per tradurre dall'inglese all'italiano manuali, guide, semplici testi, ecc... Fatevi avanti. 
+Screener_it@freemail.it
+
+(((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+
+
+
+Questo è una guida per spiegare cos'è una shell e su quali sono i comandi base. Se credi di trovare script per una shell o exploit, sei in errore. Aspetta altre guide.
+La prima parte è solo una FAQ, dove risponderò alle domande più ricorrenti.
+E partiamo da qui.
+
+----------------------------------
+Le domande che fanno tutti
+----------------------------------
+
+Q=question (domanda) A=ask (risposta)
+
+Q: cos'è una shell ?
+A: Ok... Credo che dobbiate capire cosa sia una shell, ma parliamo delle shell.
+Probabilmente state usando Windows, la vostra shell è command.com, la shell è l'interprete dei comandi. Spieghiamo meglio.
+Una shell traduce e trasferisce i vostri comandi al vostro sistema.
+Per esempio, quando voi scrivete "cd..", questa comando prima sarà tradotto nel linguaggio macchina dalla shell e dopo di questo sarà spedito al cuore del sistema (al processore insomma).
+Ve lo immaginate un computer senza shell ?
+Dovreste scrivere i comandi in un linguaggio macchina come assembler o altri linguaggi (binari).
+Se volete che la macchina esegua il comando "cd .." dovreste scrivere elenchi di 00101010.
+Credete che in questo modo la gente normale (che non conosce linguaggi di programmazione, ecc...) potrebbe usare un computer ? Non credo proprio.
+
+Q: Un mio amico è un mago di *nix e mi ha dato molto shell perchè sono ristrette. 
+Cosa significa ?
+A: Ci sono due tipi di shell. Le shell ristrette (restricted shells) e quelle non ristrette (non-restricted shells).
+La differenza tra le due è che normalmente le shell ristrette sono gratuite e non puoi eseguire tutti comandi che vuoi (per esempio, puoi usare una shell gratuita per usare dig, nslookup e telnet).
+Con le shell non ristrette invece puoi usare tutti comandi che vuoi ma in genere queste shell sono a pagamento. (alcune università danno shell non ristrette ai loro studenti).
+Ma se hai una shell ristretta non ti preoccupare, xchè sono comunque buone 
+
+Q: Si posso prendere shell senza pagarle ?
+A: Sì, puoi. Secondo me il posto migliore è nether.net (un altro shell provider famoso è freeshell.org), ti dirò poi come fare.
+A volte però gli Internet Provider (ISP) danno shell ai loro utenti. Se non sei sicuro che le diano puoi telefonare al tuo ISP e chiedere informazioni.
+
+Q: Ho telefonate al mio ISP per chiedere una shell, ma mi hanno chiesto perchè ne voglio una. Cosa posso dire ?
+A: Devi dire semplicemente che ami navigare con Lynx e vuoi imparare a usare Unix. Se si rifiutano (o non possono) dartela, usa una shell gratuita (vedi sopra).
+
+Q: Adesso ho la shell, ma come faccio a sapere se è una buona shell ?
+A: Credo che la risposta sia molto soggettiva, dipende a cosa ti serve. Secondo me una buona shell deve poter supportare:
+
+-> Telnet (emulatore di terminale)
+-> Nslookup (Ti dà informazioni sull'host)
+-> FTP (File Transfer Protocol, devo dire altro ?)
+-> Finger (Ti dà informazioni su molti utenti)
+-> Traceroute (La stessa cosa tracer.exe in Windows, ma è migliore)
+-> Dig (probabilmente nel 99% delle shell ristrette non potete usarlo, ma non preoccupatevi)
+-> Netstat (come in Windows, la lista di tutti i socket e il loro stato)
+-> GCC (Compilatore per C)
+-> Gzip (Per dezippare file)
+-> Lynx (Il miglior browser al mondo)
+
+Ma la miglior shell è quella che ha quello di cui hai bisogno. Se ti serve solo telnet allora ti basta che supporti quello, come ho detto è molto soggettivo il giudizio su una shell.
+Ma se nella tua shell non puoi usare telnet, FTP e GCC ti conviene prenderti un'altra shell.
+
+Fino adesso ci siamo annoiati con stupide domande e stupide risposte [a me invece sembra che sia importante dire certe cose..]
+Adesso andiamo in un'altra sezione. Parlemo un po' dei gusti (???) delle shell.
+
+-------------------------------------------
+Visione veloce dei tipi delle shell
+-------------------------------------------
+
+Ci sono molti tipi di shell, alcuni le chiamiamo "shell fatte in casa" (home made shells), le altre le chiameremo shell standard. Parleremo delle shell standard.
+
+--------------------------------- 
+Solo per informazione
+---------------------------------
+
+Home made shells sono fatte dal sysop (colui che ha pieno accesso al sistema) e funzionano solamente nel suo sistema.
+-------------------------------------------------------------------------------------------------
+Come ho detto ci sono vari tipi di shell. Ci sono:
+
+
+-> shell: Bourne Shell
+-> Bash : Bourne Again Shell
+-> Cshell: C Shell
+-> Tcsh: Technical C Shell
+-> Ksh: Kourne Shell
+
+E molte altre.. Ho elencato solo quest perchè sono quelle che trovate su nether.net.
+
+Queste shell hanno punti forti e punti deboli. Per esempio la Cshell accettai tuoi comandi in C come i comandi normali. Per questo se scrivi printf Hello la shell prenderà questo comando come scrivessi echo nelle altre shell (per chi non conosce il C, printf stands per stampare sullo schermo gli input dati.
+Non voglio spiegarvi tutti i punti deboli e forti di queste shell. Dovete solamente prenderle e cominciare ad esplorarle per trovare voi i punti deboli e forti.
+L'unico consiglio che dò è quello di usare la Bash per i principiati, ma sei cerchi una shell potete devi usare la Cshell. Comincia con la Bash, esplora il sistema, studia molti script di Bashe poi puoi cominciare a usare altre shell.
+Parla con i tuoi amici che hanno altre shell, domanda cosa ne pensano, così ne puoi prendere spunto.
+Se hai già una shell e non sai di shell si tratta scrivi $shell nella shell e probabilmente lei ti dirà che tipo di che tipo di shell si tratta.
+Questa è una breve visuale d'insieme e finisce qui. Adesso vediamo come prendere una bella shell.
+
+-------------------------------------
+Prenditi una shell su nether.net
+-------------------------------------
+
+Sei pronto per prenderti la tua prima shell ? Certo che lo sei.
+L'unica cosa che non mi piace in nether.net è la lentezza del server, a volte il server si ferma proprio.
+Quindi se non puoi connetterti a nether.net non ti preoccupare. Probabilmente è perchè c'è troppa gente e il server fa offline.
+Aspetta un po' [l'autore parla di un paio ore] e poi riprova.
+
+
+------ Entrare in nether.net ------
+
+Passo 1. (Prenditi il tuo telnet)
+Apri telnet, lo puoi trovare nella dir di windows sotto il nome telnet.exe [spero che se uno arriva fin qui sappia almeno dov'è telnet !!]
+
+Passo 2. (Connessione)
+Adesso probabilmente stai guardando il telnet di Windows. Seleziona Connetti e nel menù che appare selezione Sistema Remoto.
+Adesso ti chiederà di inserire nelle caselle il nome dell'host, la port e il tipo di terminale. Compila come nello schema qui sotto.
+
+Nome host: nether.net
+Porta: Telnet (oppure scrivi 23, è uguale)
+Tipo Terminale: vt100
+
+Clicca su Ok e aspetta un attimo....
+
+------ Prendersi una shell ------
+
+Passo 3. (loggarsi nel sistema)
+Adesso dovresti vedere il banner di nether.net. Dovrebbe dire
+
+Kernel SunOS 5.6 Generic_105181-17 on a sun4d
+Welcome to nether.net
+
+New to the system?  Login as newuser
+
+login:
+
+[Spero che un po' di inglese lo sappiate.. Comunque vi dice che se siete nuovi al posto del login dovrete scrivere newuser]
+[Raccomandazione importante: in telnet non potete correggere, quindi andate piano a scrivere e non cancellate..]
+Dopo che avrete scritto newuser il programma vi aiuterà a creare una nuova shell.
+
+Passo 4. (Customising Keys)
+
+Il programma per i nuovi utenti adesso vi chiederà le Customise keys. 
+Vi chiederà di cliccare il tasto per cancellare (^H) e il tasto di rottura (^C). 
+I tasti sono default, ma voi potete cambiarli con altri.
+Il ^H standard è legato al tasto per cancellare (Quello che ha questo simbolo <- ), e il ^C è legato a ctrl+c. Attenzione, non scrivete ^H o ^C semplicemente cliccando le lettere perchè sono gli output.
+
+Passo 5. (Selezionare il tipo di terminale)
+
+Dopo aver cliccato i tasti il programma ti chiede di inserire il tipo del tuo terminale.uoi cliccare ? e il programma scriverà sullo schermo i terminali che supporta, ma puoi tranquillamente selezionare vt100 o premere solamente Invio. 
+Premendo Invio il programma capisce che il tuo terminale è un dumb. Non ci sono problemi a selezionare dumb perchè puoi cambiare l'impostazione dopo.
+
+Passo 6. (Dati personali)
+
+Qui il sistema ti chiede i tuoi dati personali, come il nome completo, il numero di telefono, data di nascita, ecc...
+Puoi scriverli tutti e scriverli corretti o dare false informazioni. Credi che il 98% degli utenti nether.net danno informazioni false.
+Oppure puoi cliccare . e cliccare invio.
+Dopo aver inserito i dati ti viene chiesto se vuoi lasciare che gli altri utenti vedano i tuoi dati personali. Rispondi Yes (sì) oppure No(no). L'autore consiglia di cliccare Yes [non so il xchè... Me lo faccio spiegare e poi vi dico!!]
+
+Passo 7. (Selezionare una Shell)
+
+Adesso trovi un elenco dei vari tipi di shell. Per gli inizi selezionate una shell Bash.
+
+Step 8. (Selezionare Login)
+
+Inserisci un login, al massimo 8 caratteri.
+
+Step 9. (Selezionare Password)
+
+Seleziona una password, il sistema la domanda due volte per essere sicuro che tu abbia scritto la pass nel modo giusto. [un consiglio: usate password alfanumeriche, usate maiuscole e minuscole, non usate nomi proprio o cose che siano facilmente riconducibili a voi. NON USATE LOGIN E PASSWORD UGUALI. Usate pass tipo 65gfar oppure fas90f, capito ???)
+
+Step 10. (Conferma le scelte)
+
+Adesso vedrete le informazioni che avete inserito prima:
+
+full name:                          nome completo
+loginid:                            login e password: <suppressed>
+address:                            l'indirizzo se l'hai inserito
+telephone:                          il numero di telefono se l'hai inserito
+other e-mail addresses:             l'email se l'hai inserita
+occupation:                         Stessa cosa
+computers:                          Uguale
+birthdate:                          Vedi sopra 
+sex:                                Qualche volta :-)
+interests:                          A caso 
+(did you find out about us):        Come hai trovato nether.net
+Privacy switch on/off shell:        La storia sulla privacy.. Fate un po' com volete
+your shell account terminal: your terminal type erase '^H' kill '^U' interrupt '^C'
+
+Scrivi "help" per una lista delle informazioni che puoi cambiare. Se ti va bene tutto scrivi "done"
+
+Step 11. (Dopo aver scritto "done")
+
+Adesso il programma sta controllando se ci sono altre persone che hanno già il tuo ID. Dovresti vedere tutta una serie di numeri, niente di preoccupante.
+Se il tuo Id esiste già il programma ti chiede di sceglierne un altro, se invece non ci sono altri con il tuo Id aspetta un attimo che scorrano i numeri. Dopo di ciò....
+
+Step 12. (Congratulazioni, hai una nuova shell)
+
+Bravo, aedsso hai una shell.
+Adesso dovresti arrivare alla sequenza di login, quella che hai incontrato quando ti sei collegato con Telnet tanto per intederci. Scrivi il tuo Id e la tua pass e... 
+Buon divertimento !!!
+Ricorda che puoi avere tutte le shell che vuoi. Basta che ripeti la sequenza, magari stavolta scegliendo una Cshell o altro.
+
+------------
+I comandi
+------------
+
+Qui non troverete tutti i comandi di *nix ma solo i principali. Se volete conoscere tutti i comandi di *nix leggete le note in fondo. Eccovi i comandi base con la descrizione (nella parentesi quadre i parametri o switches)
+
+Syntax: command [switches] -> descrizione del comando
+
+man [command] -> Le istruzioni per l'uso del comando con le varie opzioni.
+
+cd [directory] -> Come in DOS questo comando cambia la dir. Per andare su di una dir dove scrivere cd .. (non cd.. come in DOS). Per ritornare alla home dir basta che scriviate cd senza i nessun paramentro.
+
+ls -> ls fa lo stesso lavoro di "dir" in Dos. Fà vedere sullo schermo tutti i file nella directory. Per conoscere tutti gli switch disponibile man ls
+
+cat [file] -> E' la stessa cosa di "type" in Dos. Fa vedere i contenuti di un file di testo a tua scelta. 
+
+logout -> Esci dalla shell.
+
+who -> Fa vedere chi è on line con le informazioni sugli utenti. Ci sono programmi per renderti invisibile al comando who, ma questa è un'altra storia, probabilmente in un altro tutorial.
+
+ps [-aux] -> ps va vedere quali procedure sono in corso come ctrl+alt+del in windows (però non può fare reboot, far riavviare il Pc insomma). Se usate ps senza parametri (switch) vedrete solo i vostri processi e programmi, mentre su usate il paramentro -aux vedrete la lista di tutti i processi della macchina remota.
+
+joe [file] -> joe è programma di videoscrittura. Per usarlo dovete dare come parametro il nome del file che volete creare o leggere. Alcune shell non dispongono di joe, ma di vi (un altro programma di videoscrittura.
+
+Questi comandi bastano per iniziare. Usate man per conoscere meglio i vari programmi. 
+Buona navigazione ragazzi [e soprattutto ragazze]!!!
+
+-----------
+Note finali
+-----------
+
+Adesso avete bisogna di un po' di pratica e di un bun libro per prendere confidenza con i comandi.
+Uno dei migliori libri per *nix è UNIX IN A NUTSHELL [non so se esiste una versione italiana... Se sapete qualcosa scrivete]
+Potete trovare il libro [in versione inglese] nella sezione books del BSRF web site (http://blacksun.box.sk).
+Secondo me è il miglior libro su questo argomento e soprattutto e gratis e per questo ve lo raccomando
+Un'altra buona "cosa" è man. Per esempio se volete informazioni su telnet e su come usarlo dovete solo scrivere
+man telnet
+E vedrete un piccolo manuale su telnet.
+Se usare una shell sul server di freeshell (freeshell.org) puoi usare il comando "help" senza opzioni.
+Troverai un menù con le varie opzioni da usare.
+IMPORTANTE: ricordatevi che *nix è Case Sensitive e maiuscole e minuscole sono molto importanti.
+Man, man, MaN, MAN non sono la stessa cosa.
+
+Appendice
+----------
+A) Posso usare i bot per mIRC sulle free shell ?by R a v e N)
+No!! Dovresti essere loggato 24 ore al giorno. I provider di shell gratuite (free) spengono i tuoi processi (o programmi) nel momento stesso in cui esci dal loro server (fai log out o log off in termini tecnici)
+
+B) Ci sono altri posti dove posso trovare shell gratuite ? (by R a v e N)
+Certo! Prova presso http://www.cyberarmy.com/lists/accounts/
+
+E VAI CHE HO FINITO LA TRADUZIONE !!!!!
+
+(((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+
+
+Versione originale (in inglese) di:
+
+Ghost_Rider (Ghost_Rider9@hotmail.com)
+http://blacksun.box.sk
+[le frasi tra parentesi quadre sono state aggiunte da Screener_it]
+
+Tradotto in italiano da:
+
+Screener_it ( screener_it@freemail.it)
+http://go.to/tankcommandos
+Tradotto tra il 09 e il 10 Marzo 2000
+[le frasi tra parentesi quadre sono state aggiunte da Screener_it]
+Ringraziamenti: 
+ringrazio me stesso, il mio computer e la mia tastiera (e non ringrazio quello stramaledetto vocabolario tascabile che non aveva neppure una delle parole che ho cercato.)
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Se la traduzione vi sembra sbagliata scrivetemi pure e vi manderò l'originale in inglese. (calcolate che di inglese ho il 5 e 1/2 tirato..)
+ 
+

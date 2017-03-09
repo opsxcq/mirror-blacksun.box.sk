@@ -1,0 +1,281 @@
+†††††††††††††††††††††††††††
+Cracking Tutorial - Parte 1
+††††††††††††††††††††††††††† versao 1.0, 21/9/1999
+
+Copyrights reservados a <TeCh~LoRd> (sagid@netvision.net.il) da Black Sun Research Facility (blacksun.box.sk)
+Traduzido por Lorde_Morpheus £ø©(Translated by Lorde_Morpheus £ø©)
+†††††††
+Índice:
+†††††††
+0. Introdução.
+1. Retrtação.
+2. O que é cracking?
+3. Ferramentas.
+4. Os passos do cracking.
+5. Termos básicos em assembly.
+6. Conclusão final.
+===========================================================================================
+
+††††††††††††††
+0. Introdução:
+††††††††††††††
+
+Eu tenho lido muitos tutoriais de cracking ultimamente.
+Francamente falando, eu sozinho aprendi cracking de tutoriais(e de alguns livros, mas isto realmente não importa.). A maioria dos tutoriais cracking tem algumas desvantagens: geralmente são muito longos e contem um monte de lixo, ou são muito curtos e não contem o básico.
+
+Eu decidi escrever um tutorial que não tenha nenhuma dessas desvantagens.
+
+Assim, eu dividi o tutorial em três partes:
+
+Parte 1: introdução, ferramentas, e cracking básico.
+Parte 2: Treino prático, usando W32Dasm, e HIEW
+Parte 3: Key-generators.
+
+
+Bem vindo à primeira parte. ;-)
+
+
+†††††††††
+1. Aviso:
+†††††††††
+
+Eu criei este tutorial apenas para fins de informação, e somente!
+Muitas informações deste documento podem ser usadas para performances e atividades ilegais!
+Não tente fazer nada do que está neste documento!
+Se você tentar alguma coisa, você será responsável pelo que você fizer!
+Se você se mete em alguma encrenca o problema é somente seu!
+Se você está intencionado a usar as informações aqui para impressionar seus amigos, pare agora mesmo e cresça!
+Se você não quiser aceitar isto, não leia mais nada!
+Se você crackear um programa e depois vender ou oferecer de graça estará cometendo um crime!
+
+††††††††††††††††††††
+2. O que é Cracking?
+††††††††††††††††††††
+
+Para mim cracking é:
+"Letting a program, which is on your computer behave as you want it
+to behave and not behave as someone else (the programmer) wants"
+
+As INTERN said:
+"Hey, it is your stuff right? your numbers, your bits,
+you should be able to do anything you wish to do with it :)"
+
+Eu atualmente acato a isto.
+
+Assim cracking é modificar seus programas, e fazer eles trabalharem como você quer.
+Você pode pegar um programa demo de graça, crack ele, e use.
+MAS!!!!
+Eu repito, se você crack um programa, e começa a vender a versão crackeada ou oferece-lo de graça, isto é um crime!
+_____________________________________________________________________________
+
+Depois de ler estes tutoriais,(este é o primeiro de uma serie de três), você sentirá o poder que tem em suas mãos (Quero dizer, em sua mente.).
+
+Bem, vamos começar?
+
+††††††††††††††
+3. Ferramentas
+††††††††††††††
+
+Existem algumas ferramentas que você precisa agora...
+É muito fácil encontra-las na web, porque são muito populares:
+
+A primeira é "Win32 Disassembler", que é conhecida como W32Dasm.
+
+O Win32 Disassembler permite você:
+1. Disassembler files - Traduz o programa para a origem assembler, ou código de máquina.
+   Os arquivos digitados que podem ser "disassambled" em Win32 Disassembler são:
+   exe, 386, com, cpl, drv, dll, fon, mpd, ocx, vbx, vbx e sys.
+2. Carregar o processo de programa e trace o programa.
+3. Procurar o arquivo disassembled e vá para a localização de código que você queira.
+4. Encontrar o texto.
+5. Executar, inserir ou remover jumps e calls.
+6. Importar e exportar funções.
+7. mostrar um HEX display de um código de área.
+8. mostrar a lista dos STRINGS, DIALOGS e REFERENCES.
+9. Salvar o Disassembly source em formato texto.
+
+Bem, você pode pegá-lo em algum crack site, mas eu te darei algumas URLs:
+
+1. http://www.wco.com/~micuan/Zips/wdasm893.zip
+   --------------------------------------------
+2. HTTP://CRACKING.HOME.ML.ORG/
+   ----------------------------
+3. http://www.fortunecity.com/bally/waterford/18/w32dsm89.zip
+   ----------------------------------------------------------
+4. http://wowsites.com/meiner/w32dsm89.zip
+   ---------------------------------------
+
+Eu acho que estão estes certos.
+Se alguns desses links caíram por favor me avisem (meu endereço de e-mail é sagid@netvision.net.il).
+
+A segunda ferramenta que você precisa é Hiew, que é também conhecida como Hacker's View.
+O Hacker's View Tool permite voce:
+1. Disassemble arquivos.
+2. Fazer mudanças em arquivos disassembled, como:
+   escrever comandos, modificar comandos  e reassemble o file.
+3. Visualizar o arquivo em ASCII, Hex ou modo assembly.
+
+Aqui algumas URL's conhecidas:
+
+1. ftp://ftp.cs.tu-berlin.de/pub/msdos/mirrors/ftp.elf.stuba.sk/pc/utilprog/hiew584.zip
+   ------------------------------------------------------------------------------------
+2. ftp://ftp.bke.hu/pub/mirrors/sac/utilprog/hiew584.zip
+   -----------------------------------------------------
+3. ftp://ftp.uakom.sk/pub/mirrors/sac/utilprog/hiew584.zip
+   -------------------------------------------------------
+
+você pode carregar um excelente programa para cracking chamado Soft-Ice.
+De qualquer modo não precisaremos dele nesta parte do tutorial.
+Mas aqui estão algumas URLs do Soft-ICe.
+
+SoftICE for Windows95:
+
+1. http://swlink.net/~lachcik/insaine/si95w320.zip
+   -----------------------------------------------
+2. http://www.fortunecity.com/bally/waterford/18/siw95-32.zip
+   ----------------------------------------------------------
+3. http://www.pmk.ac.th/~arnontc/files/siw95-32.zip
+   ------------------------------------------------
+4. ftp://toolz.ucl.autograd.ru/Debugger/W95ICE32.ZIP
+   -------------------------------------------------
+
+SoftICE for Windows NT:
+
+1. http://www.pmk.ac.th/~arnontc/files/siwnt-32.zip
+   ------------------------------------------------
+2. ftp://ftp.sol.no/users/r/reopsahl/OrcPaks/orcpak9e.zip
+   ------------------------------------------------------
+3. http://www.fortunecity.com/bally/waterford/18/siwnt-32.zip
+   ----------------------------------------------------------
+4. ftp://toolz.ucl.autograd.ru/Debugger/WNTICE32.ZIP
+   -------------------------------------------------
+
+Existe também SoftICE for DOS, que eu não recomendo.
+
+1. http://www.pmk.ac.th/~arnontc/files/s-ice280.zip
+   ------------------------------------------------
+2. ftp://ftp.ula.ve/pub/msdos/cracking/s-ice280.zip
+   ------------------------------------------------
+3. http://202.102.15.149/~person/paulgao/cracks/SICE280.ZIP
+   --------------------------------------------------------
+4. ftp://ftp.sonic.net/pub/users/fryman/tools/S-ice280.zip
+   -------------------------------------------------------
+5. http://www.chibacity.com/chiba/files/unpro/prx-pcs3.zip
+   -------------------------------------------------------
+
+você pode baixar também a versão para Win 3.1x em:
+
+1. ftp://ftp.ula.ve/pub/msdos/cracking/m_wice13.zip
+   ------------------------------------------------
+2. http://fishheads.simplenet.com/BriansFiles/m_wice13.zip
+   -------------------------------------------------------
+3. http://www.magiccarpet.com/~odin/files/other/m_wice13.zip
+   ---------------------------------------------------------
+
+†††††††††††††††††††††††††††††
+4. The Main steps of cracking
+†††††††††††††††††††††††††††††
+
+Existem 7 passos no processo de cracking:
+
+1. Corra o programa que você quer crackear e aprenda o padrão de comportamento dele.
+   Tente localizar os strings e keywords, tente entrar a password e veja como o programa responde.
+2. Abra o programa com o W32Dasm e disassambler ele.
+3. Encontre típicos e comuns strings no disassembly que pertencem ao programa.
+   Na maioria dos casos, você tem de procurar por keywords como: password, nome, data, expirada,
+   limite de tempo, erros, entered e assim por diante.
+4. Encontre e observe o gerador de password, encontre e aprenda a rotina de proteção e as chamadas API.
+5. Tente entender o mecanismo de jumping da proteção.
+6. Abra o programa em HIEW.
+   Mude o jump do flow control para oposite jump command, ou desabilite isso.
+7. Corra e veja como a mudança que você tinha feito no programa original o afetou.
+   Sinta o poder que você tem, o poder de cracking, deixando programas procederem como você quer que eles ajam.
+
+Aprenda esses passos muito bem, até você sonhar com eles, você usara cada programa em cada programa que você crackear.
+
+5. Termos básicos em Assembly
+
+------------------------
+A. Registers(registros):
+------------------------
+Registros são variáveis que estão armazenadas em seu processador.
+O processador usa essas variáveis para operações matemáticas básicas e operações lógicas.
+a maioria dos registros usados são: eax, ebx, ecx e edx.
+Algumas vezes você verá: edi, esi, esp, ebp.
+
+Existem três tipos de registros: 32Bit registers, 16Bit registers e 8Bit registers.
+Os 32Bit registers iniciam com "e", como os "eax".
+Existem os 16Bit equivalentes desses registros.
+
+A única diferença desses dois tipos é o tamanho da variável.
+Esses registros são: "ax", "bx", "cx", "dx", "di", "si", "sp", "bp".
+
+Há também os 8 bit registros.
+Os 8Bit registers são: "al", "ah", "bl", "bh", "cl", "ch", "dl", "dh".
+"l" - significa abaixo de 8 bits dos 16Bit register.
+"h" - significa acima de 8 bits dos 16Bit register.
+Aqui o padrão l é para os abaixo e h para os acima de 8 bits de um 16 bit register.
+
+--------
+B. Flags
+--------
+Flags são variáveis Boolean(get 0 or 1 values).
+Flags são usadas pelo processador para operações lógicas e matemáticas,
+em ordem para pegar o resultado da operação.
+O mais importante flag é o Zero Flag, que pode ter zero ou non-zero(1) valores.
+
+------------
+C. Code Flow
+------------
+Quando você está analisando uma peca de código, você deve entender que o processador
+é atualmente inteiramente estúpido, e tudo é tão simples a fazer é simplificar seguindo as instruções básicas,
+linha a linha.
+Faca qualquer coisa que o código pede para você fazer, e não faça nada que não esteja escrito
+no código("a menos que tenha ouvido vacas falarem ou tenha sido abduzido por aliens.").
+Isso porque você tem pensar como o processador, quando você estiver analisando uma peca de código,
+e agir como ele(just don't get used to it! Inhale, exhale, inhale, exhale... nevermind, stupid joke) :)
+você tem de fazer o que o processador faz, comparar registros e variáveis, executar jumps e calls,
+calcular Basic mathimatical operations, armazenar e carregar registro de valores e endereços e assim por diante...
+
+O processador tinha um "instruction pointer" especialmente para isto, que é também chamado de IP
+(não tem nada a ver com o IP do internet protocol confie em mim..."quero dizer... no escritor... hehehhe").
+Usando o instruction pointer, o processador aponta à instrução que irá ser executada.
+O processador também executa instruções que mudam o code flow.
+Estas instruções podem ser function calls, qualquer outra rotina de calls, jumps, conditional jumps, que dependem 
+do zero flag, negative conditional jumps...
+
+††††††††††††
+6. Conclusão
+††††††††††††
+
+Nesta parte do tutorial, nós aprendemos o significado da palavra cracking.
+Fazendo programas comportando-se como você quer, e não do modo que o programador queria que fosse.
+Nós temos aprendido muito também sobre as básicas e populares ferramentas de cracking: W32Dasm, Hiew e o SoftICE.
+E finalmente aprendemos os sete passos do cracking.
+
+Agora, antes de você ir para o próximo capítulo, você estes 7 passos e carregar as ferramentas
+mencionadas acima, porque nós não podemos ir ao próximo capitulo sem essas ferramentas e sem saber os passos.
+
+Vejo você no próximo capítulo.
+
+<TeCh~LoRd>
+
+
+
+
+Outros tutoriais pela BSRF(blacksun.box.sk)
+-------------------------------------------
+* FTP Security.
+* Sendmail Security.
+* Overclocking.
+* Ad and Spam Blocking.
+* Anonymity.
+* Info-Gathering.
+* Phreaking.
+* Advanced Phreaking.
+* More Phreaking.
+* IRC Warfare.
+* Proxies, Wingates and SOCKS Firewalls.
+* RM Networks.
+* The Windows Registry
+* Hardware

@@ -1,0 +1,579 @@
+
+			 :::::::::   ::::::::  :::::::::  :::::::::: 
+                         :+:    :+: :+:    :+: :+:    :+: :+:        
+                         +:+    +:+ +:+        +:+    +:+ +:+        
+                         +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#   
+                         +#+    +#+        +#+ +#+    +#+ +#+        
+                         #+#    #+# #+#    #+# #+#    #+# #+#        
+                         #########   ########  ###    ### ###  
+                         
+                    	             http://blacksun.box.sk
+           
+
+
+
+The Beginners Guide To Linux v1.1 
+La Guida di Linux per i Principianti
+Autore: Squiler
+Traduttore: kEwL
+Contatta Squiler a: Solo ICQ per ora, UIN - 34500800, Nick - Squiler
+Contatta kEwL a: kewl@penguinpowered.com
+http://blacksun.box.sk
+http://www.squiler.com
+http://go.to/tankcommandos
+
+
+1.0 - Introduzione
+
+Linux a volte è chiamato dalla stampa come "il peggior nemico di Windows NT". 
+Le riviste specializzate una volta lo chiamavano "La più grande storia mai 
+narrata". Questa è una definizione perfetta perchè la storia dietro Linux è 
+davvero grande, ma è sconosciuta alla maggior parte delle persone. Cominciamo 
+dall'inizio.
+
+Torniamo quando 'Stayin' Alive' stavano ancora superando i grafici, e 
+Microsoft era una leader nel mondo dei computers, AT&T produsse un sistema 
+operativo multiutente e lo chiamò "UNIX". Attraverso gli anni, UNIX cresceva e 
+cominciarono ad uscire versioni differenti. Una popolare, chiamata "Minix" 
+(mini-UNIX) era disponibile all'Università di Helsinki in Finlandia. Uno 
+studente all'Università chiamato Linus Torvalds credeva di poter creare un 
+sistema operativo superiore a Minix. Nel 1991 cominciò il suo nuovo sistema 
+operativo come come progetto secondario, ma subito diventò un'impegno costante 
+fino a che nel 1994 fu rilasciata la prima versione del sistema operativo.
+
+Ora probabilmente stai dicendo "allora qual è il grande affare di Linux? Non è 
+un altro sistema operativo?" Assolutamente no! Prima di tutto, Linux è 
+rilasciato sotto qualcosa chiamata "licenza open source". Open source è in 
+realtà più di un idea che una cosa. Linux è rilasciato con tutto il codice 
+sorgente e i files di cui è composto. Questo significa poche cose. Chiunque 
+che sa programmare può lavorare con il codice di Linux e rilasciare la propria 
+versione. Questo significa anche che sebbene vuoi comprare Linux in un negozio 
+esso costerà del denaro, ma non stai pagando per Linux di per se. I tuoi soldi 
+vanno al prezzo della confezione, il software extra che viene dato con il 
+sistema operativo e il supporto tecnico. Il secondo, e il più importante 
+motivo che Linux è un grande affare è perchè è un sistema molto più stabile di 
+Windows. E' adatto ad ogni sistema; va bene dal 386 al computer più recente. I 
+programmi che si eseguono su Linux quasi mai si bloccano, e nella possibilità 
+che uno si blocchi a causa della cattiva programmazione dell'autore, non farà 
+bloccare anche il sistema operativo. Per un hacker è molto più difficile 
+buttarlo giù rispetto a Windows. Questa è comunque un elenco molto ristretto 
+delle ragioni per il quale Linux è così grande. Per maggiori informazioni 
+leggi www.linux.org.
+
+Questo documento è per gli utenti Windows che vogliono passare a Linux. Questo 
+è scritto per Linux RedHat o Mandrake (le distribuzioni più facili da 
+installare e da usare), ma le informazioni di questo documento probabilmente 
+ti aiutano con qualsiasi distribuzione stai usando. L'unico problema con queto 
+è che Mandrake o RedHat sono relativamente semplici da installare, e qualche 
+altra distribuzione è più complessa. Suggerisco caldamente di comprare Linux 
+Mandrake più che RedHat. Principalmente perchè è più economico e c'è più 
+software, ma quando leggerai questo documento, vedrai più ragioni per le quali 
+raccomando Mandrake.
+
+La prima cosa che devi fare con il tuo nuovo sistema operativo è intallarlo, 
+ma non puoi farlo così velocemente.
+
+2.0 - Preparazione
+
+Se hai già Microsoft Windows sul tuo sistema e vuoi che esso coesista con 
+Linux, devi creare un'altra partizione sul disco. Una partizione sul disco è 
+una parte totalmente separata del disco fisso. In ogni modo, la ragione per 
+questo è che Linux e Windows sono totalmente differenti nel modo di accesso al 
+disco fisso e nel modo di gestire i files. Se i due sistemi operativi usano lo 
+spazio dell'altro si potrebbe verificare un conflitto e si potrebbero 
+verificare dei problemi sul tuo computer. Bene, come stavo dicendo, devi 
+creare una partizione riservata a Linux. Ci sono programmi MS-DOS che fanno 
+ciò, ma sono programmi "letali". Dicendo questo voglio intendere che mentre 
+crei una nuova partizione, questi programmi possono distruggere o almeno 
+corrompere i files su un'altra partizione. Se vuoi creare una partizione per 
+Linux, senza eliminare i tuoi files Windows hai bisogno di un programma "non 
+letale". Se prendi Linux Mandrake, è incluso un programma "non letale" (questa 
+è una delle ragioni per le quali preferisco Mandrake a RedHat). [NdT: nelle 
+versioni più recenti di RedHat è comunque incluso un programma per creare le 
+partizioni].
+
+Bene con tutto questo discorso delle partizioni e dei dischi fissi, devi 
+sapere di quanto spazio hai bisogno per Linux. Se vuoi il sistema completo con 
+tutto, avrai bisogno di circa 1.5 gb di spazio (o anche di più). Comunque è 
+possibile installare una distribuzione completa di Linux (ci sono 
+distribuzioni di Linux "in miniatura" che vanno dai 2 ai 35 mb, come per 
+esempio Trinux, che è eseguito da dischetti di 1.44 mb! Prendilo da 
+www.trinux.org) con poco meno di 150 mb. Fidati di me, non hai bisogno di 
+tutto. Linux è distribuito con molti software di cui probabilmente non avrai 
+bisogno. Per esempio: Linux è distribuito con dei servers di rete - un server 
+web, un server Sendmail, un server telnet, un server FTP ecc. Se decidi di non 
+installarli e poi ci ripensi, puoi comunque prenderli dal CD d'installazione.
+
+In ogni modo, se hai abbastanza spazio, e un programma per partizionare "non 
+letale", sei pronto per procedere al prossimo passo: installazione.
+
+***Anche se stai usando un programma per partizionare "non letale", suggerisco 
+di salvare i tuoi files di Windows nel caso che qualcosa vada storto.***
+
+
+3.0 - Installazione
+
+Ora che il tuo computer è pronto per Linux, sei pronto a installarlo. Quando 
+hai comprato il software, probabilmente è su più CD e dischetti.
+
+Il dischetto è il dischetto di avviamento del programma di installazione di 
+Linux. Inserisci il dischetto, riavvi il computer, il programma 
+d'installazione comincia, e sei pronto per installare Linux. L'unica cosa è 
+che il programma di installazione potrebbe metterci un po' di tempo dato che è 
+su un dischetto.
+
+**La roba sul dischetto è probabilmente un duplicato di alcune cose del primo 
+CD. Se il tuo computer è in grado di partire da un CD (e i più nuovi lo sono, 
+altrimenti controlla il tuo manuale) al posto di inserire il dischetto nel tuo 
+computer, inserisci il CD poichè si esegue molto più velocemente. Certamente 
+devi modificare prima la configurazione del BIOS, ma non è difficile. Premi 
+"del" quando il tuo computer si accende (dopo che ti dice quanta RAM hai) e 
+cerca dove c'è l'opzione dove ti permette di eseguire il boot dal CD. 
+Differisce da BIOS a BIOS.**
+
+3.1 - Ok...sei finalmente pronto ad installare Linux
+
+Le prime domande che il programma d'installazione fa sono autoesplicative, 
+cose come la tua lingua e altre cose. Una cosa su cui ti potresti bloccare è 
+quando ti viene chiesto se hai un adattatore SCSI. Un adattatore SCSI può 
+essere qualunque cosa come un mouse, una stampante, ecc. Tutto dipende se hai 
+un controller SCSI. Normalmente non dovresti avere SCSI, ma controlla il tuo 
+manuale per essere sicuro. Inoltre, se sei completamente sicuro che la tua 
+copia di Microsoft Windows è configurata bene, lancia il Pannello di 
+Controllo, clicca su Sistema e cerca le informazioni di cui hai bisogno 
+sull'hardware del sistema.
+
+3.2 - Altra roba sulla partizione
+
+Un'altra cosa su cui potresti avere dei dubbi  è una finestra che ti chiede 
+delle cose sulle partizioni del tuo hard disk. Il nome della finestra dovrebbe 
+essere "Disk Setup". Ci dovrebbero essere tre bottoni in basso. Uno chiamato 
+"Disk Driud", un altro chiamato "fdisk" e l'ultimo "back". Dato che hai già 
+settato le tue partizioni, scegli "Disk Druid". Se avevi originariamente una 
+partizione con Windows, sulla schermata dovrebbe apparire una cosa del genere:
+
+Mount Point        Device       Requested       Actual              Type
+                   hda1         ??MB            ??MB           Win95
+                   hda2         ??MB            ??MB           Linux Swap
+                   hda3         ??MB            ??MB           Linux Native
+
+
+Il Mount Point dovrebbe essere vuoto.
+"Device" è il nome della partizione.
+"Requested" è la quantità di spazio che tu volevi per quella partizione
+"Actual" è la quantità di spazio che c'è realmente nella partizione
+"Type" è cos'è la partizione
+
+**Le sezioni "Requested" e "Actual" per "Linux Swap" dovrebbero essere la 
+quantità di RAM che hai.**
+
+**Sembra confuso, ma in realtà è semplice. Non preoccuparti se la schermata 
+non è esattamente come il mio diagramma, probabilmente non lo sarà.**
+
+Quello che dovresti fare ora è di scegliere la sezione "Linux Native" 
+(premendo "TAB" per andare a quella parte della schermata, poi usare i tasti 
+cursore) e poi premere di nuovo "TAB" finchè non è selezionato il pulsante 
+"Edit". Premendo spazio apparirà un'altra finestra. Nello spazio apposito, 
+metti uno slash (/) e poi premi OK. Ora sei tornato alla schermata principale. 
+Premi "TAB" per andare su OK e poi premi spazio.
+
+**quello che stai facendo ora è dire al computer di mettere la directory 
+principale nella partizione Linux Native. La directory principale "/" è simile 
+a "C:\" in DOS/Windows.**
+
+Poi arrivi a una schermata che ti chiede quali partizioni vuoi formattare. 
+Scegli quella "Linux Native". Dovresti scegliere la partizione "/dev/xxxx/" 
+dove xxxx è il nome del dispositivo su cui c'è Linux Native. Questo è dove 
+metti lo "/" nell'ultima schermata. Se il dispositivo della partizione Linux 
+Native è hda3 scegli "/dev/hda3", se è hda6 scegli "/dev/hda6".
+
+**E MOLTO IMPORTANTE CHE NON SCEGLI LA PARTIZIONE SBAGLIATA!**
+
+
+3.3 - Scegliere cosa installare
+
+Supponi che hai tre dischi fissi su Windows - c:\, d:\ e e:\, e vuoi 
+installare Linux su d:\. Windows assegna la lettera c al primo disco fissoche 
+trova che ha una partizione DOS\Windows, d alla seconda ecc; questo può 
+esserti d'aiuto a determinare quale dispositivo scegliere. Inoltre, se scegli 
+d:\, esso scomparirà in DOS\Windows, e e:\ dieventerà d:\.
+
+Comunque non hai finito, ma tira un sospiro di sollievo, la parte più 
+difficile è terminata. Poi compare la schermata che chiede quali pacchetti si 
+devono installare. I più importanti sono già selezionati. Se hai molto spazio, 
+scegli tutti i pacchetti. Altrimenti, scegli gli altri che pensi siano 
+importanti. Scegli sicuramente "KDE" e "GNOME". Questi sono programmi per il 
+sistema X-Window (un GUI - Graphical User Interface - Interfaccia Grafica 
+dell'Utente), e tratteremo questi in seguito. In ogni modo, le versioni più 
+recenti includono nuovo software e aggiornamenti per il vecchio software.
+
+Premi OK e l'installazione di Linux comincia!
+
+3.4 - Altre configurazioni
+
+Dopo che tutto è stato installato, ti verranno chieste altre cose. La prima 
+dovrebbe essere la risoluzione del tuo monitor. La maggior parte delle persone 
+scelgono di usare la stessa risoluzione che usano per Windows, e se non 
+conosci la risoluzione che stai usando ora, torna a Windows, clicca con il 
+destro sul desktop, clicca proprietà e scegli "Impostazioni". Dovresti vedere 
+lì la risoluzione corrente. Se vuoi una risoluzione maggiore, consulta il 
+manuale del monitor per vedere fino a quanto puoi arrivare.
+
+Poi c'è la configurazione del Mouse. Se il tuo mouse non è nella lista, scegli 
+"Mouse PS/2 Generico". [NdT: ovviamente se il tuo mouse è seriale scegli 
+"Mouse Seriale Generico".
+
+Ci sono altre configurazioni, come l'impostazione dell'orario e altre sono 
+autoesplicative. Dopo questa, appare la schermata dei servizi. Queste sono le 
+cose che si eseguiranno quando si avvierà Linux. Poi ti verrà chiesto se vuoi 
+che l'interfaccia X-Window sia eseguita all'avvio di Linux. Se sei un neofita 
+di Linux (e probabilmente lo sei, altrimenti non leggeresti questa guida), 
+suggerisco di farlo. X-Window è il sistema GUI, come spiegato prima.
+
+L'ultima configurazione è la stampante. Questo è autoesplicativo.
+
+
+3.5 - Configurare gli utenti
+
+Ok...ce l'hai quasi fatta; le configurazioni sono quasi finite. Ora ti verrà 
+chiesto di creare una password per l'operatore root. Anche se è molto popolare 
+su computer di singoli utenti, Linux è un sistema operativo multi-utente. 
+Anche se sei l'unica persona che usa il computer, avere un sistema 
+multi-utente è abbastanza buono. Per esempio: puoi usare un utente con meno 
+privilegi per evitare di fare cose stupide e usare certe cose. Puoi eseguire 
+del software "sensibile" che può essere rotto (come acuni server. Per esempio: 
+un server Sendmail per messaggi in uscita se stai programmando di permettere 
+alla gente di mandare messaggi dalla tua macchina, o un server web se vuoi 
+essere un sito web) come utente meno privilegiato, così se qualcuno pensa di 
+sfruttare dei buchi del software, avrà pochissimi privilegi (quelli necessari 
+che ha il programma per essere eseguito correttamente) e non potrà fare molto, 
+o niente nella maggior parte dei casi (non avrà accesso ai files delle 
+password, non avrà permesso di scrittura sui files del sito web e non potrà 
+nemmeno modificarli). Su ogni sistema basato su UNIX (e ce ne sono molti) 
+l'utente principale è chiamato "root". Il root ha potere supremo sul sistema e 
+potere supremo su tutti gli altri utenti. Infatti ha potere illimitato (a meno 
+che egli o un altro utente con privilegi root sceglie di imporre limitazioni 
+di accesso, ma gli utenti con privilegi root possono sempre restaurare i loro 
+diritti).
+
+La mia password di root è abbastanza semplice. Specialmente perchè sono il 
+solo che usa Linux sul mio computer e che il mio sistema Linux non è connesso 
+a internet (così gli hackers [o i crackers direi] non hanno modo di accedere 
+al sistema). Rendi la tua password meno complicata possibile in modo che tu 
+non puoi dimenticarla, ma qualcosa che è molto difficile da intuire.
+
+Dopo che hai dato una password per l'utente root, ti verrà chiesto di creare 
+un utente non privilegiato, ordinario. Scrivi il nome utente, i dati, e la 
+password. Potrebbe sembrare inutile all'inizio creare un altro utnete - 
+specialmente uno non privilegiato se sei il solo che usa Linux. Comunque c'è 
+un grande vantaggio. Come utente root, puoi fare tutto al sistema, includendo 
+le cose brutte. Niente ti fermerà perchè tu sei root. Un utente ordinario è 
+come una sicurezza perchè il sistema ti fermerà.
+
+3.6 - Configurazioni di avviamento
+
+Poi ti verrà chiesto se vuoi creare un disco boot. Lo raccomando caldamente 
+perchè metterà le cose per l'avvio sul dischetto, non sul computer. Se metti 
+un dischetto d'avvio su un computer con windows, potrebbe fare conflitto con 
+il boot di windows e nei casi estremi dovresti reinstallare Windows (vai a 
+blacksun.box.sk/byteme.html e leggi #18 per un buon esempio).
+
+L'avviamento di Linux che sto citando è un programma chiamato "LILO". E' la 
+forma abbreviata di "Linux Loader". LILO si installa sul settore d'avvio del 
+computer. Il problema è che anche Windows si installa sul settore d'avvio. 
+LILO può installarsi sopra Windows e ti chiederà se vuoi lanciare Linux o 
+Windows quando accendi il computer. Se scegli Windows, si avvierà Windows.
+
+In ogni modo, nella mia opinione, quando il programma d'installazione ti 
+chiede di creare un disco di avviamento, clicca Ok, poi segui le indicazioni 
+per creare un disco. Quando crei un disco d'avviamento, mete LILO sul disco. 
+Quando ti chiede di installare LILO, premi Skip (a meno che tu non voglia 
+installare LILO, cosa che fanno molti utenti).
+
+Congratulazioni! Hai finito di installare Linux! Quando il programma 
+d'installazione termina, leva il disco d'avvio dal drive. Se hai fatto partire 
+il computer dal CD, non dimenticare di cacciarlo.
+
+
+4.0 - Eseguire Linux
+
+Scommetto che sei contento di aver finito l'installazione! Ora puoi finalmente 
+lanciare il sistema. Se hai deciso di creare un disco d'avvio, inseriscilo nel 
+drive. Se hai deciso di installare LILO, stai fermo per ora. Malgrado quello 
+che hai fatto, riavvia il computer. Se hai usato LILO, ti verrà chiesto se 
+vuoi inserire Linux o Windows. Se hai usato un disco d'avvio, il sistema si 
+eseguirà automaticamnte.
+
+Dopo che è eseguito il sistema, ti verrà chiesto un nome utente e una 
+password. Questo sarà differente a seconda di cosa hai scelto 
+nell'installazione. Se hai scelto di eseguire automaticamente X Window, la 
+schermata di nome utente e pasword apparirà come quella in Windows (alcune 
+versioni di X-Window sono molto belle, a meno che tu non abbia usato 
+determinate versioni o determinati gestori di finestre). Se hai scelto di non 
+eseguire X Window all'avvio (come fanno molti utenti esperti), comparirà una 
+schermata testuale. L'interfaccia testuale (la console di comando) è più 
+veloce dell'interfaccia grafica, ma non puoi vedere niente di grafico fin 
+quando non esegui X Window (questo è il momento giusto per dire che la maggior 
+parte delle persone lo chiama X). In ogni modo, puoi sempre eseguire una 
+console di comando da X Window (di solito si chiama "XTerm", che sta per X 
+Terminal). Comunque, lo schermo di login sarà quasi lo stesso sia in RedHat 
+che in Mandrake.
+
+Se non sai cosa scrivere nello spazio nome utente, è facile. Il tuo nome 
+utente è "root" (ricordi?). La password è quella che hai scelto 
+all'installazione.
+
+
+5.0 - Usare Linux
+
+5.1 - Introduzione alla Console
+
+Anche se sarai in grado di fare tutto facilmente usando X Window, ci sono 
+anche delle cose che dovresti sapere. Innanzitutto, non contare su un GUI per 
+tutto! E' molto importante perchè imparerai molto usando una console. La 
+console è più potente e puoi fare un sacco di cose se davverlo lo vuoi, perciò 
+compra un libro su Unix e comincia ad imparare. Dopo ti troverai spesso ad 
+aprire una finestra XTerm per eseguire dei comandi che non puoi eseguire da X. 
+Se hai scelto di partire con l'interfaccia GUI, ci sono comunque molti modi 
+per avere la console.
+
+La console dovrebbe apparire come qualcosa del genere (se sei entrato come 
+root):
+[root@localhost.localdomian]#
+
+La prima parte dice chi sei, e il "#" (cancelletto) è l'attuale "prompt". 
+Nella maggior parte dei sistemi UNIX e derivati, il "#" significa che sei 
+root. Su console bash non root (BASH - Bourne Again Shell. BASH è la shell a 
+base di testo più popolare. Confusi? Non preoccuparti, ci arreveremo tra un 
+secondo) questo sarà sostituito da un "$". In ogni modo, puoi cambiare il 
+prompt, ma non ci addentreremo in questo ora.
+
+5.11 - Shells
+
+Usi una shell ogni volta che sei nella console Linux. Cosa è una shell? E' il 
+programma che ti permette di comunicare con il Kernel (il kernel è il nocciolo 
+del sistema). Pensiamo ad esso come un interprete per due persone che stanno 
+cercando di comunicare, se non parlano la stessa lingua. Uno parla inglese e 
+l'altro, diciamo, Ebreo (circa la metà dei membri della Black Sun Research 
+Facility (blacksun.box.sk se non conosci l'URL. Se non lo sai, sono un membro 
+della BSRF [NdT l'autore non il traduttore! ;)] sono Israeliani). Per 
+comunicare tra di loro hanno bisogno di una persona che parla sia inglese che 
+ebreo. Se l'Inglese vuole dire all'Ebreo qualcosa, la dice all'interprete in 
+inglese, e poi l'interprete la dice all'altra persona in ebreo, e viceversa. 
+In ogni modo, tornado al soggetto, questo è il caso di Linux. Il tuo 
+linguaggio sono i comandi Linux, e il Kernel parla il suo linguaggio molto 
+complesso. Quando vuoi parlare al Kernel, lo dici alla shell nel tuo 
+linguaggio, e la shell lo dice al Kernel nel suo linguaggio. Su ogni sistema 
+Linux, ci sono delle shells. Alcune sono:
+
+ash
+bash
+bsh
+csh
+tcsh
+zsh
+
+La più popolare e potente è la "bash" (bourne again shell). Non diremo molto 
+delle shell perchè non ti interessa sapere molto su di esse.
+
+ 
+5.2 - Navigare nel file system
+
+La cosa più importante da sapere quando si usa una console è come navigare nel 
+file system seza un programma grafico.
+
+La prima cosa da capire su questo è che la directory più bassa è "/". E' come 
+"C:\" in Windows.
+
+Ok, comincia alla console e di default sei nella tua directory "home" (ogni 
+utete ha una directory home che contiene i suoi files di configurazione). Ora 
+vuoi andare in un'altra directory. Ma aspetta, non sai nessun'altra directory! 
+Farai una lista delle directory, giusto? Per fare ciò premi "ls" al prompt. 
+"ls" è l'equivalente di "dir" in MS-DIS, e sta per list. Avrai una lista di 
+files e directory. Per rendere la lista un po' più leggibile prova "ls -Fla". 
+Il -a mostra i files che cominciano con un periodo (per esempio: 
+.Xclients-default). Il -l mostra i permessi dei files e mostra tutto 
+incolonnato. L'opzione -F aggiunge una / dopo ogni directory e un * dopo un 
+file eseguibile. Suggerisco anche di usare "ls -Fla --color" per attribuire 
+colori diversi ai files (non è disponibile in alcuni sistemi).
+
+In ogni modo, ora che sai quali sono le directory, devi sapere come entrare in 
+esse. Fortunatamente, userai lo stesso comando che i usa in MS-DOS, il comando 
+"cd" (cambia directory). Diciamo che sei nella directory più bassa, "/", e 
+vuoi andare nella directory "/root". Scrivi semplicemente "cd root". Non c'è 
+bisogno di scrivere "cd /root", perchè tu sei già in "/". Ora diciamo che vuoi 
+andare nella directory "/root/bin". Farai ciò scrivendo "cd bin". Non c'è 
+bisogno di scricvere "cd /root/bin" (il percorso completo della directory), 
+poichè se già in "/root". Invece, puoi usare un "percorso relativo", che è un 
+percorso che è relativo alla directory in cui sei. Scrivi pwd per vedere dove 
+sei (pwd sta per print working directory, scrivi la directory di lavoro).
+
+Ora diciamo che sei in "/root/bin" e vuoi andare in "/usr". Scriverai "cd 
+/usr". Questo significa che la directory "usr" è sotto "/", non "/root/bin", o 
+"/root". E' chiaro? Ok, solo un'altra cosa. Se sei in una sottodirectory, e 
+vuoi andare nella directory precedente, scrivi "cd ..". Diciamo che sei in 
+"/root/bin", e vuoi andare in "/root". Puoi scrivere "cd /root", ma "/root" è 
+di cinque caratteri! Per fare più veloce, scrivi "cd ..", poichè "/root" è la 
+directory in cui "/root/bin" è una sottodirectory. In altre parole, . è la 
+directory corrente, .. è una directory precedente, ... è due directory 
+precedenti ecc.
+
+5.3 - Comandi di base di files e directory
+
+Ci sono molti comandi di files e directory in Linux, ma cominceremo con i 
+comandi delle directory perchè sono più facili. Innanzitutto, hai "mkdir". 
+"mkdir" sta per make directory (crea directory) e la sintassi è:
+
+mkdir directory_che_vuoi_creare
+
+Applichiamo alcune regole. Se sei in "/", esso creerà la nuova directory in 
+"/". Se sei in "/usr", esso creerà la nuova directory sotto "/usr". Certamente 
+se sei in "/" e vuoi creare una directory chiamata "stuff" sotto "/usr", 
+scriverai "mkdir /usr/stuff".
+
+Il prossimo comando è "rm". Lavora con files e directory ed è usato per 
+cancellare, sta per "remove". Se vuoi cancellare un file chiamato "this.gif", 
+andrai nella directory dov'è il file e scriverai "rm this.gif". O diciamo 
+ancora che sei in "/" e "this.gif" è in "/usr", scriverai "rm /usr/this.gif". 
+Funziona allo stesso modo con le directory.
+
+I prossimi sono i comandi "cp" e "mv". Sono entrambi relativamente semplici, 
+ma cominceremo con "cp". "cp" sta per copy (copia), e è usato per copiare un 
+file da una directory a un'altra. La sintassi è:
+
+cp /directory_dove_è_il_file/file /directory_di_destinazione
+
+Certamente se sei già nella directory dove c'è il file, tutto quello che devi 
+scrivere è:
+
+cp file /directory_di_destinazione
+
+"mv" lavora allo stesso modo, però esso sposta il file al posto di copiarlo. 
+Questo significa che lo cancella dalla directory originale e lo mette nella 
+nuova.
+
+
+5.4 - Trovare e vedere i files
+
+Per trovare un file, userai il comando "find", seguito dalla directory dove 
+vuoi cominciare a cercare, poi il parametro "-name" per dire che stai cercando 
+un file per nome. Dopo scrivi il nome del file. Diciamo che stai cercando il 
+file "this.gif" nella directory "/usr", la sintassi sarà:
+
+find /usr -name this.gif
+
+Il comando find non si ferma ai nomi, può anche cercare un file per una 
+particolare stringa di testo. Ha la stessa sintassi come per trovare il 
+comando ma devi inserire le virgolette o degli asterischi intorno al testo. 
+Così se vuoi cercare nella directory "/usr" un file che contiene la scritta 
+"hello", scriverai:
+
+find /usr -name "*hello*"
+
+Una volta che hai trovato un file, vuoi vederlo giusto? Bene, potresti aprire 
+il file con un editor di testo, ma non abbiamo ancora imparato a usare gli 
+editor di testi, e comunque se il file che vuoi vedere è importante potresti 
+accidentalmente cambiarlo e salvarlo con un editor di testi. Questo è quello 
+che fa il comando "cat". Diciamo che vuoi vedere un file chiamato "stuff.txt" 
+in "/root". Entrerai nella directory "/root" e scriverai "cat stuff.txt". O da 
+una directory qualunque, scrivi "cat /root/stuff.txt". 
+
+-= Per altri comandi, compra un buon libro di Unix =-
+
+5.5 - linuxconf
+
+Ci sono molti comandi in Linux per configurare tutto, dalle passwords degli 
+utenti, alle reti ai messaggi che compaiono quando esegui Linux. Con così 
+tante cose da configurare, fortunatamente c'è un programma che fa tutto. Basta 
+scrivere "linuxconf" al prompt, e verrà eseguito il programma Linux 
+Configuration.
+
+
+5.6 - Mounting
+
+5.61 - Montare i drive
+
+In Linux, i drive non solo devono essere montati fisicamente al computer, ma 
+montati anche con il software. In KDE e GNOME, puoi facilmente montare un 
+CDROM o un dischetto cliccando sulle icone "CD-ROM" o "Dischetto" sul desktop.
+
+5.62 - Come montare
+
+Le partizioni devono essere montate come se fossero dischetti. Bisogna essere 
+capaci di montare le partizioni Windows per accedere ai files di Windows in 
+Linux. Ovviamente, il software Windows non si eseguirà in Linux ma può essere 
+utile accedere ai files di Windows in Linux.
+
+Diciamo che non puoi usare internet in Linux e ti servono dei files per Linux. 
+Ti colleghi a internet con Windows, scarichi i files e poi li usi con Linux.
+
+Per montare una partizione Windows in Linux, per prima cosa devi creare una 
+directory in Linux dove vuoi montare la partizione. Vai in file manager 
+(dovrebbe stare sotto utilities non importa che distribuzione stai usando) e 
+crea una directory in "/". Chiamala come vuoi, suggerisco di chiamarla 
+"windows". Ora esci da file manager e vai nel "terminale" (dovrebbe essere in 
+utilities). Il terminale ti darà un prompt come MS-DOS. Questo è cosa avrai se 
+non installi X Window. Il comando da usare è semplicemente "mount". Ma non 
+scriverlo da solo, devi dare al sistema maggiori informazioni. Il comando 
+completo è:
+
+mount -t vfat /dev/xxxx /yyyyyyy (sì c'è uno spazio tra "xxxx" e "/")
+
+O mount -t vfat32 /dev/xxxx /yyyyyyy nel caso che è una partizione FAT32.
+
+Dove "yyyyyyy" è la directory che hai creato, e "xxxx" è il nome del 
+dispositivo della partizione dove c'è Windows. Di solito è hda1.
+
+Ora devi andare in file manager e cliccare sulla directory che hai creato e 
+avrai tutti i files che sono nella tua partizione windows.
+
+Quando hai finito, non dimenticare di "smontare" il drive scrivendo:
+
+umount /dev/xxxx /yyyyyyy 
+
+Ogni volta che vuoi accedere ai tuoi files windows, monta la partizione (a 
+meno che non è montata automaticamente. Modifica /etc/fstab, trova la linea 
+che rappresenta la tua partizione Windows e cerca il posto dove c'è "noauto". 
+Se trovi la parola "noauto", cambiala in "defaults". Se non la trovi, la tua 
+partizione Windows probabilmente è auto-montata quando esegui Linux). Quando 
+hai finito, smonta la partizione.
+
+
+5.7 - Runlevels
+
+Mentre Windows si avvia, hai mai premuto il tasto F8?, Bene, se l'hai fatto, 
+probabilmente conoscerai una schermata che ti mostra una lista di modi con cui 
+puoi eseguire Windows. C'è modalità provvisoria, prompt di msdos, conferma 
+passo passo, ecc. Linux ha qualcosa del genere, ed è chiamato "runlevel". Ci 
+sono sei runlevels in tutto, e alcuni sono quasi uguali. Un runlevel è una 
+lista di comandi che si eseguono quando avvii Linux (c'è una mini-guida sui 
+runlevels a blacksun.box.sk/byteme.html). Il tuo runlevel stanard è 
+probabilmente il 5. Se hai scelto di eseguire GUI all'avvio del sistema, è il 
+tuo runlevel stanard è il 5, quello è il runlevel configurato quando avvii, 
+giusto?
+
+Bene comunque se usi linuxconf per cambiare il tuo runlevel standard a 2 o a 3 
+o qualcos'altro, lo cambi così che GUI non si esegue all'avvio...tutto senza 
+modificare il runlevel attuale. Quando vuoi tornare sui tuoi passi, basta 
+usare linuxconf per settare il runlevel standard a 5.
+
+Ora diciamo che vuoi solo eseguirlo senza che compaia il GUI. Al posto di 
+dover cambiare la configurazione in linuxconf, e poi cambiarla di nuovo, puoi 
+eseguire Linux in un altro runlevel. Supponiamo che vuoi eseguire il runlevel 
+2...non per una ragione particolare, solo perchè non fa partire il GUI 
+all'avvio, e ti piace il numero 2. Per fare ciò, quando compare LILO (sia 
+quando è sul tuo computer sia quando è sul dischetto), ti compare sullo 
+schermo "boot:" Basta scrivere "linux x". "x" si riferisce al numero del 
+runlevel, in questo caso il numero 2, così scrivi "linux 2", e premi ENTER. 
+Questo eseguirà Linux senza eseguire il GUI. Quando riavvi Linux, si eseguirà 
+ancora il runlevel standard.
+
+Per una guida interessanti ai runlevels, leggi il Byte-Me mini-tutorial sui 
+runlevels a runlevels at blacksun.box.sk/byteme.html.
+
+
+Ora sei ufficialmente un utente Linux. Visita www.linuxlinks.com per alcuni 
+links a bei siti per Linux. Il modo migliore di imparare ad usare Linux è 
+lavorarci. In un'ora di lavoro con Linux puoi imparare molto. Se vuoi altri 
+testi, visita http://blacksun.box.sk.
+</XMP></BODY></HTML>

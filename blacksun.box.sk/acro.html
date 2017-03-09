@@ -1,0 +1,3663 @@
+<html>
+<head>
+
+<title>Computer Related Acromyms</title>
+
+<script language="JavaScript">
+
+
+
+if(document.layers) document.captureEvents(Event.KEYPRESS)
+
+document.onkeypress=kpress;
+
+function kpress(e){
+
+	key=(document.layers)?e.which:window.event.keyCode
+
+	if(key==13) findInPage(search.string.value);
+
+	if(key==27) {
+
+		window.location = "#top"
+
+		window.search.string.select()
+
+	}
+
+}
+
+
+
+var IE4 = (document.all);
+
+
+
+var win = window;    // window to search.
+
+var n   = 0;
+
+
+
+function findInPage(str) {
+
+
+
+  var txt, i, found;
+
+
+
+  if (str == "")
+
+    return false;
+
+
+
+  // Find next occurance of the given string on the page, wrap around to the
+
+  // start of the page if necessary.
+
+
+
+
+
+  if (IE4) {
+
+    txt = win.document.body.createTextRange();
+
+
+
+    // Find the nth match from the top of the page.
+
+
+
+    for (i = 0; i <= n && (found = txt.findText(str)) != false; i++) {
+
+      txt.moveStart("character", 1);
+
+      txt.moveEnd("textedit");
+
+    }
+
+
+
+    // If found, mark it and scroll it into view.
+
+
+
+    if (found) {
+
+      txt.moveStart("character", -1);
+
+      txt.findText(str);
+
+      txt.select();
+
+      txt.scrollIntoView();
+
+      n++;
+
+    }
+
+
+
+    // Otherwise, start over at the top of the page and find first match.
+
+
+
+    else {
+
+      if (n > 0) {
+
+        n = 0;
+
+        findInPage(str);
+
+      }
+
+
+
+      // Not found anywhere, give message.
+
+
+
+      else
+
+        alert("Not found.");
+
+    }
+
+  }
+
+
+
+  return false;
+
+}
+
+</script>
+
+<style type="text/css">
+
+<!--
+
+a:active {  text-decoration: none}
+
+a:hover {  text-decoration: underline}
+
+a:link {  text-decoration: none}
+
+a:visited {  text-decoration: none}
+
+-->
+
+</style>
+
+</head>
+
+
+
+<body bgcolor="#000000" leftmargin="10" text="#CCCCCC" link="#99CCFF" vlink="#0099CC" alink="#66CCFF" marginwidth="10" marginheight="10">
+
+<p><font face="Verdana"><font size="6" color="#FFFFFF"><a name="top"></a>Acronyms, 
+
+  Emoticons & Domain Extensions</font></font><font color="#FFFFFF"><a name="top"></a><font face="Verdana"><font size="2"><br>
+
+  <br>
+
+<p><font face="Verdana" color="#FFFFFF"><font size="2">Get the latest version 
+
+  at <a href="http://blacksun.box.sk">blacksun.box.sk</a> (we also have original hacking/security tutorials. Just try 
+
+  them, I am sure you will like them)</font><br>
+
+  </font></p>
+
+<form name="search" onSubmit="return findInPage(this.string.value);">
+
+  <p> <font face="Verdana" size="2" color="#FFFFFF">
+
+    <input name="string" type="text" size=15 onChange="n = 0;">
+
+    <input type="submit" value="Find">
+
+    </font> </p>
+
+</form>
+
+<font color="#FFFFFF">
+
+<script language="JavaScript">
+
+<!--
+
+search.string.focus()
+
+//-->
+
+</script>
+
+</font>
+
+<p><font face="Verdana" size="2" color="#FFFFFF">Browse By Category:</font></p>
+
+<p><font face="Verdana" size="2" color="#FFFFFF">- <a href="#abbreviations">Abbreviations 
+
+  And Acronyms</a><br>
+
+  - <a href="#emoticons">Emoticons</a><br>
+
+  - <a href="#domains">Domain Extensions<br>
+
+  </a>- <a href="#guys">Guys You Don't Want To Mess With</a></font></p>
+
+<p><font face="Verdana" color="#FFFFFF"><font size="2">Computer-related acronyms 
+
+  and abbreviations + country domain extensions + emoticons<br>
+
+  Written by R a v e n, F a n g and Njan<br> 24/10/1999<br>
+
+  Updated and maintained by the Blacksun Research Facility Team<br>
+
+  <br>
+
+  <b>HOW/WHY TO USE</b>: This file might come in handy in case you come across 
+
+  a computer-related acronym, abbreviation or an emoticon which you don't know 
+
+  the meaning to. In such a case you can simply search through the file and find 
+
+  the entry you're looking for.<br>
+
+  <br>
+
+  <b>HOW TO HELP</b>: Want to help? Got any acronyms/abbreviations/emoticons/country 
+
+  extensions/"guys you don't want to mess with"? Want to flame or spam us? For 
+
+  the first two, send everything to barakirs@netvision.net.il.<br>
+
+  <br>
+
+  Credits: White Star 
+
+  (UIN=33481559), ToMeX (UIN=30026157), Zed of ZSystems (UIN=18345800), s0rcer0r 
+
+  (UIN=2115844), DARK RAIDER (UIN=23260552), JLOBee (UIN=14254931), Asafon (UIN=10660468).<br>
+
+  Shoutouts: mega shouts to White Star (UIN=33481559), Zed of Zsystems (UIN=18345800), 
+
+  Profane Existence (UIN=14767096) and all the guys who helped me spread this 
+
+  txt out.<br>
+
+  Fucks: fucks go out to "Sexy Ori&quot; (he thinks he's the greatest hacker in 
+
+  the world and he says he has "great programs" and even one that gets your phone 
+
+  number by your IP... yeah, and I'm the tooth fairy. Go DoS his lil' ass - UIN=18404796), 
+
+  Giora (the biggest liar on earth. Claims he's a great hacker but he wouldn't 
+
+  prove it ("he has too much class") and says he's a close friend of the guys 
+
+  who made ICQ. Oh yeah, and he uses 640X480 resolution on a 17inch monitor... 
+
+  UIN=2213907), JP (the racist media-whore, founder of www.antionline.com. More 
+
+  info at www.attrition.org in the "High Slanders" section) and all the l33t-talking 
+
+  lamers from #rootworm, #hackphreak, #hack, #hp, #hyperlink, #dps, #netbus, #bo 
+
+  and all the other lame Undernet channels (ok, ok, not everyone who spends time 
+
+  in those channels is lame, but there is a high quantity of lamers out there. 
+
+  Try going to one of those channels and see how long it takes until someone asks 
+
+  "where can I get a free shell account?" or "how do I hack Hotmail?").<br>
+
+  <br>
+
+  Heads up, here we go:</font></font></p>
+
+
+
+<p><font face="Verdana" size="2">
+
+<a name="abbreviations"></a>
+
+ [ --Acronyms and Abbreviations --] <a href="#top">[top]</a><br>
+
+@ - At (mainly used in IRC but is also used in email addresses. If you don't know what I mean STOP READING NOW!!! Example: lol@RaveN=LOL (Loughing Out Loud) at RaveN)<br>
+
+10Q - Thank You (mainly used in IRC)<br>
+
+10X - Thanks (mainly used in IRC)<br>
+
+2 - Too / Two / To (mainly used in IRC. Example: me2=me too)<br>
+
+4 - For / Four (mainly used in IRC. Example: 4u=for you)<br>
+
+8 - Ate (mainly used in IRC. Example: l8r=Later)<br>
+
+A/S/L - Age/Sex/Language / Age/Sex/Location<br>
+
+A/UX - (A version of UNIX based on V system and UNIX 2 that works on Mac II)<br>
+
+AAA - Access All Areas (a security group. http://members.tripod.com/aaareas)<br>
+
+AAM - Ask A Minor (mainly used in IRC)<br>
+
+AB - Abbreviate (a VI command. Type ':ab blah halb' without the 's and whenever you type blah (case sensitive + whole word) it will automatically replace it with halb. More info and VI tutorials on blacksun.box.sk)<br>
+
+AC - Alternating Current / Analogical Computer<br>
+
+ACCT - Account<br>
+
+ACD - Automatic Call Distributor<br>
+
+ACE - Adaptive Communication Environment<br>
+
+ACID - Atomicity, Consistency, Isolation and Durability<br>
+
+ACID / AciD - Ansi Creators in Demand (a hacking group)<br>
+
+ACK - Acknowledged (first, a little about the TCP protocol. When you want to send something from one computer to another using TCP you need to establish a connection first. The sender first sends a packet with the SYN flag on. On this point, the receiver can decide if he wants that packet. If a firewall is blocking the way or there is no daemon on the specific port the packet will be denied and the receiver will reply with a packet with the RST flag on. However, if the receiver wishes to accept the connection, he will reply with both SYN and ACK on, and then the sender should reply with ACK, which means he's ready to send. This whole thing is called a "TCP 3-Way Handshake" and it is good for transferring files which must not be corrupted, since there is no packet loss, and when something goes wrong the receiver can ask the sender to send that packet again. On UDP, you can't make sure the packet will ever get to the receiver but everything goes a lot faster that way. This is why Realplayer (www.real.com) uses UDP. This is why video and audio sometimes gets a little smudged on the way (just a little? Hehe...). But in case you want to transfer applications or games, you cannot afford to lose a single BIT, because if you would the program would probably get corrupted. In such cases, you have to use TCP, which is a bit slower but you don't have to worry about losing important pieces of information. More info at the entry TCP)<br>
+
+ACL - Access Control List (a list containing info about which user can access which parts of, say, a hard drive)<br>
+
+ACM - Association for Computing Machinery<br>
+
+ACTLAB - Advanced Communication Technologies Laboratory<br>
+
+ADC - Analog-to-Digital Conversion / Advanced Disk Catalog (http://www.elcomsoft.com/adc.html)<br>
+
+ADFS - Advanced Disk FIling System (what new(ish))acorns and upgraded BBC's use to handle floppy disks)<br>
+
+ADMIN - Administrator<br>
+
+ADN - Any day now (mainly used in IRC)&nbsp;<br>
+
+ADO - ActiveX Data Objects<br>
+
+ADPCM - Adaptive Differential Pulse-Code Modulation<br>
+
+ADPCM - Adaptive Digital Pulse Code Modulation<br>
+
+ADSL - Asymmetric Digital Subscriber Line<br>
+
+ADSL - Asymmetric Digital Subscriber Line<br>
+
+AEP - Apple talk Echo Protocol<br>
+
+AES - Advanced Encryption Standard (quoted from Packet Storm Security - the AES will be the eventual replacement for DES. It's a 128-BIT block cipher with key lengths of 128, 192, and 256 BITs)<br>
+
+AF - Audio Frequency<br>
+
+AFAIK - As Far As I Know (mainly used in IRC)<br>
+
+AFK - Away From Keyboard (mainly used in IRC)<br>
+
+AFS - Andrew File System<br>
+
+AGNPAC - Alberta Government Packet Switched Network<br>
+
+AGP - Accelerated Graphics Port<br>
+
+AGP - Advanced Graphics Port<br>
+
+AI - Artificial Intelligence<br>
+
+AIFF - Audio Interchange File Format<br>
+
+AIM - AOL Instant Messenger (a competitor to ICQ)<br>
+
+AIN - Advanced Intelligent Network<br>
+
+AIX - Advanced Interactive eXecutive (A version of UNIX)<br>
+
+AJ - Ask Jeeves (a cool search engine. Ask it any question that has the answer to it somewhere on the web and it'll answer. But watchit, he's got bad breath... lol... http://www.aj.com)<br>
+
+AL - Artificial Life<br>
+
+ALGOL - ALGOrithmic Language<br>
+
+ALRU - Automatic Line Record Update<br>
+
+ALU - Arithmetic-Logic Unit<br>
+
+AMC - ATI Multimedia Channel (a nice connector that can be placed on the back of your computer. If you use ATI products then as soon as a new add-on comes out, like a new TV-Tuner or something, you can just plug it into the AMC)<br>
+
+AMPS - Advanced Mobile Phone Service<br>
+
+AMV - Advanced Mail list Verify (http://www.elcomsoft.com/amv.html)<br>
+
+AN - Associated Number<br>
+
+ANI - Automatic Number Identification<br>
+
+ANSI - American National Standards Institute<br>
+
+ANSIR - Awareness of National Security Issues and Response<br>
+
+AO - Anti Online (http://www.antionline.com)<br>
+
+AOE - Age Of Empires (a strategy game by Microsoft's game development division. Some people consider it the best strategy game ever, or at least one of the best. Obviously, they're all a bunch of pee-brained drooling maniacs. No offense, but I personally think this game... umm... what's that word? Oh, yeah... SUCKS!!!)<br>
+
+AOL - America OnLine<br>
+
+AOP - Auto OP (if you're an AOP of a channel it means you automatically receive OP whenever you enter than channel)<br>
+
+APA - All Points Ahead<br>
+
+API - Application Program Interface (an interface used to program applications. It is a part of an OS that gives applications an identical user interface)<br>
+
+APL - A Programming Language<br>
+
+APM - Advanced Power Management<br>
+
+APNIC - the European and Asia Pacific registries<br>
+
+APP - Application<br>
+
+APPC - Advanced Program to Program Comunication<br>
+
+APPROX - Approximately<br>
+
+APT - About Phreakin Time (a security-related magazine. http://www.net22.freeserve.co.uk/apt)<br>
+
+ARCNet - Attached Resource Computer Network<br>
+
+ARE - Acronym-rich environment (mainly used in IRC)<br>
+
+ArKey / AK - Argued Key<br>
+
+ARP - Address Resolution Protocol (gives addresses to workstations on a local network)<br>
+
+ARPA - Advanced Research Projects Agency (see ARPANet)<br>
+
+ARPANet - Advanced Research Projects Agency Network (a computer network that was established by the army in the late 60s for research and military purposes and eventually mutated into today's Internet, once it became open for the masses in the early 90s)<br>
+
+ARSB - Automated Repair Service Bureau<br>
+
+ART - Advanced Registry Tracer (http://www.elcomsoft.com/art.html)<br>
+
+AS - Autonomous System / Address Strobe / Half an A-Level<br>
+
+ASA - Advanced SCSI Architecture<br>
+
+ASCII - American Standard Code for Information Interchange<br>
+
+ASCII -American Standard Code for Information Interchange (basically the character set your computer uses)<br>
+
+ASCSI - Advanced Small Computer Systems Interface<br>
+
+ASI - Asynchronous SCSI Interface&nbsp;<br>
+
+ASIC - Application Specific Intergrated Circuit<br>
+
+ASIN - Amazon Standard Item Number (every Amazon.com affiltrate knows that every item (a music CD, a book or a video) has an ASIN. If you want to recommend about books, music CDs or videos in your website and then let your visitors to buy it all you have to do is to subscribe to Amazon.com's affiltrates program (there's a link to yet in their home page) and then find the ASIN of the product of your choice and follow their instructions)<br>
+
+ASIO - Australian Security Intelligence Organization<br>
+
+ASM / AS - Anti-Social Magazine (a well known hacking magazine)<br>
+
+ASP - Active Server Page (by Micro$oft. Kinda like a dynamic web page. For example: it can receive parameters from you, such as stocks you want to look up, and it will display them with nice graphs next to them or something)<br>
+
+ASPI - Advanced SCSI Programming Interface<br>
+
+ATA - Advanced Technology Attachment<br>
+
+ATAPI - ATA Packet Interface<br>
+
+ATH - Abbreviated Trouble History<br>
+
+ATL - Active-X Template Library<br>
+
+ATM - Asynchronous Transfer Mode / At The Moment (mainly used in IRC) / Automatic Teller Machine (those machines at banks who give you money in exchange for plastic cards and may sometimes eat your card if you've been naughty and spent all of your allowance. Naughty, naughty!)<br>
+
+ATP - Apple Talk transaction Protocol<br>
+
+ATRAC - Adaptive TRansform Acoustic Coding<br>
+
+ATTRIB - Attribute<br>
+
+AUI - Attachment Unit Interface<br>
+
+AUP - Acceptable User Policy<br>
+
+AURP - Apple talk Update-based Routing Protocol<br>
+
+AVI - Audio Visual Interface (an extremely lame computer video format, used mainly by Micro$oft... Surprise, surprise)<br>
+
+AVP - Aliens Vs. Predators (an online multiplaying game)<br>
+
+AW97PR - Advanced Word 97 Password Recovery (see http://www.elcomsoft.com/aw97pr.html)<br>
+
+AWG - American Wire Gauge<br>
+
+AZ - Abstract Zero (a hacking group, now in the ownership of PE (Pirated Education))<br>
+
+b - BIT<br>
+
+B - Byte<br>
+
+B4 - Before (mainly used in IRC)<br>
+
+B4BO / B4B0 - Bah Boh (a cool hacking magazine. www.b4bo.org)<br>
+
+B4N - Bye for now (mainly used in IRC)<br>
+
+BAK - Back at the keyboard (mainly used in IRC) / Backup (An extension often used under DOS to mark backup copies of files)<br>
+
+BASH - Bourne Again Shell (a Unix shell. Usually located at /bin/bash)<br>
+
+BASIC - Beginner's All Purpose Symbolic Instruction Code (a programming language) / Bill's Attempt to Seize Industry Control ;)<br>
+
+BAT - Batch (a batch file is a plain text file that consists of commands that will be sent to the command prompt whenever the file is executed)<br>
+
+BB - Big Brother ((as described by Packet Storm Security) Big Brother is a combination of monitoring methods. Unlike SNMP where information is just collected and devices polled, Big Brother is designed in such a way that each local system broadcasts it's own information to a central location. Simultaneously, Big Brother also polls all networked systems from a central location. This creates a highly efficient and redundant method or proactive network monitoring. It also has blinking lights that make it look really cool. Features: Web-based status display, Configurable warning and panic levels, Notification via Pager or email, Support for grouping of machines, support for modem monitoring, Selectable paging delays, Heterogeneous Network Support. Monitors: dns nntp ftp smtp and pop3 testing, connectivity via ping, http servers up and running, disk space usage, uptime and cpu usage, essential processes are still running, messages and warnings. By Sean MacGuire)<br>
+
+BBAS - Beige Box Advanced System<br>
+
+BBIAB - Be back in a bit (mainly used in IRC)<br>
+
+BBL - Be Back Later (mainly used in IRC)<br>
+
+BBNW - BB for NetWare<br>
+
+BBS - Bulletin Board System<br>
+
+BCAS / B-CAS / BKAS / B-KAS - Because (mainly used in IRC)<br>
+
+BDR - Bus Device Request<br>
+
+BEDO DRAM - Burst Extended Data Output DRAM<br>
+
+BEG - Big evil grin (mainly used in IRC)<br>
+
+BFD - Big fucking deal (mainly used in IRC)<br>
+
+BFN - Bye for now (mainly used in IRC) / Big Freakin' Number (mainly used in IRC)<br>
+
+BG - Big grin (mainly used in IRC)<br>
+
+BGP - Border Gateway Protocol<br>
+
+BIN - Binary<br>
+
+BIOS - Basic Input/Ouput System<br>
+
+BIOYIOP - Blow it out your I/O port (mainly used in IRC)<br>
+
+BIT - BInary digiT<br>
+
+BL - Belly laughing (mainly used in IRC)<br>
+
+BMP - BITmap (a basic image file)<br>
+
+BNC - Bouncer<br>
+
+BNET - Battle Net (Blizzard's multiplayer gaming arena. www.battlenet.com or www.blizzard.com)<br>
+
+BO - Back Orifice (one of the most famous Remote Administration trojans, made the CDC. Once you run the server file, anyone with the client program or a simple telnet application can access your computer. Basically it installs a backdoor on your computer. The backdoor can be locked with a password so only the person who sent you the server file in the first place can access the backdoor. OK, unless the password gets mysteriously hacked... the server file only works on Windows but the client works from either Windows or UNIX. The UNIX version is open-source. BO and NB are the two most common trojans. While NB is super simple, BO is a little more complicated but is still lame)<br>
+
+BO2K - Back Orifice 2,000 (another version of BO by cDc)<br>
+
+BOC - Bell Operating Company<br>
+
+BOD - BO Detect (one of the best BO detection programs. http://www.spiritone.com/~cbenson/distributables/BoDetect_StandAlone.zip)<br>
+
+BOE - BO Eliminator (one of the best BO detection programs. If you know the URL, please contact R a v e N at barakirs@netvision.net.il)<br>
+
+BOF - Buffer Overflow<br>
+
+BOR - Basic Output Report<br>
+
+BOSS - Business Office Servicing System<br>
+
+BOTEC - Back-of-the-envelope calculation (mainly used in IRC)<br>
+
+BOW - Brotherhood Of Warez (a parody e-zine of "warez d00dz" and "h4x0rs" alike, which could be compared to "Da H4x0r BrUdAz (see jargon dictionary, www.fwi.uva.nl/~mes/jargon/))<br>
+
+BPI - Bytes Per Inch<br>
+
+BPP - Bytes Per Pixel (how many bytes are needed to define the color of a single pixel (a dot). 8 BPP gives you a maximum color palette of 256 colors, 16BPP is 65530 (or a similar number... I keep forgetting this number), etc' etc')<br>
+
+BPS - Bytes Per Second (the amount of bytes that are transferred per second on the current connection speed)<br>
+
+BPX - Break Point on eXecution<br>
+
+BRB - Be Right Back (mainly used in IRC and ICQ)<br>
+
+BS - Black Sun (see BSRF)<br>
+
+BSA - Business Software Alliance<br>
+
+BSC - Binary Synchronous Communication protocol<br>
+
+BSD - Berkeley Software Distribution<br>
+
+BSH - Bourne Shell (a Unix shell. Usually located at /bin/bsh or /bin/old/sh or /usr/bin/old/sh)<br>
+
+BSOD - Blue Screen Of Death<br>
+
+BSRF - Black Sun Research Facility (our website. blacksun.box.sk)<br>
+
+BTA - But then again... (mainly used in IRC)<br>
+
+BTW - By The way  (mainly used in IRC and ICQ)<br>
+
+BW / B&amp;W / B/W - Black and White (usually referred to monitors or pictures, meaning black and white monitors or black and white pictures)<br>
+
+BWC - Because We Can<br>
+
+BX - BitchX (an IRC client. http://www.bitchx.org)<br>
+
+C - See (mainly used in IRC)<br>
+
+C&amp;C - Command &amp; Conquer (a series of strategy games by Westwood. Considered to be the best of it's kind)<br>
+
+C&amp;C: RA / C&amp;CRA / RA - Command &amp; Conquer: Red Alert (a game in the C&amp;C series. See C&amp;C)<br>
+
+C&amp;C: TS / C&amp;CTS / TS - Command &amp; Conquer: Tiberian Sun (a game in the C&amp;C series. See C&amp;C)<br>
+
+CA - Cable<br>
+
+CAB - Cabinet file (it's some type of a compression Micro$oft often use, not to confuse with InstallShield CAB files)<br>
+
+CAD - Computer-Aided Design<br>
+
+CAF - Crackers Against Fakes (a hacking group)<br>
+
+CALC - Calculator<br>
+
+CALEA - Communications Assistance for Law Enforcement Act<br>
+
+CAM - Common Access Method<br>
+
+CAM - Computer Aided Manufacturing<br>
+
+CAPS - Computer-Assisted Passenger Screening (computer programs that go over all the passengers lists and compares them with terrorists' profiles. If a passenger matches or is chosen at random "extra care" will be given to his luggage)<br>
+
+CARPC - Connected Car PC (Intel's attempt to take over the car industry. It's like a car with tons of computers and stuff in it. You know, satellites, Internet access, TV... ahh, the good life)<br>
+
+CATE - Computer Aided Test Engineering<br>
+
+CATS - Computer Assistance, Training and Services Inc<br>
+
+CBM - CAM-Brain-Machine<br>
+
+CC - C Compiler / Carbon Copy / Credit Card<br>
+
+CCC - Chaos Computer Camp (a hacking convention. Everything from hacking to lock picking)<br>
+
+CCD - Charge-Coupled Device<br>
+
+CCi / CCI - Cybercrime International (a hacking group)<br>
+
+CCS - Common Command Set&nbsp;<br>
+
+CD - Compact Disc / Change Directory (a command used both in UNIX and DOS. Usage: cd directory will get you to that directory. If there is a sub directory called foobar on your current directory (the directory you are in right now) the command cd foobar will get you there (this is called a relative path). You can also use cd like this: cd /etc to get to /etc on UNIX or cd windows/system to get to windows/system on DOS (supposing there are such directories))<br>
+
+CDA - Computer Decency Act<br>
+
+CDC / cDc - Cult of the Dead Cow (a hacking group. Famous for their Unix/Windows to Windows remote administration trojan, BO)<br>
+
+CDE - Common Desktop Environment<br>
+
+CDEV - Control panel DEVice (Mac)<br>
+
+CDI - Compact Disk Interactive<br>
+
+CDR - Coreldraw DRawing /&nbsp;<br>
+
+CDROM - Consumer Device, Rendered Obsolete in Months ;)<br>
+
+CDRW - Compart Disk ReWriteable (most CD burners can't write on parts of a CD that were already written on, because a CD burner is basically a laser that burns tiny little holes into the CD. But not a CDR. A CDR can rewrite on such areas, but only on special CDs, also called CDRs)<br>
+
+CDW - Compact Disk Write (a CD burner)<br>
+
+CELP - Cache Enabled Low Profile<br>
+
+CELP - Code Excited Linear Prediction<br>
+
+CERT - CERT is a CMU affiliate (sub organization) which just releases vulnerability statements<br>
+
+CESA - Cyberspace Electronic Security Act<br>
+
+CFG - Configuration<br>
+
+CFS - Cryptographic File System<br>
+
+CGA - Color Graphics Adapter (one of the first color monitor. Supports 4 colors) / Computer Generated Animation (what's there to say? Any kind of animation, 2D or 3D, which has been created by a computer)<br>
+
+CGI - Common Gateway Interface (it's a way for users to submit requests and have the server perform some functions, typically a function that is native to the OS of the system, to either send a more "dynamic" response to the user, or to gather information about the user)<br>
+
+CGM - Computer Graphics Metafile<br>
+
+CHAP - Challenge Handshake Authentication Protocol<br>
+
+CHECKSUM - Summation Check<br>
+
+CHMOD - Change Mode (a UNIX command. If you own a file you can set the permissions for it. For more info type man chmod)<br>
+
+CHOWN - Change Owner (a UNIX command. If you own a file you can make someone else the owner but you will lose ownership of that file unless you are root. Owning a file means that not only if someone will check who owns that file it'll show your username, it also means that you can run chmod on it etc' etc'. If you don't own a certain file, you can read, write or execute it only if the owner lets you. For more info, type man chown)<br>
+
+CIR - Committed Information Rate<br>
+
+CIS - Compuserve Information Services<br>
+
+CISC - The Complex Instruction Set Computer<br>
+
+CISPPP - Compuserve Information Services Point to Point Protocol<br>
+
+CIV - Civilization (a series of computer strategy and development games by Sid Meiers. Considered to be the best series of strategy and development games on the galaxy. The company that distributes this game is Activision)<br>
+
+CIV:AC / CIVAC / AC - Civilization: Alpha Centaury (a part of the CIV series. See CIV)<br>
+
+CIV:CTP / CIVCTP / CTP - Civilization, Call To Power (the only game in the CIV series that really stinks)<br>
+
+CIVII - Civilization II (see CIV)<br>
+
+CJ - Cracker Jack (a Unix password cracker)<br>
+
+CMC - Construction Maintenance Center<br>
+
+CMEINEL - Carolyn Meinel (see www.happyhacker.org)<br>
+
+CMOS - Complementary Metal Oxide Semiconductor<br>
+
+CMP - Computer Maintance Port<br>
+
+CMYK - Cian Magenta Yellow blacK<br>
+
+CNID - Calling Number IDentification<br>
+
+CO - Central Office<br>
+
+COAS - Caldera Open Administration Tool<br>
+
+COBOL - Completely Obsolete Business Oriented Language ;)<br>
+
+COCOT - Customer Owned Coin Operated Telephone<br>
+
+COE - Central Office Equipment<br>
+
+COM - Component Object Model / Command (when referring to DOS filename extensions)<br>
+
+COMP - Computer<br>
+
+CON - Convention / Conference<br>
+
+CONF - Confidential / Configuration / Configure<br>
+
+CONFIG - Configuration<br>
+
+COPA - Child Online Protection Act<br>
+
+COSMOS - Computer System for Main Frame Operations<br>
+
+COTM - Code Of The Month<br>
+
+CP - Copy<br>
+
+CPC - Cost Per Click (suppose you have a website and you get some sponsors to put their banners in it. Now, one of the paying methods is CPC, meaning you get paid a couple of cents whenever someone clicks on a banner on your website)<br>
+
+CPH - Common Purpose Hackers (a hacking group. http://8op.com/cphackers)<br>
+
+CPM - Cost Per Media (the amount of money you have to pay per exposures when advertising on the net. This can change according to several extremely boring factors)<br>
+
+CPP - C Plus Plus (a programming language)<br>
+
+CPU - Central Processing Unit<br>
+
+CR - Carriage Return (a system character used by DOS and DOS-based OSs (such as Winblows). It is a special ASCII character called Carriage Return which, when followed by an LF (Line Feed) char, means "end of line" in a DOS/Windows text file)<br>
+
+CRC - Cyclic Redundancy Check (when you extract a compressed/archived file, your extracting program will make sure that the number of characters in the extracted file is identical to the number of characters the same file had before it was compressed. This is called a CRC)<br>
+
+CRSAB - Centralized Repair Service Answering Bureau<br>
+
+CRT - Cathode Ray Tube (a very common type of computer monitors)<br>
+
+CRYPTO - Cryptography<br>
+
+CS - CompuServe (see CSERVE)<br>
+
+CSERVE - CompuServe (an ISP with it's own little network, as well as Internet access. Kinda like AOL, only it doesn't suck that much)<br>
+
+CSH - C Shell (no, it doesn't have anything to do with sea shells. Just another Unix shell. Usually located at /bin/csh)<br>
+
+CSS - Cascading Style Sheet<br>
+
+CSU - Computer Surplus Outlet<br>
+
+CTCP - Client To Client Protocol (<br>
+
+CTCPEC - Canadian Trusted Computer Product Evaluation Criteria<br>
+
+CTR - Click Through Rate<br>
+
+CU - See you (mainly used in IRC)<br>
+
+CUD - Computer Underground Digest (a security-related e-zine (Electronic-Magazine))<br>
+
+CUDN - Common User Data Network<br>
+
+CUL - See you later (mainly used in IRC)<br>
+
+CUL8ER - See you later (mainly used in IRC)<br>
+
+CUR - Cursor<br>
+
+CWD - CyberWare Dispatch<br>
+
+CYA - Cover your ass / See ya (mainly used in IRC)<br>
+
+CYMK - Cyan Yellow Magenta blacK<br>
+
+CYO - See you online (mainly used in IRC)<br>
+
+D - Daemon (HTTPD = HTTP Daemon, FTPD = FTD Daemon, SMTPD = SMTP Daemon etc') / Demo (a demonstration version of some kind of a software. A demo software would contain limited options, a demo game would contain only a couple of levels, etc')<br>
+
+D/C - Disconnect<br>
+
+DA - Download Accelerator<br>
+
+DACL - Discretionary Access Control List<br>
+
+DAO - Data Access Objects<br>
+
+DARK-E / DARKE - Dark Eclipse Software (http://www.dark-e.com)<br>
+
+DARPA - Defense Advanced Research Projects Agency<br>
+
+DAT - Data<br>
+
+DB - Database<br>
+
+DBA - Doing Business As (mainly used in IRC)<br>
+
+DBCS - Double Byte Character Set<br>
+
+DBMS - Database Management Systems<br>
+
+DC - Differentiating Current / Disconnect / Device Coordinates<br>
+
+DCB - Disk Coprocessor Board<br>
+
+DCC - Direct Cable Connection / Direct Card Calling / Direct Client Communication (used to transfer files in IRC)<br>
+
+DCOM - Distributed.com<br>
+
+DD - Double Density (a type of a floppy disk)<br>
+
+DDD - Direct Distance Dialing<br>
+
+DDE - Dynamic Data Exchange<br>
+
+DDL - Direct Devide Library<br>
+
+DDS - Direct Digital Sampling<br>
+
+DDX - Dialog Data Exchange<br>
+
+DEC - Do Expect Cuts ;) / Digital Equipment Corporations<br>
+
+DEEP / dEEP - Drinking Evil Elite Phreakers (d33p.base.org)<br>
+
+DEF - Default<br>
+
+DEFCON - DEFense CONdition / DEF CONvention (a hackers convention held each year on Las Vegas)<br>
+
+DER - Distinguished Encoding Rules<br>
+
+DES - Data Encryption Standard<br>
+
+DESC - Description<br>
+
+DFLA - Disenhanced four-letter acronym (that is, a TLA) (mainly used in IRC)<br>
+
+DFS - Disk filing System (what old acorns and BBC's used to handle floppy disks<br>
+
+DHCP - Dynamic Host Configuration Protocol<br>
+
+DHP - Data Haven Project (http://dhp.com)<br>
+
+DHTML - Dynamic HTML<br>
+
+DIB - Device Independent Bitmap<br>
+
+DIC - Dictionary<br>
+
+DIG - Domain Internet Groper<br>
+
+DIKU - Do I know you? (mainly used in IRC)<br>
+
+DISA - Defense Information System Agency<br>
+
+DISC - Disconnection / Disconnecting (mainly used in IRC)<br>
+
+DISTRO - Distribution<br>
+
+DITYID - Did I tell you I'm distressed? (mainly used in IRC)<br>
+
+DL / D/L - Download<br>
+
+DLL - Dynamic Link Library (an application extension, loaded and unloaded automatically by applications during it's execution. The beauty in DLLs is that they can be unloaded when they're not necessary anymore to free up some memory and can also be shared betweens programs to free up some HD space)<br>
+
+DND - Do Not Disturb (mainly used in IRC and ICQ)<br>
+
+DNS - Domain Name Service<br>
+
+DOLM - Date Of Last Change<br>
+
+DoS - Denial of Service (not to be confused with DOS. A DoS attack is basically a way to prevent a person from using one, several or all the services that his computer offers. The most popular (and lamest) DoS attack is winnuke, which can be launched from Windows or Unix and can crash your Win95 box unless you've got a patch against it. It is considered lame because it's very easy to launch and the chances that your target is unpatched are very small)<br>
+
+DOS - Disk Operating System (all older OSs were loaded from the BIOS. Correct me if I'm wrong) / Defective Operating System ;)<br>
+
+DPI - Dots Per Inch<br>
+
+DPMS - Desktop Power Management System (the system that is in charge of all that has to do with powering your computer)<br>
+
+DPS - Dead Protocol Society (a hacking group)<br>
+
+DQMOT - Don't quote me on this (mainly used in IRC)<br>
+
+DRAM - Dynamic RAM<br>
+
+DRDRAM - Direct Rambus DRAM<br>
+
+DRV - Driver (a file that contains necessary information for an OS to use a certain devide on your computer)<br>
+
+DSL - Digital Subscriber Line(loop) (A family of digital telecommunications protocols designed to allow high speed data communication over the existing copper telephone lines between end-users and telephone companies)<br>
+
+DSS - Decision Support System / Darkridge Security Solutions<br>
+
+DTMF - Dual Tone Multi Frequency<br>
+
+DUN - Dial Up Networking (this little winblows program that gets you on the internet. Win95 comes with version 1.1 but is upgradable while 98 comes with 1.3. Go search micro$oft.com for differences, FAQs and downloads. DO NOT install over win95 unless you're completely certain you want to do this)<br>
+
+DV - Digital Videotape<br>
+
+DVD - Digital Video Disc<br>
+
+DW - Disc World (a rather large series of books, two computer adventure-game and a TV show. Very funny! Go get the game)<br>
+
+DWII - Disc World II (the sequel to the computer adventure-game Disc World. See DW above)<br>
+
+E - Error<br>
+
+EA - Electronic Arts<br>
+
+EASI - Enhanced Asynchronous SCSI Interface<br>
+
+EAX - Environmental Audio Expansion<br>
+
+EBCDIC -Extended Binary Coded Decimal Interchange Code<br>
+
+ECC - Enter Cable Change / Elliptic Curve Cryptosystem<br>
+
+ED - Editor<br>
+
+EDO - Extended Data Out<br>
+
+EFF / EFFNet - Electronic Freedom Foundation Network (see http://eff.org)<br>
+
+EFNet - Eris Free Network (the famous (and one of the oldest) IRC server. It is reputed as a "war ground" for IRC wars (flooding, channel takeovers, kicking people you don't like off IRC or a specific channel/channels, "nuking" people etc') since you are allowed to do whatever you want but you may not like what others might do to you... ;) more info on IRC and other IRC servers at www.irchelp.com)<br>
+
+EFR - Enhanced Full Rate<br>
+
+EFS - Encrypting File System<br>
+
+EG - Evil grin (mainly used in IRC)<br>
+
+EG Hackers / EG-Hackers / EGHACKERS - United Egyptian Hackers (another lame hacking page. www.angelfire.com/nf/eghackers/eghackers.html)<br>
+
+EGA - Enhanced Graphics Adapter (a monitor which supports 16 colors)<br>
+
+EGD - Entropy Gathering Daemon ((Taken From Packet Storm Security) a standalone daemon that sits around running various statistics collection programs (ps, vmstat, iostat, etc). It hashes the results into an "entropy pool". If things happen on your system at relatively random and unpredictable times, then some of that randomness will become a part of the entropy pool and can be used to egnerate random numbers. It is basically a user-space implementation of the Linux kernel /dev/random device. As such, it should be runnable on all Unix-like systems. It is intended to make up for the lack of /dev/random on non-Linux systems so that programs like GPG can be used safely. Made by brian Warner)<br>
+
+EGREP - Extended GREP<br>
+
+EIA/TIA-232 - Eletronic Industries Assoation/Telecommunication Industry Association Recommended Standered 232<br>
+
+EJM - Expert Judgement Model<br>
+
+ELF - Extremely Low Frequency<br>
+
+E-MAIL - Electronic Mail<br>
+
+EMFBI - Excuse me for butting in (mainly used in IRC)<br>
+
+EMI - Electro-Magnetic Interface<br>
+
+EMM - Expanded Memory Manager<br>
+
+EMP - Electro Magnetic Pulse<br>
+
+EMS - Extra Memory Specifications<br>
+
+EMU - Emulator (a program that emulates something. For example: a Linux emulator for Windows allows you to run Linux from Windows. Unfortunately most EMUs are unstable and aren't very "complete")<br>
+
+E-NUF / ENUF - Enough (mainly used in IRC)<br>
+
+EOA - End Of Article<br>
+
+EOC - End Of Commentary<br>
+
+EOD - End Of Diatribe<br>
+
+EOF - End Of File<br>
+
+EOM - End of message (mainly used in IRC)<br>
+
+EOT - End of thread/transmittion (meaning: end of discussion) (mainly used in discussion groups and IRC)<br>
+
+ERC - Encrypted Relay Chat<br>
+
+ERR - Error<br>
+
+ERRPT - Error Report<br>
+
+EST - Enigma's Setup Trojan (yet another lame Windows remote administration trojan, made by Enigma. Once you run the server file, anyone with the client program or a simple telnet application can access your computer. Basically it just opens a backdoor on your computer. The backdoor can be locked with a password so only the person who sent you the server file in the first place can access the backdoor. OK, unless the password gets hacked, of course. The only special thing about this trojan is that it is hidden within a "setup program". Both the server and the client are to be executed from Windows 95/98)<br>
+
+ETLA - Extended three-letter acronym (that is, an FLA) (mainly used in IRC)<br>
+
+EULA - End User License Agreement<br>
+
+EWS - Excite for Web Servers<br>
+
+EXE - Executable (an executable file is a program that you can run and not only view like text files and pictures)<br>
+
+EXT - Extension / External<br>
+
+E-ZINE - Electronic Magazine (a magazine that is publised on the net instead of on paper)<br>
+
+F2F - Face to face (mainly used in IRC)<br>
+
+FACCI - Florida Association of Computer Crime Investigators<br>
+
+FAQ - Frequently Asked Questions<br>
+
+FAQE - Fake or unture FAQ<br>
+
+FAT - File Allocation Table (a small part in your HD that you cannot write to, which contains the location of every file/directory/sector in your HD and changes according to changes in your HD's structure. For example: when you delete a file, write a new one, move a directory etc' it changes the FAT according to the changes you've made)<br>
+
+FCP - [SCSI-3] Fibre Channel Protocol&nbsp;<br>
+
+FDD - Floppy Disk Drive<br>
+
+FDO - Form Display Operation<br>
+
+FIDT - Federal Intrusion Detection Network<br>
+
+FIFO - First In First Out<br>
+
+FIN - Finish (suppose you send someone some pieces of data using the TCP protocol. Once you're done, your computer is supposed to send a TCP packet with the FIN flag on. Once the computer on the other end will receive it, it would know not to expect any more packets from you. This means that the sending process is complete and all of the packets will be forwarded to the application that has requested them in the first place (example: an Internet browser) or is supposed to receive them (example: an instant messenger program such as ICQ). More info at the entry TCP)<br>
+
+FingerD - Finger Daemon<br>
+
+FISH - First in, still here (mainly used in IRC)<br>
+
+FLA - Four-letter acronym (mainly used in IRC)<br>
+
+FMTYEWTK - Far more than you ever wanted to know (mainly used in IRC)<br>
+
+FOLDOC - Free On-line Dictionary of Computing (I quote: "FOLDOC is a searchable dictionary of acronyms, jargon, programming languages, tools, architecture, operating systems, networking, theory, conventions, standards, mathematics, telecoms, electronics, institutions, companies, projects, products, history, in fact anything to do with computing." http://wombat.doc.ic.ac.uk/)<br>
+
+FOMCL - Falling off my chair laughing (mainly used in IRC)<br>
+
+FORTRAN - FORmula TRanslation lANguage (a programming language)<br>
+
+FOTW - Fringe Of The Web (a website that lists the "top" 100 H/P/V/C/A sites. Mostly script-kiddies sites though)<br>
+
+FP - FrontPage (a lame website degisner by Micro$oft)<br>
+
+FPS - Frames Per Second<br>
+
+FPSE - FrontPage Server Extensions<br>
+
+FQDN - Fully Qualified Domain Name<br>
+
+FREE - the Forum for Responsible and Ethical Email<br>
+
+FS - File System<br>
+
+FTP - File Transfer Protocol<br>
+
+FTPD - FTP Daemon<br>
+
+FUBAR / FOOBAR - Fucked up beyond all repair or recognition (mainly used in IRC)<br>
+
+FUD - Fear, Uncertainty, and Doubt (mainly used in IRC)<br>
+
+FWIW - For What It's Worth (mainly used in IRC)<br>
+
+FY - Fuck You (mainly used in IRC)<br>
+
+FYI - For your information (mainly used in IRC)<br>
+
+G / &lt;G> - Grin (mainly used in IRC)<br>
+
+GA - Go ahead (mainly used in IRC)<br>
+
+GAL - Get a life (mainly used in IRC)<br>
+
+GB - GigaByte (1,000 MBs)<br>
+
+GCC - Gnu C Compiler<br>
+
+GD&amp;R - Grinning, ducking, and running (mainly used in IRC)<br>
+
+GDI - Graphical Device Interface<br>
+
+GFN - Good For Nothing<br>
+
+GFX - Graphics<br>
+
+GGREP - GNU GREP (GNU's version of the popular Unix tool, GREP)<br>
+
+GH / gH - Global Hell (a hacking group. They're in war with the FBI. Man, they're really giving the feds a hard time. They DoSsed their servers and some other .gov servers a couple of times, ya know)<br>
+
+GIF - Grapics Interchange Format<br>
+
+GIMP - GNU Image Manipulation Program<br>
+
+GIS - Geographic Information Systems<br>
+
+GIWIST - Gee, I wish I'd said that (mainly used in IRC)<br>
+
+GL - Good Luck (mainly used in IRC)<br>
+
+GM - Game Master<br>
+
+GMTA - Great Minds Think Alike (mainly used in IRC)<br>
+
+GMV - Got My Vote (used a lot in online games such as Bezerk's Acrophobia. See http://www.won.net/bezerk)<br>
+
+GNOME - GNU Network Object Model Environment (a Window Manager for Linux)<br>
+
+GNU - GNU's Not Unix (GNU is the largest open-source project, which was founded by Richard Stallman from MIT. Since Unix itself is copyrighted by AT&amp;T, they called GNU that way. By the way, Linux is not copyrighted, and it is part of the GNU project as well. Anyway, open-source programming means free software that even comes with the source, so everyone will be able to improve it and fix security holes and suchlikes).<br>
+
+GOAT / GoA,T / GoAT - Go Away, Troll<br>
+
+GODMN - God Damn (mainly used in IRC)<br>
+
+GOL - Giggling out loud (mainly used in IRC)<br>
+
+GOV - Government (when referring to URL extensions)<br>
+
+GPF - General Protection Fault (kinda like a program crash)<br>
+
+GPL - General Public License (if a program is a GPL program, it means that everybody has the license to use and/or change the program, hence it is open-source)<br>
+
+GPP - [SCSI-3] Generic Packetized Protocol<br>
+
+GPS - Global Positioning System<br>
+
+GRAPHX - Graphics<br>
+
+GREP - Global find Regular Expression and Print (a famuos Unix utility, comes with all Unix variants. Basically it searches for a given string in a given file/files, but it can do a lot more than that)<br>
+
+GRL - Girl (mainly used in IRC)<br>
+
+GRRL - Girl (mainly used in IRC)<br>
+
+GSD - Get Service Dacl<br>
+
+GTG - Got to go / Gotta go<br>
+
+GTMHH / GT(M)HH / G2MHH / G2(M)HH - Guides To (Mostly) Harmless Hacking (a legal-hacking guide for complete newbies by Carolyn Mainel. http://www.happyhacker.org)<br>
+
+GTP / GTP? - Get The Picture? (mainly used in IRC)<br>
+
+GTRM - Going to read mail (mainly used in IRC)<br>
+
+GU - Glide Underground<br>
+
+GUI - Graphical User Interface (a GUI is like what Windows is to DOS or what X-Windows is to UNIX)<br>
+
+GUID - Global Unique ID<br>
+
+GW - Gateway (did you ever wonder how your ISP works? Well, you connect to your ISP by dialing to it, by connecting through some sort of a cable or by calling them on the phone and humming all those nifty modem sounds (not recommended) and they connect you to the internet through their connection to internet backbones. This is called a gateway. For those who remember the good old BBS days you might remember another type of gateway. Suppose you had a modem which was set to auto answer incoming calls. You could have programmed a gateway so whenever someone dials your number and your modem answers it will display a logo or give the person a menu etc'.)<br>
+
+HAFTA - Have To (mainly used in IRC)<br>
+
+HAO / HaO - Hackers Associated Online (taken from www.projectgamma.com: Title: Calling all K-RAD haxors. May 3, 1999, 23:26. Author: WHiTe VaMPiRe. Yes, you have waiting long and hard, that time spent will finally be paid off! Hackers Associated Online (HaO) is now accepting members!@!$ Pull out that dust covered winnuke, your copy of AOHell and UpYours; they will finally be put to use. Yes, you read correctly, HaO is accepting members. You will finally be just as er33rt and f33red as the true elites, move over I-L and #feed-the-goats, it is HaO; they take no prisoners! HaO was founded "to create a safe arena for information exchange"; only if you join and get access to their members' section, that is. Quick! Send in your application now, because "Not everyone that applies will be accepted into the organization." But beware, they have hard questions and high requirements if you wish to be a member of this motley crew. You have to answer such brain boggling questions, such as, "What is a BIOS?", "Who wrotethe 'Hacker's Manifesto'?", and "What command do you type to get a directory listing in Linux?" (I think they mean "folder"). Be a hax0r, be a man, and be part of HaO)<br>
+
+HARP - Hackers Against Racist Parties<br>
+
+HB - HyperBanner (kinda like LE. Has it's own advantages and disadvantages)<br>
+
+HBA - Host Bus Adapter<br>
+
+HC - Hackcity (4/5s of script-kiddizm but a nice 1/5 of hacking. Oh, yeah, and they claim to have "ethics". If you have ethics why do you offer your visitors nukes and trojans? "For educational purposes"? Yeah, right... most of the staff are real lamers (especially Hadez). The rest are semi-lame... hehe... www.hackcity.com)<br>
+
+HCL - Hardware Compatibility List<br>
+
+HD - HardDisk / HardDrive. Can also mean High Density, if refering to a floppy disk. Other XD terms include: DD - Double Density, SD - Single Density.<br>
+
+HDC - Hackers.com (a cool website for hackers. Has all sorts of interesting features and rare files<br>
+
+HDD - HardDisk Drive<br>
+
+HDSL - High BIT-rate Digital Subscriber Line (see DSL)<br>
+
+HELLUVA - Hell-Of-A... (mainly used in IRC)<br>
+
+HERF - High Energy Radio Frequency<br>
+
+HERFW - HERF Weapon<br>
+
+HFC - HellFire Club (a hacking group)<br>
+
+HGL - Hewlett packard Graphics Language<br>
+
+HH - Happy Hacker (a website, a mailing list and a hackers wargame for newbies. A great place to start IMHO. www.happyhacker.org) / Hackersclub (a cool BBS-like website with a good library. www.hackersclub.com)<br>
+
+HINFO - Hardware/software INFOrmation<br>
+
+HIR - Hacker Information Report (yet another E-zine. Rather interesting, though. http://axon.jccc.net/hir)<br>
+
+HIU - Hack It Up (a hacking website/group. http://homepages.hack-net.com/vault/hiu/)<br>
+
+HL - Half Life (the best first person shooter game in the world in R a v e N and F a n g's opinion)<br>
+
+HLS - Hue Lightness Saturation<br>
+
+HLT - Halt (all modern CPUs have an HLT option. This means your CPU turns itself off for milliseconds or more, depending on several factor, to cool itself down. Unfortunately, Windows 95 nor 98 don't support this option so you have to download a program called CPUIdle from www.litestep.org. More info in CPUIdle's readme files)<br>
+
+HNC - HackNet.com (a hacking group. They also give away free webspace for hacking-related sites (but no porn/warez crap). www.hacknet.com)<br>
+
+HNN - Hacker News Network<br>
+
+HOMER - Heuristic Overview of Matrix Expansion and Reconstruction (a story-telling AI from the wonderful 80s computer game "Portal". Quote: "...I come from times of acronyms...")<br>
+
+HOPE - Hackers On Planet Earth<br>
+
+HP - Hewlett Packard (American/English Manufacturer of good Computers/the best printers) / #Hackphreak (a lame undernet channel full of lame script kiddies)<br>
+
+HPFA - High Performance System (OS/2)<br>
+
+HPVCA / H/P/V/C/A - Hacking/Phreaking/Virii/Carding/Anarchy<br>
+
+Hr / HR - hour<br>
+
+HRZ - Horizontal<br>
+
+HSB - Hue Saturation Brightness<br>
+
+HSV - Hue Saturation Value<br>
+
+HTH - Happy To Help / Hope This/That helped (mainly used in IRC)<br>
+
+HTML - Hyper Text Markup Language<br>
+
+HTP - Hack The Planet (some hacking group. http://www.htp.com)<br>
+
+HTTP - Hyper Text Transfer Protocol<br>
+
+HTTPD - HTTP Daemon<br>
+
+HTTPSR - HTTP Server<br>
+
+HU - Hacker's Utility (a famous hacking utility)<br>
+
+HVD - High Voltage Differential<br>
+
+Hz / HZ - Hertz<br>
+
+IAC - In any case (mainly used in IRC)<br>
+
+IACR - International Association for Cryptographic Research<br>
+
+IAE - In Any Event<br>
+
+IAL - Internet Address List<br>
+
+IANAL - I Am Not A Lawyer (but) (mainly used in IRC)<br>
+
+IBM - International Business Machines (a famous computers company. There's no way you havn't heard of it) / I Blame Microsoft ;)<br>
+
+IBPAG2 - Icon-Based Parser Generation System 2<br>
+
+IC - In Character (used mainly in MUDs)<br>
+
+IC / I C - I see (mainly used in IRC)<br>
+
+ICANN - Internet Corporation for Assigned Names and Numbers (a non-profit corporation formed by the global Internet community to assume responbisility for certain Internet domain name system fuctions, as set forth in the U.S. Government's Statement of Policy ('White Paper'))<br>
+
+iCE / ICE - Insane Creators Enterprise (a lame hacking group)<br>
+
+ICMB - ICMP Bombing (a DoS attack)<br>
+
+ICMP - Internet Control Message Protocol (it is used to relay network conditions and different errors to IP (Internet Protocol) and other layers)<br>
+
+ICMPHU - ICMP Host Unreachable (a DoS attack)<br>
+
+ICO - Icon (a small picture that is used to recognize a file. For example: text files will probably have an icon of a note, images will probably have the icon of a picture, games will probably have their logo as their icon etc')<br>
+
+ICP - Internet Caching Protocol<br>
+
+ICQ - I Seek You (not exactly an acronym, but...)<br>
+
+ICQPC - ICQ Password Cracker (a program by Progenic Warfare (www.progenic.com) that cracks locally-stores ICQ passwords)<br>
+
+ICSD - Information and Computing Sciences Division<br>
+
+ID - Identification<br>
+
+IDC - Internet Database Connector<br>
+
+IDDN - International Digitan Defense Network<br>
+
+IDE - Integrated Drive Electronics (an interface for disk drives)<br>
+
+IDENT - Identity (not to be confused with the Ident daemon or the INetD program)<br>
+
+IDS - Intrusion Detection System<br>
+
+IE - Internet Explorer (Micro$oft's web browser. A good competitor for Netscape but has plenty more bugs in it than netscape)<br>
+
+IEEE - Institute of Electrical and Electronics Engineers<br>
+
+IETF - Internet Engineering Task Force (a bunch of guys who make up all sorts of Internet standards and suchlikes)<br>
+
+IFS - Input Field Seperator<br>
+
+IGMP - Internet Group Multicast Protocol<br>
+
+IHA - I hate acronyms (mainly used in IRC)<br>
+
+IHN - Internet Host Network (they give away free V3 domains, free web space and much much more. www.ihn.org)<br>
+
+IHU - ICQ Hacking Utilities (a famous and currently-offline website. I wouldn't call ICQ Utilities hacking, though)<br>
+
+IIRC - If I recall/remember/recollect correctly (mainly used in IRC)<br>
+
+IIS - Internet Information Server (a webserver. If you have a fast connection to the internet and a fast and reliable computer with plenty of RAM you can install this program and you'll have a webserver on your PC. There are several different programs of this type, some are better, some are worse)<br>
+
+IIX - Israeli Internet Exchange<br>
+
+IL / I-L - Iron Lungs (a member of HcV)<br>
+
+ILF - Independent Logical File<br>
+
+ILU or ILY - I love you (mainly used in IRC)<br>
+
+IM - Immediate message (mainly used in IRC)<br>
+
+IMAP - Interactive Mail Access Protocol (a protocol used for transferring Emails)<br>
+
+IMDB - Internet Movie DataBase (know the URL? Mail us at barakirs@netvision.net.il)<br>
+
+IMHO - In my humble opinion (mainly used in IRC)<br>
+
+IMing - Chatting with someone online usually while doing other things such as playing trivia or other interactive game (mainly used in IRC)<br>
+
+IMNSHO - In my not so humble opinion (mainly used in IRC)<br>
+
+IMO - In My Opinion<br>
+
+IMP - Interface Message Processor (the Internet's (ARPANet at that time) first router)<br>
+
+iNC / INC - International Network of Crackers (a hacking group)<br>
+
+INDY - Indigo<br>
+
+INet - Internet<br>
+
+INetD - Internet Daemon (there's also a UNIX program called inetd that is in charge of taking care of all the daemons and everything related to such tasks)<br>
+
+INSI - International Network Security Inc. (a security-consulting company based in Japan)<br>
+
+INST - Install / Installation<br>
+
+INT - International (a URL extension. For example: www.nato.int)<br>
+
+IO / I/O - Input/Output<br>
+
+IOL - Israel OnLine (yes, I am from Israel and I'm proud, dammit! lol. http://www.iol.co.il)<br>
+
+IOW - In other words (mainly used in IRC)<br>
+
+IP - Internet Protocol (the connectionless, unreliable network protocol in the TCP/IP suite. It has two 32-bit header fields to hold address information. IP is also the busiest of all the TCP/IP protocols as almost all TCP/IP traffic is encapsulated in IP datagrams. IP's job is to route packets around the network. It provides no mechanism for reliability or accountability, for that, it relies on the upper layers. IP simply sends out datagrams and hopes they make it intact. If they don't, IP can try to send an ICMP error message back to the source, however this packet can get lost as well. IP has no means to guarantee delivery. Since IP is connectionless, it does not maintain any connection state information. Each IP datagram is sent out without regard to the last one or the next one. This, along with the fact that it is trivial to modify the IP stack to allow an arbitarily chosen IP address in the source (and destination) fields make IP easily subvertible)<br>
+
+IPAC - IP Accounting (an IP accounting package for Linux. It collects, summarizes and nicely displays IP accounting data. The output of IPAC can be a simple ASCII table, an ASCII graph or even GIF images with graphs showing traffic progression. IPAC can be used for IP traffic analysis and for accounting purposes. Runs on top of the ipfwadm or ipchains tool)<br>
+
+IPFM - IP Flow Meter (a bandwidth analysis tool that counts how the number of bytes each host on specified subnest each host on specified subnest transfers to internet gateways. It outputs a list of these hosts and their transfer amounts at specified delays. IPFM uses libpcap and aims to be portable. IPFM was programmed by Robert Cheramy &amp; Andres Krapf)<br>
+
+IPN - I'm posting naked (mainly used in IRC)<br>
+
+IPP - Internet Printer Protocol<br>
+
+IPPL - IP Protocol Logger (logs tons of incoming and outgoing traffic)<br>
+
+IRC - Internet Relay Chat<br>
+
+IRL - In real life (that is, when not chatting) (mainly used in IRC)<br>
+
+IRQ - Interrupt Request<br>
+
+IRS / IRSN - Initial Receive Sequence Number (the IRSN is learned during the 3-Way TCP handshake. See ISN)<br>
+
+ISDN - Integrated Services Digital Network (a type of phone line which faster than most regular phone lines. Supports multi-usage, which means you can use your modem and your phone on the same line simultaneously, each getting 6.4KPS)<br>
+
+ISN - Initial Sequence Number (usually 1. See TCP)<br>
+
+ISO - Organization for International Standards / International Standardization Organization<br>
+
+ISP - Internet Service Provider<br>
+
+ISS - Internet Security Systems (an Atlanta-based security-auditing firm) / Internet Security Scanner (a network scanner that searches for possible security holes)<br>
+
+ISS / ISSN - Initial Sent Sequence Number (another name for the ISN. That's how TCP calls it: tcp_iss)<br>
+
+ITAA - Information Technology Association of America<br>
+
+ITS - Intelligent Transportation System<br>
+
+IUCC - Israel Inter-University Computation Center<br>
+
+IYSWIM - If you see what I mean (mainly used in IRC)<br>
+
+JBOD - Just a bunch of disks (like RAID, etc.) (mainly used in IRC)<br>
+
+JDO - Jewish Defense Organization (http://www.jdo.org)<br>
+
+JIC - Just in case (mainly used in IRC)<br>
+
+JK / J/K - Just kidding (mainly used in IRC)<br>
+
+JOOTT - Just One Of Those Things<br>
+
+JP - John Vranesevich (the founder of antionline.com. Read about why he's a racist media whore and all sorts of bad things at www.attrition.org in the "High Slanders" section)<br>
+
+JPEG - Joint Photo Experts Group<br>
+
+JTF CND / JTF-CND / JTFCND - Joint Task Force for Computer Network Defense<br>
+
+JTR / JtR - John the Ripper (a Unix password cracker)<br>
+
+JV / JVIEW / JView - Java Viewer<br>
+
+JVM - Java Virtual Machine (a program that let's you run Java applications from a non-java OS)<br>
+
+K - OK / Thousand<br>
+
+KB - Kilobyte<br>
+
+KC - Kilo Cycle<br>
+
+KDE - Kewl Desktop Environment (a Window Manager for X11 (XWindows))<br>
+
+KHG - Kosovo Hackers Group<br>
+
+KIAM - Keldysh Institute of Applied Mathematics (The famous Russian Institute)<br>
+
+KISS - Keep It Simple Stupid<br>
+
+KLOG - Kernel Logger (see KLOGD)<br>
+
+KLOGD - Kernel Logger Daemon (a program that comes with every Unix distribution AFAIK and logs Kernel-related events)<br>
+
+KOD - Kiss Of Death<br>
+
+KOTM - Kook Of The Month<br>
+
+KPS / KBSP - KBs per second (the amount of KBs that are transferred per second on the current connection speed)<br>
+
+KSH - Korn Shell (a Unix shell. Usually located at /bin/ksh)<br>
+
+KVT - KDE Virtual Terminal<br>
+
+KWIM? - Know what I mean? (mainly used in IRC)<br>
+
+L8LY - Lately (mainly used in IRC)<br>
+
+L8R - Later (mainly used in IRC)<br>
+
+LAD - Login Anomaly Detection<br>
+
+LAN - Local Area Network<br>
+
+LART - Looser Attitude Readjustment Tool (baseball bats are popular)<br>
+
+LASG - Linux Administrators Security Guide (www.seifried.org/lasg)<br>
+
+LBA - Logical Block Address<br>
+
+LBNL - Lawrence Berkeley National Laboratory<br>
+
+LC - Logical Coordinates<br>
+
+LCD - Liquid Crystal Display<br>
+
+LD - Later, dude (mainly used in IRC) / Link Dead / Long Distance<br>
+
+LDAP - Lightweight Directory Access Protocol<br>
+
+LDR - Long-distance relationship (mainly used in IRC)<br>
+
+LE - Link Exchange (a banner-exchange network plus tons of cool services for webmasters. http://www.linkexchange.com)<br>
+
+LED - Light Emitting Diode<br>
+
+LEET / L33T - Elite (a language mainly used by hackers on IRC, when 3 is e, 4 is a, 8 is ate (for example: m8=mate, l8r=later), 1 is l, 5 is s, 7 is t and 0 is o. Hackers mainly use l33t on IRC just for "phun", but if you catch someone using l33t a bit 2much he's probably just another hacker-wannabe)<br>
+
+LF - Line Feed (a system character used by DOS, UNIX and DOS/UNIX-based OSs (Winblows=DOS-based, Linux(any distribution)=UNIX-based). It is a special ASCII character called Line Feed that means "end of line" in text files. While in UNIX-based OSs the end of a line is marked only by an LF, DOS-based OSs use a CR (Carriage Return) character and then an LF)<br>
+
+LFN - Long File Name<br>
+
+LILO - LInux LOader<br>
+
+LIS10 - Listen (mainly used in IRC)<br>
+
+LKM / LLKM - Loadable Linux Kernel Modules<br>
+
+LL - Link Looker (a program that detects server splits on IRC)<br>
+
+LLTA - Lots and lots of thunderous applause (mainly used in IRC)<br>
+
+LMOS - Loop Maintenance Operations System<br>
+
+LN - Link<br>
+
+LNK - Link<br>
+
+LOD / LoD - Legion Of Doom (a hacking group)<br>
+
+LOGIN - Log In (whenever you telnet into a system it asks you to login and asks you for a login and a password. A login is like a username, but there is more than that. Logging means keeping track of everything that happens in a given place. When you log in, the system logs your every move, even if you type in a bad password and never get a command prompt at all. For more info, type man login on a UNIX system)<br>
+
+LOL - Laughing Out Loud / Lots of Laughs / Lots Of Lag<br>
+
+LOTR / LotR - Lord of the Rings<br>
+
+LOU / LoU - Legions Of the Underground (a hacking group)<br>
+
+LP - Line Printer<br>
+
+LPH - Local Password Hacker (a program that hacks locally-saved passwords such as screen saver passwords, passwords for protected areas etc')<br>
+
+LPI - Lines Per Inch (kinda like DPI, only it's a different scale)<br>
+
+LRF - Little Rubber Feet (the little pads on the bottom of displays and other (mainly used in IRC)equipment)&nbsp;<br>
+
+LS - List (a Unix command which lists the contents of a directory but can do a lot more than that. For more info type man ls)<br>
+
+LSA - Local Security Authority (this is also known as the Security Subsystem. It is the central component of NT security. It handles local security policy and user authentication. LSA also handles generating and logging audit messages. Quoted from the Hack Faq)<br>
+
+LSCP - LiteStep Control Panel<br>
+
+LSL - Linux System Labs<br>
+
+LTM - Laugh to myself (mainly used in IRC)<br>
+
+LUG - Linux User Group<br>
+
+LUN - Logical Unit Number<br>
+
+lUSt / LUST - Linux Users Strike Today (a hacking group)<br>
+
+LVD - Low Voltage Differential<br>
+
+M0D - Masters Of Downloading (a hacking group. They cracked several .gov websites, including senate.gov)<br>
+
+M8 - Mate (mainly used in IRC)<br>
+
+M8Y / M8EY - Matey (mainly used in IRC)<br>
+
+MAC - Media Access Control / Medium Access Control / Macintosh (a cool PC by Apple. The only problem with it is that it has about 100 times less programs than Windows has. Even though you can always run 'virtual machines' (emulators) on your Mac and therefore be able to run Windows from it, common belief is that Macs are dangerous since you could get stuck with a crapload of non-compatible software)<br>
+
+MAN - Metropolitan Area Network / Manual (a very useful Unix command. Type 'man command' (without the quotes) and you will get the "man pages" (a manual) for this command)<br>
+
+MAPS - Mail Abuse Prevention System<br>
+
+MB - MegaByte (1,024K) / Message Board<br>
+
+MBM - MotherBoard Monitor<br>
+
+MBR - Master Boot Record<br>
+
+MCB - Multi Collide Bot<br>
+
+MCGA - Multi Color Graphics Array (kinda like VGA)<br>
+
+MCP - Microsoft Certified Professional<br>
+
+MD - Message Digest<br>
+
+MDI - Multiple Document Interface<br>
+
+MEM - Memory<br>
+
+MEMS - Micro Electro Mechanical System (devices invented by Sandia National Laboratory. It's a tiny lock, so tiny that it can fit on a chip, and it's gears can only be seen by microscopes. It physically prevents access from devices and you only have one try to guess the code before the system shuts itself down. Sandia National Laboratory claims they can build a hacker-proof computer with this little baby. More info at www.mdl.sandia.gov/microma)<br>
+
+MESH - Macintosh Enhanced SCSI Hardware&nbsp;<br>
+
+MFC - Microsoft Foundation Class (a bunch of basic files for Visual Basic/Visual C++ applications)<br>
+
+MFI / MOI - Missing From/On IRC (mainly used in IRC)<br>
+
+MGA - Masquerading Gateway Administrator (it's a little script for UNIX for managing your masquerading gateway so you don't have to fiddle with ipchains/ifconfig/redir all the time. You can manage port redirections, ip alliases and entires in the ipchains forward chain)<br>
+
+MHOA - Microsoft Haters Of America (http://members.tripod.com/MHOA)<br>
+
+MICRO - Microsoft<br>
+
+MICROSOFT - Most Intelligent Costumers Realize Our Software Only Fools Teenagers ;)<br>
+
+MID/MIDI - Musical Instrument Digital Interface (a .mid file contains orders for the sound device to create notes. The music is devided into tracks where each track can have the soun of a different musical instrument, and all of the channels are played together. This way you can make channel one play the bass line as a bass guitar, channel two to be an organ, channel three to be an electric guitar, thus making your own music note by note, command by command. General MIDI files contain up to 10 tracks, extended MIDI files up to 16 tracks. Channel 10 is the standard for the beat (drums) channel. The result depends on your sound device. Sound Blaster 16, for example, would produce sounds similar to a PC BEEP (lol) for all instruments, while SOund Blaster AWE64 uses sound samples and the music it produces sounds very realistic. There are also applications that come with their own sound samples. MIDI files can also contain lyrics for programs that can show them, so you could host your own kareoke party!)<br>
+
+MIL - Military (a URL extension. For example: www.usarmy.mil)<br>
+
+MIME - Multipurpose Internet Mail Extensions (a protocol that is used to view Email)<br>
+
+Min - minute<br>
+
+MINUET - Minnesota Internet Users Essential Tool<br>
+
+MIPS - Meaningless Indication of Processor Speed ;)<br>
+
+MKS - Mortice Kern Systems<br>
+
+ML - Mailing List<br>
+
+MLIST - Mailing List<br>
+
+MLT - Mechanized Loop Testing<br>
+
+MMX - MultiMedia eXtensions<br>
+
+MNS - Multifunctional Network Scanner<br>
+
+MOD - Magneto Optical Disk / Moderator / Masters Of Downloading (a hacking group. They cracked several .gov websites, including senate.gov)<br>
+
+MoD - The British Ministry of Defence<br>
+
+MODEM - MOdulator/DEModulator (modulating - the act of turning bits into analogic signals which can be transferred through phone systems. Demodulating: the opposite of modulating)<br>
+
+MON - Monitor<br>
+
+MorF - Male or female (mainly used in IRC)<br>
+
+MOSS - Member of the same sex (mainly used in IRC)<br>
+
+MOTD - Message Of The Day (mainly used in IRC)<br>
+
+MOTM - Message Of The Month (mainly used in IRC)<br>
+
+MOTOS - Member Of The Opposite Sex (mainly used in IRC)<br>
+
+MOV - Movie / a great computer video format by Apple<br>
+
+MP3 - MPEG 3-Layer (the best music format that has both quality and a small size (1 minute = ~1MB in CD quality). You can download many MP3s from all sorts of places on the net, but instead of searching for the keyword MP3 or your favorite song/artist and finding trillions of sites with dead links or tons of commercials just go to http://move.to/mp3center. The layout is okay but I find it rather reliable and easy-to-navigate. I often find tons of rare MP3s there that don't seem to show up in other websites)<br>
+
+MPEG - Motion Picture Experts Group (a superb computer video format)<br>
+
+MPSRT - Microsoft Product Security Response Team<br>
+
+MRTG - Multi Router Traffic Grapher<br>
+
+MS - Microsoft (or more to say, Micro$oft)<br>
+
+MSDN - Microsoft Developer's Network<br>
+
+MSDOS / MS-DOS / MS DOS - Microsoft Disk Operating System (Microsoft's version of the DOS OS)<br>
+
+MSG - Message<br>
+
+MSIE - Micro$oft Internet Explorer (often called ExPlonter, Exploiter etc')<br>
+
+MSN - Microsoft Network (enough said... http://www.msn.com)<br>
+
+MSP - Micro$oft Paint<br>
+
+MSS - Maximum Segment Size (the value of your MTU minus 40)<br>
+
+MTD - Memory technology Driver<br>
+
+MTU - Maximum Transfer Unit (max size of packets)<br>
+
+MUD - Multi User Dimension (kinda like a D&amp;D/AD&amp;D game on the internet)<br>
+
+MUL - Multiply<br>
+
+MX - Mail eXchanger<br>
+
+N - And<br>
+
+N E 1 / NE1 - Anyone (mainly used in IRC)<br>
+
+NA - Network Associates<br>
+
+NA or N/A - Not Available<br>
+
+NAI - Network Associates<br>
+
+NAK - Negative Acknowledgment (ASCII char number 21 that is transmitted to the sending unit by the receiving unit and means that the wrong signal has been sent)<br>
+
+NAP - Network Access Point<br>
+
+NASSCOM - National Association of Software and Service Companies<br>
+
+NAT - Network Address Translation<br>
+
+NB - Netbus (one of the most famous Windows remote administration trojans, made by CF. Once you run the server file, anyone with the client program or a simple telnet application can access your computer. Basically it opens a backdoor on your computer. The default port for the backdoor is 12345 but it can be changed for numerous reasons. The backdoor can be locked with a password so only the person who sent you the server file in the first place can access the backdoor. OK, unless the password gets mysteriously hacked... both the server and the client are to be executed on Windows only)<br>
+
+NBP - Name Binding Protocol<br>
+
+NC - Network Computer<br>
+
+NC - Norton Commander<br>
+
+NCIC - National Crime Information Center<br>
+
+NCP - Network Control Protocol<br>
+
+NCSA - National Center for Supercomputing Applications<br>
+
+NCSC - National Computer Security Center&nbsp;<br>
+
+NDIS - Network Driver Interface Specification<br>
+
+NDS - Novell Directory Services<br>
+
+NET - Network<br>
+
+NetBEUI - NetBIOS Extended User Interface<br>
+
+NetBIOS - Network Basic Input/Output System<br>
+
+NETHOOD - "Network Neighborhood"<br>
+
+NEXT - Near-End Crosstalk<br>
+
+NFC - No Further Comment / No Fucking Comment<br>
+
+NFO - iNFO<br>
+
+NFR - Network Flight Recorder (kinda like a network activity logger)<br>
+
+NFS - Network File System (a system that is used for files over a network... LOL)<br>
+
+NFW - No feasible way / no fucking way (mainly used in IRC)<br>
+
+NFW - No Fuckin' Way (mainly used in IRC)<br>
+
+NGREP - Network GREP (a pcap-aware tool that will allow you to specify extended regular expressions to match against the data payloads of packets, and currently recognizes TCP and UDP, and works on Ethernet, PPP and SLIP interfaces. Excellent tool)<br>
+
+NI2 - Net Indexer 2<br>
+
+NIC - Network Interface Card / Network Information Center<br>
+
+NIDS - Network Intrusion Detection System<br>
+
+NIPR - Non-classified Internet Protocol Router<br>
+
+NIPS - National Infrastructure Protection Center (kinda like CERT only they're still online and they aren't being so late with their advisories)<br>
+
+NIS - Network Information System<br>
+
+NIST - National Institute of Standards and Technology<br>
+
+NIT - Network Interface Tap<br>
+
+NM / N/M - Never Mind (mainly used in IRC)<br>
+
+NME - Enemy (mainly used in multiplayer games)<br>
+
+NMO - New Millenium Organization (a lame "hacking" group. Netbus... www.nmorg.com)<br>
+
+NMRC - Nomad Mobile Research Center (a security group. www.nmrc.org)<br>
+
+NNTP - Network News Transfer Protocol<br>
+
+NOC - Network Operations Center / No See (as in "Sup m8! Long tyme noC.")<br>
+
+noC / NoC - See NOC<br>
+
+NOP - No Operation<br>
+
+NOS - Network Operating System<br>
+
+NP / N/P - No Problem<br>
+
+NPA - Numbering Plan Area<br>
+
+NPS - Nevermind (mainly used in IRC)<br>
+
+NRG - Network Research Group<br>
+
+NRN - No Response/Reply Necessary (mainly used in IRC)<br>
+
+NS - Netscape / Name Server / Network Solutions (the only company which provides top-level domain names. Other companies simply go there and do the dirty job for you. http://www.networksolutions.com<br>
+
+NSA - Name Service Architecture<br>
+
+NSI - Network Solutions (see NS)<br>
+
+NSS - Novell Storage Services / Network Security Scanner (a network scanner that searches for possible security holes. http://www.giga.or.at/pub/hacker/unix)<br>
+
+NSW - Network Security Wizards (http://www.network-defense.com)<br>
+
+NT - Network / Windows NT (Windows for networks)<br>
+
+NTA - The Nocturnal Trading Alliance (a hacking group)<br>
+
+NTDS - Naval Tactical Data System<br>
+
+NTFS - NT File System (NT=Windows NT)<br>
+
+NUMA - Non-Uniform Memory Access<br>
+
+NURMS - Non Uniformally Rational Mesh Smooth<br>
+
+NVLAP - National Voluntary Laboratory Accrediation Program<br>
+
+NVRAM - Nonvolatile RAM<br>
+
+O/S - Operating System<br>
+
+OCC - Occupied<br>
+
+OCR - Optical Character Recognition<br>
+
+OCX - OLE Custom Control<br>
+
+ODBC - Open Database Connectivity<br>
+
+ODI - Open Data-Link Interface<br>
+
+ODL - Object Description/Definition/Design Language<br>
+
+ODL - Open and Distance Learning<br>
+
+ODMA - Open Document Management API<br>
+
+OEM - Original Equipment Manufacturer<br>
+
+OF / O/F - Offline<br>
+
+OFCS - Oh, For Christ's Sake (mainly used in IRC)<br>
+
+OHG - Oh, Gotcha! (mainly used in IRC)<br>
+
+OHWELL - Oh Well (see OWELL)<br>
+
+OIC - Oh, I see (mainly used in IRC)<br>
+
+OL / O/L - Online<br>
+
+OLAP - Online Analytical Processing<br>
+
+OLC - OnLine Creation<br>
+
+OLE - Object Linking and Embedding<br>
+
+OLL - Online love (mainly used in IRC)<br>
+
+OLTP - Online Transaction Processing<br>
+
+OMG - Object Management Group / Oh My God (mainly used in IRC)<br>
+
+OO - Object-Oriented<br>
+
+OOB - Out Of Band<br>
+
+OOC - Out of Character (used mainly in MUDs)<br>
+
+OOP - Object Oriented Programming (too complicated to explain here. Go read a book)<br>
+
+OPAC - Online Public Access Catalog<br>
+
+OpenGL - Open Graphics Library<br>
+
+OPENSEC / OpenSEC - Open Security Solutions (a mailing list dedicated to announcing the latest versions of free and Open Source security tools. For more information, go to opensec.net)<br>
+
+ORB - Object Request Broker<br>
+
+ORBS - Open Relay B System ("The short answer: ORBS is a database of open mail relays, accessible via DNS lookup." Not the whole truth, but a good first approximation. www.orbs.org)<br>
+
+OS - Open Source / Operating System<br>
+
+OS/2 - Obsolete Soon, Too ;)<br>
+
+OSDN - Open Source Developers Nerwork (www.osdn.com)<br>
+
+OSF - Open Software Foundation<br>
+
+OSG - Open Service Gateway Initiative<br>
+
+OSH - Operatr SHell<br>
+
+OSI - Open Systems Interconnection<br>
+
+OSP - Online Service Provider<br>
+
+OSPF - Open Shortest Path First<br>
+
+OTB - Only The Best (a chat acronym / an extremely lame hacking-related website. They claim their site is not meant for people who want to harm other people. Oh, yeah? Then why do you feature lame nukes and icq programs? "For educational purposes"? Yeah, right... otb.tsx.org.)<br>
+
+OTF - Off The Floor (mainly used in IRC)<br>
+
+OTOH - On The Other Hand (mainly used in IRC)<br>
+
+OTP - One-Time Pass (a program that provides unrestricted one-time pass codes on a user by user basis without any need for cryptographic protocols or hardware devices. The user takes a list of usable pass codes and scratches out each one as it is used. The system tracks usage, removing each passcode from the available list when it is used. Comes with a very small and fast password tester and password and pass phrase generation systems. Excellent against network sniffers and keyloggers)<br>
+
+OTTOMH - Off the top of my head (mainly used in IRC)<br>
+
+OWELL - Oh Well (mainly used in IRC)<br>
+
+OWN / 0WN - "owned" or "hacked" (mainly used in IRC)<br>
+
+OWNED / 0WNED - "owned" or "hacked" (see 0WN)<br>
+
+PANS - Pretty awesome new stuff (as opposed to "POTS") (mainly used in IRC)<br>
+
+PANW - Parents Are Not Watching<br>
+
+PAP - Password Authentication Protocol<br>
+
+PARC - Palo-Alto Research Centre (a Computer research park owned by Xerox)<br>
+
+PASSWD - Password<br>
+
+PAW - Parents Are Watching (mainly used in IRC)<br>
+
+PBF - Policy-Based Filtering<br>
+
+PBM - Portable Bitmap / Play By Mail (an old type of networked multiplayer games. You send a series of commands over an Email network and you wait for a reply mail. Boring...)<br>
+
+PBX - Private Branch eXchange<br>
+
+PC - Personal Computer<br>
+
+PCDOS / PC-DOS / PC DOS (IBM's identical version for MS-DOS)<br>
+
+PCI - Peripheral Component Interconnect<br>
+
+PCKT - Packet<br>
+
+PCKTS - Packets<br>
+
+PCMCIA - People Can't Master Computer Industry Acronyms (mainly used in IRC) / Personal Computer Memory Card International Association (know these slots behind your computer? Well laptops have the same slots only they're a bit different and they're called PCMCIA slots)<br>
+
+PDA - Public display of affection (mainly used in IRC) / Personal Digital Assistant (your little compy friend who will help you organize your messy schedule, phone numbers, cooking receipts etc')<br>
+
+PDC - Primary Domain Controller<br>
+
+PDL - Page Description Language<br>
+
+PDX - Paradox (a hacking group)<br>
+
+PE - Public Enemy (a hacking group) / Pirated Education (a hacking group)<br>
+
+PEBCAK - Problem exists between chair and keyboard (mainly used in IRC)<br>
+
+PECSENC - The President's Export Council Subcommittee on Encryption<br>
+
+PEGS - PErl Graphical Structures<br>
+
+PENTIUM - Produces Erroneous Numbers Through Incorrect Understanding of Mathematics ;)<br>
+
+PERL - Protocal Extraction and Report Lang / Practical Extraction and Report Language (an interpreted programming language)<br>
+
+PERM - Permission<br>
+
+PGF - Portable Graphics format<br>
+
+PGM - Portable Greymap<br>
+
+PGP - Pretty Good Privacy (an encryption method)<br>
+
+PHACV / P/H/A/C/V - Phreaking, Hacking, Anarchy, Cracking, Virii (see HPVCA)<br>
+
+PHF - Phreaking Hacking Force (www.p-h-f.org)<br>
+
+PHG - Pakistan Hacking Group<br>
+
+PHP - PHP: Hypertext Preprocessor (www.php.net)<br>
+
+PIBKAC - Problem is between keyboard and chair (mainly used in IRC)<br>
+
+PICS - Parental Internet Content SelectionR<br>
+
+PID - Process ID (every process (running program) on Unix has a PID. To view running processes and their PIDs type ps. If you know the PID of a process you can also kill it (stop the process immedietly) by typing kill PID and replacing PID with the process ID)<br>
+
+PIF - Program Information File<br>
+
+PIKT - Problem Informat / Killer Tool (PIKT is a multifunctional tool for administering networked workstations. It features an embedded scripting language and a powerful script processor for generating the reports you need over the network. PIKT's primary purpose is to monitor systems, report problems, and fix those problems when possible. http://pikt.uchicago.edu/pikt/)<br>
+
+PIN - Personal Identification Number<br>
+
+PINE - Pine Is No longer Elm (Pine is today's Email client of choice on text-based UNIX shells (remote or local). Pine is also an acronym, which stands for Pine Is No longer Elm. Elm was an older UNIX Email client which was later replaced with Pine. Both Pine and Elm were in use since the old days of ARPANet, the US Defense Advanced Research Projectgs Agency computer network that eventually mutated into today's Internet once it became open for the masses in the early 90s)<br>
+
+PING - Packet INternet Groper (everything sent to the ping port will be echoed back. This is good for finding out of the target host is alive (conencted). The actual verb (to ping) means to send something to the echo port)<br>
+
+PIO / PI/O / P I/O - Programmed I/O<br>
+
+PIP - Picture Inside Picture<br>
+
+PITA - Pain in the ass (mainly used in IRC)<br>
+
+PL - Perl<br>
+
+PLZ - Please (mainly used in IRC)<br>
+
+PMFJIB - Pardon me for jumping in but... (mainly used in IRC)<br>
+
+PMT - Progenic Mail Trojan (a program by Progenic Warfare (www.progenic.com) that is actually a trojan that, once run, finds all the passwords on your computer and then mails them to the guy who sent the trojan to you)<br>
+
+PMTU - Path Maximum Transfer Unit<br>
+
+PNG - Portable Network Graphic<br>
+
+PNP - Plug aNd Play (this neat little feature that autodetects new hardware and hardly works. Well, at least on Windows...)<br>
+
+POC / PoC - Proof Of Concept (a security group. http://poc.csoft.net)<br>
+
+POD - Portal Of Doom (Hackcity's lame Windows remote administration trojan. Once you run the server file, anyone with the client program or a simple telnet application can have full control over your computer. The server file can be hidden inside programs or games. Basically it opens a backdoor on your computer. The backdoor can be locked with a password so only the person who sent you the server file in the first place can access the backdoor. Well, unless the password gets hacked, of course. Both the server and the client are to be executed from Windows 95/98. www.hackcity.com)<br>
+
+POP - Post Office Protocol (If you've got a mail account on your ISP it's probably a POP3 account) / Pentagram Of Protectors (a power-up in the famous first person shooter game Quake. Gives you protection for some time)<br>
+
+POSIX - Portable Operating System Interface based on uniX (a collections of standards for UNIX OSs)<br>
+
+POST - Power On Self Test<br>
+
+POT - Plain Old Telephone / Ping Observation Tool (a highspeed tool to sweep for smurf broadcast amplifiers, it compiles a broadcast amplifier list of the complete IPv4 address range in about 5 days (with enough bandwidth). (this was a review from Packet Storm Security (packetstorm.securify.com))<br>
+
+POTS - Plain old telephone service (mainly used in IRC)<br>
+
+PPL - People (mainly used in IRC)<br>
+
+PPM - Portable PixelMap<br>
+
+PPP - Point to Point Protocol (when you connect to your ISP you get a PPP connection that allows you to view pretty pictures and animations and sounds during your internet stay. Other protocols such as the telnet protocol only transfer text)<br>
+
+PPS - Packets Per Second<br>
+
+PPTP - Point-to-Point Tunneling Protocol<br>
+
+PREFS - Preferences<br>
+
+PROC - Process<br>
+
+PROG - Program<br>
+
+PROGMAN - Program Manager (the interface used by Windows 3.11. You can still use it from Windows 95 and 98 by simply typing program at the run dialog box or going to Windows' directory and executing progman.exe)<br>
+
+PROLLY - Probably (mainly used in chatrooms)<br>
+
+PS - Post Script / Packet Storm (an excellent securtiy-related website. http://packetstorm.genocide2600.com)<br>
+
+PSH - Push (a TCP flag. More info at the entry TCP)<br>
+
+PSN - Packet Switching Network<br>
+
+PSS - Packet Storm Security (an excellent security-related website. http://packetstorm.genocide2600.com)<br>
+
+PSTN - Public Switched Telephone Network<br>
+
+PSY - Psychose (a hacking group)<br>
+
+PU - That stinks! (mainly used in IRC)<br>
+
+PUTER - Computer<br>
+
+PWD - Print Working Directory (a Unix command. Prints the name of the current directory (the directory you're in now) and it's full path to the screen. For example: if you type pwd and it returns /usr/root it means you're in /usr/root. Hey! You'd better not be really getting root! Stay away from my box, you pervert! lol. For more info type man pwd)<br>
+
+PWL - Password List<br>
+
+PWS - Personal Web Server (a lame Windows webserver by Microsoft)<br>
+
+QBasic - Quick Basic (if BASIC is your language than QBASIC is your interpeter. Well, at least one of the interpeters available)<br>
+
+QHA - Quebec Hackers' Alliance (a hacking group. www.qha.net)<br>
+
+QTX - Quartex (a hacking group)<br>
+
+R - Read / Repeat / Recursive<br>
+
+RAID - Redundant Array of Inexpensive Disks (a system that includes many HDs or other forms of data storage)<br>
+
+RAM - Random Access Memory<br>
+
+RAS - Remote Access Server<br>
+
+RASMAN - Remote Access Connection Manager<br>
+
+RAT - Remote Access Trojan (a program that when run opens a port on your computer and acts as a daemon. Everyone running the appropriate client (or everyone who knows raw commands for this specific RAT) can get some sort of access to your computer, depending on how sophisticated the RAT is)<br>
+
+RAW - Remote Administration Window (yet another lame Windows remote administration trojan. Once you run the server file it opens a backdoor on your computer and anyone with the client program or a simple telnet application can access your computer. The backdoor can be locked with a password so only the person who sent you the server file in the first place can access the backdoor. OK, unless the password gets mysteriously hacked... both the server and the client are to be executed from Windows 95/98)<br>
+
+RBL - Realtime Blackhole List<br>
+
+RBOC - Regional Bell Operating Company<br>
+
+RC - Reconfigure<br>
+
+RCS - Revision Control System<br>
+
+RCW - Receive Window<br>
+
+RDM - Relational Data Model<br>
+
+RDRAM - Rambus DRAM<br>
+
+RECV - Receive<br>
+
+REG - Registry<br>
+
+REGEXP - Regular Expression (a powerful type of wildcard pattern. Used for pattern matching in programs such as the Unix program grep)<br>
+
+REM - Remember<br>
+
+RES - Resolution<br>
+
+REXD - Remote Execution Daemon<br>
+
+RFC - Remote Function Call / Request For Comment (papers by the IETF that contain suggestions for Internet standards. RFCs are great places to learn from. I usually look up RFCs at howto.linuxberg.com)<br>
+
+RFC - Request For Comment (used mainly in usenet newsgroups)<br>
+
+RFTRFC - Read the fine/fucking RFC (mainly used in IRC)<br>
+
+RGB - Red Green Blue<br>
+
+RH - RedHat (a UNIX variant. www.redhat.org)<br>
+
+RIA - Rebels of the Information Age (http://ria.tict.net)<br>
+
+RIP - Routing Information Protocol<br>
+
+RISC - Reduced Instruction Set Computer (As in RISC OS, the OS run by Acorns)<br>
+
+RK - Root Kit<br>
+
+RL - Real life (that is, when not chatting) (mainly used in IRC)<br>
+
+RLOGIN - Remote Login (if you are using UNIX and you have a file called .rhosts on your home directory then anyone listed there can type rlogin your-login-name from his machine and he will be able to login as you without a password. For more info, type man rlogin)<br>
+
+RM - Relational Model / Research Machine (some lame and insecure network. Read the RM Networks tutorial by Njan in the tutorials page at blacksun.box.sk) / Remove (RM can be either used as an abbreviation for remove but is also the Unix command that deletes files. For more info look up the entry MAN in this file and use it) / Research Machines (Don't buy one, whatever you do. Get a Dell, even a Tiny (but shudder at the thought of a Tiny), but NOT an RM)<br>
+
+RN / REN - Rename<br>
+
+ROF - Rate Of Fire<br>
+
+ROFL / ROTFL - Rolling On (The) Floor Laughing<br>
+
+ROFLMAO / ROTFLMAO - Rolling On (The) Floor Laughing My Ass Out<br>
+
+ROFLMAOWPIMP - ROFLMAO While Peeing In My Pants (mainly used in IRC)<br>
+
+ROFLMBO / ROTFMBO - Rolling On (The) Floor Laughing My Butt Out (mainly used in IRC)<br>
+
+ROFLMBOWPIMP / ROTFMBWPIMP - ROFLMBO While Peeing In My Pants (mainly used in IRC)<br>
+
+ROFLWPIMP / ROFTLWPIMP - ROFL While Peeing In My Pants (mainly used in IRC)<br>
+
+ROM - Read Only Memory<br>
+
+ROR - Raffing out roud (English for "laughing out loud") (mainly used in IRC)<br>
+
+ROT - Rate Of Turn<br>
+
+ROTFL - Rolling on the floor laughing (mainly used in IRC)<br>
+
+ROTFLMAO - Rolling on the floor laughing my ass off (mainly used in IRC)<br>
+
+ROTFLMAOWPIMP - Rolling On (The) Floor Laughing My Ass Out While Peeing In My Pants (mainly used in IRC)<br>
+
+RP - Responsible Person (the person who is responsible for a specific domain)<br>
+
+RPC - Remote Procedure Call<br>
+
+RPG - Role-playing Game<br>
+
+RPH / RPHH - Royal Phreakers HouseHold (a lame hacking/phreaking/virii group. Just another bunch of script kiddies. Oh yeah, and they have a newsletter which seems to have a tendancy to come out 6 months late. www.rphh.org)<br>
+
+RR - Resource Record<br>
+
+RRS - Remote Registry Sharing<br>
+
+RSB - Repair Service Bureau<br>
+
+RSH - Restricted bourne SHell<br>
+
+RSN - Real Soon Now (mainly used in IRC)<br>
+
+RST - Reset (see ACK) / Reliable Software Technologies<br>
+
+RT - Route<br>
+
+RTC - Remote Target Control / Real Time Clock<br>
+
+RTF - Rich Text Format<br>
+
+RTFF - Read the fine/f***ing f***<br>
+
+RTFM - Read the fine/fucking manual (mainly used in IRC)<br>
+
+RTMP - Routing Table Maintance Protocol<br>
+
+RTS - Real-Time Strategy<br>
+
+RTT - Round Trip Time (the time it takes to receive some sort of a reply from the receipt, or in other words the time it takes for you to send a packet to someone and to that someone to send a packet back to you)<br>
+
+RWIN - Receive Window<br>
+
+RYO - Roll your own (write your own program; derived from cigarettes rolled yourself with tobacco and paper) (mainly used in IRC)<br>
+
+RZR - Razor (1911) (a hacking group)<br>
+
+S!P / SIP - Surpr!se Productions (a hacking group)<br>
+
+S/MIME - Secure / MIME (an encryption standard)<br>
+
+SAA - System Application Architecture<br>
+
+SAFTE - SCSI Accessed Fault-Tolerant Enclose<br>
+
+SAGE - SYstems Advisory Group Enterprises<br>
+
+SAINT - Security Administrator's Integrated Network Tool (gathers information about remote systems and examines possible security flaws. The collected data can then be analyzed using a simple rules-based system (or via other included interfaces))<br>
+
+SAM - SCSI-3 Architecture Model / Security Account Manager (a component in NT's security. SAM handles user and group accounts, and provides user authentication for LSA. Quoted from the Hack Faq)<br>
+
+SARA - the Security Auditor's Research Assistant ((as described by Packet Storm Security) a third generation security analysis tool that is based on the SATAN model, conforms to the Open Source model, is covered by the GNU open license, fosters a collaborative environment, and is updated on a weekly basis. Advanced Research's philosophy relies heavily on software re-use. Rather than inventing a new module, SARA is adapted to interface to other community products. For instance, SARA interfaces with the popular NMAP package for superior "Operating System fingerprinting". Also, SARA provides a transparent interface to SAMBA for SMB security analysis. SARA's features include: Built-in report writer (by subnet or by database), Built-in summary table generator, Gateway to external programs (e.g., NMAP), CGI-BIN vulnerability testing (Unix and IIS), SSH buffer overflow vulnerabilities, Current Sendmail vulnerabilities, IMAPD/POPD buffer overflow vulnerabilities, Current FTP and WU-FTP vulnerabilities, Tooltalk buffer overflow vulnerbilities, Netbus, Netbus-2, and Back Orifice vulnerabilities, Improved Operating System fingerprinting, Firewall-aware, Weekly updates, Probing for non-password accounts, NFS file systems exported to arbitrary hosts, NFS file systems exported to unprivileged programs, NFS file systems exported via the portmapper, NIS password file access from arbitrary hosts, REXD access from arbitrary hosts, X server access control disabled, Arbitrary files accessible via TFTP, Remote shell access from arbitrary hosts, Writable anonymous FTP home directory.<br>
+
+SATAN - Security Analysis Tool for Auditing Networks (or Security Administrator's Tool for Analyzing Networks. SATAN is a remote network scanner, and is considered one of the best. In fact, it was the first truly user-friendly network scanner. It features an HTML interface, complete with forms to enter targets, tables to display results and context-sensitive tutorials that appear when a hole has been found. A must have for hackers and sysadmins alike)<br>
+
+SBC - SCSI Block Commands&nbsp;<br>
+
+SBP - SCSI-3 serial Bus Protocol<br>
+
+SCAM - SCSI Configured AutoMatically&nbsp;<br>
+
+SCC - SCSI Controller Commands<br>
+
+SCCS - Source Code Control System<br>
+
+SCIG - Secure Central internet Gateway (this gateway enables government bureaus and departments to securely access the Internet. It includes firewalls, virus detection systems and proactive intrusion detection systems)<br>
+
+SCR - Screen Saver<br>
+
+SCSA - Sun Common SCSI Architecture&nbsp;<br>
+
+SCSI - Small Computer System Interface<br>
+
+SD - ShowDown (an IRC script) / Single Density (a floppy disk type)<br>
+
+SDI - Single Document Interface<br>
+
+SDMI - Secure Digital Music Initiative (another attempts to eradicate illegal CD-duplication. SDMIs will be incorporated into CDs and will make it possible to trace pirated material and it's creator)<br>
+
+SDMS - SCSI Device Management System&nbsp;<br>
+
+SDSL - Single-line Digital Subscriber Line<br>
+
+SDWB - Sega Dreamcast Web Browser (the web browser that comes with Sega Dreamcast)<br>
+
+SEC - second<br>
+
+SEG - S***-eating grin (mainly used in IRC)<br>
+
+SEQNUM - Sequence Number<br>
+
+SET - Saqueadores Edicion Tecnica (a Spanish computer security e-zine)<br>
+
+SF - Stellar Frontier (a realtime multiplayer space shooter that can be played over the Internet or a local intranet. See http://www.stardock.com for more information)<br>
+
+SFS - Secure File System<br>
+
+SGC - SCSI Graphic Commands&nbsp;<br>
+
+SGI - Silicon Graphics Incorporated / Silicon Graphics Interface<br>
+
+SH - Shell<br>
+
+SIG - Special Interest Group<br>
+
+SIIA - Software and Information Industries Association<br>
+
+SIMD - Single Instructions Multiple Data<br>
+
+SIMM - Single Inline Memory Module<br>
+
+SIN - Self Induced Negotiativity (a security group. http://www.sinnerz.com)<br>
+
+SIP - SCSI-3 Interlocked Protocol&nbsp;<br>
+
+SIP - Surf In Peace<br>
+
+SISAL - Streams and Iteration in a Single Assignment Language<br>
+
+SITD - Still In The Dark<br>
+
+SIU - Stupid Internet User<br>
+
+SLIP - Serial Line Interface Protocol<br>
+
+SLL - Screw Looser Layer (this website is... uh... different... welcome.to/screwlooserlayer)<br>
+
+SM - Sado Maso (not computer-related, you say? Ever heard of cybersex IRC?!)<br>
+
+SMB - Server Message Blocks<br>
+
+SMC - SCSI-3 Medium changer Commands&nbsp;<br>
+
+SMDS - Switched Multimegabit Data Service<br>
+
+SMP - Symmetrical Multiprocessing<br>
+
+SMPS - Server Merchant Payment System<br>
+
+SMTP - Simple mail Transfer/Transport Protocol<br>
+
+SNAFU - Situation normal, all f***ed up (mainly used in IRC)<br>
+
+SNK - Secure Net Key (a card that contains an encrypted password. Excellent against network sniffers and keyloggers, which will now be unable to catch the account information)<br>
+
+SO - Significant other (mainly used in IRC) / Source<br>
+
+SOI / SoI - Subversion of Information<br>
+
+SOL - Smilling out loud or sh*t out of luck (mainly used in IRC) / Scandinavia OnLine<br>
+
+SOME1 - Someone (mainly used in IRC)<br>
+
+SOMY - Sick of me yet? (mainly used in IRC)<br>
+
+SOP - Super OP (if you're a SOP in a channel it means you get special OP rights which lower OPs don't get. A SOP it one level above an AOP and one below a founder)<br>
+
+SPC - SCSI-3 Primary Commands&nbsp;<br>
+
+SPI - SCSI-3 Parallel Interface<br>
+
+SQL - Structure Query Language<br>
+
+SRC - Source<br>
+
+SRM - Security Reference Monitor (a component of NT's security. SRM enforces access validation and auditing for LSA. It cheks user accounts as the user tries to access various files, directories, etc', and either allows or denies access. Auditing messages are generated as a result. The SRM contains a copy of the access validation code to ensure that resources are protected uniformly throughout the system, regardless of resource type)<br>
+
+SS - Special Service / SubSeven (a remote administration tool)<br>
+
+SSC - SCSI Stream Commands&nbsp;<br>
+
+SSH - Secure Shell (SSH is a program to log into another computer over a network, to execute commands in a remote machine and to move files from one machine to another. It provides strong authentication and secure communications over insecure channels. It is intended as a replacement for rlogin, rsh, rcp and rdist)<br>
+
+SSI - Server Side Include<br>
+
+SSL - Secure Sockets Layer (a data transfer method. Used mainly to transfer credit card numbers and other valuable pieces of information)<br>
+
+STARCON - Star Control (a famous, great for it's time and nostalgic space shooter and adventure game. There were three games in the series - Starcon 1, 2 and 3)<br>
+
+STD - Standard<br>
+
+STDOUT - Standard Output (whatever a command returns after it is executed. Errors, numbers, bits of information, whatever. For example: ping 123.45.67.89 may return "ping: 123.45.67.89 host unreachable" or "ping: 123.45.67.89 - 302ms" etc' etc', all depending on the command, the OS or other software, whether it succeeds and many other boring factors)<br>
+
+STFW - Search the f*****g Web (mainly used in IRC)<br>
+
+STOA - Scientific and Technical Options Assessment<br>
+
+STROBE - The Super Optimized TCP Port Surveyor (a network scanner. More like a port scanner, only that it identifies what services are being run on the specified remote host. Very fast. http://sunsite.kth.se/Linux/system/Network/admin. Note: when running on Solaris 2.3 you have to run it with the -g flag for it to disable getpeername() in order to prevent a core dump)<br>
+
+STW - Search the Web (mainly used in IRC)<br>
+
+SU - Super User (type su and then it'll ask you for superuser's (root) password. Type it in, and walla! You're root)<br>
+
+SUID - Set User ID<br>
+
+SUNEXP - Sun Expire (The Solaris (the default OS on Sun's computers) useradd binary shipped with Solaris 7.0 has a bug which can possibly allow users who are supposed to be expired by a certain time to login. The problem with useradd is the interpretation of the value passed after the parameter -e (expire). If one were to use useradd to set an expiry date the following way: "-e 6/30/2000" the interpretation would be June 30, 2020. The result of this vulnerability is having expired users having access to the vulnerable host. This bug is nicknamed SunExp)<br>
+
+SVC - Switched Virtual Circuit<br>
+
+SVGA - Super VGA (an enhanced VGA monitor. Supports about 16.7 Million colors)<br>
+
+SVID - "System V" Interface Definitor<br>
+
+SWAG - Stupid wild-a** guess (mainly used in IRC)<br>
+
+SYMLINK - Symbolic Link (the Unix equivelant to Windows' shortcuts, only they're much more powerful and customizable. For more info, type "man symlink" in a Unix prompt, without the quotes, of course)<br>
+
+SYN - (See ACK)<br>
+
+SYNC - Synchronize<br>
+
+SYS - System<br>
+
+SYSADMIN - System Administrator<br>
+
+SYSLOG - System Logger (see SYSLOGD)<br>
+
+SYSLOGD - System Logger Daemon (a program that comes with every Unix distribution AFAIK and logs stuff)<br>
+
+TAFN - That's all for now (mainly used in IRC)<br>
+
+TANSTAAFL - There Ain't No Such Thing As A Free Lunch (mainly used in IRC)<br>
+
+TAPI - Telephone Application Program Interface<br>
+
+TAS - Telephone Answering Service<br>
+
+TASS - Template ASSembly language (Intermediate language produced by the Manchester SISAL compiler)<br>
+
+TB - TaraByte (1,000 GBs)<br>
+
+TBA - To Be Arranged / To Be Announced<br>
+
+TBF - Mean Time Between Failures<br>
+
+TBG - Trojan B Gone (a local trojan scanner by Dark Eclipse software. See http://www.dark-e.com)<br>
+
+TBIL - Tiny Basic Interpreter Language<br>
+
+TBK - Tool Builder Kit<br>
+
+TBL - A language by M.E. Lesk for formatting tables<br>
+
+TBS - Turn-Based Strategy<br>
+
+TCAUCE - The Coalition Against Unsolicited Commercial Email<br>
+
+TCB - Trusted Computing Base<br>
+
+TCP - Transfer Control Protocol (TCP is the connection-oriented, reliable transport protocol in the TCP/IP suite.  Connection-oriented simply means that the two hosts participating in a discussion must first establish a connection before data may change hands.  Reliability is provided in a number of means, but the two most important ones are data sequencing and acknowledgement. For acknowledgement, see the entry ACK. Now where were we? Oh, yeah, data sequencing. Since TCP is reliable, it must be able to recover from lost, duplicated, or out-of-order data. By assigning a sequence number to every byte transferred, and requiring an acknowledgement from the other end upon receipt, TCP can guarantee reliable delivery. The receiving end uses the sequence numbers to ensure proper ordering of the data and to eliminate duplicate data bytes. TCP sequence numbers can simply be thought of as 32-bit counters. They range from 0 to 4,294,967,295. Every byte of data exchanged across a TCP connection (along with certain flags) is sequenced. Now, how are sequence numbers set, you ask? Well, once a connection is starting to form (the first packet with the SYN flag on is sent), the sender of the SYN packet will set it's sequence number as an ISN - Initial Sequence Number. The next packet that will be sent will have the sequence number of ISN+1, etc'. The sequence number field in the TCP header will contain the sequence number of the *first* byte of data in the TCP segment. The acknowledgement number field in the TCP header holds the value of next *expected* sequence number, and also acknowledges *all* data up through this ACK number minus one. TCP uses the concept of window advertisement for flow control. It uses a sliding window to tell the other end how much data it can buffer. Since the window size is 16-bits a receiving TCP can advertise up to a maximum of 65535 bytes. Window advertisement can be thought of an advertisement from one TCP to the other of how high acceptable sequence numbers can be. Other TCP header flags of note are RST (reset), PSH (push) and FIN (finish).  If an RST is received, the connection is immediately torn down. RSTs are normally sent when one end receives a segment that just doesn't jive with current connection. The PSH flag tells the receiver to pass all the data is has queued to the aplication, as soon as possible.  The FIN flag is the way an application begins a graceful close of a connection (connection termination is a 4-way process). When one end receives a FIN, it ACKs it, and does not expect to receive any more data (sending is still possible, however))<br>
+
+TCP/IP - Transfer Control Protocol/Internet Protocol<br>
+
+TCSH / TSH - Turbo C Shell (an enhanced version of CSH. Usually located at /bin/tcsh or /usr/bin/tcsh)<br>
+
+TDD - Telecommunication Device for the Deaf<br>
+
+TDR - ime Domain Reflectometer (TDRs measure the propagation of fluctuation of electromagnetic waves. A TDR attached to your LAN will reveal unauthorized parties sucking data from your network. Hewlett Packard has one, and it's available at http://www.tmo.hp.com/tmo/pia/infinium/PIATop/datasheets/English/HP8147.html)<br>
+
+TDT - The Dream Team (a hacking group)<br>
+
+TERM - Terminal<br>
+
+TERMCAP - Terminal Capabilities (see TERMCAPFILE)<br>
+
+TERMCAPFILE - TERMinal CAPabilities FILE (a file mostly found on Unix systems (usually located at /etc/termcap, correct me if I'm wrong) which contains your terminal's capabilities. For example: if your terminal is a screen, it'll contain information about it, including it's size, available colors, resolutions etc')<br>
+
+TFH - Thread from hell (a discussion that just won't die and is often irrelevant to the purpose of the forum or group) (mainly used in IRC)<br>
+
+TFS - Tough Fucking Shit<br>
+
+TGA - Truevision tarGA / Trusted Gateway Agent (see VVOS)<br>
+
+TGIF - Thank God it's Friday (mainly used in IRC)<br>
+
+TGOD / TG0D - The Guardians Of Data (a security group. otter.happyhacker.org)<br>
+
+TGP - Trusted Gateway Proxy (see VVOS)<br>
+
+TH - Trouble History<br>
+
+THC - The Hacker's Choice (they make great hacker programs such as the amazing wardialer called THC-SCAN. They have a reputation for blowing away the competition and stomping very heavily on them. http://thc.inferno.tusculum.edu)<br>
+
+THF - THe Hacker's Fun<br>
+
+THG - The Humble Guys (a hacking group)<br>
+
+THOF - The Hand Of Fate<br>
+
+THP - The Hill People (a hacking group)<br>
+
+THTJ - The Havoc Technical Journal (an independent zine)<br>
+
+THX - Thanks (mainly used in IRC)<br>
+
+TIA - Tuniaisn Internet Agency / Thanks In Advance (used if you post a question and are expecting a helpful reply) (mainly used in IRC)<br>
+
+TIC - Tongue In Cheek<br>
+
+TIES - Time Independent Escape Sequence<br>
+
+TIF - Tagged Image File (format)<br>
+
+TIFF - Tag Image File Format<br>
+
+TIM - The Incredible Machine (an old computer game)<br>
+
+TISC - The Internet Security Conference<br>
+
+TLA - Three-letter acronym (mainly used in IRC)<br>
+
+TLK2UL8R - Talk to you later (mainly used in IRC)<br>
+
+TLS - Transport Layer Security<br>
+
+TMTOWTDI - There's More Than One Way To Do It (Perl's slogan. In case you're wondering, Perl is a programming language)<br>
+
+TMW - TeleMate for Windows (a modem terminal program for Windows)<br>
+
+TNO - The New Order (a hacking group)<br>
+
+TOF - Top Of File<br>
+
+TOP - Teflon Oil Patch (a program that binds two executable files together with many cool options)<br>
+
+TOS - Terms Of Service / Type Of Service<br>
+
+TPTB - The powers that be (mainly used in IRC)<br>
+
+TRACERT - Traceroute (a Unix command. For more information, type 'man tracert' (without the quotes))<br>
+
+TREAT - Trouble Report Evaluation and Analysis Tool<br>
+
+TRSI - Tristar Red Sector Inc. (a hacking group)<br>
+
+TSR - Terminate and Stay Resident (a program that remains alive at all times, constantly listening for a particular event. When that event finally occurs, the TSR undertakes some action)<br>
+
+TTF - True Type Font<br>
+
+TTFN - Ta-Ta for now (mainly used in IRC)<br>
+
+TTL - Time To Live (the maximum times a data packet can bounce between a host to another host before it's deleted)<br>
+
+TTY - TeleTYpe<br>
+
+TTYL - Talk to you later (mainly used in IRC)<br>
+
+TU - Thank you (mainly used in IRC)<br>
+
+TUCOWS - The Ultimate Collection Of Winsock Software<br>
+
+TUT - Tutorial<br>
+
+TWAIN - Technology With / Without An Important / Interesting Name<br>
+
+TWINKLE - The Weizmann Institute Key Locating Engine (a light-operated machine that can break any encrypted text or binary unless the key is larger than 516-bit. Twinkle is very different than that of the electronic design of a normal computer; Twinkle is based solely on optoelectronics, which use light to transfer info digitally. Shamir predicts that the Twinkle mechanism would be as effective as about 100 to 1,000 PCs. Not just that, but the machine could be easily built with little funding, Shamir says that a Twinkle machine could be built for as little as $5,000. On the other hand the DES Cracker cost the Us government $250,000 to build)<br>
+
+TXT - Text<br>
+
+TY - Thank You (mainly used in IRC)<br>
+
+U/L / UL - Upload<br>
+
+UAE - Unrecoverable Application Error (program crash)<br>
+
+UAPITA - You're a pain in the ass (mainly used in IRC)<br>
+
+UART - Universal Asynchronous Receiver/Transmitter<br>
+
+UBE - Unsolicited Bulk e-mail<br>
+
+UC / U C - You see, ... (mainly used in IRC)<br>
+
+UCE - Unsolicited Commercial e-mail<br>
+
+UCF - United Cracking Force (a cracking group)<br>
+
+UCITA - Uniform Computer Information Transaction Act ((taken in part from hackernews.com) stupidest thing in the world. If this gets approved, vendors will have the right to repossess software by disabling it remotely (meaning you have to leave a port open on the firewall? Just imagine the DoS possibilities); prevent the transfer of licenses from one party to another without vendor permission (Does this include my cpy of LoadRunner for the Atari2600 that I sold for $5?); outlaw reverse engineering (whoa, no more third party security analysis). This new law is being supported by such software giants as Microsoft, Adobe and WinPro. the proposed legislation is set to go before the National Conferences of Commissioners on Uniform State Laws in July. If this panel approves this measure it will then be sent to state legislations around the country (good way to bypass the feds). Lucky us (Njan, F a n G and R a v e N), we live outside the US. Let's just hope they won't approve such thing in our countries too)<br>
+
+UDA - Universal Data Access<br>
+
+UDP - User Datagram Protocol (see IP)<br>
+
+UETF - Undernet Engineering Task Force<br>
+
+UHA / UHA1 - United Hackers Association (a hacking website. They have lots of newbies stuff but some good txts and a nice newsletter with many subscribers)<br>
+
+UHC - United Hackers Convention (UHC is a hackers convention which will be held in December 28th 1999 through January 1st 2000 in Las Vegas, Nevada. www.u-h-c.com)<br>
+
+UHS - Universal Hint System (suppose you play an adventure game and you get stuck. Now, a fully-detailed walkthrough will ruin your entire gaming experience, right? That's what UHSs are for. Instead of telling you what to do, they give you clues and hints until you get it right. You can ask for more hints or more clues until they run out and only then, if you are stupid enough not to get it right after 117,538.2 hints you get the answer. Get UHSs at www.uhs-hints.com)<br>
+
+UI - User Interface<br>
+
+UID - Unique ID / User ID (a number corresponding to an account. uid=0 is root most of the times)<br>
+
+UIN - Universal Identification Number (ICQ number)<br>
+
+ULG - United Lone Gunmen (a hacking group)<br>
+
+UNA / UNAB - Unabbreviate (see AB. To unabbreviate, type ':una blah' without the 's)<br>
+
+UPS - Uninterruptable Power Supply<br>
+
+UR - You Are / Your<br>
+
+URL - Universal Resource Locator (also known as internet address)<br>
+
+URSELF - Yourself<br>
+
+US / U/S - Understand<br>
+
+USB - Univeral Serial Bus (a new type of slot (those little things at the back of your PC). Faster than any other slots and has many advantages over other slots. What advantages, you ask? Oh, puh-leese. Too many. Go read a book or something. Or a magazine)<br>
+
+USR - User<br>
+
+UTIL - Utility<br>
+
+UUCP - Unix to Unix Copy<br>
+
+UUDW - Union of United Death Workers (a hacking group)<br>
+
+UW - Ultra Wide [SCSI]&nbsp;<br>
+
+UW - You're welcome (mainly used in IRC)<br>
+
+VAN - Virtual Area Network<br>
+
+VAR - Variable<br>
+
+VB - Visual Basic (a programming language)<br>
+
+VBG - Very Big Grin (mainly used in IRC)<br>
+
+VBP - Visual Basic Project (a programming language)<br>
+
+VBS - Visual Basic Scripting<br>
+
+VBSEG - Very big S***-eating Grin (mainly used in IRC)<br>
+
+VC - Virtual Coordinates<br>
+
+VCD - Video Compact Disc<br>
+
+VCPP - Visual C++<br>
+
+VDE - Verona Desktop Enhancer<br>
+
+VDSL - Very high BIT-rate Digital Subscriber Line (higher speeds than DSL, over shorter distances)<br>
+
+VDU - Video Display Unit<br>
+
+VER - Version<br>
+
+VGA - Video Graphics Array (a monitor which supports 256 colors)<br>
+
+VHDCI - Very High Density Cable Interconnect<br>
+
+VI - VIsual editor<br>
+
+VIA - Virtual Interface Architecture<br>
+
+VM - Virtual Machine (VM programs (such as VMWare) allow Unix users to install multiple OSs on their box without the need to repartition, as if they were running several boxes)<br>
+
+VMB - Voice Mail Box<br>
+
+VNC - Virtual Network Computing (by AT&amp;T)<br>
+
+VOIP - Voice Over Internet Protocol (with this little baby you can make phone calls through the internet so there is no such thing as a long distance call, only local calls)<br>
+
+VPN - Virtual Private Network<br>
+
+VR - Virtual Reality<br>
+
+VRM - Voltage Regulation Module (regulates the voltage levels of your CPU. Included in all modern CPUs)<br>
+
+VRML - Virtual Reality Modeling Language (if you've got the a VRML plug-in such as cosmoplayer (www.cosmoplayer.com) you can view 3D objects within webpages and interact with them. VRML can create movies and animations (including interactive animation and objects), 3D models that can be viewed from different angles and viewpoints and more)<br>
+
+VRT - Vertical<br>
+
+VT - Virtual Terminal<br>
+
+VV - Virtual Vault (see VVOS)<br>
+
+VVOS - Virtual Vault Operating System (HP's solution to secure electronic commerce. It's becoming very popular within big businesses like banks etc'. The main security mechanism in which VVOS is based upon is data partitioning. Data on the system is classified into one of four security classes, or "vaults" - INSIDE, OUTSIDE, SYSTEM and SYSTEM HIGH. The INSIDE vault generally contains the internet front end and any necessary CGI binaries, etc'. SYSTEm and SYSTEM HIGH are responsible for maintaining the external webpages and audit logs respectively. These vaults are totally segregated from each other and work essentially as seperate machines. If a program requires access to either of the vaults it must be authenticated by HP's Trusted Gateway Proxy daemon. The TGP daemon filters all requests from the internet and forwards the to middleware server packages that safely reside behind the INSIDE vault)<br>
+
+VWM - Virtual Window Manager (a little program that allows you to have multiple desktops)<br>
+
+VX / VX Community - Virus Exchange Community<br>
+
+VXD - Virtual X (X=anything) Driver (Generally speaking, VxDs were written by Micro$oft for Windows to control a specific class of device such as printers, display adapters and etc. This allows a hardware manufacture to create small simple device drivers which contain only additional instructions needed for a specific device. These vender-supplied drivers are known as mini drivers. Many of these are also VxDs)<br>
+
+W - Write / Word<br>
+
+W/ - With<br>
+
+W3 - WWW (stands for World Wide Web)<br>
+
+W3C - WWW Consortium (WWW stands for World Wide Web)<br>
+
+WAN - Wide Area Network<br>
+
+WANG - Wide Area Network Group<br>
+
+WAV - Wave<br>
+
+WB - Welcome Back (mainly used in IRC)<br>
+
+WDALYIC - Who died and left you in charge? (mainly used in IRC)<br>
+
+WFM - Works for me (mainly used in IRC)<br>
+
+WIBNI - Wouldn't it be nice if (mainly used in IRC)<br>
+
+WIL - Windows Interface Language<br>
+
+WINDOWS - Will Install Needless Data On Whole System ;)<br>
+
+WKP - Well Known Port<br>
+
+WM - Window Maker (a window manager for X-Windows, the popular GUI for Unix)<br>
+
+WMA - Windows Media Audio<br>
+
+WMF - Windows Meta File<br>
+
+WO / W/O - without (mainly used in IRC)<br>
+
+WON - World Opponent Network (a multiplayer gaming arena. www.won.net)<br>
+
+WORM - Write Once, Read Many (a type of media that can be written on only once, but can be read from as much as the user wants (kinda like CDRs))<br>
+
+WP / W/P - WallPaper / Word Processor / Word Perfect (a .doc editing software)<br>
+
+WT? - What/who the? (mainly used in IRC)<br>
+
+WTF - What the F***! (mainly used in IRC)<br>
+
+WTFO - What the F***! Over! (mainly used in IRC)<br>
+
+WTG - Way to go! (mainly used in IRC)<br>
+
+WTGP? - Want to go private? (mainly used in IRC)<br>
+
+WTV - Web TV<br>
+
+WTZ-UP - Whats Up (mainly used in IRC)<br>
+
+WU? - What's up? (mainly used in IRC)<br>
+
+WUF? - Where are you from? (mainly used in IRC)<br>
+
+WWW - World Wide Web (or World Wide Wait, as some people call it)<br>
+
+WWWC - World Wide Web Consortium<br>
+
+WYPIWYG - Where You Point Is Where You Go<br>
+
+WYSIWYG - What You See Is What You Get (for example, Micro$oft Word is a WYSIWYG editor because it shows you what you'll get when you'll print your document. Old UNIX or DOS editors are mostly not WYSIWYG editors)<br>
+
+WYSIWYG - What you see is what you get (mainly used in IRC)<br>
+
+X - Execute<br>
+
+XIG - Xi Graphics Inc (www.xig.com)<br>
+
+XML - Extended Markup Language<br>
+
+XMMS - X MultiMedia Systems (the best MP3 player for Unix. www.xmms.org)<br>
+
+XMS - Extended Memory Specifications<br>
+
+XOR - Exclusive OR (logic gate whose output is 1 if any, but not all, it's inputs are 1st; otherwise, zero (0) (pronounced ex-or))<br>
+
+XP - Experience Point (when playing MUD your character is rated by an XP system. You get XPs for killing, learning, doing stuff or just hanging around. The more XPs you have the more powerful your character is)<br>
+
+XPG - X/Open Portability Guide<br>
+
+XTERM - XWindown Terminal (a terminal window that can be executed from XWindows, the UNIX equivelant for Microsoft's nice n' E-Z GUI)<br>
+
+Y - Why (mainly used in IRC)<br>
+
+Y2K - Year 2,000<br>
+
+YAWS - Yet Another Wingate Scanner<br>
+
+YBWC - Why? Because We Can<br>
+
+YGBSM - You gotta be s***tin' me! (mainly used in IRC)<br>
+
+YMMV - Your Mileage May Vary (mainly used in IRC)<br>
+
+YMTC - You Make The Call<br>
+
+YOYOW - You Own Your Own Words (this means that you are responsible for the words that you post and that reproduction of those words without your permission in any medium outside the distribution of where you post it may be challenged by you, the author)<br>
+
+Yr - year<br>
+
+Z - S (Z stands for S in many "h4x0rish" terms or "warez" terms)<br>
+
+ZD - Zener Diode (semiconductor diode that has a well-defined turn-on voltage for conduction in the reverse direction)<br>
+
+ZIP - Zone Information Protocol<br>
+
+ZOU - Zone Of Unloaded (they've got some MP3s, cracks, games to download... a typical warez website. utenti.tripod.it/unload)<br>
+
+ZSH - Z Shell (a UNIX shell. It's kinda like a combination of TCSH, BASH, KSH and others. It is fairly easy to "migrate" to ZSH since it emulates most shells. Usually located at /bin/zsh. For more info go to http://sunsite.auc.dk/zsh)<br>
+
+ZV port - Zoomed Video Port<br>
+
+<br>
+
+<a name="emoticons"></a>
+
+[ -- Emoticons -- ] <a href="#top">[top]</a><br>
+
+#-) - Stayed up too late / user partied all night<br>
+
+#.-o - "Oh, nooooooo Mr. Bill!!!"<br>
+
+%-) - stared at screen too long, cross-eyed<br>
+
+%*@:-( - Hung over<br>
+
+%-^ - User is another Picasso<br>
+
+%-6 - Brain dead<br>
+
+(-: - left-handed smiley<br>
+
+(:)-) - Scuba diver<br>
+
+(:-d) - Yum yum<br>
+
+(:I - Egghead<br>
+
+(:-q) - An indian<br>
+
+(:-Q) - At the dentist clinic<br>
+
+(:V) - Duck<br>
+
+(-_-) - Secret smile<br>
+
+(_8-(|) - Homer Simpson<br>
+
+*#:-) - Scotsman wearing his Scottish tam<br>
+
+*:o) - Bozo the clown<br>
+
+*-{:-) - Smiley with a pon-pon hat<br>
+
+*&lt;:-) - Santa Claus<br>
+
+*X* - Kiss<br>
+
+,-) ,  '-) - one-eyed wink<br>
+
+-'-,-'{@ / -'-,-{@ - Rose<br>
+
+,-} - wry and winking<br>
+
+.) - Keeping an eye out for you<br>
+
+:-#| - Big mustache<br>
+
+:-&amp; - biting tongue<br>
+
+:'-( - Crying<br>
+
+:-( - Sad<br>
+
+:-() - Surprised<br>
+
+8-| - Surprised<br>
+
+:'-) - Crying of joy<br>
+
+:-)' - drooling<br>
+
+:-) - Smile<br>
+
+-:-) - User sports a mohawk and admires Mr. T<br>
+
+:-)) - Really happy<br>
+
+:-)&lt;>>>>> - Basic Smiley with a necktie<br>
+
+:-)-8 - Big girl<br>
+
+:-)8 - User is well dressed<br>
+
+:-* - A kiss / ate something weird<br>
+
+:* - Kisses<br>
+
+:*) - Drunk<br>
+
+:-*) ,  :-*> - drunken; clown<br>
+
+:,( - Crying<br>
+
+:-/ - Perplexed<br>
+
+:-/ - Uhhh.... sure...<br>
+
+::POOF:: - Goodbye, leaving the room (mainly used in IRC)<br>
+
+:-@ - screaming<br>
+
+:[ - Boned<br>
+
+:-[ - Vampire<br>
+
+:-\ - User happens to be Popeye<br>
+
+:] - Asleep...<br>
+
+:-] - biting lip<br>
+
+:-{ - Boo hoo / user is weeping<br>
+
+:-{} - User with heavy lipstick<br>
+
+:-| - "Have an ordinary day!" Smiley / grim / out of words<br>
+
+:-'| - User has a cold<br>
+
+:-|| - Mad<br>
+
+:-} - Embarrassed smile / goat / smirk<br>
+
+:}{: - Kisses (stolen from June bug)<br>
+
+:~ - Also crying<br>
+
+:-~~~ - Drooling<br>
+
+:-&lt; - Boo hoo / forlorn, very sad<br>
+
+:&lt;}) - User with mustache, smiling<br>
+
+:-=) - Hitler (?)<br>
+
+:-> - funny, happy, grinning, "hey hey"<br>
+
+:-7 - wry statement<br>
+
+:-8 - lying (speaking through both sides of mouth)<br>
+
+:8-) - Glasses on nose<br>
+
+:-8) - Glasses way on nose<br>
+
+:-9 - Licking his lips<br>
+
+:-b ,  :-p ,  :-Þ - sticking out tongue<br>
+
+:-c - Bummed / sniff / unbelieving (dropped jaw)<br>
+
+:-c - unhappy<br>
+
+:-D - Big grin / lol<br>
+
+:-e - Disappointed<br>
+
+:-E - Vampire<br>
+
+:G - Gee...<br>
+
+:-j - Benjamin Netanyahu smiles / tongue in cheek<br>
+
+:-J - Benjamin Netanyahu smiles / tongue in cheek<br>
+
+:-o - Wow! / I'm surprised<br>
+
+:P - Big, wide smile<br>
+
+:-P - Sticking out your tongue<br>
+
+:-P~ (may contain more than a single ~) - A lick / a tongue out / a really long tongue out (when&nbsp;<br>
+
+:-s - bizarre comment, sarcastic<br>
+
+:-t - Cross smiley<br>
+
+:-v - Talking<br>
+
+:-X ,  :-|| ,  :-# - "my lips are sealed"<br>
+
+;-( - crying<br>
+
+;-) - Smile with a wink<br>
+
+;-@ - swearing, angry<br>
+
+;-^) - Tongue in cheek<br>
+
+@:- | ) - Elvis<br>
+
+@= - Nuclear mushroom<br>
+
+[:-) - Walking with a Walkman<br>
+
+[:-|] - Robot<br>
+
+{:() - A monkey/chimp<br>
+
+|-) - Jordy from Star-Trek / sleeping / blind (to spot the obvious<br>
+
+|^o - Snoring<br>
+
+|-I - Sleeping<br>
+
+|-O - Birth<br>
+
+}8-P - Big, big smile<br>
+
+~.^ - Blink (one eye only)<br>
+
+~:o - baby (or behaving like one)<br>
+
++:-) - Doctor<br>
+
++-:-) - The pop<br>
+
+&lt;:I - Dunce<br>
+
+=:-) - Punk rocker<br>
+
+=:O - Frightened (hair standing on end)<br>
+
+=|:-)= - Abe Lincoln<br>
+
+=8O - Bug-eyed with fright<br>
+
+>(oo)&lt; - mad pig (candy, as in the food)<br>
+
+ >:-( - angry<br>
+
+>:) - Mischievous grin / perplexed look<br>
+
+>:-&lt; - Mad<br>
+
+>:-> - sarcastic, devilish grin<br>
+
+>:-X - Angry<br>
+
+>&lt;&lt;&lt;*>&lt;*>>>&lt; - Kissing Fish<br>
+
+0-) - Scuba diver<br>
+
+0:-) - Angel<br>
+
+3:[ - Bulldog smiling<br>
+
+3:-o - Cow<br>
+
+8-# - Dead<br>
+
+8:-) - Glasses on forehead / little girl<br>
+
+8:] - Normal smiling face of a gorilla<br>
+
+8-o - Very surprised / amazed<br>
+
+|-o - Very surprised / amazed<br>
+
+:-O - Very surprised / amazed<br>
+
+8-X - Afraid<br>
+
+B-( - Sad / bored face<br>
+
+B-) - Sun glasses<br>
+
+C(: / :)D - Tongue out<br>
+
+C|:-= - Charlie Chaplin<br>
+
+C=:-) - Chef<br>
+
+H-S - After eating something bad<br>
+
+-O - "Wow!"<br>
+
+O :-) - Angel<br>
+
+oooo(0) (0)oooo - Toes<br>
+
+S:8-( - Grandma<br>
+
+X-( - Dead<br>
+
+<br>
+
+<a name="domains"></a>
+
+[ -- Country Codes/Internet Extensions -- ] <a href="#top">[top]</a><br>
+
+</font></p>
+
+
+
+<p><font size="2" face="Verdana">AC - Academic (means that this is an academic domain. For example: harvard.ac)<br>
+
+AD - Andorra<br>
+
+AF - Afghanistan<br>
+
+AG - Antigua and Barbuda<br>
+
+AI - Anguilla<br>
+
+AL - Albania<br>
+
+AM - Armenia<br>
+
+AN - Netherlands Antilles<br>
+
+AO - Angola<br>
+
+AQ - Antarctica<br>
+
+AR - Argentina<br>
+
+AS - American Samoa<br>
+
+AT - Austria<br>
+
+AU - Australia<br>
+
+AW - Aruba<br>
+
+AZ - Azerbaijan<br>
+
+BA - Bosnia and Herzegowina<br>
+
+BB - Barbados<br>
+
+BD - Bangladesh<br>
+
+BE - Belgium<br>
+
+BF - Burkina Faso<br>
+
+BG - Bulgaria<br>
+
+BH - Baharain<br>
+
+BI - Burundi<br>
+
+BJ - Benin<br>
+
+BM - Bermuda<br>
+
+BN - Breunei Darussalam<br>
+
+BO - Bolivia<br>
+
+BR - Brazil<br>
+
+BS - Bahamas<br>
+
+BT - Bhutan<br>
+
+BV - Bouvet Island<br>
+
+BW - Botswana<br>
+
+BY - Belarus<br>
+
+BZ - Belize<br>
+
+CA - Canada<br>
+
+CC - Cocos (Keeling) Islands<br>
+
+CD - Congo, The Democratic Republic of the<br>
+
+CF - Central African Republic<br>
+
+CG - Congo<br>
+
+CH - Switzerland<br>
+
+CI - Cote D'ivoire<br>
+
+CK - Cook Islands<br>
+
+CL - Chile<br>
+
+CM - Cameroon<br>
+
+CN - China<br>
+
+CO - Colombia<br>
+
+COM - Commercial (means that the owner of this domain set it up in order to make money out of it)<br>
+
+CR - Costa Rica<br>
+
+CU - Cuba<br>
+
+CV - Cape Verde<br>
+
+CX - Christmas Island<br>
+
+CY - Cyprus<br>
+
+CZ - Czech Republic<br>
+
+DE - Germany<br>
+
+DJ - Djibouti<br>
+
+DK - Denmark<br>
+
+DM - Dominica<br>
+
+DO - Dominican Republic<br>
+
+DZ - Algeria<br>
+
+EC - Ecuador<br>
+
+EDU - Educational (meaning this domain exists for educational purposes)<br>
+
+EE - Estonia<br>
+
+EG - Egypt<br>
+
+EH - Western Sahara<br>
+
+ER - Eritrea<br>
+
+ES - Spain<br>
+
+ET - Ethiopia<br>
+
+FI - Finland<br>
+
+FJ - Fiji<br>
+
+FK - Falkland Islands (Malvinas)<br>
+
+FM - Mocronesia, Federated States of<br>
+
+FO - Faroe Islands<br>
+
+FR - France<br>
+
+FX - France, Metropolitan<br>
+
+GA - Gabon<br>
+
+GB - Great Britain<br>
+
+GD - Grenada<br>
+
+GE - Georgia<br>
+
+GF - French Guiana<br>
+
+GH - Ghana<br>
+
+GI - Gibraltar<br>
+
+GL - Greenland<br>
+
+GM - Gambia<br>
+
+GN - Guinea<br>
+
+GP - Guadeloupe<br>
+
+GQ - Equatorial Guinea<br>
+
+GR - Greece<br>
+
+GS - South Georgia and the South Sandwich Islands<br>
+
+GT - Guatemala<br>
+
+GU - Guam<br>
+
+GW - Guinea-Bissau<br>
+
+GY - Guyana<br>
+
+HK - Hong Kong<br>
+
+HM - Heard and Mcdonald Islands<br>
+
+HN - Honduras<br>
+
+HR - Croatia (local name: Hrvatska)<br>
+
+HT - Haiti<br>
+
+HU - Hungary<br>
+
+ID - Indonesia<br>
+
+IE - Ireland<br>
+
+IL - Israel (R a v e N and F a n g's home!!)<br>
+
+IN - India<br>
+
+INT - International<br>
+
+IO - British Indian Ocean Territory<br>
+
+IQ - Iraq<br>
+
+IR - Iran, Islamic Republic of<br>
+
+IS - Iceland<br>
+
+IT - Italy<br>
+
+JM - Jamaica<br>
+
+JO - Jordan<br>
+
+JP - Japan<br>
+
+K12 - kinda like EDU, I think (the only K12 domains I (R a v e N) know are domains set up by the ministry of education in my country)<br>
+
+KE - Kenya<br>
+
+KG - Kyrgyzstan<br>
+
+KH - Cambodia<br>
+
+KI - Kiribati<br>
+
+KM - Comoros<br>
+
+KN - Saint Kitts and Nevis<br>
+
+KP - Korea, Democratic People's Republic of<br>
+
+KR - Korea, Republic of<br>
+
+KW - Kuwait<br>
+
+KY - Cayman Islands<br>
+
+KZ - Kazakhstan<br>
+
+LA - Lao People's Democratic Republic<br>
+
+LB - Lebanon<br>
+
+LC - Saint Lucia<br>
+
+LI - Liechtenstein<br>
+
+LK - Sri Lanka<br>
+
+LR - Liberia<br>
+
+LS - Lesotho<br>
+
+LT - Lithuania<br>
+
+LU - Luxembourg<br>
+
+LV - Latvia<br>
+
+LY - Libyan Arab Jamahiriya<br>
+
+MA - Morocco<br>
+
+MC - Monaco<br>
+
+MD - Moldova, Republic of<br>
+
+MG - Madagascar<br>
+
+MH - Marshall Islands<br>
+
+MK - Macedonia, the Former Yugoslav Republic of<br>
+
+ML - Mali<br>
+
+MM - Myanmar<br>
+
+MN - Mongolia<br>
+
+MO - Macau<br>
+
+MP - Northern Mariana Islands<br>
+
+MQ - Martinique<br>
+
+MR - Mauritania<br>
+
+MS - Montserrat<br>
+
+MT - malta<br>
+
+MU - Mauritius<br>
+
+MV - Maldives<br>
+
+MW - Malawi<br>
+
+MX - Mexico<br>
+
+MY - Malaysia<br>
+
+MZ - Mozambique<br>
+
+NA - Namibia<br>
+
+NC - New Caledonia<br>
+
+NE - Niger<br>
+
+NF - Norfolk Island<br>
+
+NG - Nigeria<br>
+
+NI - Nicaragua<br>
+
+NL - Netherlands<br>
+
+NO - Norway<br>
+
+NP - Nepal<br>
+
+NR - Nauru<br>
+
+NU - Niue<br>
+
+NZ - New Zealand<br>
+
+OM - Oman<br>
+
+ORG - Organization (means that the owner of this domain set it up for non-profit purposes)<br>
+
+PA - Panama<br>
+
+PE - Peru<br>
+
+PF - French Polynesia<br>
+
+PG - Papua New Guinea<br>
+
+PH - Philippines<br>
+
+PK - Pakistan<br>
+
+PL - PolandPM - Saint Pierre and Miquelon<br>
+
+PN - Pitcairn<br>
+
+PS - Palestinian Authority<br>
+
+PR - Puerto Rico<br>
+
+PT - Portugal<br>
+
+PW - Palau<br>
+
+PY - Paraguay<br>
+
+QA - Qatar<br>
+
+RE - Reunion<br>
+
+RO - Romania<br>
+
+RU - Russian Federation<br>
+
+RW - Rwanda<br>
+
+SA - Saudi Arabia<br>
+
+SB - Solomon Islands<br>
+
+SC - Seychelles<br>
+
+SD - Sudan<br>
+
+SE - Sweden<br>
+
+SG - Singapore<br>
+
+SH - Saint Helena<br>
+
+SI - Slovenia<br>
+
+SJ - Svalbarb and Jan Mayen Islands<br>
+
+SK - Slovakia (Slovak Republic)<br>
+
+SL - Sierra Leone<br>
+
+SM - San Marino<br>
+
+SN - Senegal<br>
+
+SO - Somalia<br>
+
+SR - Suriname<br>
+
+ST - Sao Tome and Principe<br>
+
+SV - El Salvador<br>
+
+SY - Syrian Arab Republic<br>
+
+SZ - Swaziland<br>
+
+TC - Turks and Caicos Islands<br>
+
+TD - Chad<br>
+
+TF - French Southern Territories<br>
+
+TG - Togo<br>
+
+TH - Thailand<br>
+
+TJ - Tajikistan<br>
+
+TK - Tokelau<br>
+
+TM - Turkemenistan<br>
+
+TN - Tunisia<br>
+
+TO - Tonga (know those cool V3 URLs? http://come.to/your-website, talk.to/someone etc'? Do you know how http://www.come.to and many other websites with a .to extension got this URL without actually being in Tonga, which is a rather small and undeveloped country? Well, they bought the extension from the kind of Tonga for... uh... what the heck, read their FAQ)<br>
+
+TP - East Timor<br>
+
+TR - Turkey<br>
+
+TT - Trinidad and Tobago<br>
+
+TV - Tuvalu (see comments regarding TO)<br>
+
+TW - Taiwan, Province of China<br>
+
+TZ - Tanzania, United Republic of<br>
+
+UA - Ukraine<br>
+
+UG - Uganda<br>
+
+UK - United Kingdom (usually in this format: .co.uk)<br>
+
+UM - United States Minor Outlying Islands<br>
+
+US - United States<br>
+
+UY - Uruguay<br>
+
+UZ - Uzbekistan<br>
+
+VA - Holy See (Vatican City State)<br>
+
+VC - Saint Vincent and the Grenadines<br>
+
+VE - Venezuela<br>
+
+VG - Virgin Islands (British)<br>
+
+VI - Virgin Islands (U.S.)<br>
+
+VN - Vietnam<br>
+
+VU - Vanuatu<br>
+
+WF - Wallis and Futuna Islands<br>
+
+WS - Samoa<br>
+
+YE - Yemen<br>
+
+YT - Mayotte<br>
+
+YU - Yuguslavia<br>
+
+ZA - South Africa<br>
+
+ZM - Zambia<br>
+
+ZR - Zaire<br>
+
+ZW - Zimbabwe<br>
+
+</font></p>
+
+<p><font face="Verdana" size="2"><a name="guys"></a>[ -- Guys You Don't Want To Mess With -- ]
+
+<a href="#top">[top]</a><br>
+
+ * FAPSI - Surveillance "which bugs communication channels of countries from outer space and also from ground based stations"<br>
+
+ * FSB - Russian Counter Intelligence&nbsp;<br>
+
+ * GRU - Military Intelligence<br>
+
+ * SVR - Foreign Intelligence<br>
+
+ATF - The bureau of Alchohol, Tobacco and Firearms<br>
+
+CERT - Computer Emergency Response Team (a hackers website with exploits, archives and advisories. They also hack racist websites)<br>
+
+CIA - Central Intelligence Agency<br>
+
+CRTC - Canadian Radio-television and Telecommunications Commosion<br>
+
+DEA - Drug Enforcement Administration<br>
+
+DISA - Defense Information System Agency<br>
+
+DoD - The American Department of Defence / Department of Dead (from the game Grim Fandango)<br>
+
+EFA - Electronic Frontiers Australia<br>
+
+FBI - Federal Bureau of Investigation<br>
+
+FBS - Federal Security Service<br>
+
+FCC - Federal Communications Commision<br>
+
+FEMA - Federal Emergency Management Agency<br>
+
+FIDNET - Federal Intrusion Detection Network (an initiative to monitor the Internet as part of a cyber-crime-fighting effort)<br>
+
+FIRST - Forum of Incident Response and Security Teams<br>
+
+FSB - Russia's Federal Security Bureau (ex KGB)<br>
+
+FTC - Federal Trade Commission<br>
+
+GAO - General Accounting Office<br>
+
+ILETS - International Law Enforcement Telecommunications Seminar ((taken from hackernews.com) ILETS was founded by the FBI in 1993 to push for wiretap abilities in worldwide communications and has been heavility involved with the ENFOPOL 98 Affair)<br>
+
+KGB - the Russian Secret service (see FSB). Split into 4 branches:<br>
+
+MoD / MOD - Ministry of Defense (the British equivalent of the DoD)<br>
+
+NATO - North Atlantic Treaty Organization<br>
+
+NCCUSL - National Conference of Commissioners on Uniform State Laws<br>
+
+NIPC - National Infrastructure Protection Center<br>
+
+NIST - National Institute of Standards and Technology<br>
+
+NSA - National Security Agency<br>
+
+NSIRC - National Security Incident Report Center<br>
+
+SMERSH  - (from Smert' Shpionam or "Death to Spies". They used to kill hackers because they counted as spies...)<br>
+
+UCITA - Uniform Computer Information Transaction Act<br>
+
+USA - United States of America (like you didn't know this one)<br>
+
+USAF - United States Air Force<br>
+
+USDI - United States Department of Interior<br>
+
+USIA - United States Information Agency<br>
+
+USSR - Union of Soviet Socialists Republics<br>
+
+USSS - United States Secret Service</font></p>
+
+
+
+</body>
+
+
+
+</html>
+

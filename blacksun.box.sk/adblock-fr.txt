@@ -1,0 +1,162 @@
+Blocage des pubs et du Spam pour les néophytes / Ecrit par votre serviteur, R a v e N (blacksun.box.sk)
+<====================================================================================================>    version 1.8, 9/9/99
+traduit par Vortex (vortex@francimel.com) le 02/03/2000
+
+Note: Lorsque vous voyez un truc comme ça: chose(1), cela veut dire que si vous ne comprenez le sens du mot chose, il y a une explication faite spécialement pour vous, au milieu de la section pour les débutants.
+Note 2: Si vous avez du mal à lire ce document car vous devait sans arrêt faire défiler le texte vers la droite quand arrive une longue ligne, c'est parce que vous n'utilisez pas le retour à la ligne automatique.
+La plupart des éditeurs de textes Unix, et les plus avancées sous Windows (et les moins avancées comme Wordpad) le font automatiquement.
+Pour activer le retour à la ligne avec Notepad, allez dans Edition et activez "retour à la ligne".
+
+Notes de l'auteur
+=================
+Encore un autre mini didacticiel.
+Quand je fait un mini didacticiel, cela veut dire que j'ai promis un gros didacticiel (ici , c'est celui sur SendMail, qui devrait faire 60 K )mais que je suis trop fainéant, donc, pour me ratraper, j'écrit un mini didacticiel. Si vous avez des questions ou des suggestions concernant ce fichier (pas de flammes, ni de spams SVP), mon adresse est barakirs@netvision.net.il.
+Visitez notre site blacksun.box.sk pour plus de didacticiels, des livres gratuits sur la programmation, Unix et le hacking à télécharger, et bien d'autre choses.
+
+Déclinaison de garantie
+=======================
+Nous n'encourageont aucuns types d'activités illégales. Si vous pensez qu'outrepasser la loi est une bonne maniére d'impressionner quelqu'un , arrétez de lire ce texte et revenez lorsque vous aurez grandi. Il n'y a rien de cool ou d'impressionnant dans le fait d'être un criminel.
+
+
+Sommaire
+========
+* Qu'est ce que le blocage des pubs?
+* Pourquoi voudrais je bloquer les pubs sur Internet?
+* Qu'ai je à y perdre?
+Au boulot
+* De quoi ai je besoin pour bloquer certaines pubs?
+* Bloquer les banniéres de pubs
+* Bloquer les banniéres des FAI gratuits
+* Bloquer les "popups"
+* Bloquer le Spam
+Section des débutants
+* Qu'est ce que le fichier /etc/hosts ou le fichier c:\windows\hosts ?
+* Qu'est ce qu'une requête DNS / requête DNS inversé?
+* Qu'est ce qu'un popup?
+* Qu'est ce que la bande passante?
+Autre didacticiels
+* Didacticiel FTP
+* Didacticiel sur l'overclocking
+* Didacticiel sur les réseaux RM
+* Didacticiel sur Sendmail
+* Didacticiel sur les attaque DoS
+* Didacticiel sur la bataille sur IRC
+* Didacticiel sur le phreaking
+Appendix A: junkbusters.com
+Appendix B: Plus de blocage
+Bibliographie
+
+Qu'est ce que le blocage des pubs?
+----------------------------------
+Si vous utilisez Internet depuis quelques temps, vous avez du remarquer les ennuyeux popups(3), les banniéres de pubs, le courrier publicitaire non sollicité (spam) etc.. Il y a des facons simples , et d'autre moins simple , de les éliminer , en fonction du dégré de sophistication du publicitaire.
+D'accord, les popups sont ennuyeux, mais pourquoi est ce que je devrai éliminer les banniéres qui apparaissent sur les pages? Eh bien, vous devez télécharger ces choses, n'est ce pas? Certaines pésent 3 Ko, d'autres pésent 20 Ko. Le probléme est qu'elles consomment de la bande passante.
+
+Ok, donc une banniére peut "peser" 7Ko.... et alors ? Eh bien, supposons que votre ordinateur fasse partie d'un réseau local (LAN : Local Area Network , un certain nombre d'ordinateurs connectés entre eux, et trés prés les uns des autres (même salle, même immeuble , etc) , de telle facon qu'ils puissent partager des ressources , communiquer par le réseau , etc ).
+Le réseau posséde une seule connection à Internet pour 10 personnes (on va dire 100 Ko par secondes , ce qui donne du 10 Ko/s par personne). Maintenant , si 5 personnes sont sur le Web, et si chacune d'elle télécharge un grosse pub de 7Ko, vous perdez 5 * 7 = 35 Ko/s . Maintenant , que se passerait il si les banniéres n'était pas téléchargés ? Et si on change un peu le probléme , avec un réseau plus grand , ou une plus grosse banniére, ou plus d'utilisateurs ? Vous voyez ce que je veut dire ?
+Toutefois, je ne recommande pas de tuer les banniéres, car quelque fois , elles peuvent se révéler utiles (par exemple : une pub pour un nouveau magasin qui vend un super ordinateur à un prix défiant toute concurrence, sans arnaques).
+Les pop-ups, par contre, sont ennuyeux et, d'aprés mon expérience, ne fournissent jamais rien d'intéressant, et je vous recommande donc de les "tuer". Mais il est toujours intéressant de le savoir (si vous êtes un administrateur systéme qui refuse de perdre de la bande passante(4) pour des stupides publicités).
+
+Au boulot
+---------
+
+Eliminer les banniéres de pub
+*****************************
+Avant tout, faites une liste des ordinateurs des boites qui proposent des services de publicités sur le net. Par exemple, vous avez décidez que superhypermegapub.net est un repaire de publicités.
+Ensuite, il vous suffit d'ajouter cette ligne à votre fichier hosts(1):
+127.0.0.1 superhypermegapub.net
+Maintenant, si une application essaye d'accéder à quelque chose de superhypermegapub.net , elle recevra son équivalent sur 127.0.0.1. Par exemple : http://superhypermegapub.net/banniere_debile.gif = http://127.0.0.1/banniere_debile.gif.
+Si vous avez une image appelé banniere_stupide.gif, cela ne consommera pas de bande passante, car 127.0.0.1 représente votre ordinateur (c'est à dire, l'ordinateur qui effectue la requête, 127.0.0.1 représente l'ordinateur locale. Par exemple : essayez de pirater 127.0.0.1 , et vous réaliserez qu'il ressemble étrangement à votre ordinateur.... hmmm.... ils ont sans doute piratés votre machine et tous téléchargés... lol).
+
+Il y a toutefois moyen de passer cette astuce. Il suffit de placer directement l'adresse IP du "publicitaire" à la place de son nom d'hôte dans la page où apparait la pub, et il ira directement à cette adresse ( par exemple si l'IP de http://superhypermegapub.net est 123.7.14.139 , alors mettre 123.7.14.139/banniere_debile.gif à la place  http://superhypermegapub.net/banniere_debile.gif permettra d'échapper à notre protection ). Si vous connaissez de meilleures astuces, envoyez les moi à barakirs@netvision.net.il.
+
+Eliminer les banniéres de pub des FAI gratuits
+**********************************************
+Il existe des Fournisseurs d'Accés Internet qui vous offre l'abonnement (téléphone non compris, dans la plupart des cas) en échange de votre promesse d'utiliser un petit programme stupide qui affiche des pubs dans un coin de votre écran pendant que vous êtes connectés. Ces publicités ne sont pas seulement ennuyeuses, mais elles prennent de la bande passante(4).
+ Si vous vous désirez en être débarrasser pour de bon, vous devez utiliser un crack pour cela. Je ne vais pas vous expliquer comment cracké tous les FAIs gratuits du monde, mais plutot comment bloquer ces publicités.
+Avant tout, il vous faut un bon firewall (essayez http://www.theargon.com, ils en ont quelque uns). Puis, lancez le et attendez qu'une banniére arrive de votre FAI. A ce moment, le firewall vous préviendra d'une nouvelle connection. Vous pouvez alors lui dire de l'ignorer, à la main, une par une, ou définir des régles pour votre firewall (consultez l'aide du logiciel).
+
+Eliminer les pop ups
+********************
+Il y a des programmes qui le font pour vous. Ils regardent le texte de la barre de titre du pop up ,et si il est identifié comme un pop up , ils le ferment (par exemple: si toutes les fenêtres ayant pour titre "Welcome to a Geocities Member Page" sont fermées, il n'y aura plus de pop up chez Geocities). Ils peuvent également agir en fonction de la taille de la fenêtre. Bien que j'en cherche un depuis longtemps, je n'ai pas réussi à en trouver un qui puisse me satisfaire. Surf In Peace n'est pas mal. Allez sur www.download.com, www.cnet.com ou www.zdnet.com pour plus d'information et de programmes.
+
+Eliminer le spam
+****************
+Oui , le spam. Du courrier éléctronique non sollicité, à but commerciale. Encore une fois, pour vous en débarrasser, il faut utiliser des programmes appelés "filtres à spam". Allez sur www.tucows.com et cherchez leur rubrique Anti-Spam. Vous y trouverez un bon paquet de logiciels "Exterminateur de Spam".
+En gros, le logiciel se contente de décider si un message entrant est une pub en fonction du sujet et du corps du message. S'il s'avére que c'est du spam , le message est immédiatement effacé.
+Si cela ne marche pas, appelez votre FAI pour leur demander de bloquer tous messages de l'adresse E-Mail du spammeur.
+
+Note : quelques FAIs ont commencés à mettre en place d'immenses filtres ultra sophistiqués sur leur serveur mail. Ils sont censés stopper 90%-95% du spam. Parmi ces FAI , on trouve Earthlink, Netscape et Usa.net.
+
+Oh, au fait, voila une information intéressante. Une étude appelé "Who Spams You" a été mise en place récemment (NdT : plus vraiment, l'info date de Septembre 1999...). Voilà les résultats:
+Premiére place : Arnaque de type "Devenez riche facilement".
+Deuxiéme place : Sites web pour "adultes".
+Troisiéme place : Publicité pour un site Web.
+Quatriéme place : autre.
+Cinquiéme place : pub pour un logiciel.
+
+
+Coin des débutants
+------------------
+1. Qu'est ce que le fichier /etc/hosts ou le fichier c:\windows\hosts ? - la plupart des OS (OS=Operating System , Systéme d'exploitation en francais) que je connais ont un fichier hosts . UNIX le place normalement dans /etc/hosts, Windows le place dans c:\windows\hosts et Windows NT dans c:\WinNT\system32\drivers\etc\hosts (merci à Teolicy pour l'astuce sous WinNT ). Ce fichier hosts est utilisé pour éviter de perdre du temps à faire une recherche DNS(2). En gros, pourquoi faire une recherche DNS quand on a déjà l'adresse IP, mais que l'on pas le courage de la retaper et que l'on préfére utiliser le nom d'hôte ?
+Le fichier hosts devrait ressembler à ceci:
+
+# Ceci est un commentaire
+# Tout ce qui commençe par # sera ignoré
+# Les commentaires ne sont pas indispensables, mais ils rendent la relecture plus façile.
+Adresse_IP Nom_d_hote
+
+
+Par exemple: dans la plupart des fichier hosts, vous verrai cette ligne:
+127.0.0.1 localhost
+Tous ce qui estr dirigé vers 127.0.0.1 est envoyé à votre ordinateur , à vous même.
+Cette entrée du fichier vous permet de taper localhost à la place de 127.0.0.1 dans la fenêtre de votre navigateur ou de n'importe quelle application réseau.
+
+Note: quelques OS effectuent une requête DNS (NdT: DNS LookUp) en premier, et si elle ne marche pas, regarde dans le fichier hosts, mais il y a toujours moyen de reconfigurer ceci quelque part (par exemple MacOS : tout ce qui il y a à faire est de rajouter la ligne use_hosts_first=1 quelque part dans le fichier config.sys).
+
+2. Qu'est ce qu'une requête DNS / requête DNS inversé?
+La commande nslookup nom_d_hote (Unix seulement. Pour une version Windows, allez sur http://www.samspade.org, ou achetez WinNt) vous donne l'IP qui correspond au nom d'hôte.
+Comment ça marche?
+Chaque ordinateur connecté à Internet posséde une adresse IP, qu'il accepte des connections ou pas. Si vous désirez vous connectez à cette ordinateur, vous avez besoin de connaitre son adresse IP. Mais, si vous êtes sénile ou que vous n'arrivez pas à retenir les adresses IP, que faire ? C'est pour cette raison que les noms d'hôtes existent. Ce sont de simples noms pour les adresses IP, mais compréhensible par un humain normalement constitué. Par exemple, si vous voulez surfer sur le site de Yahoo, et que vous ne vous rappelez plus de leur adresse IP, vous tapez www.yahoo.com, et voilà. www.yahoo.com est un alias de l'adresse IP de Yahoo.
+C'est à cela que sert le DNS. DNS veut dire Domain Name Server (NdT :Serveur de Nom de Domaines, en francais ) Ce type de serveur mémorise les alias et les IP leur correspondant.
+
+Une requéte DNS permet de trouver l'IP correspondante à un certain nom d'hôte. Une requête DNS inverse fait le contraire (IP => Nom d'hôte).
+Pour plus d'info, tapez "man nslookup" sous Unix pour avoir le mode d'emploi de Nslookup, ou allez à la bibliothéque de Sam Spade ( http://www.samspade.org).
+Nslookup est un merveilleux outil d'enquéte, et c'est une des meilleurs façons de trouver des informations sur quelqu'un, alors , apprenez à vous en servir.
+
+3. Pop-up : une autre fenêtre de navigateur qui surgit par elle même. Essayez d'aller sur une page de GeoCities et vous verrez un bon exemple de pop-up, car GeoCities insére cela sur chaque page qu'ils hébérgent (sauf pour les membres Geoplus, mais ils payent pour cela... :( ). (NdT: essayez aussi Multimania , ou Chez ).
+
+4. Bande passante : la vitesse total qu'une connection peut atteindre. Consommer de la bande passante signifie en perdre, rendant le surf moins rapide.
+
+Autre didacticiels
+------------------
+* Didacticiel FTP
+* Didacticiel sur l'overclocking
+* Didacticiel sur les réseaux RM
+* Didacticiel sur Sendmail
+* Didacticiel sur les attaque DoS
+* Didacticiel sur la bataille sur IRC
+* Didacticiel sur le phreaking
+
+Récupérez les tous sur blacksun.box.sk, ou rejoignez la mailling list sur blacksunresearch.listbot.com.
+
+Appendice A: junkbusters.com
+----------------------------
+Voici un E-Mail que j'ai reçu de quelqu'un appelé James Slater:
+
+Salut, je viens juste de lire ton didacticiel, et je pense qu'il faudrait mentionner l'existence de 'The Internet Junkbuster' (http://www.junkbusters.com). C'est un serveur proxy pour Win9x/Un*x qui peut être configuré pour refuser les cookies, les publicités, etc. en fonction d'une liste de régles. Tu pourra te dire que c'est légérement hors sujet par rapport au didacticiel, mais il fallait que je le signale.
+
+Ok, ça roule. Junkbusters.com. Allez , on va faire un tour!
+
+Appendice B: Bloquer les pubs
+-----------------------------
+Un ami qui désire garder l'anonymat m'a indiqué que l'on pouvait utiliser la commande suivante:
+route add -host [serveur qui spamme] reject
+(remplacez 'serveur qui spamme' avec l'adresse IP ou le nom d'hôte du serveur sur lequel sont placé les publicités. Par exemple: si les banniéres viennent de vive_la_pub.com, remplacez 'serveur qui spamme' par vive_la_pub.com).
+Cette commande ordonne au noyau de Linux (non cela ne marche pas sous Windows. C'est une des choses que je déteste au sujet de Windows, il n'est pas assez sophistiqué pour moi... lol) de rejeter tous ce qui viendra de cette IP.
+C'est la même chose que ma combine avec /etc/hosts, mais, je le reconnais, c'est plus propre...   ;-)
+(NdT : et plus efficace)
+
+Bibliographie
+-------------
+La bibliothéque de Sam Spade (http://www.samspade.org)
+Divers documents sur les firewalls

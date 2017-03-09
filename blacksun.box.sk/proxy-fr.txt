@@ -1,0 +1,118 @@
+Didacticiel sur les serveur proxy, Wingate et Socks Host
+
+Par Jatt
+Traduit par Vortex (vortex@francimel.com)
+
+D'autres didacticiels sur http://blacksun.box.sk
+
+
+Qu'est ce qu'un serveur proxy ?
+
+Un serveur proxy est un serveur que quelqu'un (peut être un FAI, peut être un ami) a mis en place, et par lequel votre connexion fait un détour lorsque vous surfez sur le Web, au lieu d'allez directement au site concerné. C'est à dire que les informations, à la place d'aller du site vers votre machine, vont du site vers le proxy, puis le proxy vous envoie les infos. Donc, si quelqu'un d'autre télécharge le même site, en passant par le même proxy, le site arrive plus vite car il est déjà sur le proxy (il garde en mémoire les pages téléchargés). La personne en charge du Proxy décide du temps mis avant le rafraichissement automatique des pages. De plus, comme toutes les pages restent sur le proxy, elle décide également de la durée de vie des pages sur le serveur, c à d le temps mis avant d'être virée (certaines, trés utilisées, comme Yahoo ou Altavista, restent 'à vie' sur le serveur). Si un utilisateur remarque que la page doit être rafraichi, il lui suffit de cliquer sur 'Rafraichir' dans son navigateur pour que le proxy recharge la page.
+
+Pourquoi utiliser un serveur proxy?
+
+Il y a différentes raisons. Certains FAI (Fournisseur d'Accés Internet) les utilisent car cela permet de réduire l'encombrement de leur réseaux, et d'accélérer le surf de leur clients ( car le proxy est plus prés d'eux que le site, il y moins de "distance" à parcourir, moins de lag ou, en d'autres termes, un surf plus rapide). Les utilisateurs les utilisent aussi car il devient plus difficile de suivre leur traces sur le Web. Cela est particuliérement utile car on peut enchainer certains proxy, et passer par 3, voire plus, serveurs différents. Mais il sera difficile de trouver 3 serveurs qui autoriseront ceci. D'un autre coté, la connexion deviendra particuliérement lente, surtout si les serveurs sont situés sur des continents différents.
+Vous pouvez également vous connecter sur un grand proxy, pour accélérer votre connection.
+
+Note: Il faut toujours savoir qui s'occupe du proxy que vous comptez utiliser. S'il s'agit de Microsoft, ne vous fatiguez pas, il est probable qu'il enregistre le moindre de vos mouvements. S'il s'agit d'un serveur public ou anonyme, tentez le coup.
+Pour trouver cette information, il suffit de regarder le site de l'administrateur du serveur proxy.
+
+
+Qu'est ce que WinGate?
+
+Une définition officielle que j'ai entendu un jour:
+
+"Wingate est un paquetage comprenant un serveur proxy pouvant faire office de firewall, qui permet de partager une (ou plusieurs) connection Internet entre tous les ordinateurs d'un réseau. La connection peut être de n'importe quelle type, incluant modem, Numéris, ASDL, cable, satellite et même des circuits T1 spécialisés." 
+
+Wingate est similaire à un serveur proxy. Il connecte différents ordinateurs via le port 23 à un serveur, appelé pour l'occasion un "wingate". En fait, il s'agit juste d'une connection Telnet. Le wingate permet à tout le réseau de se connecter sur Internet, et de se connecter sur d'autres sites. A cause de la mauvaise configuration des serveurs, et de l'incompétence de certains administrateurs, il existe beaucoup de wingates qui permettent à n'importe qui sur Internet de se connecter à travers le serveur. Ce qui laisse la porte ouverte à toutes sortes de combines, du simple maquillage de son adresse IP sur Irc, ou ICQ, à des abus bien plus graves. De telles systémes sont appellés "Open Wingates", et apparaissent de nulle part pour disparaitre quelques jours plus tard, voire quelques mois, jusqu'à ce qu'un administrateur le découvre, ou qu'il recoive des plaintes au sujet de "mystérieux" utilisateurs qui font des choses qu'ils ne devrait pas faire. En général, il s'agit de se connecter sur Internet.
+
+Le seul bénéfice pour les administrateurs est la possibilité de partager une connexion Internet entre de nombreux utilisateurs. Mais les problémes dépassent de loin les avantages. Si quelqu'un décide de mettre en place son propre Wingate, je lui suggére de réfléchir à ce qu'il fait, et de le sécuriser, pour que les seules utilisateurs soit ceux qui doivent l'utiliser. Un autre sytéme proche de Wingate est Sygate, mais il est plus sur.
+
+>Mon expérience sur Wingates en tant qu'administrateur réseau, et en tant qu' "utilisateur" distant, me permet de dire que le journal des connexions est vidé toutes les 48 heures. La plupart des entreprises et des FAI n'ont ni le besoin, ni les ressources pour enregistrer toutes les choses qui se passent sur leurs wingates.
+
+Comment trouver des wingates?
+
+Bonne question. La meilleur façon est le bouche à oreille. A part cela, il y a une 2éme solution qui consiste à utiliser un scanner à wingates. Vous pouvez scanner tout un sous réseau pour trouver un wingate.
+Note : les FAI du tiers monde, d'Asie, du Moyen Orient et les réseaux "domestiques" ont tous une chose en commun : ils ont des wingates pauvrement configurés, et en général, quelques Open Wingates sur leur réseaux
+Commencez par chercher de ce coté là. Via Unix, la meilleur facon est d'essayer et de se tromper.
+Utilisez Telnet sur le wingate, avec le port 23, et laissez le nom d'utilisateur, ainsi que le mot de passe, vide. Si vous arrivez à entrer, bingo, vous en avez trouvé 1. Il est possible aussi que le nom d'utilisateur et le mot de passe soit "wingate". Le meilleur scanner pour Windows (32 bits) que j'ai vu est wGateScan v2.2.
+Il est disponible sur de nombreux sites. Je l'ai trouvé sur celui ci, il y a également quelques trucs intéressant:
+http://www.hotmanscave.com/
+
+Pour vous en servir, il suffit d'entrer un intervalle d'adresses IP ou un nom d'hôte. Il se connectera sur le port 23 de chaque hôte de l'intervalle, et enverra un message disant "wingate" ou autre chose. Si l'hôte accepte ce message, c'est bon , vous en avez trouvé 1. De plus, il conserve la liste de tous les Open Wingates, que vous pouvez enregister sur le disque pour une consultation ultérieur.
+
+Wingates avec ICQ:
+
+(Ndt : Je n'est pas complétement traduit cette partie, car je n'est pas de version française de Wingate sous la main, si quelqu'un peut me donner les options en francais , cela pourrait me rendre service)
+
+Pour utilisé ICQ avec Wingate:
+
+Allez sur l'écran Setup de Wingate, et cliquez sur l'onglet Proxies
+Cliquez sur ADD
+Choisissez 'mapped link' comme type de proxy 
+Cliquez sur Create
+Dans le groupe 'settings', cochez 'Enable Connections To Proxy On Port.' Mettez le numéro 3333 dans la fenêtre.
+Réglez le type de sockets sur 'UDP' 
+Vérifiez que la case 'Destroy Inactive Sessions after XXX seconds' n'est PAS cochée.
+Vérifiez que la case 'Enable Default Remote Host' est cochée et réglé sur: icq.mirabilis.com Port: 4000 
+
+Pour chaque machine connectée:
+Cliquez sur ADD.
+Dans 'Connect Client IP', entrez l'IP de la machine.
+Dans 'To host', entrez icq.mirabilis.com 
+Dans 'Port', entrez 4000 
+Cliquez sur OK
+Et cliquez sur 'Done'
+Vous vous retrouverez à l'écran principale de configuration de Wingate.
+Verifiez que il y a 'SOCKS4 Proxy Enabled on Port 1080'
+Cliquez sur SAVE
+Testons cela avec votre machine "cliente"
+
+Configuration du client
+
+Si vous ne vous êtes toujours pas enregistré sur ICQ:
+ 
+Lorsque l'on vous demande un type de connexion, répondez 'Utilisateur de LAN' , puis 'Je suis derriére un firewall ou un proxy.' 
+Cliquez sur SUIVANT.
+Choisissez Serveur Socks4 ou socks 5, en fonction de la compatiblité de votre proxy.
+Ne cochez pas la case 'firewall sessions time out'
+Cliquez sur SUIVANT.
+Entrez l'adresse Ip du serveur où le port 1080 est ouvert
+Cliquez sur SUIVANT, pour voir si l'enregistrement a réussi.
+Si cela ne fonctionne pas, une boite de dialogue vous avertira.
+En cas de probléme, essayez un des trucs suivants:
+
+Cliquez sur Retry pour réessayer en utilisant les mêmes réglages.
+Revenez en arriére pour revoir les réglages du firewall.
+Cliquez sur Cancel pour abandonner. Reconfigurer votre firewall, et relancez ICQ. 
+
+Machines distantes supplémentaires:
+Pour toutes les machines distantes supplémentaires de votre réseau,répetez exactement la même procédure que celle spécifié dans le paragraphe précédent. Utilisez EXACTEMENT les mêmes nombres et la même installation. Vous avez juste à regarder l'adresse IP de l'hote sur l'une ou l'autre des machines.
+
+Wingates et IRC:
+
+Pour configurer votre client IRC de facon à utiliser un wingate, dites lui simplement que vous êtes derriére un serveur SOCKS4 or SOCKS5 (encore une fois , cela dépend du Wingate. Essayeez les deux et regardez celui qui fonctionne) et donnez lui l'adresse IP du Wingate. Si on vous demande un nom d'utilisateur et un mot de passe, laissez ces champs vides. Etant donné qu 'il y a tellement de clients IRC, je ne m'étendrai pas plus sur le sujet, et je vous laisse le soin d'explorer les options de votre client IRC vous même.
+
+ 
+Qu'est ce qu'un 'hôte Socks'?
+(Ndt : désolé , c'est tout ce que j'ai trouvé)
+
+Un 'hôte Socks' est à peu prés la même chose que qu'un Wingate, sauf qu 'il faut passer par le port 1080. Dans les réglages de proxy de votre navigateur internet (Netscape ou IE), vous devriez avoir un réglage pour un hôte Socks, où vous pouvez spécifier l'hôte. Si vous avez déjà utilisé mIRC pour IRC, vous avez également un réglages pour un firewall. Pour ce réglage, laissez les champs "Nom d'utilisateur" et "mot de passe" vide, choisissez le port 1080 et entrez l'adresse du Wingate dans le champ "nom d'hôte", puis cliquez sur 'Utiliser un Socks firewall', et essayez un des deux protocoles suivants : Socks4 ou Socks5 (celui qui fonctionne pour vous). Reconnectez vous et vous remarquerez que votre adresse IP et votre identité apparaitront comme si vous étiez connecté avec l'IP de l'hôte socks. Certains wingates ne marcheront pas comme 'hôte socks'.
+N'oubliez pas, il doit vous laisser vous connecter via le port 1080 où il ne servira à rien pour l'IRC. Les nouveaux démons IRC peuvent détecter les connections par wingates ou par socks. Avec le web, cela n'est pas utile. Cela peut ou ne pas cacher votre adresse IP en fonction du site où vous vous connectez. Pour l'anonymat sur le Web, utilisez plusieurs serveurs proxys.
+
+
+Conclusion:
+
+Soks/Wingates et Proxys peuvent cacher votre identité ou rendre plus difficile votre détection sur Internet, et il est même légal de le faire dans 90% des cas, mais n'en faites pas trop en vous disant "je ne serai jamais pris" car vous passez par plusieurs serveurs proxy, Wingates et Socks. Rappelez vous que tout le monde peut être tracé jusqu'à son IP d'origine et son FAI. Cela nécessite juste un petit peu de coopération entre les administrateurs des différents serveurs proxys, des FAI ,et des agences de "polices".
+
+-----------------------------------------------------
+C'est tout pour le "Didacticiel sur les serveur proxy, Wingate et Socks Host". Les questions ou les commentaires peuvent être envoyer à uslijatt@hotmail.com
+
+Jatt
+
+
+Pour plus d'info sur les proxys et une liste de serveurs proxys, wingates, telnet, ftp, et socks essayez: http://proxys4all.cgi.net/
+-note: tout n'est pas tester, et certains peuvent avoir été coupé par leurs administrateurs. De plus la liste n'est pas remise à jour aussi souvent que certains voudraient.
+Un autre tutorial sur Wingate:  http://www.wingate.net/
+ICQ avec un wingate:  http://www.visions.demon.nl/wingate/ 

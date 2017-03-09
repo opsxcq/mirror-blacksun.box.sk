@@ -1,0 +1,211 @@
+#####################################
+Como crackear o Opera 3.60 - Começou a ser escrito em 08/03/00
+#####################################
+
+Escrito por:  Sniper_Wolf
+http://www.aspone.cjb.net - (meio abandonada esses tempos)
+
+Tradução do Tutorial de Sifu
+http://blacksun.box.sk
+
+0. Introdução
+1. Aviso
+2. Programas necessários
+3. Crackeando
+	3.1 Abrindo o programa
+	3.2 Abrindo o código fonte do progrma
+        3.3 Achando e entendendo a "zona do crack"
+        3.4 Crackeando
+        3.5 Fazendo o patch
+4. Final
+
+
+################################################
+Inrodução
+################################################
+
+Nesse tutorial, você vai arender ( eu espero que sim :0) ) a crackear o Opera Browser (versão 3.60). Ele é o melhor browser por aí, exceto pelo fato de ser
+shareware (você pode usá-lo por um tempo, e depois tem que registrá-lo).Bem, podemos dar um jeito nisso. Mãos à obra.
+
+
+################################################
+Aviso
+################################################
+
+Eu criei esse tutorial somente para fins informativos. Muitas informações contidas aqui podem ser ilegais.
+
+[ Não faça NADA do que está escrito nesse texto ]
+
+Se você fizer algo, será responsável por seus próprios atos.
+Se você tiver problemas por causa desse texto, é problema seu.
+Se você está lendo isso para impressionar seus amigos, pare e cresça.
+
+
+#################################################
+Programas Necessários
+#################################################
+
+1. Win32asm - ( Para voltar o programa paraseu código fonte )
+2. Hiew - ( Para modificar o programa )
+3. Opera 3.60 ( o navegador )
+4. Patcher - ( Para fazer o patch )
+
+OBS: Todos esses programas podem ser encontrados na parte de Downloads ou ferramentas em www.aspone.cjb.net
+
+##################################################
+Crackeando
+##################################################
+Abrindo o programa
+##################
+
+	Abra o Opera. O que você vê? Sim, essa telinha chata mostrando por quantos dias você pode usar o programa, com a opcção de registrá-lo. Clique nessa opção. Abre-se uma janela com os campos :
+  1) Nome 
+  2) Companhia
+  3) Código de Registro
+	Digite qualquer coisa nesses campos, e pressione OK. Abre-se então um janela : 
+	"The registration iformation you have entered is invalid..."
+	Não deu certo.  :(
+	Bem, vamos ao nosso querido Windasm!
+
+
+##################################
+Abrindo o código fonte do programa
+##################################
+
+	Antes de tudo, faça um backup do opera.exe , para evitar problemas. Isso feito, abra o Windasm. Clique em Disassembler / Open File to disassemble . Selecione o opera.exe.
+	Vamos procurar por aquele texto que aparece quando você tenta registrar o programa. Clique em Search / Find text , e digite :
+	"The registration iformation you have entered is invalid..." (sem as aspas).
+	Hum... Nada encontrado.... Mas, espere! Rode o opera de novo. Quando ele vai abrir, aparece uma tela indicando as informações de registro:
+
+---------------
+Opera 3.60
+
+Registered to:
+(unregistered)
+
+       Ou seja, ele faz um teste para ver se o programa é registrado ou não.
+Volte o Windasm. Clique em Search / Find text , e digite : 
+	"(unregistered)" , sem as aspas!!!!!!!
+	Achamos algo. Clique em "Localizar próxima" (acredite, essa parte não vai dar em nada).
+
+
+------------------ Código fonte do Opera.exe --------------------------------
+
+:00974B3 FF7508                   push [ebp+08] 
+
+:00974B6 FFD6                     call esi
+
+==> :00974B8 393D0C155100             cmp dword ptr [0051150C], edi
+
+==> :00974BE 752A                     jne 004974EA
+
+==> :00974C0 68FF000000               push 000000FF
+
+:00974C5 8D85C4FEFFFF             lea eax , dword ptr [ebp+FFFFFEC4]
+
+:00974CB 50                       push eax
+
+
+* Possible Reference to String Resource ID=21428: " (unregistered) " (Nós aterrissamos aqui!)
+
+:004974CC 68B4530000              push 000053B4
+
+:004974D1 FF35180F5100            push dword ptr [00510F18]
+
+:004974D7 FFD3                    call ebx
+
+:004974D9 8D85C5FEFFFF            lea eax, dword ptr [ebp+FFFFFEC5] 
+
+-----------------------------------------------------------------------------
+	
+	Eu sinto que nós estamos no caminho... :)) Bem, vamos analisar as 3 linhas que eu marquei. Na primeira , ele faz uma comparação entre o valor de dword prt com o valor em edi, na segunda executa o teste condicional, e na terceira executa algo se a condição for verdadeira.
+	Vamos adiante. Pressione 'Home' (no seu teclado), clique Search / Find text : "dword ptr [0051150C]"  (sem as aspas)
+	Vejamos o que conseguimos:
+
+
+----------------------------Código Fonte do Opera----------------------------
+
+:00497341 8D8DE8F2FFFF            lea ecx, dword ptr [ebp+FFFFF2E8] 
+
+==> :00497347                         call 004BCE52
+
+:0049734C                         cmp eax, edi
+
+==> :0049734E                         mov dword ptr [0051150C], eax
+
+:00497353                         push 000004BC
+
+:00497358                         je 000004BC
+
+-----------------------------------------------------------------------------
+
+	Estamos quase lá... Essa é a parte do programa que mexe com dword ptr [0051150C]. Mas, espere... Há uma estranha chamada (call) ali perto...
+Posicione a linha brilhante em cima dessa chamada e clique : 'Execute call'
+	Sim! Estamos no centro do mecanismo de proteção!
+
+-----------------------------Código Fonte do Opera---------------------------
+
+:004BCE58 85C0                        test eax, eax
+
+==>:004BCE5A E913000000                  je 684846854984u (não se importa o                                                       que está escrito aqui) 
+==>:004BCE5F 7415                        je 004BCE76	
+
+:004BCE61 81C190030000                add ecx, 00000390                
+
+:004BCE67 51                          push ecx                
+
+:004BCE68 E88650FDFF                  call 00491EF3
+
+:004BCE6D 85C0                        test eax, eax
+
+:004BCE6F 59                          pop ecx
+
+==>:004BCE70 7404                        je 004BCE76
+
+
+* Referenced by a (U)nconditional or (C)onditional Jump at Address:
+
+| :004BCE5A(U)
+
+|
+
+==>:004BCE72 6A01                   push 00000001
+
+
+-----------------------------------------------------------------------------
+
+	O que isso faz? Ele executa um teste condicional em 004BCE5A ( para ver se está registrado) e então vai para :004BCE72 e executa o push action. E se nós trocassemos o teste condional por um jump? Ele "pensaria" que estaria registrado automaticamente. Vamos fazê-lo. Anytes, porém, posicione-se sobre a linha 004BCE5A, e olhe a barra de status. Está vendo o que está escrito depois de @Offset? É o endereço da linha (Exemplo: @Offset 000BCE58h<=endereço) Anote esse endereço.
+	Faça o mesmo em :004BCE72
+
+#####################################3
+Crackeando 
+##################
+
+	Abra o hiew. Abra o seu backup do opera. Aparecerão um monte de símbolos e coisas do tipo. Pressione F4 e escolha decode. Pressione então F5
+e digite : 000BCE5A ( o endereço do teste condicional que você anotou, sem o h no final, que apenas indica hexadecimal).
+	Nesse endereço, pressione F3, F2, e apague tudo o que está escrito.
+Digite então : jmp 000BCe72
+	Pressione ESC, e em seguida F9, e finalmente F10 para sair.
+
+	Rode o Opera. Pronto! Ele pensa que está registrado! Mas, toda vez que eu quiser fazer isso eu vou ter todo esse trabalho? Não, para isso você vai fazer o pacth.
+	Vá para o diretório em que você instalou o patch, e didite
+
+----------------------------------------------------------------------------
+rdt_patc "local do EXE original" "local do EXE crackeado" /X
+----------------------------------------------------------------------------
+
+	Siga as instruções da tela, e pronto. Você tem um patch para o Opera 3.60. Quando quiser crackear o opera, apenas rode o patch no diretório onde o opera está instalado.
+
+
+###########################################
+Final
+##############
+
+	Só para lembrar. Isso é ilegal, e você não deve fazer isso ou sair distribuindo o patch por aí.
+	Compre o Opera, afinal ele é muito melhor do que o Internet Explorer ou o Netscape, e os programadores que o fizeram merecem.
+
+	T+!
+
+Sniper_Wolf
+
+		

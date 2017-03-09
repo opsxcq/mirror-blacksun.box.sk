@@ -1,0 +1,648 @@
+<HTML><HEAD><TITLE>Byteme page 1</TITLE>
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type>
+<STYLE type=text/css>A:active {
+	TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ffffff; TEXT-DECORATION: underline
+}
+A:link {
+	TEXT-DECORATION: none
+}
+A:visited {
+	TEXT-DECORATION: none
+}
+.small {
+	FONT-SIZE: 8pt
+}
+.small_uppercase {
+	FONT-FAMILY: Arial, Helvetica, sans-serif; FONT-SIZE: 8pt; FONT-WEIGHT: bold; TEXT-TRANSFORM: uppercase
+}
+.upper {
+	TEXT-TRANSFORM: uppercase
+}
+</STYLE>
+
+<META content="MSHTML 5.00.2614.3500" name=GENERATOR></HEAD>
+<BODY aLink=#ccff00 bgColor=#000000 leftMargin=20 link=#99ccff text=#cccccc 
+topMargin=10 vLink=#ccccff marginheight="0" marginwidth="0">
+<FORM name=jumpy>
+<P><SELECT name=example onchange=gone() size=1> <OPTION selected 
+  value=http://blacksun.box.sk/byteme.html>Main Byteme</OPTION> <OPTION 
+  value=http://blacksun.box.sk/byteme2.html>Byteme 2</OPTION> <OPTION 
+  value=http://blacksun.box.sk/byteme3.html>Byteme 3</OPTION> <OPTION 
+  value=http://blacksun.box.sk/byteme4.html>Byteme 4</OPTION> <OPTION 
+  value=http://blacksun.box.sk/byteme5.html>Byteme 5</OPTION> <OPTION 
+  value=http://blacksun.box.sk>Home</OPTION></SELECT>
+<SCRIPT language=javascript>
+<!--
+
+function gone()
+{
+location=document.jumpy.example.options[document.jumpy.example.selectedIndex].value
+}
+//-->
+</SCRIPT>
+ <INPUT name=test onclick=gone() type=button value="Take me there!"> </P></FORM>
+<LI><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/byteme1.html#what is traceroute and how it works">What 
+is traceroute and how it works</A></FONT></FONT> 
+<LI><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/byteme1.html#ping">What is ping and how it 
+works</A></FONT></FONT> 
+<LI><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/byteme1.html#why rh good">Why is RedHat good for 
+newbies, and why is it one of the least secure Unix distribution by default</A> 
+(still better than Windows, though)</FONT></FONT> 
+<LI><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/byteme1.html#wingate">What is 
+Wingate</A></FONT></FONT> 
+<LI><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/byteme1.html#unix history">Some Unix Stuff</A> (the 
+history of Unix)</FONT></FONT> 
+<LI><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><A 
+href="http://blacksun.box.sk/byteme1.html#hacking">Your friend fell into the 
+toilet? Time for some hacking! (bypassing the BIOS password and the Windows 
+password)</A></FONT></FONT> <BR>
+<P><A name="what is traceroute and how it works"></A><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>
+
+How TRACEROUTE works<br><br>
+
+The TRACEROUTE program/application uses ICMP messages and the TTL (Time-To-Live 8-bit) field in the IP<br>
+datagram header to determine the path between source and destination host.<br><br>
+
+The value contained in the TTL-field of an IP datagramis processed during handling of the IP datagram by a<br>
+router in either of the following two ways:<br><br>
+
+1) if a router holds an IP-datagram for more than one<br>
+second, it is supposed to decrement the TTL-field of<br>
+that IP datagram by the number of seconds it is held.<br><br>
+
+2) it decrements the TTL-field by one otherwise.<br><br>
+
+
+Since most routers hold an IP datagram for less than one second the TTL-field effectively counts the number<br>
+of routers that it passes through, passing a router is often called a 'hop' and therefore the TTL-field is<br>
+sometimes called a 'hop-counter'.<br><br>
+
+
+The TTL-field enforces that each IP datagram always exists for a finite period of time in the network. In<br>
+this period of time, it must either have reached the destination or it is discarded (i.e. the IP datagram<br>
+is thrown away) by the network. When a router discards an IP datagram (due to the TTL-field being 0), the<br>
+router returns an ICMP "time exceeded" message back to the source host.<br><br>
+
+The TRACEROUTE and TRACERT programs are based on this 'feature'. Consecutive IP datagrams are sent with<br>
+increasing values for the TTL-field from 1 upto the value needed to reach the destination host. Under<br>
+traceroute (UNIX) the IP packet payload is a UDP packet, normally of a high and destination source port<br>
+33000-34000, and under windows the IP packet payload is an ICMP echo request.<br><br>
+
+The trick applied in TRACEROUTE is to use a port number that is highly likely to be unused by any<br>
+application at the destination host, usually this number is greater than 30,000. When a packet arrives<br>
+at the destination host with an unused port number, the UDP entity will generate an ICMP "port<br>
+unreachable" error message. Because we can discriminate between ICMP "time exceeded" error<br>
+messages and "port unreachable" error messages at the source host, we know when to halt TRACEROUT.<br><br>
+
+A small example demonstrating each phase in the operation of TRACEROUTE is given in the next figure.<br><br>
+
+<pre>
+
+      IP TTL1
+
++-+ --------&gt; +-+           +-+           +-+
+
+|S|           |R|           |R|           |D|
+
++-+ &lt;-------- +-+           +-+           +-+
+
+    ICMP TIME
+
+     EXCEEDED
+
+
+
+     IP TTL2        IP TTL1
+
++-+ --------&gt;  +-+ --------&gt; +-+          +-+
+
+|S|            |R|           |R|          |D|
+
++-+ &lt;--------  +-+ &lt;-------- +-+          +-+
+
+    ICMP TIME      ICMP TIME
+
+     EXCEEDED       EXCEEDED
+
+
+
+
+
+     IP TTL3       IP TTL2       IP TTL1
+
++-+ --------&gt; +-+ --------&gt; +-+ --------&gt; +-+
+
+|S|           |R|           |R|           |D|
+
++-+ &lt;-------- +-+ &lt;-------- +-+ &lt;-------- +-+
+
+    ICMP PORT     ICMP PORT     ICMP PORT
+
+   UNREACHABLE   UNREACHABLE   UNREACHABLE
+
+
+
+Figure 1: Example of the steps in TRACEROUTE.
+
+
+Key:
+
+S = Client/Source Address
+R = Router
+D = Destination Address
+
+</pre>
+
+<a href="mailto:itch1mp@yahoo.co.uk">    
+
+IT Chimp  </a></font>
+
+ 
+
+<BR>&nbsp; 
+<P><A name=ping></A><B><FONT face="Arial, Helvetica, sans-serif"><FONT 
+color=#ffffff><FONT size=-1>What is ping and how does it 
+work</FONT></FONT></FONT></B> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Let me show you some answers 
+we got for this question first.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>The Ender 
+wrote:</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Ping is a message that you can send through the Internet to a specific 
+IP address. The ping message usually has an extremely high TTL (256) (editor's 
+note: see Modem Speedup section at blacksun.jemix.com), and it is used to test 
+your connection to the host and to test the speed of the connection. You can 
+also use the ping message (which the target IP must to reply to this massage) to 
+nuke another computer, if you have it's IP (you can get your target's IP in 
+several different ways. One of the most common ways is through ICQ or IRC). It 
+can also it is used to trace-route and to check the stability of the 
+network.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>To ping, all you have to do (in windows 95, while you are connected), is 
+to write 'ping target_IP' (without the quotes) to ping 4 times, with ping length 
+of 32 bits. </font> <BR>
+
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Felipe Nunes 
+wrote:</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Ping -&gt; The Ping (Packet Internet Groper) is a network tool that is 
+used to query another system or host machine to ensure that the system is 
+active.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>It takes its name from a submarine sonar search - you send a short sound 
+burst and listen for an echo - a ping - coming back. In an IP network, `ping' 
+sends a short data burst - a single packet - and listens for a single packet in 
+reply. Site Reporter will send five requests and after, will display a set of 
+statistics for analysis. If a ping was unable to reach the remote machine or 
+host, it will display error messages.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Ping is implemented using the 
+required ICMP Echo function, documented in RFC 792 that all hosts should 
+implement. Ping provides four important information:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+* Whether TCP/IP software is functioning correctly</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+* Whether a local network device can be accessed.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+* Whether a remote machine can be accessed.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+* Verifying the software on the remote machine.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>RFC's can be found at <a href="http://www.rfc-editor.org">www.rfc-editor.org</a>
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>My 
+answer:</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Note: instead of writing the full answer and repeating what the others 
+already said, I will only write the details that I have to add.</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Ping works like this 
+on Unix: the simplest use is to type 'ping target' (without the quotes). For 
+more information, uses and options, simply type 'man ping' (again, no quotes) to 
+access ping's manual (man) pages.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>The way ping works: ping 
+simply sends a couple of packets (defined by the user or by the default value) 
+to the destination computer into port 7. Everything that goes into port 7 is 
+"echoed" back, hence the nickname - the echo port.</FONT></FONT> <BR>&nbsp; 
+<P><A name="why rh good"></A><B><FONT face="Arial, Helvetica, sans-serif"><FONT 
+color=#ffffff><FONT size=-1>Why is RedHat good for newbies, and why is it one of 
+the least secure Unix distribution by default (still better than 
+Windows)</FONT></FONT></FONT></B> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Nyaller 
+wrote:</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>1. Of all the Linux distro's, RedHat is the easiest to install! If a 
+WeeTodd like me can get it up and running, most anyone can.</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>2. RedHat is one of 
+the most easily available distros. Even those with zilch for bandwith can go 
+down to Borders, Barnes and Noble, Costco, Sams Club, etc....... and get 
+RedHat!</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Why is it less secure? Cuz it's full of holes! Last I read, there were 
+over 200 different ways to root RedHat.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Hope these are the answers 
+ya'll are looking for! If not, well then YCSAFMA!</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Notes about Nyaller's 
+answer</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>The first part was good, but the second part was rather incorrect, 
+because:</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>1) there are many security holes (certainly more than 200) in every OS, 
+but these depends on what programs the target computer runs and what 
+versions.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>2) This is not a reason.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>But still, nice 
+answer!</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>My 
+answer:</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Another reason why RedHat is good for beginners is because it comes with 
+sooooo many utilities and programs with it. Why is RedHat one of the least 
+secure Unix distribution (still more secure than Windows, though): the guys at 
+RedHat release their stuff too fast, without running it through extensive beta 
+testing (kinda like what Microsoft does, only that Microsoft tries to "bury" bug 
+reports and "look secure", while RedHat fixes them real quick and notifies 
+everyone about them in their mailing lists so they could grab the latest 
+updates).</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Note about money: RedHat, as all other Linux distributions is free, 
+except for commercial packages (which come with commercial utilities within 
+them). <B><FONT color=#ffffff>The Linux kernel was programmed by a nice guy from 
+Finland called Linus Torvalds</FONT></B>. It can be legally distributed (the 
+source code is free to download so you could make your own distribution of it) 
+as long as you give it for free (not including shipping fees) and put the source 
+code on the CD.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Note2: Unix's original source 
+code is free too, but there are some distributions which aren't free and don't 
+come with the source.</FONT></FONT> <BR>&nbsp; 
+<P><A name=wingate></A><B><FONT face="Arial, Helvetica, sans-serif"><FONT 
+color=#ffffff><FONT size=-1>What is Wingate</FONT></FONT></FONT></B> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Here are some answers we got 
+for this question:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>KRom 
+wrote:</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>A wingate is a type of proxy. Wingate is proxy software for Windoze 
+95/98... you can connect several pc's up to your main wingate server and use 
+it's modem (for example) to cruise the net on many pc's at once, you can also 
+use it to "forge" you IP address on the internet so you are not that easily 
+traceable.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Note</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>The rest of the 
+answers we got were nearly identical, besides this one:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Wingate is a proxy 
+software package for windowze it allows you to share a dialup account across a 
+local area network (LAN) It's pretty easy to set up, but is reportedly full of 
+holes. I used it for a while, but I prefer Sygate when using Linux is not an 
+option.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Ronnie, Hudson</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>So for anyone who has 
+to install Wingate on his computer for some reason, just use Sygate instead. 
+Thanks Ronnie!</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>My 
+answer:</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Well, KRom's answer was pretty good, but he missed a few important 
+details.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>You see, Wingate is a proxy software for Windows 95/98, as he described, 
+but it contains many many many holes so you can use it to relay your data so 
+it'll look like the "Wingated" computer is sending it, not you.</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>How to find 
+Wingates: almost every lame "hacking" page has wingates scanners on it. These 
+scanners go over entire subnets and look for Wingates on every machine. Try 
+www.uha1.com, for example. They have a wingates section.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>How to spoof your connection 
+with Wingates:</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Telnet to port 1080 on the "Wingated" machine. Once you get in, you will 
+probably see a blinking text cursor. Don't worry, you're in. Now simply type 
+'ip-address port' (without the quotes) and the Wingated machine will send you 
+the results.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>For example: typing 'hackernews.com 80' will connect you to port 80 on 
+hackernews.com, which is the webserver port. This means a web daemon will 
+answer, and you'll need to send in some webserver commands (the same thing your 
+browser does when you point it to hackernews.com).</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>You can also use Wingates to 
+easily spoof your IP on IRC. Simply start your IRC client, find a place where it 
+says something about firewalls and then tell it that you're using a SOCKS4 proxy 
+(no, SOCKS doesn't have anything to do with socks. It's just an abbreviation for 
+sockets, I think. Nevermind, you don't wanna know). When you are asked to insert 
+the IP of the firewall, enter the IP of the wingated machine 
+instead.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Tip: there's a list of Wingates at 
+http://www.cyberarmy.com/lists/wingate/. They exist out of contributions, and 
+they have some sort of script to check all the IPs every once in a while. Also 
+try http://www.cyberarmy.com/lists for more interesting lists.</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1><B><FONT 
+color=#ffffff>Note:</FONT></B> for more information, read the 
+Proxy/Wingate/SOCKS tutorial.</FONT></FONT> 
+<P><A name="unix history"></A><B><FONT face="Arial, Helvetica, sans-serif"><FONT 
+color=#ffffff><FONT size=-1>Some Unix stuff (the history of 
+Unix)</FONT></FONT></FONT></B> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Today's we're gonna discuss a 
+little about Unix! Yay! Well, here we go. Oh, btw, I didn't write this, I found 
+this at some text file. Unfortunately I don't remember where I found it. Don't 
+worry, the rest of the file sucks, you're not missing anything. It teaches you 
+some "elite" hacking tricks which don't work anymore anyway and aren't even 
+worth learning.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Brief history: Back 
+in the early sixties, during the development of third generation computers at 
+MIT, a group of programmers studying the potential of computers, discovered 
+their ability of performing two or more tasks simultaneously. Bell Labs, taking 
+notice of this discovery, provided funds for their developmental scientists 
+to&nbsp; investigate into this new frontier. After about 2 years of 
+developmental research, they produced an operating system they called 
+"Unix".</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Sixties to Current: During this time Bell Systems installed the Unix 
+system to provide their computer operators with the ability to multitask so that 
+they could become more productive, and efficient. One of the systems they put on 
+the Unix system was called "Elmos". Through Elmos many tasks (i.e. billing, and 
+installation records) could be done by many people using the same 
+mainframe.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Current: Today, with the development of micro computers, such 
+multitasking can be achieved by a scaled down version of Unix (but just as 
+powerful). Microsoft, seeing this development, opted to develop their own Unix 
+like system for the IBM line of PC/XT's. Their result they called Xenix 
+(pronounced zee-nicks). Both Unix and Xenix can be easily installed on IBM PC's 
+and offer the same functions (just 2 different vendors).</FONT></FONT> 
+
+<P><A name=hacking></A><B><FONT face="Arial, Helvetica, sans-serif"><FONT 
+color=#ffffff><FONT size=-1>Your friend fell into the toilet? Time for some 
+hacking!</FONT></FONT></FONT></B> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>You come over to your friend's 
+house. This friend of yours isn't much of a hacker (in fact, he never heard of 
+Linux), but he thinks he's so cool because he put two (WOW!!) passwords on 
+startup - one that pops up the minute you start the computer, and one that pops 
+up the minute Windows starts (the password verification program that comes with 
+Windows, not an external program).</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Anyway, the guy has to go to 
+"the little boys room", so he walks in, slips on something and falls into the 
+toilet bowl. You call 911 but they'll only be here in 20 minutes (everyone is at 
+the doughnut shop). Meanwhile, this looks like a good opportunity to look at 
+your friend's secret files! But alas - the computer is shut down. Now, the 
+question is: how do you bypass both passwords?</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Anyway, here are some 
+answers we got for this question:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>KRom 
+wrote:</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>The first password is the BIOS password, a relatively easy thing to 
+remove. First you have to open up the computer and find the round quarter sized 
+lithium battery (most computers have them). On some machines like a Compaq for 
+example you are required to also reset a jumper and remove the battery. The 
+jumper will be marked "reset CMOS". In most cases all you have to do is pop off 
+the lithium battery and wait a good 15-30 seconds for the memory to be erased 
+from the BIOS. Once this is done put the battery back, put the cover back on the 
+computer and start it up. Most likely there will be an alert that the Bios was 
+reset and most new motherboards will detect all of devices over again, so it's 
+no biggie. Here comes Windoze... it's loading... loading... (COME ON!!!) 
+loading....</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Username:</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Password:</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+click on the cancel button</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;POOF&gt;</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Talk about tight security!</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Your in like 
+Flyn.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Now go to the DOS 
+prompt and type: attrib -r -h -a -s msdos.sys</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>edit msdos.sys</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>change bootgui to 
+GUI=0</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>(LOL)</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>save msdos.sys</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>attrib +r +h +a +s 
+msdos.sys</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>type exit at DOS prompt</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Start, shutdown... pull your 
+friend out of the toilet...&nbsp; when he boots... no more windoze for him... 
+will he know what to do at the dos prompt? Will he be able to get back into 
+windoze?</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Notes</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>The cancel option 
+will only work if the login screen is actually for logging into a local network. 
+Pressing cancel will not let you log into the network. On a regular 
+password-protected computer, pressing cancel won't get you anywhere (Windows 
+will tell you that you need to input the password). Read the next answers we got 
+to learn more.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Note2: what the command attrib does is that it changes the "attributes" 
+of files in DOS and Windows.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>This is how it works: attrib 
+options filename. Replace options with the options you want to set, and replace 
+filename with the name of the file you want to tamper with.</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>The options: +r = 
+readable. +h = hidden. +a = archive. +s = system file. Replace the plus with a 
+minus to do the exact opposite.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Note3: KRom was the first to 
+answer, while Syd Barret sent his answer about a minute later. Better luck next 
+time, Syd&nbsp;&nbsp; ;-).</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Someone* 
+wrote:</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>To rid the two passwords. There are many paths. To get rid of the first 
+password, one way is to try to boot up, press a startup key to go to the BIOS 
+menu, and disable it there. Then boot to DOS, and use this command (without the 
+quotes) "ren c:\Windows\*.pwl *.pwk" so windows can't see the password files. If 
+he set a password to the BIOS menu, open his computer.&nbsp; Look on the 
+motherboard for a small battery.&nbsp; Remove it, wait 1 min., then put it back 
+in. If its an older computer you may have to set his hard drive and other 
+settings. Then go about changing the Windows password files.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>* sorry, whoever you 
+are, for forgetting your name... :-(&nbsp;&nbsp;&nbsp;&nbsp; (note: this guy 
+Emailed me and I mentioned his name the next day)</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Notes</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>We already know how 
+to bypass the BIOS password, but "someone" just told us how to bypass the 
+Windows password... hmm... look at this... if you press F8 when you see the 
+"starting windows 95/98" caption and you choose MS-DOS prompt you&nbsp; can 
+change the names of the password files or even delete them so Windows won't ask 
+for a password!</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Note: you can disable the F8 
+key on your computer. This is why you might have to come prepared with a boot 
+disk that contains MS-DOS only and boot from the disk instead of from the hard 
+drive. If the BIOS is set to boot from the hard drive first, you can always get 
+in and tell it to try to boot from drive A (or wherever your floppy drive is) 
+first (if the BIOS settings would be password protected, we know what to do... 
+;-)&nbsp; ).</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>KngNthng 
+wrote:</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>1&gt; The BIOS passwd:&nbsp; Open the machine up, find the battery, 
+remove it and then put it back in, BIOS reset including the 
+passwd.</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>2&gt; Win passwd:</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Method 1: Boot into 
+Safe-Mode</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Method 2: Delete or rename *.pwl in the windows dir.</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>This worked for me. 
+:)</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>See ya,</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>KngNthng</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Frank Buerckling 
+wrote:</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Pretty lame cuz I didn't come up with myself but I'll give credit where 
+credit is due: http://members.tripod.co.uk/gemadar/bios.htm</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>"j262" opens most 
+versions of Award BIOS it works about 80% of the time. "AWARD_SW" and "AWARD_PW" 
+work on some computers as well, but much less often. Other passwords that work 
+as default passwords on various versions of various BIOS's, so they're worth 
+trying are: condo, djonet, lkwpeter, biostar, biosstar.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>If you have more than 
+20 minutes (911 is really backed up and your friend is REALLY stuck in the 
+toilet)&nbsp; But this is pretty lame.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>To clear the CMOS, you'll 
+normally need to short a jumper on the motherboard. Most motherboards actually 
+label the correct jumper, making your job easier. In most motherboards the 
+jumper must be shorted while the computer is on. However, a small percentage of 
+boards will be damaged if you try this. For that reason, try shorting the jumper 
+with the computer off first, removing the jumper and turning the computer on. If 
+that fails, then turn the computer on with the jumper in place. If you can't 
+find the jumper, or it doesn't exist, unplug the computer. Find the internal 
+battery and remove it. Most computers will clear CMOS anywhere between 10 
+seconds and 24 hours without any power.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>If none of this helps you, you 
+needn't give up quite yet. On some computers, flooding the keyboard buffer will 
+crash the password routine and allow the computer to boot. Simply wait for the 
+password prompt, then press ESC repeatedly. This may require 50 to 100 presses, 
+and may not work in all machines, but its worked before, and its worth a try. If 
+you have that nagging Bios password on any Award BIOS, there is a default 
+password you can use: shift+s y x z</FONT></FONT> <BR><FONT 
+face="Verdana, Arial, Helvetica, sans-serif"><FONT 
+size=-1>*********************************</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>If it's a toshiba 
+laptop...None of the above will work.&nbsp; You've got to come to your friend's 
+house prepared..... (I also lamed this from someone else.) I'm really a wannabe 
+right now!&nbsp; Here's where it is: 
+www.expage.com/page/toshibapassword</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>1) Using a second 
+computer, a hex-editor and a floppy disk: change the first 5 bytes of Sector1 
+(not the boot sector (sector 0) but the one right after that) to hex: 4B 45 59 
+00 00&nbsp; (actually if you use a blank disk or freshly formatted just change 
+first 3 bytes to 4B 45 59. This spells K E Y in ascii.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>2) Save that on the disk and 
+then put the disk in the Toshiba laptop.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>3) Power up the laptop and 
+when it asks for the password hit enter.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>4) You'll be asked if you want 
+to reset the password.&nbsp; Pressing Y then enter will clear the boot password. 
+Pressing N and enter will bypass the password and boot the computer w/out 
+resetting password. If you do clear the password, you can now go into BIOS and 
+set it to something of your choosing. Hee, Hee, Hee!!!</FONT></FONT> <BR><FONT 
+face="Verdana, Arial, Helvetica, sans-serif"><FONT 
+size=-1>*********************************</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>I'll let someone else do the 
+window's password thingy.&nbsp; It's pretty easy too though.</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Have 
+fun!</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>Dark Spector wrote:</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Well, I would pop in the boot 
+disk I carry everywhere and at the A:\ prompt, give the command: rename 
+c:\windows\(his login name).pwl c:\windows\(my login name).zzz .Then i would 
+turn off the computer and turn it back on.This time when it is turned on there 
+is login window with no password, you don't have to type in a password so i 
+click ok. When "starting windows" comes up on the screen i assume he isn't smart 
+enough to have disabled the dos keys and hold down the F5 key and boot in though 
+safe mode.then i would rumage though his secret files (i'm assuming it is porn 
+since he is potentially the loneliest guy on earth).after that i shut down the 
+comp pop the disk back and start it back up, use the command rename 
+c:\windows\(my login name).pwl c:\windows\(original login name).pwl by then the 
+EMT is probably there. Method 2: Boot up in DOS Mode.. Press F8 at the sys. 
+configuration screen to get the boot menu... and choose option 7 for DOS Mode. 
+.. then go to C:\WINDOWS\ and rename or delete *.pwl</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Gendo Ikari 
+wrote:</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>when i was going to school, the netadmin for my college installed Novell 
+Netware (i think netware...), and windows 95 (enabled in network mode) on all of 
+the machines. me being someone who always wants to know more, i started amateur 
+hacking one of the terminals (brute force password attempts, random key 
+pressing, etc.). when you started up the computer, it never gave the bios 
+option, it always went straight to the novell login window. after entering a 
+successful password and username, windows comes up. i had no username, in fact i 
+wasn't even s'pose to be there. anyway, when i was hitting random characters on 
+the keyboard, i notices that the taskmanager from windows was still available to 
+me if i hit the windows key. from the task manager, i could click file, run, 
+then any application from the os. running any of which always loaded the windows 
+desktop and icons, then the application.i had access to every resource 
+(internet, windows.ini, registry, etc.), exept the printer (which i know can 
+easily be rectified). even more, i had (i believe) netadmin access, because all 
+of the locked out applications (registry editor, etc.) that no one else had 
+access to, i had acces to them.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Oh, and here is some 
+interesting infomation I received from Parasitic. The usernames and passwords 
+for the Windows password may also be stored on the registry (where lots of 
+configurations and suchlikes are stored. Access it using regedit, which can be 
+found at c:\windows\regedit.exe). Here are the keys that may store this 
+information:</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>username 
+locations:</FONT></FONT> <BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+\hkey+local_machine\software\microsoft\windowsnt\currentversion\winlogon\</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+...\system\controlset001\services\bh\parameters</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+...\controlset002\"</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+...\curentcontrolset\"</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+...\services\gophersvc\parameters\anonymouseusername</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+...\logsqlusername</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+...\msftpsvc\parameters\anonymoususername</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+...\logsqlusername</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+...\w3svc\parameters\anonymoususername</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+...\logsqlusername</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+password locations:</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+hkey_local_machine\system\controlset001\services\gophersvc\parameters</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+...\controlset002\"</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+...\curentcontrolset\"</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+...\msftpsvc\parameters</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT 
+size=-1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+...\w3svc\parameters\</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>Ohh, wait! Here's 
+another hot tip (I did a little cutting):</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>...</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>From:</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Vortex 
+&lt;Vortex@francimel.com&gt;</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>To:</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>&nbsp;&nbsp;&nbsp;&nbsp; 
+barakirs@netvision.net.il</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>...</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>BTW , I 've got someting to 
+had to the Byte Me page , about the story of the</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>man who have fall in the 
+toilet.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>If you unplug the 
+hard drive , switch on the computer , you can have acess to</FONT></FONT> 
+<BR><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>the Bios , cause it 
+give a stupid "checksum error" , which reset the BIOS to</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>default parameters. So , there 
+is no password. It worked on my computer with a</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>Award Modular Bios v4.51 ,to 
+be exact.</FONT></FONT> 
+<P><FONT face="Arial, Helvetica, sans-serif"><FONT size=-1>And then , you switch 
+off computer , re plug hard drive , et voilà.</FONT></FONT> <BR><FONT 
+face="Arial, Helvetica, sans-serif"><FONT size=-1>...</FONT></FONT> <BR><BR><A 
+href="http://blacksun.box.sk/byteme1.html#Top">Top</A> </P></LI></BODY></HTML>

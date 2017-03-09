@@ -1,0 +1,42 @@
+/------------------------------------------------------------\
+|Titolo: The Winmodems Mini-tutorial                         |
+|Autore: R a v e n - http://blacksun.box.sk                  |
+|Tradotto da: MightyInquisitor - mightyinquisitor@mailme.org |
+\------------------------------------------------------------/
+
+
+Prima di tutto, che cos'e' un modem? L'acronimo modem sta a indicare il termine tecnico
+modulatore/demodulatore.
+Per dirla in poche parole, un modem codifica i segnali digitali che il tuo computer produce,
+in segnali che possono essere trasferiti attraverso la linea telefonica (se e' un modem di
+tipo cable o qualche altro tipo di modem, esso codifichera' il segnale del computer in
+qualsiasi segnale che puo' essere trasferito attraverso la linea di comunicazione che e'
+abilitata a eseguire la comunicazione), quindi riceve di ritorno dei segnali del telefono
+che traduce in bits e in bytes che il tuo computer riconosce e legge.
+Nota: certo, il tuo modem fa piu' di questo. Egli effettua anche la connessione con la linea
+telefonica.
+Questo complesso processo di modulazione (convertire i segnali del computer in segnali tele-
+fonici) e demodulazione (duh... l'opposto di modulazione. Convertire i segnali telefonici in
+segnali del computer) richiede alcuni programmi [software], e certamente, un computer sul
+quale eseguirli.
+Quindi il tuo modem attualmente contiene un piccolo processore [chip] che esegue il processo
+di modulazione e demodulazione.
+Quindi cos'e' un Winmodem? Un Winmodem e' un modem che non fa processi di modulazione e di
+demodulazione. Invece, li fa eseguire al computer (questo e' chiamato "software flow
+control" [il controllo e' gestito dal programma], invece di "hardware flow control" [il
+controllo e' gestito dalle periferiche (hardware)] nei normali modem).
+Questo modem e' fornito con il software necessario al computer per eseguire la conversione.
+Allora perche' sono cosi' fastidiosi? Perche':
+a) Questo processo di conversione richiede alcune cose [resources] dal tuo computer, come la
+memoria [ram] e il temporizzatore del processore attivo [CPU time].
+b) Se il tuo computer va in crash per qualche ragione [non c'e' da meravigliarsi con
+winzoz], potresti trovarti disconnesso all'istante.
+c) Non funzionano su tutti i sistemi Unix. Perche'? Semplicemente perche' non c'è nessun
+software per Winmodem utilizzabile sotto Unix.
+Credo che il rivenditore non si sia preoccupato di farli.
+Quindi perche' una persona dovrebbe voler comprare un Winmodem?
+Semplicemente perche' costano meno (spero che riesci a capire il perche' a questo punto).
+Ultima dritta: Puoi connetterti ora da Linux con un WinModem! Dai un'occhiata su
+http://www.linuxdoc.org/HOWTO/Winmodems-and-Linux-HOWTO.html per maggiori informazioni!
+Grazie a Striker-Man per avermelo fatto notare.
+

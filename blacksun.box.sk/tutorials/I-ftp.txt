@@ -1,0 +1,226 @@
+The FTP Tutorial / scritto per te chiaramente , R a v e n <http://blacksun.box.sk> 
+version 2.0, 27/6/99 
+
+
+Nota: ogni volta che vedi qualcosa come questo: blah(1) significa che se non capisci il significato della parola blah c'è una spiegazione di essa proprio per te, situata nell'angolo dei newbies nella sezione 1.
+Nota 2: Se stai avendo difficoltà a leggere questa pagina poichè devi scollare a destra ogni volta che c'è una linea lunga, ciò è probabilmente perchè non stai usando il "word wrapping" (a capo automatico). La maggior parte degli editor di testo UNIX e gli editors avanzati di windows (e alcuni meno avanzati come il wordpad) fanno questo automaticamente. Per fare il word wrapping su microsoft notepad, semplicemente vai nel menu "modifica" e clicca su "A capo automatico".
+
+Note dell'autore
+Questo file è fondamentalmente inteso per i newbies, ma anche i guru possono trarne beneficio da esso (leggi ogni cosa, anche l'angolo newbies. Potresti giungere a qualcosa che hai mancato quando hai iniziato a studiare). Il prossimo tutorial sarà principalmente per i guru, così sosteneteci. Se hai qualsiasi commenti o domande riguardanti questo tutorial (niente flames(11) o spam per favore) mandatemi un email barakirs@netvision.net.il Visitate blacksun.box.sk per altri tutorial, libri su hacking/programmazione/unix gratis e molto altro.
+
+Disclaimer
+Noi non incoraggiamo nessun tipo di attività illegale. Se tu credi che infrangere la legge sia un buon sistema per impressionare qualcuno, per favore ferma la lettura adesso e cresci. Non c'è niente di impressionante o fico nell'essere un criminale. (forse... =)
+
+Contenuti
+----Cos'è FTP e per cosa è buono?----
+*Per cosa sta l'acronimo FTP?
+*Cosa posso fare con FTP comunque?
+----Comandi FTP----
+*Come usare FTP con i comandi puri
+*Come usare Ftp con una GUI (interfaccia grafica utente)/ client(5) di testo
+----FTP hacking----
+*Trovare informazioni sul tuo bersaglio e trovare buchi nella sicurezza usando quelle informazioni
+*Esempio di buchi legati alla sicurezza di FTP
+----L'angolo dello stupido bug----
+*Un bug d' "elite"
+----L'angolo dei newbies----
+*Cos'è un protocollo
+*Cos'è una porta 
+*Cos'è un sito mirror
+*Cos'è un path (path completo + path relativo)
+*Cosa sono un programma client e un programma server
+*Come trovare informazioni circa hosts remoti
+*Cos'è un daemon
+*Cos'è il root
+*Cos'è il core dump
+*Cos'è un attacco DoS
+*Cos'è DUN
+*Cos'è un ISP
+*Cos'è il flaming
+----Bibliografia----
+
+----Cos'è FTP e per cosa è buono?----
+La parola FTP (vedi le note a piede sotto) sta per File Transfer Protocol(1).
+I servers FTP sia di caricare (mandare un file al server) che di scaricare (recuperare un file dal server) files dal server con grande facilità (se tu hai i permessi per farlo). Tu navighi attraverso un sito FTP remoto allo stesso modo con cui tu navighi nei directory e nei file del tuo computer (naturalmente non hai accesso in lettura e/o scrittura a ogni file sul sistema, e alcuni file non li puoi proprio vedere).
+
+----Comandi FTP----
+I seguenti sono alcuni comandi base per FTP. Per comunicare con un daemon(7) FTP, connettiti alla porta(2) 21 e usa i seguenti comandi (vedi la nota a piedi 2 sotto) per comunicare con il server FTP:
+* cd : cambia il directory (sul server)
+* lcd : cambia il directory locale (quando mandi un file, il path(4) del file specificato sarà il path che hai specificato con lcd)
+* dir / ls : listato dei files
+* binary : cambia il modo di trasferimento in binario
+* get : recupera un file 
+* mget : recupera molti files
+* put : manda un file 
+* mput : manda molti files
+* pwd  : stampa il directory di lavoro sul server
+
+Note a piede
+
+1)Per migliaia di acronimi riguardanti il computer e abbreviazioni dirigetevi su blacksun.box.sk e scaricate il file chiamato acros.txt dalla pagina projects.
+
+2)Se non ti piace digitare stupidi comandi, ci sono un sacco di clients(5) FTP che faranno tutto il lavoro per te, ma fortunatamente alcuni ti mostreranno tutti i comandi che essi usano così che tu sarai capace di impararne di nuovi.
+Puoi scaricarne per ogni sistema operativo da TUCOWS. semplicemente andando al sito mirror(3) di tucows più vicino o direttamente su www.tucows.com
+
+----FTP hacking----
+Poichè ci sono così tanti buchi per l'FTP per così tanti programmi server FTP e così tanti sistemi operativi, io ho deciso che il modo migliore è semplicemente come spiegarti come trovare da solo informazioni circa i buchi nella sicurezza.
+Ti introdurrò anche alcuni interessanti buchi nella sicurezza di FTP nella fine di questa sezione.
+Per trovare exploit per FTP, prova cercando nei seguenti siti web (o partecipa alla mailing list di BugTraq su www.securityfocus.com):
+* CERT (Computer Emergency Response Team) - <http://cert.org/>
+* X-Force Search (simplest) - <http://www.iss.net/cgi-bin/xforce/xforce_index.pl>
+* Packet Storm - packetstorm.genocide2600.com <http://blacksun.box.sk/packetstorm.genocide2600.com>
+* BugTraq Archives - <http://www.securityfocus.com/level2/bottom.html?go=search>
+* Fyodor's Exploit World - <http://www.insecure.org/sploits.html>
+* Spikeman's Denial Of Service Website (per attacchi DoS(9) contro servers FTP) - <http://www.genocide2600.com/~spikeman/>
+* RootShell - <http://www.rootshell.com/>
+* Slashdot - <http://www.slashdot.org/>
+* Data - <http://www.hideaway.net/data.html>
+(per favore riportate tutti i link morti a barakis@netvision.net.il)
+Nota: uno potrebbe pensare che i siti sopra sono considerati illegali, poichè forniscono spiegazioni su i buchi nella sicurezza e su come sfruttarli.
+Bene, dimenticatelo. Queste cose sono chiamate "advisories" e ti permettono di trovare buchi sul tuo proprio pc e risolverli. Bene sia che tu usi queste informazioni per la tua sicurezza o per hackerare è una tua scelta. E' la differenza tra legittimo e illegale.
+Dopo che sei andato su uno dei seguenti siti per la ricerca (io raccomando l'archivio di BugTraq) cerca la parola chiave che vuoi. Per esempio: hai scoperto(6) che il tuo bersaglio sta usando questo OS con questo server FTP e questo programma webserver ecc.. . Prova a combinare tutti questi pezzi di informazioni e sono sicuro che troverai il buco che andrà meglio per te. Puoi anche provare a cercare buchi sul tuo proprio computer. Parlando di buchi, spiegheremo molti buchi nella sicurezza sul prossimo tutorial su sendmail. Adesso, alcuni buchi selezionati per FTP.
+
+----Buchi selezionati per FTP----
+I seguenti buchi per FTP non sono nuovi o straordinari o incredibilmente fantastici o ogni sorta di quel genere. Sono solo buoni per imparare. Ho preso alcuni interessanti buchi per FTP ed ho scritto una piccola spiegazione su di loro solo per dare l'inizio ai newbies.
+
+Nota: i siti dai quali ho preso queste informazioni non sono "siti malvagi sull'hacking". Queste informazioni sono chiamate advisories e sono destinate alle persone che vogliono risolvere i bugs sui loro sistemi. Sia che tu le usi per quello scopo o per altri non sono affari nostri.
+
+Alcuni daemon FTP permettono un prematuro comando PASV, che può causare il crash di alcuni daemon FTP per core dump. I core dumps di FTP possono essere usati per il recupero delle password criptate, aggirando ogni schema di password shadow. Non si sa esattamente quali servers sono immuni a questo e quali non lo sono, e il solo lavoro adesso è trovare un nuovo programma server FTP.
+Vedi anche http://www.genocide2600.com/~spikeman/bisonware3.html per un attacco DoS(10) contro BisonWare FTP server 3.5 simile a questo buco.
+attacco FTP Bounce (troppo lungo, vedi http://www.netspace.org/cgi-bin/wa?A2=ind9507B&L=bugtraq&P=R1425 (da BugTraq))
+(citazioni in parte da BugTraq) Impatto: ognuno dall'esterno può sospendere il server FTP sul tuo pc. E se sei sotto win 3.1 il sistema crasherà.
+Programma: WinQVT/NET
+Versione: Tutte le versioni. 16 e 32 bits
+Soluzione: Non usarlo o upgradarlo
+Exploit: semplicemente mandando un OOB (Out Of Band) alla porta 21,
+Exploit per i dummies: prendi un qualsiasi winnuke, avvialo, e quando trovi un "139" cambialo in un "21".
+Ok, lo so che è stupido... :P. Ma qualcuno potrebbe averne bisogno.. chi sa...
+Nota: una versione con patch di win NT 4.0 non è vulnerabile a questo eseguendo il server FTP della MS. Io non ho avuto possibilità di provarlo su un server senza patch, ma verificai la porta FTP prima che fosse riportato il problema dell'OOB e ciò non causò un crash.
+Io sospetterei che questo potrebbe essere un problema di dos/win in generale, e potrebbe non essere specifico al package WinQVT.
+Spero che questo ti aiuti a imparare come trovare un buco. Ci saranno molti più esempi nel tutorial di sendmail.
+
+----L'angolo degli stupidi bug----
+Ho trovato questo su un sito "elite" fatto da un mucchio di hackers d'"elite".
+Essi dicevano che per "hackerare un FTP" devi connetterti a esso e mandare i seguenti comandi:
+quote user ftp
+quote cwd ~root
+quote pass ftp
+Fondamentalmente, cosa i così chiamati hacker stavano provando a fare qui è immettere un username per entrare nel sistema, cambiando l'user in root(7) e poi entrando una password per l'username.
+Questo lavora solo sui server FTP VERAMENTE configurati male (il che l'autore lo menziona dicendo "questo non funziona su tutti i server FTP" Bene, ho una notizia per voi - questo non funziona. Lezione. A meno che tu non stia parlando di alcuni bambini di 5 anni che hanno un computer e cliccando su alcuni bottoni accidentalmente configurano un server FTP...).
+
+APPENDICE A: il comando SYST
+Digitando il comando SyST mentre sei connesso a un server FTP spesso vengono rivelate informazioni preziose circa il server stesso.
+Accedi a un server ftp in qualche modo (usando un username e una password che conosci oppure usando il login anonimo - login: anonymous / password: tua_email@tuo_isp.it . Puoi anche immettere l'indirizzo email di qualcun altro, il server non verifica l'indirizzo che hai mandato o ogni cosa) e poi digita SYST.
+
+----L'angolo dei newbies----
+1. Protocol - un insieme di regole usate dai computer per interagire tra di loro tramite un network di simili (come internet o alcuni network locali) essi hanno bisogno di conoscere un protocollo comune e ogni computer deve presupporre che gli altri lo conoscono e lo usano.
+
+
+2. Porta - (per una spiegazione più tecnica di cosa sono le porte, guarda la fine di questa spiegazione) le porte 
+sono come buchi che permettono alle cose (informazioni, in questo caso) di entrare. Ci sono porte fisiche e porte 
+software sul tuo computer . Le porte fisiche sono quegli slot sul retro del computer, del monitor ecc.. . Le porte 
+software sono usate quando ci si connette a un altro computer.
+Per esempio : ho appena comprato un computer e voglio convertirlo in un web server  (voglio permettere alle 
+persone di accedere a selezionate pagine web, immagini, cgi e java script o applet, programmi ecc.. che sono 
+localizzati sul mio computer (sul MIO computer non su squallidi webhost gratuiti come Geocities) e voglio che le 
+persone facciano ciò utilizzando nient'altro che un browser). In ordine di quello che accade, io devo installare 
+un programma webserver.
+Il programma webserver apre una porta sul mio computer chiamata porta 80 (questo numero può essere cambiato ma è 
+il numero di default). Poi aspetta per connessioni in arrivo su quella porta. Quando qualcuno naviga il mio sito 
+col suo browser (Netscape, Lynx, internet explorer ecc..) si cornette alla porta 80 del mio computer e manda dei 
+comandi HTTP che il mio programma webserver può capire.
+Il mio programma webserver rapidamente prende i dati che arrivano e li manda indietro in una porta che il browser 
+apre sul computer del navigatore. Il browser attenderà su quella porta e aspetterà le informazioni (la pagina html, le immagini, ecc..) che giungono attraverso essa. 
+Nota circa le porte non di default: se decidi di mettere, diciamo, un webserver su una porta non di default, sarà 
+difficile per le persone accedervi. Se tu decidi di metterlo sulla porta… huummm… 8000 invece di 80, le persone 
+dovranno digitare il tuo IP o il tuo hostname e aggiungere :8000 alla fine. Per esempio 143.241.122.1:8000. 
+Semplicemente digitando 143.241.122.1 nel capo per l'URL del tuo browser è lo stesso che digitare 143.241.122.1:80, così è meglio mettere un webserver sulla porta 80 (a meno che tu vuoi che solo uno specifico gruppo di persone abbia quel numero per accedere al webserver, ma un tale blocco può essere facilmente crackato usando un portscanner(12)).
+Ci sono differenti porte per differenti servizi(3) così le informazioni non saranno mischiate. Immagina che il tuo
+ browser prenda dati che si suppone debba prendere il tuo client ftp!
+Io spero tu abbia l'idea di cos'è una porta.
+Allora, ci sono tre tipi di porte: le porte ben conosciute, quelle registrate e quelle dinamiche/private.
+Le porte ben conosciute sono quelle dalla 0 alla 1023,. Queste sono porte di default per diversi servizi. Per esempio: la porta di default per i webserver è 80. Altrimenti come potrebbe conoscere il tuo browser a quale porta deve accedere?
+Allora, le porte registrate sono quelle dalla 1024 alla 49151. Queste porte sono riservate per alcuni programmi. Per esempio: ICQ (www.icq.com) riserva alcune porte per ascoltare vari eventi che arrivano (messaggi, trasferimenti di file, ecc..) attraverso esso. Le porte dinamiche/private sono quelle dalla 49152 alla 65535, e possono essere usate da ognuno per ogni scopo.
+
+3. Sito mirror - Un sito che è un esatta copia del sito originale che è ospitato da un server diverso. Siti mirror possono essere usati per aumentare la velocità di caricamenti/scaricamenti. Per esempio: invece di caricare/scaricare da/al server principale di tucows, situato da qualche parte lontana dalla mia casa, io posso semplicemente farlo da uno dei loro mirrors israeliani (siti mirror situati in Israele, la mia nazione) e così il caricamento/scaricamento sarà più veloce. 
+
+4. Path - esempio UNIX: se un file è situato in etc/passwd, il path del file sarà /etc. 
+Esempio dos/win: se un file è situato in c:\windows\win.exe, il path del file sarà c:\windows.
+Ci sono due tipi di path: un path completo e un path relativo. 
+Path completo su dos/win: se il file è situato su c:\programmi\quickviev plus\ allora questo è il path completo del file.
+Path completo su UNIX: se il file è situato in /usr/local/sbin allora questo è il path completo del file.
+Path relativo su dos/win: se il directory corrente (il directory in cui sei in questo momento) è c:\windows e il file bersaglio è situato in c:\windows\temp allora il path relativo di questo file è temp.
+Path relativa su UNIX: se il directory corrente è /usr/nobody e il file è situato in /usr/nobody/public_htm/cgi-bin allora il path relativo è public_html/cgi-bin.
+
+5. Programmi client/server - Un programma client è un programma che usa una risorsa offerta da un altro programma/computer. 
+Un programma server è un programma che fornisce risorse ai programmi client. 
+Esempio: Client=netscape navigator. Server=Apache version 1.6.6 (un webserver, significa un programma che permette alle persone che usano un browser internet di scaricare pagine web specifiche, figure, files, ecc.. dal computer sul quale è installato).
+
+6. Come trovare informazioni su host remoti - il modo migliore di trovare informazioni è anche esaminare i daemon(7) banners. I daemon banners sono piccoli pezzi di informazione che alcuni daemons restituiscono quando ci si connette a loro allo scopo di far sapere alla macchina remota (quella che si connette al daemon) come interagire meglio con loro. Prova a connetterti alla porta 80 (webserver) e a mandare alcuni comandi come get e poi a guardare il banner. Puoi anche provare con sendmail sulla porta 25, telnet sulla 23, FTP sulla 21 o qualunque puoi proporre.
+
+7. Daemon - un programma che aspetta connessioni in arrivo dalle macchine remote su una porta(2) specifica e interagisce con loro.
+
+8. Root - anche detto superuser, poichè i suoi permessi sono senza limiti. Il suo UID (numero User ID, un numero di identificazione che ha un utente su un sistema UNIX) e il GID (Group ID. Puoi creare un gruppo e dargli alcuni permessi. Per esempio: ognuno dal dipartimento di contabilità può leggere ed eseguire tutti i files in questi directory, ecc..) sono sempre 0 (eccetto per casi veramente alterati). Una volta che sei root puoi fare praticamente ogni cosa sul sistema.
+
+9. Core Dump - quando un programma crasha scarica tutti i core (tutte le informazioni date che non sono salvate su disco, significa tutte le cose del programma che sono sul chip della ram) in un file temporaneo.
+    
+
+10. DoS - Denial Of Service. Un nuke in linguaggio dummie. Un attacco DoS è ogni genere di attacco che causa il blocco di alcuni/tutti i servizi di un computer bersaglio.
+Per esempio: Winnuke (anche conosciuto come OOB), il più semplice DoS al mondo.
+(Preso dal sito dei DoS di Spikeman) Questo programma DoS colpisce i clients di windows mandando un messaggio d'eccezione "out of band" alla porta 139, che non conosce come affrontarlo. Questa è una porta standard di ingresso di windows. Utenti di win 3.11, win95 e win NT sono vulnerabili a questo attacco. Questo programma è principalmente un programma seccatore, ma sta circolando molto in internet adesso. E' diventato una preoccupazione nelle chatrooms e su IRC. Usando il tuo indirizzo IP e inviando sulla porta 139 dati OOB, utenti maliziosi possono disconnetterti dalla rete, spesso lasciandoti con poche risorse e lo schermo tinto di blu. Qualcuno di voi potrebbe già esserne stato vittima. Se questo avviene su win95, vedrai un errore fatale di windows simile al seguente:
+Fatal exception 0E at 0028: in VxD MSTCP(01) + 000041AE.
+This was called from 0028: in VxD NDIS(01) + 00000D7C.
+Rebooting the comp should return it to normal state.
+
+Patches ("fissaggi") For WinNuke (OOB) 
+-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=
+Informazioni addizionali su WinNuke
+http://support.microsoft.com/support/kb/articles/Q168/7/47.asp 
+Windows 95 Patches
+http://support.microsoft.com/download/support/mslfiles/Vipup11.exe
+http://support.microsoft.com/download/support/mslfiles/Vipup20.exe (for Winsock 2.0*)
+http://www.theargon.com/defense/nuke/index.html
+Leggere le note riferite alle pacthes per il 95 prima di installarlo. 
+Quale versione di Winsok hai installata sul tuo pc?
+http://premium.microsoft.com/support/kb/articles/Q177/7/19.asp
+http://www.theargon.com/defense/nuke/index.html
+Windows NT 4.0 Patch
+http://support.microsoft.com/support/kb/articles/Q143/4/78.asp
+http://www.theargon.com/defense/nuke/index.html
+Leggere le note riferite alle pacthes per l' NT prima di installarlo. 
+Maggiori informazioni sugli attacchi DoS possono essere trovati in: www.genocide2600.com/~spikeman/main.html
+
+* In realtà non so se questa patch lavorerà su una versione più nuova di Winsock. Perciò io vorrei raccomandarti di downgradarti prima alla versione 1.1 di Winsock (quella allegata a win95) andando nel pannello di controllo -> Network -> e rimovendo l'adattatore TCP/IP e Dial Up e poi ri-aggiungendolo cliccando add -> scegli il protocollo e nello spazio delle compagnie scegli Microsoft. Poi cerca per un opzione chiamata TCP/IP e fai doppio click su di essa. Lo stesso per DUN (Dial Up Networking), fai lo stesso ma scegli adattatore invece di protocollo.
+Dopo che hai finito il downgrading ri-upgrada winsock 2.0, applica la patch (vipup20.exe) e poi upgrada alla nuova versione di winsock.
+
+11. Flames - l'azione di bruciare qualcuno (mandare mail furiose a riguardo delle cose che ha fatto, le opinioni che ha, ecc.. a colui con cui non sei daccordo).
+
+
+12. DUN - Dial Up Adapter - Principalmente è il programma windows per chiamare il tuo ISP(13).
+
+13. ISP - Internet Service Provider. Una compagnia che fornisce servizi internet, come una connessione a internet, il web hosting, servizi email, ecc..
+
+14. Distro - Distribuzione - Poichè UNIX non è un brevetto registrato, un marchio registrato, protetto da copyright o simili, ci sono molte distribuzioni (pacchetti software) di esso. Ogni distro ha i suoi propri vantaggi e svantaggi (ad esempio, la redhat è la migliore per i principianti).
+
+
+Altri tutorials 
+Overclocking.
+RM Networks Hacking.
+Ad and Spam Blocking.
+Sendmail (creare fake email e hackerare i server che eseguono Sendmail).
+prendili tutti su blacksun.box.sk <http://blacksun.box.sk>, o iscriviti alla mailing list su http://blacksun.box.sk/mlist.htm 
+
+Bibliografia 
+BugTraq Archives - <http://www.securityfocus.com/level2/bottom.html?go=search>
+RootShell - <http://www.rootshell.com/>
+Fyodor's Exploit World - <http://www.insecure.org/sploits.html>
+Packet Storm - <http://packetstorm.harvard.edu/>
+X-Force Search (simplest) - <http://www.iss.net/cgi-bin/xforce/xforce_index.pl>
+Slashdot - <http://www.slashdot.org/>
+Spikeman's Denial Of Service Website - <http://www.genocide2600.com/~spikeman/>
+PC Magazine - <http://www.pcmagazine.com/> 
+
+
+==========================================================================       
+Questa guida è stata dal M3xican ( m3xican@napolihak.cjb.net ), se considerate la traduzione scadente o vi volete 
+cimentare nell'impresa potete scaricare la versione originale in americano sempre su <http://napolihak.cjb.net>.

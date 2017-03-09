@@ -1,0 +1,201 @@
+Como usar o John the Ripper para crackear senhas UNIX
+=======================================================
+By Sniper_wolf_
+=====================================================
+Tradução do tutorial de RaveN e Caboom (http://blacksun.box.sk)
+=====================================================================
+
+1.0 - Começando
+=====================
+	Então você é um iniciante em cracking de senhas (como eu fui) e você provavelmente rodou o John the Ripper e conseguiu... nada. Então a prinmeira coisa que você pensou foi 'Meu Deus, isso deve ser difícil, e eu sou um iniciante'. Esqueca!!! Você é sempre um iniciante, nós todos somos... no mundo do cracking de senhas (e qualquer outro mundo), você sempre tem algo a aprender. Às vezes, mesmo que você seja experiente em cracking, você não vai conseguir crackear uma senha ou conseguir sua própria senha. Esse é um tutorial puramente técnico, e apenas vai te dar a receita para o cracking, porque cada senha exige uma técnica especial...
+	Ok, então uma boa maneira de se chegar a algum lugar é começar a ir para algum lugar... O que você está prestes a aprender é como crackear os arquivos de senha *nix (Unix/Linux/etc.). Isso não quer dizer que você tenha que ter um SO *nix instalado em sua máquina. Isso quer dizer que você vai ter que parar de clicar sua telinha... 'O que esse idiota está tentando dizer?', você provavelmente está se perguntando. O que esse idiota está tentando dizer é que o John é um programa para DOS (há também uma versaõ para linux, mas a maioria das pessoas lendo esse tutoial devem estar rodando o windows... Eu vou tentar ir através de exemplos nesse texto, mas não seria uma má idéia se você lesse os textos que vêm com o John. Eu mesmo arendi tudo lá, mas esse é o jeito difícil, e você está procurando o jeito fácil, certo? Certo.
+	Primeiro, não seria uma má idéia se você fizesse o download do John the ripper.. se você não tiver pode achá-lo em :
+            http://members.xoom.com/o_enviado/filez/john.zip
+	A segunda coisa de que você vai precisar é uma GRAAAANDE quantidade de dicionários de senhas (eu já vou explicar o que é isto). Alguns podem ser achados em :
+	1) http://packetstorm.securify.com
+	2) http://www.theargon.com
+	3) http://www.hackersclub.com
+
+2.0 - Como se parece uma senha *nix
+========================================
+	Então agora você tem o John, já carregou aquele GRAAANDE dicionário de senhas e pensa que pode crackear qualquer senha...  Se você planeja viver 1000000000 de anos, isso não seria um problema, mas você só tem mais ou menos 80 na melhor das expectativas... (a menos, é claro, que os cientistas achem um jeito de... ah, deixa pra lá...)
+	Agora, a primeira coisa é ter certeza de que o seu arquivo de senhas se parece com um arquivo de senhas *nix (estou falando do arquivo /etc/passwd ).
+	Vamos ver como se paracem as senhas *nix : 
+
+owner:Ejrt3EJUnh5Ms:510:102:Algum texto:/home/subdir/owner:/bin/bash
+
+	As partes importantes são o nome do usuário e a senha criptografada (a primeira e a segunda parte). As linhas são divididas em sete partes pelos símbolos :
+
+	owner:Ejrt3EJUnh5Ms
+
+	Aqui owner é o usuário e a "outra coisa" é a senha critografada (criptografada no sistema altered DES (Data Encryption Standard)). Na outra parte você pode colocar qualquer coisa que se pareça com isso, pois o que importa é a estrutura, para que o John reconheça que é uma senha *nix. Na verdade a outra parte
+
+	:510:102:Algum texto:/home/subdir/owner:/bin/bash
+
+	contém informações sobre o usuário, seu diretório home, etc'... Alguma vezes você vai conseguir senhas que somente têm a primeira e segunda parte, principalmente se você a consegiu de algum webboard.
+
+	owner:Ejrt3EJUnh5Ms
+
+	Você vai ter então que adicionar a outra parte, para fazê-la parecer-se com uma senha *nix. Você pode copiar/colar de outra senha, você pode até usar
+
+	:510:102:His name:/home/subdir/owner:/bin/bash
+
+    O que você tem agora deve se parecer com
+
+	owner:Ejrt3EJUnh5Ms:510:102:His name:/home/subdir/owner:/bin/bash
+
+    Ora, você pode até usar 
+
+	owner:Ejrt3EJUnh5Ms:a:a:a:a:a
+
+    Não vai fazer diferença para o John.
+
+3.0 - Nós estamos chegando em algum lugar... lugar nemhum
+=====================================================================
+    Agora você está pronto para crackear. Digite :
+	
+	john -w:dic.lst arquivo.senha
+
+	Onde dic.lst é o seu dicionário de senhas, e arquivo.senha é o aquivo de texto onde você gravou a suas senhas. Se você usar o John no exemplo que eu dei, você deve conseguir crackea-la, já que é uma senha muito fraca. Você ficaria surpreso ao ver como as pessoas usam senhas fracas, como seus nomes, nome do cachorro, aou até o nome do usuário (Exemplo: user = João; senha = João)
+	Dica : Não seja estúpido! Use senhas forte como :
+  p4sswr!@
+  p!s$w11s
+	com quantos caracteres você puder lembrar. A dica é usar caracteres especiais e números, já que essas senhas são muito mais difíceis de crackear.
+	A outra dica é usar senhas longas, 8 caracteres às vezes não é bastante... depende da máquina do cracker...em dual alpha não é bastante... em outras palavras... mais de 10 caracteres é bom, mais ainda não machucariam (como 16...). À propósito, *nix mais velhos têm uma um tamanho de senha fixado em 8 caracteres... esse é o velho DES que usa uma senha de 64-bits... agora há senhas de 128 bits, e alguns pervertidos usam ainda mais, então há ainda mais diversão :)
+	
+	john -w:dic.lst arquivo.senha
+
+	Espere! Espere! Espere! O que eu estou fazendo aqui? Preste bastante atenção : a criptografia DES que o *nix usa NÃO pode ser revertida. Algumas criptografias podemser quebradas usando-se um algoritmo, algumas vezes simples, algumas vezes complicado... (no século 3 AC César enviava cartas criptografadas que usavam uma fo´rmula de "andar três casas", pela qual d significa a, e significa b, etc... Naquela época, esse algoritmo era o bastante, hoje em dia não é...). De qualquer jeito, o algoritmo altered DES que o *nix usa para suas senhas criptografadas não pode ser revertido. Por quê? Por é um algoritmo baseado em chaves. O algoritmo de criptografia usa um monte de letras (maiúsculas e minúsculas) números e símbolos. Então, em outras palavras, você precisa dessa chave para rodar o algoritmo, o qual você não pode ter, já que esse algoritmo é a senha! Veja, quando o usuário escolhe uma senha, o sistema gera uma senha criptografada para ele, chamada hash (é o que você vê quando consegue uma arquivo de senhas). Se você tentar descriptografar a senha usando o algoritmo DES, você vai conseguir uma string nula.
+	Então, o que o John faz? Fácil. Ele tenta recriar o processo pegando as senhas no dicionário de senhas, e as usando como chaves para o algoritmo DES. Finalmente, ele compara o resultado com as senhas do arquivo de senhas que você forneceu. Se as duas strnigs forem iguais, Bingo! A senha é sua.
+	Se o primeiro processo não funcionar, o prócimo passo de ve ser o seginte :
+     
+   john -w:dic.lst -rules arquivo.senha
+
+	Isso vai com que o John não somente leia o dicionário de senhas, assim como use algumas modificações das palavras que estão no dicionário (como adicionar um número ao final da senha - fool, fool1, fool2, etc...) Esse método vai demorar mais com dicionários grandes, mas pode trazer resultados melhores...Você poderia começar com um dicionário pequeno, e depois usar uma grande se o primeiro não funcionar...
+	Algumas vezes as pessoas não são estúpidas ao escolher as senhas, e regras básicas ainda não são o bastante... arghh. Como você pode ver, à medida que progredimos, é preciso mais e mais tempo para seu CPU crackear uma senha. Agora você pode deixar o computador ligado e ir dormir...
+	Se você quiser ainda mais possibilidades de senhas, tente :
+     
+     john -i arquivo.senha
+
+	Esse é o cracking incremental, não é uma boa palavra para descrevê-lo, mas... Ok, o que isso faz? Ele usa os parâmetros padrão do modo incremental, definidos em john.ini . O que isso significa? Lembra-se de -rules? Isso é como -rules, mais é mais poderoso, e leva MUIIIIIITO mais tempo...
+
+4.0 - O que temos agora? (dicionários vs. força bruta)
+===========================================================
+	Você pode ver que em todos os casos você usa um cracking de dicionários... mas 'por que não rodar o john num modo em que ele tentasse todas as senhas possíveis, números, letras, etc'.. Seria mais eficiente, certo?' ERRADO!
+	Esse método é chamado 'força-bruta', (basicamente, o ataque de dicionário também é força-bruta, mas usa-se esse termo para esse tipo específico de ataque). Quais as diferenças? Primeiro e mais importante : com o dicionário você navega por palavras que são possíveis senhas e suas modificações, enquanto pela força-bruta você tenta TODAS as combinações possíveis. Isso significa que você tem : 
+
+    comb = char ^ let
+
+	Onde : comb - números de combinações possíveis
+               char - número de caracteres
+               let - número de letras
+
+	No caso de você estar lidando com os 95 caracteres padrão do John, uma senha de 6 letras poderia ter 735.091.890.625 possíveis combinações! UAU! Sim, isso é útil para senhas como 2405v7, mas ainda assim...com os computadores de hoje em dia, eu apenas desistiria, a menos que eu tivesse acesso a um supercomputador de uma unviersidade, o que certamente ninguém me daria (certamente não de graça, e não para rodar um crackeador de senhas...)
+	Como você pode ver, levaria uma infinidade para cracekar uma senha. Claro, às vezes ataques de dicionários não são o bastante, mas o John tem um 'cérebro' bastante poderoso. O modo incremental do John vai usar todas as combinações possíveis de senhas entre 0 e oito caracteres (sim, às vezes uma senha pode ter 0 cracteres), então o modo incremental é um tipo de 'força-bruta'...
+	Se você quiser usar todas as suas forças, digite :
+
+    john -i arquivo.senha
+
+	esse vai fazer o ataque básico de dicionánio primeiro, depois -rules, então -i
+
+5.0 - E se...?
+=====================
+	Às vezes você tem de desligar seu computador, não? E se você estiver crackeando uma senha que leve mais de 20 horas? Você pode parar o John com crtl+c e depois continuar, usando :
+    
+     john -restore
+
+	Se deu CPU der pau, ou se a luz acabar, você não pode continuar a sua sessão (às vezes)... Bem, isso é mal...
+	O John é modular, o que o faz o melhor crackeador por aí...Ele usa os modos descritos em john.ini (você se lembra do modo incremental? Ele usa as regas descritas em john.ini).
+	Aqui está um exemplo dos parâmetros padrão para -i :
+
+	# Incremental modes
+        [Incremental:All]
+        File = ~/all.chr
+        MinLen = 0
+        MaxLen = 8
+        CharCount = 95
+	
+	Então, o que nós temos aqui? 
+
+   [Incremental:All] - Isso significa que essas difinições são para o modo -i:all
+
+   File - nome do arquivo que tem os caracteres a serem usados no modo -i:all
+
+   MinLen - o tamanho mínimo da senha que o John vai tentar
+
+   MaxLen - o tamanho máximo da senha que o John vai tentar
+
+   CharCount - o número de cracteres usados pelo John nesse modo
+
+  Então, há diversos modos. Aqui alguns deles :
+
+Modos do John
+=======================
+	Você pode listar qualquer número de arquivos de senhas para o John, e também usar algum dos seguites modos : 
+
+   -single  == modo "single crack". Usa as regras definidas em [List.Rules:Single]
+
+   -wordfile:FILE == modo dicionário, lê as palavras de FILE
+
+   -stdin == modo dicionário, lê as palavras de stdin
+
+   -rules == habilita as regras para o ataque de dicionário, como definido em [List.Rules:Wordlist]
+
+  -incremental[:MODE] == modo incremental, usando as definições de John.ini, seção [Incremental:MODE], ou [Incremental:All] (padrão)
+
+   -external:MODE == modo externo, usa as funções externas definidas em [List.External:MODE]
+
+  -stdout[:LENGTH] == não crackeia, imprime as palavras em stdout. Num ataque dicionário, a parte significante da senha é considerada LENGTH (ilimitado por padrão)
+
+  -restore[:FILE] == continua uma sessão de cracking interrompida, usando as informações de FILE (~/restore  - padrão)
+
+   -session:FILE == faz com que as informações da sessão sejam gravadas em FILE, ao inves de ~/restore. Isso é util para gravar informções sobre várias sessões, que podem ser continuadas com -restore[:FILE]
+
+   -status[:FILE] == Imprime as informções sobre uma sessão
+
+   -makechars:FILE  == faz um set de cracteres, sobrescrevendo FILE. Gera um charset, de acordo com as freqüências de ~/john.pot. O ~/john.pot inteiro vai ser usado a menos que você especifique alguns arquivos de senha. Você também pode usar a opção -external, juntamente com esta
+
+   -show == mostra as senhas crackeadas. Você deve especificar os arquivos de senhas.
+
+   -test == faz um teste
+
+   -users:[-]LOGIN|UID[,..] == Carrega somente esses usuários. Um - antes significa inversão, quer dizer, carrega todos os usuários que não estão listados.
+
+   -groups:[-]GID[,..] == Carrega somente esses grupos
+
+   -shells:[-]SHELL[,..] == carrega somente essas shells. Útil para carregar somente usuários com uma shell válida. Você pode omitir o path antes do nome da shell, então '-shells:csh' carrega tanto '/bin/csh' como '/usr/bin/csh', enquanto '-shells:/bin/csh' apenas carrega '/bin/csh'.
+
+   -format:NAME == Permite a você mudar o modo de detecção das senhas. Você pode usar essa opção ao crackear ou com '-test' . Modos suportados : DES, BSDI, MD5, BF, AFS, LM
+
+   -savemem:nivel == Salva memória (nos niveis de 1 a 3). Use para limitar a quantidade de momória que o John usa
+
+6.0 - Dicas
+====================
+	  I - Uma boa ordem para uma sessão é:
+
+      john -w:dicas.lst arquivo.senha
+        
+      john -w:dicas.lst -rules arquivo.senha
+        
+      john -w:dicas.lst arquivo.senha
+        
+      john -i:digits arquivo.senha
+        
+      john -i:all arquivo.senha 
+
+
+	   II - Se você tem um arquivo de senhas que se parece com 
+
+     owner:*:510:102:His name:/home/subdir/owner:/bin/bash
+
+	Então você tem um arquivo de senhas mascarado (shadowed). Vá até a página Byte-me em http://blacksun.box.sk para mais informação sobre isso
+
+	    III - Leia todos os papéis que vieram com o John, pois eles têm mais informações importantes, além de explicar o modo de usar as ferramentas que vêm com o John
+
+
+         That's all folks 
+
+           (lembre-se de visitar http://www.aspone.cjb.net) 
+	    
+
+		 

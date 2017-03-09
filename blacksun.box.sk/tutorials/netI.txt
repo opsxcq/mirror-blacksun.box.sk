@@ -1,0 +1,128 @@
+       *%*  _.|~~|._  | ~~~~)\~~~/  /~~~~~| |~~| /~~/  |~~~~~~~/ | ~~~~) *%*         
+       *%* |__    __| |  @ /  | |   | /~~~  |  |/  /   | |~~~~~  |  @ /  *%*      
+       *%*    |  |    | |\ \  | |   | |     |     <    | |_____  | |\ \  *%*       
+       *%*    |__|    |_| \_\ | |   | \____ |  |\  \   |  _____\ |_| \_\ *%*  
+        *%*%*%*%*%*%*%*%*%*%*/~ ~\  \_____/ |__| \__\  | |_____          *%*    
+                          *%*~~~~~  * TrickSoft.net *  |______/  *%*%*%*%*%*  
+                          *%*%*%*%*%*%*%*%*%*%*%*%*%*%**%*%*%*%*%*%*                                                  (Cadtrick@hotmail.com) - Date:June,01,2000
+----------------
+Contact Info:
+----------------
+Scritto da: TriÇker
+Tradotto da: Ramses
+(con alcune piccole modifiche di R a v e N)
+Email scrittore: Cadtrick@hotmail.com
+Email traduttore: ram5e5@freemail.it
+ICQ scrittore: 40884568
+ICQ traduttore: 39860665
+AIM: zTrickerz
+Web scrittore: http://tricksoft.net
+Web traduttore: http://evilzone.tsx.org
+----------------
+________________________________________________
+Titolo: IP ed informazione sulla porta usando Netstat
+------------------------------------------------
+Elenco dei contenuti:
+------------------------------------------------
+INTRODUZIONE
+I.Uso di netstat
+II.Trovare porte aperte
+III.SYN ed ACK
+IV.Usare netstat per ICQ e AIM
+V.Altri utilizzi
+VI.Strumenti ed utilità
+VII.Due segreti veloci
+Conclusioni
+------------------------------------------------
+------------------------------------------------
+------------------------------------------------
+Introduzione
+------------------------------------------------
+Ciao, grazie per esserti messo a leggere questo testo riguardante lìuso di netstat. Per favore, chiudi un occhio sulla punteggiatura o su tutti gli altri errori di grammatica. Questo teste è scritto in modo che un lettore medio possa capirlo. Non è complicato. Divertiti nella lettura e sentiti pure libero di scrivermi.
+------------------------------------------------
+I.Uso di netstat
+------------------------------------------------
+-  (per aprire netstat) - Per aprire [NETSTAT] devi fare ciò che segue: clicca sul pulsante [Start]--->quindi su [programs]--->cerca il [prompt di MS-DOS].
+Netstat è uno strumento molto utile e che può essere impiegato in parecchi modi. Personalmente uso netstat per ottenere indirizzi IP degli utenti con cui sto parlando in ICQ od AIM. Però puoi anche usare netstat per monitorare l'attività delle tue porte in relazione ad estranei che spediscono richieste syn (parte del TCP/IP a 3 handshake) oppure solo per monitorare quali porte sono in listening (ascolto) o quali in estabilished (hanno una connessione attiva). Dai uno sguardo qui sotto per vedere un frwquente tipo di risposta di netstat lanciato dal prompt c:\windows. 
+~~~~~~~~~~~~~~~~~~~~
+C:\WINDOWS>netstat
+
+Active Connections
+
+  Proto  Local Address          Foreign Address        State
+  TCP    pavilion:25872         WARLOCK:1045           ESTABLISHED
+  TCP    pavilion:25872         sy-as-09-112.free.net.au:3925  ESTABLISHED
+  TCP    pavilion:31580         WARLOCK:1046           ESTABLISHED
+  TCP    pavilion:2980          205.188.2.9:5190       ESTABLISHED
+  TCP    pavilion:3039          24.66.10.101.on.wave.home.com:1031  ESTABLISHED
+~~~~~~~~~~~~~~~~~~~
+Ora esaminiamo il suddetto esempio. Puoi notare la scritta [Proto] in alto a sinistra. Questo ti dice solo se il protocollo di connessione è TCP/UDP ecc... Successivamente, sulla destra puoi notare [Local address] (indirizzo locale), questo dice IP/nomehost:porta aperta. Ora, dalla destra puoi vedere ancora una volta [Foreign address] (indirizzo esterno) che ti darà l'IP/nomehost e porta nel formato IP:porta. E finalmente puoi vedere [State] (stato) che restituisce semplicemente lo stato della connessione. Questo può essere Estabilished se è connesso oppure in attesa di connessioni se Listening. Ora, sapendo questo, possiamo tuffarci in argomenti più profondi sul come usare questo comando per monitorare l'attività delle porte e come trovare porte aperte.
+------------------------------------------------
+II.Trovare porte aperte
+------------------------------------------------
+Ora, magari stai notando qualcosa di strano che sta accadendo al tuo computer. Il tuo cd-rom sta diventando pazzo...si sta aprendo e chiudendo senza che tu faccia nulla. E dici: che cavolo sta succedendo? o magari capisci che qualcuno sta pasticciando con un trojan sul tuo computer. In questo caso, il tuo scopo è quello di capire che trojan è e quindi di capire come cancellarlo giusto? Beh, sei proprio nel giusto. Ora, vai al tuo prompt di ms-dos. Ci sono parecchi metodi per usare netstat e qui sotto c'è un aiuto. Leggitelo.
+(Questo è l'help originale del comando dos, ma ve lo traduco lo stesso visto che ci sono)
+~~~~~~~~~~~~~~~~~~~~
+C:\WINDOWS>netstat ?
+
+Visualizza le statistiche sul protocollo e le connessioni di rete TCP/IP correntemente attive.
+
+NETSTAT [-a] [-e] [-n] [-s] [-p proto] [-r] [interval]
+
+  -a            Visualizza tutte le connessioni e le porte in ascolto.
+  -e            Visualizza le statistiche della Ethernet. Questa può esssere combinata
+                con l'opzione -s.
+  -n            Visualizza indirizzi e numeri di porte in forma numerica.
+  -p proto      Visualizza le connessioni specificate dal protocollo specificato in proto;
+                può essere TCP o UDP. Se usato con -s per visualizzare statistiche sui 
+                protocolli proto può essere TCP, UDP o IP.
+  -r            Visualizza le routing table.
+  -s            Visualizza le statistiche per-protocollo. Di default, le statistiche
+                sono visualizzate per TCP, UDP e IP; l'opzione -p può essere usata per specificare
+                un subset di quelle di default.
+  interval      Rivisualizza le caratteristiche selezionate, inserendo pause tra ogni 
+                visualizzata. Premi CTRL+C per fermare la rivisualizzazione delle statistiche.
+                Se omesso, netstat stamperà la configurazione corrente una sola volta.
+~~~~~~~~~~~~~~~~~~~~~
+A me personalmente piace usare (C:\Windows\netstat -an) che visualizza tutte le connessioni e le porte in listening nella forma di IP piuttosto che di nome dell'host. Come hai potuto vedere il comando netstat(spazio)-a(visualizza tutte le connessioni e le porte in listening)n(in forma numerica). Ora che sai come usare netstat per vedere tutte le connessioni e le porte in listening puoi ricercare porte comuni come la 12345 (vecchio NetBus), 1243 (SubSeven) ecc... Questo diventa molto comodo per tutto quello che presto troverai. Ora fai una pausa e vai a rilassarti.
+------------------------------------------------
+III.SYN ed ACK
+------------------------------------------------
+Beh, lasciatemi ora spiegare cosa sono questi due, SYN ed ACK.
+        [SYN] - SYN in parole povere è una richiesta di connessione usata nel 3-way handshake nel TCP/IP. Quando spedisci un SYN per una connessione, il computer target risponderà con un SYN ed un ACK. Ciò significa chq quando vedi nella categoria [State] SYN significa che stai spedendo una richiesta di connessione.
+        [ACK] - L'ACK è una ammissione alla richiesta dal computer che sta tentando la connessione. Una volta che un ACK ti viene spedito, è necessario rispondere con un ACK, poi bisogna rispedire un altro SYN al computer richiedente la connessione al fine di confermare che il pacchetto è stato ricevuto correttamente.
+I spero che abbiato capito un poco di più su cosa siano SYN ed ACK. Se aveste ulteriori domande provate a cercare testi riguardanti il TCP/IP (come il TCP/IP text di BSFR - blacksun.box.sk/tcpip.txt). Ora, veniamo alle cose interessanti.
+------------------------------------------------
+IV.Usare netstat per ICQ e AIM
+------------------------------------------------
+Hai mai voluto ottenere l'IP di qualcuno od il nome dell'host usando [Aol Instant Messenger] o [ICQ]?
+        [AIM] - Con AIM non puoi trovare l'esatto indirizzo IP senza alcune prove ed errori perchè per la maggior parte del tempo sembra aprire tutti gli utenti online sulla porta 5190. Quindi, meno utenti online, più semplice è. Quinsi, andate al prompt, e scrivete netstat -n. Qui vedrete sotto [Foreign Addresses] un IP:e porta 5190. Uno di quegli IP connessi a voi con la 5190 è il vostro obiettivo. Fare alcune prove anche sbagliando è la via più semplice.
+        [ICQ] - Ottenere l'IP di un utente in ICQ tramite netstat è semplice. Prima di parlare con la persona in ICQ bisogna aprire un prompt dos, fare un netstat -n per listare tutti gli IP e le porte e scriverseli giù in modo da ricordarseli più tardi. Ora, bisogna trovare il suo IP. Basta spedire all'utente un semplice messaggio e scrivere velocemente netstat -n. Ora vedrai un nuovo IP aggiunto alla lista, basta cercare il nuovo aggiunto sotto foreign, il tutto senza alcuna patch.
+------------------------------------------------
+V.Altri usi
+------------------------------------------------
+Netstat può essere usato per trovare IP di tutti e di tutto, finchè questi intrattengono una connessione dirette con te (ad esempio messaggi diretti, trasferimenti di dati, ICQ, DCC (Direct Client Connection) chat, trasferimenti di files in IRC ecc...
+------------------------------------------------
+VI.Strumenti ed utilità:
+------------------------------------------------
+Port scanning: per cercare porte aperte su di un cimputer
+ - [7th Sphere Port scanner] - (2 mirror nel caso in cui uno non funzioni)
+      - http://members.xoom.com/Cryptog/7spereportscan.exe
+      - http://members.xoom.com/gohan_3/7spereportscan.exe
+Firewall per controllare porte e registri:
+ - [Lockdown 2000]
+      - http://www.lockdown.com
+PEr comunicare meglio:
+ - [ICQ]
+      - http://www.icq.com
+ - [Aol Instant Messanger]
+      - http://www.aol.com
+------------------------------------------------
+VII.Two Quick Tips
+------------------------------------------------
+a.Alle volte può accadere che le liste del netstat siano alquanto lunghe e confuse, soprattutto per i newbies. Se sei in difficoltà basta solo che tu faccia partire netstat, successivamente crea una connessione diretta col tuo target e rilancia netstat. La nuova linea aggiunta è quella che riporta l'IP ricercato.
+b.Se l'output generato da netstat fosse troppo lungo, scrivi 'netstat -an > c:\directory\un_file.txt' (senza l'apice e puoi modificare il parametro -an ed il nome del file con il suo percorso con qualsiasi altra cosa consentita). Questo reindirizzerà l'output a quel file per una più semplice visualizzazione, permettendoti inoltre il copia ed incolla.
+------------------------------------------------
+Conclusioni
+------------------------------------------------
+Penso che ci siano modi migliori per comprendere internet piuttosto che con strumenti che trovi. Impara a fare cose manualmente in modo da capire fino in fondo cosa sta accadendo. Questo aumenterà la tua potenza ed ucciderà la tua lamerità :)

@@ -1,0 +1,151 @@
+Ad en Spam Blocking for Neophytes / Written by yours truly , R a v e N (blacksun.box.sk)
+Reclame Stoppen voor nieuwelingen / Gemaakt door de enige echte, R a v e N (blacksun.box.sk)
+<==========================================================================================>
+versie 1.8, 9/9/99
+
+Vertaald door Masj Crasj
+email: masjcrasj@writeme.com
+website: http://come.to/masj     еее SaikoSoft еее
+
+Note: Wanneer je iets ziet zoals dit: blah(1) betekent het dat als je de betekenis van het woord blah niet weet dat de uitleg van het woord in de 'newbies corner' staat in sectie 1.
+Note 2: Als je moeite hebt met het lezen van deze tekst omdat je heel de tijd naar rechts moet scrollen als er een lange zin staat komt dat misschien omdat je "automatische terugloop" niet hebt aanstaan. De meeste UNIX tekstverwerkers en geavanceerde Windows Tekstverwerkers (en sommige minder geavanceerde zoals Wordpad) doen het automatisch.
+Om word wrapping aan te zetten in Microsoft Notepad moet je in de taakbalk op Bewerken klikken en dan op "automatische terugloop". In de Engelse versie op Edit en dan op "Word wrapping."
+
+Woord van de auteur
+====================Alweer een nieuwe kleine tutorial van mij.
+Wanneer ik een kleine tutorial maak, betekent het dat ik beloofd had dat ik een grote tutorial zou maken (in dit geval, Sendmail, die zou eigenlijk ongeveer 60K groot moeten zijn) maar ik ben te lui dus ik schrijf zo nu en dan een kleine tutorial.
+Als je reacties of vragen hebt die te maken hebben met dit bestand (geen rotzooi of domme opmerkingen graag) Email me dan naar barakirs@netvision.net.il.
+Bezoek blacksun.box.sk voor meer tutorials, gratis hacken/programmeren/unix boeken te downloaden en veel meer.
+
+Disclaimer
+=========We accepteren geen enkele activiteit die illegaal is. Als jij er van uitgaat dat het overtreden van de wet een goede manier is om indruk op iemand te maken, stop dan met het lezen en wordt volwassen. Het is niet indrukwekkend of stoer als je een crimineel bent.
+
+Index
+====Wat is Ad Killing?
+* Waarom zou ik reclame op internet weg willen hebben?
+* Wat heb ik te verliezen?
+Laten we beginnen
+* Wat heb ik nodig om 'ad killing' uit te voeren?
+* Banners verwijderen
+* Banners verwijderen van gratis ISPs
+* Popups verwijderen
+* Spam verwijderen
+Newbies Corner
+* Wat is het /etc/hosts of het c:\windows\hosts bestand?
+* Wat is DNS Lookup / Reverse DNS Lookup?
+* Wat zijn popups?
+* wat is een bandwijdte?
+Andere tutorials
+* FTP Tutorial
+* Overclocking Tutorial
+* RM Networks Tutorial
+* Sendmail Tutorial
+* DoS Attacks Tutorial
+* IRC Warfare Tutorial
+* Phreaking Tutorial
+Appendix A: junkbusters.com
+Appendix B: reclame stoppen
+Bibliografie
+
+Wat is Ad Killing?
+------------------
+Als je wel eens op het internet zit, dan ken je vast wel die irritante reclame popups(3), reclame banners, reclame over email (spam) enz.  Er zijn makkelijke en moeilijke manieren om deze te stoppen, afhankelijk van de manier van de adverteerder.
+Oke, dus popups zijn irritant, maar waarom zou ik geen banners willen zien die gewoon opkomen bij een website? Nou, je moet deze dingen downloaden, toch? Sommige reclames kunnen 3K groot zijn, sommige 20K. Dus het probleem is - ze vreten verbindingssnelheid.
+Oke, dus een reclame banner kan 7K groot zijn...nou en? Nou, ga er eens van uit dat je computer een onderdeel is van een Local Area Network (LAN, een hoop computers die dicht bij elkaar staan (zelfde kamer, zelfde gebouw enz.) en verbonden staan met elkaar zodat ze bestanden kunnen uitwisselen over dezelfde snelle netwerkkabel enz.) De LAN heeft een connectie met internet die genoeg is voor 10 personen (zeg 100K per seconde, zodat elk persoon ongeveer 10K heeft). Stel je voor dat 5 van de 10 personen gebruik maakt van het internet, en ze zijn allemaal een reclame banner van 7k aan het downloaden. Dat betekent dat je 35K per seconde verliest. Wat nu als deze personen deze reclame niet wilt downloaden? En wat als het probleem op een grotere schaal zou zijn... zoals 10K banners, of een groter netwerk, of meer gebruikers die reclame downloaden enz. Snap je het?
+Maar begrijp wel dat ik het niet adviseer om ze te stoppen, want sommigen kunnen handig zijn. (bijvoorbeeld: een reclame afbeelding van een winkel verkoopt een nieuwe fantastische te gekke computer voor een hele lage prijs zonder te zien). Aan de andere kant zijn popups irritant en in mijn ervaring hebben ze nooit interessante informatie, dus ik adviseer wel om deze te stoppen. Maar het is nog steeds belangrijk om te weten (als je een systeembeheerder bent en je wilt geen stomme reclame meer die bandwijdte(4) opvreten).
+
+Laten we beginnen
+-----------------
+
+Reclame banners verwijderen
+***************************
+Maak eerst een lijst van computers die reclame banners gebruikt. Laten we er van uitgaan dat je beslist om www.foobar.com te doen. Nu moet je deze zin in de hosts(1) bestand zetten:
+127.0.0.1 www.foobar.com
+Wanneer nu een internet applicatie zal proberen om verbinding te maken met iets van www.ads-r-us.com zal hij hetzelfde proberen met 127.0.0.1. Bijvoorbeeld:
+http://www.ads-r-us.com/stupid-banner-ad.gif = http://127.0.0.1/stupid-banner-ad.gif.
+Zolang je een plaatje op je computer hebt die stupid-banner-ad.gif heet, zal het geen bandwijdte vreten omdat 127.0.0.1 zelf betekent (zoals in mij, in mijn eigen computer. Bijvoorbeeld: probeer 127.0.0.1 te hacken en dan zal je er achter komen dat deze host gelijk is aan jouw computer... hmm... misschien hebben ze je computer gehackt en hebben ze wat gedownload... lol).
+
+Er is een manier om hier aan te werken. Als jij het IP adres van de adverteerder in plaats van de hostnaam in een html code zet op jouw website, dat vertelt de browser om de reclame te downloaden, het zal gelijk gaan naar het IP adres (bijvoorbeeld: als www.ads-r-us.com's IP 123.7.14.139 is dan kan je ook 123.7.14.139/stupid-banner-ad.gif gebruiken in plaats van www.ads-r-us.com/stupid-banner-ad.gif). Als je betere trucks kent laat me het dan weten op barakirs@netvision.net.il.
+
+Reclame banners verwijderen van gratis ISPs
+*******************************************
+Er zijn een paar Internet Providers die je gratis internet geven (exclusief telefoonrekening in de meeste gevallen) maar dan moet jij een programma hebben draaien terwijl je zit te surfen die reclame in een hoekje van je beeldscherm laat zien. Deze reclame is niet alleen irritant, maar vreten ook bandwijdte(4). Als je deze helemaal wilt verwijderen moet je er een soort van crack voor zoeken. Ik ga je niet vertellen hoe je elke gratis ISP moet kraken in de hele wereld, maar ik ga je vertellen hoe je deze reclame kan blokkeren.
+Eerst moet je een goede firewall zoeken (probeer http://www.theargon.com, hun hebben er een paar). Dan moet je het starten en wachten voor een nieuwe reclame banner die van je ISP komt. Dan zal de firewall je waarschuwen over de inkomende connectie. Je kan dan zelf je computer vertellen om deze dingen tegen te houden, of een regel-bestand van de firewall bewerken (raadpleeg je firewall's help bestanden).
+
+Popups verwijderen
+******************
+Er zijn programma's die dit voor je doen. Ze zoeken voor speciale text in de titelbar van de popup (bijvoorbeeld: alle popups verwijderen met de tekst "Welcome to a geocities Member Page" in de titelbar zal alle irritante Geocities popups verwijderen) of verwijder de popup bij de grootte van het venster (of allebei)). Ik heb een lange tijd gezocht naar een goede, ik heb er nu nog niet een gevonden die goed genoeg is. Surf In Peace is aardig goed. Ga naar www.download.com, www.cnet.com of www.zdnet.com voor meer informatie en programma's.
+
+Spam verwijderen
+****************
+Ja, spam. Ongewenste reclame over de email. Alweer, om deze te verwijderen, heb je programma's nodig die Spam Filters heten. Ga naar www.tucows.com en zoek naar de Anti-Spam catogorie. Daar zal je veel AntiSpam programma's vinden.
+Wat spam filters doen is het beslissen of een inkomend bericht spam is of niet door middel van het onderwerp en de body van het bericht. Als ze spam vinden, zullen ze het onmiddellijk verwijderen.
+Als deze niet werken kan je je ISP vertellen om alle inkomende email van het email adres van de spammer te blokkeren.
+
+Note: sommige ISPs hebben gigantische en ultra geavanceerde spam filters in hun mail servers gemaakt. Deze kunnen 90-95% van de inkomende spam blokkeren. Deze ISPs omvatten Earthlink, Netscape en Usa.net.
+
+Oh, ps, hier is een interessant stukje informatie. Het onderzoek "Who Spams You" heeft de volgende resultaten geconstateerd:
+Eerst plaats: "wordt snel rijk"
+Tweede plaats: adult websites (porno)
+Derde plaats: website promotie
+Vierde plaats: anders
+Vijfde plaats: software promotie
+
+Newbies Corner
+--------------
+1. Wat is het /etc/hosts of de c:\windows\hosts bestand? - De meeste Oss (OS=Operating System (Besturingssysteem)) die ik ken hebben een hosts bestand. UNIX zet het normaal ik /etc/hosts, Windows zet het in c:\windows\hosts en Windows NT zet het in c:\WinNT\system32\drivers\etc\hosts (bedankt aan Teolicy voor de WinNT tip). Het hosts bestand wordt gebruikt in plaats tijd te verdoen aan een DNS Lookup(2). Ik bedoel, waarom zou je je tijd verdoen aan een DNS Lookup wanneer je allang het IP weet maar je wilt het liever niet intypen en je vindt het veel makkelijker om de hostnaam te onthouden.
+Het hosts bestand moet er ongeveer zo uitzien:
+# Dit is een regel met commentaar
+# Alles wat met een # begint zal genegeerd worden door je computer.
+# Je hoeft niet perse regels met commentaar te gebruiken als je dat niet wilt, maar ze maken het lezen van het bestand wel makkelijker.
+IP-adres hostnaam
+
+Bijvoorbeeld: on de meeste hosts bestanden zal je deze regel zien:
+127.0.0.1 localhost
+Alles die naar 127.0.0.1 verbindt is verbonden met zichzelf, dus naar je eigen computer.
+Deze regel in het hosts bestand geeft de mogelijkheid om in plaats van 127.0.0.1, localhost in te typen in je browser of welk netwerk applicatie dan ook.
+
+Note: Sommige OSs doen eerst een DNS Lookup, en dan, als de DNS Lookup geen resultaat heeft gaat hij naar het hosts bestand, maar je kan dat altijd ergend instellen (neem MacOS bijvoorbeeld: alles wat je hoeft te doen is deze regel neer te zetten in je config.sys bestand --> use_hosts_first=1
+
+2. Wat is een DNS Lookup / Reverse DNS Lookup? - Het commando nslookup hostname (Alleen unix. Voor windows kijk eens naar http://www.samspade.org) geeft je het IP adres van die hostnaam.
+Hoe werkt het?
+Elke computer die is verbonden met internet is herkenbaar met een IP adres, of het nou connecties accepteert of niet. Als je naar een bepaalde computer wilt verbinden moet je dat IP adres dus weten, of je het nou leuk vindt of niet. Maar wat als je ouderwets bent en je wilt geen Ip adressen onthouden? Daar zijn hostnamen voor. Hostnamen zijn simpele namen voor IP adressen in gewone taal. Bijvoorbeeld: Als je over Yahoo gaat surfen en je kan hun IP adres niet herinneren of je voelt er niks voor omdat uit te zoeken, dan kan je naar www.yahoo.com. www.yahoo.com is een alias van Yahoo's IP.
+Waar is nou DNS voor. DNS staat voor Domain Name Server (Domein Naam Server). Deze servers slaan hun aliasen en hun IPs op.
+De bedoeling van een DNS Lookup is het vinden van een IP uit een gegeven hostnaam. Een reverse DNS Lookup is precies het omgekeerdde (IP==>hostnaam).
+Voor meer informatie, type nslookup als je Unix hebt voor de nslookup's handleiding of ga naar Sam Spade's library (bezoek http://www.samspade.org).
+Nslookup is een fantastische onderzoekshulpprogramma, en eigenlijk is het een van de beste manieren om aan informatie te komen over een bepaalde host. Dus ga aan de slag en leer het.
+
+3. Popup - een ander browser venster dat in een keer verschijnt uit zichzelf. Probeer eens naar een Geocities homepage te gaan en je ziet een voorbeeld van een popup window, omdat Geocities deze dingen gebruikt in elke homepage die ze uitgeven (behalve Geoplus leden, maar die betalen ervoor.... :( ).
+
+4. Bandwijdte - De totale snelheid die een bepaalde connectie kan halen. Bandwijdte opvreten betekent onnodig gebruik van de bandwijdte, dat het surfen langzamer maakt.
+
+Andere Tutorials
+----------------
+* FTP Tutorial
+* Overclocking Tutorial
+* RM Networks Tutorial
+* Sendmail Tutorial
+* DoS Attacks Tutorial
+* IRC Warfare Tutorial
+* Phreaking Tutorial
+Allemaal verkrijgbaar bij blacksun.box.sk, of kom bij de mailing list bij blacksunresearch.listbot.com
+
+Appendix A: junkbusters.com
+Hier is een email die ik gekregen had van James Slater:
+
+Hallo daar, ik heb net je tutorial gelezen, en dacht dat je graag zou willen vermelden over de 'The Internet Junkbuster' (http://www.junkbusters.com). Het is een proxy server die je kan installeren op jouw Win9x/Un*x systeem dat geconfigureerd kan worden zodat hij ongewenste cookies, reclame enz. kan blokkeren, afhankelijk van een paar regels. Je zou misschien denken dat het maar weinig met de tutorial te maken heeft, maar ik heb het toch maar even laten weten.
+
+Nou, nu heb je het. Junkbusters.com. Kom op, ga er tegen aan!
+
+Appendix B: reclame stoppen
+---------------------------
+Ik had van een vriend gehoord die anoniem wilde blijven dat je de volgende commando kan gebruiken: route add -host [spam server] reject
+(in plaats van 'spam server' de IP of hostnaam van de server die de banner geeft.
+Bijvoorbeeld: Als de reclame banner komt van banners-r-us.com, zet dan bij 'spam server' het adres banners-r-us.com neer.)
+Dit commando hoort bij de Linux kernel (nee, het werkt niet bij Windows. Dat is een van de redenen dat ik haat van Windows - het is niet te geavanceerd genoeg voor mij... lol) houdt alles tegen dat van dit IP komt.
+Dit doet hetzelfde als dat ik deed met /etc/hosts, maar... ik weet niet, het is een beetje aardiger... ;-)
+
+Bibliografie
+------------
+Sam Spade's library (http://www.samspade.org)
+Various firewalls documents

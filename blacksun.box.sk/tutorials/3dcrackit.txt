@@ -1,0 +1,117 @@
+/------------------------------------------------------------\
+|Titolo: Cracking 3D Mark 99 MAX                             |
+|Autore: Quake2 - http://blacksun.box.sk                     |
+|Tradotto da: MightyInquisitor - mightyinquisitor@mailme.org |
+\------------------------------------------------------------/
+
+
+Ciao a tutti! Questo e' il mio primo tutorial sul cracking (bene, questo e' il mio
+PRIMISSIMO tutorial), quindi spero che potrai capire quello che scrivero' (Sono italiano e
+il mio inglese non e' molto buono). In questo tutorial illustrero' le due maniere in cui
+puoi crakkare '3D Mark 99 MAX'. I due modi sono: 1) Patchando il codice, 2) Facendo un keygen.
+Qua parleremo di il primo metodo: Patchando il codice. Il secondo metodo sara' discusso
+(fortunatamente :) in un altro tutorial. Allora, sei pronto? (rispondi Si :)))
+
+Si comincia!
+Tools:
+1) W32Dasm 8.9 (Il migliore disassemblatore che ho mai visto)
+2) SoftICE 3.24 (Beh, senza SoftICE non puoi fare molto, quindi... procuratelo!)
+3) Hiew 6.11 (DEVI avercelo, il miglior edito hex nell'universo)
+4) 3DMark 99 MAX
+
+Ok, questo sara' un tutorial passo-dopo-passo, ma non e' per newbies alle primissime armi,
+dovresti gia' conoscere alcune nozioni di assembler e  come usare SoftICE.
+
+Quindi, analizziamo 3DMark, avvia il programma, vai nella finestra di registrazione e
+inserisci un nome e un codice stupido (qualcosa tipo 666 :)), adesso premi OK, che cos'e'
+successo? Bene, il programma ti dice che il codice inserito non e' corretto.
+Bene e' ora di usare SoftICE (:), premi ctrl+d e scrivi in SoftICE: bpx GetDlgItem, exit
+SoftICE, premi OK dinuovo e... boom! ti ritrovi in SoftICE!! Adesso premi F5, quindi F11 e
+per finire premi F10 fino a quando non finisci qui:
+
+:0040B86A 8B4F64                  mov ecx, dword ptr [edi+64] <-- Metti in ecx il nome che hai digitato
+:0040B86D 8B41F8                  mov eax, dword ptr [ecx-08] <-- Metti in eax la lunghezza del nome
+:0040B870 85C0                    test eax, eax <-- Lunghezza = 0?
+:0040B872 747E                    je 0040B8F2 <-- Se e' cosi salta
+:0040B874 8B5760                  mov edx, dword ptr [edi+60] <-- Metti in edx il codice
+:0040B877 8B42F8                  mov eax, dword ptr [edx-08] <-- Metti in eax la lunghezza del codice
+:0040B87A 85C0                    test eax, eax <-- Lunghezza = 0?
+:0040B87C 7474                    je 0040B8F2 <-- Se e' cosi salta
+:0040B87E 83F811                  cmp eax, 00000011 <-- La lunghezza del codice e' = 17? (capirai perche' il codice deve essere lungo 17)
+:0040B881 741B                    je 0040B89E <-- Se e' cosi salta al processo di registrazione, seno il codice non e' corretto
+
+Ok, il codice sopra e' solo per qualche controllo, non ne abbiamo bisogno. Ok, adesso digita
+un codice di 17 caratteri, metti un bpx su GetDlgItem, ripeti la stessa operazione (premi F5,
+F11, F10, ecc), quindi vai a :0040B881 che sara' eseguito e tu finirai nel processo di
+registrazione:
+
+* Referenced by a (U)nconditional or (C)onditional Jump at Address:
+|:0040B881(C)
+|
+:0040B89E E88DE50500              call 00469E30 <-- Non importante
+:0040B8A3 3C01                    cmp al, 01 <-- Non importante
+:0040B8A5 75DC                    jne 0040B883 <-- Non importante
+:0040B8A7 8B4F64                  mov ecx, dword ptr [edi+64] <-- Non importante
+:0040B8AA 53                      push ebx <-- Non importante
+:0040B8AB 56                      push esi <-- Non importante
+:0040B8AC 8B7760                  mov esi, dword ptr [edi+60] <-- esi = codice
+:0040B8AF E8CCE50500              call 00469E80 <-- Chiama la routine di generazione codice
+
+* Referenced by a (U)nconditional or (C)onditional Jump at Address:
+|:0040B8D6(C)
+|
+:0040B8B4 8A10                    mov dl, byte ptr [eax] <-- Codice esatto
+:0040B8B6 8A1E                    mov bl, byte ptr [esi] <-- Codice errato
+
+Ok, adesso sai che la chiamata all'indirizzo 0040B8Af chiama la routine di registrazione,
+adesso ti chiederai: "Perche' non facciamo un keygen?", e io ti rispondo: "Ti mostro un
+metodo piu' divertente". :)
+
+Adesso, andiamo a tracciare nella chiamata (premi F8 in SoftICE) che stai per fare??? La
+routine di generazione codice!!!!
+
+Here it is:
+
+:00469E80 83EC40                  sub esp, 00000040 <-- Prende 64 bytes dallo stack
+:00469E83 53                      push ebx
+:00469E84 55                      push ebp
+:00469E85 56                      push esi
+:00469E86 8BF1                    mov esi, ecx <-- Adesso esi e' il nome che hai digitato
+:00469E88 83C9FF                  or ecx, FFFFFFFF
+:00469E8B 57                      push edi
+:00469E8C 33C0                    xor eax, eax
+:00469E8E 8BFE                    mov edi, esi
+:00469E90 F2                      repnz
+:00469E91 AE                      scasb
+:00469E92 F7D1                    not ecx
+:00469E94 49                      dec ecx <-- ECX = lunghezza del nome
+:00469E95 8BD1                    mov edx, ecx
+:00469E97 8BCE                    mov ecx, esi
+:00469E99 E852FFFFFF              call 00469DF0 <-- Questa e' la chiamata interessante
+:00469E9E 8BF0                    mov esi, eax
+
+Ok, adesso arriva la parte divertente, la chiamata all'indirizzo 00469E99 fara' qualche
+manipolazione su ogni singolo carattere (char) nel nome, cosa succede se rimuoviamo la
+chiamata???
+Facciamolo, adesso e' ora di usare il W32Dasm, aprilo, e carica il file 3dmark.exe, vai
+all'indirizzo della chiamata e dai un'occhiata alla fine della schermata, vedrai un
+@Offset 00069E99, che e' l'offset dell'istruzione, adesso apri il file con Hiew e vai
+nella modalita' di disassemblaggio, premi F5 e digita l'offset, ti troverai alla chiamata,
+adesso premi F3 e quindi premi enter, adesso digita la seguente istruzione di assembler:
+
+jmp 00469E9E
+
+adesso premi ESC e salva il codice premendo F9, chiudi Hiew e torna a 3DMark.
+Vai al box di registrazione e digita il nome e il codice e premi Ok, dirai: "Cos'e'? Il
+programma mi sta ancora l'erroe!!! Sei un cracker stupido :))", bene prova a digitare il
+codice CCCCC-CCCCC-CCCCC, boom!!! Sei un utente registrato del programma, adesso ogni nome
+che digiterai, il codice sara' sempre CCCCC-CCCCC-CCCCC (come puoi vedere ci sono 17
+caratteri di codice), e anche se digiti il codice corretto (per esempio se hai comprato il
+programma prima) il programma non credera' che sia giusto perche' quello corretto per lui
+e' CCCCC-CCCCC-CCCCC. E' molto divertente (almeno per me lo e').
+
+Ok, e' tutto per adesso, il prossimo tutorial (sperando :) sara' su come creare un keygen
+per 3DMark 99 MAX.
+Ciao!!!
+
+                                 Quake2

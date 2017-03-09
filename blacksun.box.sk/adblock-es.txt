@@ -1,0 +1,159 @@
+
+Ad and Spam Blocking for Neophytes / Written by yours truly, R a v e N (blacksun.anrki.com)
+<=========================================================================================> version 1.7, 9/9/99
+
+Nota: Donde veas algo como esto : Blah(1) significa que si no entiendes el significado de la palabra Blah hay una explicación para ti en la esquina del novato, en la sección 1
+Nota 2: Si te resulta dificil leer esto debido al scroll de la pantalla, probablemente no estes usando el ajuste de linea.
+La mayoría de lus editores para UNIX y los avanzados para Windows (y algunos menos avanzados como Wordpad) hacen esto por si solos
+Para hacer el ajuste de linea en Microsoft Wordpad, simplemente ve al menu edicion y cliquea en Ajuste de linea.
+
+Notas del Autor
+==============
+
+Todavia otro mini tutorial hecho por mi.
+Cuando hago un mini tutorial, significa que he prometido un gran tutorial (en este caso, Sendmail, que debería ser de 60K) pero me estoy volviendo un poco perezoso asi que escribo un mini tutorial mientras tanto.
+Si tienes algún comentario o pregunta sobre este archivo (nada de flames o de spam, por favor)contactenme en barakirs@netvision.net.il.
+Visite blacksun.anrki.com para mas tutoriales, libros de hacking/programación/unix de libre distribución para descargar y mucho mas
+
+Disclaimer
+==========
+Nosotros no animamos ningun tipo de actividad ilegal. Si tu crees que romper la ley es una buena manera de impresionar a alguien, para de leer ahora y crece. No hay nada impresionante o espectacular en ser un criminal.
+
+
+Contenido
+=======
+Que es Ad Killing? (matar o eliminar anuncios)
+* Porque querría yo eliminar anuncios comerciales en Internet?
+* Que tengo para perder?
+Comienzo Del Trabajo
+* Qué necesito para hacer un poco de ad Killing?
+* Eliminando carteles de anuncios
+* Eliminando carteles de anuncios de PSI gratuitos
+* Eliminando ventanas emergentes(popups)
+* Eliminando el Spam
+Esquina del Novato
+* Que son los archivos /etc/hosts o el c:\windows\hosts?
+* Que es un DNS lookup/Dns lookup invertido?
+* Que son las ventanas emergentes?
+* Que es el Ancho de Banda?
+Otros Tutoriales
+* Tutorial de FTP
+* Tutorial de Overclocking
+* Tutorial de Redes RM
+* Tutorial de Sendmail
+* Tutorial de ataques DoS
+* Tutorial de guerra del IRC
+* Tutorial de Phreaking
+Apendice A: junkbusters.com
+Apendice B: Bloqueando Publicidades
+Bibliografia
+
+
+Que es la Eliminacion de anuncios? (Ad Killing)
+-------------------
+Si has estado utilizando Internet por algun tiempo, habras notado esas ventanas emergentes(3) con anuncios comerciales, publicidades en carteles, correo electronico comercial no solicitado(spam), etc. Hay maneras simples y complicadas de eliminar esto, dependiendo del nivel de sofisticacion del anunciante.
+Bien, las ventanas emergentes son molestas, pero para que querria eliminar yo esos carteles que solo aparecen en una pagina? Bueno, tienes que descargar estas cosas, verdad? Algunos anuncios pueden ser de 3K, otros de 20K de tamaño.  El punto es - que absorben ancho de banda.
+Bien, asi que un cartel de anuncios puede tener un tamaño de 75K...y que? Bueno, supon que tu computadora es parte de una Red de Area Local(LAN, Local Area Network, un manojo de que estan lcalizadas una cerca de la otra(en la misma habitacion, en el mismo edificio, etc). Las LAN tienen una conexion a internet que es suficiente para 10 persona(digamos, 100Ks por segundo, asi que cada usuario recibe arpoximadamente 10K por segundo). Ahora, imagina que cinco de esas diez personas estan navegando por la Web, y cada una esta descargando un anuncio de 7K. Esto significa que pierden 35K por segundo. Ahora, que pasa si estas personas no quisieran tener que descargar estos anuncios? Y este problema puede estar en un escalon mas alto...como anuncios de 20K, o una red mas grande, o mas usuarios descargando publicidad, etc. Ven mi punto?
+Ahora, yo personalmente no recomiendo eliminar los anuncios publicitarios, porque algunos pueden volverse utiles(por ejemplo: un anuncio sobre un comercio que vende una computadora innovadora clase-A en un precio muy barato) Por otra parte, las ventanas emergentes, son moslestas y, en mi experiencia, nunca contienen ninguna informacion valiosa, asi que recomiendo eliminarlas. Vale la pena(si eres un administrador de sistema y no quieres ninguna estupida publicidad absorbiendo tu Ancho de Banda(4)
+
+Manos a la Obra
+-----------
+
+Eliminando Carteles de Anuncios
+*******************************
+
+Primero haz una lista de computadoras que hospedan programas de carteles publicitarios. Supon que decides que www.foobar.com es un paraiso para las publicidades. El siguiente paso es agregar esta línea al archivo Hosts(1):
+127.0.0.1 www.foobar.com
+Ahora, cualquier aplicacion que quiera acceder a algo de www.ads-r-us.com intentara el equivalente en 127.0.0.1. Por ejemplo: http://www.ads-r-us.com/stupid-banner-ad.gif = http://127.0.0.1/stupid-banner-ad.gif.
+Si utienes una imagen llamada stupid-banner-ad.gif en tu computadura, no gastara ningun anco de banda porque 127.0.0.1 significa uno mismo(como  en mi, como en mi propia computadora. Por ejemplo : trata de hackear 127.0.0.1 y veras que es increiblemente similar a tu computadora... hmm... quizas hackearon mi computadora y descargaron todo... lol).
+
+Tambien hay una manera de trabajar sobre esto. Si pones el IP del anunciante en una parte del codigo HTML de tu sitio, el navegador ira directamente a esa direccion(Por ejemplo: si el IP de ads-r-us.com es 123.7.14.139 entonce poniendo 123.7.14.139/stupid-banner-ad.gif en vez de www.ads-r-us.com/stupid-banner-ad.gif trabajara sobre nuestro truco). Si conoces algun truco mejor por favor hazmelo saber a barakirs@netvision.net.il.
+
+Eliminando Carteles de Anuncios de PSIs gratuitos
+*************************************************
+
+Hay algunos Proveedores de Servicios de Internet que ofrecen libre navegacion (las cuentas telefonicas no estan incluidas en la mayoria de los casos) a cambio de que uses un estupido programa que muestra carteles de anuncios en una esquina de tu pantalla mientras navegas. Estos anuncios no solo son molestos, sino que tambien consumen tu Ancho de Banda(4). Si quieres remover completamente estas cosas necesitas conseguir algun tipo de crack para ello. No voy a decirles como crackear todos los PSIs libres del mundo, pero voy a decirles como bloquear estos anuncios. Primero, consigue un buen Cortafuego(Firewall, prueba en http://www.theargon.com, tienen alguos). Luego, ejecutala y espera un nuevo cartel de anuncio proveniente de tu PSI. Entonces el Cotafuegos  te avisara de la conexion entrante. Puedes hacer que tu computadora ignore estas cosas manualmente, o configurar el archivo de reglas de tu Cortafuegos para hacerlo(consulta los archivos de ayuda de tu cortafuegos)
+
+Eliminando Ventanas Emergentes
+******************************
+Hay programas que hacen esto por ti. Estos buscan algun texto especial en la barra de titulos de la ventana emergente (por ejemplo, eliminar todas las ventanas emergentes con el texto "Welcome to a Geocities Member Page" en el titulo eliminara todas las molestas ventanas emergentes de Geocities) o eliminar la ventana emergente por el tamaño de la ventana(o ambos). Aunque he estado buscando uno bueno por mucho tiempo, todavia no encuentro ninguno lo suficientemente bueno. Navegar en paz es muy bueno, ademas. Ve a www.download.com, www.cnet.com or www.zdnet.com para mas informacion y programas.
+
+Eliminando el Spam
+******************
+Si, spam. Correo electronico comercial no solicitado. Otra vez, para eliminar esto, necesitas programas llamados filtros para spam(Spam Filters). Ve a www.tucows.com y localiza la categoria Anti-Spam. Alli encontraras muchos programas de eliminacion de correo electronico no deseado. 
+Basicamente, lo que los filtros de soam hacen es decidir si un mensaje entrante es spam o no por su tema y el cuerpo del mensaje. Si encuentran spam, lo eliminan inmediatamente. Si esto no funciona, llama a tu PSI y dile que bloquee todos los mensajes de la direccion del spammer.
+Si usas Outlook, en el menu herramientas encontraras Reglas de Mensajes. Alli podras definir reglas que impidan que lleguen mensajes de una determinada direccion.
+
+Nota: Algunos PSIs han comenzado a implementar un gigantesco y ultra avanzado filtro de spam en sus servidores de Correo electronico. Se supone que detengan 90-95& del spam entrante. Estos servidores incluyen Earthlink, Netscape and Usa.net.
+
+Oh, btw, aqui hay una informacion interesante. Hay una investigacion hecha recientemente llamada "Who Spams You". Ëstos son los resultados:
+Primer lugar: "Hazte rico pronto"
+Segundo lugar: Sitios para adultos.
+Tercer lugar: Promociones de sitios.
+Cuarto lugar: otros.
+Quinto lugar: Promociones de programas.
+
+Esquina del novato
+------------------
+
+1. Que son los archivos  /etc/hosts o el c:\windows\hosts ? - La mayoria de los SOs(SO=Sistema Opertativo) que conozco tienen un archivo hosts. Windows (todas las versiones) lo almacena en c:\windows\hosts, UNIX usualmente lo guarda en /etc/hosts, etc'. El archivo hosts es usado en lugar de gastar tiempo en hacer un DNS Lookup(2). Digo, por que gastar tiempo en un DNS Lookup cuando ya sabes el IP no te sientes con ganas de tipearlo y prefieres ingresar el nombre del host.
+El archivo hosts deberia verse como esto:
+# Este es un comentario.
+# Cualquier cosa que comience con # sera ignorado por su computadora.
+# No tienes que poner lineas de comentario si no quieres, pero hacen la lectura mas facilr.
+
+IP-address hostname
+
+Por ejemplo: en la mayoria de los archivos hosts veras esta linea:
+
+127.0.0.1 localhost
+
+Cualquier cosa direccionada a 127.0.0.1 esta en forma local, significando tu propia computadora.
+Esta entrada en el archivo hosts permite tipear en el navegador o en cualquier otra aplicacion de redes localhost en vez de 127.0.0.1.
+
+Nota: algunos SOs hacen primero el DNS Lookup, y entonces, si este falla van al archivo hosts, pero siempre puedes reconfigurar eso en algun lado(toma MacOs por ejemplo: todo lo que tienes que hacer es agregar la linea use_hosts_first=1 en alguna parte del archivo config.sys).
+
+2. Que es el DNS Lookup / DNS Lookup invertido? - el comando nslookup hostname (Solo en Unix. Para una version de Windows ve a http://www.samspade.org) te da el la direccion IP de ese nombre de servidor.
+Como trabaja?
+Cada computadora que esta conectada a internet tiene asignado una direccion IP, que acepta conexiones o no. Si quieres conectarte a una determinada computadora, tienes que conocer su direccion IP, quieras o no. Pero que pasa si eres senil y no te sientes bien recordando direcciones IP? Para esto estan los nombres de servidor. Los Nombres de Servidor son nombres simples para las direccione IP en lenguaje humano. Por ejemplo, si quieres navergar por Yahoo y no recuardas su direccion IP o no sabes como averiguarla, tambien puedes ir a www.yahoo.com. www.yahoo.com es un seudonimo(alias) al IP de Yahoo.
+Ahora, para esto son los DNS. DNS significa Servidor de Nombres de Dominio. Estos servidores almacenan seudonimos y sus IPs.
+UnD NS Lookup significa encontrar el IP del Nombre de Servidor dado. Un DNS Lookup invertido es exactamente lo contrario(IP==>Nombre de Servidor).
+Para mayor informacion, tipea man nslookup en Unix para la pagina del manual correspondiente a nslookup o ve a Sam Spade's library (en http://www.samspade.org).
+Nslookup es una maravillosa herramienta de sondeo, y en realidad es una de las mejores maneras de encontrar informacion sobre un determinado servidor, asi que ve y aprendelo.
+
+3. Ventana Emergente - otra ventana del navegador que "emerge" por si misma. Prueba ir a cualquier pagina de Geocities y veras un buen ejemplo de una ventana emergente, porque Geocities inserta estas cosas en cada pagina que aloja en su servidor(excepto los mijembros de GeoPlus, pero pagan por eso... :( ).
+
+4. Ancho de Banda - La velocidad maxima que una determinada conexion puede alcanzar. Gastar y absorber Ancho de Banda significa desperdiciarlo, haciendo la navegacion mas lenta.
+
+Otros Tutriales
+---------------
+* Tutorial de FTP
+* Tutorial de Overclocking
+* Tutorial de Redes RM
+* Tutorial de Sendmail
+* Tutorial de ataques DoS
+* Tutorial de guerra del IRC
+* Tutorial de Phreaking
+Consiguelos todo en blacksun.anrki.com, o unete a la lista de correo en blacksunresearch.listbot.com.
+
+Apendice A: junkbusters.com
+---------------------------
+Aqui hay un Email que consegui de alguien llamado James Slater:
+
+Hola, recien leo su tutprial, and thought you might like to make some mention of 'The Internet Junkbuster' (http://www.junkbusters.com). Es un servidor proxy que puedes instalar en tus sistemas Win9x/Un*x y puede ser configurado para bloquear cookies no solicitadas, avisos, etc. dependiendo de un conjunto de reglas. Deben pensar que esta un poco fuera del alcance del tutorial, pero pense que era una buena sugerencia.
+
+Bueno, aqui lo tienen. Junkbusters.com. Vamos, vayan a echarle un vistazo!
+
+Apendice B: Bloqueando publicidades
+-----------------------------------
+Me dijo un amigo que desea permanecer anonimo que puedes usar el siguiente comando:
+route add -host [spam server] reject
+(reemplazar "spam server" con el IP o el nombre de servidor que tiene esas publicidades dentro. Por ejemplo: si los carteles vienen de banners-r-us.com, reemplaza 'spam server' con banners-r-us.com)
+Este comando ordena al Kernel de Linux (no, no funciona en Windows. Esa es una de las cosas que odio de Windows - No es lo suficientemente sofisticado para mi... lol) ignorar coalquier cosa proveniente de ese IP.
+Esto hace lo mismo que lo que hicimos con /etc/hosts, pero... es un poco mas lindo...   ;-)
+
+Bibliografia
+------------
+Sam Spade's library (http://www.samspade.org)
+Varios documentos sobre cortafuegos.
+Nota del Traductor: No se han incluido acentos en el documento para evitar incompatibilidades en la pagina de codigo.

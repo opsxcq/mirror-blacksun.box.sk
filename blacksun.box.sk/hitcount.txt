@@ -1,0 +1,176 @@
+                      :::::::::   ::::::::  :::::::::  ::::::::::
+                      :+:    :+: :+:    :+: :+:    :+: :+:       
+                      +:+    +:+ +:+        +:+    +:+ +:+       
+                      +#++:++#+  +#++:++#++ +#++:++#:  :#::+::#  
+                      +#+    +#+        +#+ +#+    +#+ +#+       
+                      #+#    #+# #+#    #+# #+#    #+# #+#       
+                      #########   ########  ###    ### ### 
+                        
+                           http://blacksun.box.sk
+                             ____________________
+      ______________________I      Topic:        I_____________________
+     \                      I  Creating a simple I                    /
+      \     E-mail:         I   hit counter in   I   Written by:     /
+      >                     I         PHP        I                  <
+     / spiderman@witty.com  I____________________I   SpiderMan       \
+    /___________________________>           <_________________________\
+                                  
+
+  Welcome to part 2 of the Practical Programming in PHP series. Today I will show
+you how you can use php's file handling functions to create a web site hit counter.
+The script should be compatible with PHP 3 and 4, I will be running the script on
+a server which has a variant of Unix (most servers do) installed.
+
+Backround:
+  The script that we will create will, when called, open a file, read the value 
+of the file, increment the value by one, and then write that value to the file. 
+We're going to put the actual code inside a function so that way you can call the
+script on your page with only one line of code.
+
+Down to Work:
+  In order to open a file in php we need to call the function fopen(), this will
+open the file, if it exists, and return a file pointer. Don't worry too much on 
+what a file pointer is, just know that it is just an alias for the file. Instead
+of using the filename, you pass a file pointer to functions. Here is the beginning
+of our code:
+
+    <?php
+	    function count_hit()
+	    { 
+	      $file_pointer= fopen("hits.txt", "r+");
+
+  First, we declared a function by using the keyword function followed by the name
+of our function. Next, we used fopen() passing the name of a file in the same
+directory as the script where the hits will be stored as the first parameter; we
+then passed r+ as the second parameter, this tells the server that we want to open
+the hits.txt file for reading and writing. You can also pass any one of the following:
+
+    r - open the file for reading, place the file pointer at the beginning of the
+		    file.
+				
+    w - open the file for writing, place the file pointer at the beginning of the
+		    file, create the file if it doesn't exist, and set the file to zero length.
+				
+    w+ - open the file for reading and writing, place the file pointer at the 
+		     beginning of the file, create the file if it doesn't exist, and set the
+				 file to zero length.
+				 
+		a - Open for writing only; place the file pointer at the end of the file. If
+		    the file does not exist, attempt to create it. 
+				
+    a+ - Open for reading and writing; place the file pointer at the end of the 
+		     file. If the file does not exist, attempt to create it. 
+				 
+    b - Open the file in binary mode, if not needed, this will be ignored.
+
+  fopen() can take one more parameter which is 1, if you pass the third parameter
+as 1, the file you passed the name of in the first parameter will be searched for
+in the include path. The include path is specified when php if first installed on
+the server, most of the time you won't have control over it.
+
+  We store the result of fopen() in a variable name $file_pointer, now if the file
+does not exist fopen() will return false, we need to test for that.
+
+    if ($file_pointer == false)
+	  {
+	    return "Error: could not open the file! It may not exist!";
+	    exit; 
+	  } 
+
+  I used a return instead of an echo because we are in a function, and it's not 
+always a good idea to use echo.
+
+  Now that the file is open we need to read from it, to do that we use the fread()
+function.
+
+    $hits= fread($file_pointer, filesize("hits.txt"));
+
+  For fread() we pass the file pointer along with the size of the file. To get the
+size of the file we use the filesize() function. Now the contents of the file are
+stored in a variable with the name $hits. This next part is optional, but you should
+do it because you never really know what kind of extra junk might also get read 
+into the variable. We will use the trim() function to strip any whitespace from 
+the beginning and ending of the string.
+
+	  $hits= trim($hits);
+
+  See that's not too bad, and well worth the effort. Now that we have read the 
+contents of the file into a variable and cleaned up the variable we will increment
+it by 1, and write it back into the file. Before we write to the file we need to go back to the begining of the file so we can write over the current count. We do this by using fseek(), thanks to Mateusz Pabis for pointing that out.
+
+	  $hits++;
+          fseek($file_pointer, 0); // Many thanks to Mateusz Pabis for pointing out that I                                   //had forgot to add this!
+	  $result= fwrite($file_pointer, $hits);
+	  
+		if ($result == false)
+	  {
+	    return "Error: could not write to the file!";
+	    exit; 
+	  }
+	  else {
+	    return $hits;
+	  } 
+
+ We use the increment operator (++) to add one to the hit count, then we use fwrite
+to write to the file. We then pass the file pointer and the hit count to fwrite(),
+then there is some error checking, you don't have to include it, but it is always
+a good idea. Lastly we return the value of $hits which holds the hit count so that
+you can display the hits on a webpage by doing:
+
+	  <?php echo count_hit( ); ?>
+
+ Only one more thing left to do and that is to close the file. To do that we use
+fclose() and pass it the file pointer, oh and can't forget the error checking =)
+
+	  $close= fclose($file_pointer);
+
+	  if ($close == false)
+	  {
+	    return "Error: could not close the file!";
+	    exit; 
+	  } 
+
+ And that's all, we're done! Here is the complete script:
+
+<?php
+ function count_hit()
+ { 
+   $file_pointer= fopen("hits.txt", "r+");
+   
+   if ($file_pointer == false)
+   {
+     return "Error: could not open the file! It may not exist!";
+     exit; 
+   }
+   
+   $hits= fread($file_pointer, filesize("hits.txt"));
+   $hits= trim($hits);
+   $hits++;
+   fseek($file_pointer, 0); // Many thanks to Mateusz Pabis for pointing out that I had                                 // forgot to add this!
+   $result= fwrite($file_pointer, $hits);
+   
+   if ($result == false)
+   {
+     return "Error: could not write to the file!";
+     exit; 
+   }
+   else {
+     return $hits;
+   }
+   
+   $close= fclose($file_pointer);
+   
+   if ($close == false)
+   {
+     echo "Error: could not close the file!";
+     exit; 
+   }
+ }
+?>
+
+Conclusion:
+ Well that just about wraps up part 2 of the Practical Programming series. I hope
+you learned how to manipulate files in php. If you found any errors or have any 
+comments please e-mail me (spiderman@witty.com) kindly direct questions to the 
+message board. 
+                                                         Last updated: 5-28-2001 

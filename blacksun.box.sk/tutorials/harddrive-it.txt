@@ -1,0 +1,127 @@
+       *%*  _.|~~|._  | ~~~~)\~~~/  /~~~~~| |~~| /~~/  |~~~~~~~/ | ~~~~) *%*         
+       *%* |__    __| |  @ /  | |   | /~~~  |  |/  /   | |~~~~~  |  @ /  *%*      
+       *%*    |  |    | |\ \  | |   | |     |     <    | |_____  | |\ \  *%*       
+       *%*    |__|    |_| \_\ | |   | \____ |  |\  \   |  _____\ |_| \_\ *%*  
+        *%*%*%*%*%*%*%*%*%*%*/~ ~\  \_____/ |__| \__\  | |_____  *%*%*%*%*%*    
+                          *%*~~~~~  * TrickSoft.net *  |______/  *%*  
+                          *%*%*%*%*%*%*%*%*%*%*%*%*%*%**%*%*%*%*%*%*  
+                                   Date:July,15,2000
+----------------
+Contact Info:
+----------------
+Written by: TriÇker
+Email:Cadtrick@hotmail.com
+ICQ:40884568
+AIM:zTrickerz
+Web:http://tricksoft.net
+----------------
+Tradotto da: Screener_it
+Email:screener_it@freemail.it
+Web:http://go.to/tankcommandos
+[tra parentesi quadre i commenti
+del traduttore]
+----------------
+_______________________________________________________________________________
+Titolo: Installare un hard disk
+-------------------------------------------------------------------------------
+Indice:
+-------------------------------------------------------------------------------
+Intro
+I.Materiale & costi
+II.Preparazione all'installazione
+III.Installazione dell'hard disk
+IV.CMOS Check
+V.Tools & Utilities
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+Intro
+-------------------------------------------------------------------------------
+Il tuo vecchio hard disk ti stà lasciando ? O è semplicemente troppo piccolo ?
+Beh, sei venuto nel posto giusto. In questo tutorial ti darò tutte le  info necessarie
+per installare un nuovo hard disk in aggiunta a quello vecchio e ti dirò anche
+come cambiare quello vecchio.
+Segui le istruzioni di questo tutorial passo passo e leggilo tutto attentamente
+oppure potresti perdere tutti i tuoi dati. 
+Troverai molte altre guide 
+sull'hardware su Blacksun Research Facility(Blacksun.box.sk).
+[le abbiamo anche noi del Tank Commandos, ma noi le facciamo in italiano !!]
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+I.Materiale & costi
+-------------------------------------------------------------------------------
+Materiale di cui hai bisogno
+----Un hard disk (100.000 L - 500.000 L. dipende dalla dimensione)
+----Cacciavite
+----pinze
+----polsino antistatico (opzionale)
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+II.Preparazione all'installazione
+-------------------------------------------------------------------------------
+Prima di partire ricorda che devi avere tutto a portata mano.. Se hai cancellato
+Windows e reinstallerai una nuova versione devi avere un disco formattato e un
+dischetto di avvio (boot disk).
+Puoi crearti un dischetto di avvio semplicemente prendendo un dischetto vuoto,
+cliccando su "Risorse del computer", cliccare col tasto destro su a: e selezionare
+formatta. Poi selezioni l'opzione "Copia solo i file di sistema" tramite i quali
+creerai un dischetto di ripristino per quando avrai l'hard disk formattato.
+Se hai un hard disk e vuoi trasferire i file al nuovo hard disk avrai bisogno di
+una DiskCopy utility che trovi su www.powerquest.com.
+RICORDA: DISKCOPY and XCOPY non copieranno i file nascosti e i file di sistema.
+Quando avrai fatto un backup dei dati e sei pronto pulisci la scrivania e metti
+il pc in una zona ben illuminata e scoperchialo.
+
+Adesso dovresti vedere la scheda madre e tutto l'interno. Come ben sai [se non lo sai
+lo impari adesso] la scatola in cima a sinistra con cavi rossi, gialli, neri che
+vengono fuori è l'alimentatore. Alla fine di questi cavi c'è una presa con 4
+buchi. 
+La striscia [grigia aggiunto io] che vedi è quella che trasferisce i dati dal drive
+alla scheda madre. Guarda come sono connesse al floppy, ecc..
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+III.Installazione dell'hard disk
+-------------------------------------------------------------------------------
+Ok, ora sei pronto a installare l'hard disk. Se sostituisci un hard disk già
+esisstente guarda a come sono configurati i jumper sul retro dell'hard disk.
+I jumper indicano al computer come è collegato l'hard disk [master, slave,..].
+Sono formati da coppie di 2 pin. Somigliano a questo
+:::[:]:: 
+dove : indica i pin e [] indica i jumper.
+Quando hai trovato la configurazione dei jumper del vecchio hard disk setta
+i jumper del nuovo hard disk allo stesso modo. Molti driver hanno un etichetta
+con le posizioni del jumper a seconda di come sono configurati, altrimenti
+puoi cercare sul sito della casa produttrice.
+Il tuo nuovo hard disk deve essere settato come Master e se vuoi aggiungere un
+hard disk setta il tuo vecchio hard disk come slave e quello nuovo come master.
+Adesso inserisci l'hard disk all'interno del case. In genere và posizionato
+sotto il floppy o ovunque hai posto.
+Quando è inserito nel case collegalo all'alimentatore del PC e poi collegalo al
+cavo grigio.
+Quando hai completato il collegamento riconnetti i cavi del monitor, della tastiera,
+ecc.. e riavvia il pc.
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+IV.CMOS Check
+-------------------------------------------------------------------------------
+Al boot entra nel setup del PC (quando c'è il boot in genere indica quale
+tasto premere per entrare nel setup) [lo vedete in basso a sinistra appena
+accendete il pc "PRESS <F2> TO ENTER SETUP", siate veloci !] e controllate
+il bios nella sezione HARD DISK.
+Controllate che i driver sono rilevat in auto e che siano riconosciuti in
+maniera corretta. Salvate e fate ripartire.
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+Conclusion
+-------------------------------------------------------------------------------
+Quando il pc parte e partite da zero inserite il dischetto di boot, formattate
+l'hard disk nuovo e poi installate quello che dovete (s.o., driver, ecc..)
+Spero che questa guida vi sia stata utile nell'installazione dell'hard disk
+Scrivetemi [in inglese] se avete problemi.
+Visitate Blacksun.box.sk per altri miei txt sull'hardware
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+V.Tools and Utilities
+-------------------------------------------------------------------------------
+Disk Copy Utility
+--(http://www.powerquest.com)

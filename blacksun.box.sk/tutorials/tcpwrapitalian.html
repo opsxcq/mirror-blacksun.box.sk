@@ -1,0 +1,1033 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./tcpwrapitalian_files/filelist.xml">
+<link rel=Edit-Time-Data href="./tcpwrapitalian_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title> Alla scoperta di TCP wrappers
+ </title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>§kyÐreamer</o:Author>
+  <o:Template>Normal</o:Template>
+  
+
+
+  <o:Pages>6</o:Pages>
+  <o:Words>2757</o:Words>
+  <o:Characters>15715</o:Characters>
+  <o:Lines>130</o:Lines>
+  <o:Paragraphs>31</o:Paragraphs>
+  <o:CharactersWithSpaces>19299</o:CharactersWithSpaces>
+  <o:Version>9.2720</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:HyphenationZone>14</w:HyphenationZone>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:windowtext;
+	mso-ansi-language:IT;
+	mso-fareast-language:IT;}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	mso-bidi-font-size:8.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	color:black;
+	mso-ansi-language:IT;
+	mso-fareast-language:IT;}
+p.MsoBodyText2, li.MsoBodyText2, div.MsoBodyText2
+	{margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;
+	mso-ansi-language:IT;
+	mso-fareast-language:IT;}
+p.MsoBodyText3, li.MsoBodyText3, div.MsoBodyText3
+	{margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:windowtext;
+	mso-ansi-language:IT;
+	mso-fareast-language:IT;}
+a:link, span.MsoHyperlink
+	{color:#FF9900;
+	mso-text-animation:none;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{margin-right:0in;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:#A7A7A7;
+	mso-ansi-language:IT;
+	mso-fareast-language:IT;}
+pre
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Courier New";
+	color:#A7A7A7;
+	mso-ansi-language:IT;
+	mso-fareast-language:IT;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 56.7pt 56.7pt 56.7pt;
+	mso-header-margin:35.4pt;
+	mso-footer-margin:35.4pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+@list l0
+	{mso-list-id:146868797;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1910063948 -986141246 68157465 68157467 68157455 68157465 68157467 68157455 68157465 68157467;}
+@list l0:level1
+	{mso-level-text:%1-;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+</head>
+
+<body lang=EN-US link="#ff9900" vlink=purple style='tab-interval:35.4pt'>
+
+<div class=Section1>
+
+<div align=center>
+
+<table border=0 cellpadding=0 width=680 style='width:510.0pt;mso-cellspacing:
+ 1.5pt;mso-padding-alt:1.5pt 1.5pt 1.5pt 1.5pt'>
+ <tr>
+  <td width=676 style='width:507.0pt;padding:1.5pt 1.5pt 1.5pt 1.5pt'><pre><span
+  lang=IT><span style="mso-spacerun: yes">                        </span></span><span
+  lang=IT style='color:black'>:::::::::<span style="mso-spacerun: yes">   </span>::::::::<span style="mso-spacerun: yes">  </span>:::::::::<span style="mso-spacerun: yes">  </span>:::::::::: <o:p></o:p></span></pre><pre><span
+  lang=IT style='color:black'><span style="mso-spacerun: yes">                        </span>:+:<span style="mso-spacerun: yes">    </span>:+: :+:<span style="mso-spacerun: yes">    </span>:+: :+:<span style="mso-spacerun: yes">    </span>:+: :+:<span style="mso-spacerun: yes">        </span><o:p></o:p></span></pre><pre><span
+  lang=IT style='color:black'><span style="mso-spacerun: yes">                        </span>+:+<span style="mso-spacerun: yes">    </span>+:+ +:+<span style="mso-spacerun: yes">        </span>+:+<span style="mso-spacerun: yes">    </span>+:+ +:+<span style="mso-spacerun: yes">        </span><o:p></o:p></span></pre><pre><span
+  lang=IT style='color:black'><span style="mso-spacerun: yes">                        </span>+#++:++#+<span style="mso-spacerun: yes">  </span>+#++:++#++ +#++:++#:<span style="mso-spacerun: yes">  </span>:#::+::#<span style="mso-spacerun: yes">   </span><o:p></o:p></span></pre><pre><span
+  lang=IT style='color:black'><span style="mso-spacerun: yes">                        </span>+#+<span style="mso-spacerun: yes">    </span>+#+<span style="mso-spacerun: yes">        </span>+#+ +#+<span style="mso-spacerun: yes">    </span>+#+ +#+<span style="mso-spacerun: yes">        </span><o:p></o:p></span></pre><pre><span
+  lang=IT style='color:black'><span style="mso-spacerun: yes">                        </span>#+#<span style="mso-spacerun: yes">    </span>#+# #+#<span style="mso-spacerun: yes">    </span>#+# #+#<span style="mso-spacerun: yes">    </span>#+# #+#<span style="mso-spacerun: yes">        </span><o:p></o:p></span></pre><pre><span
+  lang=IT style='color:black'><span style="mso-spacerun: yes">                        </span>#########<span style="mso-spacerun: yes">   </span>########<span style="mso-spacerun: yes">  </span>###<span style="mso-spacerun: yes">    </span>### ###<span style="mso-spacerun: yes">  </span><o:p></o:p></span></pre><pre><span
+  lang=IT><span style="mso-spacerun: yes">                         </span></span></pre><pre><span
+  lang=IT><span style="mso-spacerun: yes">         </span><span style="mso-spacerun: yes">     </span><span
+  style='mso-tab-count:1'> </span><span style="mso-spacerun: yes">             </span><a
+  href="http://blacksun.box.sk">http://blacksun.box.sk</a> </span></pre><pre><span
+  lang=IT><span style="mso-spacerun: yes">                            </span></span></pre><pre><span
+  lang=IT><span style="mso-spacerun: yes">                           </span>_____________________________</span></pre><pre><span
+  lang=IT><span style="mso-spacerun: yes">    </span>______________________I<span style="mso-spacerun: yes">       </span><b><span style="mso-spacerun: yes">   </span></b></span><b><span
+  lang=IT style='color:black'>Argomento:</span></b><span lang=IT><span style="mso-spacerun: yes">        </span>I_____________________</span></pre><pre><span
+  lang=IT><span style="mso-spacerun: yes">   </span>\<span style="mso-spacerun: yes">      </span><span style="mso-spacerun: yes">                </span>I<span style="mso-spacerun: yes">                            </span>I<span style="mso-spacerun: yes">                    </span>/</span></pre><pre><span
+  lang=IT><span style="mso-spacerun: yes">    </span>\<span style="mso-spacerun: yes">     </span></span><span
+  lang=IT style='color:black'>HTML di:</span><span lang=IT><span style="mso-spacerun: yes">        </span>I<span style="mso-spacerun: yes">        </span></span><b><span
+  lang=IT style='color:black'>Alla scoperta</span><span lang=IT><span style="mso-spacerun: yes">  </span></span></b><span
+  lang=IT><span style="mso-spacerun: yes">     </span>I<span style="mso-spacerun: yes">   </span></span><span
+  lang=IT style='color:black'>Scritto da:</span><span lang=IT><span style="mso-spacerun: yes">     </span>/</span></pre><pre><span
+  lang=IT><span style="mso-spacerun: yes">    </span>&gt;<span style="mso-spacerun: yes">                     </span>I<span style="mso-spacerun: yes">       </span></span><b><span
+  lang=IT style='color:black'>di TCP wrappers</span></b><span lang=IT
+  style='color:black'> </span><span lang=IT><span style="mso-spacerun: yes">     </span>I<span style="mso-spacerun: yes">                  </span>&lt; </span></pre><pre><span
+  lang=IT><span style="mso-spacerun: yes">   </span>/<span style="mso-spacerun: yes">      </span><a
+  href="mailto:rammal81@hotmail.com">Mikkkeee</a><span style="mso-spacerun: yes">        </span>I____________________________I<span style="mso-spacerun: yes">   </span><a
+  href="mailto:rammal81@hotmail.com">Mikkkeee</a><span style="mso-spacerun: yes">        </span>\</span></pre><pre><span
+  lang=IT><span style="mso-spacerun: yes">  </span></span><span lang=EN-GB
+  style='mso-ansi-language:EN-GB'>/__________________________&gt;<span style="mso-spacerun: yes">                    </span>&lt;_________________________\<o:p></o:p></span></pre></td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal style='text-align:justify'><span lang=IT><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=IT><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=IT style='font-size:
+10.0pt;mso-bidi-font-size:12.0pt'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p><span lang=IT style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:
+Verdana'>1-<a href="http://blacksun.box.sk/tutorials/#basic intro">Introduzione
+di base a<span style="mso-spacerun: yes">  </span>TCP Wrappers</a> <br>
+</span><span lang=IT style='font-size:10.0pt;mso-bidi-font-size:8.0pt;
+font-family:Verdana;color:red'>-</span><span lang=IT style='font-size:10.0pt;
+mso-bidi-font-size:8.0pt;font-family:Verdana;color:gray'>=</span><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana'> <a
+href="http://blacksun.box.sk/tutorials/#logging">Logging</a> <br>
+</span><span lang=IT style='font-size:10.0pt;mso-bidi-font-size:8.0pt;
+font-family:Verdana;color:red'>-</span><span lang=IT style='font-size:10.0pt;
+mso-bidi-font-size:8.0pt;font-family:Verdana;color:#999999'>=</span><span
+lang=IT style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana'> <a
+href="http://blacksun.box.sk/tutorials/#links">Per trovare TCP Wrappers(links)</a>
+<o:p></o:p></span></p>
+
+<p><span lang=IT style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:
+Verdana'>2- <a href="http://blacksun.box.sk/tutorials/#config/setting">Configurare/settare
+TCP Wrappers</a> <br>
+</span><span lang=IT style='font-size:10.0pt;mso-bidi-font-size:8.0pt;
+font-family:Verdana;color:red'>-</span><span lang=IT style='font-size:10.0pt;
+mso-bidi-font-size:8.0pt;font-family:Verdana;color:gray'>=</span><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana'><a
+href="http://blacksun.box.sk/tutorials/#inetd.conf">Configurare il file
+inetd.conf </a><br>
+</span><span lang=IT style='font-size:10.0pt;mso-bidi-font-size:8.0pt;
+font-family:Verdana;color:red'>-</span><span lang=IT style='font-size:10.0pt;
+mso-bidi-font-size:8.0pt;font-family:Verdana;color:gray'>=</span><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana'><a
+href="http://blacksun.box.sk/tutorials/#hosts.allow">hosts.allow</a> <br>
+</span><span lang=IT style='font-size:10.0pt;mso-bidi-font-size:8.0pt;
+font-family:Verdana;color:red'>-</span><span lang=IT style='font-size:10.0pt;
+mso-bidi-font-size:8.0pt;font-family:Verdana;color:gray'>=</span><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana'><a
+href="http://blacksun.box.sk/tutorials/#hosts.deny">hosts.deny</a> <br>
+</span><span lang=IT style='font-size:10.0pt;mso-bidi-font-size:8.0pt;
+font-family:Verdana;color:red'>-</span><span lang=IT style='font-size:10.0pt;
+mso-bidi-font-size:8.0pt;font-family:Verdana;color:gray'>=</span><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana'><a
+href="http://blacksun.box.sk/tutorials/#variables">Variabili opzionali per
+comandi di shell</a> <o:p></o:p></span></p>
+
+<p><span lang=IT style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:
+Verdana'>3-<a href="http://blacksun.box.sk/tutorials/#conclusion">Conclusioni</a>
+<o:p></o:p></span></p>
+
+<p><span lang=IT style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:
+Verdana'>4-<a href="http://blacksun.box.sk/tutorials/#shoutz">Ringraziamenti</a></span><span
+lang=IT style='font-size:8.0pt;font-family:Verdana'> <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=IT style='font-size:
+11.0pt;mso-bidi-font-size:12.0pt;font-family:"Courier New"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=IT style='font-size:
+11.0pt;mso-bidi-font-size:12.0pt;font-family:"Courier New"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=IT style='font-size:
+10.0pt;mso-bidi-font-size:12.0pt;font-family:Verdana;mso-bidi-font-family:"Courier New"'>Eccoci
+qua con un’altra guida su di un argomento non trattato da molti scrittori di
+tutorial. Questa guida è per persone a livello medio/alto e così molti concetti
+non verranno trattati perché sono stati spiegati in altri articoli. Puoi sempre
+andare su <a href="http://blackbox.box.sk/">http://blackbox.box.sk</a> per
+quelle nozioni che qui non siano trattate.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=IT style='font-size:
+10.0pt;mso-bidi-font-size:12.0pt;font-family:"Courier New"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=IT style='font-size:
+8.0pt;font-family:Verdana;color:black'>-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-align:justify;text-indent:-.25in;
+mso-list:l0 level1 lfo1;tab-stops:list .5in'><![if !supportLists]><span
+lang=IT style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+mso-bidi-font-family:"Courier New";color:black'>1-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span lang=IT style='font-size:10.0pt;mso-bidi-font-size:
+8.0pt;font-family:Verdana;mso-bidi-font-family:"Courier New";color:black'>Introduzione
+di base a TCP Wrappers<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=IT style='font-size:
+8.0pt;font-family:Verdana;color:black'>-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-GB
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:"Courier New";
+color:black;mso-ansi-language:EN-GB'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=IT style='font-size:
+10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;mso-bidi-font-family:"Courier New";
+color:black'>Molti di voi ragazzi che leggete questo tutorial non siete vecchi
+abbastanza per ricordarvi lo sviluppo dei protocolli TCP/IP, che risale a molti
+anni fa, con lo scopo<span style="mso-spacerun: yes">  </span>di congiungere la
+varietà dei networks che erano connessi al primo internet. Questi primi sistemi
+ad implementare i protocolli TCP/IP furono i siti governativi e i siti
+accademici messi in piedi da scienziati, accademici e personale governativo. In
+principio, la necessità di sicurezza non era niente in confronto alla necessità
+che ne abbiamo oggi. Lo User Datagram Protocol (UDP), Transmission Control
+Protocol (TCP) e l’Internet Protocol (IP) erano tutti creati con la sicurezza come
+l’aspetto meno importante da considerare. Le utilities che furono sviluppate
+più tardi come il Telnet ed Ftp avevano lo stesso basso grado di sicurezza,
+entrambe dovrebbero dare “sicurezza” facendo inserire all’utente username e
+password che siano validi sul sistema remoto. Questa sicurezza è però precaria
+perché sia lo username che la password sono inviate sulla rete come
+normalissimo testo<span style="mso-spacerun: yes">  </span>e chiunque con un
+po’ di esperienza può sniffare la username e la password con estrema facilità.
+Con il miglioramento della tecnologia e il progresso del TCP/IP, quest’ultimo
+divenne il protocollo più usato quando fu implementato sulle reti Novell e sui
+sistemi operativi UNIX. Giacchè internet entrò nelle nostre case, il protocollo
+di rete di default (si parla sempre di TCP/IP) viene installato sulla maggior
+parte dei computers e venduto dalla maggior parte dei rivenditori software. Con
+questo improvviso bum tecnologico c’è sempre e più che mai quella piccola cosa
+chiamata “sicurezza” che deve essere soddisfatta. Ci sono tanti prodotti
+differenti che possono essere usati da un amministratore per incrementare la
+sicurezza della rete, da qui l’idea di un firewall e dei suoi componenti, uno
+di questi è “TCP wrappers”. Dovendo costantemente affrontare gli attacchi
+hacker contro i computer della sua università, Wietse Venema, dell’università
+della tecnologia di Eindhoven, fu la prima persona a sviluppare TCP wrappers.
+Così adesso ti chiederai cosa sono (i TCP wrappers) ? Bene, TCP wrappers limita
+quali servizi di rete possano essere usati e quali hosts avranno il permesso di
+usarli. TCP wrappers può essere configurato per gestire molti dei servizi di
+rete di base di un sistema UNIX come Finger, Ftp, Telnet, Rlogin, TFTP e la
+lista prosegue. Dobbiamo però rispondere a cos’hanno in comune questi servizi;
+bene, se non l’hai mai notato essi hanno tutti in comune un cosidetto
+one-to-one mapping e cioè una corrispondenza biunivoca tra nome del servizio e
+programma eseguibile che fornisce il servizio; questo ci introduce a come TCP wrappers
+lavora.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=IT style='font-size:
+10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;mso-bidi-font-family:"Courier New";
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=IT style='font-size:
+8.0pt;font-family:Verdana;color:black'>-=-=-=-=-=-=-=-=-<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.25in;text-align:justify'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+mso-bidi-font-family:"Courier New";color:black'>Logging<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-GB
+style='font-size:8.0pt;font-family:Verdana;color:black;mso-ansi-language:EN-GB'>-=-=-=-=-=-=-=-=-<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-GB
+style='font-size:8.0pt;font-family:Verdana;color:black;mso-ansi-language:EN-GB'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=IT style='font-size:
+10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;mso-bidi-font-family:"Courier New";
+color:black'>Su di un sistema linux, quando il demone inetd riceve una
+richiesta di rete, prima di tutto determina quale servizio avviare in base al
+numero della porta dalla quale il servizio risponde. Nel file /etc/services si
+può trovare quella che è la corrispondenza tra numeri di porta e nomi di
+servizio. Dopo che inetd ha stabilito quale servizio avviare, esso legge il
+file inetd.conf per sapere quale programma deve lanciare per rispondere alla
+richiesta di rete. A questo punto, perché il demone TCP wrappers (tcpd) possa
+eseguire il controllo access/deny per decidere se dare o non dare l’accesso e
+perché possa effettuare il suo lavoro di logging, devi prima editare il file
+inetd.conf per fare in modo che il tcpd sia lanciato al posto dell’eseguibile
+che normalmente soddisfa la richiesta di servizio; tcpd realizza il suo lavoro
+consentendo all’host, che sta facendo la richiesta, di usare il servizio; se il
+permesso viene quindi accordato tcpd avvia l’eseguibile per quel specifico
+servizio, così possiamo dire in definitiva che tcp wrappers lavora veramente
+ponendosi tra inetd e la richiesta di rete per il servizio.<o:p></o:p></span></p>
+
+<p class=MsoBodyText><span lang=IT style='font-family:Verdana'>Nel paragrafo
+precedente ho detto qualcosa sulla capacità di logare (logging) di TCP
+wrappers, bene, sarà spiegata qui. TCP wrappers ti consente di logare chi sta
+usando il servizio sul tuo sistema, così potresti tracciare e fermare ogni
+attività sospetta in stato di attesa. Le informazioni sui log sono inviate al
+syslogd, che provvede a fornire anche il cuore dei log come facilitazione al
+sistema UNIX. Per dire al syslogd cosa fare con questi log entry, puoi editare
+il file /etc/syslog.conf. Per default TCP wrappers invia i suoi log nello
+stesso posto di disbrigo dei log del demone sendmail, così syslog può logare le
+informazioni di uno o più files, sia del sistema che quelli dell’utente alla
+console. Dal momento che immagino che tu sia un utente intermedio di linux,
+dovresti già aver visto TCP wrappers come parte del tuo pacchetto linux/UNIX.
+Di solito TCP wrappers viene fornito in codice .c, il che significa che devi
+compilarlo, dovrebbe esserti familiare compilare del codice sul tuo sistema.
+TCP wrappers è molto conosciuto tra il personale di sicurezza e hackers
+paranoici, quindi per prima cosa controlla il tuo pacchetto linux perché
+potresti già averne uno e se invece non ce l’hai qui ci sono alcuni links.<o:p></o:p></span></p>
+
+<p class=MsoBodyText><span lang=IT style='font-family:Verdana'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=IT style='font-size:
+8.0pt;font-family:Verdana;color:black'>-=-=-=-=-=-=-=-=-<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.25in;text-align:justify'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:"Courier New";
+color:black'><span style="mso-spacerun: yes"> </span></span><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+mso-bidi-font-family:"Courier New";color:black'>Links<o:p></o:p></span></p>
+
+<p class=MsoBodyText><span lang=EN-GB style='font-size:8.0pt;font-family:Verdana;
+mso-ansi-language:EN-GB'>-=-=-=-=-=-=-=-=-<o:p></o:p></span></p>
+
+<p class=MsoBodyText><span lang=EN-GB style='font-size:8.0pt;font-family:Verdana;
+mso-ansi-language:EN-GB'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p><span lang=IT style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:
+Verdana'><a href="ftp://ftp.porcupine.org/pub/security/index.html"><span
+lang=EN-GB style='mso-ansi-language:EN-GB'>ftp://ftp.porcupine.org/pub/security/index.html</span></a></span><span
+lang=IT style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+mso-ansi-language:EN-GB'> </span><span lang=EN-GB style='font-size:10.0pt;
+mso-bidi-font-size:8.0pt;font-family:Verdana;color:black;mso-ansi-language:
+EN-GB'>* get everything at this page! <br>
+Here are some more significant links if you wish to learn more about the tcp
+wrapper package!<br>
+</span><span lang=IT style='font-size:10.0pt;mso-bidi-font-size:8.0pt;
+font-family:Verdana'><a
+href="ftp://cert.org:/pub/tools/tcp_wrappers/tcp_wrappers.*"><span lang=EN-GB
+style='mso-ansi-language:EN-GB'>ftp://cert.org:/pub/tools/tcp_wrappers/tcp_wrappers.*</span></a></span><span
+lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+mso-ansi-language:EN-GB'> <br>
+</span><span lang=IT style='font-size:10.0pt;mso-bidi-font-size:8.0pt;
+font-family:Verdana'><a href="ftp.win.tue.nl:/pub/security/long_tcp.shar.Z"><span
+lang=EN-GB style='mso-ansi-language:EN-GB'>ftp.win.tue.nl:/pub/security/long_tcp.shar.Z</span></a></span><span
+lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+mso-ansi-language:EN-GB'> <br>
+</span><span lang=IT style='font-size:10.0pt;mso-bidi-font-size:8.0pt;
+font-family:Verdana;color:black'><a href="http://packetstorm.securify.com"><span
+lang=EN-GB style='color:black;mso-ansi-language:EN-GB'>http://packetstorm.securify.com</span></a></span><span
+lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black;mso-ansi-language:EN-GB'> <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=IT style='font-size:
+8.0pt;font-family:Verdana;color:black'>-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-align:justify;text-indent:-.25in;
+mso-list:l0 level1 lfo1;tab-stops:list .5in'><![if !supportLists]><span
+lang=IT style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+mso-bidi-font-family:"Courier New";color:black'>2-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span lang=IT style='font-size:10.0pt;mso-bidi-font-size:
+8.0pt;font-family:Verdana;mso-bidi-font-family:"Courier New";color:black'>Configurare/settare
+TCP Wrappers<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=IT style='font-size:
+8.0pt;font-family:Verdana;color:black'>-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=IT style='font-size:
+8.0pt;font-family:Verdana;color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=IT style='font-size:
+10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;mso-bidi-font-family:"Courier New";
+color:black'>Adesso che hai compilato con successo il codice sorgente di TCP
+wrappers, dovrai configurarlo/settarlo. Quando hai il tcpd eseguibile, devi
+passare al secondo lavoro, editando inetd.conf, hosts.allow e hosts.deny!<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=IT style='font-size:
+10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;mso-bidi-font-family:"Courier New";
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=IT style='font-size:
+10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;mso-bidi-font-family:"Courier New";
+color:black'>Configurare il file inetd.conf<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=IT style='font-size:
+10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;mso-bidi-font-family:"Courier New";
+color:black'>Configuriamo il demone inetd per prima cosa!<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=IT style='font-size:
+10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;mso-bidi-font-family:"Courier New";
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=IT style='font-size:
+10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;mso-bidi-font-family:"Courier New";
+color:black'>Per editare questo file al prompt digita quanto segue<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=FR style='font-size:
+10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;color:black;mso-ansi-language:
+FR'>root@mike:~# pico /etc/inetd.conf<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=IT style='font-size:
+10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;color:black'>che ti porterà
+la configurazione in pico, qui c’è un esempio di un entry che potresti trovare
+nel tuo file inetd.conf.<o:p></o:p></span></p>
+
+<p><span lang=IT style='font-size:8.0pt;font-family:Verdana;color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<pre><span lang=IT style='color:black'><span style='mso-tab-count:2'>               </span><span style="mso-spacerun: yes">              </span></span><span
+lang=EN-GB style='color:black;mso-ansi-language:EN-GB'>wait/nowait<o:p></o:p></span></pre><pre><span
+lang=EN-GB style='color:black;mso-ansi-language:EN-GB'><span style='mso-tab-count:
+3'>                       </span></span><span lang=IT style='color:black'><span style="mso-spacerun: yes">      </span>SE wait, ALLORA inetd avvia un<span style="mso-spacerun: yes">  </span>processo per una <span
+style='mso-tab-count:1'>      </span><o:p></o:p></span></pre><pre><span
+lang=IT style='color:black'><span style="mso-spacerun: yes">   </span><span
+style='mso-tab-count:1'>     </span><span style="mso-spacerun: yes">                     </span>richiesta quindi aspetta finchè terminato<span style="mso-spacerun: yes">  </span><o:p></o:p></span></pre><pre><span
+lang=IT style='color:black'><span style="mso-spacerun: yes">                     </span><span style="mso-spacerun: yes">        </span>per iniziare un’altra richiesta. <o:p></o:p></span></pre><pre><span
+lang=IT style='color:black'><span style='mso-tab-count:3'>                       </span><span style="mso-spacerun: yes">      </span>SE nowait, ALLORA avvia un processo e <o:p></o:p></span></pre><pre><span
+lang=IT style='color:black'><span style="mso-spacerun: yes">            </span>flusso<span
+style='mso-tab-count:1'>     </span><span style="mso-spacerun: yes">      </span>e non aspetta finchè avvia un altro processo, <o:p></o:p></span></pre><pre><span
+lang=IT style='color:black'><span style="mso-spacerun: yes">      </span>dgram, o datagram<span style="mso-spacerun: yes">      </span>ma semplicemente passa al successivo.<o:p></o:p></span></pre><pre><span
+lang=IT style='color:black'><span style='mso-tab-count:1'>        </span><span style="mso-spacerun: yes">     </span></span><span
+lang=EN-GB style='color:black;mso-ansi-language:EN-GB'>\<span style="mso-spacerun: yes">  </span><span
+style='mso-tab-count:1'>       </span><span style="mso-spacerun: yes">       </span>\<o:p></o:p></span></pre><pre><span
+lang=EN-GB style='color:black;mso-ansi-language:EN-GB'><span style="mso-spacerun: yes">     </span>ftp<span style="mso-spacerun: yes">   </span>flusso<span style="mso-spacerun: yes">     </span>tcp<span style="mso-spacerun: yes">   </span>nowait<span style="mso-spacerun: yes">  </span>root<span style="mso-spacerun: yes">  </span>/usr/sbin/wu.ftpd wu.fptd -l -i -o<o:p></o:p></span></pre><pre><span
+lang=IT style='color:black'><span style="mso-spacerun: yes">       </span>/<span style="mso-spacerun: yes">                 </span>\<span style="mso-spacerun: yes">               </span>\<span style="mso-spacerun: yes">              </span>\<span style="mso-spacerun: yes">              </span>\<span style="mso-spacerun: yes">  </span><o:p></o:p></span></pre><pre><span
+lang=IT style='color:black'>nome del servizio<span style="mso-spacerun: yes">         </span>protocollo<span style="mso-spacerun: yes">     </span>Uid sia<span style="mso-spacerun: yes">         </span>\<span style="mso-spacerun: yes">              </span>\<span style="mso-spacerun: yes">  </span><o:p></o:p></span></pre><pre><span
+lang=IT style='color:black'>come telnet, finger<span style="mso-spacerun: yes">     </span>tcp o udp<span style="mso-spacerun: yes">   </span><span style="mso-spacerun: yes">    </span>root che un altro \<span style="mso-spacerun: yes">              </span>|<o:p></o:p></span></pre><pre><span
+lang=IT style='color:black'><span style='mso-tab-count:3'>                       </span>definito nel file<span style="mso-spacerun: yes">     </span>utente<span style="mso-spacerun: yes">        </span>\<span style="mso-spacerun: yes">              </span>|<o:p></o:p></span></pre><pre><span
+lang=IT style='color:black'><span style='mso-tab-count:3'>                       </span>/etc/protocols<span style="mso-spacerun: yes">       </span>nome del programma<span style="mso-spacerun: yes">            </span>| <o:p></o:p></span></pre><pre><span
+lang=IT style='color:black'><span style='mso-tab-count:3'>                       </span><span style="mso-spacerun: yes">                      </span>server che inetd<span style="mso-spacerun: yes">             </span>|<o:p></o:p></span></pre><pre><span
+lang=IT style='color:black'><span style='mso-tab-count:5'>                                      </span><span style="mso-spacerun: yes">         </span>avvia<span style="mso-spacerun: yes">                      </span>|<o:p></o:p></span></pre><pre><span
+lang=IT style='color:black'><span style="mso-spacerun: yes">     </span><span style="mso-spacerun: yes">                                        </span></span><span
+lang=EN-GB style='color:black;mso-ansi-language:EN-GB'><span style="mso-spacerun: yes">                             </span>| <o:p></o:p></span></pre><pre><span
+lang=EN-GB style='color:black;mso-ansi-language:EN-GB'><span style='mso-tab-count:
+1'>        </span></span><span lang=IT style='color:black'><span
+style='mso-tab-count:5'>                                      </span>argomento della linea di comando<o:p></o:p></span></pre><pre><span
+lang=IT style='color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></pre><pre
+style='text-align:justify'><span lang=IT style='font-family:Verdana;color:black'>Ora hai una vista semplificata dell’entry, questa è l’entry usata per avviare il servizio ftp nell’esempio sopracitato. Questa entry /usr/sbin/wu.ftpd, perché TCP wrapper venga incluso, deve essere editata, quindi semplicemente aggiungi /usr/sbin/tcpd, il resto può rimanere dov’è. Devi fare questa modifica in ogni linea che trovi in inetd.conf che avvia il servizio che vuoi usare con TCP wrappers. Se vuoi chiudere quel servizio basta che aggiungi # a sinistra di ftp e la tua porta servizio ftp (21) dovrebbe in questo modo rimanere chiusa. A questo punto, perché i cambiamenti fatti abbiano effetto, devi riavviare il sistema oppure inetd digitando:<o:p></o:p></span></pre><pre><span
+lang=IT style='font-family:Verdana;color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></pre><pre><span
+lang=EN-GB style='mso-bidi-font-size:8.0pt;font-family:Verdana;color:black;
+mso-ansi-language:EN-GB'>root@mike:~# killall -HUP inetd<o:p></o:p></span></pre><pre><span
+lang=EN-GB style='mso-bidi-font-size:8.0pt;font-family:Verdana;color:black;
+mso-ansi-language:EN-GB'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></pre><pre
+style='text-align:justify'><span lang=IT style='mso-bidi-font-size:8.0pt;
+font-family:Verdana;color:black'>Se non sei sicuro di quello che stai facendo, una buona idea è fare un chattr su inetd.conf, questo comando blocca ogni cambiamento fatto accidentalmente e blocca il renaming e il linking.<o:p></o:p></span></pre><pre
+style='text-align:justify'><span lang=IT style='mso-bidi-font-size:8.0pt;
+font-family:Verdana;color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></pre>
+
+<p><span lang=FR style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:
+Verdana;color:black;mso-ansi-language:FR'>root@mike:~# chattr +i /etc/inetd.conf
+<o:p></o:p></span></p>
+
+<p><span lang=IT style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:
+Verdana;color:black'>per editare inetd.conf dovrai fare l’inverso<o:p></o:p></span></p>
+
+<p style='line-height:12.0pt'><span lang=FR style='font-size:10.0pt;mso-bidi-font-size:
+8.0pt;font-family:Verdana;color:black;mso-ansi-language:FR'>root@mike:~# chattr
+-i /etc/inetd.conf<o:p></o:p></span></p>
+
+<p style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>Ora che abbiamo configurato tcpd perché amministri i servizi di
+rete editando inetd.conf, dobbiamo adesso editare i due files menzionati prima,
+hosts.allow e hosts.deny, che servono a consentire/negare a quali hosts possa
+essere quindi dato o no il permesso di accedere al tuo sistema.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:8.0pt;font-family:Verdana;color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span
+lang=EN-GB style='font-size:8.0pt;font-family:Verdana;color:black;mso-ansi-language:
+EN-GB'>-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.25in;text-align:justify;line-height:
+12.0pt'><span lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:8.0pt;
+font-family:Verdana;mso-bidi-font-family:"Courier New";color:black;mso-ansi-language:
+EN-GB'>Configurare hosts.allow<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span
+lang=EN-GB style='font-size:8.0pt;font-family:Verdana;color:black;mso-ansi-language:
+EN-GB'>-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span
+lang=EN-GB style='font-size:8.0pt;font-family:Verdana;color:black;mso-ansi-language:
+EN-GB'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>Dopo aver configurato il demone internet, dobbiamo configurare il
+file hosts.allow che darà accesso a quegli hosts che vuoi far accedere al tuo
+sistema. La configurazione di hosts.allow/hosts deny è molto simile. La
+sintassi di base per questi due files è infatti:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>la lista dei demoni : la lista dei client : il comando di shell<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>Iniziamo con la lista dei demoni, questa sintassi serve per dare
+il nome del servizio al quale applicare la regola. Per inserire più demoni,
+basta separare ogni nome del servizio con una virgola. La lista dei client che
+vuoi far accedere a tali servizi con il relativo indirizzo IP o con il nome
+dell’host o dns e per consentire l’accesso a più client, dividi ognuno con una
+virgola. E’ molto importante che tu inserisca l’indirizzo IP piuttosto che il
+nome dell’host (poi risolto da dns), perché l’host spoofing è più semplice
+dell’IP spoofing, quindi tienilo bene a mente. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>Una cosa che molte persone dimenticano sempre riguardo TCP
+wrappers è che la prima regola che viene soddisfatta per tcpd quando esso ne
+cerca una, è la prima che userà; in altre parole una volta che tcpd trova la
+corrispondenza con una regola (quelle che gli abbiamo dato noi ovviamente),
+esso smette di cercare. Questa è una pessima cosa perché se per caso non c’è un
+match né in hosts.allow né in host.deny di un dato host, allora per default
+l’accesso viene accordato. TCP wrappers per prima controlla nel file
+hosts.allow e quindi è molto importante bloccare tutti quegli IP che non vuoi
+far accedere proprio da questo file piuttosto che farlo inserendoli in hosts.deny,
+così un sistema per risolvere questa caratteristica di default di TCP wrappers
+è negare l’accesso a tutti e poi, nel file hosts.allow, dare il permesso a
+tutti quelli che necessitano l’accesso (persone/hosts di tua fiducia).<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span
+lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black;mso-ansi-language:EN-GB'>Operatori key words<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span
+lang=EN-GB style='font-size:8.0pt;font-family:Verdana;color:black;mso-ansi-language:
+EN-GB'>=================<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:8.0pt;font-family:Verdana;color:black'><br>
+</span><span lang=IT style='font-size:10.0pt;mso-bidi-font-size:8.0pt;
+font-family:Verdana;color:black'>Qui di seguito ci sono alcune key words che
+puoi usare per questi parametri così puoi configurare questi due files in modo
+più semplice.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>Esempi.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>LOCAL = questa key word determina un match (applicazione della
+regola) con qualsiasi host nel cui nome non ci sia un punto (“.”)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>ALL = questa key word determina un match con tutti gli hosts e I
+servizi usati<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>KNOWN = questa key word determina un match con ogni host/utente il
+cui indirizzo sia conosciuto<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>EXCEPT = questa key word funge da se/o, per esempio gruppo1 EXCEPT
+gruppo2<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>-----------------<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>Qui di seguito viene riportato un esempio di hosts.allow (è un
+puro esempio)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span
+lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black;mso-ansi-language:EN-GB'>ALL : </span><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'><a href="mailto:All@127.0.0.1"><span lang=EN-GB style='mso-ansi-language:
+EN-GB'>All@127.0.0.1</span></a></span><span lang=EN-GB style='font-size:10.0pt;
+mso-bidi-font-size:8.0pt;font-family:Verdana;color:black;mso-ansi-language:
+EN-GB'> : ALLOW<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>In.sshd : zopa.com<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span
+lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black;mso-ansi-language:EN-GB'>Inet.ftpd : roster.zopa.com<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span
+lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black;mso-ansi-language:EN-GB'>ALL : .zopa.com EXCEPT cracker.zopa.com<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span
+lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black;mso-ansi-language:EN-GB'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>Qui tutti gli hosts appartenenti al dominio zopa.com hanno il
+permesso di usare sshd, ma roster è il solo sottodominio che potrà accedere al
+servizio ftp, mentre gli altri no. Nell’ultima riga tutti gli hosts del dominio
+zopa.com avranno permesso di usare qualsiasi servizio ad eccezione del
+sottodominio cracker.zopa.com.<span style="mso-spacerun: yes">  </span>Nota
+quanto sia più importante negare l’accesso in hosts.allow perché fintanto
+che<span style="mso-spacerun: yes">  </span>TCP wrapper controlla hosts.deny
+l’accesso verrà dato all’host (cracker.zopa.com) perché ho dato il permesso a
+zopa.com che è un match per l’host, così esso avrà accesso persino prima che
+sia controllato nel file hosts.deny (ricordo che il check su hosts.allow viene
+effettuato prima di quello su hosts.deny). E’ quindo ovvio che usare la key
+word “EXCEPT” in hosts.allow è meglio che inserire l’host in hosts.deny!<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>Però noi non vogliamo lasciare hosts.deny vuoto, dovremmo inserire
+questo comando.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>Ecco un esempio di un hosts.deny<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>ALL : ALL<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span
+lang=EN-GB style='font-size:8.0pt;font-family:Verdana;color:black;mso-ansi-language:
+EN-GB'>=================<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>Questo sistema darà la sicurezza che negherà l’accesso: a tutti
+quelli a cui non sia esplicitamente dato l’accesso sarà negato ogni accesso.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:8.0pt;font-family:Verdana;color:black'>-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.25in;text-align:justify;line-height:
+12.0pt'><span lang=IT style='font-size:10.0pt;mso-bidi-font-size:8.0pt;
+font-family:Verdana;mso-bidi-font-family:"Courier New";color:black'>Variabili
+opzionali per<span style="mso-spacerun: yes">  </span>comandi di shell<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span
+lang=EN-GB style='font-size:8.0pt;font-family:Verdana;color:black;mso-ansi-language:
+EN-GB'>-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-</span><span lang=IT style='font-size:
+8.0pt;font-family:Verdana;color:black'>=-=-=-=-=-=-=-<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:8.0pt;font-family:Verdana;color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoBodyText style='line-height:12.0pt'><span lang=IT style='font-family:
+Verdana;mso-bidi-font-family:"Times New Roman"'>Puoi anche implementare le
+variabili opzionali dei comandi shell. Molte persone non usano questa
+caratteristica opzionale perché diventa una cosa troppo tecnica, ma se la
+capisci può portarti a ripararti da ogni attacco.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>Ti elencherò qui alcune variabili da usare con i comandi shell.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>{</span><span lang=IT style='font-size:8.0pt;font-family:Verdana;
+color:black'>-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>%u questa variabile ritornerà lo username del client<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>%d questa variabile ritornerà il processo <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>%p questa variabile ritornerà l’ID del processo<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>%a questa variabile ritornerà l’ idirizzo host del client<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>%c questa variabile ritornerà informazioni sul client, <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>come il nome dell’host o <a href="mailto:utente@host">utente@host</a><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>%h questa variabile ritornerà l’hostname del server, e <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>se non potrà trovarlo, ritornerà l’ indirizzo.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>{</span><span lang=EN-GB style='font-size:8.0pt;font-family:Verdana;
+color:black;mso-ansi-language:EN-GB'>-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-</span><span
+lang=IT style='font-size:8.0pt;font-family:Verdana;color:black'>=-=-=-=-=-=-=-}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:8.0pt;font-family:Verdana;color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoBodyText style='line-height:12.0pt'><span lang=IT style='font-family:
+Verdana;mso-bidi-font-family:"Times New Roman"'>Okay questo è sufficiente
+lascia che ti mostri un esempio.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'>Questo potrebbe essere un esempio di una linea che potresti
+inserire nel tuo hosts.deny<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span
+lang=EN-GB style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black;mso-ansi-language:EN-GB'>ALL : ALL spawn (echo Attempt from %h %a
+to %d %p at 'date' | tee /var/log/tcp.deny.log | mail rammal81@hotmail.com</span><span
+lang=EN-GB style='font-size:8.0pt;font-family:Verdana;color:black;mso-ansi-language:
+EN-GB'> ) <o:p></o:p></span></p>
+
+<p class=MsoBodyText style='line-height:12.0pt'><span lang=IT style='font-family:
+Verdana;mso-bidi-font-family:"Times New Roman"'>O qualcosa come sotto, ma
+questo sopra è meglio!<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='line-height:12.0pt'><span lang=IT style='font-family:
+Verdana'>in.fptd : .zopa.com : (/usr/bin/fingerd -l @%h | /usr/ucb/mail -s %d
+%c %h root) <o:p></o:p></span></p>
+
+<p class=MsoBodyText style='line-height:12.0pt'><span lang=IT style='font-family:
+Verdana'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoBodyText style='line-height:12.0pt'><span lang=IT style='font-family:
+Verdana'>così se l’accesso è stato negato agli hosts di .zopa.com, il root
+riceverebbe una email con le info che succederebbe lo stesso anche con la
+descrizione delle variabili.<o:p></o:p></span></p>
+
+<p class=MsoBodyText style='line-height:12.0pt'><span lang=IT style='font-family:
+Verdana'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:8.0pt;font-family:Verdana;color:black'>-=-=-=-=-=-=-=-=-=-<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.25in;text-align:justify;line-height:
+12.0pt'><span lang=IT style='font-size:10.0pt;mso-bidi-font-size:8.0pt;
+font-family:Verdana;mso-bidi-font-family:"Courier New";color:black'>Conclusioni<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span
+lang=EN-GB style='font-size:8.0pt;font-family:Verdana;color:black;mso-ansi-language:
+EN-GB'>-=-=-=-=-=-=-=-=-=-<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span
+lang=EN-GB style='font-size:8.0pt;font-family:Verdana;color:black;mso-ansi-language:
+EN-GB'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoBodyText3><span lang=IT>Una cosa che dovresti sempre tenere a mente
+è che se un hacker vuole il root sul tuo sistema, TCP wrappers ti aiuterà, ma
+non è la linea di difesa al 100% impenetrabile. Se hai intenzione di usare TCP
+wrappers come il solo metodo di protezione attraverso hosts.deny come solo
+sistema di bloccare il traffico entrante, meglio che usi ipchains o che blocchi
+il traffico prima che raggiunga il tuo host attraverso un firewall hardware
+oppure un router. Adesso siamo seri, non possiamo asserire che così dobbiamo
+usare ipchains come sola reale opzione al mondo, e se invece puoi sto già
+venendo a casa tua, hehe. Ipchains è molto valido/flessibile perché blocca il
+traffico a livello di kernel prima che il pacchetto sia letto da inetd o tcpd.
+Non annoierò adentrandomi nell’ ipchains perché sono stati già scritti dei
+tutorial sull’argomento, quindi cercali nei siti sulla sicurezza. Tornando a
+TCP wrappers, dovresti usare le utilities chiamate tcpdchk e tcpmatch, che
+vengono distribuite con il pacchetto TCP wrappers e sono spiegate molto bene
+nei links dati. Ricorda anche che gli IP possono essere spoofati quindi tieni
+sempre a mente che con molto lavoro uno che ti attacca può venire a sapere a
+quali hosts consenti l’accesso e può spoofarsi in loro. Un’altra cosa che
+dovresti tenere a mente è che TCP wrappers viene impiegato solamente per
+avviare il corretto demone che soddisferà la corretta richiesta, quindi non
+usarlo per servizi come NFS che all’avvio gestiscono più richieste di clients.
+Okay spero tu abbia imparato qualcosa qui, se hai qualsiasi cosa da aggiungere
+a questo file o hai trovato qualche errore, per favore fammi una email e lo
+sistemerò. Grazie.</span></p>
+
+<p class=MsoBodyText style='line-height:12.0pt'><span lang=IT style='font-family:
+Verdana'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:8.0pt;font-family:Verdana;color:black'>-=-=-=-=-=-=-=-=-=-=-=-<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:8.0pt;font-family:Verdana;color:black'><span
+style="mso-spacerun: yes">       </span></span><span lang=IT style='font-size:
+10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;mso-bidi-font-family:"Courier New";
+color:black'>Ringraziamenti<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span
+lang=EN-GB style='font-size:8.0pt;font-family:Verdana;color:black;mso-ansi-language:
+EN-GB'>-=-=-=-=-=-=-=-=-=-</span><span lang=IT style='font-size:8.0pt;
+font-family:Verdana;color:black'>=-=-<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:12.0pt'><span lang=IT
+style='font-size:8.0pt;font-family:Verdana;color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoBodyText><span lang=IT style='font-family:Verdana;mso-bidi-font-family:
+"Times New Roman"'>Beh ce ne sono troppi a cui fare ringraziamenti, ma tutti
+quelli del Box Network, i membri Kewl di Blacksun, gli stupendi visitatori che
+vengono ogni giorno e peeps che risponde alla posta<span style="mso-spacerun:
+yes">  </span>del giorno non pensare ti abbia dimenticato! Ohh e tutti su
+irc.box.sk in tutti i canali. Ahh prima che mi dimentichi, un enorme
+ringraziamento va anche a Cube e Krip0n per essere sempre la. Grazie!<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=IT style='font-size:
+10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=IT style='font-size:
+10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;color:black'>EOF<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=IT style='font-size:
+10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+
+<div class=MsoNormal align=center style='text-align:center'><span lang=IT
+style='font-size:8.0pt;font-family:Verdana;color:black'>
+
+<hr size=1 width="100%" noshade color=gray align=center>
+
+</span></div>
+
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-GB
+style='font-size:8.0pt;font-family:Verdana;color:black;mso-ansi-language:EN-GB'>©
+2001 Blacksun Research Facility. All rights reserved.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-GB
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black;mso-ansi-language:EN-GB'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-GB
+style='font-size:10.0pt;mso-bidi-font-size:8.0pt;font-family:Verdana;
+color:black;mso-ansi-language:EN-GB'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoBodyText><span lang=EN-GB style='mso-ansi-language:EN-GB'>(*
+Translated by §kyÐreamer – Tradotto da §kyÐreamer *)<o:p></o:p></span></p>
+
+<p class=MsoBodyText><span lang=EN-GB style='mso-ansi-language:EN-GB'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

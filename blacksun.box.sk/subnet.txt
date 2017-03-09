@@ -1,0 +1,260 @@
+[15:19:15] <KK>   OK
+[15:19:17] <KK>   That's it
+[15:19:20] <KK>   WTF is a subnet mask?
+[15:19:28] *** B-Man (Nir@62.0.150.164) has joined channel #israel
+[15:19:30] [Teolicy]   huh?!
+[15:19:32] <F^nor>   heya michal
+[15:19:48] [Teolicy]   What did I do wrong?>
+[15:19:53] [Teolicy]   s/>//
+[15:20:13]  * Teolicy reads his lines
+[15:20:32] [Teolicy]   I see no mistake. KK?
+[15:20:48] <KK>   ?
+[15:20:57] <KK>   Don't ask me. I don't know what's a subnet mask.
+[15:21:06] [Teolicy]   Oh, I thought you meant I was wrong.
+[15:21:11] <KK>   Oh, lo.
+[15:21:13] *** Blandest (TOOL@RAS2-p26.hfa.netvision.net.il) has joined channel #israel
+[15:21:16] [Teolicy]   IP has internal division to networks.
+[15:21:18] <Schnitzel>   nooooogaaaaa
+[15:21:32] <Blandest>   yooooooav
+[15:21:33] [Teolicy]   All computers on the same physical broadcast medium, are also on the same subnet.
+[15:21:44] <Blandest>   what's up?
+[15:21:46] [Teolicy]   Err... well, mostly.
+[15:21:48] <Schnitzel>   nothing.
+[15:21:49] [Teolicy]   (I will soon explain)
+[15:21:49] <Schnitzel>   u?
+[15:22:06] [Teolicy]   The subnet mask allows an IP stack to understand which part of the IP address is Network and which is Address.
+[15:22:08] [Teolicy]   Examples:
+[15:22:20] [Teolicy]   192.168.4.64 tries to ping 192.168.4.128
+[15:22:30] *** tomi-m (111@212.3.208.186) has joined channel #israel
+[15:22:32] <Blandest>   listening to pearl jam- no code.. orit lended it to me
+[15:22:38] <Schnitzel>   nice
+[15:22:42] [Teolicy]   How would 192.168.4.64 know if it should send the packet on the wire or to a router?
+[15:22:44] <Schnitzel>   i'm just missing snOOpy... :)
+[15:22:55] *** tomi-m (111@212.3.208.186) has left channel #israel
+[15:23:00] <KK>   But IP already knows which is a network and which is an address according to the "Class" thingy
+[15:23:02] [Teolicy]   It checks it's IP after the mask, and checks the destination's IP after the mask.
+[15:23:05] <KK>   Class C, B, A, etc
+[15:23:08] <Blandest>   yeah she is missing here
+[15:23:10] <KK>   no?
+[15:23:16] [Teolicy]   KK: No, not really. Class is just a convention, it's not...
+[15:23:22] [Teolicy]   Well, I will explain, second.
+[15:23:37] <KK>   Oh, Classes are a convention of the IANA,
+[15:23:41] [Teolicy]   Now, let's say 192.168.4.64 has subnet 255.255.255.0 mask.
+[15:23:43] <KK>   while Subnets are a part of the IP RFC?
+[15:23:50] <KK>   then .64 is the address part?
+[15:23:55] [Teolicy]   KK: Uhm, don't catch my words for it, but yeah.
+[15:24:02] [Teolicy]   Now, we AND with the mask to checkout the network:
+[15:24:03] *** Signoff: Web (Web@RAS3-p6.nt.netvision.net.il) has left IRC [Ping timeout for Web[RAS3-p6.nt.netvision.net.il]]
+[15:24:22] [Teolicy]   192 AND 255, 168 AND 255, 4 AND 255, 64 AND 0 = 192.168.4.0
+[15:24:36] [Teolicy]   192 AND 255 .... 4 AND 255, 128 AND 0 = 192.168.4.0
+[15:24:52] <F^nor>   Having fun, boys and girls? (mostly boys)
+[15:24:54] *** Signoff: B-Man (Nir@62.0.150.164) has left IRC [Ping timeout for B-Man[62.0.150.164]]
+[15:24:54] [Teolicy]   So you see, both the source (192.168.4.64) and the destination (192.168.4.128) are in the same mask.
+[15:25:03] [Teolicy]   Err... in the same subnet.
+[15:25:03] <KK>   yea
+[15:25:13] <KK>   well, is that all? I understand
+[15:25:16] [Teolicy]   That means that there is no need for routing - you can just put the packet on the wire.
+[15:26:29] [Teolicy]   If we're sending 192.168.4.64 --> 192.168.5.64, then the nets are different (192.168.4.0 != 192.168.5.0) - so we have to route via a router (usually to the default gateway on single homed hosts).
+[15:26:46] [Teolicy]   F^nor, accurcay check please.
+[15:27:00] *** Joker^^ is now known as Joker^
+[15:27:56] <adm0n>   i'm off for 20 mins, bye bye
+[15:28:17] [Teolicy]   Computers on the same subnet must share physical medium.
+[15:28:24] *** Signoff: adm0n (adm0n@RAS1-p12.rlz.netvision.net.il) has left IRC [Quit (bye )]
+[15:29:01] [Teolicy]   (well, unless there's some weird stuff, which we'll skip for now) (ARP proxying, 'promiscious routers' (no such thing yet, I'm inventing it! :), etc)
+[15:29:04] *** gever^ (111@212.3.208.186) has joined channel #israel
+[15:29:27] [Teolicy]   You can have more than one network on the physical medium by separating their subnets.
+[15:30:16] [Teolicy]   The stack will ignore braodcasts not intended for it's network (192.168.4.64x255.255.255.0 will ignore a broadcast to 192.168.5.255, etc).
+[15:30:18] *** Signoff: Joker^ (oded@RAS4-p57.jlm.netvision.net.il) has left IRC [Ping timeout for Joker^[RAS4-p57.jlm.netvision.net.il]]
+[15:30:44] *** Signoff: gever^ (111@212.3.208.186) has left IRC [Quit (Leaving)]
+[15:30:44] [Teolicy]   According to IANA (or something like that), IP networks are divided to classes (which you know about).
+[15:30:52] [Teolicy]   You can also sub-divide a class to a subnet.
+[15:31:10] <KK>   Subdivide a class to a subnet? Why would I do that?
+[15:31:21] <KK>   Oh
+[15:31:22] <KK>   Walla
+[15:31:24] <KK>   for Class A and B
+[15:31:33] [Teolicy]   Because you have only 256 valid IP's, one of which is network and one of which is broadcast (0/255).
+[15:31:46] *** Joker^ (nope@RAS1-p91.jlm.netvision.net.il) has joined channel #israel
+[15:31:46] [Teolicy]   And you are an ISP and have 4 clients, and want to give 32 IPs to each one.
+[15:31:58] <Schnitzel>   i'm outta herebyebye
+[15:31:59] *** Signoff: Schnitzel (NotMe@ppp-90-201.tau.ac.il) has left IRC [Quit (AAAAAAAAAAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAAAAA)]
+[15:32:01] [Teolicy]   So, if you have: 212.1.2.0x255.255.255.0, you give the clients:
+[15:32:44] [Teolicy]   (clients as in, People Who Bought IPs, not as in, hosts. Sorry for the ambiguoity)
+[15:33:04] [Teolicy]   Subnet mask 255.255.255.224
+[15:33:14] [Teolicy]   This gives them 32 IPs per netowrk, and we get:
+[15:33:47] [Teolicy]   212.1.2.0 - 212.1.2.31 -- Subnet one. Network address: 212.1.2.0, Broadcast: 212.1.2.31
+[15:34:05] <KK>   Hmm
+[15:34:14] <KK>   So a subnet mask isn't always 255/0
+[15:34:17] <KK>   okay
+[15:34:21] [Teolicy]   212.1.2.32 - 212.1.2.63 - Subnet two. Network address: 212.1.2.32, broadcast 212.1.2.63
+[15:34:26] <KK>   and how do I calculate the write numbers to AND?
+[15:34:36] [Teolicy]   assume:write=right
+[15:34:37] <KK>   people don't just go around ANDing numbers 'til they get the right one?
+[15:35:03] [Teolicy]   KK, you will be surprised to know that I actually did that once, before I understood this shit and I hat to config a Firewall-1 REALLY quickly :)
+[15:35:12] [Teolicy]   I ANDed numbers for about an hour, and I got it right. :)
+[15:35:27] <KK>   so, what is The True Way?
+[15:35:32] [Teolicy]   Stupid NT Cloobies like myself usually use a "subnet calculator" (there are such utils).
+[15:35:43] [Teolicy]   But a Linux-Fu master like you would simply love this simple rule:
+[15:35:57] [Teolicy]   As you know, IP address' are divided into 4 octets, 1 byte each.
+[15:35:58] [Teolicy]   That'
+[15:36:00] [Teolicy]   Err.
+[15:36:03] [Teolicy]   That's 32 bits.
+[15:36:10] <KK>   right, for IPv4.
+[15:36:21] [Teolicy]   A subnet of 255.255.255.0, is actually 11111111.11111111.11111111.00000000
+[15:36:31] <KK>   T!
+[15:36:34] [Teolicy]   T?
+[15:36:37] [Teolicy]   Oh, OK.
+[15:36:38] <KK>   LISP for True.
+[15:36:46] [Teolicy]   Yes, yes, I got it too slow. :)
+[15:37:00] [Teolicy]   Please use TCP/IP with my, I'm kinda stupid with the rest. :-)
+[15:37:04] [Teolicy]   s/my/me/
+[15:37:06] [Teolicy]   Anyway.
+[15:37:12] *** Signoff: {-SpuD-} (Tomer@ras9-p31.hfa.netvision.net.il) has left IRC [Quit (No trust, all I got is lies, boring, alright.)]
+[15:37:24] <KK>   ACK, XON
+[15:37:39] [Teolicy]   If you had a subnet of 255.255.255.255 (it's a quasi subnet, you can't really have such a network and it's reserved for special uses, but never mind), it would have no hosts in it at all.
+[15:37:56] <KK>   Right, because I AND everything with ones
+[15:37:57] [Teolicy]   That's because all the address is network, and no bits are left for host.
+[15:38:15] [Teolicy]   So you decimal-reduce numbers from the last octets to get additional hosts.
+[15:38:35] [Teolicy]   For a Point-to-Point (nothing to do with PPP) network (it's a network with two hosts), you need 4 addresses:
+[15:38:41] [Teolicy]   One for host A
+[15:38:44] [Teolicy]   One for host B
+[15:39:04] [Teolicy]   One for Network address (the first IP in the address range)
+[15:39:11] *** OnlyWords (~OW@pop09-1-ras1-p166.barak.net.il) has joined channel #israel
+[15:39:13] [Teolicy]   One for Broadcast (the last IP... range).
+[15:39:16] *** Signoff: VooDooGuY (Patish@RAS1-p61.hdr.netvision.net.il) has left IRC [Ping timeout for VooDooGuY[RAS1-p61.hdr.netvision.net.il]]
+[15:39:27] <KK>   XOFF
+[15:39:31] [Teolicy]   So, we decimal reduce 4 from the last oct--
+[15:39:33] [Teolicy]   SYN
+[15:39:34] <KK>   I must go to the bathroom
+[15:39:37] [Teolicy]   ACK
+[15:39:46] [Teolicy]   (lol)
+[15:39:58] <KK>   It would take a while.
+[15:40:04] [Teolicy]   ROFL
+[15:40:05] [Teolicy]   :-)
+[15:40:09] *** KK is now known as KK-Away
+[15:40:17] [Teolicy]   I'll wait, let me know when to resume.
+[15:40:26] <KK-Away>   ACK
+[15:40:29] <KK-Away>   ciao
+[15:40:35] *** Signoff: Joker^ (nope@RAS1-p91.jlm.netvision.net.il) has left IRC [Ping timeout for Joker^[RAS1-p91.jlm.netvision.net.il]]
+[15:41:00] [Teolicy]   KK is in the bathroom. 30 seconds and counting.
+[15:41:30] [Teolicy]   KK is in the bathroom. 60 seconds and counting.
+[15:42:01] [Teolicy]   KK is in the bathroom. 90 seconds and counting.
+[15:42:31] [Teolicy]   KK is in the bathroom. 120 seconds and counting.
+[15:42:48] *** EnTiTy (NA@212.25.120.137) has joined channel #israel
+[15:43:01] [Teolicy]   KK is in the bathroom. 150 seconds and counting. (Jesus, what does that boy eat?)
+[15:43:02] <EnTiTy>   Hello people
+[15:43:20] *** Signoff: Q (chanserv@galaxynet.org) has left IRC [online.be.galaxynet.org services.galaxynet.org]
+[15:43:30] [Teolicy]   KK is in the bathroom. 180 seconds and counting. (Do you think he'll survive?)
+[15:44:02] [Teolicy]   KK is in the bathroom. 210 seconds and counting. (Those Penguin shaped gummy-bear-candy...)
+[15:44:03] *** Signoff: EnTiTy (NA@212.25.120.137) has left IRC [Quit (Leaving)]
+[15:44:30] [Teolicy]   KK is in the bathroom. 240 seconds and counting. (Can you hear me Master KK? Can you hear me Master KK?)
+[15:44:44] *** Signoff: F^nor (fnor@p465-tnt4.akl.ihug.co.nz) has left IRC [Write error, closing link]
+[15:44:49] *** Sultan24 (oren_b@slip139-92-185-47.tel.il.ibm.net) has joined channel #israel
+[15:45:01] [Teolicy]   KK is in the bathroom. 270 seconds and counting. (We sadly anounce that KK has drowned...)
+[15:45:20] *** F^nor (fnor@p465-tnt4.akl.ihug.co.nz) has joined channel #israel
+[15:45:32] [Teolicy]   KK is in the bathroom. 300 seconds and counting. (What will we do now?)
+[15:45:36] *** Q (chanserv@galaxynet.org) has joined channel #israel
+[15:45:48] <OnlyWords>   wb Q
+[15:45:49] <F^nor>   Cheer him when he comes back.
+[15:46:00] [Teolicy]   KK is in the bathroom. 330 seconds and counting. (Oh my god! They drowned KKenny!)
+[15:46:01] <F^nor>   Maybe he got a little loose-wristed and decided to have some fun
+[15:46:04] [Teolicy]   F^nor: ACK.
+[15:46:14] [Teolicy]   lol
+[15:46:17] <F^nor>   REJ
+[15:46:30] [Teolicy]   KK is in the bathroom. 360 seconds and counting. (I wonder what he's doing there...)
+[15:46:31] *** Soberty (~Home@11dyn2.dh.casema.net) has joined channel #israel
+[15:46:34] [Teolicy]   Sobby!
+[15:46:35] *** Sultan24 (oren_b@slip139-92-185-47.tel.il.ibm.net) has left channel #israel
+[15:46:37] <F^nor>   soberty!
+[15:46:41] [Teolicy]   (coundown halted, screw KK :-)
+[15:46:44] <OnlyWords>   Soberty!!!
+[15:46:49] <Soberty>   F^nor :)
+[15:46:51]  * Teolicy sticks a toungue out at F^nor - Ha, beat ya to it.
+[15:47:01] <OnlyWords>   Let's make the deal, I won't talk to snOOpy for 13 days and you'll "hi" tai-tai
+[15:47:03] <F^nor>   Teolicy: Your 30 seconds are going rather fast
+[15:47:10] *** Mode change [+o Q] on channel #israel by services.galaxynet.org
+[15:47:10] <Soberty>   Ey Teo :)
+[15:47:12] <Soberty>   Gremmm
+[15:47:13] [Teolicy]   Nope, I was using a stopwatch.
+[15:47:16] [Teolicy]   So there.
+[15:47:18] *** Signoff: Ben_28 (XXL@RAS1-p5.hfa.netvision.net.il) has left IRC [charlotte.nc.us.galaxynet.org BestWeb.US.GalaxyNet.Org]
+[15:47:37] <F^nor>   Screw KK? Sure!
+[15:47:39] <Soberty>   Well DUH grem
+[15:47:47] <OnlyWords>   Do we have a deal?
+[15:47:53] [Teolicy]   Grem?
+[15:47:54] <F^nor>   I could do that!
+[15:47:54] <Soberty>   She's in the usa :)
+[15:48:02] <OnlyWords>   Really???!!! :)
+[15:48:47] [Teolicy]   F^nor: Even for a fag like you, I wouldn't recommend that. :)
+[15:48:55] <Soberty>   Eh F^nor you don't care -who- u screw, as long as you screw?
+[15:49:08] <F^nor>   No, KK has a mental attraction :P
+[15:49:08] <Soberty>   Heh Grem
+[15:49:11] [Teolicy]   lol
+[15:49:36] <Soberty>   LoL
+[15:49:51] [Teolicy]   Sob: He's a typical male, that's how it goes.
+[15:50:00] <F^nor>   I wouldn't screw Teolicy, or you. :P (but for different reasons :)
+[15:50:25] [Teolicy]   The song is: "Screw! Screw! Screw!", not: "Who? Screw! Who? Screw! Who? Screw!"
+[15:50:44]  * Teolicy was mortally insulted. And what reasons would these be?
+[15:51:05] <F^nor>   Oh faq off and AND your subnet masks :P
+[15:51:12] *** KK-Away is now known as KK
+[15:51:18] <OnlyWords>   KK wb!!!!
+[15:51:19]  * KK has returned
+[15:51:22] <OnlyWords>   How was the bathroom?
+[15:51:23] <F^nor>   (faq being a replacement word for f*ck) :)
+[15:51:27] <KK>   OnlyWords: Hot.
+[15:51:30] <OnlyWords>   Was it number 1 or 2?
+[15:51:34] <KK>   I need air conditioning for it.
+[15:51:41] [Teolicy]   KK has returned, 655~ seconds in the bathroom. Congratiolatiouns. "Hoo zakai! Hoo zakai! Hoo zakai!"
+[15:51:45] <KK>   It's too warm to take a dump in the summer.
+[15:51:47] <OnlyWords>   I'm a concerned individual
+[15:52:04] <F^nor>   Hardly typical.
+[15:52:04] [Teolicy]   F^nor: lol @ faq, AND
+[15:52:13] <KK>   Teolicy
+[15:52:15] [Teolicy]   KK: ROFL @ too warm
+[15:52:15] <KK>   XON
+[15:52:35]  * F^nor rapes Teolicy.
+[15:52:44] [Teolicy]   [Teolicy]   If you had a subnet of 255.255.255.255 (it's a quasi subnet, you can't really have such a network and it's reserved for special uses, but never mind), it would have no
+[15:52:44] [Teolicy]     hosts in it at all.
+[15:52:44] [Teolicy]   <KK>   Right, because I AND everything with ones
+[15:52:44] [Teolicy]   [Teolicy]   That's because all the address is network, and no bits are left for host.
+[15:52:44] [Teolicy]   [Teolicy]   So you decimal-reduce numbers from the last octets to get additional hosts.
+[15:52:44] [Teolicy]   [Teolicy]   For a Point-to-Point (nothing to do with PPP) network (it's a network with two hosts), you need 4 addresses:
+[15:52:44] [Teolicy]   [Teolicy]   One for host A
+[15:52:44] [Teolicy]   [Teolicy]   One for host B
+[15:52:44] [Teolicy]   [Teolicy]   One for Network address (the first IP in the address range)
+[15:52:44] [Teolicy]   [Teolicy]   One for Broadcast (the last IP... range).
+[15:52:48] [Teolicy]   Right.
+[15:53:00] *** SolarIs has kicked Teolicy from channel #israel [flood]
+[15:53:00] *** Teolicy (teolicy@pop03-1-rasa-p195.barak.net.il) has joined channel #israel
+[15:53:14] <F^nor>   You aren't my type, boi.
+[15:53:29] <Soberty>   So KK -is- ur type, F?
+[15:53:37] [Teolicy]   So we decimal reduce 4 from our 255.255.255.255 network, and get subnet mask: 255.255.255.252
+[15:53:41] <Soberty>   Wb KK hon
+[15:53:57] [Teolicy]   (When we do the reduction, we reduce from 256 of course, because the 0 counts.
+[15:54:16] [Teolicy]   I didn't ponder too much into the bit math, but it works and I'm just a cloobie anyway :)
+[15:54:19] <F^nor>   take a dump? My god, I haven't heard that phrase in YEARS.
+[15:54:34] <F^nor>   Soberty, well, he's closer than Teolicy :)
+[15:54:37] [Teolicy]   So we have 255.255.255.252 (F^nor: Eat less rice. :) to fit a 4 host network.
+[15:55:06] [Teolicy]   The same way, 255.255.255.224 would be a 32 host network.
+[15:55:07] <KK>   F^nor: yes you did
+[15:55:14] <KK>   few days ago WiZ_Of_oZ had something of the sort
+[15:55:22] <F^nor>   unzip; strip kk; mount -t kk; yes; yes; yes; umount kk; zip *j/k*
+[15:55:25] <KK>   /me is back from =/ taking a dump /=
+[15:55:34] <KK>   and you said
+[15:55:37] <KK>   "man that's disgusting!"
+[15:55:41] [Teolicy]   (both aren't exact - ...252 is a 2 HOST network (remember that we waste 2 IPs), and 224 is a 30 host network.)
+[15:55:41] <KK>   did you have to share that?
+[15:55:47] <KK>   or something of the sort
+[15:56:09] [Teolicy]   ROFL@F^nor Linux Screw
+[15:56:52] <F^nor>   How can I eat less rice than I currently do?
+[15:56:58] <F^nor>   I haven't eaten rice in... 7 months or so
+[15:57:25] [Teolicy]   It's important to note, that subnets don't always look like this 1111111111(more ones)000000(more zeroes).
+[15:57:27] <F^nor>   I did?
+[15:57:35] <F^nor>   Am I lagged?
+[15:57:46] [Teolicy]   Sometimes you can see 255.255.252.255 - that's a FOUR IP network, no more.
+[15:57:46] <F^nor>   hmm
+[15:57:47] <F^nor>   i don't remember
+[15:57:49] <F^nor>   I can't remember last week at all
+[15:58:01] <F^nor>   ok, i'm officially lagged
+[15:58:18] [Teolicy]   (we don't raise to a power of 256 when we reduce from high significance octets)
+[15:58:27] [Teolicy]   I think that's about it.
+[15:58:37] [Teolicy]   Err.. no. That's about all I know, that is. :)

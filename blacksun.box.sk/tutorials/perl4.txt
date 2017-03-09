@@ -1,0 +1,200 @@
+******************************************************
+* La Rivista Settimanale sul Perl 2 - By Ankit Fadia *
+******************************************************
+
+Fino ad ora, abbiamo imparato come eseguire comandi in ordine specificato. Ora, diciamo 
+che hai un pezzo di codice, che crea un piccolo task, e contiene codice, che è necessario 
+per eseguire quel task particolare in momenti differenti dello stesso programma. Cosa 
+fare?
+
+Bene, basta mettere il codice come "subrouteine" da qualche parte nel programma perl. 
+Questa subroutine può essere chiamata quando ci pare e da dove ci pare con l'aiuto di una 
+sola linea di codice. Fondamentalmente le subroutines sono in perl come ci sono le 
+funzioni in c. Capito?
+
+Ora, usando le subroutines non rendiamo solo il codice più efficiente, ma accorciamo anche 
+il tuo programma. Se queste subroutine ti rendono nervoso, consideriamo degli esempi per 
+capirle meglio.
+
+Bene, prima di andare avanti, impariamo la sintassi e le basi delle subroutine in perl.
+
+Le subroutine sono dichiarate usando la parola "sub". La seguente è la sintassi di una 
+tipica dichiarazione di subroutine:
+
+sub NAME { Codice } dichiara una subroutine chiamata NAME. Codice sono i comandi contenuti 
+dalla subroutine NAME che sono eseguite ogni volta che questa viene chiamata.
+ 
+Per esempio, 
+
+sub friendly_name {
+print “Hello”;
+}
+
+Ora, una dichiarazione di subroutine è abbastanza inutile senza una chiamata ad essa. 
+Quello che voglio dire è questo, dichiarando solo una subroutine non è sufficiente per 
+fare qualcosa di utile. Una subroutine diventa qualcosa di efficiente solo quando è 
+chimata o invocata dopo essere stata dichiarata.
+
+Così nell'esempio precedente, la subroutine friendly_name non ci è utile fin quando non la 
+invochiamo. Per chiamare una subroutine in perl, dobbiamo usare questa linea di codice:
+
+sub_routine_name ();
+
+Questa linea chiama la subroutine chiamata sub_routine_name ed esegue tutti i comandi 
+nelle parentesi graffe.
+
+Nel nostro esepio, per chiamare la subroutine "friendly_name", usiamo la seguente linea di 
+codice:
+
+friendly_name ();
+
+Ora che hai capito il concetto di subroutine, di dichiarazione e invcazione di subroutine, 
+scriviamo un programma completo.
+
+sub hello_world {
+print “Hello World\n”;
+}
+hello_world();
+
+Output-:
+
+c:\>perl sub.pl
+Hello World
+
+L'unica che devi notare è che se non passi nessun argomento alla subroutine, non abbiamo 
+bisogno di scrivere le parentesi. Questo significa che possiamo chiamare una funzione in 
+due modi:
+
+function_name(); o function_name;
+
+I due comandi danno lo lo stesso risultato.
+
+
+Valori di Ritorno
+-----------------
+
+Diciamo che hai un numero di scalari ai quali vuoi assegnare dei valori, che sono 
+calcolati chiamando la stessa subroutine. Ora, se hai un singolo scalare, non devi 
+preoccuparti del valore di ritorno, ma se hai più di un singolo scalare, tutti quelli che 
+hai assegnato al valore eseguendo gli stessi calcoli o in altre parole chiamando la stessa 
+subroutine, così devi trovare un modo per far ritornare alla tua subroutine più di un 
+singolo valore.
+
+******************
+HACKING TRUTH: Attualmente in Perl c'è una piccola differenza tra funzioni e subroutines. 
+La maggior parte delle persone pensa che sono la stessa cosa. Ma attualmente, una finzione 
+è un comando standard, del perl, mentre una subroutine è un gruppo di comandi. Ok?
+*****************
+
+Bene, per fare ciò usiamo l'istruzione "return". L'istruzione return lavora nel seguente 
+modo: causa un'uscita immediata dalla subroutine mentre ritorna il valore specificato o 
+nella variabile che ha chiamato o dalla variabile di default $_ (se la subroutine non è 
+stata chiamata usando una variabile).
+
+L'uso di "return" diventerà più chiaro dopo aver letto l'esatta sintassi dell'istruzione.
+
+return VALUE; : esce dalla subroutine mentre ritorna VALUE.
+
+Per capire meglio l'istruzione "return", facciamo qualche esempio:
+
+print ‘Il mio numero preferito è:’, number(), “\n”;
+sub number {
+return (3*1+1);
+}
+
+Output-:
+c:\windows\>number.pl
+Il mio numero preferito è:
+4
+
+
+$letter = ‘b’;
+addone();
+minustwo();
+print $letter;
+sub addone{
+$letter +=1;
+}
+sub minustwo{
+$letter -=2;
+}
+
+Output:
+c:\windows\>letter.pl
+a
+
+
+print “Scrivi un numero tra 0 e 4:\n”;
+$num= shift;
+print result;
+sub result {
+return 4 if $num ==4;
+return 3 if $num ==3;
+return 2 if $num ==2;
+return 1 if $num ==1;
+}
+
+Output:
+c:\windows\>get.pl
+Scrivi un numero tra 0 e 4:
+4
+4
+
+Ora, diciamo che il tuo programma contiene la seguente lina di codice:
+
+$var_name= sub_name;
+
+Se la subroutine sub_name è stata dichiarata prima della seguente linea, alla variabile 
+$var_name viene assegnato il valore ritornato dalla subroutine.
+
+Comunque, se la subroutine non è già stata dichiarata, alla variabile $var_name è 
+assegnata la stringa "sub_name".
+
+Vedi, anche il più piccolo errore in un programma Perl può cambiare il risultato 
+desiderato. Come la maggior parte dei linguaggi di programmazione, anche il Perl ha un 
+insieme di regole da seguire.
+
+In ogni modo, per evitare l'errore che ho descritto, c'è bisogno di un identificatore di 
+subroutine.
+
+Tutti gli scalari sono preceduti dal simbolo $, tutti gli array dal segno @, tutti gli 
+hashes da %; tutte le chiamate alle subroutine sono precedute dal simbolo &.
+Anyway, to avoid making a kind of mistake that I described above, there is the need of 
+special Sub Routine call identifiers.
+
+Nota: Questo che andrò a descrivere non è strettamente necessario, ma di certo è una cosa 
+abbastanza utile.
+
+Ora sappiamo che ci sono 4 tipi diversi di chiamare una subroutine:
+
+sub_name;
+sub_name();
+&Sub_name;
+&sub_name();
+
+Chiaro? Se no, leggi il seguente esempio:
+
+sub printer{
+print “Ciao, io sono Mr. Printer”;
+}
+&printer;
+
+Output-:
+c:\windows\sb.pl
+Ciao, io sono Mr. Printer
+
+Il simbolo & diventa davvero utile quando la tua subroutine ha il nome di un'istruzione di 
+Perl. Per esempio, se vuoi chiamare la tua subroutine print, usiamo il simbolo & per non 
+confonderla con l'istruzione print del Perl.
+
+Bene, è tutto per questo numero.
+
+Ankit Fadia
+
+ankit@bol.net.in
+
+
+kEwL`
+kewl@roolz.cjb.net
+kewlrox.netfirms.com
+www.tankcommandos.org

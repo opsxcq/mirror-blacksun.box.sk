@@ -1,0 +1,219 @@
+Lithuanian version of the Overclocking tutorial.
+------------------------------------------------
+
+Mini straipsnis apie kompiuterio turbinimà ( Overclocking )  
+Versija 1.6, 3/7/99L
+
+R a v e N ( blacksun.box.sk )                         
+iðvertë the saint ( sainty@euroseek.com )
+
+Pastaba: skaièiais paþymëtø þodþiø reikðmës yra straipsnelio gale.  
+
+Iðsiþadëjimas
+
+? Mes Neskatiname nelegaliø ásilauþimø á bet kà.
+? Mes Neskatiname lauþyti ástatymus kokiais nors bûdais.
+? Mes Nemanome, kad ástatymø lauþymas yra kaþkoks skiriamasis “elito” poþymis ar geras bûdas 
+padaryti áspûdá draugams. Tai tik tëra uþtikrintas bûdas sësti á kalëjimà ir nieko daugiau. Taip pat 
+mes manome, kad tas ar ta, kurie nusiþengia ástatymams, norëdami pasirodyti tikriems / interneto 
+/ ar kitiems ásivaizduojamiems draugams yra paprasèiausiai kvailas.
+? Mes Nedraudþiame straipsniø platinimo, nebent tai daroma uþ pinigus ar kitais pasipelnymo 
+tikslais.
+? Mes Neteiksime jokios techninës pagalbos, jeigu Jûs sugadinsite savo kompiuterá bandydamas kà 
+nors su juo padaryti po to, kai perskaitëte kurá nors mûsø straipsná.
+? Mes Neatsakinësime á kvailus klausimus, tokius kaip “iðmokykite mane ko nors destruktyvaus”. 
+Jei turite ádomiø klausimø, ne tokiø “Kaip instaliuoti Slackware?” ar “Kas yra kompiuteris?” ir 
+norite suþinoti atsakymà – raðykite e – mail barakirs@netvision.net.il ( angliðkai ) arba 
+sainty@euroseek.com ( lietuviðkai ).
+? Mes Nesiøsime Jums ðiukðliø ir neparduosime Jûsø e – mail ðiukðlininkams ( Spammers ) , jeigu 
+Jûs ásiraðysite á mûsø naujienø grupæ http://blacksunresearch.listbot.com.
+? Mes Neteiksime Jums “l33t0 s3x p4sswd5”.
+? Mes Neteiksime Jums informacijos apie serverius, kurie yra paþeidþiami vienais ar kitais bûdais, 
+nesvarbu, ar tie bûdai yra apraðyti Mûsø interneto puslapyje ar ne.
+? Mes  Nepadësime nulauþti interneto puslapá, nors tai ir bûtø nacistinis, vaikø pornografijos ar 
+“Ku –  Klux – Klan” puslapis.( Nors mes ir nepritariame jiems, kaip ir rasistiniams ir kitiems 
+nelegaliems judëjimams ).
+? Mes Nedovanosime pinigø jokiems labdaros fondams. Mes þinome visas pasakas apie mergytæ 
+Marytæ, kuriai reikia atlikti smegenø operacijà, apie Alisà, kuri serga vëþiu, apie Billy – Joe, 
+kuriam reikalingas plieninis plautis, taip pat ir apie tëvelá, kuriam reikia naujø batø. Mums 
+paprasèiausiai tai nerûpi arba mes Jumis netikime. Geriau pabandykite ar tinka Jûsø lieþuvis á 
+elektros rozetæ ar pan.
+? Mes Nedarysime aukðèiau iðvardintø dalykø net uþ aukso puodà ar uþ butelá alaus.
+ 
+ 
+ Turinys
+ 
+ Kas tai yra kompiuterio turbinimas ( “Overclocking” )?
+? Þodþio “Overclocking” reikðmë?
+? Kokià naudà galima iðspausti ið savo geleþies, turbinant?
+? Kaip galima turbinti mikroprocesoriø  CPU  / video kortà / kitkà? 
+ Kokie laukia pavojai?
+? Ar gali turbinimas pakenkti mano kompiuteriui?
+? Saugumo reikalavimai.
+? Galimi paðaliniai efektai ir kaip jø iðvengti? 
+ Patarimai ir nurodymai patyrusiems vartotojams.
+? Patarimai ir nurodymai patyrusiems vartotojams, kaip padaryti turbinimà dar efektyvesná.
+ Papildoma informacija, kaip pagreitinti savo kompiuterá.
+? Kur rasti daugiau informacijos apie kompiuterio turbinimà.
+ Pastabos apie 3D spartintuvus
+? Kaip uþturbinti 3D spartintuvus?
+ Bibliografija
+ Paaiðkinimai.
+ Kiti mokomieji straipsniai
+? Priedas apie disk cache tinklo narðyklëse ir kai kuriose operacinëse sistemose.
+
+Kas yra turbinimas ( Overclocking? )
+
+Turbinimas yra puikus bûdas pagreitinti CPU, video plokðèiø, 3D spartintuvø ir kitø prietaisø veikimà 
+ir kuris visai nieko nekainuoja ( baisiausias Intel sapnas ). Ðiame straipsnelyje bus aiðkinama, kaip 
+uþturbinti CPU, bet ðià informacijà galima panaudoti taip pat ir kitiems persinalinio kompiuterio 
+prietaisams turbinti.
+Taigi, pirmiausia reikia pasakyti, kad CPU greitis remiasi dvejais faktoriais – Jûsø magistralës – 
+BUS  greièiu ir laikrodþio ( clock ) greièiu. ( Maniðkio laikrodþio greitis – 1 sekundë per sekundæ… 
+Juokauju. Þodis “laikrodis” èia vartojamas ne kaip prietaisas paros laikui nustatyti. Skaitykite toliau ir 
+viskas paaiðkës. 
+Pavyzdþiui: senesniuose kompiuteriuose ( paimkime pavyzdþiu Pentium I 166MHZ  ) magistralës 
+greitis yra apie 66MHZ, taigi, 166, CPU greitá, padalinus ið 66, gaunamas rezultatas lygus apie 2.5, 
+kas reiðkia, kad vidinis kompiuterio laikrodis turi daugiklá 2.5. Paprasta, ar ne? Magistralës daþná 
+padauginus ið laikrodþio daugiklio gauname CPU greitá.
+Taigi, pagaliau, kas gi yra turbinimas ir kaip að já darau.
+
+Medþiagos
+
+1. Plonytis bukletas, kurá turëjote gauti su CPU.
+2. Atsuktuvas, geriau Philips tipo ( figûrinis ).
+3. Metalinës replës su guminëmis / plastikinëmis rankenomis ar krûva pirðtø.. ( geriau jau tai bûtø 
+Jûsø pirðtai, tiesa, ðnekëdamas apie pirðtus turëjau omenyje, kad reikalingi maþiausiai penki, 
+sumontuoti ant kokios nors rankos, geriau Jûsø nuosavos, þinoma. Jeigu pirðtai nesugrubæ – iðvis 
+gerai.
+4. Skaièiavimo maðinëlë / smegenys.
+
+Procesas
+
+A) Atidarykite kompiuterá, naudodami savo patikimàjá atsuktuvà.
+B) Pasklaidykite bukletëlá, kurá gavote su CPU apie trumpiklius ( jumpers  ) ir perskaitykite.
+C) Naudodamiesi replëmis ar pirðtais – perstatykite trumpiklius taip, kad pasiektumëte 
+pageidaujamà rezultatà. Taip pat pasistenkite nenulauþti CMOS  ir spartinanèios atmintinës  
+mikroschemø.
+
+Pastaba: naujesni CPU turi “uþrakintus laikrodþius”, kas reiðkia, kad negalite pakeisti CPU 
+laikrodþio greièio, taèiau tuo atveju galite pakeisti magistralës greitá. 
+Magistralës greièio keitimas yra panaðus á CPU laikrodþio greièio keitimà – perskaitykite dalá apie 
+trumpiklius bukletëlyje, kurá gavote su CPU. 
+
+Kokie pavojai laukia?
+
+Nagi, galite iðkepti modemà ir dar kà nors, bet viskas priklauso nuo Jûsø paèiø. Jei susimausit ir 
+vaikðèiosite neþiûrëdami po kojomis, iðpilsite kavà ant kompiuterio ar per daug uþturbinsite CPU 
+(skaitykite nuorodas patyrusiems, nebëkite verkdami pas mane.
+
+Galimi ðalutiniai efektai
+
+1) Jei kompiuteris nesikrauna – reiðkia, kad já per daug uþturbinote – sumaþinkite greitá ir bandykite 
+vël. 
+2) Nesikrauna Jûsø operacinë sistema ( ar lûþta labai daþnai) ar kompiuteris labai daþnai pats, be 
+jokiø matomø prieþasèiø persikrauna ir pan – atidarykite kompiuterá, raskite trumpiklá, kuris 
+keièia CPU átampà (CPU voltaþas daþniausiai þymimas panaðiai kaip 2.x, kur x gali bûti bet koks 
+skaièius) ir po truputá didinkite voltaþà. Nepamirðkite, kad didinti CPU átampà reikia pamaþële. 
+Riba yra 2.30 V. Jei vistiek kas nors negerai su kompiuteriu – maþinkite turbinimo lygá ir turëtø 
+bûti gerai.
+3) CPU uþturbinimas gali padidinti jo darbo temperatûrà ir sumaþinti veikimo laikà. Taèiau dël to 
+nevertëtø labai jaudintis, nes ekspertø teigimu, 2000 metais mes keisime CPU kartà per 6 
+mënesius, o laikui bëgant ir dar daþniau.
+
+Kaip iðvengti ðalutiniø efektø
+
+1) Gaukite gerà cooler ar ðilumos kriauklæ. Neturëtø daug kainuoti, o pasiekiamas neátikëtinas 
+efektyvumas. (Pavyzdþiui – ásigijus árenginá, kuris atðaldo CPU iki – 200C galite uþturbinti 
+Celeron 300A iki 633MHZ CPU).
+2) Internete pilna visokiø programø, tokiø kaip CPUIdle (URL  nusisiurbimui 
+http://geocities.com/SiliconValley/Monitor/6990/cpuidle.zip), kurios stabdo CPU darbà, kai ðis 
+dirba tuðèiai.
+
+Ðie bûdai ágalina sumaþinti CPU darbo temperatûrà ir net prailginti CPU veikimo amþiø. 
+Pastaba: CPUIdle veiks tik Windows aplinkoje, kadangi kitos operacinës sistemos turi já 
+“ákonstruotà”.  Daugiau apie galite paskaityti CPUIdle dokumentacijoje. 
+
+Statistiniai duomenys apie uþturbinimo saugumà.
+
+Ðis bûdas nëra pavojingas. Ið deðimèiø tûkstanèiø turbintojø pasaulyje tik labai nedidelë dalis 
+susvilino savo geleþá ir tai dar neaiðku ar tai ávyko bûtent dël turbinimo kaltës. Greièiau dël turbintojø, 
+kurie neatsiþvelgë á saugumo nurodymus ( per daug uþturbino CPU, nustatë per didelæ átampà ir pan.) 
+
+Ar verta terliotis?
+
+Þinoma, kad verta. Paskaièiuokite patys.
+
+Papildoma informacija greitinant kompiuterá.
+
+Iðbandykite modemo greitinimà sekcijoje “Modem Speedup”, kurià galite rasti blacksun.jemix.com.
+
+Kaip uþturbinti 3D spartintuvà?
+
+3D akseleratoriaus turbinimas yra labai panaðus á CPU turbinimà, tik reikia prisiminti vienà dalykà, 
+kad 3D spartintuvo greitis priklauso nuo CPU greièio. 3D spartintuvas negali veikti greichiau uþ 
+CPU, nes kai kurie pagrindiniai skaièiavimai atliekami CPU ir 3D akseleratorius negali be jø tæsti 
+darbo. Jeigu Jûsø CPU greitis maþesnis uþ 400MHZ, patariu neturbinti 3D spartintuvo. Pirma 
+uþturbinkite CPU, o po to jau þaiskite su 3D aksleleratoriumi.
+
+Kiti straipsniai:
+
+FTP Hacking.
+RM Networks Hacking.
+Ad and Spam Blocking.
+Sendmail (netikrø laiðkø kûrimas ir lauþymas serveriø, kuriuose paleista programa Sendmail)
+Visus juo galite gauti blacksun.jemix.com arba ásiraðykite á naujienø grupæ: 
+blacksunresearch.listbot.com.
+
+Bibliografija
+
+http://www.hacker.co.il (Hebrajø kalba)
+PC Magazine - http://www.pcmagazine.com
+
+
+ Paaiðkinimai
+ 
+    CPU - Central Processing Unit – tai kompiuterio procesorius – maþa mikroschema, kuri atlieka 
+visus skaièiavimus, iðskyrus tuos, kuriuos atlieka video plokðtës ar 3D spartintuvai, bet ir pastarieji 
+dirba pagal CPU apskaièiuojamus eskizus – “Blueprint”.
+ 
+   BUS - tai ne autobusas. Magistralës – maþi elektroniniai jungikliai, kurie siunèia elektrinius 
+impulsus ið ávairiø prietaisø kompiuteryje kitiems. Be magistraliø CPU, garso / monitoriaus / modemo 
+kortos, RAM atmintinës ir t.t negalëtø bendrauti tarpusavyje.
+
+  MHZ - Mega Hertz. Trumpai tariant – tai CPU greièio matavimo vienetas.
+
+  Trumpikliai (jumpers) yra kompiuterio viduje, tai maþi plastmasiniai kvadratëliai ir daþniausiai turi 
+du ar daugiau metaliniø kontaktø, kad galëtø praleisti srovæ ið vienos pusës á kità. Daþniausiai ten, 
+kur yra vienas, netoliese ilsisi ir kiti. Beje, nekiðkite jø geriau á burnà – tikrai nekoks skonis.
+
+  CMOS mikroschema - Complementary Metal Oxide Semiconductor. Maþa mikroschema, kur 
+laikoma pagrindinë informacija apie kompiuterio konfiguracijà.
+
+ Cache mikroschema. Kai CPU reikia atminties segmento – jis gali já nuskaityti ið RAM ar ið 
+spartinanèiosios atmintinës – Cache Chip. Spartinanèiosos atmintimës greitis daug didesnis uþ RAM, 
+kuris raðant ðá straipsná, daþniausiai nevirðijo 66 MHZ.
+Spartinanèioji atmintimë veikia tokiu principu:
+
+A) CPU nori pasiekti kaþkokius duomenis, kurie nesaugomi kietajame diske, CD, disketëje ir pan 
+(perskaitykite 8 paaiðkinimà). Atrodo, kad tuomet CPU turëtø ákiðti nosá á RAM, ar ne?
+B) Vat ir ne! Pirmiausia CPU ieðko, ar kartais reikalingø duomenø nëra spartinanèioje atmintinëje, 
+kuri yra daug spartesnë uþ RAM ir kurioje saugomi naujesni duomenys ið RAM. Be to, Cache 
+chip yra arèiau CPU.
+C) Jei duomenys randami spartinanèioje atmintinëje – valio! CPU gali tæsti savo veiksmus. 
+Rezultatas – CPU sutaupë daug laiko.
+D) Jei duomenys nebuvo rasti spartinanèioje atmintinëje, tai CPU ieðkos jø RAM. Rezultatas – CPU 
+prarado ðiek tiek laiko.
+
+Pastaba: nors RAM gali bûti 32MB, 64MB, 128MB ar daugiau – spartinanèiosios atmintinës dydis 
+yra nuo 256K iki 512K ar ðiek tiek daugiau (laikui bëgant ði informacija gali kisti).
+Pastaba 2: jei domëjotës savo tinklo narðykle, tikriausiai pastebëjote, kad ji turi savo nuosavà Cache 
+spartinimà. Paaiðkinimas – Jûsø narðyklë turi tai, kas vadinama Disk Cache. Tai iðsaugojami 
+interneto failai diske, kad kità kartà atsivertus puslapá bus atsiunèiami tik pakitæ fragmentai. Yra 
+galmybë atsisakyti ðio skeðavimo ar nustatyti tam tikrà ribà, pvz. Ne daugiau kaip 30MB.
+Pastaba 3: kai kurios operacinës sistemos taip pat turi savo diskø spartinimà, kuris yra panaðus á 
+narðykliø, taèiau tenai saugojami ne vien interneto failai.
+
+  URL - Universal Resource Locator - Interneto adresas.
+
+

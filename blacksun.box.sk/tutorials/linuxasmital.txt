@@ -1,0 +1,224 @@
+      +------------------------------------------------+
+      |	   Semplice tutorial di assembly per Linux     |
+      |	    Scritto da Olaf, membro del LNG -          |
+      |             Linux Security group               |
+      |        email - linuxsecgroup@hotmail.com       |
+      |         Traduzione italiana a cura di          |
+      |                    N'eM Sy                     |
+      +------------------------------------------------+
+
+Scritto per BSRF
+Homepage: http://blacksun.box.sk
+
+
+############ Introduzione ############ 
+
+L'Assembly  e' oggi una cosa dura da imparare, non perché è difficile ma    
+perché le persone pensano che non c'e' nessuna ragione di imparare l'assembly! 
+Questo non e' affatto vero... Con l'assembly si puo' avere il controllo totale 
+sul computer, e sapere con precisione quello che sta facendo. Cercate di
+ricordarlo mentre cercate di imparare!
+Vi chiederete: Perche' leggere questo tutorial? ci sono migliaia di tutorial 
+per programmare in Assembly su x86. Questo e' vero... ma vi dicono come 
+fare applicazioni per linux? Parlano per caso degli interrupt di linux? Non 
+credo... Ci sono moltissimi tutorial sull'assembly per x86 su dos e windows, 
+ma davvero pochi su linux. Io voglio cambiare cio'. Quindi questo è la prima 
+uscita di una raccolta di tutorial su questo argomento. Se scoprite che questo 
+tutorial ha qualche errore, per favore contattatemi ed io provvedero'. 
+
+##### Indice ######
+
+1. sistemi numerici  
+1.1. sistema decimale   
+1.2. sistema binario   
+1.2.1. convertire un numero binario in un numero decimale   
+1.2.2. convertire un numero decimale in un numero binario   
+1.3. il sistema esadecimale
+1.4. le convenzioni   
+2. i numeri binari nei computers   
+2.1. il Bit 
+2.2. il Nibble
+2.3. il Byte   
+2.4. la word   
+2.5. la double word 
+
+###################### 1. Sistemi numerici ###################### 
+
+1.1. Sistema decimale
+
+Oggi noi usiamo il sistema della numerazione decimale in quasi tutto quello che è   
+riferito a numeri. Noi l'usiamo così spesso ed in un modo cosi naturale da 
+dimenticare il suo significato. Quale è sistema decimale? 
+
+  . Ogni numero decimale, ha solamente cifre tra zero e nove,   
+    per un totale di 10 cifre 
+    Nota: quante dita abbiamo? ...10. infatti il sistema decimale   
+    è legato all'anatomia umana. 
+  . Ok, e qual'e' il significato di ogni cifra? Considerate i numeri
+    seguenti: 234 e 234,43 
+    Facciamo delle trasformazioni   
+    -> 234 = 200 + 30 + 4 = 2 * 10^2 + 3 * 10^1 + 4 * 10^0   
+    -> 234,43 = 2 * 10^2 + 3 * 10^1 + 4 * 10^0 + 0,43 = 2 * 10^2 + 3 *   
+10^1 + 4 * 10^0 + 4 * 10^-1 + 3 * 10^-2 
+
+Vedete la relazione?  Ogni cifra che appare alla sinistra della virgola 
+rappresenta un valore moltiplicato da zero a nove volte per una potenza di 
+dieci. Le cifre che appaiono al destra della virgola rappresentano un 
+valore moltiplicato tra zero e nove volte per una potenza decrescente di dieci. 
+
+1.2. sistema binario   
+  
+Il sistema binario usa solamente due cifre, per convenzione le cifre sono 0 e 1.   
+Questo sistema è usato estesamente nei computer... Per coincidenza o no questo   
+sistema funziona perfettamente con i computer... i computer funzionano usando 
+una logica binario. Il computer rappresenta i valori usando due livelli di 
+tensione differenti, in questo modo possiamo rappresentare lo 0 e l' 1. 
+Come ho detto prima per il sistema binario, si addice benissimo all'architettura 
+del computer! 
+
+1.2.1. convertire un numero binario in un numero decimale   
+Applichiamo la stessa regola che abbiamo visto nel 1.1, ma con potenze di due.   
+Esempio: 1010 -> 1 * 2^3 + 0 * 2^2 + 1 * 2^1 + 0 * 2^0 = 10   
+
+1.2.2. convertire un numero decimale in un numero binario 
+
+  Abbiamo due modi di farlo:   
+  
+  1.2.2.1 Dividiamo consecutivamente il valore decimale per una potenza 
+  di due(mantenendo il resto) fino a quando il risultato della divisione è 
+  diverso da zero. La rappresentazione binaria è ottenuta dalla sequenza dei   
+  resti nell'ordine inverso delle divisioni.
+
+Consideriamo il numero 10(in decimale):   
+  
+10 / 2   
+0 5 / 2   
+1 2 / 2   
+0 1 / 2   
+1 0   
+  
+Quindi in binario scriviamo 1010   
+  
+  1.2.2.2 Possiamo tentare di scoprire il numero aggiungendo potenze di due,   
+  che aggiunte produrranno il risultato decimale.   
+  
+Consideriamo per esempio numero 123... hmmm e' un numero non minore di 2^0 e 
+non piu' grande di 2^7. 
+  
+2^7 2^6 2^5 2^4 2^3 2^2 2^1 2^0   
+ 0   1   1   1   1   0   1   1  
+
+perché 1 * 2^6 + 1 * 2^5 + 1 * 2^4 + 1 * 2^3 + 0 * 2^2 + 1*2^1 + 1 * 2^0 = 123   
+Il nostro risultato è 1111011.  
+
+1.3. Sistema esadecimale
+  
+Avete visto quante cifre occorrono per rappresentare il numero 123 in binario. 
+7 cifre! Immaginate 1200, 10000... fa male. Quindi i programmatori dovettero 
+scegliere un altro sistema di numerazione, solo per "parlare" con la macchina... 
+eh no!... non e' il sistema decimale!!! Avete visto che abbiamo dovuto fare per 
+convertire un semplice numero come 10 fra decimale e binario... penso che non 
+vorrete spendere metà della vostra vita a fare cio'. 
+
+Gli ingegneri ci pensarono su e elessero il sistema esadecimale... L'esadecimale 
+è l'inglese per i computer. Entrambi hanno due caratteristiche speciali:   
+- Sono molto compatti
+- e' semplice convertirli in binario e vice-versa. 
+Un numero esadecimale ha cifre con un valore tra 0 e 15 volte una certa potenza 
+del sedici. Ma noi conosciamo solamente delle cifre tra 0-9, e dobbiamo usarne 
+altre sei! Possiamo usare le prime sei lettere dell'alfabeto. Vediamo un esempio: 
+FF = 15 * 16^1 + 15 * 16^0 = 255 (16) (10) 
+
+Convertire fra binario e esadecimale e' molto facile! Per convertire da binario a 
+esadecimale ricordate che ad ogni quattro cifre corrisponde una singola cifra 
+esadecimale... per riconvertire in binario applicate il procedimento inverso! 
+Date un sguardo al prossimo esempio: 
+
+110 1011 = 0110 1011 =6B 
+(2) (16) 
+
+E' molto semplice!!! Per fare le cose piu' semplici, guardate la seguente tabella:
+
+################ 
+# D # H # B # 
+################ 
+# 0 # 0 # 0000 # 
+# 1 # 1 # 0001 # 
+# 2 # 2 # 0010 # 
+# 3 # 3 # 0011 # 
+# 4 # 4 # 0100 # 
+# 5 # 5 # 0101 # 
+# 6 # 6 # 0110 # 
+# 7 # 7 # 0111 # 
+# 8 # 8 # 1000 # 
+# 9 # 9 # 1001 # 
+#10 # A # 1010 # 
+#11 # B # 1011 # 
+#12 # C # 1100 # 
+#13 # D # 1101 # 
+#14 # E # 1110 # 
+#15 # F # 1111 # 
+################ 
+
+1.4. le convenzioni
+
+Programmare in assebly vi costringe a rispettare delle regole quando usate i    
+numeri, visto che potete usare tre sistemi di numerazione diversi. 
+
+Quando scriviamo un numero:   
+  
+- tutti i numeri devono cominciare con una cifra decimale   
+- tutti i numeri finiscono con una lettera, che indica il tipo di numero:   
+. per gli esadecimali la lettera è h   
+. i numeri binari finiscono con b   
+. i decimali finiscono con t o d . Noi useremo la notazione seguente: 
+
+Xn Xn-1... X2 X1 -> Xi rappresenta un bit, ed i <- [0,1,... ,n] rappresenta   
+la sua posizione. 
+
+########################2. i numeri binari nei computers ######################## 
+
+2.1. Bit e' l'abbreviazione di binary digit (cifra binaria). Noi useremo sempre 
+questa abbreviazione. Come avete ha potuto indovinare che “il bit” e' la più piccola 
+unità di dati su un computer binario. 
+
+2.2. il Nibble e' un set di quattro bit. Per esempio 1110, 1101, 1111 sono un   
+nibble... ogni cosa che ha 4 bit e' un nibble.   
+X3 X2 X1 X0 -> X1 X0 sono i bit meno significativi nel Nibble, mentre X2X3 sono i bit 
+piu' significativi. 
+
+2.3. il byte -> Questo la struttura dati piu' usata nei computer. Un byte e' una 
+raccolta di otto bit:   
+X7 X6 X5 X4 X3 X2 X1 X0 Quando ci riferiamo ad un byte diciamo che il suo Nibble 
+meno significativo e' X0 X1 X2 X3, mentre quello piu' significativo e' X4 X5 X6 X7. 
+Nota: i byte sono usati per rappresentare caratteri usando il set dei caratteri 
+ASCII. 
+
+2.4. una parola (word) consiste di 2 byte, cioe' di un gruppo di 16 bit. In un byte 
+abbiamo i bit meno significativo e nell'altro, i bit piu' significativi.   
+  
+2.5. una doppia parola (double word) consiste di due parole, ossia quattro byte ossia 
+32 pezzi. In un doppia parola abbiamo una L.O.(ndt: Low Order, meno significativa) parola 
+ed una H.O.(ndt: high order, piu' significativa) parola. 
+
+Nel prossimo tutorial parlero' di:
+
+- Operazioni aritmetiche - numeri signed ed unsigned - Organizazione dei sistemi - Flag e
+registri - Operazioni logiche e bit - un po' di istruzioni tipo mov, jmp, call, and...
+
+###################################################################################
+Questo tutorial e' stato tradotto da N'eM Sy (nemesy.it@tiscalinet.it). Per la traduzione mi sono attenuto per quanto era possibile all'originale. Per qualsiasi problema, informazione e per ottenere la versione originale del testo andate su <http:\\napolihak.cjb.net>.
+
+                 *      N      *
+                  °           °
+                   °    '    °
+                    \       /
+                     \  e  /
+                      \   /
+              N  '  e   M   S   y
+                      /   \
+                     /  S  \
+                    /       \
+                   °    y    °
+                  °           °
+                 *             *

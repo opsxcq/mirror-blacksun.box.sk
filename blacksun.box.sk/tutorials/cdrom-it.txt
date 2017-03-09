@@ -1,0 +1,135 @@
+       *%*  _.|~~|._  | ~~~~)\~~~/  /~~~~~| |~~| /~~/  |~~~~~~~/ | ~~~~) *%*         
+       *%* |__    __| |  @ /  | |   | /~~~  |  |/  /   | |~~~~~  |  @ /  *%*      
+       *%*    |  |    | |\ \  | |   | |     |     <    | |_____  | |\ \  *%*       
+       *%*    |__|    |_| \_\ | |   | \____ |  |\  \   |  _____\ |_| \_\ *%*  
+        *%*%*%*%*%*%*%*%*%*%*/~ ~\  \_____/ |__| \__\  | |_____  *%*%*%*%*%*    
+                          *%*~~~~~  * TrickSoft.net *  |______/  *%*  
+                          *%*%*%*%*%*%*%*%*%*%*%*%*%*%**%*%*%*%*%*%*  
+                                   Date:Luglio,15,2000
+----------------
+Contact Info:
+----------------
+Written by: TriÇker
+Email:Cadtrick@hotmail.com
+ICQ:40884568
+AIM:zTrickerz
+Web:http://tricksoft.net
+----------------
+Tradotto da: Screener_it
+Email:screener_it@freemail.it
+Web:http://go.to/tankcommandos
+[tra parentesi quadre i commenti
+del traduttore]
+----------------
+_______________________________________________________________________________
+Titolo: Guida all'installazione di CD-ROM/CD-Rewritable
+-------------------------------------------------------------------------------
+Indice
+-------------------------------------------------------------------------------
+Intro
+I.Materiale & costi
+II.Preparazione all'installazione
+III.Installazione del CD-ROM drive
+V.Conclusioni
+VI.Programmi & Utilities
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+Intro
+-------------------------------------------------------------------------------
+Vuoi cambiare il tuo cd-rom drive o sostiturlo con una masterizzatore senza
+pagate 100 karte per fartelo installare ? [non mi pare che i costi siano così
+alti in Italia cmq..]
+O vuoi semplicemente installarlo in una macchina che ancora non ce l'ha ?
+Beh, sei nel posto giusto !
+In questo tutorial ti insegneremo a farlo da solo. E molte altre guide 
+sull'hardware su Blacksun Research Facility(Blacksun.box.sk).
+[le abbiamo anche noi del Tank Commandos, ma noi le facciamo in italiano !!]
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+I.Materiale & costi
+-------------------------------------------------------------------------------
+Hai bisogno di:
+----Un CD-ROM drive (dipende se è un masterizzatore/DVD/CD-Rom)
+----Cacciavite
+----pinze
+----polsino antistatico (opzionale)
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+II.Preparazione all'installazione
+-------------------------------------------------------------------------------
+Prima che ti metta a lavorare sul computer.. Devi avere tutto a portata di mano.
+Pulisci lo spazio sulla scrivania o sul tavolo, scoperchia il computer e metti
+il computer in un posto ben illuminato.
+Adesso dovresti vedere la scheda madre e tutto l'interno. Come ben sai [se non lo sai
+lo impari adesso] la scatola in cima a sinistra con cavi rossi, gialli, neri che
+vengono fuori è l'alimentatore. Alla fine di questi cavi c'è una presa con 4
+buchi. 
+La striscia [grigia aggiunto io] che vedi è quella che trasferisce i dati dal drive
+alla scheda madre. Guarda come sono connesse al floppy, ecc..
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+III.Installazione del CD-ROM drive
+-------------------------------------------------------------------------------
+Segui le sezioni sottostanti a seconda di quello che devi installare.
+--Sezione A: stai aggiungeno un cd-rom drive (masterizzatore, DVD, cd-rom)
+--Sezione B: stai per sostituire un cd-rom esistente
+
+          ----------------------------------------------------------
+%*%*%*%*%*Sezione A: stai aggiungeno un cd-rom drive (masterizzatore, DVD, cd-rom)*%*%*%*%*%*
+          ----------------------------------------------------------
+Step 1: Rimuovi la plastica frontale sulla tower dove il cd-rom prenderà posto
+Step 2: Setta il jumper nel retro del nuovo cd-rom drive a "slave" se non è già stato
+	settato. Se non ci sono etichette che mostrano come settare il jumper guarda
+	il sito della casa produttrice.
+Step 3: Inserisci il drive nello slot libero, ma non fissarlo ancora perchè dovrai
+	lavorarci attorno.
+Step 4: Quando il drive è a posto prendi la striscia grigia (cavo IDE) che è connessa
+	al tuo hard disk e guarda se ci sono altri prese sulla striscia da inserire
+	nel tuo cd-rom. Se non ci sono prendi il cavo che c'è nella scatola e attaccalo
+	al tuo cd-rom e alla scheda madre.
+Step 5: connetti il cavo audio (piccolo con fili multicolore) al cd-rom e poi connetti
+	l'altro capo alla scheda audio (c'è una presa nera sulla scheda). NOTA: questo
+	passo è necessario solo se vuoi sentire musica dal lettore cd-rom
+Step 6: Adesso collega il cd-rom all'alimentatore. Prendi un cavo che abbia il cavo giallo
+	e rosso e poi collegalo al cd-rom.
+Step 7: Quando è tutto connesso, avvita il driver negli spazi appositi e fai riparite la
+	macchina. Se usi Windows 9* dovrebbe riconoscerlo senza problemi.
+Step 8: Installa i driver del cd-rom che erano compresi nella scatola.
+
+
+                       -------------------------------------                       
+*%*%*%*%*%*%*%*%*%*%*%*SSezione B: stai per sostituire un cd-rom esistente*%*%*%*%*%*%*%*%*%*%*%*
+                       -------------------------------------                       
+Step 1: Rimuovi il cd-rom esistente disconnettendolo da tutti i cavi e dall'alimentatore.
+Step 2: Imposta i jumper nel nuovo cd-rom nello stesso modo in cui sono stati settati su
+	quello vecchio.
+Step 3: Inserisci il drive nello slot libero, ma non fissarlo ancora perchè dovrai
+	lavorarci attorno.
+Step 4: Collegalo alla cavo grigio che prima era usato dal vecchio cd-rom
+Step 5: connetti il cavo audio (piccolo con fili multicolore) al cd-rom e poi connetti
+	l'altro capo alla scheda audio (c'è una presa nera sulla scheda). NOTA: questo
+	passo è necessario solo se vuoi sentire musica dal lettore cd-rom
+Step 6: Adesso collega il cd-rom all'alimentatore. Prendi un cavo che abbia il cavo giallo
+	e rosso e poi collegalo al cd-rom.
+Quando è tutto connesso, avvita il driver negli spazi appositi e fai riparite la
+	macchina. Se usi Windows 9* dovrebbe riconoscerlo senza problemi.
+Step 8: Installa i driver del cd-rom che erano compresi nella scatola.
+                                                                                 
+                                                                                 
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+Conclusioni
+-------------------------------------------------------------------------------
+Hai risparmiato soldi e hai installato da te il tuo cd-rom risparmiando una
+costosa ora di lavoro al negozio di computer.
+Se leggerai altri testi capirai che puoi risparmiare parecchie soldi se fai
+tutto da solo. Spero che ti sei divertito e spero che ti sia stato d'aiuto.
+Scrivetemi [in inglese] se avete problemi.
+Visitate Blacksun.box.sk per altri miei txt sull'hardware
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+V.Programmi & Utilities
+-------------------------------------------------------------------------------
+Programmi per masterizzare, utilities, driver e altro su:
+--(http://www.download.com)                                              

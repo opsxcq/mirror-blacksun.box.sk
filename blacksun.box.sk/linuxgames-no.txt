@@ -1,0 +1,99 @@
+****************************************************************************
+*
+*   The Definitive Guide for Linux Gamers (Norwegian Version)
+*
+****************************************************************************
+ Author: Raven <barakirs@netvision.net.il>
+ WWW: http://blacksun.box.sk
+ Date: 26/2/2000
+ 
+ This text was originally written by Raven from Black Sun Research Facility,
+ but has been translated into Norwegian by Lars O. Overskeid. Please direct
+ any technical questions to the people at BSRF through their forum.
+ For any questions concerning the Norwegian translation of this document, see
+ contact information at the bottom of this text.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Innhold
+-------
+Dette er en tekst for Linux brukere som vil bruke alle spillene de har i 
+Linux, men som ikke akkurat vet hvilke veier de skal gå for å få det til.
+
+Introduksjon
+------------
+Begynner du å dø av kjedsomhet over din Linux boks? Hvordan ville det vært
+med litt ekstra underholdning i Linux ? Jeg snakker om dataspill. Ja, 
+dataspill på Linux, og da mener jeg ikke minesveiper kloner, men skikkelige
+spill som du vanligvis bare ser på Windows.
+
+Hvor får jeg tak i dem?
+-----------------------
+Det beste stedet å lese nyheter om spill til Linux er LinuxGames.com. Du kan
+også ta en titt på LokiGames.com - de skriver kontrakter med de firmaene som
+lager spillene, og får kildekoden fra dem. Deretter porter de dem over til
+Linux plattformen. Quake, Civilization, Railroad Tycoon, Unreal, Heroes of
+Might and Magic og mange fler har alle blitt portet til Linux.
+
+Hva med noen litt mindre spill?
+-------------------------------
+Hvis du virkelig liker kontorspill som minesveiper og kabal finnes det noen
+steder du kan gå for å finne dem også:
+
+Pysol (http://pysol.tsx.org) - De har over 160(!) kortspill, med regler, 
+tips, og alt du måtte trenge. Du burde også laste ned Lydtjeneren de har 
+laget. De legger nemlig stor vekt på lyden i spillene, og den er virkelig god.
+
+Linuxberg (http://www.linuxberg.com) - Dette er en versjon av TUCOWS laget
+for Linux. Prøv ut spillene for X11, Gnome og KDE i spillseksjonen.
+
+Fortsatt sugen på mer? Husker du Space Invaders, det spillet hvor du hadde
+et lite romskip nederst på skjermen som skulle skyte ned romvesener som 
+kom ned ovenifra. Det finnes en 3D versjon av dette spillet til Linux som
+heter XInvaders3D. Dessverre har jeg ingen URL til det, men du kan kjøre
+et søk i en søkemotor så finner du det sikkert.
+
+Emulatorer
+----------
+Liker du gode arkadespill, eller nintendo? Det finnes selvfølgelig emulatorer
+til de fleste spillkonsoller for Linux. For eksempel har du SNES (16bit)
+emulatoren som kalles 'snes9x', eller KDE versjonen som heter 'ksnes9x'.
+For arkade spillene, se XMAME (http://x.mame.net).
+Hvis du vil spille Nintendo 64 spill på Linux kan du kjøre din favoritt
+Windows N64 emulator gjennom Wine, Windows emulatoren (http://winehq.com).
+
+Windows Emulatorer
+------------------
+Hvis du ikke kan finne en portet versjon av et spill, kan du prøve å kjøre dem
+gjennom en Windows emulator. Wine (http://www.winehq.com), eller VMWARE
+(http://www.vmware.org). De kan gjøre mye utrolig!
+
+Utro:
+----
+Les: http://www.happypuppy.com/features/editorials/linux%2Ded%2D1.html
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Translated by Lars O. Overskeid, also known as m0nark. 
+ You can reach me at m0nark@online.no, or ICQ# 22221965.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ SHOUTZ; BSRF Crew, EternalKnights, 1stVamp, COKE, Migbasher, Yorkie, §tõrm,
+ VetesGirl, Moondancer, Gressklipper, Divine-Crisis, An0nym0us, Chiraz and
+ the rest of the guys @ HNC, Ken Williams, Johnny, and j00r m4m4 :)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Thanks to all the people who's been there for me through all these years, 
+ especially my friends from Monark Productions, Online Devils and W-O-M.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ And thanks to BSRF for allowing me to translate their quality tutorials!
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+              T ° H ° A ° T ° S ° I ° T ° F ° O ° L ° K ° S 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+     ³     ÄÄÄÄ   ÄÄÄÄ ÄÄÄÄÄÄÄÄÄ ÄÄÄ   ÄÄÄ ÄÄÄÄÄÄÄÄ ÄÄÄÄÄÄÄÄ ÄÄÄ ÄÄ  ³
+     ³     ÄÄÄÄÄ ÄÄÄÄÄ ÄÄÄ   ÄÄÄ ÄÄÄÄÄ ÄÄÄ ÄÄÄ  ÄÄÄ ÄÄÄ  ÄÄÄ ÄÄÄÄ	   ³
+     ³     ÄÄÄ ÄÄÄ ÄÄÄ ÄÄÄ   ÄÄÄ ÄÄÄ ÄÄÄÄÄ ÄÄÄÄÄÄÄÄ ÄÄÄÄÄÄÄ  ÄÄÄÄ	   ³
+     ³     ÄÄÄ     ÄÄÄ ÄÄÄÄÄÄÄÄÄ ÄÄÄ   ÄÄÄ ÄÄÄ  ÄÄÄ ÄÄÄ  ÄÄÄ ÄÄÄ ÄÄ  ³
+     +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+

@@ -1,0 +1,135 @@
+The Basics of Cryptography
+
+Versione originale (in inglese) di:
+tHe mAnIaC (maniac@forbidden.net-security.org)
+http://blacksun.box.sk
+
+Tradotto il 14 novembre 2ooo
+da Green Dragon (green_dragon@freemail.it)
+http://go.to/tankcommandos
+
+=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/
+=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\
+
+La criptazione e la crittografia
+
+Questa guida è solo a scopo educativo. Non m prendo nessuna responsabilità su tutto ciò che accadrà dopo aver letto questa guida. Vi sto solo dicendo come fare e non di farlo. E' la vostra decisione. Se volete mettere questo testo sul vostro sito/FTP/Newsgroup o qualsiasi altra cosa, potete farlo ma non cambiate nulla senza il permesso dell'autore.
+
+***************************************************************************************
+
+Due parole:
+
+Spero che vi piaccia il mio testo e che lo troviate utile. Se avete qualche problema o alcuni consigli sentitevi liberi di mandarmi una E-Mail ma per favore non mandatemi E-Mail del tipo "Vorrei hackerare il sito del governo degli USA, per favore aiutami" o "Dimmi come ficcare un trojan in una *.jpg"
+State sicuri che se posso aiutarvi con qualcosa lo farò.
+
+*************************************************************************************************
+
+INDICE:
+
+1) Di cosa parla questo testo?
+2) La criptazione e come funziona.
+3) La crittografia e PGP.
+4) Metodi di rottura della crittografia
+- Password passime
+- Files non cancellati.
+- Virus e troiani.
+- Versioni falsificate di PGP
+
+***************************************************************************************
+
+==============================
+1) Di cosa parla questo testo?
+==============================
+
+In questo testo vi spiegherò tutto riguardo la crittografia, che cos'è, PGP, come qualcuno
+può leggere il tuo file crittato etc. Tutti gli hacker e i paranoici devono usare la crittografia e
+tenere gli altri lontani dal leggere i loro files. La crittografia è una cosa molto importante
+e vi spiegherò come qualcuno può rompere e decifrare i tuoi files.
+
+=================================
+2) La criptazione e come funziona
+=================================
+
+La crittografia è molto antica. Probabilmente la usava anche Giulio Cesare quando mandava dei messaggi poiché non si fidava dei suoi messaggeri. 
+Essa è ovunque, quando guardate qualche film di spionaggio vedete che c'è sempre un computer con dei files criptati o in alcuni film di hacker quando i federali arrestano gli hacker e vedono che tutti i loro files sonno criptati.
+
+Quando hai semplici files .txt che puoi leggere, è chiamato "plain text", in italiano "testo evidente".
+Ma quando usi la criptazione e cripti un file, quest'ultimo diventa illeggibile fino a quando non si inserisce la password. Questo testo è chiamato testo cifrato. Il processo che consiste nel convertire un testo cifrato in un testo evidente è chiamato decriptazione.
+
+Ecco un piccolo esempio:
+
+Testo evidente ==>Criptazione ==>Testo cifrato ==>Decriptazione ==>Testo evidente
+
+Questo esempio vi mostra il procedimento di criptazione e di decriptazione di un file.
+
+========================
+3) La crittografia e PGP
+========================
+
+La crittografia è quella scienza che usa la matematica per criptare e decriptare dati. Questa scienza ti lascia tenere i tuoi files e documenti sicuri anche su network insicuri come Internet.
+La crittografia può essere debole e forte. La migliore è senz'altro quella forte. Anche quando usi tutti computer del mondo e stanno facendo milioni di operazioni al secondo, avrai bisogno di MILIONI di anni per decriptare forti criptazione.
+
+PGP (Pretty Good Privacy) è forse il miglior programma di criptazione per criptare i tuoi files e documenti. Funziona così:
+
+Quando cripti un file con PGP, PGP prima comprime il file. Questo ti risparmia spazio sul disco e trasmissioni modem. Poi crea una sessione chiave. Questa sessione chiave funziona con algoritmi sicuri, veloci e criptati per criptare file. Poi la sessione chiave è criptata con la chiave pubblica del destinatario.
+PGP ti chiede una frase di passaggio (frase di accesso), non una password. E' più sicuro contro gli attacchi di dizionario, cioè quando qualcuno prova a usare tutte le parole del dizionario per trovare la tua password. Quando usi le frasi di passaggio (o di accesso), puoi inserire una intera frase con maiuscole, minuscole, numeri, lettere e punteggiatura.
+
+=======================================
+4) Metodi di rottura della crittografia
+=======================================
+
+PGP è stato scritto per persone che vogliono i loro files criptati e per gente che vuole un po'di privacy. Quando mandi una E-Mail, essa può essere letta da altre persone. Se usi PGP solo la persona a cui è indirizzata l'E-Mail la può leggere.
+
+Adesso sai molte cose di PGP e della crittografia ma probabilmente vorrai sapere se qualcuno può rompere un file o un documento criptato e leggerlo. Infatti se usi tutti i computer del mondo per decriptare un semplice messaggio PGP avrai bisogno di 12 milioni di volte l'età dell'universo per romperla. Come puoi vedere PGP è il migliore e la criptazione è così forte che nessuno può romperla.
+Le persone che lo hanno programmato hanno lavorato dipendendo dalle tue richieste.
+
+|=*=||=*=| Password passime |=*=||=*=|
+
+L'algoritmo è indistruttibile ma ci sono altri metodi per decriptare un testo e leggerlo. Uno dei grandi errori quando qualcuno scrive la sua frase di accesso è qualcosa come :"John" o "I love you" e altre simili frasi. Altri sono i nomi di amici o qualcosa di simile. Questo è sbagliato perché è una frase di accesso e non una password. Fate una frase lunga, inserite numeri ed altri caratteri. Le frasi lunghe sono quelle più forti. Potranno essere indovinate ma mettete intere frasi
+anche se sono senza senso o inserite qualcosa come:
+
+hEllowOrld33IjustwanTtoteLLtoev3ryon3thatI'maLamErandI'mahacKer666
+
+Questa è facile da ricordare perché è divertente e ci sono solo pochi numeri ma potresti non usare maiuscole e minuscole. Spero che sappiate inserire frasi di accesso indistruttibili e siate sicuri che nessuno le conosca.
+
+Un altro errore è scrivere la frase di accesso su un pezzo di carta e se poi lo perdete o qualcuno ve lo ruba, questo qualcuno sarà in grado di leggere i vostri files criptati.
+
+|=*=||=*=| Files non cancellati |=*=||=*=|
+
+Un altro grande problema di sicurezza è come i sistemi operativi cancellano i files. Così quando criptate un file, cancellate il testo base lasciando il testo criptato. Ma attualmente il sistema non cancella i files. Marchia i blocchi del disco cancellato (cluster su cui era posizionato il file). Qualcuno potrebbe lanciare un programma di soccorso riuscendo a visualizzare questo file apparentemente cancellato, ovviamente il file non è criptato. Anche quando stai creando un testo in un editor, il computer può creare dei file temporanei di ciò che è stato scritto. Quando spegni il computer questi files vengono cancellati, ma, come vi ho detto, ci sono ancora da qualche parte nel
+tuo computer.
+PGP ha un programma chiamato PGP Secure Wipe che cancella completamente tutti i files
+cancellati dal tuo computer scrivendoci sopra. In questo modo hai solo il file criptato nel tuo computer.
+
+|=*=||=*=| Virus e trojan |=*=||=*=|
+
+Un altro pericoloso problema di sicurezza sono i virus e i troiani. Così quando ti infetti con un troiano l'attaccante può lanciare un key logger sul tuo sistema.
+
+*************************************Note*********************************************
+Un key logger è un programma che cattura tutti le chiavi tiranti compresse (le tue password) da te
+e poi le salva sul tuo computer o le manda all'attacante (colui che ti attacca).
+***************************************************************************************
+
+Così poi l'attaccante può leggere i tuoi files e vedere tutto ciò che hai scritto sul tuo computer e ovviamente con la tua password e frase d'accesso PGP.
+C'è anche un virus creato per questo. Semplicemente registra la tua frase d'accesso e mandala di ritorno all'attaccante.
+
+|=*=||=*=| Versioni falsificate di PGP |=*=||=*=|
+
+Un altro problema di sicurezza è la sorgente di PGP che è disponibile, così qualcuno può fare delle copie false. Queste copie registrano la tua frase d'accesso e la mandano all'attaccante. Il programma sembra vero e funziona, ma sono presenti delle funzioni che non conosci.
+Un metodo di sicurezza contro questi problemi è uno scanner di virus e di troiani. Devi inoltre essere sicuro di non avere virus o troiani sul tuo computer quando installi PGP e inoltre assicurati di prendere PGP da Network Associates Inc. e non da altre pagine.
+
+Così adesso spero che capiate che PGP non può rompere ma se lo usate prudentemente e vi
+assicurate che la vostra frase d'accesso è una delle migliori, non siete infettati di virus o di troiani e state usando la versione originale di PGP, potete stare sicuri.
+
+=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/
+=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\=/=\
+
+The Basics of Cryptography
+
+Versione originale (in inglese) di:
+tHe mAnIaC (maniac@forbidden.net-security.org)
+http://blacksun.box.sk
+
+Tradotto il 14 novembre 2ooo
+da Green Dragon (green_dragon@freemail.it)
+http://go.to/tankcommandos

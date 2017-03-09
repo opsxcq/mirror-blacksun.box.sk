@@ -1,0 +1,74 @@
+_____________________________________________________________________________
+
+Editando em Hex o Explorer.exe -----Ankit Fadia <ankit@bol.net.in>
+_____________________________________________________________________________
+
+Tradução: Marco <marcofulvio@mailbr.com.br>
+
+Aperte Ctrl + Alt + Del e você verá uma janela aparecer com o título Fechar Programa. Quando você aperta estas teclas enquanto o Windows está rodando você sempre verá Explorer como parte da lista, que é o que controla as funções do Windows. Todas as mensagens de erro que aparecem do menu quando você clica com o botão direito é controlado pelo explorer.exe.
+Para editar isso deveria ter algo pra dar a força de mudar tudo no Windows. Você pode estar pensando, grande coisa, não é nada difícil editar um arquivo. Bem, não é tão simples. Você precisa saber algumas coisas básicas antes de você começar a editar.
+
+*************
+AVISO: Primeiramente antes de você pensar em editar o explorer.exe você precisa fazer um back up dele num disquete ou em outro diretório de seu HD. É realmente fácil zoar tudo com este arquivo e destruir seu computador.
+*************
+
+NOTA: LEIA ESTA INTEIRA SEÇÃO ANTES DE VOCÊ ABRIR O ARQUIVO.
+OK você fez um back up do explorer.exe e você quer saber o que vem agora. Então aqui vai.
+Primeiro de um boot no seu computador para MSDOS, para fazer isso vá em menu Iniciar > Desligar e escolha Reiniciar computador em MSDOS.
+
+*************
+NOTA: Não tente editar explorer.exe em DOS enquanto você está no Windows. Isso só vai deixá-lo ler o arquivo e o Windows não vai deixar você editar. Mudando os atributos e editar enquanto você está rodando o Windows, não é recomendado.
+*************
+
+Quando estiver no Prompt do DOS vá para o diretório do Windows teclando:
+
+C:\>cd windows
+
+Quando estiver no diretório do Windows abra o arquivo explorer.exe no MSDOS Editor com o parâmetro /70. Para fazê-lo digite:
+
+C:\windows>edit  /70  explorer.exe
+
+Você deve estar sabendo que aquele Edit abre o editor da Microsoft, e explorer.exe é o nome do arquivo que você deseja editar. Mas muitas pessoas não sabem pra que o parâmetro /70 serve. Bem, na verdade /70 apenas aponta para o número de colunas que irão aparecer. Isso aciona o número de colunas para 70 e faz o arquivo mais fácil de ler mas você terá que usar bastante a barra de rolagem.
+De qualquer modo isto trás uma tela azul que é a tela do editor MSDOS com o arquivo explorer.exe aberto. A tela deve aparecer toda cheia de caractéres do tipo na língua da máquina.
+Bem, nem tanto.
+Deixe-me começar a descrever o que pode ser visto se você seguir os passos abaixo.
+Agora a tela está cheia de estranhos caractéres como um coração, uma cara sorridente ou um cubo ou outras coisas bagunçadas como lixo.
+Bem na verdade cada símbolo que você vê tem um valor numérico que você pode ver no inferior da direita da tela com o VALOR:###.
+Para ver o que cada símbolo serve para, mova seu cursor em cima do símbolo e olhe no canto inferior direito da tela com o VALOR:###.
+No pé você também vê LINHA: #### o que o número da linha.
+Você não vai editar estes símbolos mas sim editar a parte dos arquivos em que consistem em organizados caractéres e texto que você pode entender. A parte que dá pra entender começa na LINHA: 16336.
+
+*************
+NOTA: O número de linhas que eu estou falando estão em máquinas com Win98. Eu não tenho certeza se elas são a mesma no Win95. De qualquer modo faça a mesma coisa e tente achar a parte que se dá para entender que dará no mesmo.
+*************
+
+Quando você clica com o botão direito na barra de tarefas e seleciona propriedades, então uma janela aparece de onde você clicou. Existem opções como Sempre no Topo, Auto Ocultar etc.
+Agora as linhas 1336 a 1354 lhe deixa a mudar o texto da propriedades da barra de tarefas, você pode mudar o texto apenas lendo isso cuidadosamente.
+Agora você precisa saber em que o explorer.exe existem um espaço entre os textos. Agora este espaço não é o espaço da tecla de espaço. Me dixe simplificar, no arquivo explorer.exe o valor do espaço é de 32 e o valor do espaço que está entre os caracteres no explorer.exe é de 0. Se não existisse espaço entre as letras, iria parecer desarrumado.
+
+Outra coisa que você deve ter notado é que existem muitos &'s entre os caracters, bem este & significa que o próximo i.e. caractér o caractére que sucede o & é sublinhado no Windows.
+
+*************
+A letra sublinhada é usada como um atalho do teclado para o Windows rodar uma operação. Digo se a letra s é sublinhada, quer dizer que se o usuário pode apertar a tecla s no teclado como um atalho
+*************
+Vamos tomar um exemplo para fazer o que foi dito acima mais fácil.
+Digamos que você quer editar o texto Limpar que é da janela das propriedades da barra de tarefa de baixo do menu Iniciar.
+Agora originalmente o texto é Limpar e  você não gosta e quer algo mais creativo como Apagar, então como você faz?
+Vá para a LINHA 1354 e localize &L i m p a r
+Agora os espaçoes de cada letra não é o espaço do seu teclado (Valor=32) mas espaços com valor de 0.
+Então em vez de &L i m p a r digite &A p a g a r guardando em mente em que os espaços tenham o valor de 0. Se você mudar por engano o valor no espaço, você pode apenas copiar outro espaço com valor 0 e colar e colar onde desejado.
+Depois de fazer as mudanças necessárias salve o arquivo e reinicie o Windows. Agora clique com o botão direito no barra de tarefas e selecione propriedades. Na barra de tarefas selecione o botão acima a direita e voila você verá o botão Apagar. Se você apertar a tecla A o botão será selecionado, mesmo assim os atalhos do explorer.exe foram mudados editando-o.
+O único problema é que você não pode mudar o tamanho dos caractéres da palavra. Quando eu tentei fazer, Explorer.exe travou.
+
+Se formos um pouco abaixo, os caractéres baunçados começam de novo. A parte possível a ser editada começa de novo apenas na LINHA:2323.
+Aqui nós vamos para as propriedades da barra de tarefas de novo. Esta parte do arquivo pode ser usada para editar o texto que aparece quando clicamos com o botão direito no pequeno relógio da barra de tarefas e também o texto que aparece quando clicamos com o botão direito na própria barra de tarefas.
+LINHA:2334 a LINHA:2348 lida com o que aparece quando você clica no menu iniciar, você pode mudar o nome "Desligar" para qualquer nome que tenha o mesmo número de caracteres, você pode mudar tudo do menu iniciar, até os programas para hackear tenham o mesmo número de caracteres.
+Depois disso vem as mensagens de erro do Windows, você também pode mudá-las para qualquer coisa que você tem em mente.
+Depois na LINHA:2390 vem uma interessantíssima parte. Esta linha deixa você mudar o texto do botão Iniciar que pode ser modificada com até 132 caracteres! Você pode colocar seu nome em vez de Iniciar.
+Se for ver cuidadosamente na LINHA:2390, você encontrará aqueles cubos que procedem I n i c i a r. Se você mover o cursor até o cubo, você encontrará o valor 7. Então o texto depois dos cubos, neste caso I n i c i a r terá de ter 7 letras. Agora se você quiser repor Iniciar e colocar algo como Parar, cujo é 5 letras, então você terá que procurar um simbolo que o valor numérico é de 5 e colá-lo em cima do cubo. Agora o texto sugerido deverá ter 5 letras.
+
+Para qualquer questão entre em contato:
+Ankit Fadia ankit@bol.net.in
+
+Entre para a minha lista de mensagens para mais tutoriais mandando um email para
+programmingforhackers-subscribe@egroups.com

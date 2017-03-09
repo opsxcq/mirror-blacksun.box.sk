@@ -1,0 +1,107 @@
+POP3 selbst benutzten
+=====================
+Autor: R a v e N.
+barakirs@netvision.net.il
+http://blacksun.box.sk
+Datum: 2/1/2000
+Richtet Fragen an: Das message board bei blacksun.box.sk
+Übersetzt von: yqu
+yqu@firemail.de
+
+
+ ###########         #                   ###             #########      ##     #   
+ ############       ###                 #####           ###  #####     ###     ##  
+ #####    ####     #####               #######         ###    ###     ####    ###  
+ #####    #####   #######             #########       ###      #      ####  ####  
+  ####   #####    #######            ###########     ###               ### ####  
+   #########      #######           ####     ####    ###               #######    
+    ###########    #####           #####     #####    ###     ##      #######   
+   #############    ###   ##      ######  #########    ###   ####     #########  
+  ######     ####    #   ####      ########  #####      ##  ######     ###   ###  
+ ######     ####     ##########     ####     ####        #########     ###  #####  
+ #####     ####       ##########     ###     ###          #######     ####  ######  
+ #############         ##########     ##     ##            #####      ####   ####  
+ ###########            ########      ##     ##             ###        ###    ##  
+  
+   #######       #     #        #     #  
+  ##########    ##     ##      ##     ##              
+ ###    ###     ##     ##     ###     ###                                           
+  ###    #     ###     ###   #####    ####           Black Sun Research Facility    
+    ###         ##     ##    ######   ####             http://blacksun.box.sk       
+      ###       ##     ##    #######  ####                 ASCII By : cyRu5         
+   #   ###     ###     ###   ####  #######           
+  ###  ####   ####     ####   ###   #####                 
+ ###########   ###########     ##    ###  
+  #########      #######        #     #  
+
+
+Was ist POP3?
+.............
+POP bedeutet Post Office Protocol. Es ist das Protokol (eine verbreitete Sprache die von Computern benutzt wird um Informationen zwischen verschiedenen Hardware-Komponenten, verschiedenen Computern in einem Netzwerk ö.ä. auszutauschen. Ein Computerprotokoll ist so ziemlich das gleiche wie normale menschliche Sprache) das benutzt wird um nicht web-basierende Email accounts abzurufen.
+
+Ein web-basierendes Email account ist ein Postfach das man nur über eine bestimmte webseite benutzten kann. Während man auf dieser Seite ist, ist man der Werbung ausgeliefert, von welchen die Firma die das Postfach zur Verfügung stellt profitiert. Web-basierende Email Angebote sind immer gratis, denn statt bezahlen, bezahlt man die Firma die das Postfach verwaltet indem man sich die Werbung anschaut (es sei denn dieses Postfach bietet besondere Möglichkeiten die mehr Geld kosten).
+
+Also, ein nicht web-basierendes Email Postfach ist ein Postfach das man benutzen kann indem man einen Email client oder telnet benutzt, wenn man die notwendigen Protokolle kennt (wenn Du dieses Tutorial und das Sendmail Tutorial beendet hast, wirst Du wissen wie Email funktioniert und wie man Emails schreibt und empfängt ohne ein Programm außer einem telnet client).
+
+Nicht webbasierende Email accounts benutzen zwei Protokolle - SMTP (Simple Mail Transfer Protocol) um Email zu senden und POP (Post Office Protocol) um Emails zu empfangen. Du kannst das SMTP Protokoll im Sendmail Tutorial lernen und POP - Du wirst es sofot lernen. Wenn Du Dich wunderst, POP3 ist nur eine neuere Version von POP.
+
+Warum sollte ich das POP Protokoll lernen?
+..........................................
+Oh, es gibt viele Gründe warum Du das tun solltest. Ich werde Dir aus dem Kopf ein paar Beispiele nennen:
+
+a. Bist Du schon einmal mail-bombed worden? Wenn nicht, kannst Du Dir vorstellen wie es ist hunderte oder sogar tausende Nachrichten zu empfangen und danach zu löschen? Genug davon! Nachdem Du dieses tutorial gelesen hast wird es Dir möglich sein die Emails direkt vom Server zu löschen ohne sie zu empfangen und dann mit Deinem Email client zu löschen (einige Email clients lassen einen auch nicht mehrere Nachrichten zusammenfassen und sie auf einmal löschen, was dann noch mehr Arbeit macht).
+
+b. Du hast die Möglichkeit Deine Email überall in der Welt zu lesen. Sicher, jetzt sagen viele "aber wir können doch zu www.readmail.com geheh, unsere Email Adresse und unser Passwort eingeben und wir bekommen eine nette Seite präsentiert wo wir unsere Emails lesen und löschen können, von überall in der Welt. Warum sollten wir stattdessen das POP3 Protokoll lernen?" Tja, es gibt ein ernstes Sicherheitsproblem mit diesen Internet-Seiten wie www.readmail.com. Ein Beispiel: einige Browser unterstützen die Möglichkeit zur "from completion". Der Broweser speichert die Daten die man in Formulare eingibt und dann, wenn Du wieder zu diesem Formular kommst und es ausfüllen willst, füllt der Browser den Rest für Dich aus.
+
+Also, was passiert wenn Du www.readmail.com auf einem fremden Computer benutzt und dann kommt jemand und gibt dort Deine Email Adresse ein? Richtig! Der Browser kompletiert das Formular, gibt also Dein Passwort preis! Das war nur ein Beispiel welch Unsicherheiten readmail.com bietet.
+
+c. Das POP3 Protokoll ist nicht so kompliziert. Tatsache ist, das es sogar ziemlich einfach ist, also, warum zum Teufel soll man es nicht nur zum Spaß lernen? :-
+
+In Ordnung, los geht's!
+.......................
+Das erste was Du brauchst ist eine normale telnet Anwendung. Kein Bedarf für irgend etwas besonderes. Unix hat einen telnet client (einfach telnet hostname/IP eingeben um sich in port 23 bei diesem hostname/IP einzuwählen oder telnet hostname/IP um einen anderen port als 23 zu wählen). Windows 95 und darüber kommen auch mit einer telnet Anwendung (sie befindet sich in c:\windows\telnet.exe, aber man kann auch einfach start drücken, ausführen und dann telnet eingeben um es zu starten, telnet hostname/IP um sich bei diesem hostname oder IP mit port 23 zu verbinden oder man spezifiziert einen anderen port mit telnet hostname/IP port).
+
+
+Als nächstes must Du Deinen POP3 mail server finden. Gewöhnlich ist ist so etwas wie mail.dein-provider.net. Zum Beispiel: mein ISP ist netvision.net.il, also ist mein POP3 server unter mail.netvision.net.il zu finden. Wenn Du schon einen korrekt konfigurierten Email client für Deine POP3 box benutzt, geh in die Einstellungen und Du solltest die Adresse für Deine eingehende mail sehen.
+
+Okay, sieht so aus als könnten wir loslegen. Als nächstes benutzen wir telnet um über port 110 (der normale port für POP3) in unseren POP3 server zu kommen. Das ist was ich sehe wenn ich in meine POP3 seite "telnette":
+
++OK POP3 [194.90.1.6] v7.60 server ready
+
+Okay, sieht gut aus bis jetzt. Jetzt müssen wir uns identifiezieren. Wir müssen unseren Benutzernamen und unser Password eingeben. Der Benutzername befindet sich gewöhnlich in Deiner Email Adresse. Zum Beispiel: meine Email Adresse ist barakirs@netvision.net.il, also ist mein Benutzername barakirs. Wir geben also ein:
+
+user barakirs (oder welchen Benutzername Du auch immer hast)
+
+Und der Server antwortet mit:
+
++OK User name accepted, password please
+
+Als nächstes brauchen wir also ein Password, richtig? Wir tippen also:
+
+pass Dein-Passwort
+
+Und der Server antwortet mit:
+
++OK Mailbox open, x messages (wobei x die Anzahl der Nachrichten sind die in dem Ordner Inbox sind)
+
+
+Oder mit:
+
+-ERR Bad login
+
+Wenn wir das falsche Passwort benutzten. Um zu sehen was wir haben geben wir list ein um die Liste der neuen Emails zu sehen (es sei denn wir haben 0 neue Nachrichten). Für jede Email, bekommen wir eine seperate Zeile die eine message number enthält (eine Nummer die jede Nachricht identifiziert) und eine Nummer die die größe der Nachricht anzeigt.
+
+Als nächstes wollen wir die Nachrichten lesen. Um dies zu tun, tippen wir retr #. Retr bedeutet retrieve (erhalten). # sollte durch die nummer der Nachricht ersetzt werden. Wir erhalten denn den kompletten header der Nachricht (siehe Sendmail tutorial) und den body der Nachricht.
+
+Nachdem wir die Nachricht gelesen haben möchten wir sie vielleicht löschen. Um dies zu tun, tippen wir dele #. Dele bedeutet delete (löschen). # sollte durch die nummer der Nachricht ersetzt werden.
+
+Wenn Du fertig bist, gib quit ein um das ganze zu beenden.
+
+Schlussbemerkung
+................
+Ja, das ist alles. Oh, noch eine Sache - wenn Du dich in Deine POP3 mailbox einloggst, wird sie verschlossen so das sie niemand benutzten kann während Du drin bist. Ein "lock file" wird erstellt wenn Du einloggst und gelöscht wenn Du ausloggst, und wenn jemand probiert einzuloggen erlaubt der server dies nur wenn die "lock file" nicht existiert (was bedeutet das gerade niemand eingeloggt ist).
+
+Siehst Du? Es ist einfach. Ich hasse es Dir zu sagen "Hab ich es Dir nicht gesagt" aber...   :-)
+
+
+   - EOF -

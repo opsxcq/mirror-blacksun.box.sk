@@ -1,0 +1,111 @@
+				Die Grundlagen der Verschlüsselung
+				original von tHe mAnIaC, übersetzt
+				von TheRealSandman :). 
+				Kontakt (maniac): dancho@mbox.digsys.bg
+				maniac@forbidden.net-security.org
+				26.11.1999; original: 19.11.1999
+
+|=|=|=|=|=|=|=|A=|N=|A=|R=|C=|H=|Y=|=|R=|U=|L=|E=|S|=|=|=|=|=|=|=|=|=|
+
+(Anmerkung vom übersetzer: lowercase forever)
+
+Dieses tutorial wird natürlich nur für schulische zwecke benötigt, und ich,
+wie auch der eigentliche autor übernehmen keine Verantwortung auch nur für irgendwas
+was nach dem lesen dieser guide passieren könnte. Ich sage euch nur wie man es
+machen könnte, nicht dass ihr es machen soll. Es ist eure entscheidung. Wenn ihr wollt,
+könnt ihr diesen text auf irgendeine site auf irgendeinen ftpserver oder in irgendeine
+newsgroup posten (oder was auch immer), aber ihr dürft den text ohne zustimmung des Autors NICHT verändern.
+
+<--=--=--=--=--=--=--=--=>
+Noch etwas vom autor:
+
+Ich hoffe ihr mögt meine texte und findet sie mehr oder weniger sinnvoll.
+Falls ihr irgendwelche probleme, fragen oder verbesserungsvorschläge habt, so schreibt mir
+doch eine email! Aber bitte, keine mails wie "Ich will ... hacken, bitte hilf mir" oder "Wie bindet man ein trojanisches Pferd in ein .jpg ein??". Ihr könnt euch sicher sein, falls ich euch helfen kann werde ich es auch tun!
+<--=--=--=--=--=--=--=--=>
+
+Inhalt
+
+1. Von was handelt dieser text eigentlich?
+2. Was ist verschlüsselung und wie funktioniert sie?
+3. Verschlüsselungstechniken und PGP
+4. Wege, eine verschlüsselung zu knacken
+- schlechte passwortsätze
+- nicht gelöschte dateien
+- viren und trojanische pferde
+- fake versionen von pgp
+=--=--=--=--=--=--=--=--=
+
+1. Von was handelt dieser text eigentlich?
+=--=--=--=--=--=--=--=--=--=--=--=--=--=--=
+In diesem text werde ich versuchen die grundlagen der verschlüsselung näherzubringen,
+was es ist, pgp, wege wie jemand verschlüsselte dateien trotzdem lesen kann etc. Jeder
+hacker oder auch jeder der nur ein bisschen paranoid ist sollte verschlüsselung nutzen und
+damit andere leute davon abhalten, dass sie in euren dateien rumschnüffeln. Die verschlüsselung ist sehr wichtig und ich versuche euch noch zu erklären wie man sie trotzdem
+brechen kann.
+
+2. Was ist verschlüsselung und wie funktioniert sie?
+=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=
+Verschlüsselung ist sehr alt. Schon Julius Cäsar benutze sie wenn er nachrichten versandte, da er den übermittlern nicht traute. Hier sieht man, dass verschlüsselung überall vorhanden ist, z.B. wenn ihr einen agentenfilm schaut ist fast immer irgendwo ein computer mit verschlüsselten dateien vorhanden, oder irgendein film über hacker - wenn die polizei den übeltäter fasst aber dann jedoch sieht dass doch alle dateien verschlüsselt sind.
+
+Wenn ihr eine simplen .txt datei habt kann die jeder lesen, man nennt dies "plain text". Aber wenn ich eine verschlüsselung nutzt wird die datei unleserlich wenn ihr nicht das richtige passwort habt. Das nennt man dann "cipher text". The prozess denn cipher text in plain text zu verwandelt nennt man decryption oder einfach entschlüsselung.
+
+Hier ein beispiel:
+
+plain text ==>encryption==>ciphertext==>decryption=>plaintext
+
+Dieses beispiel zeigt was geschieht wenn man eine dati ver- und dann wieder entschlüsselt.
+
+3. Verschlüsselungstechniken und PGP
+=--=--=--=--=--=--=--=--=--=--=--=--=
+Die Verschlüsselung ist eine wissenschaft für sich welche die mathematik sehr beansprucht. Diese wissenschaft ist dafür verantwortlich, dass ihr eure dateien "sicher" machen könnt (sogar auf dem relativ unsicheren internet). Die verschlüsselung kann jedoch von schwach bis stark variieren. Das beste ist natürlich die starke verschlüsselung. Sogar wenn man alle computer dieser erde benutzen würde, um eine datei zu entschlüsseln die mit einer "starken" verschlüsselung verschlüsselt wurde, so bräuchte man immer noch MILLIARDEN jahre um diese wieder zu entschlüsseln.
+
+PGP (Pretty Good Privacy) ist wahrscheinlich das beste verschlüsselungsprogramm.
+
+Es funktioniert so:
+Wenn ihr eine Datei mit PGP verschlüsselt, so komprimiert PGP die datei zuerstmal. Das spart platz, und bandbreite. Dann wird ein sessionkey erstellt. Dieser sessionkey funktioniert mit einer sehr schnellen, sicheren und "geheimen" verschlüsselungsart (bzw. algorithmus). Dann wird der sessionkey mit dem öffentlich key des empfängers verschlüsselt.
+PGP fragt nach einem passwortsatz, nicht nach einem passwort. Das ist sicherer gegen dictionary attacks (mit einer liste von wörtern). Wenn ihr eben so einen passwortsatz benutzt, so könnt ihr einen ganzen satz mit gross- und kleinbuchstaben verwerden (auch zahlen und sonderzeichen sind erlaubt und erwünscht).
+
+4. Wege, eine verschlüsselung zu knacken
+=--=--=--=--=--=--=--=--=--=--=--=--=--=
+PGP wurde für leute geschrieben, die ihre dateien verschlüsselt haben wollen damit sie eine gewisse "privatsphäre" haben. Wenn ihr eine email an jemanden schreibt kann diese von anderen leuten gelesen werden; aber wenn ihr PGP benutzt wird diese nur beim richtigen empfänger leserlich ankommen (bzw. nicht leserlich ankommen sondern mit entschlüsselung leserlich gemacht werden).
+
+Jetzt wisst ihr einige basics zu PGP und zur verschlüsselung, aber ihr möchtet vielleicht auch wissen wie man dises brechen könnte damit man dateien (wieder) lesen kann. Um eine PGP nachricht zu knacken braucht man aber mit allen computern dieser erde 12 mal so lange wie es das universum gibt, um alle möglichkeiten durchzuprobieren (brute-force). Also sieht man, dass dies wirklich die BESTE art der verschlüsselung ist, und das sie sehr stark und eigentlich unknackbar ist. 
+
+- Schlechte passwortsätze
+*************************
+
+Der algorithmus ist unbrechbar aber es gibt andere wege um den text zu entschlüsseln. Einer der grössten fehler wenn jemand den passwortsatz schreibt ist z.B. "John" "Ich liebe dich" und solche wirklich blöde sätze (z.B. namen von freunden etc.). Warum? Es ist nich empfehlenswert, da's relativ kurz ist und keine nummern etc. enthält! Je länger der 
+passwortsatz ist, desto schwerer ist es ihn zu erraten. Auch wenn er noch so unsinnig ist, denkt daran, da könnte jemand sein der gerade einen brute-force attack mit einer liste (dictionary-attack) durchführt - also sollte ich ein passwortsatz machen welcher NICHT in so einer liste vorkommen kann, egal wie dumm er klingt (etc.): ein beispiel:
+
+hEllowOrld33IjustwanTtoteLLtoev3ryon3thatI'maLamErandI'mahacKer666
+
+Das ist leicht zu merken, da's lustig ist und nur weniger nummern vorkommen. Ich hoffe ihr findet gute sätze die niemand erraten kann.
+
+Ein anderer fehler ist z.B., dass ihr euren passwortsatz auf ein blatt papier oder in eine datei (unverschlüsselt oder nur leicht verschlüsselt) speichert - wenn jemand den satz findet wird dieser jemand im stande sein, alle eure dateien zu lesen.
+
+- nicht gelöschte dateien
+*************************
+
+Ein anderes grosses sicherheitsloch der meisten betriebssysteme ist das nicht vollständige löschen von dateien. Wenn ihr eine datei verschlüsselt so werdet ihr wahrscheinlich die "plain text" datei löschen. Aber das system löscht die datei nicht wirklich. Sie markiert die teile auf dem hd einfach als "gelöscht" und "frei". Wenn jemand nun ein disk recovery programm startet wird er diese dateien immernoch finden, falls sie nicht überschrieben wurden. PGP hat ein tool welches PGP Secure Wipe genannt wird, dieses tool löscht die dateien die ihr nicht mehr haben wollt wirklich - ganz simel: PGP überschreibt sie einfach mit junk.
+
+- Viren und trojanische Pferde
+******************************
+
+Ein anderes problem sind die viren und die trojanischen pferde. Also wenn ihr euch mit einem
+trojaner infiziert, so kann der angreiffer alle tastaturbefehle (bzw. alles was ihr eingibt) mittels eines keyloggers lesen.
+
+Also wenn ein angreiffer alles genau anschaut wird er eventuell auf euren PGP passwortsatz stossen und diesen benutzen. Es gibt auch einige viren die genau zu diesem zweck (keylogging) gemacht worden. 
+
+- Fake version von PGP
+**********************
+
+Es gibt auch falsche versionen von PGP die eben auch eure passwortsätze aufnehmen und an den angreiffer schicken. Das programm wird echt aussehen aber nicht funktionieren. 
+Ein weg sich gegen solche sachen zu schützen sind virenscanner (anmerkung des übersetzers : AVP ist nicht schlecht; www.avp.com). Ihr solltet auch darauf achten, dass euer computer frei von viren und trojanern ist, wenn ihr PGP das erste mal installiert (achtet auch darauf dass ihr das ORIGINAL PGP von Network Associates Inc. habt).
+
+So, ich hoffe dass ihr nun ein bisschen was von PGP versteht, und seht, dass auch das nicht total sicher ist. Aber: wenn ihr weise handelt und sicher seid, dass ihre keine viren etc habt und euer passwortsatz genug lange und kompliziert ist, so ist es einer der besten wege die ihr gehen könnt (dann ist es SICHER).
+
+
+
+tHe mAnIaC is a member of Black Sun Research Facility (BSRF).
+Get more BSRF tutorials at http://blacksun.box.sk.

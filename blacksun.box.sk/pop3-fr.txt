@@ -1,0 +1,176 @@
+
+Utilisez POP 3 à la main
+========================
+Auteur: R a v e N.
+barakirs@netvision.net.il
+http://blacksun.box.sk
+Date: 2/1/2000
+Traducteur: Vortex
+vortex@francimel.com
+Date :26/2/2000
+Si vous avez des questions: le forum de blacksun.box.sk
+
+
+ ###########         #                   ###             #########      ##     #   
+ ############       ###                 #####           ###  #####     ###     ##  
+ #####    ####     #####               #######         ###    ###     ####    ###  
+ #####    #####   #######             #########       ###      #      ####  ####  
+  ####   #####    #######            ###########     ###               ### ####  
+   #########      #######           ####     ####    ###               #######    
+    ###########    #####           #####     #####    ###     ##      #######   
+   #############    ###   ##      ######  #########    ###   ####     #########  
+  ######     ####    #   ####      ########  #####      ##  ######     ###   ###  
+ ######     ####     ##########     ####     ####        #########     ###  #####  
+ #####     ####       ##########     ###     ###          #######     ####  ######  
+ #############         ##########     ##     ##            #####      ####   ####  
+ ###########            ########      ##     ##             ###        ###    ##  
+  
+   #######       #     #        #     #  
+  ##########    ##     ##      ##     ##              
+ ###    ###     ##     ##     ###     ###                                           
+  ###    #     ###     ###   #####    ####           Black Sun Research Facility    
+    ###         ##     ##    ######   ####             http://blacksun.box.sk       
+      ###       ##     ##    #######  ####                 ASCII By : cyRu5         
+   #   ###     ###     ###   ####  #######           
+  ###  ####   ####     ####   ###   #####                 
+ ###########   ###########     ##    ###  
+  #########      #######        #     #  
+
+
+Qu'est ce que POP3?
+...................
+POP est l'acronyme de Post Office Protocol ( protocole du bureau de poste ).
+C'est le protocole (un language commun utilisé par les ordinateurs pour échanger
+des informations entre divers composentes matériels , ou divers machines sur un réseau.
+En gros , c'est la même chose qu'une langue vivante (ou morte) ) utilisé pour consulter une boite
+aux lettres non-Web.
+
+Un compte de courrier Web est une boite à laquelle on ne peut accéder que en passant par un 
+certain site. Pendant que vous regardez votre courrier, vous subissez des publicités qui
+rapportent de l'argent au fournisseur de la boite aux lettres. Les services de boites aux
+lettres Web sont souvent gratuit, car le fait de voir des pubs vous permet de payer la
+compagnie qui s'occupe de votre boite ( sauf si la boite posséde des caractéristiques
+spécialisés qui coute plus cher).
+
+D'où, un compte non-Web est un compte qui nécessite un logiciel de messagerie
+électronique, comme Pegasus, Eudora, Messenger, Outlook, ... , pour ne citer
+que les plus connus. Vous pouvez également utiliser un client Telnet normal, si vous connaissez
+les protocoles nécessaires (aprés avoir fini de lire ce didacticiel et celui sur SendMail
+vous saurez comment marche le courrier électronique, et comment envoyer et recevoir
+du courrier sans autre programme qu'un client Telnet).
+
+Les comptes non-Web utilisent 2 protocoles, SMTP (Simple Mail Transfer
+Protocol, protocole de simple transfert de courrier) pour envoyer du courrier
+et POP pour en recevoir. Vous pouvez examiner le protocole SMTP dans le didadticiel sur
+Sendmail et pour POP, vous allez l'apprendre maintenant. Si la question vous a traversé
+l'esprit, POP 3 est juste une nouvelle version de POP.
+
+Pourquoi devrais je apprendre le protocole POP?
+...............................................
+
+Oh, il y a des tonnes de raisons pour le faire. Je vais vous donnez quelques
+exemples:
+
+A. Avez vous déja subit un MailBombing? Si vous avez la chance d'y avoir échappé,
+pouvez vous imaginez à quel point cela peut être énervant de devoir télécharger,
+puis d'effacer des centaines, voire des milliers de messages?
+Eh bien, bientôt, ce ne sera plus qu'un mauvais souvenir! Apres avoir lu ce
+didacticiel, vous pourrez effacer vos messages directement sur le serveur sans
+avoir à passer par votre logiciel de messagerie pour les télécharger puis
+pour les effacer (certains logiciels ne permettent même pas d'effacer un groupe
+de messages d'un coup et vous devrez donc les effacer 1 par 1, ce qui complique
+singuliérement votre tache).
+
+B. Vous pourrez voir votre courrier de n'importe quelle endroit de la planéte.
+Bien sûr, certains diront "Mais on peut toujours aller sur www.readmail.com,
+fournir notre adresse et notre mot de passe, et nous obtiendrons une joli interface
+qui nous permettra de lire notre courrier, et d'effacer des messages à partir du monde
+entier. Donc, pourquoi apprendre le protocole POP3 ?" C'est simple, il y a un sérieux
+probléme de sécurité concernant les sites comme www.readmail.com.
+Par exemple: certains navigateurs possédent une option appelé "Remplissage de formulaire".
+Le navigateur enregistre les données que vous remplissez sur un formulaire, et lorsque vous
+revenez sur le même formulaire, le navigateur le compléte quand vous commencez à retaper
+les mêmes infos.
+
+Mais que se passera t'il si vous utilisez www.readmail.com sur un ordinateur,
+et que quelqu'un passe aprés vous, et remplisse le formulaire avec votre adresse E-mail ?
+Ce qui ont repondu "le navigateur va remplir le formulaire et révéler mon mot de passe" ont
+gagnés. Ce n'est qu'un exemple des problémes de sécurités posés par des services comme
+www.readmail.com.
+
+C. Le protocole POP3 n'est pas si compliqué. En fait, il est même plutot simple, alors 
+pourquoi ne pas l'apprendre uniquement pour le fun ?  :-)
+
+OK, allons y!
+.............
+La première chose dont nous allons avoir besoin est d'un client Telnet.
+Rien de compliqué, juste un truc simple. Unix posséde un client natif (La commande est
+"telnet hote/IP" pour vous connectez sur le port 23 de l'hote/IP ou telnet
+hote/IP port pour choisir un autre port que le 23). Windows 9X propose également un client
+telnet (fichier c:\windows\telnet.exe, mais vous pouvez le lancer à partir du menu Executer
+en tapant telnet pour le lancer, ou en utilisant la même syntaxe que sous Unix).
+
+Ensuite, nous avons besoin d'un serveur POP3. Cela devrait être un truc du genre
+mail.votre_FAI.net . Par exemple: mon FAI est netvision.net.il, donc serveur POP3 est
+mail.netvision.net.il. Si votre logiciel de messagerie est correctement configuré pour 
+votre boites aux lettres POP3, jetez un coup d'oeil dans le menu Préferences pour
+trouver le serveur de courrier entrant.
+
+Tous est prêt, on peut commencer. Maintenant, nous allons nous connecter sur le serveur,
+via le port 110 (port par défaut pour POP3). Voici ce que j'obtiens quand je le fait:
+
++OK POP3 [194.90.1.6] v7.60 server ready
+
+OK, jusque ici, ça marche. Il faut maintenant nous identifier. Nous allons
+donner notre nom d'utilisateur et notre mot de passe. Votre nom d'utilisateur est
+normalement dans votre adresse E-mail. Par exemple : mon adresse est barakirs@netvision.net.il,
+et mon nom d'utilisateur est barakirs. Donc on tape :
+
+user barakirs (enfin , mettez VOTRE nom)
+
+Et le serveur répond :
+
++OK User name accepted, password please
+
+Ensuite, il faut le mot de passe, logique. Donc, tapez :
+
+pass votre_mot_de_passe
+
+Et le serveur répond :
+
++OK Mailbox open, x messages (Où X represente le nombre de messages
+dans votre boite)
+
+Ou :
+
+-ERR Bad login
+
+si le mot de passe n'est pas le bon. Maintenant, regardons notre courrier, par la commande
+list, qui va nous afficher la liste des messages de la boite (sauf si il n'y en a pas).
+Pour chaque courrier, on aura une ligne contenant le numéro du message (un numéro qui
+identifie chaque message) et un numéro indiquant la taille du message.
+
+Ensuite, en toute logique, il va falloir lire les messages en question;
+La commande est retr #. Retr vient de retrieve (recupérer, dans la langue de Moliére).
+# correspond au numéro du message. On obtiendra un superbe entête (voir le didacticiel
+sur SendMail), ainsi que le corps du message.
+
+Apres l'avoir lu, il ne nous est de plus aucune utilité, et donc, il faut l'effacer.
+Encore une fois, la commande est simple, il s'agit de dele #. Dele vient de delete
+(effacer, dans la langue de Baudelaire). Comme tout à l'heure, # correspond au numéro
+du message condamné.
+
+Pour finir, tapez close pour fermer votre session.
+
+Une dernière chose
+..................
+Et voila, c'est tout! Oh, encore un détail, quand vous êtes connecté sur votre boite,
+elle est bloquée, donc personne ne peut y accéder en même temps que vous.
+Un fichier de "lock" est crée lorsque vous vous connectez et est effacé lorsque vous vous
+deconnectez, et on ne peut se connecter que si le fichier en question n'existe pas,
+c'est a dire si personne d'autre n'est déja connecté.
+
+Alors? Vous voyez bien, c'est facile. Je deteste dire "je vous l'avait dit" mais... :-)
+
+
+   - EOF -

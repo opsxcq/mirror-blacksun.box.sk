@@ -1,0 +1,122 @@
+Usare i POP3 a mano
+==================
+Versione originale: R a v e N.
+barakirs@netvision.net.il
+http://blacksun.box.sk
+data : 2/1/2000
+==================
+Tradotto da: Screener_it
+screener_it@freemail.it
+http://go.to/tankcommandos
+data: 16/05/2001
+[tra parentesi quadre i commenti
+del traduttore]
+
+
+ ###########         #                   ###             #########      ##     #   
+ ############       ###                 #####           ###  #####     ###     ##  
+ #####    ####     #####               #######         ###    ###     ####    ###  
+ #####    #####   #######             #########       ###      #      ####  ####  
+  ####   #####    #######            ###########     ###               ### ####  
+   #########      #######           ####     ####    ###               #######    
+    ###########    #####           #####     #####    ###     ##      #######   
+   #############    ###   ##      ######  #########    ###   ####     #########  
+  ######     ####    #   ####      ########  #####      ##  ######     ###   ###  
+ ######     ####     ##########     ####     ####        #########     ###  #####  
+ #####     ####       ##########     ###     ###          #######     ####  ######  
+ #############         ##########     ##     ##            #####      ####   ####  
+ ###########            ########      ##     ##             ###        ###    ##  
+  
+   #######       #     #        #     #  
+  ##########    ##     ##      ##     ##              
+ ###    ###     ##     ##     ###     ###                                           
+  ###    #     ###     ###   #####    ####           Black Sun Research Facility    
+    ###         ##     ##    ######   ####             http://blacksun.box.sk       
+      ###       ##     ##    #######  ####                 ASCII By : cyRu5         
+   #   ###     ###     ###   ####  #######           
+  ###  ####   ####     ####   ###   #####                 
+ ###########   ###########     ##    ###  
+  #########      #######        #     #  
+
+
+Cos'è un POP3 ?
+.............
+POP stà per Post Office Protocol. E' un protocollo (un linguaggi comune usato dai computer per scambiarsi informazioni attraverso componenti hardware differenti, computer differenti, attraverso un network, ecc. Un protocollo del computer è simile a un linguaggio umano) usato per controllare gli account non web-based di email.
+
+Un account web-based è un casella email ch può essere controllata solo tramite un dato sito. Durante la tua navigazione sul sito sei esposto alla pubblicità che l'azienda mette per ottenere profitti dalla tua casella email. Le Web-based mail sono sempre gratuite perchè invece di pagare con contanti, paghi l'azienda guardando questa pubblicità.
+
+Invece, un account non web-based è una casella a cui puoi accedere usando un email client [come Eudora, Outlook, ecc.] o semplice con un telnet se conoci bene il protocollo (dopo aver letto questo tutorial e il tutoriale sul Sendmail [che guarda caso abbiamo tradotto] conoscerai come funzionano le email e come scrivere e ricevere una mail senza bisogno di un email client.
+
+Le email non web-based usano 2 protocolli - SMTP (Simple Mail Transfer Protocol) per spedire le mail e POP (Post Office Protocol) per riceverle. Puoi studiare il protocollo SMTP nel Sendmail Tutorial, e puoi studiare il POP semplicemente leggendo qui. Nel caso non lo sapessi POP3 è semplicemente una nuova versione dl POP.
+
+Perchè dovresti studiare il protocollo POP ?
+...........................................
+Beh, ci sono parecchie ragioni perchè dovresti farlo. Te ne darò un paio che mi vengono fuori dalla testa.
+
+a. Sei mai stato bombardato di mail ? Se non lo sei mai stato, come credi di poter ricevere e cancellare centinaia se non migliaia di messaggi ? Beh, non pensarci. Dopo aver letto questo tutorial sarai in grado di cancellare le mail senza doverle leggere o riceverle (molti client non possono cancellare le email in un solo colpo e così dovresti cancellarle una a una)
+
+b. Sarai in grado ti leggere le tue mail da ovunque nel mondo. Certo, molte persone diranno "ma puoi leggere con www.readmail.com, semplicemente inserendo il tuo indirizzo e la tu password e ti si presenterà una bellissima interfaccia che ti permetterà di leggere e cancellare i tuoi messaggi da qualsiasi parte del mondo.
+Perchè dovremmo fare la fatica di studiare il protocollo POP ?" Beh, ci sono parecchi problemi di sicurezza con i siti come www.readmail.com. Per esempio: molti browser supportano un opzioni chiamata "form completion". Il browser registra i dati che inserisci nel form e quando ritornerai al form vuoto e inserirai la prima lettera inserirà il resto per te.
+Ora, cosa succede se usi www.readmail.com su parecchi computer e poi qualcun'altro e inserisce la sua mail che inizia come la tua ? Esatto. Il browser completerà tutto il form, compresa la password. Questo è solo un esempio di quanto www.readmail.com sia insicuro, come lo sono gli altri siti.
+
+c.Il protocollo POP3 non è complicato. Anzi, è abbastanza semplice, e allora perchè diavolo non impararlo per divertimento ? :))
+
+Tutto a posto, andiamo
+......................
+La prima cosa di cui hai bisogno è un applicazione telnet. Non hai bisogno di altro. Unix ha un client telnet, basta che scrivi telnet hostname/ip per telnettarti all'host desiderato alla porta 23 oppure telnet hostname/ip porta per collegarti a una porta che non sia la 23.
+Windows 9* e successivi ha telnet in c:\windows\telnet.exe oppure puoi cliccare Start/Esegui, scrivere Telnet e cliccare Ok.
+Per collegarvi fate partire telnet, Connetti, Sistema Remoto e come nome host mettere l'host name o l'ip al quale volete telnettarvi.
+poi avete bisogno di un POP3 mail server. In genere è qualcosa tipo mail.tuo-isp.net.
+Per esempio il mio ISP (Internet Service Provider) è netvision.net.il, quindi il mio POP3 è mail.netvision.net.il
+[aggiungo: potete aggiungere mail oppure pop3 davanti all'hostname, anche se adesso si stanno facendo furbi e mettono nomi fittizzi..]
+Se invece hai un client email [Eudora, Outlook, ecc..] che è già stato configurato puoi andare a vedere nelle opzioni per tirare fuori il POP3
+
+Ok, direi che siamo pronti. Prossimo: telnettarci al nostro POP3 server alla porta 110 (la porta di default per il POP3).
+[per telnettarci: Telnet, Connetti, Sistema Remoto
+Host name: mail.vostroisp.com/net/it
+porta: 110]
+Questo è quello che vedo quando mi telnettto al mio POP3.
+
++OK POP3 [194.90.1.6] v7.60 server ready
+
+Ok, tutto a posto. Adesso dobbiamo identificarci. Abbiamo bisogno di un username e di una password. In genere il tuo username è nella tua casella mail. Per esempio il mio mail è barakirs@netvision.net.il, quindi il mio username è barakirs. Quindi digitiamo:
+
+user barakirs (al posto di barakir ci mettete il vostro username)
+
+Il server risponde con
+
++OK User name accepted, password please
+
+Prossima cosa, abbiamo bisogno di una password, giusto ? Quindi
+
+pass inseritelavostrapassword
+
+e il server risponde con:
+
++OK Mailbox open, x messages (dove x è il numero di messaggi che avete nella casella)
+
+oppure:
+
+-ERR Bad login
+
+se inseriamo la password sbagliato. Adesso vogliamo vedere cosa abbiamo, quindi scriviamo list per avere una lista dei messaggi che abbiamo (a meno che non abbiamo 0 messaggi) e il numero che identifica il messaggio.
+Per ogni mail avremo una mail che indica il numero del messaggio e il numero che indica le dimensioni di ogni messaggio.
+
+Se vogliamo leggere i nostri messaggi. Per fare questo, scriviamo retr #.
+Retr stà per retrieve. # dovrà essere sostituito con il numero del messaggio che vogliamo leggere. Vedremo gli header della mail (vedi Sendmail tutorial [e il testo di Screener_it]) e il corpo [testo] del messaggio.
+
+Dopo aver letto il messaggio probabilmente vorremmo cancellarlo. Per farlo scriveremo:
+dele #
+Dele stà per delete, # deve essere sostituito con il numero del messaggio.
+
+Quando hai finito chiudi la sessione scrivendo quit.
+
+Note finali
+...........
+Oh, finito! Ah, ancora una cosa. Quando sei loggato nella tua casella POP3 è chiusa così nessuno può accedervi finchè tu sei dentro. Un "file lucchetto" viene creato quando sei loggato e viene cancellato quando chiudi la connessione con il server e quindi se qualcun'altro proverà a loggarsi nella tua casella mail il server gli darà il permesso SE E SOLO il "file lucchetto" non esiste (che significa quindi che non c'è nessun loggato)
+
+Visto ? E' stato facile ? Odio dire "Te l'avevo detto" però.. :))
+ _   _   _   _   _   _   _   _   _   _   _   _
+/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \
+
+Ho finito anch'io di tradurre.. Era poca roba, però.. Ok.. Un saluto a tutti quelli del Tank Commandos Crew e un ringraziamento al BlackSun perchè se non fosse per loro non avremo testi da tradurre !!

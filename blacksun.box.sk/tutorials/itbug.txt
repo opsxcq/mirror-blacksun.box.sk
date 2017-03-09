@@ -1,0 +1,264 @@
+						DEBUG
+
+Di Ralph
+ -AWC & BSRF
+http://blacksun.box.sk
+Versione 1.0
+Data: 8/1/00
+traduzione: M3xican
+
+Debug è un programma che è contenuto nelle moderne versioni di dos (io non so quando cominciai a spratichirmi col dos). Comunque, tutti gli utenti di windows dovrebbero averlo già. 
+(comunque 1 copia del programma (sia per win98 che per winNT) è allegata a questo manuale su http://napolihak.cjb.net)
+E' un fantastico strumento per il debuging dei programmi, il disasemblaggio e il cracking, e per leggere le aree di memoria "nascoste" come il boot sector, e molto altro.
+Le cose seguenti sono state copiate da un tutorial sull'assembler il cui autore non può essere citato, poichè io non ho idea di chi egli sia.
+
+Vai nel dos e digita "debug", otterrai un prompt di comandi come questo:
+-
+
+Adesso digitando "?", dovresti ottenere il seguente responso:
+	Assembla       A [indirizzo]
+	Confronta      C intervallo indirizzo
+	Dump           D [intervallo]
+	Immetti        E indirizzo [elenco]
+	Riempi         F intervallo elenco
+	Vai            G [=indirizzo] [indirizzi]
+	Esadecimale    H valore1 valore2
+	Input          I porta
+	Carica         L [indirizzo] [unità] [primosettore] [numero]
+	Muovi          M intervallo indirizzo
+	Nome           N [nomepercorso] [elencoargomenti]
+	Output         O porta byte
+	Procedi        P [=indirizzo] [numero]
+	Esci           Q
+	Registro       R [registro]
+	Cerca          S intervallo elenco
+	Traccia        T [=indirizzo] [valore]
+	Disassembla    U [intervallo]
+	Scrivi         W [indirizzo] [unità] [primosettore] [numero]
+	Alloca memoria espansa             XA [n. pagine]
+	Rilascia memoria espansa           XD [handle]
+	Mapping pagine di memoria espansa  XM [pagLog] [pagFis] [handle]
+	Visualizza stato memoria espansa   XS
+
+Osserviamo ogni comando:
+
+Assembla:
+-a
+107A:0100
+A questo punto puoi iniziare ad assemblare alcuni programmi, proprio come se stessi usando un assemblatore.
+Comunque l'assemblatore debug è molto limitato come probabilmente noterai. Proviamo a inserire un semplice programma:
+-a
+107A:0100 MOV AH,02
+107A:0102 MOV DL,41
+107A:0104 INT 21
+107A:0106 INT 20
+-g
+A
+L'esecuzione del programma è terminata normalmente
+-
+
+Quello è lo stesso programma che facemmo nello scorso capitolo. Nota come hai eseguito il programma. Noti come hai eseguito il programma non appena hai digitato "g", e noti anche come la parte di progettazione non è qui? Questo avviene perchè debug è troppo limitato per supportarla.
+Un'altra cosa che puoi fare con assembla è specificare l'indirizzo dal quale vuoi cominciare, per default questo è 0100 poichè è quello dove tutti i files .COM cominciano.
+
+
+Confronta:
+Confronta prende 2 blocchi di memoria a mostra loro fianco a fianco, byte per byte. Lasciami fare un esempio. Esci dal debug se non l'hai già fatto usando "q".
+Adesso digita "debug c:\command.com"
+-c 0100 1 8 0200
+10A3:0100  7A  06  10A3:0200 
+Questo comando confronta l'offsett 0100 con 0200 per una lunghezza di 8 bytes. Debug risponde con la locazione che era DIFFERENTE. Se le due locazioni erano le stesse, debug le avrebbe semplicemente trascurate, se tutte sono le stesse debug ritorna semplicemente al prompt dei comandi senza alcun responso.
+
+  
+Dump:
+Dump scaricherà uno specificato segmento di memoria. Per provarlo, usiamo ancora quel programma assemblato:
+C:\>debug
+-a
+107A:0100 MOV AH,02
+107A:0102 MOV DL,41
+107A:0104 INT 21
+107A:0106 INT 20
+-d 0100 l 8
+107A:0100  B4 02 B2 41 CD 21 CD 20                             ...A.!.
+
+"B4 02 B2 41 CD 21 CD 20" E' il programma che hai appena fatto in linguaggio macchina.
+B4 02 = MOV AH,02
+B2 41 = MOV DL,41
+CD 21 = INT 21
+CD 20 = INT 20
+La parte "...A.!." è il tuo programma in ASCII. Il "." rappresenta caratteri non stampabili.
+Nota la A all'interno.
+
+
+Immetti:
+Questo è uno dei comandi più difficili. COn questo puoi immettere/cambiare alcune aree di memoria.
+Cambiamo il nostro programma in modo che stampi B invece di A.
+-e 0103		<-- edita il programma al segmento 0103
+107A:0103 41.42		<-- cambia 41 in 42
+-g    
+B
+L'esecuzione del programma è terminata normalmente
+-
+
+Non è stupefacente?
+
+
+Riempi:
+Questo comando è abbastanza inutile, ma chi sa...
+Riempie lo specificato ammontare di memoria con i dati specificati. Liberiamo per esempio tutta la memoria dal segmento 0100 al 0108, cosa accade è il nostro programma.
+-f 0100 l 8 0                    <-- file offset 0100 per una lunghezza di 8 bytes con 0
+-d 0100 l 8                      <-- verifica che ha lavorato
+107A:0100  00 00 00 00 00 00 00 00
+
+Yeah, ha lavorato!
+
+
+Vai:
+Fin qui abbiamo usato vai(g) per eseguire il programma che avevamo appena creato. Ma vai può essere usato per molto altro. Per esempio, diciamo che vogliamo eseguire un programma a 107B:0100:
+-r CS 		<-- setta che il registro CS punti a 107B
+CS 107A
+:107B
+-g=100
+Puoi anche settare dei breakpoints.
+-a                               <-- immetto il nostro programma originale così che 
+107A:0100 MOV AH,02                  abbiamo qualcosa su cui lavorare
+107A:0102 MOV DL,41
+107A:0104 INT 21
+107A:0106 INT 20
+-g 102          		 <-- imposto un breakpoint a 107A:0102
+A questo punto il programma si fermerà, mostrando tutti i registri e l'istruzione corrente.
+
+
+Esadecimale:
+Questo può essere molto utile. Sottrae e addiziona due valori esadecimali:
+-h 2 1 
+0003 0001		<-- 2h+1h=3h e 2h-1h=1h
+Questo è molto utile per calcolare la lunghezza di un programma, così come potrai vedere in seguito.
+
+
+Input:
+Questo è uno dei comandi più avanzati, e io ho deciso di non parlarne troppo per adesso. Esso leggerà un byte di informazione da ogni porta di I/O del tuo computer (tastiera, mouse, stampante, ecc..).
+-i 3FD
+60
+-
+I tuoi dati potrebbero essere diversi.
+Nel caso che tu voglia sapere, 3FD è la COM1, anche conosciuta come Primo Adattatore Asincrono.
+
+
+Carica:
+Questo comando ha 2 formati. Può essere usato per caricare il nome di file specificato con il comando nome (n), o può caricare un settore specifico.
+-n c:\command.com
+-l
+Questo eseguirà il comando 'command.com' nel debug. Quando un programma valido è eseguito tutti i registri saranno impostati e pronti per eseguire il programma.
+L'altro metodo è un poco più complicato, ma potenzialmente anche più utile. La sintassi è:
+L [indirizzo] [lettera del drive] [settore] [totale da caricare]
+-l 100 2 10 20
+Questo caricherà iniziando all'offset 0100 dal drive C (0=A, 1=B, 2=C, ecc..), il settore 10h per 20h settori. Questo può essere utile per recuperare files che hai cancellato.
+
+
+Muovi:
+Muovi prende un byte dall'indirizzo di partenza e lo muove nell'indirizzo di destinazione.
+Questo è molto utile per muovere dati in aree libere, per poi manipolarli senza avere paura di influire sul programma originale. E' specialmente utile se usato in congiunzione col comando r del quale parlerò dopo. Proviamo un esempio:
+-a   				<-- immetto il nostro programma così che abbiamo qualcosa	
+107A:0100 MOV AH,02                 con cui lavorare
+107A:0102 MOV DL,41
+107A:0104 INT 21
+107A:0106 INT 20
+-m 107A:0100 L 8 107B:0100      <-- muovi 8 bytes incominciando da 107A:0100 in 107B:0100
+-e 107B:0103                    <-- edita 107B:0103
+107B:0103  41.42                <-- e cambialo in 42 (B)   
+-d 107A:0100 L 8                <-- assicuriamoci che lavori 
+107A:0100  B4 02 B2 41 CD 21 CD 20                             ...A.!.
+-d 107B:0100 L 8
+107A:0100  B4 02 B2 42 CD 21 CD 20                             ...B.!.
+-m 107B:0100 L 8 107A:0100 	<-- ripristiniamo il programma originale poichè ci piace il cambiamento 
+
+
+Nome:
+Questo imposterà al debug di usare un nomefile per i comandi di I/O. Devi includere l'estensione del file, e puoi usare comandi addizionali:
+-n c:\command.com
+
+
+Output: 
+Esattamente cosa tu pensi che sia. Output manda cose a una porta I/O. se hai un modem esterno con quelle fiche luci su di esso, puoi testarle. Cerca su quale porta è il tuo modem e usa i corrispondenti numeri esadecimali qui sotto:
+Com 1 = 3F8 - 3FF (3DF per il mio)
+Com 2 = 2F8 - 2FF
+Com 3 = ??? - ??? (se qualcuno lo sa, per favore me lo faccia sapere)  
+Adesso accendiamo il bit DTA (Terminale Dati Pronto) mandandogli 01h:
+-o XXX 1 	<-- XXX è la porta COM in esadecimale
+Appena schiacci 'invio', dai un occhiata al tuo modem, dovresti vedere una luce accendersi.
+Puoi anche avere maggiore divertimento con il comando output. Dici a qualcuno di settare una di quelle password di bios sul "tuo" computer. Normalmente dovresti estrarre la batteria per eluderle, ma non sempre:     
+AMI/AWARD BIOS
+-o 70 17
+-o 71 17
+
+QPHOENIX BIOS
+-o 70 FF
+-o 71 17
+
+QGENERIC
+-o 70 2E
+-o 71 FF
+
+Questi comandi cancelleranno la memoria BIOS, disabilitando così la password!
+
+
+Procedi:
+Procede nell'esecuzione di un programma, generalmente usato insieme con Traccia, del quale parlerò dopo. Come il comando vai, puoi specificare un indirizzo dal quale cominciare 
+-p 2
+Debug risponderà con i registri e i comando corrente che è stato eseguito
+
+
+Esci:
+questa è stato una delle caratteristiche più avanzate del debug, esso esce dal debug!
+-q
+
+
+Registro:
+Questo comando può essere usato per mostrare il valore corrente di tutti i registri, o per settarli manualmente. Questo è molto utile per scrivere files come vedrai in seguito.
+-r AX
+AX: 011B
+:5
+-
+
+
+Cerca:
+Un altro comando molto utile. E' usato per trovare occorrenze di uno specifico byte, o una serie di bytes in un segmento. I dati da cercare possono sia essere caratteri, che valori esadecimali. Valori esadecimali sono inseriti con uno spazio o una virgola tra di loro, e caratteri sono racchiusi con virgolette (singole o doppie). Puoi anche cercare per esadecimali e caratteri con la stessa stringa:
+-n c:\command.com       	<-- carica command.com così che abbiamo un pò di dati in cui cercare
+-l
+-s 0 l 0 "MS-DOS"               <-- cerca nell'intero blocco di memoria "MS-DOS"
+10A3:39E9      			<-- stringa trovata in 10A3:39E9
+NOTA: la ricerca è case sensitive (distingue le minuscole dalle maiuscole)!
+
+	
+Traccia:
+Questo è veramente un comando fantastico del debug. Traccerà attraverso un programma un istruzione alla volta, mostrando l'istruzione e il registro dopo ogni volta. Come il comando vai puoi specificare da dove cominciare ad eseguire e per quanto a lungo.
+-a                                <-- si, ancora questa cosa
+107A:0100 MOV AH,02
+107A:0102 MOV DL,41
+107A:0104 INT 21
+107A:0106 INT 20
+-t =0100 8  
+Se hai lasciato fuori l'ammontare di istruzioni che vuoi tracciare, puoi usare il comando procedi (p) per continuare l'esecuzione per quanto vuoi.
+
+
+Disassembla:
+Disassembla un blocco di codice. Grande per il debugging (e il cracking!)
+-u 100 L 8                           <-- disassembla 8 bytes incominciando dall'offset 100
+107A:0100 MOV AH,02                  <-- risposta del debug
+107A:0102 MOV DL,41
+107A:0104 INT 21
+107A:0106 INT 20
+
+
+Scrivi:
+Questo comando lavora molto similmente al carica. Anche questo ha 2 modi di operare: usando nome, e specificando l'esatta locazione. Dai un occhita indietro a carica per maggiori informazioni.
+NOTA: il registro CX deve essere impostato sulla dimensione del file per poter scrivere!
+NOTA: Scrivi non scriverà files .EXE o .HEX
+
+
+
+==================================================================
+Questa guida è stata tradotta dal M3xican ( m3xican@napolihak.cjb.net ), 
+se considerate la traduzione scadente o vi volete 
+cimentare nell'impresa potete scaricare la versione originale 
+in inglese sempre su <http://napolihak.cjb.net>.

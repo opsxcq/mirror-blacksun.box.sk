@@ -1,0 +1,323 @@
+Kerberos: cos'è?
+By Ankit Fadia ankit@bol.net.in
+Tradotto da kEwL` kewl@roolz.cjb.net
+
+Ai giorni nostri, tutte le reti hanno firewalls installati per proteggersi dai pericoli di 
+Internet. Quando i firewall entrarono in scena, non erano sufficientemente potenti per 
+proteggere la rete completamente. Comunque, con il passare del tempo, la qualità dei 
+firewall è aumentata a un tale livello che il firewall dei nostri giorni rende la rete 
+interna molto sicura.
+
+Questi firewall possono essere configurati semplicemente per permettere il passaggio di 
+solo alcuni tipi di dati e possono essere anche usati per settare quali porte possono 
+essere accessibili dall'esterno e quali porti sono accessibili dall'interno. Alcuni buoni 
+firewalls controllano anche gli allegati da virus e assicurano che nessun dato importante 
+stia per uscire dalla rete. I firewall dei nostri giorni rendono la vita abbastanza facile 
+all'amministratore poichè danno non poca protezione dal mondo esterno. Comunque, un'area 
+dove falliscono i firewall è quando l'attacco avviene dall'interno della rete.
+
+Diciamo per esempio che sei ben configurato; il firewall è installato sul computer 
+principale e controlla tutti gli allegati delle email che giungono. Ora, se il virus viene 
+dall'esterno, il firewall agirà bene, cancellando la mail o comunque ignorandola. Ma se 
+quello che ha creato il virus lavora per te ed è connesso alla rete interna, un firewall 
+non riuscirà a fare niente e il virus agirà tranquillamente.
+
+NOTA: Il seguente è solo un esempio fatto per assicurarsi che tu capisca.
+
+Allora, spero che tu capisca che solo un Firewall non è sufficiente per una rete e c'è 
+bisogno anche di qualcosa per gli attacchi dai sistemi interni.
+
+Quì entra in gioco Kerberos. Kerberos è un protocollo d'autenticazione di rete, chce 
+prevede la verifica delle identità in una rete. E' anche lo standard per l'autenticazione, 
+e prende il nome dal mitologico cane a tre teste.
+
+Per ulteriori informazioni e dettagli sul protocollo d'autenticazione Kerberos, leggi 
+l'RFC 1510.
+
+Ora, in una rete interna, il pericolo più grande sta nel fatto che tutti possono 
+facilmente "sniffare" dei dati personali come piani societari, passowrds e anche numeri di 
+carta di credito mentre questi dati passano da un sistema all'altro della rete.
+
+Facciamo un esempio per capire meglio. Diciamo che sei su un client, che è connesso al 
+server principale, che provvede i servizi a tutti i clients connessi. Ora, quando ti 
+connetti al server per controllare la posta, il tuo client email manda il tuo Username e 
+la tua Password al server della rete interna, cosicchè puoi essere autenticato. E' da dire 
+che questo è abbastanza sicuro ma ... come può danneggiarmi? Bene, può danneggiarti. Ora, 
+quando la tua macchina manda l'Username e la Password al server, queste informazioni non 
+arrivano direttamente a destinazione. I dati devono passare attraverso altre macchine e a 
+volte, se la tua rete è grande, anche attraverso altri servers prima che arrivino a 
+destinazione. Ora, tutti quelli che hanno accesso a questi sistemi attraverso i quali 
+passano i dati possono facilmente "sniffare" i tuoi dati e in questo caso possono trovare 
+il tuo Username e la tua Password, usandoli per controllare la tua email.
+
+Per risolvere tutti questi problemi (e molti altri) c'è Kerberos. Kerberos non solo 
+assicura che i dati non vengano "sniffati", ma assicura anche l'integrià del client e del 
+server per prevenire l'imitazione. Fondamentalmente significa che assicura che nessuno può 
+far credere al server che è un altro sistema.
+
+Ora, per capire bene, Kerberos è buono come detto, ora andiamo a capire come funziona il 
+protocollo Kerberos.
+
+Il software più popolare per l'autenticazione di rete, Kerberos, è costituito da 3 grandi 
+parti:
+
+1)	Il Server d'Autenticazione (AS)
+2)	Il Server dei Biglietti di Garanzia (TGS)
+3)	Il processo attuale di Crittazione (algoritmo)
+
+In una rete con Kerberos installato e abilitato, il server d'autenticazione o AS agisce 
+come il capo dell'unità centrale, che assicura l'autenticità del client e del server e 
+inoltre evita che i dati vengano "sniffati".
+
+Una cosa buona del sistema d'autenticazione kerberos è che è un sistema a doppia 
+autenticazione, ciò significa che non permette al server di verificare l'identità del 
+client ma nemmeno viceversa.
+
+Il server d'autenticazione agisce come il segretario sia del client e del server. Il 
+client e il server per comunicare tra di loro, devono avere una connessione con l'AS. 
+(L'As verifica le identità sia del client che del server.) Solo una volta che l'AS ha 
+verificato l'autenticità di entrambi, esso può cominciare la comunicazione.
+
+Kerberos: Il lavoro
+-------------------
+
+Quando entra in gioco Kerberos? Bene, appena vuoi loggarti e scrivi il tuo login nel campo 
+Username. Appena scrivi dati personali, il Kerberos li manda al server d'autenticazione o 
+AS. Poi, l'AS risponde al client con la chiave della sessione e qualcosa chiamata 
+Biglietto di Garanzia del Server. Sia la chiave della sessione che il Biglietto di 
+Garanzia del Server sono crittati dalla chiave dell'utente. Ora, prima di andare avanti, 
+penso ci sia bisogno di spiegare alcune cose incluse nel seguente processo.
+
+Ora, devi ricordare che il client e il server d'autenticazione condividono una chiave di 
+crittazione, che è usata per crittare i dati. Questi dati crittati sono riconoscibili 
+(decrittabili) solo dall'AS e dal client. Questa chiave di critazione è generata dalla 
+Passowrd dell'Utente. Questo significa che passando la password dell'Utente attraverso una 
+formula predefinita, si ricava la sua chiave di crittazione. Tutti i Server che provvedono 
+servizi ai clients condividono una chiave di crittazione con l'AS.
+
+Così questo sistema di crittazione di client-AS e server-AS assicura che nessun'altro 
+possa sniffare i dati.
+
+Ora, veniamo al Biglietto TG, che è spedito con la chiave della sessione [la chiave della 
+sessione è mandata al client dall'AS, cosicchè il client può cominciare a comunicare con 
+il Server dei Biglietti di Garanzia o TGS.] al client dall'AS. Un biglietto non è 
+nient'altro che un certificato di autenticità dato al client dall'AS per prevenire le 
+falsificazioni. Il biglietto è leggibile solo dal client per cui è stato creato e dall'AS. 
+Il Server dei Biglietti di Garanzia inoltre rende il sistema Kerberos efficiente poichè 
+rimuove il bisogno di ripetere il processo iniziale più volte.
+
+Ora, una volta che il client riceve la chiave della sessione e il Biglietto TG, viene 
+fuori la chiave del client e la password dell'utente e si cerca di usare questa chiave 
+generata per decrittare il Biglietto TG e la chiave TGS. Se il client può decrittare 
+queste due, la password è corretta, altrimenti è sbagliata.
+
+Ora, diciamo che vuoi usare i servizi POP del server mail per leggere la tua posta; quello 
+che succede è questo, il client manda una richiesta al Server dei Biglietti di Garanzia o 
+TGS. Il client critta le informazioni e i dettagli della richiesta con la chiave TGS e 
+manda questi dati crittati al servizio.
+
+Se è tutto valido, TGS manda un biglietto al client che contiene:
+
+1)	Nome utente
+2)	Indirizzo
+3)	Nome del servizio
+4)	Durata
+5)	Data e ora
+6)	Altri dettagli della chiave della sessione
+
+Una cosa importante da notare è questa: per far avvenire la comunicazione tra il client e 
+il server, essi dovrebbero condividere la stessa chiave.
+
+Il TGS genera due copie della chiave della sessione, una crittata con la chiave TGS per il 
+client e l'altra con la chiave del server dell'applicazione. Usando la chiave TGS, il 
+client decritterà la chiave di sessione apposita, e la chiave di sessione per il server 
+dell'applicazione è mandato a destinazione.
+
+Quando il server riceve la chiave della sessione, una volta che è stata decrittata, sa che 
+questo client particolare sta cercando di contattarlo. Anche il server ha una procedura 
+per assicurare l'autenticità del client. Esso manda un numero casuale in formato testo al 
+client. Il client lo decritta con la chiave della sessione (che hanno in comune) e lo 
+manda al server. Appena arriva questo testo crittato, si è sicuro che il client non è 
+falsificato, poichè altri client non possono eseguire la stessa crittazione.
+
+Kerberos assicura che la ricezione di dati non è così semplice, poichè il trasferimento di 
+tutti i dati, anche delle chiavi, avviene in forma crittata. La tecnica di crittazione 
+usata da Kerberos è la Data Encryption Algoritm [Algoritmo di Crittazione dei Dati] o DES.
+
+Comunque, c'è ancora un buco nel sistema Kerberos. Vedi, nel tempo in cui la Password è 
+mandata all'AS nel primo passaggio, viaggia lungo la rete in forma decrittata. Questa è 
+l'unica volta che il sistema Kerberos può essere truffato.
+
+Windows 2000 è, penso, il primo sistema operativo che usa Kerberos come metodo standard 
+d'autenticazione. In ogni modo, ora che sai come funziona esattamente il Sistema 
+d'Autenticazione Kerberos, andiamo a vedere come scoprire se il tuo ISP lo sta usando. 
+Inoltre, raccomando di leggere l'RFC 1510. Questo è per quelli che vogliono tutti i 
+dettagli di questo sistema.
+
+Come scopro se il mio ISP sta eseguendo Kerberos?
+-------------------------------------------------
+
+NOTA: In questa sezione, presumo che hai abilitato l'opzione per far comparire la 
+schermata dopo post-connessione.
+
+Bene, il router del tuo ISP al quale ti connetti intenzionalmente, tiene le chiavi. Quasi 
+tutti voi hanno visto la schermata post-connessione, che appare quando devi inserire il 
+tuo Username e la Password. Ora, questa schermata post-connessione è il prompt del router 
+del tuo ISP. C'è un comando segreto (non tanto...) che ti permetterà di verificare se il 
+tuo ISP ha implementato il protollo Kerberos.
+
+Il seguente è un log che contiene i miei commenti su quello che ho fatto per verificare se 
+il mio ISP sta usando Kerberos o no.
+
+User Access Verification
+
+Username: ankit
+Password: 
+
+NP-NAS3>help
+
+Help may be requested at any point in a command by entering
+a question mark '?'.  If nothing matches, the help list will
+be empty and you must backup until entering a '?' shows the
+available options.
+Two styles of help are provided:
+
+1. Full help is available when you are ready to enter a
+   command argument (e.g. 'show ?') and describes each possible
+   argument.
+2. Partial help is provided when an abbreviated argument is entered
+   and you want to know what arguments match the input
+   (e.g. 'show pr?'.)
+ 
+[Ankit: help non è il comando giusto....proviamo con "?".]
+ 
+NP-NAS3>?
+Exec commands:
+  access-enable    Create a temporary Access-List entry
+  access-profile   Apply user-profile to interface
+  attach           attach to system component
+  clear            Reset functions
+  connect          Open a terminal connection
+  disable          Turn off privileged commands
+  disconnect       Disconnect an existing network connection
+  enable           Turn on privileged commands
+  exit             Exit from the EXEC
+  help             Description of the interactive help system
+  lat              Open a lat connection
+  lock             Lock the terminal
+  login            Log in as a particular user
+  logout           Exit from the EXEC
+  mrinfo           Request neighbor and version information from a multicast
+                   router
+  mstat            Show statistics after multiple multicast traceroutes
+  mtrace           Trace reverse multicast path from destination to source
+  name-connection  Name an existing network connection
+  pad              Open a X.29 PAD connection
+  ping             Send echo messages
+  ppp              Start IETF Point-to-Point Protocol (PPP)
+  resume           Resume an active network connection
+  rlogin           Open an rlogin connection
+  set              Set system parameter (not config)
+  show             Show running system information
+  slip             Start Serial-line IP (SLIP)
+  systat           Display information about terminal lines
+  telnet           Open a telnet connection
+  terminal         Set terminal line parameters
+  tn3270           Open a tn3270 connection
+  traceroute       Trace route to destination
+  tunnel           Open a tunnel connection
+  where            List active connections
+  x28              Become an X.28 PAD
+  x3               Set X.3 parameters on PAD
+  xremote          Enter XRemote mode
+ 
+
+[Ankit: Bene, ho provato un paio di comandi, ma non devi fare nessuno esperimento, poichè 
+l'ho già fatto per te. Il comando più utile è "show"...vediamo come funziona.]
+
+ 
+NP-NAS3>show ?
+  alps            Alps information
+  backup          Backup status
+  bootflash:      display information about bootflash: file system
+  calendar        Display the hardware calendar
+  call            Show Calls
+  clock           Display the system clock
+  context         Show context information about recent crash(s)
+  cot             COT connection information
+  dial-peer       Dial Plan Mapping Table for, e.g. VoIP Peers
+  dialer          Dialer parameters and statistics
+  drip            DRiP DB
+  exception       exception informations
+  facility-alarm  Facility Alarm status
+  flash:          display information about flash: file system
+  fras-host       FRAS Host Information
+  gateway         Show status of gateway
+  history         Display the session command history
+  hosts           IP domain-name, lookup style, nameservers, and host table
+  kerberos        Show Kerberos Values
+  location        Display the system location
+  management      Display the management applications
+  modem           Modem Management or CSM information
+  modemcap        Show Modem Capabilities database
+  ncia            Native Client Interface Architecture
+  num-exp         Number Expansion (Speed Dial) information
+  ppp             PPP parameters and statistics
+  queue           Show queue contents
+  queueing        Show queueing configuration
+  rmon            rmon statistics
+  rtr             Response Time Reporter (RTR)
+  sessions        Information about Telnet connections
+  sgbp            SGBP group information
+  snmp            snmp statistics
+  syscon          System Controller information
+  tacacs          Shows tacacs+ server statistics 
+  tdm             TDM connection information
+  terminal        Display terminal configuration parameters
+  traffic-shape   traffic rate shaping configuration
+  users           Display information about terminal lines
+  version         System hardware and software status
+  voice           Voice port configuration & stats
+  vpdn            VPDN information
+
+
+[Ankit: Bingo! Ha un'opzione Kerberos. Questo significa che stanno eseguendo Kerberos, ma 
+vediamo se posso avere qualche informazione in più.]
+
+NP-NAS3>show kerberos 
+
+% Incomplete command.
+
+[Ankit: Questo significa che il comando che abbiamo scritto non è completo oppure richiede 
+dei parametri. Così per avere una lista completa dei parametri Kerberos, scrivi il 
+seguente comando:] 
+
+NP-NAS3>show kerberos ?
+ 
+
+creds  Show Kerberos Credentials
+ 
+
+NP-NAS3>show kerberos creds
+No Kerberos credentials.
+ 
+
+[Ankit: Siamo sfortunati, poichè Kerberos è installato e in esecuzione, il Router è 
+configurato affinchè non vengano date informazioni all'esterno..]
+
+Bene, è tutto per questo manuale, fino al prossimo aggiornamento. Arrivederci.
+
+Ankit Fadia
+ankit@bol.net.in
+
+Prendi l'Archivio dei Manuali [tutto quello che hai sognato) scritti da Ankit Fadia a 
+questa mailing list:
+
+programmingforhackers-subscribe@egroups.com
+
+--------------------------------
+* tradotto da kEwL`            *
+* kewl@roolz.cjb.net           *
+* http://www.tankcommandos.org *
+--------------------------------
+

@@ -1,0 +1,527 @@
+******************************************************
+* La Rivista Settimanale sul Perl 2 - By Ankit Fadia *
+******************************************************
+
+@ARGV
+-----
+
+Fino ad ora abbiamo imparato solo una variabile special, la variabile $_. Un'altra 
+variabile utile è la variabile @ARGV che contiene una serie di elementi di tutti gli 
+argomenti della linea di comando del Programma Perl. Il primo argomento della linea di 
+comando può essere indicato con $ARGV[0], il secondo $ARGV[1] e così via. Supponiamo che 
+il Programma Perl è stato lanciato usando tre argomenti della linea di comando, che sono 
+Ankit, Fadia, Anki123. @ARGV conterrà Ankit, Fadia e Anki123, con $ARGV[0]=Ankit, 
+$ARGV[1]= Fadia e $ARGV[2]= Anki123.
+
+Per esempio,
+
+Il seguente programma PERL prende il numero che è stato passato alla linea di comando, poi 
+moltiplica questo argomento per 4 e infinte mostra il risultato sullo schermo.
+
+$number = $ARGV[0];
+print $number *4;
+
+Output:
+
+C:\perl>perl filename.pl 5
+20
+
+Non tutte le funzioni premettono che $_ sia la variabile standard, alcune funzioni 
+prendono @ARGV al suo posto. Per esempio, la funzione shift( ). La funzione shift( ) 
+rimuove e ritorna l'argomento più a sinistra degli argomenti di @ARGV. Per capire l'uso di 
+shift( ), facciamo un esempio.
+
+In questo programma PERL, premettiamo che l'utente passi 2 argomenti, il programma poi 
+prende i due argomenti, li somma e poi mostra la somma sullo schermo.
+
+$first = shift;
+$second = shift;
+print $first + $second;
+
+Output:
+
+C:\perl>perl filename.pl 3 5
+8
+
+Input Output
+------------
+
+Fino ad ora abbiamo parlato di due tipi di dati: scalari e array. In questo capitolo 
+impareremo un terzo tipo di dati chiamato Filehandles. Questi filehandles agiscono come un 
+ponte tra il programma perl e gli altri files, directory e altri programmi.
+
+Infatti, abbiamo già usato i filehandles ma non ce ne siamo mai accorti. Noi abbiamo usato 
+< > per due scopit: leggere files e prendere l'input dell'utente. In entrambi i casi, 
+queste parentesi aprono un filehandle senza che tu lo sappia.
+
+I filehandles standard del Perl sono:
+
+STDIN Standard Input: usato per prendere l'input dell'utente.
+STDOUT Standard Output: l'outpu del programma, che è generalmente mostrato sullo schermo.
+STDERR Standard Error: messaggio d'errore mostrato sullo schermo.
+
+Come STDIN è usato per prendere l'input dell'utente, così ARGV è usato per leggere gli 
+argomenti del programma. Tutto questo potrebbe sembrare un po' confusionario, ma 
+credetemi, non è così. Continua a leggere per capire meglio.
+
+Diciamo che dai un comando come:
+
+$varname= < >;
+
+il PERL riempie automaticamente le parentesi con o STDIN o ARGV. Ma come fa a decidere il 
+perl quale prendere? Bella domanda. Vedi, quando il PERL vede queste parentesi, controlla 
+se ci sono già dati da leggere dalla lina di comando. Se ci sono dei dati, allora le 
+parentesi si riempiono con ARGV, altrimenti con STDIN.
+
+Possiamo anche differenziare manualmente le parentesi. Possiamo dire al codice che <FILE> 
+leggerà i dati da FILE.
+
+Aprire i files per la lettura
+-----------------------------
+
+Ora che sai cosa fanno i filehandles, capiamo come aprire un file di testo per leggere il 
+suo contenuto e stampare i dati sullo schermo. Il codice è il seguente:
+
+open(SITES, "sitelist.txt"); # Apre sitelist.txt e lo collega al nome SITES
+while (<SITES>) {
+print; # Legge ogni linea da SITES e la stampa sullo schermo
+}
+
+Analizziamo. Nella prima riga, abbiamo usato la funzione open( ) (discussa 
+dettagliatamente in seguito) per aprire il file sitelist.txt e abbiamo dato al file un 
+nome a nostro piacimento, in questo caso SITES.
+
+La seconda linea è la stessa di
+
+while($_= <SITES>);
+
+Stiamo semplicemente creando degli scripts più semplici, più efficienti. Fondamentalmente 
+questo script legge la prossima linea di una lista di siti usando la connessione aperta, 
+SITES. Questa linea è poi assegnata alla variabile di default $_, che è infinte stampata 
+dalla terza linea. Il perl legge ogni linea del file aperto.
+
+Ora diciamo che se il file sitelist.txt non esiste, il Perl mostra normalmente una 
+difficoltà critica a capire il messaggio d'errore che non è di nessuna utilità a un 
+principiante da dedurre cosa è andato storto. Come possiamo mostrare i nostri messaggi 
+d'errore al posto di usare messaggi d'errore di perl? Usiamo la funzione die( ).
+
+La sintassi di base del comando è:
+
+die(STRINGA): Questo codice esce dal programma con il valore specificato nella variabile 
+speciale $! (discussa più avanti) e stampa STRINGA sullo schermo.
+
+Ora facciamo un esempio per vedere come possiamo usare la funzione die( ).
+
+Consideriamo il seguente pezzo di codice:
+
+open (FILE123, "first.txt") | | die "File non trovato";
+while (<FILE123>) {
+print;
+}
+
+Il seguente programma cerca di aprire il file di testo first.txt e se non può farlo per 
+qualche ragione, mostra il messaggi d'errore personalizzato "File non trovato" sullo 
+schermo.
+
+Un'altra variabile speciale: $!
+-------------------------------
+
+Prima ho nominato un nuovo tipo di variabile speciale, la variabile $!.
+
+La variabile $! o $ERRORNO o $OS_ERROR contiene il codice d'errore. I contesti numierici 
+($!) contiene il numero dell'errore e in contesti testualie ($ERRNO o $OS_ERROR) contiene 
+il messaggio d'errore.
+
+Per esempio,
+
+print $!; #Stampa il seguente numero dell'errore
+print $SERRORNO; #Stampa il messaggio d'errore associato con il numero dell'errore
+
+La tavola del numero dell'errore o del messaggio d'errore è la seguente: 
+
+Not Owner 
+No Such File or Directory
+Input/Output Error
+Permission Denied
+File Exits
+No Space Left on Drive
+
+Questa variabile è di solito usata nel seguente contesto:
+
+Open(FILE123, "xyz.doc") || die "File non trovato: $!"
+
+Questo mostrerà qualcosa dele genere:
+
+File non trovato: 2
+
+A volte, quando avvengono gli errori, al posto di uscire interamente dal programma 
+dobbiamo mostrare solo un messaggio d'avviso che avverte l'utente cosa fare dopo che c'è 
+stato un errore. In questo caso entra in gioco la funzione warn( ). Questa funzione lavora 
+come la funzione die( ). La sola differenza sta nel fatto he il programma non si 
+interrompe.
+
+Per esempio,
+
+warn("Attenzione!! Le risorse del sistema sono basse. Chiudi qualche applicazione prima di 
+continuare");
+
+Fino ad ora abbiamo imparato come leggere da un file, ora impariamo come scrivere o come 
+aggiungere a un file. Useremo ancora la funzione open( ). La sua sintassi di base è la 
+seguente:
+
+open(FILEHANDLE, FILENAME): Apre il FILENAME e gli dà il nome di connessione FILEHANDLE.
+
+Se la funzione open( ) avviene con successo, ritorna il valore TRUE altrimenti ritorna 
+UNDEF.
+
+Se un file è stato aperto in sola lettura, sola scrittura, solo "aggiunta" o tutti e tre 
+si vededal carattere prima diFILENAME.
+
+Se FILENAME comincia con < (o niente) il file è aperto in sola lettura.
+Se FILENAME comincia con > il file è aperto in sola scrittura.
+Se FILENAME comincia con >> è aperto in sola "aggiunta"[cioè che possiamo solo aggiungere]
+Se FILENME comincia con +(cioè +>, <+ o +>>) il file è aperto per lettura e scrittura.
+Se FILNAME è - allora è aperto STDIN.
+Se FILENAME è >- allora è aperto STDOUT.
+
+Ecco alcuni esempi che ti aiuteranno a capire meglio:
+
+open(FILE, ">>$filename") or die" File non trovato"; #File aperto in aggiunta
+open(FILE, "+<$filename") or die" File non trovato"; #File aperto in lettura e scrittura
+open(FILE, "+>$filename") or die" File non trovato"; #File aperto in lettura e scrittura
+open(FILE, ">$filename") or die" File non trovato"; #File aperto in scrittura
+
+NOTA: Quando cerchi di aprire un file con il carattere > il perl controlla se il file 
+specificato esiste o no. Se esiste, il file è sovrascritto altrimenti viene creato un 
+nuovo file.
+
+La funzione close( ) è usata per chiudere una connessione di file, aperta con la funzione 
+open( ). La sintassi di base della funzione close( ) è la seguente:
+
+Close(FILEHANDLE);
+
+Esempi:
+
+print "USERNAME:";
+chomp ($user= < >);
+print "Password:";
+chomp($pass= < >);
+open(LOGFILE, ">>log.txt") or die " Riprova";
+close(LOGFILE);
+
+Il codice seguente registra o aggiunge l'username e la password scritti dall'utente in un 
+file log.txt e infine chiude il filehandle associato.
+
+Il seguente programma registra tutti i tasti fin quando non stampa un EXIT\n.
+
+While(10) {
+$input = <>; #Infinite Loop
+last if $input eq "exit\n"; #Esce dal loop fin quando l'utente non preme Exit [INVIO]
+open(FILE, ">>xyz.txt");
+print FILE $input; #Stampa i dati di xyz, il file che ha memorizzato i tasti premuti
+}
+close FILE;
+
+SPOSTARSI IN UN FILE
+--------------------
+
+Ora che sappiamo come aprire un file per vari scopi, come possiamo muoverci in un file e 
+come possiamo sapere dove siamo?
+
+Vedi, quando è usato un filehandle, ha un puntatore di file associato. Quando apriamo un 
+file, il puntatore di file standard punta a 0. Questo puntatore di file cambia 
+automaticamente a seconda se noi leggiamo o spostiamo dati usando il filehandle. Questo 
+processo è automatico e avviene senza l'intervento dell'utente.
+
+Ma a volte, vogliamo cambiare manualmente la posizione del puntatore di file e farlo 
+puntare altrove. Quì entrano in gioco le funzioni seek( ) e tell( ).
+
+seek( )
+-------
+
+Sintassi di base:
+
+seek(FILEHANDLE, STEPS, DA); : Muove il puntatore di file del FILEHANDLE al numero STEPS 
+da DA.
+
+Nota: Le posizioni dei files sono misurate in bytes.
+
+Il valore di DA può essere 0 all'inizio del file, 1 per la posizione corrente e 2 per la 
+fine del file.
+
+Il seguente esempio ti farà capire meglio come usare la funzione seek( ):
+
+seek(FILE, 0, 0); #si sposta all'inizio del filfe
+seek(FILE, 157,0); #si sposta di 157 bytes dall'inizio del file
+seek(FILE,45,1); #va 45 bytes avanti
+seek(FILE, -45,1); #torna 25 bytes indietro
+seek(FILE,200,2); #va 200 bytes avanti dalla fine del file (EOF)
+
+tell( )
+-------
+
+Il comando tell( ) ritorna la posizione corrente del puntatore di file.
+
+Per esempio, 
+
+print tell(FILE);
+
+Troncare i files
+----------------
+
+La funzione truncate( ) è usata per troncare un file piccolo al numero specificato di 
+bytes. La sintassi di base è:
+
+truncate(FILE, NUM); : Accorcia il FILE di NUM numero di bytes.
+
+Per esempio,
+
+truncate("xyz.txt", 100); #Accorcia xyz.txt di 100 bytes
+
+Lo stesso risultato si può ottenere in questo modo:
+
+open(FILE, "+<xyz.txt);
+truncate(FILE, 100);
+
+Cancellare i files
+------------------
+
+Per cancellare i files, usiamo la funzione unlink( ) la cui sintassi di base è laseguente:
+
+unlink(FILENAMES); :Cancella FILENAMES
+
+Questa funzione ritorna il numero di files cancellati con successo.
+
+Per esempio,
+
+unlink "log.txt"; #Cancella log.txt
+
+Questa funzione di Perl può essere molto utile per cancellare i files temporanei da un 
+hard disk e salvare spazio. Considera il seguente programma perl che cancella tutti i 
+files .bak, .- e .tmp del disco.
+
+$name = shift;
+@old = ($name. '.bak', $name. '.~', $name. '.tmp');
+foreach(@old) {
+Print "Deleting $_";
+}
+unlink @old;
+
+CONTROLLO DEI FILES
+-------------------
+
+I files sono di tutte le dimensioni, proprietà e tipi. Il perl ha di certo i controlli dei 
+files, ispezionando le caratteristiche e le proprietà.
+
+I controlli dei files sono molto simpatici, hanno un solo trattino seguito da un carattere 
+speciale.
+
+Il formato di base dei controlli dei file è il seguente:
+
+-CONTROLLO DEL FILE: è vero solo se il file soddisfa il controllo. Il file può essere un 
+nomefile o un filehandle.
+
+La seguente è una lisa completa di controlli dei files e i loro significati:
+
+-e File esiste
+-f File è un file di testo
+-d File è una directory
+-T File è un file di testo
+-B File è un file binario
+-r File è leggibile
+-w File è scrivibile
+-x File è eseguibile
+-s Dimensione di File (ritorna il numero di bytes)
+-z File è vuoto (0 bytes)
+
+ Ora che hai la lista completa, vediamo come usare questa roba. La seguente è una 
+collezione di esempi che ti chiariranno le cosoe:
+
+Esempi,
+
+if (-d "/etc") {
+print "La directory exists"; #Stampa il messaggio se /etc è una directory
+}
+
+$file = shift;
+if(-e $file){
+print "$file esiste. \n"; #Stampa il messaggio se $file esiste
+}
+
+Ogni file è sia -T che -B. Il perl guarda l'inizio del file. Se ci sono molti caratteri 
+strani, è un file binario altrimenti è un file di testo. Ma i files vuoti soddisfano 
+entrembe le condizioni. Il programma perl seguente controlla se un file è vuoto o no.
+
+$file = shift;
+if(-z $file){
+print "$file Exists. \n";
+}
+
+La funzione stat( )
+-------------------
+
+I controlli dei file che abbiamo imparato controllano solo un singolo file, d'altraparte, 
+la funzione stat( ) ritorna un array di statistiche di 13 files.
+
+La sintassi del comando stat( ) è:
+
+stat(F)LE) : Ritorna un array di 13 elementi che contengono le statistiche di FILE. FILE 
+può essere un file o un filehandle.
+
+Gli elementi dell'erray sono:
+
+Il device
+L'inode del file
+La modalità del file
+Il numero di links fisici al file
+L'user ID del proprietario del file
+Il group ID del file
+Il raw device
+La dimensione del file
+L'ultima volta che è stato visto il file
+L'ultima volta che è stato modificato il file
+L'ultima volta che lo stato del file è stato cambiato
+Il block size del sistema
+Il numero di blocchi usati dal file
+
+Facciamo un esempio in cui usiamo l'array di stat( ) per verificare la dimensione di un 
+file.
+
+$file = shift;
+$size = (stat($file))[7]; #Ritorna l'ottavo elemento dell'array di stat( )
+print "La dimensione è: $size";
+
+Lo stesso risultato può essere ottenuto usando see( ) e tell( ).
+
+$file = shift;
+open(FILE, "$file");
+seek(FILE,0,2);
+$size = tell(FILE);
+print "La dimensione è: $size";
+
+C'è ancora un altro metodo per controllare la dimensione di un file, usando i controlli di 
+file.
+
+$file = shift;
+$size = (-s $filename);
+print "La dimensione è: $size";
+
+Leggere Bytes e non Linee
+-------------------------
+
+Normalmente quando un programma Perl apre un file in lettura, legge le linee una ad una. 
+Comunque a volte abbiamo bisogno di leggere bytes e non linee. Per fare ciò, usiamo la 
+funzione read( ).
+
+La sintassi di base di read( ) è la seguente:
+
+read(FILEHANDLE, VARNAME, BYTES, OFFSET) : Legge BYTES numero di bytes cominciando da 
+OFFSET in FILEHANDLE, mettendo il risultato in VARNAME. Se OFFSET non è specificato, perl 
+comincia a leggere dall'inizio del file.
+
+Per esempio,
+
+open(FILE, "xyz.log") or die "File non trovato";
+read(FILE, $text, 1000);
+print $text;
+
+Questo programma legge i primi 1000 bytes del file xyz.log e li mette nella variabile 
+$text e infine la stampa sullo schermo.
+
+La funzione read può a volte essere meno accurata. Quello che voglio dire è che a volte 
+legge più bytes del necessario, a causa di differenze nel Buffer del sistema. Se questo 
+non si può accettare, devi usare sysread( ), la cui sintassi è:
+
+sysread(FILEHANDLE, VARNAME, BYTES, OFFSET) : Legge BYTES numero di bytes cominciando da 
+OFFSET in FILEHANDLE, mettendo il risultato in VARNAME.
+
+Questa funzione è quasi la stessa di read(), però è più accurata.
+
+A volte devi scrivere un certo numero di bytes da uno scalare a un file. Per questo il 
+perl ha la funzione syswrite( ), la cui sintassi è:
+
+syswrite(FILEHANDLE, VAR, BYTES, OFFSET): scrive BYTES numero di bytes o dati da VAR 
+cominciando da OFFSET a FILEHANDLE.
+
+Sia sysread( ) che syswrite( ) ritornano il numero di bytes letti o UNDEF se avviene un 
+errore.
+
+La funzione getc( )
+-------------------
+
+Questa funsione, come suggerisce il nome, prende il carattere successivo dal filehandle. 
+La sintassi è:
+
+getc(FILEHANDLE)
+
+Quando arriva la fine del file (EOF) il valore getc( ) è vuoto.
+
+ACCEDERE ALLE DIRECTORY
+-----------------------
+
+Così come per i files abbiamo open( ) e close( ), per le directory abbiamo opendir( ) e 
+closedir( ). La sintassi è:
+
+opendir(DIRHANDLE, DIRNAME): apre la directory DIRNAME.
+closedir(DIRHANDLE): chiude DIRHANDLE.
+
+Per esempio,
+
+opendir(DIR, "/etc"); #apre la directory /etc
+
+La funzione readdir
+-------------------
+
+Questo è la funzione più usata riguardante le directory.
+La sintassi è:
+
+readdir(DIRHANDLE): ritorna il file successivo da DIRHANDLE (in un contesto scalare) o il 
+resto dei files (in un contesto array). Se non ci sono più files, ritorna UNDEF.
+
+Il seguente programma usa le funzioni opendir( ), closedir( ) e readdir( ) per fare una 
+lista di tutti i files in una directory particolare.
+
+$name = shift;
+opendir(DIR, $name) or die "Directory invalida: $! \n";
+@listoffiles = readdir(DIR);
+closedir(DIR);
+foreach $file (@listoffiles) {
+print "$file\n"; 
+}
+
+Output: 
+
+C:\perl> filename.pl /etc
+Ankit.log
+Ankit.txt
+Passwd.txt
+
+Altre funzioni di directory
+---------------------------
+
+La seguente è una lista di sintassi e usi di alcune funzioni di directory:
+
+telldir(DIRHANDLE): ritorna la posizione di DIRHANDLE.
+seekdir(SIRHANDLE, POSITION): dice di leggere da POSITION di FILEHANDLE che dovrebbe 
+essere qualcosa come il valore ritornato da telldir( ).
+rewinddir(DIRHANDLE): mette DIRHANDLE all'inizio della directory.
+mkdir(DIRNAME, MODE): crea directory con il nome DIRNAME e modalità specificata da 
+MODE(Unix).
+rmdir(DIRNAME, MODE): cancella la directory DIRNAME.
+chdir(DIR): cambia la directoy di lavoro in DIR.
+chroot(DIR): cambia la root directory per il processo corrente a DIR. Solo il root può 
+fare ciò.
+
+
+Bene, questo è tutto. Questi manuali di perl non hanno lo scopo di farti diventare un guru 
+del perl, ma ti insegnano il perl in modo tale che tu puoi scrivere programmi utili.
+
+Ankit Fadia
+
+ankit@bol.net.in
+
+
+kEwL`
+kewl@roolz.cjb.net
+kewlrox.netfirms.com
+www.tankcommandos.org

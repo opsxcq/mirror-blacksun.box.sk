@@ -1,0 +1,294 @@
+The FTP Tutorial / written by yours truly, R a v e N (blacksun.box.sk)
+De FTP Tutorial / geschreven door de enige echte R a v e N (blacksun.box.sk)
+<=======================================================================>
+versie 2.0, 27/6/99
+
+vertaald door Masj Crasj
+email: masjcrasj@writeme.com
+website: http://come.to/masj      еее SaikSoft еее
+
+Note: Wanneer je iets ziet zoals dit: blah(1) betekent dat als je de betekenis van het woord blah niet weet dat de uitleg van het woord in de 'newbies corner' staat in sectie 1.
+Note 2: Als je moeite hebt met het lezen van deze tekst omdat je heel de tijd naar rechts moet scrollen als er een lange zin staat komt dat misschien omdat je "automatische terugloop" niet hebt aanstaan. De meeste UNIX tekstverwerkers en geavanceerde Windows Tekstverwerkers (en sommige minder geavanceerde zoals Wordpad) doen het automatisch.
+Om word wrapping aan te zetten in Microsoft Notepad moet je in de taakbalk op Bewerken klikken en dan op "automatische terugloop". In de Engelse versie op Edit en dan op "Word wrapping."
+
+Woord van de auteur
+==================Dit bestand is vooral bedoeld voor beginnelingen, maar experts kunnen er ook van leren (lees alles, ook de newbies corner. Misschien staat er iets in dat je gemist hebt in het begin van je 'studie').
+De volgende tutorials zullen meestal voor experts zijn, dus brengen het voor ons op.
+Als je commentaar of vragen hebt die met deze tutorial te maken heeft (geen flames(10) of spam aub) email me dan naar barakirs@netvision.net.il.
+Bezoek blacksun.box.sk voor meer tutorials, gratis hacken/programmeren/unix boeken te downloaden en veel meer.
+
+Disclaimer
+=========We accepteren geen enkele activiteit die illegaal is. Als jij er van uitgaat dat het overtreden van de wet een goede manier is om indruk op iemand te maken, stop dan met het lezen en wordt volwassen. Het is niet indrukwekkend of stoer als je een crimineel bent.
+
+Index
+====Wat is FTP en waar is het goed voor?
+* Waar staat de acroniem FTP voor?
+* Wat kan ik doen met FTPs? Waar zijn ze eigenlijk goed voor?
+FTP commando's
+* Hoe FTP te gebruiken met ervaren FTP commando's
+* Hoe FTP te gebruiken met GUI (Graphical User Interface) / text client(5)
+FTP Hacking
+* Informatie winnen over je doel en 'security holes' vinden die de informatie gebruiken
+* Voorbeeld van op FTP betrekkende security holes
+De stomme Bug Corner
+* Een "elite" bug
+Newbies Corner
+* Wat is een protocol
+* Wat is een poort
+* Wat is een mirror site
+* Wat is een path (complete path + relative path)
+* Wat is een client programma en wat is een server programma
+* Hoe is informatie te vinden over remote hosts
+* Wat is een daemon
+* Wat is een root
+* Wat is een core dump
+* Wat is een DoS attack
+* Wat is DUN
+* Wat is een ISP
+* Wat is Flaming
+Andere Tutorials
+* FTP Hacking.
+* Overclocking.
+* Ad and Spam Blocking.
+* Sendmail.
+* Phreaking.
+* Advanced Phreaking.
+* Phreaking II.
+* IRC Warfare.
+* Windows Registry.
+* Info Gathering.
+* Proxy/Wingate/SOCKS.
+* Offline Windows Security.
+* ICQ Security.
+
+Bibliografie
+
+Wat is FTP en waar is het goed voor?
+------------------------------------
+Het woord FTP (zie voetnoot 1 hieronder) staat voor File Transfer Protocol(1).
+FTP servers zullen je laten downloaden (bestanden ontvangen van de server) en laten uploaden (bestanden zenden naar de server) van de server wat zeer gemakkelijk is (als je permissie hebt om het te doen).
+Je bladert hetzelfde door een remote FTP site als door je eigen computer's bestanden en mappen (natuurlijk, heb je niet alle bestanden gelezen en/of geschreven op het systeem, en sommige bestanden kan je niet eens zien).
+
+FTP Commando's
+--------------
+De volgende zijn vooral basiscommando's voor FTP. Om te communiceren met FTP daemons(7), moet je verbinden met port(2) 21 en dan de volgende commando's gebruiken (zie voetnoot 2 hieronder) om te communiceren met de FTP server:
+cd       verander map (bij de server)
+lcd      verander de locale map (wanneer je een bestand verzendt, het path(4) van het                specifieke bestand wordt dan het path(4) die je specificeert met lcd)
+dir,ls   inhoud van de map
+binary   verandert de wijze naar binary transfer
+get      krijg een bestand
+mget     krijg meerdere bestanden
+put      verzend een bestanden
+mput     verzend meerder bestanden
+pwd      print een werkende map bij de server
+
+Voetnoten
++++++++++
+1. Voor duizenden op computergerichte acroniemen en afkortingen ga naar blacksun.box.sk en download het bestand met de naam acros.txt van de projecten pagina.
+2. Als je er niks voor voelt om stomme commando's in te voeren zijn er genoeg FTP clients(5) die zullen al het werk voor jou doen. Maar toch zullen ze alsnog alle commando's laten zien zodat je er toch nog nieuwe commando's van leert.
+Je kan FTP clients downloaden voor elke besturingssysteem bij TUCOWS. Ga simpelweg naar de dichtstbijzijnde TUCOWS mirror site(3) of ga direct naar www.tucows.com.
+
+FTP Hacking
+-----------
+Sinds er zo veel FTP holes zijn voor zo veel FTP server programma's en zo veel besturingssystemen, heb ik besloten dat de beste manier om uit te leggen hoe je informatie kan vinden over security holes, is het door jou zelf te laten doen.
+Ik zal ook interessante afzonderlijke FTP security holes introduceren in het einde van deze sectie. Om FTP exploits te vinden moet je proberen de volgende websites te vinden (of wordt lid van 'the Bugtraq mailing list' bij www.securityfocus.com):
+CERT (Computer Emergency Response Team) - http://cert.org
+X-Force Search (makkelijkst) - http://www.iss.net/cgi-bin/xforce/xforce_index.pl
+Packet Storm - packetstorm.genocide2600.com
+BugTraq Archives - http://www.securityfocus.com/level2/bottom.html?go=search
+Fyodor's Exploit World - http://www.insecure.org/sploits.html
+Spikeman's Denial Of Service Website (voor DoS(9) attacks tegen FTP servers) -  http://www.genocide2600.com/~spikeman/
+RootShell - http://www.rootshell.com
+Slashdot - http://www.slashdot.org
+Data - http://www.hideaway.net/data.html (latere update: deze URL was plat wanneer dit is geschreven) (Alle links die het niet doen aub melden aan barakirs@netvision.net.il)
+
+Note: Sommigen zullen misschien denken dat de sites hierboven illegaal zijn, sinds ze gehoord hebben wat security holes zijn en hoe je ze moet vinden.
+Nou, dus niet. Deze dingen worden 'advisories' genoemd and deze laten je binnen om holes te vinden op je eigen PC en te maken. Of je er gebruik van maakt om jezelf te beveiligen of om iemand anders te hacken is jouw keuze. Dat is wel het verschil tussen legaal en illegaal.
+
+Wanneer je een van deze volgende zoekmachines (ik adviseer the Bugtraq archives) zoek voor de zoekwoorden die je wilt.
+Bijvoorbeeld: Je vind uit(5) dat jouw doel dit besturingssysteem gebruikt en deze FTP server en deze browser enz. Probeer dan alle informatie te combineren en ik ben er zeker van dat je de holes zult vinden.
+Je kan ook holes proberen te vinden op je eigen computer.
+Over holes gesproken, we zullen over veel security holes praten in de komende Sendmail tutorial (zie blacksun.box.sk).
+Oke, nu naar de afzonderlijke geselecteerde FTP holes.
+
+Selected FTP Holes
+******************
+De volgende FTP holes zijn niet nieuw of uitzonderlijk of ongelooflijk fantastisch of wat dan ook in die richting. Ze zijn gewoon goed om het te leren.
+Ik heb wat interessante FTP holes uitgezocht en heb een kleine uitleg gemaakt om de beginnelingen aan het werk te krijgen.
+Note: De sites die ik gebruik zijn geen 'vette hack sites'. Deze worden 'advisories' genoemd en ze zijn bedoeld om mensen hun bugs te laten maken op hun eigen systeem. Of je zou nou wel of niet gebruikt daarvoor is ons probleem niet.
+
+1) Sommige FTP daemons staan oude PASV commando's toe, die kunnen crashes veroorzaken op sommige FTP daemons met een core dump(9). FTP core dumps kunnen gebruikt worden voor verborgen encrypte paswoorden, bypassen en shadow paswoorden.
+Het is niet precies bekend welke servers immuun zijn voor dit en welke niet, en de enige manier om dat zeker te weten is een nieuwere FTP server programma te nemen.
+Zie ook http://www.genocide2600.com/~spikeman/bisonware3.html voor een DoS attack(9) tegen Bisonware FTP Server 3.5 hetzelfde als deze hole.
+
+2) FTP Bounce Attack (te lang, zie
+http://www.netspace.org/cgi-bin/wa?A2=ind9507B&L=bugtraq&P=R1425 (van BugTraq))
+
+3) Local bug in FTP Daemon (te lang, zie
+http://www.netspace.org/cgi-bin/wa?A2=ind9507B&L=bugtraq&P=R1345 (From BugTraq))
+
+4) (Uitspraken door Bugtraq)
+Impact: Iedereen van buiten kan je pc ftp server uitzetten. En als je onder win3.1 zit zal je systeem crashen.
+Program: WinQVT/NET
+Version: Alle versies.. 16 en 32 bits
+Solution.. niet gebruiken of upgraden
+Exploit: Zend een OOB (Out of Band) naar port 21,
+Exploit voor dummies: neem een winnuke, start het, en wanneer je '139 vindt moet je het veranderen in '21'.
+Oke, ik weet dat dit stom is...... :P. Maar misschien heeft iemand dit nodig.. wie weet...
+Note: Een gepatche versie van NT 4.0 is niet kwetsbaar voor de MS's FTP server. Ik heb geen kans gehad om dit te testen met een niet gepatchde server, maar IIRC, ik heb de FTP poort gecheckt toen het OOB probleem werd vermeld en het geen crash veroorzaakte.
+Ik zou kunnen zeggen dat dit een DOS/Win probleem is het algemeen, en zou niet specifiek bij de WinQVT zijn.
+
+Ik hoop dat dit je geholpen heeft bij het leren van holes vinden. Er zullen veel meer voorbeelden zijn in de Sendmail tutorial.
+
+De stomme Bug Corner
+--------------------
+Ik vond dit op een 'elite' website die gemaakt was door een hoop "elite" "hacker".
+Ze zeiden dat als je "een FTP wou hacken" dat je dat moet verbinden en dan de volgende commando's moet geven:
+quote user ftp
+quote cwd ~root
+quote pass ftp
+Wat de zogenaamde hacker hier probeert te doen is een gebruikersnaam invoeren om zo in het systeem te komen, verander de gebruikersnaam naar root(7) en voer dan het paswoord in van de gebruiker. Dit werkt alleen bij ZEER slecht geconfigureerde FTP servers (de auteur vermelde dat "dit werkt niet op alle FTP servers". Nou, ik heb nieuws voor je - dit werkt nooit. punt. Tenzij je het hebt over een 5-jarige jongen die net een computer heeft gekregen en heeft geklikt op een paar knoppen en zo per ongeluk een FTP server heeft opgezet).
+
+Appendix A: Het SYST commando
+-----------------------------
+Als je het commando SYST invoert terwijl je verbonden bent met een FTP server kan er vaak belangrijke informatie tevoorschijn komen, zoals de OS, welke versie en informatie over de FTP server. Maak verbinding met een FTP server op een of andere manier (gebruik een gebruikersnaam en paswoord die je kent of gebruik 'anonymous (anoniem) login' - login: anonymous password:jouw-email-adres@jouw-isp. Je kan ook iemand anders' email adres in voeren, de server controleert het adres die je geeft niet of zo) en type dan het commando SYST.
+
+Newbies Corner
+--------------
+1. Protocol - Een serie regels, te vergelijken met een taal. Wanneer twee computers dezelfde protocol kennen, kunnen ze het gebruiken om te communiceren met elkaar.
+
+2. Poort - (voor meer technische uitleg over wat poorts zijn, kijk dan naar het eind van deze uitleg) poorten zijn zeg maar gaten (holes) die dingen regelen (data, in dit geval) om er in te komen of er uit te gaan.
+Er zijn 'physical ports' en 'software ports' op je computer. Physical ports zijn deze sloten aan de achterkant van je computer, je monitor enz. Nou zijn software ports om verbinding te maken met andere computers.
+Bijvoorbeeld: Ik heb net een nieuwe computer gekocht en ik wil er een webserver van maken (ik wil er voor kunnen zorgen dat mensen mijn computer in kunnen om naar geselecteerde webpages, plaatjes, cgi en java scripts of applets, programma's enz. te gaan, die op mijn computer staan). Voordat ik dat kan doen moet ik webserver software installeren.
+De webserver software opent een poort op mijn computer en noemt het poort 80. Dan luistert (listen) het naar de inkomende connecties op die poort.
+Wanneer iemand zijn webbrowser opstart (Netscape, Lynx, Microsoft Explorer enz.) en naar mijn website surft maakt die browser verbinding met mijn computer op poort 80 en zend dan HTTP commando's naar mijn webserver programma die dat opvangt en begrijpt.
+Mijn webserver programma pakt snel de inkomende data op en zendt het dan terug in de poort die de browser van de surfer geopend had op de surfer's computer. De browser luistert dan op die poort en wacht weer voor data (de HTML pagina, het plaatje, het programma enz.) dat er weer inkomt.
+Er zijn verschillende poorten voor verschillende services (we komen daar op terug) zodat data niet door elkaar heen raakt. Stel je voor dat je browser data binnenhaalt die eigenlijk voor je FTP client was bedoeld. Ik hoop dat je het idee krijgt van wat nou precies een poort is.
+Er zijn drie verschillende poorten: 'well-known ports', 'registered ports' en 'dynamic/private ports'.
+De 'well-known ports' zijn deze van 0 tot 1023. Dit zijn de standaard poorten van verscheidene services (een webserver is een service omdat het luistert voor connecties van remote computers en zend dan wat terug). Bijvoorbeeld: de standaard poort voor webservers is
+80. Hoe zou anders je webbrowser weten welke poort hij moest nemen?
+De 'registered ports' zijn die van 1024 tot 49151. Deze poorten zijn gereserveerd voor verscheidene programma's. Bijvoorbeeld: ICQ (www.icq.com) reserveert een poort en luistert naar de inkomende berichten.
+De 'dynamic en/of private ports' zijn die van 49152 tot 65535, en kunnen worden gebruikt door iedereen voor elk doel.
+
+"Technische uitleg" - Om gelijktijdig toegang te bieden aan de TCP module, TCP geeft een 'user interface' genoemd een poort.
+Poorten zijn in gebruik door de kernel om netwerk processen te identificeren. Dit zijn strikt genomen bestaande transportlagen (het is te zeggen dat IP weinig om ze geeft).
+Samen met een IP adres geeft een TCP poort een 'endpoint' voor netwerkverbindingen.
+Op een gegeven moment *alle* internetverbindingen kunnen worden omschreven door 4 nummers: de bron IP adres en bron poort en het doel IP adres en doel poort. Servers zijn begrenst tot de 'well-known ports' zodat ze mogen zitten op de standaard poorten van verschillende systemen.
+Bijvoorbeeld, de telnet daemon zit op TCP poort 23, de FTP daemon zit op poort 21, de rlogin daemon zit op TCP poort 513 enz.
+
+Belangrijke notatie over 'well-known ports': services (daemons die wachten op inkomende connecties de mensen soms maken) op deze poorten kunnen alleen gestart worden in de root, dus lage mensen zullen nooit een rotzooi maken van de belangrijke poorten.
+
+3. Mirror site - een website die een exacte kopie is van een originele website maar op een andere server staat.
+Mirror sites kunnen worden gebruikt voor uploaden en downloaden. Bijvoorbeeld: in plaats van downloaden/uploaden van/naar de hoofd Tucows webserver, die ergens ver weg van huis staat, kan ik het simpelweg doen van een van hun Israelische mirrors (mirror site in Israel, dat is mijn land) en op die manier gaat het downloaden/uploaden sneller.
+
+4. Path - Unix voorbeeld: als een bestand in de map /etc/passwd staat dan is de path van het           bestand /etc.
+          DOS/Windows voorbeeld: als een bestand in de map c:\windows\win.exe staat dan is            de path van het bestand c:\windows.
+Er zijn twee verschillende soorten paths: een 'complete path' een 'relative path'.
+          Complete path on UNIX: als het bestand in de map /usr/local/sbin staat dan is dat           de 'complete path'.
+          Relative path on DOS/Windows: als de map waar je nu in staat c:\windows\ is en het           bestand staat in c:\windows\temp dan is de 'relative path' temp.
+          Relative path on UNIX: als de map waar je nu in staat /usr/nobody is en het           bestand in de map /usr/nobody/public_html/cgi-bin staat dan is de 'relative path'           van het bestand public_html/cgi-bin.
+
+5. Client / Server programma's - Een client programma is een programma dat gebruik maakt van een ander programma/computer.
+Een server programma is een programma dat toegang biedt van client programma's.
+Voorbeeld: Client=Netscape Navigator. Server=Apache version 1.6.6 (een webserver, programma dat mensen de mogelijkheid geeft die een Internetbrowser hebben om specifieke webpages, plaatjes, bestanden enz. te downloaden van de computer waar de server is geinstalleerd.)
+
+6. Hoe informatie te verkrijgen van remote hosts - de beste manier om informatie te winnen is te kijken naar de daemon(6) banners. Daemon banners zijn kleine stukjes informatie, sommige daemons kijken wanneer ze verbonden zijn naar de 'remote machine' (degene die verbonden is met de daemon) om beter te kunnen communiceren.
+Probeer te verbinden met poort 80 (webserver) en zend een paar commando's zoals get en kijk dan naar de banner. Je kan ook Sendmail proberen (zie volgende tutorial) op poort 25, telnet op poort 23, FTP op poort 21 of wat dan ook in je opkomt.
+
+7. Daemon - een programma dat luistert voor inkomende connecties van remote machines op een specifieke poort(2) en met hem in contact staat.
+
+8. Root - ook beschouwt als superuser (hoofdgebruiker), omdat de mogelijkheden eindeloos zijn. Zijn UID (User ID nummer, een identificatie nummer) and GID (Group ID. Je kan groepen maken en die verschillende permissies geven. Bijvoorbeeld: Iedereen van de rekenafdeling kan alle bestanden lezen en openen in die map enz.) zijn altijd 0 (behalve bij erg verouderde boxen).
+Wanneer je een root bent kan je praktisch alles doen op een systeem.
+Core dump - wanneer een programma crasht dumpt het al de 'core' (alle informatie die gebruikt wordt en niet op disk staan, zoals dingen die programma's gebruiken die op de RAM chip staan) naar een tijdelijke map.
+
+9. DoS - Denial of Service (weigering van service). Een nuke in dummies taal. Een soort aanval die de computer van het slachtoffer zo beschadigt dat de computer sommige/alle services negeert van alle gebruikers van de computer (inclusief remote users).
+Bijvoorbeeld: Winnuke (ook bekend als OOB), de makkelijkste DoS in de wereld.
+(Van Spikeman's DoS site) Dit denial of service programma zorgt ervoor dat als je een "out of Band" bericht stuurt naar port 139 en het is een Windows client, dan weet hij niet hoe hij er mee moet omgaan. Dit is een standaard luisterende poort van Windows systemen. Gebruikers van Win 3.11, Win95 en Win NT zijn kwetsbaar voor deze aanval. Dit programma is over het algemeen een programma die gebruikt wordt om vervelend te doen, maar het is al wereldwijd over internet verspreid. Het is een last in chatrooms en op IRC geworden. Met het gebruiken van jouw IP adres en het zenden van OOB data naar poort 139, zullen velen gebruikers geen verbinding meer hebben met internet. Vaak blijf je dan achter met lage mogelijkheden en een blauw getint beeldscherm. Sommige van jullie zullen wel een slachtoffer zijn. Als dit gebeurt bij jou en je hebt Win95 zal je een Windows fatale error krijgen die vergelijkbaar is aan deze:
+Fatal exception 0E at 0028: in VxD MSTCP(01) + 000041AE.
+This was called from 0028: in VxD NDIS(01) + 00000D7C.
+Rebooting the comp should return it to normal state.
+
+Patches ('fixes' voor WinNuke (OOB)
+-=-=-=-=-=-=-=-=-=-=-=-
+Informatie over WinNuke
+http://support.microsoft.com/support/kb/articles/Q168/7/47.asp
+Windows 95 patches
+http://support.microsoft.com/download/support/mslfiles/Vipup11.exe
+http://support.microsoft.com/download/support/mslfiles/Vipup20.exe (for Winsock 2.0*)
+http://www.theargon.com/defense/nuke/index.html
+Lees wel de teksten die bij de patches horen voor dat je het installeert.
+Welke versie van Winsocj heb je op je Windows 95 PC?
+http://premium.microsoft.com/support/kb/articles/Q177/7/19.asp
+http://www.theargon.com/defense/nuke/index.html
+Windows NT 4.0 Patch
+http://support.microsoft.com/support/kb/articles/Q143/4/78.asp
+http://www.theargon.com/defense/nuke/index.html
+Lees wel de teksten die bij de patches horen voor dat je het installeert.
+
+Meer info over DoS attacks kan je vinden op Spikeman's DoS site:
+http://www.genocide2600.com/~spikeman/main.html
+
+* Ik weet niet of het werkt bij nieuwere versies van Winsock, dus kan je beter downgraden naar Winsock 1.1 (de versie die met Win95 komt) door naar het configuratiescherm te gaan, Netwerk en dan TCP/IP en Dial Up Adapter(11) weghalen en dan lezen (klik op nieuw, kies protocol en in de bedrijven frame kies Microsoft en je zult TCP/IP vinden. Voor DUN moet je het zelfde doen maar kies wel adapter in plaats van protocol).
+Nadat je klaar bent met downgraden upgrade weer opnieuw naar WinSock 2.0, pas the patch toe (Vipup20.exe) en upgrade naar een nieuwere versie van Winsock.
+
+10. Flames - de actie van iemand flamen (hem boze email sturen over dingen die hij heeft gedaan, meningen die hij heeft enz. waar je het niet mee eens bent).
+
+11. DUN - Dial Up Adapter. In het algemeen is het het Windows programma dat inbelt naar je ISP(12).
+
+12. ISP - Internet Service Provider. Een bedrijf die jou toegang tot het internet aanbiedt, zoals internet activiteiten, email enz.
+
+12. Distro - Distribution. Sinds UNOX niet meer patent heeft, geen trademark of copyright of wat dan ook zijn er meer distributies gekomen (software pakketten) van het. Elke distro heeft zijn eigen opties en bugs (voorbeeld: Redhat is de beste voor beginners).
+
+Volgende Tutorials
+------------------
+De volgende tutorial zal over Sendmail gaan, de meest onveilige daemon op aarde - wat is Sendmail, Sendmail commando's, hoe hack je met Sendmail, hoe stuur je onmogelijk traceerbare emails, een newbies corner (wat is een daemon, hoe traceer je een email enz.) en veel meer. Als deze tutorial 7 van de 10 punten kan scoren, dan krijgt de Sendmail tutorial score 12. Als eerste, hij gaat heel lang worden en het heeft veel tips en uitleg over 'security holes' en tips en trucks en tonnen met vette stuff waar ik nog geen eens over had nagedacht.
+Even terzijde, ik heb deze tutorial in een beweging gemaakt omdat ik maar weinig tijd had om er aan te werken, maar de zomervakantie komt er aan dus ik heb meer dan genoeg tijd om de Sendmail tutorial te maken.
+De derde tutorial zal waarschijnlijk over UNIX Shell Programming gaan. Ik wil nou nog niks verklappen, en trouwens - Ik weet het nog niet zeker van deze titel. Misschien verander ik het wel in "alles wat je maar wou weten over IRC wars en nooit durfde te vragen". Wie weet.
+Ik zet binnenkort een elektronische stembus neer zodat je de mogelijkheid hebt om te stemmen over het onderwerp of je kan een nieuwe titel suggereren (schrijf je in voor de mailinglist en je weet precies wanneer hij af is. Om je in te schrijven moet je naar blacksun.box.sk gaan en dan naar de mailinglist pagina).
+Voor meer informatie ga naar blacksun.box.sk. Vergeet niet om ons eens te schrijven!
+
+* Ik heb net Redhat 6.0 geinstalleerd. Yeah, yeah, ik weet het, het is niet echt de beste Linux distro(10) (ik probeer niet alle Redhat gebruikers te commanderen), maar ik wilde wel eens weten hoe het er uit ziet en zo.
+Ik moet je vertellen dat de installatie makkelijk is in vergelijking met andere distros en het is fantastisch for beginners.
+
+Note: voordat ik de Sendmail tutorial uitbreng zal ik een paar mini-tutorials uitgeven, zoals 'buffer overflows', 'overclocking', 'RM Networks' enz.
+
+Andere Tutorials
+----------------
+Overclocking.
+RM Networks Hacking.
+Ad and Spam Blocking.
+Sendmail (fake mails maken en servers hacken die Sendmail draaien).
+Haal ze allemaal bij blacksun.box.sk of wordt lid van de mailing list op blacksunresearch.listbot.com.
+
+Bibliografie
+------------
+Bugtraq Archives - http://www.securityfocus.com/level2/bottom.html?go=search
+RootShell - http://www.rootshell.com
+Fyodor's Exploit World - http://www.insecure.org/sploits.html
+Packet Storm - http://packetstorm.harvard.edu
+X-Force Search (simplest) - http://www.iss.net/cgi-bin/xforce/xforce_index.pl
+Slashdot - http://www.slashdot.org
+Spikeman's Denial Of Service Website - http://www.genocide2600.com/~spikeman/
+PC Magazine - http://www.pcmagazine.com
+
+Andere Tutorials
+----------------
+* FTP Hacking.
+* Overclocking.
+* Ad and Spam Blocking.
+* Sendmail.
+* Phreaking.
+* Advanced Phreaking.
+* Phreaking II.
+* IRC Warfare.
+* Windows Registry.
+* Info Gathering.
+* Proxy/Wingate/SOCKS.
+* Offline Windows Security.
+* ICQ Security.
+
+
+
+
+
+
