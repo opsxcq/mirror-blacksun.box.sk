@@ -1,7 +1,7 @@
 # Black Sun's website mirror
 [![Docker Pulls](https://img.shields.io/docker/pulls/strm/mirror-blacksun.box.sk.svg?style=plastic)](https://hub.docker.com/r/strm/mirror-blacksun.box.sk/)
 
-Just a mirror of epic Black Sun (blacksun.box.sk) website, for the sake of old times.
+Just a mirror of epic Black Sun (blacksun.box.sk) website, for old times' sake !
 
 If you want to run a local copy of this website, you can use [docker](https://docker.com)
 
